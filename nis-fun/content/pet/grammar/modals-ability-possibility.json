@@ -1,0 +1,675 @@
+{
+  "id": "modals-ability-possibility",
+  "level": "pet",
+  "area": "Modals",
+  "title": "Ability, possibility, requests and offers",
+  "tagline": "Can you do it, could it happen, and how do you ask nicely?",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Speaking Part 2 — collaborative task",
+    "Listening Part 1 — short conversations"
+  ],
+  "why": "Every day you need to say what you can do, guess what might be true, or ask someone nicely for something. B1 Preliminary tests the difference between can, could, be able to and managed to in the reading cloze, and expects natural requests and offers in the Speaking test. Getting the word order right — no to after a modal — is one of the easiest ways to sound fluent.",
+  "hook": {
+    "text": "Nadia is stuck at the science fair. Sofia: \"<b>Can</b> you fix the wires?\" Nadia: \"I<b>'m not able to</b> see the problem. <b>Could</b> you hold the torch?\" Liam: \"<b>Shall I</b> get Miss Vega? She <b>might</b> know.\"",
+    "ask": "Find a word for a skill (ability), a word for a guess (possibility), and a polite question (a request or an offer). Which is which?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "The shapes of ability, possibility and requests",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "She",
+              "role": "subj"
+            },
+            {
+              "t": "can",
+              "role": "aux"
+            },
+            {
+              "t": "play",
+              "role": "verb"
+            },
+            {
+              "t": "the guitar",
+              "role": "obj"
+            }
+          ],
+          "note": "ability now"
+        },
+        {
+          "parts": [
+            {
+              "t": "It",
+              "role": "subj"
+            },
+            {
+              "t": "might",
+              "role": "aux"
+            },
+            {
+              "t": "rain",
+              "role": "verb"
+            },
+            {
+              "t": "later",
+              "role": "time"
+            }
+          ],
+          "note": "possibility (a guess)"
+        },
+        {
+          "parts": [
+            {
+              "t": "Could",
+              "role": "aux"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "help",
+              "role": "verb"
+            },
+            {
+              "t": "me",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "a polite request"
+        }
+      ],
+      "caption": "Can, might and could all go straight before the verb — no <i>to</i>, ever."
+    },
+    {
+      "type": "scale",
+      "title": "How sure are you? (possibility)",
+      "left": "just a guess",
+      "right": "almost certain",
+      "items": [
+        {
+          "label": "might",
+          "pct": 30
+        },
+        {
+          "label": "may",
+          "pct": 40
+        },
+        {
+          "label": "could",
+          "pct": 50
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to make a polite request",
+      "steps": [
+        {
+          "label": "Start with Could or Would you mind",
+          "ex": "<b>Could</b> you… / <b>Would you mind</b>…"
+        },
+        {
+          "label": "Could + base verb; Would you mind + -ing",
+          "ex": "<b>Could</b> you open the door? / <b>Would you mind opening</b> the door?"
+        },
+        {
+          "label": "Add please to sound extra polite",
+          "ex": "Could you open the door, <b>please</b>?"
+        }
+      ],
+      "caption": "Would you mind is always followed by the -ing form, never to + verb."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "can / could",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ base verb",
+        "tone": "a",
+        "ex": "can swim"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "may / might / could",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ base verb",
+        "tone": "b",
+        "ex": "might rain"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "Could you / Would you mind",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ verb (base) / -ing",
+        "tone": "c",
+        "ex": "mind waiting"
+      }
+    ],
+    "table": {
+      "head": [
+        "Use",
+        "Modal",
+        "Example",
+        "Notes"
+      ],
+      "rows": [
+        [
+          "Ability now",
+          "can / can't",
+          "She can swim.",
+          "a general skill"
+        ],
+        [
+          "Ability in the past (general)",
+          "could / couldn't",
+          "He could read at four.",
+          "a skill over time, not one event"
+        ],
+        [
+          "Ability: one success",
+          "was/were able to, managed to",
+          "We managed to catch the bus.",
+          "a single completed achievement"
+        ],
+        [
+          "Possibility (present/future guess)",
+          "may / might / could",
+          "It might rain later.",
+          "not sure — a guess"
+        ],
+        [
+          "Polite request",
+          "Could you…? / Would you mind + -ing",
+          "Would you mind closing the door?",
+          "please can follow Could you…?"
+        ],
+        [
+          "Offer",
+          "Shall I…? / I'll…",
+          "Shall I carry that?",
+          "offering to help, or a fast decision"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Ability: can, could, be able to, managed to",
+      "examples": [
+        {
+          "text": "She <b>can</b> speak three languages.",
+          "note": "a skill she has now"
+        },
+        {
+          "text": "My grandfather <b>could</b> fix any engine when he was a boy.",
+          "note": "a general ability in the past, not one event"
+        },
+        {
+          "text": "We <b>managed to</b> finish the poster before the bell.",
+          "note": "one specific success — not a general skill"
+        }
+      ]
+    },
+    {
+      "point": "Possibility: may, might, could",
+      "examples": [
+        {
+          "text": "It <b>might</b> rain during the fair, so bring an umbrella.",
+          "note": "a guess about the future"
+        },
+        {
+          "text": "That noise <b>could</b> be the robot's motor.",
+          "note": "a possible explanation now"
+        },
+        {
+          "text": "Sofia <b>may</b> win the prize — her project is amazing.",
+          "note": "a real possibility, not a promise"
+        }
+      ]
+    },
+    {
+      "point": "Requests and permission",
+      "examples": [
+        {
+          "text": "<b>Could you</b> pass me the battery, please?",
+          "note": "a polite request"
+        },
+        {
+          "text": "<b>Would you mind</b> holding this for a second?",
+          "note": "an even more polite request — with -ing"
+        },
+        {
+          "text": "<b>Can I</b> use the glue gun now?",
+          "note": "asking for permission, a bit informal"
+        },
+        {
+          "text": "You <b>may</b> leave your project on the table.",
+          "note": "giving permission, more formal — like a teacher"
+        }
+      ]
+    },
+    {
+      "point": "Offers",
+      "examples": [
+        {
+          "text": "<b>Shall I</b> get some more wire for you?",
+          "note": "offering to help"
+        },
+        {
+          "text": "<b>I'll</b> carry the poster to the hall.",
+          "note": "a quick decision to help"
+        },
+        {
+          "text": "<b>Shall we</b> present our project together?",
+          "note": "a suggestion as well as an offer"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "She can to speak three languages.",
+      "right": "She can <b>speak</b> three languages.",
+      "why": "Modal verbs never take to before the next verb."
+    },
+    {
+      "wrong": "I could finish the marathon last year.",
+      "right": "I <b>managed to</b> finish the marathon last year.",
+      "why": "For one completed action in the past, use managed to or was able to — not could."
+    },
+    {
+      "wrong": "Would you mind to open the window?",
+      "right": "Would you mind <b>opening</b> the window?",
+      "why": "Would you mind is always followed by the -ing form, not to + verb."
+    },
+    {
+      "wrong": "Shall I to help you?",
+      "right": "Shall I <b>help</b> you?",
+      "why": "No to after shall either."
+    },
+    {
+      "wrong": "Maybe it can rain.",
+      "right": "It <b>might</b> rain.",
+      "why": "For guesses about the future, use might/may/could — not can."
+    },
+    {
+      "wrong": "Could you to pass the salt?",
+      "right": "Could you <b>pass</b> the salt?",
+      "why": "No to after could in a request."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Puedo nadar muy bien.",
+      "wrong": "I can to swim very well.",
+      "right": "I <b>can</b> swim very well.",
+      "why": "Modal verbs like can never take to before the next verb."
+    },
+    {
+      "es": "Pude terminar el examen a tiempo.",
+      "wrong": "I could finish the exam on time.",
+      "right": "I <b>managed to</b> finish the exam on time.",
+      "why": "For one completed action in the past, use managed to or was able to, not could."
+    },
+    {
+      "es": "¿Te importaría abrir la ventana?",
+      "wrong": "Would you mind to open the window?",
+      "right": "Would you mind <b>opening</b> the window?",
+      "why": "Would you mind is always followed by the -ing form."
+    },
+    {
+      "es": "Puede que llueva esta tarde.",
+      "wrong": "Can rain this afternoon.",
+      "right": "It <b>might</b> rain this afternoon.",
+      "why": "A guess about the future needs it + may/might/could, not can on its own."
+    }
+  ],
+  "remember": {
+    "trick": "Modal + verb, no to ever!",
+    "tip": "After can, could, may, might and shall, jump straight to the base verb — never add to."
+  },
+  "dialogue": {
+    "title": "Panic at the science fair",
+    "context": "Nadia's robot stops working five minutes before the judges arrive, and her friends try to help.",
+    "lines": [
+      {
+        "speaker": "Nadia",
+        "text": "My robot's motor stopped! <b>Can</b> anyone help me?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Could</b> you show me the wires, Nadia?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Here — I<b>'m not able to</b> see what's wrong."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Shall I</b> get Miss Vega? She fixed my project last week."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Good idea. <b>Would you mind</b> checking the battery first, though?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Sure. It <b>might</b> just be loose."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Or it <b>could</b> be the switch — I <b>managed to</b> fix mine like that."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>Can I</b> try that?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Of course you <b>may</b>. But be careful with the wires."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "It's working! Thank you — I <b>couldn't</b> have done it without you."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "She ___ speak French, Spanish and English.",
+          "options": [
+            "can",
+            "must",
+            "should"
+          ],
+          "answer": 0,
+          "why": "ability now"
+        },
+        {
+          "sentence": "When he was six, Liam ___ already ride a bike.",
+          "options": [
+            "can",
+            "could",
+            "must"
+          ],
+          "answer": 1,
+          "why": "general ability in the past"
+        },
+        {
+          "sentence": "We ___ finish the model before the deadline — it was close!",
+          "options": [
+            "could",
+            "managed to",
+            "can"
+          ],
+          "answer": 1,
+          "why": "one specific success in the past"
+        },
+        {
+          "sentence": "___ you pass me the scissors, please?",
+          "options": [
+            "Could",
+            "Must",
+            "Should"
+          ],
+          "answer": 0,
+          "why": "polite request"
+        },
+        {
+          "sentence": "It's cloudy — it ___ rain later.",
+          "options": [
+            "can",
+            "might",
+            "does"
+          ],
+          "answer": 1,
+          "why": "a guess about the future"
+        },
+        {
+          "sentence": "___ I open the window? It's hot in here.",
+          "options": [
+            "Can",
+            "Should",
+            "Must"
+          ],
+          "answer": 0,
+          "why": "asking for permission"
+        },
+        {
+          "sentence": "___ I help you carry those boxes?",
+          "options": [
+            "Shall",
+            "Must",
+            "Should"
+          ],
+          "answer": 0,
+          "why": "offering to help"
+        },
+        {
+          "sentence": "Would you mind ___ the door? My hands are full.",
+          "options": [
+            "open",
+            "to open",
+            "opening"
+          ],
+          "answer": 2,
+          "why": "would you mind + -ing"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "She can ___ (play) the guitar and the piano.",
+          "answers": [
+            "play"
+          ]
+        },
+        {
+          "sentence": "Mateo couldn't ___ (read) very well when he was seven.",
+          "answers": [
+            "read"
+          ]
+        },
+        {
+          "sentence": "We managed to ___ (finish) the robot in time for the judges.",
+          "answers": [
+            "finish"
+          ]
+        },
+        {
+          "sentence": "It might ___ (rain) this afternoon, so take an umbrella.",
+          "answers": [
+            "rain"
+          ]
+        },
+        {
+          "sentence": "Would you mind ___ (hold) this wire for a second?",
+          "answers": [
+            "holding"
+          ]
+        },
+        {
+          "sentence": "Shall I ___ (carry) your bag for you?",
+          "answers": [
+            "carry"
+          ]
+        },
+        {
+          "sentence": "You may ___ (leave) early if you finish the test.",
+          "answers": [
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "Spanish",
+            "can",
+            "She",
+            "speak",
+            "."
+          ],
+          "answer": "She can speak Spanish."
+        },
+        {
+          "words": [
+            "the window",
+            "you",
+            "close",
+            "Could",
+            "?"
+          ],
+          "answer": "Could you close the window?"
+        },
+        {
+          "words": [
+            "mind",
+            "Would you",
+            "waiting",
+            "a minute",
+            "?"
+          ],
+          "answer": "Would you mind waiting a minute?"
+        },
+        {
+          "words": [
+            "might",
+            "It",
+            "later",
+            "rain",
+            "."
+          ],
+          "answer": "It might rain later."
+        },
+        {
+          "words": [
+            "I",
+            "Shall",
+            "you",
+            "help",
+            "?"
+          ],
+          "answer": "Shall I help you?"
+        },
+        {
+          "words": [
+            "managed to",
+            "the race",
+            "We",
+            "finish",
+            "."
+          ],
+          "answer": "We managed to finish the race."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Mateo has the ability to fix computers.",
+          "key": "CAN",
+          "second_start": "Mateo",
+          "second_end": "fix computers.",
+          "answers": [
+            "can"
+          ]
+        },
+        {
+          "first": "In the end, we finished the project on time.",
+          "key": "MANAGED",
+          "second_start": "We",
+          "second_end": "finish the project on time.",
+          "answers": [
+            "managed to"
+          ]
+        },
+        {
+          "first": "Perhaps it will rain tomorrow.",
+          "key": "MIGHT",
+          "second_start": "It",
+          "second_end": "rain tomorrow.",
+          "answers": [
+            "might"
+          ]
+        },
+        {
+          "first": "Please close the door.",
+          "key": "MIND",
+          "second_start": "Would you",
+          "second_end": "closing the door?",
+          "answers": [
+            "mind"
+          ]
+        },
+        {
+          "first": "I offer to carry that bag for you.",
+          "key": "SHALL",
+          "second_start": "",
+          "second_end": "I carry that bag for you?",
+          "answers": [
+            "Shall"
+          ]
+        },
+        {
+          "first": "Is it all right if I leave early?",
+          "key": "MAY",
+          "second_start": "",
+          "second_end": "I leave early?",
+          "answers": [
+            "May"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about what I can and could do, and what I managed to do in the past.",
+    "I can guess about the present or future with may, might and could.",
+    "I can make polite requests and offers with Could you…?, Would you mind…? and Shall I…?"
+  ],
+  "summary": [
+    "Can/could + verb (no to) for ability now and in the past; be able to and managed to for specific achievements.",
+    "May, might and could + verb show you are not 100% sure — a guess, not a fact.",
+    "Could you…? and Would you mind + -ing are polite ways to ask for something.",
+    "Shall I…? offers to do something for someone; I'll… is a quick decision to help.",
+    "Can and may also ask for and give permission: Can I…?/You may…"
+  ]
+}

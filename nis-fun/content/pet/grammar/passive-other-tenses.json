@@ -1,0 +1,668 @@
+{
+  "id": "passive-other-tenses",
+  "level": "pet",
+  "area": "Passive & causative",
+  "title": "The passive in other tenses",
+  "tagline": "What's being built, what will be sent, and what must be worn.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Reading Part 6 — open cloze",
+    "Writing Part 1 — email"
+  ],
+  "why": "Once you're comfortable with the basic passive, B1 Preliminary expects you to recognise and use it with continuous tenses, the past perfect, the future and modal verbs — the language of rules, ongoing repairs and predictions. These forms appear often in the Reading cloze parts and in formal emails, where 'must be worn' or 'will be sent' sounds far more natural than the active alternative.",
+  "hook": {
+    "text": "Someone broke the classroom window! Liam: \"It<b>'s being fixed</b> right now — look, a man<b>'s</b> outside.\" Sofia: \"It <b>must be paid for</b> by whoever did it.\" Nadia: \"By tomorrow it <b>will be replaced</b>, Miss Vega said.\"",
+    "ask": "Find three passive verbs with an extra helper word before the past participle (being, must, will). What tense or meaning does each one add?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Extra helpers in the passive",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "The window",
+              "role": "subj"
+            },
+            {
+              "t": "is being",
+              "role": "aux"
+            },
+            {
+              "t": "fixed",
+              "role": "verb"
+            },
+            {
+              "t": "right now",
+              "role": "time"
+            }
+          ],
+          "note": "present continuous passive"
+        },
+        {
+          "parts": [
+            {
+              "t": "The window",
+              "role": "subj"
+            },
+            {
+              "t": "will be",
+              "role": "aux"
+            },
+            {
+              "t": "replaced",
+              "role": "verb"
+            },
+            {
+              "t": "tomorrow",
+              "role": "time"
+            }
+          ],
+          "note": "future passive"
+        },
+        {
+          "parts": [
+            {
+              "t": "It",
+              "role": "subj"
+            },
+            {
+              "t": "must be",
+              "role": "aux"
+            },
+            {
+              "t": "paid for",
+              "role": "verb"
+            },
+            {
+              "t": "by someone",
+              "role": "x"
+            }
+          ],
+          "note": "modal passive"
+        }
+      ],
+      "caption": "Whatever comes before be(ing) — will, must, is — the past participle always stays at the end."
+    },
+    {
+      "type": "contrast",
+      "title": "Simple vs continuous passive",
+      "columns": [
+        "Simple passive",
+        "Continuous passive"
+      ],
+      "rows": [
+        {
+          "label": "Form",
+          "cells": [
+            "be + participle",
+            "be + being + participle"
+          ]
+        },
+        {
+          "label": "Meaning",
+          "cells": [
+            "a fact or a finished action",
+            "an action in progress, happening now or then"
+          ]
+        },
+        {
+          "label": "Present example",
+          "cells": [
+            "The window <b>is fixed</b> every year.",
+            "The window <b>is being fixed</b> right now."
+          ]
+        },
+        {
+          "label": "Past example",
+          "cells": [
+            "The car <b>was repaired</b> last week.",
+            "The car <b>was being repaired</b> when I arrived."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to add will, must or had",
+      "steps": [
+        {
+          "label": "Start with the extra helper",
+          "ex": "<b>will</b> / <b>must</b> / <b>had</b>"
+        },
+        {
+          "label": "Add be or been",
+          "ex": "will <b>be</b> / must <b>be</b> / had <b>been</b>"
+        },
+        {
+          "label": "Finish with the past participle",
+          "ex": "will be <b>replaced</b> / must be <b>paid</b> / had been <b>broken</b>"
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "is/was + being",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ participle",
+        "tone": "a",
+        "ex": "is being fixed"
+      },
+      {
+        "chip": "had been",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ participle",
+        "tone": "b",
+        "ex": "had been broken"
+      },
+      {
+        "chip": "will be / must be / can be",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ participle",
+        "tone": "c",
+        "ex": "will be sent"
+      }
+    ],
+    "table": {
+      "head": [
+        "Tense/meaning",
+        "Form",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Present continuous passive",
+          "is/are being + participle",
+          "The window is being fixed."
+        ],
+        [
+          "Past continuous passive",
+          "was/were being + participle",
+          "The window was being fixed when I saw it."
+        ],
+        [
+          "Past perfect passive",
+          "had been + participle",
+          "The window had been broken before we arrived."
+        ],
+        [
+          "Future passive",
+          "will be + participle",
+          "The window will be replaced tomorrow."
+        ],
+        [
+          "Modal passive",
+          "must/can/should be + participle",
+          "It must be paid for by someone."
+        ],
+        [
+          "Causative (intro)",
+          "have + object + past participle",
+          "We had the window fixed by a professional."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Continuous passive: an action in progress",
+      "examples": [
+        {
+          "text": "The window <b>is being fixed</b> right now.",
+          "note": "happening at this exact moment"
+        },
+        {
+          "text": "Our classroom <b>was being painted</b> when the fire alarm went off.",
+          "note": "an action in progress in the past"
+        },
+        {
+          "text": "The new library <b>is being built</b> next to the sports hall.",
+          "note": "an ongoing project"
+        }
+      ]
+    },
+    {
+      "point": "Past perfect passive: the earlier of two past events",
+      "examples": [
+        {
+          "text": "The window <b>had been broken</b> before the caretaker arrived.",
+          "note": "this happened before the other past event"
+        },
+        {
+          "text": "The report <b>had already been sent</b> when Miss Vega asked for it.",
+          "note": "already finished, earlier in the story"
+        },
+        {
+          "text": "Nobody knew the vase <b>had been damaged</b> until the next day.",
+          "note": "the damage happened earlier, discovered later"
+        }
+      ]
+    },
+    {
+      "point": "Future passive: what will happen",
+      "examples": [
+        {
+          "text": "The window <b>will be replaced</b> by Friday.",
+          "note": "a plan for the future"
+        },
+        {
+          "text": "The new rules <b>will be explained</b> in tomorrow's assembly.",
+          "note": "future passive with a clear time"
+        },
+        {
+          "text": "All the broken glass <b>will be removed</b> this afternoon.",
+          "note": "future passive without by + agent"
+        }
+      ]
+    },
+    {
+      "point": "Modal passive: rules, permission and ability",
+      "examples": [
+        {
+          "text": "It <b>must be paid for</b> by whoever broke it.",
+          "note": "an obligation — must + be + participle"
+        },
+        {
+          "text": "Safety glasses <b>should be worn</b> near broken glass.",
+          "note": "advice with the passive"
+        },
+        {
+          "text": "The old window <b>can be seen</b> in the school photos.",
+          "note": "possibility with the passive"
+        },
+        {
+          "text": "This kind of glass <b>can't be repaired</b>, only replaced.",
+          "note": "negative modal passive"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "The window is fixing right now.",
+      "right": "The window <b>is being fixed</b> right now.",
+      "why": "An action in progress in the passive needs being + participle, not the active -ing form."
+    },
+    {
+      "wrong": "The window will fixed tomorrow.",
+      "right": "The window will <b>be</b> fixed tomorrow.",
+      "why": "will needs be before the participle in the passive."
+    },
+    {
+      "wrong": "It must paid for by someone.",
+      "right": "It must <b>be</b> paid for by someone.",
+      "why": "Every modal passive needs be between the modal and the participle."
+    },
+    {
+      "wrong": "The window was broke before we arrived.",
+      "right": "The window had <b>been</b> broken before we arrived.",
+      "why": "The earlier of two past events needs the past perfect passive: had been + participle."
+    },
+    {
+      "wrong": "The car was being repair when I arrived.",
+      "right": "The car was being <b>repaired</b> when I arrived.",
+      "why": "After being, use the past participle (repaired), not the base verb."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Se está arreglando la ventana.",
+      "wrong": "The window is fixing.",
+      "right": "The window <b>is being fixed</b>.",
+      "why": "The Spanish reflexive se + gerund becomes is/are being + past participle in English, not an active -ing verb."
+    },
+    {
+      "es": "Se debe pagar por eso.",
+      "wrong": "It must paid for it.",
+      "right": "It <b>must be paid for</b>.",
+      "why": "Modal + be + participle — don't forget be, and don't add an extra pronoun after for."
+    },
+    {
+      "es": "Ya se había roto antes de que llegáramos.",
+      "wrong": "It was broken before we arrived.",
+      "right": "It <b>had been broken</b> before we arrived.",
+      "why": "The earlier of two past actions needs the passive of the past perfect: had been + participle."
+    },
+    {
+      "es": "La ventana será reemplazada mañana.",
+      "wrong": "The window will replaced tomorrow.",
+      "right": "The window will <b>be</b> replaced tomorrow.",
+      "why": "Future passive always needs be after will — will replaced is missing a word."
+    }
+  ],
+  "remember": {
+    "trick": "Add BE before every passive participle!",
+    "tip": "Will, must, can, had — none of them can touch the participle directly. Be always stands in between."
+  },
+  "dialogue": {
+    "title": "The broken window",
+    "context": "Someone broke the classroom window during break, and the students discuss what happens next.",
+    "lines": [
+      {
+        "speaker": "Liam",
+        "text": "Look! The window<b>'s being fixed</b> already — that was fast."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Good, because it <b>must be paid for</b> by whoever broke it."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Do we know who did it?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Not yet. Miss Vega said it <b>will be investigated</b> tomorrow."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "I heard the ball <b>had been thrown</b> before anyone noticed the crack."
+      },
+      {
+        "speaker": "Liam",
+        "text": "The new glass <b>will be installed</b> by Friday, the caretaker said."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Was anyone hurt? Safety glasses <b>should be worn</b> near broken glass."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "No, everyone's fine. But that corner <b>can't be used</b> until it's fixed."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "I hope the whole thing <b>can be forgotten</b> by next week."
+      },
+      {
+        "speaker": "Liam",
+        "text": "It will be, once it<b>'s been repaired</b>."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "The school <b>had</b> all the other windows <b>checked</b> last year, so this shouldn't happen again."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "The window ___ right now.",
+          "options": [
+            "is being fixed",
+            "is fixing",
+            "fixes"
+          ],
+          "answer": 0,
+          "why": "an action in progress now"
+        },
+        {
+          "sentence": "The car ___ when I arrived.",
+          "options": [
+            "repaired",
+            "was repairing",
+            "was being repaired"
+          ],
+          "answer": 2,
+          "why": "an action in progress in the past"
+        },
+        {
+          "sentence": "The report ___ before Miss Vega asked for it.",
+          "options": [
+            "was sent",
+            "had been sent",
+            "had sent"
+          ],
+          "answer": 1,
+          "why": "the earlier of two past events"
+        },
+        {
+          "sentence": "The window ___ by Friday.",
+          "options": [
+            "will replace",
+            "replaces",
+            "will be replaced"
+          ],
+          "answer": 2,
+          "why": "future passive"
+        },
+        {
+          "sentence": "It ___ by whoever broke it.",
+          "options": [
+            "pays for",
+            "must be paid for",
+            "must pay for"
+          ],
+          "answer": 1,
+          "why": "modal passive"
+        },
+        {
+          "sentence": "Safety glasses ___ near broken glass.",
+          "options": [
+            "wear",
+            "should wear",
+            "should be worn"
+          ],
+          "answer": 2,
+          "why": "modal passive for advice"
+        },
+        {
+          "sentence": "This corner ___ until it's fixed.",
+          "options": [
+            "doesn't use",
+            "can't be used",
+            "can't use"
+          ],
+          "answer": 1,
+          "why": "negative modal passive"
+        },
+        {
+          "sentence": "The new library ___ next to the sports hall.",
+          "options": [
+            "builds",
+            "is building",
+            "is being built"
+          ],
+          "answer": 2,
+          "why": "an ongoing project — present continuous passive"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "The window ___ (fix) right now.",
+          "answers": [
+            "is being fixed"
+          ]
+        },
+        {
+          "sentence": "The car ___ (repair) when I arrived.",
+          "answers": [
+            "was being repaired"
+          ]
+        },
+        {
+          "sentence": "The report ___ (already/send) before Miss Vega asked for it.",
+          "answers": [
+            "had already been sent",
+            "had been already sent"
+          ]
+        },
+        {
+          "sentence": "The window ___ (replace) by Friday.",
+          "answers": [
+            "will be replaced"
+          ]
+        },
+        {
+          "sentence": "It ___ (must/pay) for by whoever broke it.",
+          "answers": [
+            "must be paid"
+          ]
+        },
+        {
+          "sentence": "Safety glasses ___ (should/wear) near broken glass.",
+          "answers": [
+            "should be worn"
+          ]
+        },
+        {
+          "sentence": "This corner ___ (can/not/use) until it's fixed.",
+          "answers": [
+            "can't be used",
+            "cannot be used"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "right now",
+            "The window",
+            ".",
+            "is being fixed"
+          ],
+          "answer": "The window is being fixed right now."
+        },
+        {
+          "words": [
+            "when I arrived",
+            ".",
+            "was being repaired",
+            "The car"
+          ],
+          "answer": "The car was being repaired when I arrived."
+        },
+        {
+          "words": [
+            "by Friday",
+            "will be replaced",
+            ".",
+            "The window"
+          ],
+          "answer": "The window will be replaced by Friday."
+        },
+        {
+          "words": [
+            "by whoever broke it",
+            "It",
+            ".",
+            "must be paid for"
+          ],
+          "answer": "It must be paid for by whoever broke it."
+        },
+        {
+          "words": [
+            "near broken glass",
+            "should be worn",
+            ".",
+            "Safety glasses"
+          ],
+          "answer": "Safety glasses should be worn near broken glass."
+        },
+        {
+          "words": [
+            "until it's fixed",
+            "This corner",
+            ".",
+            "can't be used"
+          ],
+          "answer": "This corner can't be used until it's fixed."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Workers are fixing the window right now.",
+          "key": "BEING",
+          "second_start": "The window",
+          "second_end": "right now.",
+          "answers": [
+            "is being fixed"
+          ]
+        },
+        {
+          "first": "Someone was repairing the car when I arrived.",
+          "key": "BEING",
+          "second_start": "The car",
+          "second_end": "when I arrived.",
+          "answers": [
+            "was being repaired"
+          ]
+        },
+        {
+          "first": "Someone will replace the window by Friday.",
+          "key": "BE",
+          "second_start": "The window",
+          "second_end": "by Friday.",
+          "answers": [
+            "will be replaced"
+          ]
+        },
+        {
+          "first": "Whoever broke it must pay for it.",
+          "key": "BE",
+          "second_start": "It",
+          "second_end": "by whoever broke it.",
+          "answers": [
+            "must be paid"
+          ]
+        },
+        {
+          "first": "Everyone should wear safety glasses near broken glass.",
+          "key": "WORN",
+          "second_start": "Safety glasses",
+          "second_end": "near broken glass.",
+          "answers": [
+            "should be worn"
+          ]
+        },
+        {
+          "first": "Something broke the window before anyone noticed.",
+          "key": "BEEN",
+          "second_start": "The window",
+          "second_end": "before anyone noticed.",
+          "answers": [
+            "had been broken"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about actions in progress with the continuous passive (is/was being + participle).",
+    "I can use the passive with will, must, can and should to talk about the future, rules and possibility.",
+    "I can use the past perfect passive to show which of two past events happened first."
+  ],
+  "summary": [
+    "Continuous passive = be + being + participle — an action in progress, now or in the past.",
+    "Past perfect passive = had been + participle — the earlier of two past events.",
+    "Future passive = will be + participle.",
+    "Modal passive = modal + be + participle (must be paid, can be seen, should be worn).",
+    "Whatever helper words come first, the past participle always stays at the very end. Note have + object + past participle (had the window fixed) — someone else did it for you."
+  ]
+}

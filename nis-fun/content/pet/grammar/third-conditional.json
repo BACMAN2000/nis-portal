@@ -1,0 +1,614 @@
+{
+  "id": "third-conditional",
+  "level": "pet",
+  "area": "Conditionals & hypothesis",
+  "title": "Third conditional",
+  "tagline": "Imaginary pasts: what would have happened if things had been different.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Writing Part 2 — story",
+    "Speaking Part 4 — discussion"
+  ],
+  "why": "Talking about regrets and imaginary pasts — what would have happened if things had been different — is a skill B1 Preliminary tests directly in the reading cloze and rewards in Writing Part 2, where a good story often needs a 'what if' moment. Mixing up the second and third conditional (now vs. an already-finished past) is one of the most common B1 mistakes.",
+  "hook": {
+    "text": "Mateo missed the bus again. Sofia: \"<b>If</b> you<b>'d left</b> home at seven, you <b>wouldn't have missed</b> it!\" Mateo: \"I know... If I <b>hadn't stayed</b> up so late, I <b>would have woken</b> up on time.\"",
+    "ask": "Mateo is talking about a morning that is already finished. Which verb form comes after if, and which comes in the result? Is he talking about the present or the past?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "An imaginary past",
+      "marks": [
+        {
+          "at": "before-past",
+          "label": "Mateo stayed up late",
+          "sub": "if + past perfect (had stayed)"
+        },
+        {
+          "at": "past",
+          "label": "He didn't wake up on time",
+          "sub": "would have + participle"
+        }
+      ],
+      "arrows": [
+        [
+          0,
+          1,
+          "imaginary cause → imaginary result"
+        ]
+      ],
+      "caption": "Both events are finished and imaginary — the third conditional never changes the present."
+    },
+    {
+      "type": "contrast",
+      "title": "Second vs third conditional",
+      "columns": [
+        "Second conditional",
+        "Third conditional"
+      ],
+      "rows": [
+        {
+          "label": "Time",
+          "cells": [
+            "now / general",
+            "the past — already finished"
+          ]
+        },
+        {
+          "label": "If-half",
+          "cells": [
+            "if + past simple",
+            "if + past perfect"
+          ]
+        },
+        {
+          "label": "Result half",
+          "cells": [
+            "would + verb",
+            "would have + participle"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "If I <b>had</b> more time, I <b>would help</b> you.",
+            "If I <b>had had</b> more time, I <b>would have helped</b> you."
+          ]
+        },
+        {
+          "label": "Real or not",
+          "cells": [
+            "imaginary now",
+            "imaginary in the past — a regret"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to build the third conditional",
+      "steps": [
+        {
+          "label": "If + subject + had + past participle",
+          "ex": "If she <b>had studied</b>…"
+        },
+        {
+          "label": "Add would have + past participle in the result",
+          "ex": "…she <b>would have passed</b> the test."
+        },
+        {
+          "label": "Use could have / might have for other results",
+          "ex": "…she <b>could have passed</b> the test."
+        }
+      ],
+      "caption": "We say I'd have in speech, but write would have in full in your exam answers."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "If",
+        "tone": "kw"
+      },
+      {
+        "chip": "past perfect",
+        "tone": "a",
+        "ex": "had studied"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "would have + participle",
+        "tone": "b",
+        "ex": "would have passed"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "could have / might have",
+        "tone": "c",
+        "ex": "could have passed"
+      }
+    ],
+    "table": {
+      "head": [
+        "Pattern",
+        "If-half",
+        "Result half",
+        "Meaning"
+      ],
+      "rows": [
+        [
+          "Basic",
+          "if + past perfect",
+          "would have + participle",
+          "an imaginary result in the past"
+        ],
+        [
+          "Other results",
+          "if + past perfect",
+          "could have / might have + participle",
+          "a possible or uncertain result in the past"
+        ],
+        [
+          "Negative",
+          "if + hadn't + participle",
+          "wouldn't have + participle",
+          "the opposite imaginary result"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Talking about regrets",
+      "examples": [
+        {
+          "text": "If I <b>had studied</b> harder, I <b>would have passed</b> the maths test.",
+          "note": "a regret — I didn't study, so I didn't pass"
+        },
+        {
+          "text": "If we <b>had left</b> earlier, we <b>wouldn't have missed</b> the bus.",
+          "note": "the real past: we left late and missed it"
+        },
+        {
+          "text": "If Nadia <b>had checked</b> the time, she <b>would have been</b> on time.",
+          "note": "criticising a past decision, kindly"
+        }
+      ]
+    },
+    {
+      "point": "Imagining a different past",
+      "examples": [
+        {
+          "text": "If it <b>hadn't rained</b>, the match <b>would have continued</b>.",
+          "note": "the weather changed what really happened"
+        },
+        {
+          "text": "If Mateo <b>had brought</b> his umbrella, he <b>wouldn't have got</b> wet.",
+          "note": "one small change, one different result"
+        },
+        {
+          "text": "If Liam <b>hadn't lost</b> his ticket, he <b>would have watched</b> the film.",
+          "note": "explaining why something didn't happen"
+        }
+      ]
+    },
+    {
+      "point": "could have and might have in the result",
+      "examples": [
+        {
+          "text": "If she <b>had trained</b> more, she <b>could have won</b> the race.",
+          "note": "a possible result, not a certain one"
+        },
+        {
+          "text": "If we <b>had asked</b> for help, we <b>might have finished</b> sooner.",
+          "note": "might have = maybe, less sure than would have"
+        },
+        {
+          "text": "If you <b>had told</b> me, I <b>could have helped</b> you.",
+          "note": "an offer that came too late"
+        },
+        {
+          "text": "The situation <b>could have been</b> much worse.",
+          "note": "could have + been — talking about danger that didn't happen"
+        }
+      ]
+    },
+    {
+      "point": "Questions and negatives",
+      "examples": [
+        {
+          "text": "What <b>would</b> you <b>have done</b> if you <b>had seen</b> the accident?",
+          "note": "a hypothetical question about the past"
+        },
+        {
+          "text": "If they <b>hadn't practised</b>, they <b>wouldn't have played</b> so well.",
+          "note": "double negative: neither thing happened for real"
+        },
+        {
+          "text": "<b>Would</b> you <b>have forgiven</b> him if he <b>had apologised</b>?",
+          "note": "asking about an imaginary reaction"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "If I would have studied, I would have passed.",
+      "right": "If I <b>had studied</b>, I would have passed.",
+      "why": "No would in the if-half — only had + past participle."
+    },
+    {
+      "wrong": "If I had studied, I would pass the test.",
+      "right": "If I had studied, I <b>would have passed</b> the test.",
+      "why": "The result also needs have + participle, because it's about the past."
+    },
+    {
+      "wrong": "If it hadn't rain, we would have played.",
+      "right": "If it hadn't <b>rained</b>, we would have played.",
+      "why": "Past participle after hadn't, not the base verb."
+    },
+    {
+      "wrong": "If I had more time, I would have helped you yesterday.",
+      "right": "If I <b>had had</b> more time, I would have helped you yesterday.",
+      "why": "Both halves must stay in the same imaginary past — don't mix with the second conditional's if + past simple."
+    },
+    {
+      "wrong": "I would of gone if you'd asked me.",
+      "right": "I <b>would have</b> gone if you'd asked me.",
+      "why": "It's would have, never would of — that's just how 'd have sounds when we speak fast."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Si hubiera estudiado, habría aprobado.",
+      "wrong": "If I would have studied, I would have passed.",
+      "right": "If I <b>had studied</b>, I would have passed.",
+      "why": "Spanish si + hubiera translates to if + had (past perfect), never would have, in the if-half."
+    },
+    {
+      "es": "Si hubiéramos salido antes, no habríamos perdido el bus.",
+      "wrong": "If we had left before, we hadn't missed the bus.",
+      "right": "If we had left earlier, we <b>wouldn't have missed</b> the bus.",
+      "why": "The result half needs would(n't) have + participle, not just the past perfect again."
+    },
+    {
+      "es": "Podría haber sido peor.",
+      "wrong": "It could be worse.",
+      "right": "It <b>could have been</b> worse.",
+      "why": "Talking about an imaginary past danger needs could have + participle, not could be."
+    },
+    {
+      "es": "Habría ido si me hubieras dicho.",
+      "wrong": "I would go if you had told me.",
+      "right": "I <b>would have gone</b> if you had told me.",
+      "why": "Both halves stay in the past — would have, not just would."
+    }
+  ],
+  "remember": {
+    "trick": "Both halves stay stuck in the past!",
+    "tip": "If you see had in the if-half, the result must have have have in it too: would have, could have or might have."
+  },
+  "dialogue": {
+    "title": "The 7:15 bus",
+    "context": "Mateo arrives at school late again, and Sofia, Liam and Nadia tell him what he should have done.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "You're late again! <b>If</b> you<b>'d left</b> home at seven, you<b>'d have caught</b> the bus."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I know, I know. <b>If</b> I <b>hadn't stayed</b> up so late, I <b>would have woken</b> up on time."
+      },
+      {
+        "speaker": "Liam",
+        "text": "What happened, exactly?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "My alarm didn't go off. If I <b>had checked</b> the battery, it <b>wouldn't have died</b>."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>If</b> you <b>had asked</b> me, I <b>could have called</b> you at seven."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "That <b>would have helped</b>! Next time I'll ask."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Honestly, if it <b>hadn't happened</b> three times this month, I <b>wouldn't have said</b> anything."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Fair enough. It <b>could have been</b> worse, though — I could have missed the whole morning."
+      },
+      {
+        "speaker": "Liam",
+        "text": "True. <b>If</b> you<b>'d missed</b> the whole morning, Miss Vega <b>would have called</b> your parents."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Please don't remind me."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "If she ___ harder, she would have passed.",
+          "options": [
+            "studied",
+            "studies",
+            "had studied"
+          ],
+          "answer": 2,
+          "why": "if-half needs the past perfect"
+        },
+        {
+          "sentence": "If we had left earlier, we ___ the bus.",
+          "options": [
+            "wouldn't have missed",
+            "didn't miss",
+            "wouldn't miss"
+          ],
+          "answer": 0,
+          "why": "result needs would have + participle"
+        },
+        {
+          "sentence": "If it hadn't rained, the match ___.",
+          "options": [
+            "continued",
+            "would have continued",
+            "would continue"
+          ],
+          "answer": 1,
+          "why": "imaginary past result"
+        },
+        {
+          "sentence": "If you had asked, I ___ you.",
+          "options": [
+            "can help",
+            "could have helped",
+            "could help"
+          ],
+          "answer": 1,
+          "why": "could have = a possible past result"
+        },
+        {
+          "sentence": "___ you have forgiven him if he had apologised?",
+          "options": [
+            "Did",
+            "Would",
+            "Will"
+          ],
+          "answer": 1,
+          "why": "hypothetical question about the past"
+        },
+        {
+          "sentence": "If Mateo hadn't lost his ticket, he ___ the film.",
+          "options": [
+            "watched",
+            "would watch",
+            "would have watched"
+          ],
+          "answer": 2,
+          "why": "third conditional result"
+        },
+        {
+          "sentence": "It ___ much worse if the bridge had collapsed.",
+          "options": [
+            "could be",
+            "can be",
+            "could have been"
+          ],
+          "answer": 2,
+          "why": "imaginary danger in the past"
+        },
+        {
+          "sentence": "If they ___ practised, they wouldn't have played so well.",
+          "options": [
+            "didn't",
+            "haven't",
+            "hadn't"
+          ],
+          "answer": 2,
+          "why": "negative past perfect in the if-half"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "If she ___ (study) harder, she would have passed.",
+          "answers": [
+            "had studied"
+          ]
+        },
+        {
+          "sentence": "If we ___ (not/leave) so late, we wouldn't have missed the bus.",
+          "answers": [
+            "hadn't left",
+            "had not left"
+          ]
+        },
+        {
+          "sentence": "The match would have continued if it ___ (not/rain).",
+          "answers": [
+            "hadn't rained",
+            "had not rained"
+          ]
+        },
+        {
+          "sentence": "If you had asked, I could have ___ (help) you.",
+          "answers": [
+            "helped"
+          ]
+        },
+        {
+          "sentence": "If Mateo ___ (bring) his umbrella, he wouldn't have got wet.",
+          "answers": [
+            "had brought"
+          ]
+        },
+        {
+          "sentence": "It could ___ (be) much worse.",
+          "answers": [
+            "have been"
+          ]
+        },
+        {
+          "sentence": "___ you have forgiven him if he ___ (apologise)?",
+          "answers": [
+            "had apologised",
+            "had apologized"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "the bus",
+            "we'd have caught",
+            ",",
+            "If we'd left earlier",
+            "."
+          ],
+          "answer": "If we'd left earlier, we'd have caught the bus."
+        },
+        {
+          "words": [
+            ".",
+            "I would have woken up on time",
+            "If I hadn't stayed up so late",
+            ","
+          ],
+          "answer": "If I hadn't stayed up so late, I would have woken up on time."
+        },
+        {
+          "words": [
+            "I could have called you",
+            "If you had asked",
+            ".",
+            ","
+          ],
+          "answer": "If you had asked, I could have called you."
+        },
+        {
+          "words": [
+            "It could have been",
+            ".",
+            "much worse"
+          ],
+          "answer": "It could have been much worse."
+        },
+        {
+          "words": [
+            ",",
+            ".",
+            "he wouldn't have got wet",
+            "If Mateo had brought his umbrella"
+          ],
+          "answer": "If Mateo had brought his umbrella, he wouldn't have got wet."
+        },
+        {
+          "words": [
+            "?",
+            "if you had seen the accident",
+            "What would you have done"
+          ],
+          "answer": "What would you have done if you had seen the accident?"
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Mateo didn't study, so he failed the test.",
+          "key": "HAD",
+          "second_start": "If Mateo",
+          "second_end": "studied, he wouldn't have failed the test.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "first": "We left late, so we missed the bus.",
+          "key": "WOULDN'T",
+          "second_start": "If we hadn't left late, we",
+          "second_end": "the bus.",
+          "answers": [
+            "wouldn't have missed"
+          ]
+        },
+        {
+          "first": "It rained, so the match stopped.",
+          "key": "HADN'T",
+          "second_start": "If it",
+          "second_end": "rained, the match wouldn't have stopped.",
+          "answers": [
+            "hadn't"
+          ]
+        },
+        {
+          "first": "Nobody told Nadia, so she didn't know.",
+          "key": "HAD",
+          "second_start": "If somebody",
+          "second_end": "told Nadia, she would have known.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "first": "You didn't ask me, so I didn't call you.",
+          "key": "COULD",
+          "second_start": "If you had asked me, I",
+          "second_end": "you.",
+          "answers": [
+            "could have called"
+          ]
+        },
+        {
+          "first": "The situation was bad, but not the worst possible.",
+          "key": "BEEN",
+          "second_start": "It could have",
+          "second_end": "much worse.",
+          "answers": [
+            "been"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about regrets and imaginary pasts with if + had + past participle.",
+    "I can use would have, could have and might have to show how sure I am about an imaginary result.",
+    "I can tell the difference between the second conditional (now) and the third conditional (a finished past)."
+  ],
+  "summary": [
+    "Third conditional = an imaginary past: if + past perfect, would have + past participle.",
+    "It's for things that didn't really happen — regrets, criticism, or 'what if'.",
+    "could have and might have make the result less certain than would have.",
+    "Both halves stay in the past — never mix if + past simple with would have.",
+    "In speech we say I'd have, but write would have in full for your exam."
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "id": "present-continuous",
+  "level": "ket",
+  "area": "Tenses & time",
+  "title": "Present continuous",
+  "tagline": "Now vs always — and the verbs that never take -ing.",
+  "cefr": "A2",
+  "exam": ["Listening Part 1 — a picture and five short conversations", "Reading Part 6 — a text describing what people are doing", "Speaking Part 2 — describing a photo"],
+  "why": "The present continuous doesn't just mean 'now' — it also means 'around now', for a temporary situation that isn't finished. The real challenge at A2 is choosing between present simple and present continuous, and knowing that verbs like <i>know, want</i> and <i>understand</i> almost never take -ing. Get this contrast right and your English sounds natural, not just correct.",
+  "hook": {
+    "text": "Saturday morning at the market. \"Look, Mateo <b>is buying</b> mangoes right now,\" says Sofia. \"He usually <b>buys</b> apples, but today he<b>'s trying</b> something new. I <b>know</b> he <b>loves</b> fruit!\"",
+    "ask": "Find one verb that describes what's happening right now, one that describes a routine, and one state verb that never takes -ing. Which is which?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Now, routine, or a feeling?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Mateo", "role": "subj"}, {"t": "is buying", "role": "verb"}, {"t": "mangoes", "role": "obj"}, {"t": "right now", "role": "time"}, {"t": ".", "role": "x"}], "note": "present continuous — happening now"},
+        {"parts": [{"t": "He", "role": "subj"}, {"t": "usually buys", "role": "verb"}, {"t": "apples", "role": "obj"}, {"t": ".", "role": "x"}], "note": "present simple — routine"},
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "know", "role": "verb"}, {"t": "he loves fruit", "role": "obj"}, {"t": ".", "role": "x"}], "note": "state verb — never -ing"}
+      ],
+      "caption": "Continuous = happening now / temporary. Simple = routine / always true. State verbs (<b>know, like, want</b>) stay simple."
+    },
+    {
+      "type": "contrast",
+      "title": "Present simple vs present continuous",
+      "columns": ["Present simple", "Present continuous"],
+      "rows": [
+        {"label": "Use", "cells": ["routines, facts, things always true", "now, today, this week — temporary"]},
+        {"label": "Time words", "cells": ["every day, usually, always", "now, at the moment, today, look!"]},
+        {"label": "Example", "cells": ["He plays football on Saturdays.", "He's playing football right now."]}
+      ]
+    },
+    {
+      "type": "spelling",
+      "title": "Spelling the -ing form",
+      "rules": [
+        {"rule": "Most verbs: + ing", "examples": ["buy → buy<b>ing</b>", "try → try<b>ing</b>"]},
+        {"rule": "one vowel + one consonant: double the consonant", "examples": ["sit → sit<b>ting</b>", "plan → plan<b>ning</b>"]},
+        {"rule": "verb ending in -e: drop the e + ing", "examples": ["make → mak<b>ing</b>", "write → writ<b>ing</b>"]}
+      ],
+      "caption": "buy and try keep the y — only verbs ending in a consonant + y change it, and only for -s, not -ing."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "person", "tone": "a", "ex": "I / she / they"},
+      {"chip": "am / is / are (+ not)", "tone": "kw", "ex": "is / isn't"},
+      {"chip": "verb-ing", "tone": "b", "ex": "buying"},
+      {"chip": "the rest", "tone": "c", "ex": "mangoes"}
+    ],
+    "table": {
+      "head": ["", "Present simple", "Present continuous"],
+      "rows": [
+        ["Use", "routine, fact, always true", "now, today, temporary"],
+        ["Time words", "every day, always, usually", "now, at the moment, look!"],
+        ["Statement", "He plays tennis.", "He's playing tennis."],
+        ["Negative", "He doesn't play tennis.", "He isn't playing tennis."],
+        ["Question", "Does he play tennis?", "Is he playing tennis?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Right now / at the moment — present continuous",
+      "examples": [
+        {"text": "<b>Look!</b> Mateo <b>is buying</b> mangoes.", "note": "happening at this exact moment"},
+        {"text": "We<b>'re waiting</b> for the bus <b>at the moment</b>.", "note": "a temporary action, not finished"},
+        {"text": "It<b>'s raining</b>, so we<b>'re staying</b> inside.", "note": "a temporary situation now"}
+      ]
+    },
+    {
+      "point": "Routines and facts — present simple",
+      "examples": [
+        {"text": "Mateo <b>usually buys</b> apples on Saturdays.", "note": "a routine, repeated regularly"},
+        {"text": "The market <b>opens</b> at seven every day.", "note": "a fact, always true"},
+        {"text": "Nadia <b>doesn't like</b> shopping very much.", "note": "a general fact about Nadia"}
+      ]
+    },
+    {
+      "point": "Choosing simple or continuous",
+      "examples": [
+        {"text": "I <b>go</b> to the market every Saturday, but today I<b>'m going</b> with my mum.", "note": "routine vs today, same activity"},
+        {"text": "She <b>plays</b> tennis on Tuesdays, but right now she<b>'s doing</b> her homework.", "note": "usual habit vs this exact moment"}
+      ]
+    },
+    {
+      "point": "State verbs — never -ing",
+      "examples": [
+        {"text": "I <b>know</b> this stall — it<b>'s</b> the best one.", "note": "know describes a fact in your head, not an action"},
+        {"text": "Sofia <b>likes</b> mangoes, and she <b>wants</b> two kilos.", "note": "like and want are feelings, so they stay simple"},
+        {"text": "Do you <b>understand</b> the price in soles?", "note": "understand is a state, never understanding"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I'm knowing the answer.", "right": "I <b>know</b> the answer.", "why": "know is a state verb — it doesn't take -ing."},
+    {"wrong": "She is wanting a mango.", "right": "She <b>wants</b> a mango.", "why": "want describes a feeling, so it stays in the present simple."},
+    {"wrong": "He plays tennis right now.", "right": "He<b>'s playing</b> tennis right now.", "why": "right now needs the present continuous, not the present simple."},
+    {"wrong": "She's playing tennis every Tuesday.", "right": "She <b>plays</b> tennis every Tuesday.", "why": "every Tuesday is a routine, so use the present simple."},
+    {"wrong": "Mateo is buing mangoes.", "right": "Mateo is <b>buying</b> mangoes.", "why": "buy keeps the y before -ing: buying, not buing."},
+    {"wrong": "I'm understanding the map now.", "right": "I <b>understand</b> the map now.", "why": "understand is a state verb, even with now."}
+  ],
+  "l1": [
+    {"es": "Sé la respuesta.", "wrong": "I'm knowing the answer.", "right": "I <b>know</b> the answer.", "why": "In Spanish saber can sound like an action, but in English know is a state verb and stays simple."},
+    {"es": "Ella quiere dos mangos.", "wrong": "She is wanting two mangoes.", "right": "She <b>wants</b> two mangoes.", "why": "want is a feeling, so it never takes -ing."},
+    {"es": "Voy al mercado todos los sábados.", "wrong": "I'm going to the market every Saturday.", "right": "I <b>go</b> to the market every Saturday.", "why": "every Saturday is a routine, so it needs the present simple, not the continuous."},
+    {"es": "Está comprando mangos ahora mismo.", "wrong": "He buys mangoes right now.", "right": "He<b>'s buying</b> mangoes right now.", "why": "right now needs the present continuous, not the simple."},
+    {"es": "Entiendo el precio.", "wrong": "I'm understanding the price.", "right": "I <b>understand</b> the price.", "why": "understand describes knowledge in your head, not an action — it stays simple."}
+  ],
+  "remember": {
+    "trick": "Now = -ing. Always = no -ing. Feelings never -ing!",
+    "tip": "Ask yourself: is it happening at this exact second, or is it always true? And never put -ing on know, like, want or understand."
+  },
+  "dialogue": {
+    "title": "At the Saturday market",
+    "context": "Sofia and Mateo are at the Saturday market in Lima for a class project on Peruvian food.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Look, Mateo! <b>You're trying</b> a new stall today."},
+      {"speaker": "Mateo", "text": "Yes! I <b>usually buy</b> apples, but this mango looks amazing."},
+      {"speaker": "Sofia", "text": "<b>I know</b> that stall — it's the best one in the market."},
+      {"speaker": "Mateo", "text": "<b>Are</b> you <b>buying</b> anything?"},
+      {"speaker": "Sofia", "text": "Not yet. I <b>want</b> some bread, but the bakery <b>is closing</b> soon."},
+      {"speaker": "Mateo", "text": "Quick then! What time <b>does</b> the market usually <b>close</b>?"},
+      {"speaker": "Sofia", "text": "At one o'clock. Right now it's only eleven, so we're fine!"},
+      {"speaker": "Mateo", "text": "Great. Let's go before it gets too busy."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Look! Mateo ___ mangoes.", "options": ["buys", "is buying", "buy"], "answer": 1, "why": "look! signals something happening right now."},
+        {"sentence": "He ___ apples every Saturday.", "options": ["buys", "is buying", "buying"], "answer": 0, "why": "every Saturday signals a routine, so use the present simple."},
+        {"sentence": "I ___ the answer — don't tell me!", "options": ["am knowing", "know", "is knowing"], "answer": 1, "why": "know is a state verb and never takes -ing."},
+        {"sentence": "She ___ a new bike at the moment — she's saving money.", "options": ["wants", "is wanting", "want"], "answer": 0, "why": "want is a state verb, so it stays simple even with at the moment."},
+        {"sentence": "___ you understand the map?", "options": ["Are", "Is", "Do"], "answer": 2, "why": "understand is a state verb, so the question uses do."},
+        {"sentence": "Right now, we ___ for the bus.", "options": ["wait", "are waiting", "waits"], "answer": 1, "why": "right now signals the present continuous."},
+        {"sentence": "Mateo is ___ mangoes right now.", "options": ["buing", "buyying", "buying"], "answer": 2, "why": "buy keeps the y before -ing: buying."},
+        {"sentence": "The market ___ at one o'clock every day.", "options": ["closes", "is closing", "close"], "answer": 0, "why": "every day signals the present simple, and the market (it) takes -s."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct present simple or present continuous form of the verb in brackets.",
+      "items": [
+        {"sentence": "Look! Mateo ___ (buy) mangoes.", "answers": ["is buying"]},
+        {"sentence": "He ___ (buy) apples every Saturday.", "answers": ["buys"]},
+        {"sentence": "I ___ (know) the answer — don't tell me!", "answers": ["know"]},
+        {"sentence": "She ___ (want) a new bike at the moment.", "answers": ["wants"]},
+        {"sentence": "___ (you/understand) the map?", "answers": ["Do you understand"]},
+        {"sentence": "Right now, we ___ (wait) for the bus.", "answers": ["are waiting"]},
+        {"sentence": "The market ___ (close) at one o'clock every day.", "answers": ["closes"]},
+        {"sentence": "___ (it/rain) at the moment?", "answers": ["Is it raining"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["mangoes", "Mateo", "buying", "is", "."], "answer": "Mateo is buying mangoes."},
+        {"words": ["apples", "buys", "He", "every Saturday", "."], "answer": "He buys apples every Saturday."},
+        {"words": ["answer", "know", "I", "the", "."], "answer": "I know the answer."},
+        {"words": ["a new bike", "wants", "She", "."], "answer": "She wants a new bike."},
+        {"words": ["for the bus", "waiting", "We", "are", "."], "answer": "We are waiting for the bus."},
+        {"words": ["the map", "you", "understand", "Do", "?"], "answer": "Do you understand the map?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "Mateo is buying mangoes right now.", "ok": true, "why": "right now + is buying, correct continuous"},
+        {"sentence": "He buys apples every Saturday.", "ok": true, "why": "every Saturday + buys, correct simple"},
+        {"sentence": "I know the answer.", "ok": true, "why": "know is a state verb, correct in the simple"},
+        {"sentence": "We are waiting for the bus at the moment.", "ok": true, "why": "at the moment + are waiting, correct continuous"},
+        {"sentence": "I'm knowing the answer.", "ok": false, "fix": "I <b>know</b> the answer.", "why": "know is a state verb — it doesn't take -ing"},
+        {"sentence": "She is wanting a new bike.", "ok": false, "fix": "She <b>wants</b> a new bike.", "why": "want is a state verb, so it stays in the simple"},
+        {"sentence": "He plays tennis right now.", "ok": false, "fix": "He<b>'s playing</b> tennis right now.", "why": "right now needs the present continuous"},
+        {"sentence": "Mateo is buing mangoes.", "ok": false, "fix": "Mateo is <b>buying</b> mangoes.", "why": "buy keeps the y before -ing: buying"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use the present continuous for now and the present simple for routines, and choose the right one.",
+    "I can spell the -ing form correctly, including tricky verbs like buy and sit.",
+    "I can use state verbs like <i>know, like, want</i> and <i>understand</i> in the present simple, never with -ing."
+  ],
+  "summary": [
+    "Present continuous = <b>am/is/are + verb-ing</b>, for now or a temporary situation.",
+    "Present simple = routines and facts — <i>every day, usually, always</i>.",
+    "Spelling: <i>sit → sitting, make → making, buy → buying</i>.",
+    "State verbs — <i>know, like, want, understand</i> — almost never take -ing, even with now.",
+    "Ask: happening at this second, or always true? That tells you which tense to use."
+  ]
+}

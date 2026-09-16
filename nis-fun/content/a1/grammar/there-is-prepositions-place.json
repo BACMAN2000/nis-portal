@@ -1,0 +1,666 @@
+{
+  "id": "there-is-prepositions-place",
+  "level": "a1",
+  "area": "Here and now",
+  "title": "there is / there are and where things are",
+  "tagline": "Say what's in a room, a bag or a town — and exactly where it is.",
+  "cefr": "A1",
+  "exam": [
+    "Listening Part 1 — a picture and five short conversations",
+    "Reading Part 1 — signs and messages"
+  ],
+  "why": "You use <i>there is</i> and <i>there are</i> all the time — to describe your room, your town or a picture. Prepositions of place (<i>in, on, under, next to…</i>) tell your listener exactly where something is. That's exactly what Listening Part 1 tests: spotting the right picture from small details.",
+  "hook": {
+    "text": "Nadia has a new bedroom. \"<b>There's</b> a big window next to my bed, and <b>there are</b> two shelves above my desk. Is <b>there</b> a mirror?\" \"No,\" says Sofia, \"but <b>there's</b> one in the hall!\"",
+    "ask": "Find all the times the story says <i>there is</i> or <i>there are</i>. Which one is for one thing, and which is for more than one?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence with there is / there are",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "There's",
+              "role": "kw"
+            },
+            {
+              "t": "a mirror",
+              "role": "subj"
+            },
+            {
+              "t": "in the hall",
+              "role": "place"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "statement — one thing"
+        },
+        {
+          "parts": [
+            {
+              "t": "There aren't",
+              "role": "neg"
+            },
+            {
+              "t": "any posters",
+              "role": "subj"
+            },
+            {
+              "t": "on the wall",
+              "role": "place"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "negative — more than one"
+        },
+        {
+          "parts": [
+            {
+              "t": "Is there",
+              "role": "kw"
+            },
+            {
+              "t": "a mirror",
+              "role": "subj"
+            },
+            {
+              "t": "in your room",
+              "role": "place"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question — one thing"
+        }
+      ],
+      "caption": "<b>There's</b> (there is) for one thing, <b>there are</b> for two or more. In a question, is/are jumps straight after there."
+    },
+    {
+      "type": "map",
+      "title": "Prepositions of place",
+      "center": "Where is it?",
+      "branches": [
+        {
+          "label": "in",
+          "items": [
+            "in the box",
+            "in Lima"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "on",
+          "items": [
+            "on the table",
+            "on the wall"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "under",
+          "items": [
+            "under the bed"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "next to",
+          "items": [
+            "next to the window"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "between",
+          "items": [
+            "between the sofa and the TV"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "opposite",
+          "items": [
+            "opposite the school"
+          ],
+          "tone": "c"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to ask Is there…?",
+      "steps": [
+        {
+          "label": "Start with Is or Are",
+          "ex": "<b>Is</b> there"
+        },
+        {
+          "label": "Add a/an/any + the thing",
+          "ex": "Is there <b>a</b> mirror"
+        },
+        {
+          "label": "Add the place and the question mark",
+          "ex": "Is there a mirror <b>in your room</b>?"
+        }
+      ],
+      "caption": "Use <i>Is there…?</i> for one thing and <i>Are there any…?</i> for more than one."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "There",
+        "tone": "kw",
+        "ex": "There"
+      },
+      {
+        "chip": "is / are (+ not)",
+        "tone": "a",
+        "ex": "is / aren't"
+      },
+      {
+        "chip": "a / an / some / any + noun",
+        "tone": "b",
+        "ex": "a mirror / some books"
+      },
+      {
+        "chip": "place",
+        "tone": "c",
+        "ex": "in the hall"
+      }
+    ],
+    "table": {
+      "head": [
+        "",
+        "One thing",
+        "More than one"
+      ],
+      "rows": [
+        [
+          "Statement",
+          "There is (There's) a chair.",
+          "There are some chairs."
+        ],
+        [
+          "Negative",
+          "There isn't a chair.",
+          "There aren't any chairs."
+        ],
+        [
+          "Question",
+          "Is there a chair?",
+          "Are there any chairs?"
+        ],
+        [
+          "Short answer",
+          "Yes, there is. / No, there isn't.",
+          "Yes, there are. / No, there aren't."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "There is / There's — one thing",
+      "examples": [
+        {
+          "text": "<b>There's</b> a big window next to my bed.",
+          "note": "There's = there is, for one thing"
+        },
+        {
+          "text": "<b>There is</b> a park near my house.",
+          "note": "full form there is"
+        },
+        {
+          "text": "<b>There's</b> some milk in the fridge.",
+          "note": "milk is uncountable, so it takes is"
+        }
+      ]
+    },
+    {
+      "point": "There are — two or more things",
+      "examples": [
+        {
+          "text": "<b>There are</b> two shelves above my desk.",
+          "note": "plural noun → there are"
+        },
+        {
+          "text": "<b>There are</b> some books on the floor.",
+          "note": "some + plural noun in a positive sentence"
+        },
+        {
+          "text": "<b>There aren't</b> any posters on the wall.",
+          "note": "any in negatives with plural nouns"
+        }
+      ]
+    },
+    {
+      "point": "Questions and short answers with any",
+      "examples": [
+        {
+          "text": "<b>Is there</b> a mirror in your room?",
+          "note": "is there + a for one thing"
+        },
+        {
+          "text": "<b>Are there</b> any shops near the school?",
+          "note": "are there + any for more than one"
+        },
+        {
+          "text": "Is there a park near here? — Yes, <b>there is</b>.",
+          "note": "short answer repeats there + is/are"
+        }
+      ]
+    },
+    {
+      "point": "Prepositions of place — exactly where",
+      "examples": [
+        {
+          "text": "The mirror is <b>next to</b> the door.",
+          "note": "next to = at the side of"
+        },
+        {
+          "text": "The cat is <b>under</b> the table.",
+          "note": "under = below something"
+        },
+        {
+          "text": "The school is <b>between</b> the park and the shop.",
+          "note": "between = with one thing on each side"
+        },
+        {
+          "text": "The bank is <b>opposite</b> the market.",
+          "note": "opposite = facing, on the other side"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Is a book on the table.",
+      "right": "<b>Is there</b> a book on the table?",
+      "why": "You need the word there in the question — is alone doesn't mean 'is there'."
+    },
+    {
+      "wrong": "There is two chairs.",
+      "right": "<b>There are</b> two chairs.",
+      "why": "A plural noun needs are, not is."
+    },
+    {
+      "wrong": "There are a park near my house.",
+      "right": "<b>There is</b> a park near my house.",
+      "why": "A/an is singular, so use is, not are."
+    },
+    {
+      "wrong": "There aren't a chair.",
+      "right": "There <b>isn't</b> a chair.",
+      "why": "A singular noun with a/an takes isn't, not aren't."
+    },
+    {
+      "wrong": "The cat is in front the sofa.",
+      "right": "The cat is <b>in front of</b> the sofa.",
+      "why": "In front of needs the little word of — it never stands alone."
+    },
+    {
+      "wrong": "There's many people at the party.",
+      "right": "There <b>are</b> a lot of people at the party.",
+      "why": "A plural noun needs are, and a lot of sounds more natural than many in a positive statement."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Hay un libro en la mesa.",
+      "wrong": "Is a book on the table.",
+      "right": "<b>There's</b> a book on the table.",
+      "why": "Spanish hay has no subject; English always needs there before is/are."
+    },
+    {
+      "es": "Hay dos gatos en el jardín.",
+      "wrong": "There is two cats in the garden.",
+      "right": "<b>There are</b> two cats in the garden.",
+      "why": "Plural noun (two cats) needs are, not is."
+    },
+    {
+      "es": "El gato está debajo de la mesa.",
+      "wrong": "The cat is down the table.",
+      "right": "The cat is <b>under</b> the table.",
+      "why": "Debajo de translates to under, not down."
+    },
+    {
+      "es": "La tienda está enfrente del colegio.",
+      "wrong": "The shop is enfront the school.",
+      "right": "The shop is <b>opposite</b> the school.",
+      "why": "The English word is opposite, and it needs no of after it."
+    },
+    {
+      "es": "No hay leche en la nevera.",
+      "wrong": "There isn't a milk.",
+      "right": "There <b>isn't any</b> milk.",
+      "why": "Milk is uncountable — no a/an, and any in negatives."
+    }
+  ],
+  "remember": {
+    "trick": "There's = one. There are = two or more!",
+    "tip": "Listen for the S: There's = one thing. No S: There are = two or more things."
+  },
+  "dialogue": {
+    "title": "Nadia's new room",
+    "context": "Nadia has just moved to a new house in Lima. Sofia comes to see her bedroom for the first time.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "Wow, Nadia! <b>Is there</b> a balcony in your room?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "No, <b>there isn't</b>, but <b>there's</b> a big window next to my bed."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Nice! <b>Are there</b> any posters on the wall?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Not yet. <b>There are</b> two shelves above my desk, though."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Where's your mirror?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "It's <b>next to</b> the door, <b>opposite</b> my bed."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And what's that <b>under</b> the window?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "That's my old toy box. <b>There's</b> a lot of stuff in it!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "___ a park near your house?",
+          "options": [
+            "Are there",
+            "Is there",
+            "There is"
+          ],
+          "answer": 1,
+          "why": "Is there + a + singular noun, for a question about one thing."
+        },
+        {
+          "sentence": "___ some apples in the bag.",
+          "options": [
+            "Is there",
+            "There are",
+            "Are there"
+          ],
+          "answer": 1,
+          "why": "apples is plural, and this is a statement, so use There are."
+        },
+        {
+          "sentence": "___ any milk in the fridge?",
+          "options": [
+            "Are there",
+            "There are",
+            "Is there"
+          ],
+          "answer": 2,
+          "why": "milk is uncountable, so it takes is, even with any."
+        },
+        {
+          "sentence": "There ___ a mirror in the hall.",
+          "options": [
+            "is",
+            "are",
+            "do"
+          ],
+          "answer": 0,
+          "why": "one mirror (singular) → is."
+        },
+        {
+          "sentence": "There ___ any chairs in the room.",
+          "options": [
+            "isn't",
+            "don't",
+            "aren't"
+          ],
+          "answer": 2,
+          "why": "chairs is plural, so the negative is aren't."
+        },
+        {
+          "sentence": "The cat is ___ the table.",
+          "options": [
+            "next",
+            "between",
+            "under"
+          ],
+          "answer": 2,
+          "why": "under = below something."
+        },
+        {
+          "sentence": "The bank is ___ the market.",
+          "options": [
+            "next",
+            "opposite",
+            "between"
+          ],
+          "answer": 1,
+          "why": "opposite = facing, on the other side."
+        },
+        {
+          "sentence": "___ two shelves above my desk.",
+          "options": [
+            "Is there",
+            "There are",
+            "Are there"
+          ],
+          "answer": 1,
+          "why": "two shelves is plural, and this is a statement, so use There are."
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with there is, there are, is, are or a preposition of place.",
+      "items": [
+        {
+          "sentence": "___ a mirror next to the door.",
+          "answers": [
+            "There's",
+            "There is"
+          ]
+        },
+        {
+          "sentence": "___ two shelves above my desk.",
+          "answers": [
+            "There are"
+          ]
+        },
+        {
+          "sentence": "___ there any bread in the kitchen?",
+          "answers": [
+            "Is"
+          ]
+        },
+        {
+          "sentence": "___ there any shops near the school?",
+          "answers": [
+            "Are"
+          ]
+        },
+        {
+          "sentence": "The cat is ___ the sofa and the TV.",
+          "answers": [
+            "between"
+          ]
+        },
+        {
+          "sentence": "The bank is ___ the market.",
+          "answers": [
+            "opposite"
+          ]
+        },
+        {
+          "sentence": "There ___ a lot of people at the party.",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "sentence": "There isn't ___ milk in the fridge.",
+          "answers": [
+            "any"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "mirror",
+            "a",
+            "in the hall",
+            "There's",
+            "."
+          ],
+          "answer": "There's a mirror in the hall."
+        },
+        {
+          "words": [
+            "any",
+            "chairs",
+            "Are there",
+            "in the room",
+            "?"
+          ],
+          "answer": "Are there any chairs in the room?"
+        },
+        {
+          "words": [
+            "under",
+            "cat",
+            "is",
+            "The",
+            "the table",
+            "."
+          ],
+          "answer": "The cat is under the table."
+        },
+        {
+          "words": [
+            "posters",
+            "aren't",
+            "any",
+            "on the wall",
+            "There",
+            "."
+          ],
+          "answer": "There aren't any posters on the wall."
+        },
+        {
+          "words": [
+            "a park",
+            "Is there",
+            "near your house",
+            "?"
+          ],
+          "answer": "Is there a park near your house?"
+        },
+        {
+          "words": [
+            "opposite",
+            "bank",
+            "is",
+            "The",
+            "the market",
+            "."
+          ],
+          "answer": "The bank is opposite the market."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "There's a mirror in the hall.",
+          "ok": true,
+          "why": "one mirror → there's"
+        },
+        {
+          "sentence": "There is two chairs in my room.",
+          "ok": false,
+          "fix": "There <b>are</b> two chairs in my room.",
+          "why": "plural noun needs are, not is"
+        },
+        {
+          "sentence": "Is there a park near your house?",
+          "ok": true,
+          "why": "is there + a + singular noun, correct question"
+        },
+        {
+          "sentence": "The cat is under the table.",
+          "ok": true,
+          "why": "under = below, correct preposition"
+        },
+        {
+          "sentence": "The shop is opposite of the school.",
+          "ok": false,
+          "fix": "The shop is <b>opposite</b> the school.",
+          "why": "opposite never takes of after it"
+        },
+        {
+          "sentence": "There aren't any posters on the wall.",
+          "ok": true,
+          "why": "plural + negative → aren't"
+        },
+        {
+          "sentence": "Are there a bookshop near here?",
+          "ok": false,
+          "fix": "<b>Is there</b> a bookshop near here?",
+          "why": "a bookshop is singular, so use is there"
+        },
+        {
+          "sentence": "The books are in front the sofa.",
+          "ok": false,
+          "fix": "The books are <b>in front of</b> the sofa.",
+          "why": "in front of needs the word of"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what's in a room, a bag or a town with <i>there is</i> and <i>there are</i>.",
+    "I can ask <i>Is there…?</i> and <i>Are there any…?</i> and answer them.",
+    "I can use <i>in, on, under, next to, between</i> and <i>opposite</i> to say exactly where something is."
+  ],
+  "summary": [
+    "<i>There's</i> (there is) for one thing; <b>there are</b> for two or more.",
+    "Negatives: <i>there isn't</i> (one) / <i>there aren't</i> (more than one) + <b>any</b>.",
+    "Questions: <i>Is there…?</i> / <i>Are there any…?</i> — is/are comes straight after there.",
+    "Prepositions of place say exactly where: <i>in, on, under, next to, between, opposite, near</i>.",
+    "Use <i>a/an</i> or <i>some</i> in positive sentences, <i>any</i> in negatives and questions."
+  ]
+}

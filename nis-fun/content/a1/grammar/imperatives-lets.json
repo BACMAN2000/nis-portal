@@ -1,0 +1,647 @@
+{
+  "id": "imperatives-lets",
+  "level": "a1",
+  "area": "Here and now",
+  "title": "Imperatives and Let's",
+  "tagline": "Give instructions, make rules and suggest things to do together.",
+  "cefr": "A1",
+  "exam": [
+    "Reading Part 1 — signs and notices",
+    "Writing Part 6 — a short email with instructions or an invitation"
+  ],
+  "why": "Imperatives are everywhere — on signs, in recipes, in classroom instructions and in games. They're also the shortest sentences in English: no subject, just the verb. <i>Let's</i> is how you suggest doing something together, perfect for planning a party or a game with friends.",
+  "hook": {
+    "text": "It's Mateo's birthday! \"<b>Let's</b> make a cake,\" says Sofia. \"<b>Open</b> the flour first. <b>Don't forget</b> the sugar!\" \"<b>Let's not</b> put too much chocolate,\" laughs Liam, \"or Miss Vega won't eat it!\"",
+    "ask": "Find the instructions in the story. Which ones tell you to do something, and which one tells you NOT to do something?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence: instruction or suggestion?",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Open",
+              "role": "verb"
+            },
+            {
+              "t": "your books",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "instruction"
+        },
+        {
+          "parts": [
+            {
+              "t": "Don't",
+              "role": "neg"
+            },
+            {
+              "t": "run",
+              "role": "verb"
+            },
+            {
+              "t": "in the corridor",
+              "role": "place"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "negative instruction"
+        },
+        {
+          "parts": [
+            {
+              "t": "Let's",
+              "role": "kw"
+            },
+            {
+              "t": "make",
+              "role": "verb"
+            },
+            {
+              "t": "a cake",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "suggestion — you and me"
+        }
+      ],
+      "caption": "An imperative has no subject — it starts straight with the verb. <b>Let's</b> = let us, for suggestions."
+    },
+    {
+      "type": "map",
+      "title": "What are imperatives for?",
+      "center": "Imperatives",
+      "branches": [
+        {
+          "label": "Instructions",
+          "items": [
+            "Open your books.",
+            "Turn left."
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Rules",
+          "items": [
+            "Don't run.",
+            "Wash your hands."
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Recipes",
+          "items": [
+            "Mix the eggs.",
+            "Add the sugar."
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Suggestions with Let's",
+          "items": [
+            "Let's play a game.",
+            "Let's not be late."
+          ],
+          "tone": "a"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to make a negative imperative",
+      "steps": [
+        {
+          "label": "Start with Don't",
+          "ex": "<b>Don't</b>"
+        },
+        {
+          "label": "Add the base verb",
+          "ex": "Don't <b>run</b>"
+        },
+        {
+          "label": "Add the rest",
+          "ex": "Don't run <b>in the corridor</b>."
+        }
+      ],
+      "caption": "Don't + base verb — no to, no -s, just like an ordinary imperative."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "(Don't) + verb",
+        "tone": "kw",
+        "ex": "Open / Don't run"
+      },
+      {
+        "chip": "the rest",
+        "tone": "a",
+        "ex": "your books"
+      },
+      {
+        "chip": "Let's (not) + verb",
+        "tone": "b",
+        "ex": "Let's play"
+      },
+      {
+        "chip": "the rest",
+        "tone": "c",
+        "ex": "a game"
+      }
+    ],
+    "table": {
+      "head": [
+        "Type",
+        "Example",
+        "Meaning"
+      ],
+      "rows": [
+        [
+          "Instruction",
+          "Open your books.",
+          "telling someone what to do"
+        ],
+        [
+          "Negative instruction",
+          "Don't run.",
+          "telling someone what NOT to do"
+        ],
+        [
+          "Polite instruction",
+          "Close the door, please.",
+          "softer, more polite"
+        ],
+        [
+          "Suggestion",
+          "Let's play football.",
+          "let's = let us, an idea for you and me"
+        ],
+        [
+          "Negative suggestion",
+          "Let's not be late.",
+          "a suggestion to avoid something"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Instructions and classroom language",
+      "examples": [
+        {
+          "text": "<b>Open</b> your books at page ten.",
+          "note": "a simple instruction — no subject needed"
+        },
+        {
+          "text": "<b>Listen</b> carefully and <b>write</b> the answers.",
+          "note": "two instructions joined with and"
+        },
+        {
+          "text": "<b>Turn</b> left at the market.",
+          "note": "giving directions"
+        }
+      ]
+    },
+    {
+      "point": "Negative imperatives — Don't",
+      "examples": [
+        {
+          "text": "<b>Don't run</b> in the corridor.",
+          "note": "don't + base verb"
+        },
+        {
+          "text": "<b>Don't forget</b> your homework.",
+          "note": "a reminder"
+        },
+        {
+          "text": "<b>Don't touch</b> the paint — it's wet.",
+          "note": "a warning"
+        }
+      ]
+    },
+    {
+      "point": "Let's — suggestions for you and me",
+      "examples": [
+        {
+          "text": "<b>Let's</b> make a cake for the party.",
+          "note": "let's = let us, a suggestion"
+        },
+        {
+          "text": "<b>Let's</b> play a game before lunch.",
+          "note": "an idea for the group"
+        },
+        {
+          "text": "<b>Let's not</b> be late for the bus.",
+          "note": "negative suggestion"
+        }
+      ]
+    },
+    {
+      "point": "Please and signs",
+      "examples": [
+        {
+          "text": "<b>Please</b> wait here.",
+          "note": "please makes an instruction more polite"
+        },
+        {
+          "text": "<b>Close</b> the gate, <b>please</b>.",
+          "note": "please can go at the start or the end"
+        },
+        {
+          "text": "<b>Mix</b> the eggs and sugar together.",
+          "note": "recipe instructions are imperatives too"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "You open your book.",
+      "right": "<b>Open</b> your book.",
+      "why": "An imperative has no subject — start straight with the verb."
+    },
+    {
+      "wrong": "Not run in the corridor.",
+      "right": "<b>Don't run</b> in the corridor.",
+      "why": "The negative imperative needs Don't, not just Not."
+    },
+    {
+      "wrong": "Let's to play football.",
+      "right": "<b>Let's play</b> football.",
+      "why": "No to after Let's — use the base verb."
+    },
+    {
+      "wrong": "Lets play a game.",
+      "right": "<b>Let's</b> play a game.",
+      "why": "Let's is short for let us — don't forget the apostrophe."
+    },
+    {
+      "wrong": "Don't runs in the hall.",
+      "right": "<b>Don't run</b> in the hall.",
+      "why": "The base verb never takes -s after don't."
+    },
+    {
+      "wrong": "Let's don't be late.",
+      "right": "<b>Let's not</b> be late.",
+      "why": "The negative of Let's is Let's not, never Let's don't."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Abre tu libro.",
+      "wrong": "You open your book.",
+      "right": "<b>Open</b> your book.",
+      "why": "Spanish can use a subject for a command, but English imperatives drop it completely."
+    },
+    {
+      "es": "No corras.",
+      "wrong": "Not run.",
+      "right": "<b>Don't run</b>.",
+      "why": "The negative imperative always starts with don't, not just not."
+    },
+    {
+      "es": "Vamos a jugar.",
+      "wrong": "Let's to play.",
+      "right": "<b>Let's play</b>.",
+      "why": "Let's is already the suggestion — no extra to before the verb."
+    },
+    {
+      "es": "No corramos.",
+      "wrong": "Let's don't run.",
+      "right": "<b>Let's not</b> run.",
+      "why": "The negative of let's puts not straight after let's, with no don't."
+    },
+    {
+      "es": "Por favor, cierra la puerta.",
+      "wrong": "Please you close the door.",
+      "right": "<b>Close</b> the door, please.",
+      "why": "Please doesn't need a subject before the verb — the imperative already has none."
+    }
+  ],
+  "remember": {
+    "trick": "No subject, just the verb — Open! Don't run! Let's go!",
+    "tip": "Imperatives jump straight to the verb — no I, you or she in front. Let's is the only one that means 'you and me together'."
+  },
+  "dialogue": {
+    "title": "Planning Mateo's party",
+    "context": "It's the day before Mateo's birthday. Sofia, Liam and Nadia are planning games and a cake at Sofia's house.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "<b>Let's</b> make a chocolate cake for tomorrow!"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Good idea! <b>Open</b> the flour first."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Don't forget</b> the sugar — Mateo loves sweet things."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "OK. <b>Let's not</b> put too much chocolate, though."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Why not?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Don't tell</b> Mateo, but Miss Vega is coming too, and she doesn't like it too sweet!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Ha! OK. <b>Let's</b> also plan a game for the party."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>Mix</b> the eggs now, Liam, please."
+      },
+      {
+        "speaker": "Liam",
+        "text": "On it! <b>Let's</b> finish before six o'clock."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "___ your books at page ten.",
+          "options": [
+            "Open",
+            "Opens",
+            "Opening"
+          ],
+          "answer": 0,
+          "why": "an imperative uses the base verb, with no -s."
+        },
+        {
+          "sentence": "___ run in the corridor!",
+          "options": [
+            "Not",
+            "Don't",
+            "No"
+          ],
+          "answer": 1,
+          "why": "the negative imperative needs Don't."
+        },
+        {
+          "sentence": "___ make a cake for the party!",
+          "options": [
+            "Lets",
+            "Let",
+            "Let's"
+          ],
+          "answer": 2,
+          "why": "Let's needs the apostrophe — it's short for let us."
+        },
+        {
+          "sentence": "Don't ___ your homework.",
+          "options": [
+            "forget",
+            "forgets",
+            "forgetting"
+          ],
+          "answer": 0,
+          "why": "the base verb never takes -s or -ing after don't."
+        },
+        {
+          "sentence": "___ not be late for the bus.",
+          "options": [
+            "Let",
+            "Let's",
+            "Lets"
+          ],
+          "answer": 1,
+          "why": "the negative suggestion is Let's not."
+        },
+        {
+          "sentence": "Close the door, ___.",
+          "options": [
+            "Please you",
+            "you please",
+            "please"
+          ],
+          "answer": 2,
+          "why": "please can go at the end of an imperative, with no subject."
+        },
+        {
+          "sentence": "___ play a game before lunch!",
+          "options": [
+            "Let's",
+            "Lets",
+            "Let"
+          ],
+          "answer": 0,
+          "why": "Let's + base verb is a suggestion for the group."
+        },
+        {
+          "sentence": "Don't ___ in the hall.",
+          "options": [
+            "runs",
+            "run",
+            "running"
+          ],
+          "answer": 1,
+          "why": "the base verb never takes -s or -ing after don't."
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the missing word: Open, Don't, Let's or please.",
+      "items": [
+        {
+          "sentence": "___ your books at page ten.",
+          "answers": [
+            "Open"
+          ]
+        },
+        {
+          "sentence": "___ run in the corridor!",
+          "answers": [
+            "Don't"
+          ]
+        },
+        {
+          "sentence": "___ make a cake for the party!",
+          "answers": [
+            "Let's"
+          ]
+        },
+        {
+          "sentence": "Don't ___ your homework.",
+          "answers": [
+            "forget"
+          ]
+        },
+        {
+          "sentence": "___ not be late for the bus.",
+          "answers": [
+            "Let's"
+          ]
+        },
+        {
+          "sentence": "Close the door, ___.",
+          "answers": [
+            "please"
+          ]
+        },
+        {
+          "sentence": "___ touch the paint — it's wet.",
+          "answers": [
+            "Don't"
+          ]
+        },
+        {
+          "sentence": "___ play a game before lunch!",
+          "answers": [
+            "Let's"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "books",
+            "your",
+            "Open",
+            "."
+          ],
+          "answer": "Open your books."
+        },
+        {
+          "words": [
+            "run",
+            "in the corridor",
+            "Don't",
+            "."
+          ],
+          "answer": "Don't run in the corridor."
+        },
+        {
+          "words": [
+            "a cake",
+            "make",
+            "Let's",
+            "."
+          ],
+          "answer": "Let's make a cake."
+        },
+        {
+          "words": [
+            "late",
+            "not",
+            "be",
+            "Let's",
+            "."
+          ],
+          "answer": "Let's not be late."
+        },
+        {
+          "words": [
+            "please",
+            "the door,",
+            "Close",
+            "."
+          ],
+          "answer": "Close the door, please."
+        },
+        {
+          "words": [
+            "a game",
+            "Let's",
+            "play",
+            "."
+          ],
+          "answer": "Let's play a game."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "Open your books at page ten.",
+          "ok": true,
+          "why": "imperative — no subject, straight to the verb"
+        },
+        {
+          "sentence": "Don't run in the corridor.",
+          "ok": true,
+          "why": "don't + base verb, correct negative imperative"
+        },
+        {
+          "sentence": "Let's make a cake for the party.",
+          "ok": true,
+          "why": "let's + base verb, a suggestion for the group"
+        },
+        {
+          "sentence": "Let's not be late for the bus.",
+          "ok": true,
+          "why": "let's not + base verb, correct negative suggestion"
+        },
+        {
+          "sentence": "You open your book.",
+          "ok": false,
+          "fix": "<b>Open</b> your book.",
+          "why": "an imperative has no subject"
+        },
+        {
+          "sentence": "Let's to play football.",
+          "ok": false,
+          "fix": "<b>Let's play</b> football.",
+          "why": "no to after Let's"
+        },
+        {
+          "sentence": "Don't runs in the hall.",
+          "ok": false,
+          "fix": "<b>Don't run</b> in the hall.",
+          "why": "the base verb never takes -s after don't"
+        },
+        {
+          "sentence": "Let's don't be late.",
+          "ok": false,
+          "fix": "<b>Let's not</b> be late.",
+          "why": "the negative of Let's is Let's not, not Let's don't"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can give instructions and rules with the imperative (<i>Open, Don't run</i>).",
+    "I can suggest doing something together with <i>Let's</i> and <i>Let's not</i>.",
+    "I can understand instructions on signs, in recipes and in games."
+  ],
+  "summary": [
+    "An imperative has no subject — start straight with the verb: <i>Open, Close, Listen</i>.",
+    "Negative imperative: <b>Don't</b> + base verb.",
+    "<i>Let's</i> (let us) + base verb is a suggestion for you and everyone together.",
+    "Negative suggestion: <b>Let's not</b> — never <i>Let's don't</i>.",
+    "<i>Please</i> makes an instruction more polite; it can go at the start or the end."
+  ]
+}

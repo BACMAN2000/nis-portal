@@ -1,0 +1,662 @@
+{
+  "id": "modals-obligation-b1",
+  "level": "pet",
+  "area": "Modals",
+  "title": "Obligation and advice: must, have to, should, ought to",
+  "tagline": "Rules, warnings and friendly advice — four modal verbs, four different strengths.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 1 — signs and notices",
+    "Reading Part 6 — open cloze"
+  ],
+  "why": "Reading Part 1 is full of real notices — changing rooms, tournament rules, warning signs — and they live or die on must, mustn't, have to and don't have to. B1 Preliminary also expects you to give advice with should and ought to, and to talk about rules that changed in the past with had to, so this group of modals covers a huge share of the exam's everyday English.",
+  "hook": {
+    "text": "Miss Vega: “Players <b>must wear</b> shin pads — no exceptions!” Liam: “Do we <b>have to</b> bring our own ball?” Miss Vega: “No, you <b>don't have to</b> — the club provides one.”",
+    "ask": "Miss Vega uses three modal verbs in bold to talk about rules. Which one is a strict rule from the organisers, and which one means something isn't necessary?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Obligation and advice",
+      "center": "Rules and advice",
+      "branches": [
+        {
+          "label": "Strong obligation",
+          "items": [
+            "must",
+            "have to"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "No obligation",
+          "items": [
+            "don't have to",
+            "needn't"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Prohibition",
+          "items": [
+            "mustn't"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Advice",
+          "items": [
+            "should",
+            "ought to",
+            "had better"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Players",
+              "role": "subj"
+            },
+            {
+              "t": "must",
+              "role": "aux"
+            },
+            {
+              "t": "wear",
+              "role": "verb"
+            },
+            {
+              "t": "shin pads",
+              "role": "obj"
+            }
+          ],
+          "note": "must — a strict rule, the speaker's own authority"
+        },
+        {
+          "parts": [
+            {
+              "t": "You",
+              "role": "subj"
+            },
+            {
+              "t": "don't have to",
+              "role": "neg"
+            },
+            {
+              "t": "bring",
+              "role": "verb"
+            },
+            {
+              "t": "a ball",
+              "role": "obj"
+            }
+          ],
+          "note": "don't have to — not necessary"
+        },
+        {
+          "parts": [
+            {
+              "t": "Players",
+              "role": "subj"
+            },
+            {
+              "t": "mustn't",
+              "role": "neg"
+            },
+            {
+              "t": "argue",
+              "role": "verb"
+            },
+            {
+              "t": "with the referee",
+              "role": "obj"
+            }
+          ],
+          "note": "mustn't — forbidden"
+        },
+        {
+          "parts": [
+            {
+              "t": "You",
+              "role": "subj"
+            },
+            {
+              "t": "should",
+              "role": "aux"
+            },
+            {
+              "t": "warm up",
+              "role": "verb"
+            },
+            {
+              "t": "before the match",
+              "role": "time"
+            }
+          ],
+          "note": "should — advice, not a rule"
+        }
+      ],
+      "caption": "Mustn't and don't have to look similar but mean opposite things — forbidden vs simply not necessary."
+    },
+    {
+      "type": "scale",
+      "title": "How strong is the obligation?",
+      "left": "not necessary",
+      "right": "compulsory",
+      "items": [
+        {
+          "label": "needn't / don't have to",
+          "pct": 0
+        },
+        {
+          "label": "should / ought to",
+          "pct": 40
+        },
+        {
+          "label": "have to",
+          "pct": 70
+        },
+        {
+          "label": "must / mustn't",
+          "pct": 100
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "must / have to",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ infinitive",
+        "tone": "a",
+        "ex": "must wear"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "should / ought to",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ infinitive",
+        "tone": "b",
+        "ex": "should warm up"
+      }
+    ],
+    "table": {
+      "head": [
+        "Form",
+        "Positive",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "must",
+          "You must wear shin pads.",
+          "You mustn't argue with the ref.",
+          "—"
+        ],
+        [
+          "have to",
+          "You have to bring your kit.",
+          "You don't have to bring a ball.",
+          "Do you have to pay?"
+        ],
+        [
+          "should",
+          "You should warm up.",
+          "You shouldn't skip breakfast.",
+          "Should we arrive early?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "must vs have to for strong obligation",
+      "examples": [
+        {
+          "text": "Players <b>must wear</b> shin pads — it's a safety rule.",
+          "note": "must = the speaker's own authority"
+        },
+        {
+          "text": "We <b>have to</b> arrive an hour before kick-off.",
+          "note": "have to = an outside rule, from the club or competition"
+        },
+        {
+          "text": "Every player <b>has to</b> show their student card at the gate.",
+          "note": "an external rule again, not the speaker's opinion"
+        }
+      ]
+    },
+    {
+      "point": "mustn't vs don't have to / needn't",
+      "examples": [
+        {
+          "text": "Players <b>mustn't argue</b> with the referee.",
+          "note": "mustn't = it is forbidden"
+        },
+        {
+          "text": "You <b>don't have to</b> bring your own ball — the club provides one.",
+          "note": "don't have to = not necessary, your choice"
+        },
+        {
+          "text": "You <b>needn't worry</b> about the weather; the final is indoors.",
+          "note": "needn't = the same idea as don't have to, more formal"
+        }
+      ]
+    },
+    {
+      "point": "should, ought to and had better for advice",
+      "examples": [
+        {
+          "text": "You <b>should warm up</b> properly before the match.",
+          "note": "should = friendly advice, not a rule"
+        },
+        {
+          "text": "The team <b>ought to practise</b> penalties this week.",
+          "note": "ought to = advice, a little more formal than should"
+        },
+        {
+          "text": "You<b>'d better hurry</b> — the match starts in five minutes!",
+          "note": "had better = strong advice, almost a warning"
+        }
+      ]
+    },
+    {
+      "point": "had to / didn't have to in the past, and be allowed to",
+      "examples": [
+        {
+          "text": "Last year, players <b>had to</b> bring their own shin pads.",
+          "note": "had to = the past of must/have to for obligation"
+        },
+        {
+          "text": "Substitutes <b>are allowed to</b> warm up on the side of the pitch.",
+          "note": "be allowed to = permission, another useful modal idea"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "You mustn't bring your own ball if you don't want to.",
+      "right": "You <b>don't have to</b> bring your own ball.",
+      "why": "Mustn't means forbidden; for something that's simply not necessary, use don't have to or needn't."
+    },
+    {
+      "wrong": "We must arrive early, the club says it's a rule.",
+      "right": "We <b>have to</b> arrive early — it's the club's rule.",
+      "why": "For someone else's rule, have to sounds more natural than must, which suggests the speaker's own authority."
+    },
+    {
+      "wrong": "You should wear shin pads, it's the law of the tournament.",
+      "right": "You <b>must wear</b> shin pads — it's a rule of the tournament.",
+      "why": "A strict, official rule needs must or have to, not should, which is only advice."
+    },
+    {
+      "wrong": "Last year, players must bring their own kit.",
+      "right": "Last year, players <b>had to</b> bring their own kit.",
+      "why": "Must has no past form — use had to for past obligation."
+    },
+    {
+      "wrong": "You don't must argue with the referee.",
+      "right": "You <b>mustn't argue</b> with the referee.",
+      "why": "The negative of must is mustn't, not don't must."
+    },
+    {
+      "wrong": "Do you must pay for the tickets?",
+      "right": "<b>Do</b> you <b>have to</b> pay for the tickets?",
+      "why": "Must has no question form with do — use have to for questions about obligation."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Debes usar espinilleras.",
+      "wrong": "You have to wear shin pads, it's my advice.",
+      "right": "You <b>should wear</b> shin pads.",
+      "why": "Debes as friendly advice from a person is should, not the stronger have to."
+    },
+    {
+      "es": "No tienes que traer el balón.",
+      "wrong": "You mustn't bring the ball.",
+      "right": "You <b>don't have to</b> bring the ball.",
+      "why": "Spanish no tienes que means it isn't necessary — that's don't have to, not the prohibition mustn't."
+    },
+    {
+      "es": "No debes discutir con el árbitro.",
+      "wrong": "You don't have to argue with the referee.",
+      "right": "You <b>mustn't argue</b> with the referee.",
+      "why": "No debes here means it is forbidden — that's mustn't, a stronger idea than don't have to."
+    },
+    {
+      "es": "Tuvimos que llegar temprano el año pasado.",
+      "wrong": "We must arrive early last year.",
+      "right": "We <b>had to</b> arrive early last year.",
+      "why": "Must has no past tense; the past of obligation is always had to."
+    }
+  ],
+  "remember": {
+    "trick": "MUST is you; HAVE TO is the rule outside you!",
+    "tip": "Mustn't = forbidden. Don't have to = not necessary. Never mix the two up."
+  },
+  "dialogue": {
+    "title": "Rules for the final",
+    "context": "Before the school football final, Miss Vega explains the rules to Liam, Mateo, Sofia and Nadia.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "Listen up — players <b>must wear</b> shin pads. No exceptions."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Do</b> we <b>have to</b> bring our own ball?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "No, you <b>don't have to</b> — the club provides one."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "<b>Do</b> we <b>have to</b> pay for the tickets too?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "You <b>needn't worry</b> about that — it's free for students."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Remember, players <b>mustn't argue</b> with the referee."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "And you<b>'d better</b> warm up properly — it's really hot today!"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Good advice. You <b>should</b> also drink plenty of water."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Last year we <b>had to</b> bring our own kit — is that still true?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "No, this year the school allows you to borrow one if you need it."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "The referee says: players ___ wear shin pads.",
+          "options": [
+            "must",
+            "should",
+            "could"
+          ],
+          "answer": 0,
+          "why": "a strict rule, the speaker's own authority"
+        },
+        {
+          "sentence": "We ___ arrive an hour before kick-off — it's the club's rule.",
+          "options": [
+            "must",
+            "have to",
+            "should"
+          ],
+          "answer": 1,
+          "why": "someone else's rule, not the speaker's own"
+        },
+        {
+          "sentence": "You ___ bring your own ball — the club provides one.",
+          "options": [
+            "mustn't",
+            "shouldn't",
+            "don't have to"
+          ],
+          "answer": 2,
+          "why": "not necessary, your choice"
+        },
+        {
+          "sentence": "Players ___ argue with the referee.",
+          "options": [
+            "mustn't",
+            "don't have to",
+            "needn't"
+          ],
+          "answer": 0,
+          "why": "forbidden"
+        },
+        {
+          "sentence": "You ___ warm up properly before the match.",
+          "options": [
+            "must",
+            "should",
+            "have to"
+          ],
+          "answer": 1,
+          "why": "friendly advice, not a strict rule"
+        },
+        {
+          "sentence": "Last year, players ___ bring their own kit.",
+          "options": [
+            "must",
+            "should",
+            "had to"
+          ],
+          "answer": 2,
+          "why": "must has no past form"
+        },
+        {
+          "sentence": "___ you have to pay for the tickets?",
+          "options": [
+            "Do",
+            "Must",
+            "Are"
+          ],
+          "answer": 0,
+          "why": "questions about obligation use do"
+        },
+        {
+          "sentence": "You ___ worry about the weather — the final is indoors.",
+          "options": [
+            "mustn't",
+            "needn't",
+            "shouldn't"
+          ],
+          "answer": 1,
+          "why": "not necessary, more formal than don't have to"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct modal and the verb in brackets.",
+      "items": [
+        {
+          "sentence": "The referee says: players ___ (must/wear) shin pads.",
+          "answers": [
+            "must wear"
+          ]
+        },
+        {
+          "sentence": "We ___ (have to/arrive) an hour before kick-off.",
+          "answers": [
+            "have to arrive"
+          ]
+        },
+        {
+          "sentence": "You ___ (not/have to/bring) your own ball.",
+          "answers": [
+            "don't have to bring"
+          ]
+        },
+        {
+          "sentence": "Players ___ (must not/argue) with the referee.",
+          "answers": [
+            "mustn't argue"
+          ]
+        },
+        {
+          "sentence": "You ___ (should/warm up) properly before the match.",
+          "answers": [
+            "should warm up"
+          ]
+        },
+        {
+          "sentence": "Last year, players ___ (have to/bring) their own kit.",
+          "answers": [
+            "had to bring"
+          ]
+        },
+        {
+          "sentence": "You ___ (need not/worry) about the weather.",
+          "answers": [
+            "needn't worry"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "shin pads",
+            "must wear",
+            "Players",
+            "."
+          ],
+          "answer": "Players must wear shin pads."
+        },
+        {
+          "words": [
+            "an hour before kick-off",
+            "have to arrive",
+            "We",
+            "."
+          ],
+          "answer": "We have to arrive an hour before kick-off."
+        },
+        {
+          "words": [
+            "your own ball",
+            "don't have to bring",
+            "You",
+            "."
+          ],
+          "answer": "You don't have to bring your own ball."
+        },
+        {
+          "words": [
+            "with the referee",
+            "mustn't argue",
+            "Players",
+            "."
+          ],
+          "answer": "Players mustn't argue with the referee."
+        },
+        {
+          "words": [
+            "before the match",
+            "should warm up",
+            "You",
+            "."
+          ],
+          "answer": "You should warm up before the match."
+        },
+        {
+          "words": [
+            "their own kit",
+            "had to bring",
+            "Players",
+            "last year",
+            "."
+          ],
+          "answer": "Players had to bring their own kit last year."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "It's a safety rule — shin pads are compulsory for players.",
+          "key": "MUST",
+          "second_start": "Players",
+          "second_end": "shin pads.",
+          "answers": [
+            "must wear"
+          ]
+        },
+        {
+          "first": "The club's rule says we need to arrive an hour early.",
+          "key": "HAVE",
+          "second_start": "We",
+          "second_end": "an hour before kick-off.",
+          "answers": [
+            "have to arrive"
+          ]
+        },
+        {
+          "first": "It isn't necessary to bring your own ball.",
+          "key": "HAVE",
+          "second_start": "You",
+          "second_end": "your own ball.",
+          "answers": [
+            "don't have to bring"
+          ]
+        },
+        {
+          "first": "Arguing with the referee is forbidden.",
+          "key": "MUSTN'T",
+          "second_start": "Players",
+          "second_end": "with the referee.",
+          "answers": [
+            "mustn't argue"
+          ]
+        },
+        {
+          "first": "My advice is to warm up before the match.",
+          "key": "SHOULD",
+          "second_start": "You",
+          "second_end": "before the match.",
+          "answers": [
+            "should warm up"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about strong obligation with must and have to, and know when to use each one.",
+    "I can tell the difference between mustn't (forbidden) and don't have to (not necessary).",
+    "I can give advice with should, ought to and had better, and talk about past obligation with had to."
+  ],
+  "summary": [
+    "Must = the speaker's own authority; have to = a rule that comes from somewhere else.",
+    "Mustn't = forbidden; don't have to / needn't = not necessary, your choice.",
+    "Should, ought to and had better give advice — they aren't strict rules.",
+    "Must has no past form: use had to for obligation in the past.",
+    "Be allowed to talks about permission, a different idea from obligation."
+  ]
+}

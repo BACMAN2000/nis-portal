@@ -1,0 +1,628 @@
+{
+  "id": "reported-speech",
+  "level": "pet",
+  "area": "Reporting",
+  "title": "Reported speech: statements",
+  "tagline": "Telling someone what somebody else said, without quoting their exact words.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Writing Part 2 — story",
+    "Speaking Part 1 — personal information"
+  ],
+  "why": "Telling someone what another person said — without quoting their exact words — is something B1 Preliminary tests in the reading cloze and expects in a Writing Part 2 story with dialogue. Getting say and tell right, and remembering to move the tense back one step, are two of the most common things that let B1 students down.",
+  "hook": {
+    "text": "Nadia is writing for the school newspaper. She interviewed Miss Vega, who said, \"I <b>love</b> teaching science.\" Nadia writes: Miss Vega <b>said</b> (that) she <b>loved</b> teaching science. Mateo: \"Why did love become loved?\"",
+    "ask": "Compare Miss Vega's exact words with Nadia's sentence in the newspaper. What changed: the verb tense, the pronoun, or both?"
+  },
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Direct speech → reported speech",
+      "before": {
+        "text": "\"I love teaching science,\" said Miss Vega.",
+        "hl": [
+          "love"
+        ]
+      },
+      "after": {
+        "text": "Miss Vega said (that) she loved teaching science.",
+        "hl": [
+          "said",
+          "loved"
+        ]
+      },
+      "steps": [
+        "Remove the quotation marks and change the pronoun (I → she).",
+        "Move the main verb one step back into the past (love → loved).",
+        "Add that (optional) after say/said."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "say vs tell",
+      "columns": [
+        "say",
+        "tell"
+      ],
+      "rows": [
+        {
+          "label": "Person after it",
+          "cells": [
+            "no person (or to + person)",
+            "always a person"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "She <b>said</b> (that) she was tired.",
+            "She <b>told</b> me (that) she was tired."
+          ]
+        },
+        {
+          "label": "With to",
+          "cells": [
+            "She said to me that she was tired.",
+            "NOT tell to — never use to after tell"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How tenses move back",
+      "steps": [
+        {
+          "label": "Present simple → past simple",
+          "ex": "\"I <b>like</b> pizza\" → she said she <b>liked</b> pizza."
+        },
+        {
+          "label": "Present continuous → past continuous",
+          "ex": "\"I<b>'m studying</b>\" → he said he <b>was studying</b>."
+        },
+        {
+          "label": "Past simple → past perfect",
+          "ex": "\"I <b>saw</b> the film\" → she said she <b>had seen</b> the film."
+        },
+        {
+          "label": "will → would, can → could",
+          "ex": "\"I<b>'ll</b> help\" → he said he<b>'d</b> help."
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "present simple",
+        "tone": "a",
+        "ex": "like"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "past simple",
+        "tone": "b",
+        "ex": "liked"
+      },
+      {
+        "chip": "present continuous",
+        "tone": "a",
+        "ex": "am doing"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "past continuous",
+        "tone": "b",
+        "ex": "was doing"
+      },
+      {
+        "chip": "will / can",
+        "tone": "a"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "would / could",
+        "tone": "b"
+      }
+    ],
+    "table": {
+      "head": [
+        "Direct speech",
+        "Reported speech",
+        "Example"
+      ],
+      "rows": [
+        [
+          "present simple",
+          "past simple",
+          "\"I like pizza.\" → She said she liked pizza."
+        ],
+        [
+          "present continuous",
+          "past continuous",
+          "\"I'm studying.\" → He said he was studying."
+        ],
+        [
+          "past simple",
+          "past perfect",
+          "\"I saw it.\" → She said she had seen it."
+        ],
+        [
+          "will",
+          "would",
+          "\"I'll call you.\" → He said he'd call me."
+        ],
+        [
+          "can",
+          "could",
+          "\"I can swim.\" → She said she could swim."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "say vs tell",
+      "examples": [
+        {
+          "text": "Miss Vega <b>said</b> (that) she loved teaching science.",
+          "note": "say — no person needed after it"
+        },
+        {
+          "text": "Miss Vega <b>told</b> us (that) she loved teaching science.",
+          "note": "tell + person — never tell to someone"
+        },
+        {
+          "text": "Nadia <b>said to</b> me that the interview went well.",
+          "note": "say to + person is possible, but told me is more natural"
+        }
+      ]
+    },
+    {
+      "point": "tense changes: one step back",
+      "examples": [
+        {
+          "text": "\"I write for the newspaper,\" Nadia said. → Nadia said she <b>wrote</b> for the newspaper.",
+          "note": "present simple → past simple"
+        },
+        {
+          "text": "\"I'm working on an article,\" she said. → She said she <b>was working</b> on an article.",
+          "note": "present continuous → past continuous"
+        },
+        {
+          "text": "\"I interviewed the head teacher,\" she said. → She said she <b>had interviewed</b> the head teacher.",
+          "note": "past simple → past perfect"
+        },
+        {
+          "text": "\"I'll finish it tonight,\" she said. → She said she<b>'d finish</b> it that night.",
+          "note": "will → would"
+        }
+      ]
+    },
+    {
+      "point": "pronoun, time and place changes",
+      "examples": [
+        {
+          "text": "\"My article is ready,\" said Nadia. → Nadia said <b>her</b> article was ready.",
+          "note": "my → her, matching the new subject"
+        },
+        {
+          "text": "\"I'll post it tomorrow,\" she said. → She said she<b>'d</b> post it <b>the next day</b>.",
+          "note": "tomorrow → the next day, because time has passed"
+        },
+        {
+          "text": "\"I left it here,\" she said. → She said she had left it <b>there</b>.",
+          "note": "here → there, because we've moved away from that place"
+        }
+      ]
+    },
+    {
+      "point": "when the tense doesn't change",
+      "examples": [
+        {
+          "text": "\"The Earth goes round the Sun,\" said Miss Vega. → She said the Earth <b>goes</b> round the Sun.",
+          "note": "a fact that's still true — the tense can stay the same"
+        },
+        {
+          "text": "\"I love pizza,\" said Liam. → Liam said he <b>loves</b> pizza.",
+          "note": "still true now, so the tense doesn't have to change"
+        },
+        {
+          "text": "\"The meeting is on Friday,\" said Miss Vega. → Miss Vega said the meeting <b>is</b> on Friday.",
+          "note": "still relevant — no need to move it back"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "She told that she was tired.",
+      "right": "She <b>said</b> (that) she was tired. / She <b>told me</b> (that) she was tired.",
+      "why": "tell always needs a person after it; say doesn't."
+    },
+    {
+      "wrong": "She said me that she was busy.",
+      "right": "She <b>told</b> me that she was busy.",
+      "why": "say + me is wrong — use tell + person, or say to me."
+    },
+    {
+      "wrong": "He said he will call later.",
+      "right": "He said he <b>would</b> call later.",
+      "why": "will moves back to would in reported speech."
+    },
+    {
+      "wrong": "She said she is tired.",
+      "right": "She said she <b>was</b> tired.",
+      "why": "Most verbs move back one step into the past when you report them."
+    },
+    {
+      "wrong": "He said he saw the film tomorrow.",
+      "right": "He said he <b>had seen</b> the film <b>the day before</b>.",
+      "why": "Time words like tomorrow change too, and a finished past action moves to the past perfect."
+    },
+    {
+      "wrong": "Nadia said me she loved the interview.",
+      "right": "Nadia <b>told</b> me she loved the interview.",
+      "why": "Same mix-up: told + person, never said + person without to."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Me dijo que estaba cansada.",
+      "wrong": "She said me that she was tired.",
+      "right": "She <b>told</b> me (that) she was tired.",
+      "why": "Spanish me dijo becomes told me in English — say never takes a direct object like that."
+    },
+    {
+      "es": "Dijo que vendría mañana.",
+      "wrong": "He said he will come tomorrow.",
+      "right": "He said he <b>would come the next day</b>.",
+      "why": "will moves back to would, and tomorrow changes to the next day once time has passed."
+    },
+    {
+      "es": "Dijo que le gustaba la pizza.",
+      "wrong": "He said he likes pizza.",
+      "right": "He said he <b>liked</b> pizza.",
+      "why": "The reported verb usually moves one step into the past, even though Spanish keeps the imperfect unchanged."
+    },
+    {
+      "es": "Dijo que había visto la película.",
+      "wrong": "She said she saw the film.",
+      "right": "She said she <b>had seen</b> the film.",
+      "why": "A past action reported later moves back to the past perfect (had + participle)."
+    },
+    {
+      "es": "Me contó que su hermana vivía aquí.",
+      "wrong": "He told that his sister lived here.",
+      "right": "He told me (that) his sister lived <b>there</b>.",
+      "why": "tell needs a person (me), and here changes to there when you're not in that place anymore."
+    }
+  ],
+  "remember": {
+    "trick": "Say has no one, tell always needs someone!",
+    "tip": "Whenever you report a statement, ask: does the tense need to step back one, and does the time word need to change too?"
+  },
+  "dialogue": {
+    "title": "Interview for the newspaper",
+    "context": "Nadia is writing the school newspaper article and reports back to Sofia and Liam what Miss Vega told her in the interview.",
+    "lines": [
+      {
+        "speaker": "Nadia",
+        "text": "Miss Vega <b>told</b> me she <b>loved</b> teaching science here."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Really? What else did she say?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "She <b>said</b> (that) she <b>had studied</b> in Arequipa before she came to Lima."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Did she talk about the science fair?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Yes — she <b>said</b> she<b>'d help</b> us organise it next month."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And the new lab? I heard it's opening soon."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "She <b>told</b> us it <b>would open</b> in October."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Did she say why she became a teacher?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "She <b>said</b> she <b>had always wanted</b> to inspire young scientists."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "That's a great quote for the article!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "\"I love pizza,\" said Liam. → Liam said he ___ pizza.",
+          "options": [
+            "loved",
+            "loves",
+            "love"
+          ],
+          "answer": 0,
+          "why": "present simple moves to past simple"
+        },
+        {
+          "sentence": "She ___ me that she was tired.",
+          "options": [
+            "said",
+            "told",
+            "talked"
+          ],
+          "answer": 1,
+          "why": "tell needs a person straight after it"
+        },
+        {
+          "sentence": "He said he ___ call later.",
+          "options": [
+            "will",
+            "can",
+            "would"
+          ],
+          "answer": 2,
+          "why": "will moves back to would"
+        },
+        {
+          "sentence": "\"I saw the film,\" she said. → She said she ___ the film.",
+          "options": [
+            "had seen",
+            "saw",
+            "has seen"
+          ],
+          "answer": 0,
+          "why": "past simple moves to past perfect"
+        },
+        {
+          "sentence": "\"I'm studying,\" he said. → He said he ___ studying.",
+          "options": [
+            "is",
+            "was",
+            "were"
+          ],
+          "answer": 1,
+          "why": "present continuous moves to past continuous"
+        },
+        {
+          "sentence": "\"I'll come tomorrow,\" she said. → She said she'd come ___.",
+          "options": [
+            "tomorrow",
+            "yesterday",
+            "the next day"
+          ],
+          "answer": 2,
+          "why": "tomorrow changes to the next day"
+        },
+        {
+          "sentence": "\"I can swim,\" said Nadia. → Nadia said she ___ swim.",
+          "options": [
+            "could",
+            "can",
+            "will"
+          ],
+          "answer": 0,
+          "why": "can moves back to could"
+        },
+        {
+          "sentence": "She ___ (that) the Earth goes round the Sun.",
+          "options": [
+            "told me",
+            "said",
+            "says to"
+          ],
+          "answer": 1,
+          "why": "say needs no person after it"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "\"I love pizza,\" said Liam. → Liam said he ___ (love) pizza.",
+          "answers": [
+            "loved"
+          ]
+        },
+        {
+          "sentence": "She ___ (tell) me that she was tired.",
+          "answers": [
+            "told"
+          ]
+        },
+        {
+          "sentence": "He said he ___ (will/call) later.",
+          "answers": [
+            "would call"
+          ]
+        },
+        {
+          "sentence": "\"I saw the film,\" she said. → She said she ___ (see) the film.",
+          "answers": [
+            "had seen"
+          ]
+        },
+        {
+          "sentence": "\"I'm studying,\" he said. → He said he ___ (study).",
+          "answers": [
+            "was studying"
+          ]
+        },
+        {
+          "sentence": "\"I'll come tomorrow,\" she said. → She said she ___ (come) the next day.",
+          "answers": [
+            "would come",
+            "'d come"
+          ]
+        },
+        {
+          "sentence": "\"I can swim,\" said Nadia. → Nadia said she ___ (can/swim).",
+          "answers": [
+            "could swim"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "teaching science",
+            "she loved",
+            ".",
+            "Miss Vega said"
+          ],
+          "answer": "Miss Vega said she loved teaching science."
+        },
+        {
+          "words": [
+            "that she was tired",
+            ".",
+            "She told me"
+          ],
+          "answer": "She told me that she was tired."
+        },
+        {
+          "words": [
+            "later",
+            "he would call",
+            "He said",
+            "."
+          ],
+          "answer": "He said he would call later."
+        },
+        {
+          "words": [
+            "the film",
+            "She said",
+            ".",
+            "she had seen"
+          ],
+          "answer": "She said she had seen the film."
+        },
+        {
+          "words": [
+            "she could swim",
+            ".",
+            "Nadia said"
+          ],
+          "answer": "Nadia said she could swim."
+        },
+        {
+          "words": [
+            "in Arequipa",
+            "He said",
+            ".",
+            "he had studied"
+          ],
+          "answer": "He said he had studied in Arequipa."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "\"I love teaching science,\" said Miss Vega.",
+          "key": "LOVED",
+          "second_start": "Miss Vega said (that) she",
+          "second_end": "teaching science.",
+          "answers": [
+            "loved"
+          ]
+        },
+        {
+          "first": "\"I'm tired,\" said Sofia.",
+          "key": "TOLD",
+          "second_start": "Sofia",
+          "second_end": "us (that) she was tired.",
+          "answers": [
+            "told"
+          ]
+        },
+        {
+          "first": "\"I'll help you,\" said Liam.",
+          "key": "WOULD",
+          "second_start": "Liam said he",
+          "second_end": "help me.",
+          "answers": [
+            "would"
+          ]
+        },
+        {
+          "first": "\"I saw the film,\" said Nadia.",
+          "key": "HAD",
+          "second_start": "Nadia said she",
+          "second_end": "seen the film.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "first": "\"I can swim,\" said Mateo.",
+          "key": "COULD",
+          "second_start": "Mateo said he",
+          "second_end": "swim.",
+          "answers": [
+            "could"
+          ]
+        },
+        {
+          "first": "\"I'm studying for the test,\" said Liam.",
+          "key": "WAS",
+          "second_start": "Liam said he",
+          "second_end": "studying for the test.",
+          "answers": [
+            "was"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can report what someone said, choosing correctly between say and tell.",
+    "I can move the tense one step back when I report a statement (present → past, will → would…).",
+    "I can change pronouns, times and places correctly when I report speech (tomorrow → the next day)."
+  ],
+  "summary": [
+    "say has no person after it (or say to + person); tell always needs a person.",
+    "Most tenses move one step back: present → past, past → past perfect, will → would, can → could.",
+    "Pronouns change to match the new speaker (I → she/he); tomorrow → the next day, here → there.",
+    "Facts that are still true can keep the same tense.",
+    "that after say/told is optional — the sentence works with or without it."
+  ]
+}

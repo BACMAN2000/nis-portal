@@ -1,0 +1,653 @@
+{
+  "id": "can-cant",
+  "level": "a1",
+  "area": "Here and now",
+  "title": "can and can't",
+  "tagline": "One little word for ability, permission and polite requests.",
+  "cefr": "A1",
+  "exam": [
+    "Speaking Part 2 — talking about abilities and free time",
+    "Listening Part 4 — a conversation about likes and abilities"
+  ],
+  "why": "<i>Can</i> is one of the most useful words in English: with it you say what you're able to do, ask for things politely and give or ask for permission. Examiners love asking <i>What can you do?</i> And <i>can</i> never changes — no -s, no <i>to</i> — which makes it one of the easiest verbs once you know the rule.",
+  "hook": {
+    "text": "Sports day at Nordic! \"<b>Can</b> you swim, Liam?\" asks Miss Vega. \"Yes, I <b>can</b> — but I <b>can't</b> run fast,\" says Liam. \"<b>Can I</b> try the long jump instead?\" \"Of course you can!\"",
+    "ask": "Find can and can't in the story. Which sentence talks about something Liam is good at, and which about something he finds hard?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence with can",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "can",
+              "role": "kw"
+            },
+            {
+              "t": "swim",
+              "role": "verb"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "statement — ability"
+        },
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "can't",
+              "role": "neg"
+            },
+            {
+              "t": "run fast",
+              "role": "x"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Can",
+              "role": "kw"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "swim",
+              "role": "verb"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question — can jumps to the front"
+        }
+      ],
+      "caption": "<b>Can</b> never changes — no -s, no <i>to</i>. In a question, can jumps in front of the person."
+    },
+    {
+      "type": "map",
+      "title": "What can can do?",
+      "center": "can",
+      "branches": [
+        {
+          "label": "Ability",
+          "items": [
+            "I can swim.",
+            "She can't dance."
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Permission",
+          "items": [
+            "Can I go out?",
+            "You can use my pen."
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Requests",
+          "items": [
+            "Can you help me?",
+            "Can you pass the ball?"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Possibility",
+          "items": [
+            "It can be cold in Cusco.",
+            "Anyone can make a mistake."
+          ],
+          "tone": "a"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to ask permission politely",
+      "steps": [
+        {
+          "label": "Start with Can",
+          "ex": "<b>Can</b>"
+        },
+        {
+          "label": "Add I or a name",
+          "ex": "Can <b>I</b>"
+        },
+        {
+          "label": "Add the base verb — no to, no -s",
+          "ex": "Can I <b>go</b> to the toilet?"
+        }
+      ],
+      "caption": "Can + base verb, always. Never <i>can to go</i>, never <i>she cans</i>."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "person",
+        "tone": "a",
+        "ex": "I / she / they"
+      },
+      {
+        "chip": "can / can't",
+        "tone": "kw",
+        "ex": "can / can't"
+      },
+      {
+        "chip": "base verb",
+        "tone": "b",
+        "ex": "swim / play"
+      },
+      {
+        "chip": "the rest",
+        "tone": "c",
+        "ex": "fast / tennis"
+      }
+    ],
+    "table": {
+      "head": [
+        "Person",
+        "Statement",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "I",
+          "I can swim.",
+          "I can't swim.",
+          "Can I swim?"
+        ],
+        [
+          "you",
+          "You can swim.",
+          "You can't swim.",
+          "Can you swim?"
+        ],
+        [
+          "he / she / it",
+          "She can swim.",
+          "She can't swim.",
+          "Can she swim?"
+        ],
+        [
+          "we",
+          "We can swim.",
+          "We can't swim.",
+          "Can we swim?"
+        ],
+        [
+          "they",
+          "They can swim.",
+          "They can't swim.",
+          "Can they swim?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Ability — what you can and can't do",
+      "examples": [
+        {
+          "text": "I <b>can</b> swim, but I <b>can't</b> dive.",
+          "note": "two abilities, one good, one not"
+        },
+        {
+          "text": "Nadia <b>can</b> play the guitar.",
+          "note": "she has the skill"
+        },
+        {
+          "text": "Penguins <b>can't</b> fly, but they <b>can</b> swim.",
+          "note": "can/can't for animals too"
+        }
+      ]
+    },
+    {
+      "point": "Asking for and giving permission",
+      "examples": [
+        {
+          "text": "<b>Can I</b> go to the toilet, please?",
+          "note": "asking the teacher for permission"
+        },
+        {
+          "text": "<b>Can I</b> borrow your pen?",
+          "note": "asking to use something"
+        },
+        {
+          "text": "You <b>can</b> sit here if you like.",
+          "note": "giving permission"
+        }
+      ]
+    },
+    {
+      "point": "Polite requests — asking someone else to do something",
+      "examples": [
+        {
+          "text": "<b>Can you</b> help me with this exercise?",
+          "note": "a polite request for help"
+        },
+        {
+          "text": "<b>Can you</b> pass the ball, please?",
+          "note": "asking someone to do something"
+        }
+      ]
+    },
+    {
+      "point": "Possibility and short answers",
+      "examples": [
+        {
+          "text": "It <b>can</b> be very cold in Cusco at night.",
+          "note": "can for something that is sometimes true"
+        },
+        {
+          "text": "<b>Can</b> you swim? — Yes, I <b>can</b>. / No, I <b>can't</b>.",
+          "note": "short answer = person + can/can't"
+        },
+        {
+          "text": "Anyone <b>can</b> make a mistake.",
+          "note": "can for general possibility"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I can to swim.",
+      "right": "I <b>can</b> swim.",
+      "why": "Can is followed by the base verb — never to."
+    },
+    {
+      "wrong": "She cans swim.",
+      "right": "She <b>can</b> swim.",
+      "why": "Can never adds -s, even for he/she/it."
+    },
+    {
+      "wrong": "I can swimming.",
+      "right": "I <b>can</b> swim.",
+      "why": "After can, use the base verb, not the -ing form."
+    },
+    {
+      "wrong": "You can to use my pen.",
+      "right": "You can <b>use</b> my pen.",
+      "why": "No to after can, in statements or offers."
+    },
+    {
+      "wrong": "Do you can swim?",
+      "right": "<b>Can you</b> swim?",
+      "why": "Can makes its own question by moving to the front — no do/does needed."
+    },
+    {
+      "wrong": "Yes, I can swim.",
+      "right": "Yes, I <b>can</b>.",
+      "why": "A short answer repeats only the person + can/can't, not the whole verb again."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Puedo nadar.",
+      "wrong": "I can to swim.",
+      "right": "I <b>can</b> swim.",
+      "why": "Spanish poder + infinitive (nadar) becomes can + base verb in English, with no to."
+    },
+    {
+      "es": "¿Puedes ayudarme?",
+      "wrong": "Can you to help me?",
+      "right": "<b>Can you help</b> me?",
+      "why": "No to after can, even in a question."
+    },
+    {
+      "es": "Ella puede tocar guitarra.",
+      "wrong": "She cans play guitar.",
+      "right": "She <b>can</b> play the guitar.",
+      "why": "Can never takes an -s, not even for he/she/it."
+    },
+    {
+      "es": "¿Puedo entrar?",
+      "wrong": "I can enter?",
+      "right": "<b>Can I</b> come in?",
+      "why": "For a question, can moves to the front of the sentence, before the person."
+    },
+    {
+      "es": "No puedo correr rápido.",
+      "wrong": "I no can run fast.",
+      "right": "I <b>can't</b> run fast.",
+      "why": "The negative of can is can't (or cannot) — don't use no with a verb."
+    }
+  ],
+  "remember": {
+    "trick": "Can + verb, never can + to!",
+    "tip": "Say can quickly in a sentence, but say can't clearly and stop — CAN'T — so people hear the difference."
+  },
+  "dialogue": {
+    "title": "Sports day",
+    "context": "It's sports day at Nordic. Miss Vega is choosing students for different events.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "OK, everyone! <b>Can</b> you swim, Liam?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Yes, I <b>can</b>, but I <b>can't</b> run very fast."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "No problem. <b>Can you</b> try the long jump instead?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Sure! <b>Can I</b> practise first?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Of course. Mateo, <b>can</b> you play football well?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Yes, I <b>can</b>! I <b>can't</b> play basketball, though — I'm too short!"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Ha! Nadia, <b>can</b> you help with the race times?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Yes, I <b>can</b> — I'm good at maths."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "I ___ swim, but I can't dive.",
+          "options": [
+            "can",
+            "cans",
+            "canning"
+          ],
+          "answer": 0,
+          "why": "can never changes."
+        },
+        {
+          "sentence": "___ you help me, please?",
+          "options": [
+            "Do",
+            "Can",
+            "Are"
+          ],
+          "answer": 1,
+          "why": "can makes its own question, no do needed."
+        },
+        {
+          "sentence": "She ___ play the piano really well.",
+          "options": [
+            "cans",
+            "can to",
+            "can"
+          ],
+          "answer": 2,
+          "why": "can + base verb, no -s, no to."
+        },
+        {
+          "sentence": "___ I borrow your pencil?",
+          "options": [
+            "Can",
+            "Do",
+            "Am"
+          ],
+          "answer": 0,
+          "why": "Can I...? for asking permission."
+        },
+        {
+          "sentence": "Penguins can't fly, but they ___ swim.",
+          "options": [
+            "canning",
+            "can",
+            "cans"
+          ],
+          "answer": 1,
+          "why": "the positive form after but."
+        },
+        {
+          "sentence": "I ___ run fast — I'm too tired.",
+          "options": [
+            "not can",
+            "don't can",
+            "can't"
+          ],
+          "answer": 2,
+          "why": "can't is the only correct negative form."
+        },
+        {
+          "sentence": "___ she swim? — No, she can't.",
+          "options": [
+            "Can",
+            "Does",
+            "Is"
+          ],
+          "answer": 0,
+          "why": "can moves to the front in a question."
+        },
+        {
+          "sentence": "You ___ sit here if you want.",
+          "options": [
+            "cans",
+            "can",
+            "canned"
+          ],
+          "answer": 1,
+          "why": "can for giving permission."
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with can or can't.",
+      "items": [
+        {
+          "sentence": "I ___ swim very well.",
+          "answers": [
+            "can"
+          ]
+        },
+        {
+          "sentence": "She ___ play tennis, but she can play football.",
+          "answers": [
+            "can't",
+            "cannot"
+          ]
+        },
+        {
+          "sentence": "___ you help me carry this bag?",
+          "answers": [
+            "Can"
+          ]
+        },
+        {
+          "sentence": "___ I open the window, please?",
+          "answers": [
+            "Can"
+          ]
+        },
+        {
+          "sentence": "He ___ speak three languages!",
+          "answers": [
+            "can"
+          ]
+        },
+        {
+          "sentence": "We ___ come to the party — we're busy.",
+          "answers": [
+            "can't",
+            "cannot"
+          ]
+        },
+        {
+          "sentence": "___ she ride a bike? — Yes, she can.",
+          "answers": [
+            "Can"
+          ]
+        },
+        {
+          "sentence": "It ___ be very hot in Arequipa in summer.",
+          "answers": [
+            "can"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "swim",
+            "I",
+            "can",
+            "."
+          ],
+          "answer": "I can swim."
+        },
+        {
+          "words": [
+            "you",
+            "help",
+            "Can",
+            "me",
+            "?"
+          ],
+          "answer": "Can you help me?"
+        },
+        {
+          "words": [
+            "dive",
+            "can't",
+            "She",
+            "."
+          ],
+          "answer": "She can't dive."
+        },
+        {
+          "words": [
+            "borrow",
+            "I",
+            "Can",
+            "your pen",
+            "?"
+          ],
+          "answer": "Can I borrow your pen?"
+        },
+        {
+          "words": [
+            "fly",
+            "can't",
+            "Penguins",
+            "."
+          ],
+          "answer": "Penguins can't fly."
+        },
+        {
+          "words": [
+            "ride",
+            "she",
+            "Can",
+            "a bike",
+            "?"
+          ],
+          "answer": "Can she ride a bike?"
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "I can swim very well.",
+          "ok": true,
+          "why": "can + base verb, correct"
+        },
+        {
+          "sentence": "Can you help me, please?",
+          "ok": true,
+          "why": "can moves to the front in a question"
+        },
+        {
+          "sentence": "She can't dive, but she can swim.",
+          "ok": true,
+          "why": "can't + can, both correct"
+        },
+        {
+          "sentence": "Can I borrow your pen?",
+          "ok": true,
+          "why": "Can I...? for asking permission"
+        },
+        {
+          "sentence": "I can to swim.",
+          "ok": false,
+          "fix": "I <b>can</b> swim.",
+          "why": "no to after can"
+        },
+        {
+          "sentence": "She cans play the guitar.",
+          "ok": false,
+          "fix": "She <b>can</b> play the guitar.",
+          "why": "can never takes -s"
+        },
+        {
+          "sentence": "Do you can swim?",
+          "ok": false,
+          "fix": "<b>Can you</b> swim?",
+          "why": "can makes its own question, no do needed"
+        },
+        {
+          "sentence": "I can swimming.",
+          "ok": false,
+          "fix": "I <b>can</b> swim.",
+          "why": "after can, use the base verb, not -ing"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what I can and can't do.",
+    "I can ask <i>Can I…?</i> for permission and <i>Can you…?</i> to ask someone for help.",
+    "I can answer with short answers: <i>Yes, I can. / No, I can't.</i>"
+  ],
+  "summary": [
+    "<b>Can</b> never changes: no -s, no <i>to</i>, same for every person.",
+    "Use <i>can</i> for ability, <i>Can I…?</i> for permission and <i>Can you…?</i> for polite requests.",
+    "Negative: <b>can't</b> (or <i>cannot</i>) + base verb.",
+    "Question: <i>can</i> jumps to the front — no <i>do/does</i> needed.",
+    "Short answer: <i>Yes, I can. / No, I can't.</i> — say can't clearly so people hear the difference."
+  ]
+}

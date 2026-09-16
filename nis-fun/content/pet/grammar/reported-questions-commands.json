@@ -1,0 +1,625 @@
+{
+  "id": "reported-questions-commands",
+  "level": "pet",
+  "area": "Reporting",
+  "title": "Reported questions, commands and requests",
+  "tagline": "How to report what someone asked or told you to do, without the question mark.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Listening Part 2 — gap fill",
+    "Speaking Part 2 — collaborative task"
+  ],
+  "why": "Reporting what someone asked you, or what they told you to do, is essential for describing a real conversation — in a story, an email, or the Speaking Part 2 collaborative task where you explain what your partner suggested. B1 Preliminary checks that you can turn a direct question into a reported one (no question mark, no do/does/did) and that you know the right pattern after tell, ask, suggest and warn.",
+  "hook": {
+    "text": "Nadia missed the camping trip meeting. Liam: \"Miss Vega <b>asked if</b> we <b>had</b> sleeping bags.\" Sofia: \"And she <b>told us to</b> bring warm clothes.\" Nadia: \"What did she ask about the food?\"",
+    "ask": "Liam reports a yes/no question, and Sofia reports an instruction. Look at the word order after asked if — is it the same as a real question, or different?"
+  },
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "A question becomes a reported question",
+      "before": {
+        "text": "\"Do you have a sleeping bag?\" Miss Vega asked.",
+        "hl": [
+          "Do you have"
+        ]
+      },
+      "after": {
+        "text": "Miss Vega asked if I had a sleeping bag.",
+        "hl": [
+          "asked if",
+          "I had"
+        ]
+      },
+      "steps": [
+        "Add if or whether — no question mark, no auxiliary do/does/did.",
+        "Change the word order back to statement order (subject before verb).",
+        "Move the tense back one step, just like reported statements."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Questions vs commands",
+      "columns": [
+        "Reported question",
+        "Reported command"
+      ],
+      "rows": [
+        {
+          "label": "Verb used",
+          "cells": [
+            "ask (+ if/whether or a wh-word)",
+            "tell / ask + person + (not) to"
+          ]
+        },
+        {
+          "label": "Word order",
+          "cells": [
+            "subject before verb, no do/does/did",
+            "infinitive with to — no subject needed"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "She asked <b>if I had</b> a tent.",
+            "She told me <b>to bring</b> warm clothes."
+          ]
+        },
+        {
+          "label": "Negative",
+          "cells": [
+            "She asked if I hadn't forgotten anything.",
+            "She told me <b>not to</b> forget my torch."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to report a wh- question",
+      "steps": [
+        {
+          "label": "Keep the wh-word (what, where, when…)",
+          "ex": "\"<b>Where</b> are we going?\""
+        },
+        {
+          "label": "Change to statement word order",
+          "ex": "She asked <b>where we were</b> going."
+        },
+        {
+          "label": "Move the tense back and remove the question mark",
+          "ex": "She asked where we were going<b>.</b>"
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "ask",
+        "tone": "kw"
+      },
+      {
+        "chip": "if / whether",
+        "tone": "a",
+        "ex": "asked if I had"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "ask",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ wh-word",
+        "tone": "b",
+        "ex": "asked where we were"
+      },
+      {
+        "chip": "tell / ask sb",
+        "tone": "kw"
+      },
+      {
+        "chip": "(not) to + verb",
+        "tone": "c",
+        "ex": "told me to bring"
+      }
+    ],
+    "table": {
+      "head": [
+        "Type",
+        "Pattern",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Yes/no question",
+          "ask (sb) if/whether + statement order",
+          "She asked if I had a tent."
+        ],
+        [
+          "Wh- question",
+          "ask (sb) + wh-word + statement order",
+          "She asked where we were meeting."
+        ],
+        [
+          "Command/instruction",
+          "tell sb (not) to + verb",
+          "She told us to bring warm clothes."
+        ],
+        [
+          "Request",
+          "ask sb (not) to + verb",
+          "She asked us not to be late."
+        ],
+        [
+          "Wish/preference",
+          "want sb (not) to + verb",
+          "She wanted us to arrive on time."
+        ],
+        [
+          "Other verbs",
+          "suggest + -ing; advise/warn/tell sb (not) to; promise/offer/refuse + to",
+          "She advised us to leave early. He refused to apologise."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Yes/no questions with if/whether",
+      "examples": [
+        {
+          "text": "\"Do you have a sleeping bag?\" → She <b>asked if</b> I <b>had</b> a sleeping bag.",
+          "note": "no do, question word order becomes statement order"
+        },
+        {
+          "text": "\"Are you coming on Saturday?\" → He <b>asked whether</b> I <b>was coming</b> on Saturday.",
+          "note": "whether works just like if here"
+        },
+        {
+          "text": "\"Have you packed yet?\" → She <b>asked if</b> we <b>had packed</b> yet.",
+          "note": "the tense also moves back one step"
+        }
+      ]
+    },
+    {
+      "point": "wh- questions",
+      "examples": [
+        {
+          "text": "\"Where are we meeting?\" → She <b>asked where</b> we <b>were meeting</b>.",
+          "note": "keep the wh-word, statement order after it"
+        },
+        {
+          "text": "\"What time does the bus leave?\" → He <b>asked what time</b> the bus <b>left</b>.",
+          "note": "no does — just statement word order"
+        },
+        {
+          "text": "\"Why is Nadia absent?\" → Liam <b>asked why</b> Nadia <b>was</b> absent.",
+          "note": "another wh-word, same pattern"
+        }
+      ]
+    },
+    {
+      "point": "Commands and requests: tell/ask + (not) to",
+      "examples": [
+        {
+          "text": "\"Bring warm clothes.\" → She <b>told us to bring</b> warm clothes.",
+          "note": "an instruction: tell + person + to + verb"
+        },
+        {
+          "text": "\"Don't forget your torch.\" → She <b>told me not to forget</b> my torch.",
+          "note": "negative: not to + verb"
+        },
+        {
+          "text": "\"Could you carry the tent, please?\" → She <b>asked me to carry</b> the tent.",
+          "note": "a polite request reported the same way"
+        },
+        {
+          "text": "\"Please don't be late.\" → She <b>asked us not to be</b> late.",
+          "note": "a polite negative request"
+        }
+      ]
+    },
+    {
+      "point": "Other reporting verbs: suggest, warn, promise, want",
+      "examples": [
+        {
+          "text": "\"Let's take extra water,\" she said. → She <b>suggested taking</b> extra water.",
+          "note": "suggest + -ing, no to"
+        },
+        {
+          "text": "\"Be careful near the river,\" she said. → She <b>warned us to be</b> careful near the river.",
+          "note": "warn sb (not) to + verb"
+        },
+        {
+          "text": "\"I'll bring the first-aid kit,\" she said. → She <b>promised to bring</b> the first-aid kit.",
+          "note": "promise + to + verb, no person needed"
+        },
+        {
+          "text": "Miss Vega <b>wanted us to</b> check the forecast before the trip.", "note": "want sb (not) to + verb — the same pattern as ask/tell"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "She asked if did I have a tent.",
+      "right": "She asked if I <b>had</b> a tent.",
+      "why": "No do/did and no question word order after if — it goes back to statement order."
+    },
+    {
+      "wrong": "She asked where were we meeting.",
+      "right": "She asked where <b>we were</b> meeting.",
+      "why": "Subject before verb after the wh-word — not question order."
+    },
+    {
+      "wrong": "She told to us bring warm clothes.",
+      "right": "She told us <b>to bring</b> warm clothes.",
+      "why": "tell + person, then to + verb — no to before the person."
+    },
+    {
+      "wrong": "She asked us don't be late.",
+      "right": "She asked us <b>not to be</b> late.",
+      "why": "The negative in a reported command is not to + verb, not don't."
+    },
+    {
+      "wrong": "She suggested to take extra water.",
+      "right": "She suggested <b>taking</b> extra water.",
+      "why": "suggest is followed by the -ing form, never to + verb."
+    },
+    {
+      "wrong": "She asked if I have packed yet?",
+      "right": "She asked if I <b>had packed</b> yet.",
+      "why": "No question mark in reported speech, and the tense moves back too."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Me preguntó si tenía una carpa.",
+      "wrong": "She asked me if did I have a tent.",
+      "right": "She asked me if I <b>had</b> a tent.",
+      "why": "Spanish keeps normal word order after si; copy that in English — no do/did after if."
+    },
+    {
+      "es": "Me dijo que trajera ropa de abrigo.",
+      "wrong": "She told that I bring warm clothes.",
+      "right": "She <b>told me to bring</b> warm clothes.",
+      "why": "tell needs a person straight after it, then to + verb — no that here."
+    },
+    {
+      "es": "Me preguntó dónde estábamos.",
+      "wrong": "She asked me where were we.",
+      "right": "She asked me where <b>we were</b>.",
+      "why": "After a wh-word, English goes back to statement order, unlike a direct question."
+    },
+    {
+      "es": "Me pidió que no llegara tarde.",
+      "wrong": "She asked me don't be late.",
+      "right": "She asked me <b>not to be</b> late.",
+      "why": "A reported negative request is ask sb not to + verb, not don't."
+    }
+  ],
+  "remember": {
+    "trick": "No question mark, no do — statement order, go!",
+    "tip": "Before you report a question, turn it into a statement in your head first — then add if, whether or the wh-word."
+  },
+  "dialogue": {
+    "title": "What did she say?",
+    "context": "Nadia missed the meeting about the camping trip, so Mateo, Sofia and Liam report what Miss Vega asked and told them.",
+    "lines": [
+      {
+        "speaker": "Nadia",
+        "text": "I missed the whole meeting! What did she ask?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "She <b>asked if</b> everyone <b>had</b> a sleeping bag."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And she <b>asked whether</b> we <b>were bringing</b> our own tents."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "What about the food?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "She <b>asked what</b> food allergies we <b>had</b>."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "OK. Did she tell us to bring anything special?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Yes — she <b>told us to bring</b> warm clothes and a torch."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And she <b>told me not to forget</b> my medicine."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "She also <b>suggested taking</b> extra water for the hike."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Thanks! Now I know what to pack."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "\"Do you have a tent?\" → She asked if I ___ a tent.",
+          "options": [
+            "had",
+            "have",
+            "did have"
+          ],
+          "answer": 0,
+          "why": "no do, and the tense moves back"
+        },
+        {
+          "sentence": "\"Where are we meeting?\" → She asked where we ___ meeting.",
+          "options": [
+            "are",
+            "were",
+            "was"
+          ],
+          "answer": 1,
+          "why": "statement order and the tense moves back"
+        },
+        {
+          "sentence": "\"Bring warm clothes.\" → She told us ___ warm clothes.",
+          "options": [
+            "bring",
+            "bringing",
+            "to bring"
+          ],
+          "answer": 2,
+          "why": "tell sb + to + verb"
+        },
+        {
+          "sentence": "\"Don't forget your torch.\" → She told me ___ my torch.",
+          "options": [
+            "not to forget",
+            "don't forget",
+            "not forget"
+          ],
+          "answer": 0,
+          "why": "the negative reported command"
+        },
+        {
+          "sentence": "\"Let's take extra water,\" she said. → She suggested ___ extra water.",
+          "options": [
+            "to take",
+            "taking",
+            "take"
+          ],
+          "answer": 1,
+          "why": "suggest + -ing"
+        },
+        {
+          "sentence": "\"What time does the bus leave?\" → He asked what time the bus ___.",
+          "options": [
+            "does leave",
+            "leaves",
+            "left"
+          ],
+          "answer": 2,
+          "why": "the tense moves back one step"
+        },
+        {
+          "sentence": "\"Could you carry the tent?\" → She asked me ___ the tent.",
+          "options": [
+            "to carry",
+            "carry",
+            "carrying"
+          ],
+          "answer": 0,
+          "why": "ask sb + to + verb"
+        },
+        {
+          "sentence": "\"I'll bring the first-aid kit,\" she said. → She promised ___ the first-aid kit.",
+          "options": [
+            "bring",
+            "to bring",
+            "bringing"
+          ],
+          "answer": 1,
+          "why": "promise + to + verb"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "\"Do you have a tent?\" → She asked if I ___ (have) a tent.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "sentence": "\"Where are we meeting?\" → She asked where we ___ (be) meeting.",
+          "answers": [
+            "were"
+          ]
+        },
+        {
+          "sentence": "\"Bring warm clothes.\" → She told us ___ (bring) warm clothes.",
+          "answers": [
+            "to bring"
+          ]
+        },
+        {
+          "sentence": "\"Don't forget your torch.\" → She told me ___ (not/forget) my torch.",
+          "answers": [
+            "not to forget"
+          ]
+        },
+        {
+          "sentence": "\"Let's take extra water,\" she said. → She suggested ___ (take) extra water.",
+          "answers": [
+            "taking"
+          ]
+        },
+        {
+          "sentence": "\"Could you carry the tent?\" → She asked me ___ (carry) the tent.",
+          "answers": [
+            "to carry"
+          ]
+        },
+        {
+          "sentence": "\"I'll bring the first-aid kit,\" she said. → She ___ (promise/bring) the first-aid kit.",
+          "answers": [
+            "promised to bring"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "a tent",
+            "if I had",
+            ".",
+            "She asked"
+          ],
+          "answer": "She asked if I had a tent."
+        },
+        {
+          "words": [
+            "meeting",
+            "She asked",
+            ".",
+            "where we were"
+          ],
+          "answer": "She asked where we were meeting."
+        },
+        {
+          "words": [
+            "warm clothes",
+            "to bring",
+            ".",
+            "She told us"
+          ],
+          "answer": "She told us to bring warm clothes."
+        },
+        {
+          "words": [
+            "my torch",
+            "not to forget",
+            ".",
+            "She told me"
+          ],
+          "answer": "She told me not to forget my torch."
+        },
+        {
+          "words": [
+            "extra water",
+            "She suggested",
+            ".",
+            "taking"
+          ],
+          "answer": "She suggested taking extra water."
+        },
+        {
+          "words": [
+            "the tent",
+            "to carry",
+            ".",
+            "She asked me"
+          ],
+          "answer": "She asked me to carry the tent."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "\"Do you have a tent?\" Miss Vega asked.",
+          "key": "HAD",
+          "second_start": "Miss Vega asked if I",
+          "second_end": "a tent.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "first": "\"Where are we meeting?\" she asked.",
+          "key": "WERE",
+          "second_start": "She asked where we",
+          "second_end": "meeting.",
+          "answers": [
+            "were"
+          ]
+        },
+        {
+          "first": "\"Bring warm clothes,\" she said.",
+          "key": "TO",
+          "second_start": "She told us",
+          "second_end": "warm clothes.",
+          "answers": [
+            "to bring"
+          ]
+        },
+        {
+          "first": "\"Don't forget your torch,\" she said.",
+          "key": "NOT",
+          "second_start": "She told me",
+          "second_end": "my torch.",
+          "answers": [
+            "not to forget"
+          ]
+        },
+        {
+          "first": "\"Let's take extra water,\" she said.",
+          "key": "TAKING",
+          "second_start": "She suggested",
+          "second_end": "extra water.",
+          "answers": [
+            "taking"
+          ]
+        },
+        {
+          "first": "\"Could you carry the tent?\" she asked.",
+          "key": "TO",
+          "second_start": "She asked me",
+          "second_end": "the tent.",
+          "answers": [
+            "to carry"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can report yes/no questions with ask if/whether + statement word order.",
+    "I can report wh- questions, keeping the wh-word but changing the word order.",
+    "I can report commands and requests with tell/ask/want sb (not) to, and other verbs like suggest, warn, advise, promise, offer and refuse."
+  ],
+  "summary": [
+    "Reported questions lose the question mark and go back to statement word order — no do/does/did.",
+    "ask if / ask whether reports a yes/no question; keep the wh-word for a wh- question.",
+    "tell sb (not) to + verb reports a command; ask sb (not) to + verb reports a request.",
+    "suggest is followed by -ing, not to + verb — it's the odd one out.",
+    "warn, advise, promise and offer each have their own pattern — check the verb before you build the sentence."
+  ]
+}

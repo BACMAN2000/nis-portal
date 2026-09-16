@@ -1,0 +1,201 @@
+{
+  "id": "present-perfect-vs-past-simple",
+  "level": "ket",
+  "area": "Tenses & time",
+  "title": "Present perfect or past simple?",
+  "tagline": "One question decides it: does the sentence say exactly when?",
+  "cefr": "A2",
+  "exam": ["Reading Part 6 — open cloze", "Writing Part 7 — a short story", "Speaking Part 1 — questions about you"],
+  "why": "Two tenses, one big decision: does the sentence give a finished time (yesterday, in 2020, two days ago) or not (ever, for, since, this week)? Cambridge tests this constantly — in Reading Part 6 you choose the right form, and in Speaking you might say <i>I've lived in Lima for five years, but I moved here in 2019</i>. Mixing them up is the most common tense mistake at this level.",
+  "hook": {
+    "text": "Sofia and Liam are talking about Lima. \"I<b>'ve lived</b> here <b>since</b> 2015,\" says Sofia. \"I <b>moved</b> here <b>in</b> 2022,\" says Liam. \"<b>Have</b> you <b>ever visited</b> the Plaza Mayor?\" \"Yes, I <b>went</b> there <b>last month</b>.\"",
+    "ask": "One sentence gives a finished time; the other doesn't. Can you find the present perfect and the past simple, and say which time word goes with each?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Finished, or still true?",
+      "marks": [
+        {"at": "past", "label": "Liam moved to Lima", "sub": "past simple — in 2022, finished"},
+        {"at": "before-past", "label": "Sofia has lived here since 2015", "sub": "present perfect — unfinished"},
+        {"at": "now", "label": "both are still in Lima now", "sub": ""}
+      ],
+      "arrows": [[1, 2, "still true now"]],
+      "caption": "Past simple = the action is finished and in the past. Present perfect = the situation started in the past and is still true now."
+    },
+    {
+      "type": "blocks",
+      "title": "Same idea, two different tenses",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Liam", "role": "subj"}, {"t": "moved", "role": "verb"}, {"t": "to Lima", "role": "place"}, {"t": "in 2022", "role": "time"}, {"t": ".", "role": "x"}], "note": "past simple — finished time"},
+        {"parts": [{"t": "Sofia", "role": "subj"}, {"t": "has", "role": "aux"}, {"t": "lived", "role": "verb"}, {"t": "here", "role": "place"}, {"t": "since 2015", "role": "time"}, {"t": ".", "role": "x"}], "note": "present perfect — no finished time"},
+        {"parts": [{"t": "Did", "role": "aux"}, {"t": "you", "role": "subj"}, {"t": "visit", "role": "verb"}, {"t": "it", "role": "obj"}, {"t": "last month", "role": "time"}, {"t": "?", "role": "x"}], "note": "past simple question"}
+      ],
+      "caption": "The time word decides the tense: <i>in 2022, last month</i> → past simple. <i>since 2015</i>, no exact time → present perfect."
+    },
+    {
+      "type": "contrast",
+      "title": "Past simple vs present perfect",
+      "columns": ["Past simple", "Present perfect"],
+      "rows": [
+        {"label": "Time words", "cells": ["yesterday, last week, in 2020, ago", "ever, never, just, already, yet, this week"]},
+        {"label": "Is the time finished?", "cells": ["yes — it's over", "no — it continues, or we don't say when"]},
+        {"label": "for / since", "cells": ["—", "for + a length of time, since + a starting point"]},
+        {"label": "Example", "cells": ["I <b>visited</b> Cusco in 2021.", "I<b>'ve visited</b> Cusco three times."]}
+      ],
+      "caption": "Ask yourself: does the sentence say exactly when? Yes → past simple. No, or it's still true now → present perfect."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "finished time word", "tone": "a", "ex": "yesterday, in 2020"},
+      {"chip": "→ past simple", "tone": "kw", "ex": "visited"},
+      {"chip": "unfinished/no time word", "tone": "b", "ex": "ever, since, for"},
+      {"chip": "→ present perfect", "tone": "c", "ex": "have visited"}
+    ],
+    "table": {
+      "head": ["Time word", "Tense", "Example"],
+      "rows": [
+        ["yesterday, last week, in 2020, ago", "past simple", "I visited Cusco last year."],
+        ["ever, never, this week (unfinished)", "present perfect", "I've visited Cusco twice."],
+        ["for + length of time", "present perfect", "I've lived here for five years."],
+        ["since + starting point", "present perfect", "I've lived here since 2015."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Finished time → past simple",
+      "examples": [
+        {"text": "I <b>visited</b> Cusco <b>last year</b>.", "note": "last year = finished time → past simple"},
+        {"text": "We <b>moved</b> to this house <b>in 2019</b>.", "note": "in + a past year = finished time"},
+        {"text": "She <b>finished</b> the book <b>two days ago</b>.", "note": "ago = a finished point in the past"}
+      ]
+    },
+    {
+      "point": "No exact time, or an experience → present perfect",
+      "examples": [
+        {"text": "I<b>'ve visited</b> Cusco three times.", "note": "no exact date, just an experience"},
+        {"text": "<b>Have</b> you <b>ever been</b> to the Plaza Mayor?", "note": "ever = at any time in your life"},
+        {"text": "She<b>'s</b> already <b>read</b> that book.", "note": "no exact time, close to now"}
+      ]
+    },
+    {
+      "point": "for and since — how long a situation has continued",
+      "examples": [
+        {"text": "I<b>'ve lived</b> in Lima <b>for</b> ten years.", "note": "for + a length of time"},
+        {"text": "Sofia<b>'s</b> known Nadia <b>since</b> 2018.", "note": "since + the starting point"},
+        {"text": "How long <b>have</b> you <b>lived</b> here?", "note": "How long…? asks for a length of time"}
+      ]
+    },
+    {
+      "point": "Unfinished time — this week, today, this month",
+      "examples": [
+        {"text": "I <b>haven't seen</b> Liam <b>this week</b>.", "note": "this week isn't over yet → present perfect"},
+        {"text": "<b>Did</b> you <b>see</b> Liam <b>yesterday</b>?", "note": "yesterday is finished → past simple"},
+        {"text": "I<b>'ve had</b> three tests <b>this month</b>.", "note": "this month is still happening → present perfect"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I have visited Cusco last year.", "right": "I <b>visited</b> Cusco last year.", "why": "Last year is a finished time word — it needs the past simple, never the present perfect."},
+    {"wrong": "I lived here since 2015.", "right": "I<b>'ve lived</b> here since 2015.", "why": "Since always needs the present perfect, because the situation is still true now."},
+    {"wrong": "How long you have lived here?", "right": "How long <b>have you lived</b> here?", "why": "In a question, have/has moves before the person."},
+    {"wrong": "I have seen him yesterday.", "right": "I <b>saw</b> him yesterday.", "why": "Yesterday tells you exactly when — that always means past simple."},
+    {"wrong": "I live here for ten years.", "right": "I<b>'ve lived</b> here for ten years.", "why": "A situation that started in the past and continues now needs the present perfect, not the present simple."}
+  ],
+  "l1": [
+    {"es": "Visité Cusco el año pasado.", "wrong": "I have visited Cusco last year.", "right": "I <b>visited</b> Cusco last year.", "why": "'El año pasado' is a finished time — English needs the past simple, not the present perfect that Spanish sometimes suggests."},
+    {"es": "Vivo aquí desde 2015.", "wrong": "I live here since 2015.", "right": "I<b>'ve lived</b> here since 2015.", "why": "Spanish uses the present (vivo) for a situation that continues; English uses the present perfect with since."},
+    {"es": "¿Cuánto tiempo llevas viviendo aquí?", "wrong": "How much time you live here?", "right": "How long <b>have you lived</b> here?", "why": "This question always uses How long + present perfect in English, not How much time + the present."},
+    {"es": "Nunca fui a Trujillo.", "wrong": "I never went to Trujillo.", "right": "I<b>'ve never been</b> to Trujillo.", "why": "For an experience at no exact time, English prefers the present perfect with never/ever, not the past simple."}
+  ],
+  "remember": {
+    "trick": "A date = past simple. No date or 'since' = present perfect.",
+    "tip": "Ask yourself: does the sentence say exactly when? Yes → past simple. Not sure, or still true now? → present perfect."
+  },
+  "dialogue": {
+    "title": "How long have you lived here?",
+    "context": "Sofia and Liam are comparing their lives in Lima for a class project about the city.",
+    "lines": [
+      {"speaker": "Sofia", "text": "How long <b>have</b> you <b>lived</b> in Lima?"},
+      {"speaker": "Liam", "text": "I <b>moved</b> here <b>in 2022</b>, so about three years."},
+      {"speaker": "Sofia", "text": "I<b>'ve lived</b> here <b>since</b> 2015 — my whole life!"},
+      {"speaker": "Liam", "text": "<b>Have</b> you <b>ever visited</b> the Plaza Mayor?"},
+      {"speaker": "Sofia", "text": "Yes, I <b>went</b> there <b>last month</b> with my family."},
+      {"speaker": "Liam", "text": "I <b>haven't been</b> there <b>yet</b>. Is it nice?"},
+      {"speaker": "Sofia", "text": "It's beautiful! We <b>took</b> lots of photos."},
+      {"speaker": "Liam", "text": "I<b>'ve never seen</b> the presidential guard change. <b>Did</b> you <b>see</b> it?"},
+      {"speaker": "Sofia", "text": "Yes, we <b>saw</b> it at noon — it <b>was</b> amazing!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option: past simple or present perfect.",
+      "items": [
+        {"sentence": "I ___ Cusco last year.", "options": ["visited", "have visited", "visit"], "answer": 0, "why": "last year = finished time"},
+        {"sentence": "She ___ here since 2015.", "options": ["lives", "lived", "has lived"], "answer": 2, "why": "since = present perfect"},
+        {"sentence": "___ you ever been to Trujillo?", "options": ["Did", "Have", "Was"], "answer": 1, "why": "ever = present perfect"},
+        {"sentence": "I ___ him yesterday.", "options": ["saw", "have seen", "see"], "answer": 0, "why": "yesterday = finished time"},
+        {"sentence": "How long ___ you lived here?", "options": ["did", "have", "were"], "answer": 1, "why": "How long + present perfect"},
+        {"sentence": "We ___ three tests this month.", "options": ["had", "have had", "has had"], "answer": 1, "why": "this month isn't finished"},
+        {"sentence": "___ you see Liam yesterday?", "options": ["Have", "Did", "Has"], "answer": 1, "why": "yesterday = finished time"},
+        {"sentence": "I ___ that film twice.", "options": ["saw", "see", "have seen"], "answer": 2, "why": "an experience, no exact date"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the past simple or present perfect form of the verb in brackets.",
+      "items": [
+        {"sentence": "I ___ (visit) Cusco last year.", "answers": ["visited"]},
+        {"sentence": "She ___ (live) here since 2015.", "answers": ["has lived", "'s lived"]},
+        {"sentence": "___ (you/ever/be) to Trujillo?", "answers": ["Have you ever been"]},
+        {"sentence": "I ___ (see) him yesterday.", "answers": ["saw"]},
+        {"sentence": "How long ___ (you/live) here?", "answers": ["have you lived"]},
+        {"sentence": "We ___ (have) three tests this month.", "answers": ["have had", "'ve had"]},
+        {"sentence": "___ (you/see) Liam yesterday?", "answers": ["Did you see"]},
+        {"sentence": "I ___ (not/see) Liam this week.", "answers": ["haven't seen"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["Cusco", "last year", "I", "visited", "."], "answer": "I visited Cusco last year."},
+        {"words": ["here", "has lived", "since 2015", "She", "."], "answer": "She has lived here since 2015."},
+        {"words": ["ever been", "you", "Have", "to Trujillo", "?"], "answer": "Have you ever been to Trujillo?"},
+        {"words": ["him", "yesterday", "I", "saw", "."], "answer": "I saw him yesterday."},
+        {"words": ["have you lived", "How long", "here", "?"], "answer": "How long have you lived here?"},
+        {"words": ["three tests", "We've had", "this month", "."], "answer": "We've had three tests this month."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I have visited Cusco last year.", "ok": false, "fix": "I <b>visited</b> Cusco last year.", "why": "last year is a finished time — use the past simple"},
+        {"sentence": "I've lived here since 2015.", "ok": true, "why": "since + present perfect for a continuing situation"},
+        {"sentence": "How long you have lived here?", "ok": false, "fix": "How long <b>have you lived</b> here?", "why": "have moves before the person in a question"},
+        {"sentence": "I saw him yesterday.", "ok": true, "why": "yesterday is a finished time — past simple"},
+        {"sentence": "I live here for ten years.", "ok": false, "fix": "I<b>'ve lived</b> here for ten years.", "why": "a continuing situation needs the present perfect, not the present simple"},
+        {"sentence": "I've never been to Trujillo.", "ok": true, "why": "never + present perfect for an experience with no exact time"},
+        {"sentence": "I have seen him yesterday.", "ok": false, "fix": "I <b>saw</b> him yesterday.", "why": "yesterday always needs the past simple"},
+        {"sentence": "I've visited Cusco three times.", "ok": true, "why": "no exact date — present perfect for an experience"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can choose past simple for a finished time (yesterday, in 2020, ago) and present perfect for no exact time (ever, just, already).",
+    "I can use <i>for</i> and <i>since</i> to say how long a situation has continued.",
+    "I can ask and answer <i>How long have you…?</i>"
+  ],
+  "summary": [
+    "A finished time word (yesterday, last week, in 2020, ago) always needs the <b>past simple</b>.",
+    "No exact time, or an experience in your life (ever, never, just, already) needs the <b>present perfect</b>.",
+    "<i>For</i> + a length of time, <i>since</i> + a starting point — both with the present perfect, for a situation that continues now.",
+    "This week, today and this month can go with either tense, depending on whether they're finished or not.",
+    "Ask yourself: does the sentence say exactly when? Yes → past simple. Not sure, or still true now? → present perfect."
+  ]
+}

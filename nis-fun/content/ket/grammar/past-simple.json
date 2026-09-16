@@ -1,0 +1,199 @@
+{
+  "id": "past-simple",
+  "level": "ket",
+  "area": "Tenses & time",
+  "title": "Past simple",
+  "tagline": "One tense for finished actions at a finished time: yesterday, last week, in 2019.",
+  "cefr": "A2",
+  "exam": ["Writing Part 7 — a short story", "Reading Part 5 — multiple-choice cloze", "Listening Part 4 — a conversation"],
+  "why": "The past simple tells people what happened: your weekend, your holiday, a story for Writing Part 7. Cambridge loves finished-time words like <i>yesterday</i> and <i>last year</i>, and it expects <i>was/were</i> or the right <i>-ed</i> or irregular form. Get the spelling and the question word order right and your stories sound natural, not like a list of facts.",
+  "hook": {
+    "text": "Saturday. Mateo and Nadia are at the beach. \"I <b>swam</b> for an hour!\" says Mateo. \"And I <b>found</b> a crab,\" says Nadia. \"<b>Did</b> you see it, Sofia?\" \"No, I <b>didn't</b> — I <b>was</b> asleep!\"",
+    "ask": "The past simple has three shapes here: an irregular verb, a helper verb (<i>did</i>) and <i>was</i>. Can you find them all?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "A finished action, a finished time",
+      "marks": [
+        {"at": "past", "label": "Mateo swam in the sea", "sub": "yesterday"},
+        {"at": "now", "label": "He's at home now", "sub": "the action is over"}
+      ],
+      "arrows": [[0, 1, "the swim is finished"]],
+      "caption": "Past simple = a finished action at a finished time: <i>yesterday, last week, in 2019, two days ago</i>."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence in the past",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Nadia", "role": "subj"}, {"t": "found", "role": "verb"}, {"t": "a crab", "role": "obj"}, {"t": "yesterday", "role": "time"}, {"t": ".", "role": "x"}], "note": "statement — irregular verb"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "didn't", "role": "neg"}, {"t": "see", "role": "verb"}, {"t": "the shark", "role": "obj"}, {"t": ".", "role": "x"}], "note": "negative — didn't + base verb"},
+        {"parts": [{"t": "Did", "role": "aux"}, {"t": "you", "role": "subj"}, {"t": "swim", "role": "verb"}, {"t": "in the sea", "role": "place"}, {"t": "?", "role": "x"}], "note": "question — did + base verb, no -ed"}
+      ],
+      "caption": "In negatives and questions the helper <b>did</b> carries the past — the main verb goes back to its base form, even for irregular verbs."
+    },
+    {
+      "type": "spelling",
+      "title": "Adding -ed",
+      "rules": [
+        {"rule": "Most verbs: + ed", "examples": ["play → play<b>ed</b>", "watch → watch<b>ed</b>"]},
+        {"rule": "Verb ends in -e: + d", "examples": ["live → live<b>d</b>", "dance → dance<b>d</b>"]},
+        {"rule": "Consonant + y: y → ied", "examples": ["study → stud<b>ied</b>", "carry → carr<b>ied</b>"]},
+        {"rule": "Short verb, one vowel + one consonant: double it", "examples": ["stop → stop<b>ped</b>", "plan → plan<b>ned</b>"]}
+      ],
+      "caption": "Irregular verbs don't follow these rules — you just have to learn them: <i>go → went, see → saw, have → had</i>."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "person", "tone": "a", "ex": "I / she / they"},
+      {"chip": "verb + ed / irregular form / was-were", "tone": "kw", "ex": "played / went / was"},
+      {"chip": "(didn't + base verb)", "tone": "c", "ex": "didn't play"},
+      {"chip": "the rest", "tone": "b", "ex": "yesterday / at the beach"}
+    ],
+    "table": {
+      "head": ["Verb type", "Statement", "Negative", "Question"],
+      "rows": [
+        ["be", "I was / you were", "I wasn't / you weren't", "Was I…? / Were you…?"],
+        ["regular", "she played", "she didn't play", "Did she play…?"],
+        ["irregular", "they went", "they didn't go", "Did they go…?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "What you did yesterday or last week — regular verbs",
+      "examples": [
+        {"text": "I <b>played</b> football after school.", "note": "regular verb + ed"},
+        {"text": "We <b>watched</b> a film last night.", "note": "watch already ends in a consonant, just add -ed"},
+        {"text": "Sofia <b>studied</b> for two hours.", "note": "consonant + y → ied"}
+      ]
+    },
+    {
+      "point": "Irregular verbs — no -ed at all",
+      "examples": [
+        {"text": "Mateo <b>went</b> to the beach.", "note": "go → went"},
+        {"text": "Nadia <b>found</b> a crab.", "note": "find → found"},
+        {"text": "We <b>had</b> a great time.", "note": "have → had"}
+      ]
+    },
+    {
+      "point": "was and were — the past of be",
+      "examples": [
+        {"text": "I <b>was</b> tired after the swim.", "note": "I/he/she/it → was"},
+        {"text": "You <b>were</b> late for the bus.", "note": "you/we/they → were"},
+        {"text": "The beach <b>wasn't</b> crowded.", "note": "negative of be"}
+      ]
+    },
+    {
+      "point": "Negatives and questions with did",
+      "examples": [
+        {"text": "I <b>didn't see</b> the shark.", "note": "didn't + base verb"},
+        {"text": "<b>Did</b> you <b>swim</b> in the sea?", "note": "did + base verb, no -ed in the question"},
+        {"text": "Where <b>did</b> you <b>go</b> last weekend?", "note": "question word + did + base verb"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I go to the beach yesterday.", "right": "I <b>went</b> to the beach yesterday.", "why": "Yesterday needs the past form of the verb, not the present."},
+    {"wrong": "She played not tennis.", "right": "She <b>didn't play</b> tennis.", "why": "The negative uses didn't + base verb — not is never alone before the verb."},
+    {"wrong": "Did you played football?", "right": "Did you <b>play</b> football?", "why": "Did already shows the past. The main verb goes back to its base form — no -ed after did."},
+    {"wrong": "I visited to my grandma.", "right": "I <b>visited</b> my grandma.", "why": "Visit is followed directly by the person — no to."},
+    {"wrong": "He was go to school.", "right": "He <b>went</b> to school.", "why": "Don't mix was with a base verb for a past action — just use the past simple verb."}
+  ],
+  "l1": [
+    {"es": "Fui a la playa ayer.", "wrong": "I go to the beach yesterday.", "right": "I <b>went</b> to the beach yesterday.", "why": "Spanish can tell a recent story with the present, but English always needs the past form with yesterday."},
+    {"es": "No jugué al fútbol.", "wrong": "I not played football.", "right": "I <b>didn't play</b> football.", "why": "The negative helper didn't goes before the verb; you can't just add not."},
+    {"es": "¿Jugaste fútbol?", "wrong": "Played you football?", "right": "<b>Did</b> you <b>play</b> football?", "why": "English questions need the helper did at the front, not just moving the verb."},
+    {"es": "Hace dos años fuimos a Cusco.", "wrong": "Ago two years, we went to Cusco.", "right": "Two years <b>ago</b> we went to Cusco.", "why": "Ago goes after the time word (two years ago); hace does not translate word for word."},
+    {"es": "El año pasado fuimos a la playa.", "wrong": "The past year we went to the beach.", "right": "<b>Last year</b> we went to the beach.", "why": "'El año pasado' is last year in English, not 'the past year'."}
+  ],
+  "remember": {
+    "trick": "-ed for regular, a new word for irregular!",
+    "tip": "If a verb doesn't end in -ed, it's probably irregular — go/went, see/saw, have/had. Learn them in small groups."
+  },
+  "dialogue": {
+    "title": "What did you do at the weekend?",
+    "context": "Monday morning. Miss Vega asks the class about their weekend at the beach.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Good morning! <b>Did</b> you have a good weekend?"},
+      {"speaker": "Mateo", "text": "Yes! I <b>went</b> to the beach with my family."},
+      {"speaker": "Miss Vega", "text": "Nice! What <b>did</b> you do there?"},
+      {"speaker": "Mateo", "text": "I <b>swam</b> for an hour and I <b>played</b> volleyball."},
+      {"speaker": "Nadia", "text": "I <b>found</b> a crab on the sand! It <b>was</b> huge."},
+      {"speaker": "Sofia", "text": "<b>Were</b> you scared, Nadia?"},
+      {"speaker": "Nadia", "text": "No, I <b>wasn't</b>. It <b>didn't</b> move very fast."},
+      {"speaker": "Miss Vega", "text": "Great stories! Sofia, what about you?"},
+      {"speaker": "Sofia", "text": "I <b>didn't go</b> anywhere. I <b>stayed</b> at home and I <b>studied</b> for the test."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct past simple form.",
+      "items": [
+        {"sentence": "I ___ football yesterday.", "options": ["played", "plays", "play"], "answer": 0, "why": "regular verb + ed"},
+        {"sentence": "She ___ to Cusco last year.", "options": ["goes", "went", "go"], "answer": 1, "why": "go → went"},
+        {"sentence": "___ you see the film?", "options": ["Does", "Did", "Do"], "answer": 1, "why": "question about the past"},
+        {"sentence": "They ___ tired after the trip.", "options": ["are", "were", "was"], "answer": 1, "why": "they → were"},
+        {"sentence": "He ___ his homework — he watched TV instead.", "options": ["didn't do", "doesn't do", "didn't did"], "answer": 0, "why": "didn't + base verb"},
+        {"sentence": "We ___ a great time at the beach.", "options": ["have", "haved", "had"], "answer": 2, "why": "have → had"},
+        {"sentence": "___ she study for the test?", "options": ["Did", "Was", "Does"], "answer": 0, "why": "did + base verb for the past"},
+        {"sentence": "I ___ my keys, so I couldn't open the door.", "options": ["lose", "losed", "lost"], "answer": 2, "why": "lose → lost"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the past simple form of the verb in brackets.",
+      "items": [
+        {"sentence": "Yesterday I ___ (play) tennis with Liam.", "answers": ["played"]},
+        {"sentence": "We ___ (not/have) time to visit the museum.", "answers": ["didn't have"]},
+        {"sentence": "___ (you/see) the dolphins at the beach?", "answers": ["Did you see"]},
+        {"sentence": "Nadia ___ (find) a big crab on the sand.", "answers": ["found"]},
+        {"sentence": "I ___ (not/study) yesterday — I was at the beach.", "answers": ["didn't study"]},
+        {"sentence": "Where ___ (you/go) last weekend?", "answers": ["did you go"]},
+        {"sentence": "The film ___ (be) really exciting.", "answers": ["was"]},
+        {"sentence": "They ___ (not/be) at home this morning.", "answers": ["weren't", "were not"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["to", "the beach", "Mateo", "went", "."], "answer": "Mateo went to the beach."},
+        {"words": ["didn't", "time", "We", "have", "."], "answer": "We didn't have time."},
+        {"words": ["see", "Did", "the dolphins", "you", "?"], "answer": "Did you see the dolphins?"},
+        {"words": ["found", "a big crab", "Nadia", "."], "answer": "Nadia found a big crab."},
+        {"words": ["scared", "I", "of the crab", "wasn't", "."], "answer": "I wasn't scared of the crab."},
+        {"words": ["yesterday", "Where", "did you go", "?"], "answer": "Where did you go yesterday?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I go to the beach yesterday.", "ok": false, "fix": "I <b>went</b> to the beach yesterday.", "why": "yesterday needs the past form"},
+        {"sentence": "We had a great time at the beach.", "ok": true, "why": "irregular past of have"},
+        {"sentence": "Did you played football?", "ok": false, "fix": "Did you <b>play</b> football?", "why": "no -ed after did"},
+        {"sentence": "She didn't see the shark.", "ok": true, "why": "didn't + base verb"},
+        {"sentence": "They was tired after the trip.", "ok": false, "fix": "They <b>were</b> tired after the trip.", "why": "they → were"},
+        {"sentence": "Nadia found a crab on the sand.", "ok": true, "why": "irregular past of find"},
+        {"sentence": "I not played tennis yesterday.", "ok": false, "fix": "I <b>didn't play</b> tennis yesterday.", "why": "the negative needs didn't"},
+        {"sentence": "Where did you go last weekend?", "ok": true, "why": "correct question with did + base verb"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about things that happened yesterday, last week or last year using the past simple.",
+    "I can make negatives and questions with <i>didn't</i> and <i>Did…?</i>.",
+    "I can use <i>was</i> and <i>were</i> and the most common irregular verbs (went, saw, had, found)."
+  ],
+  "summary": [
+    "Past simple = a finished action at a finished time: yesterday, last week, in 2019, two years ago.",
+    "Regular verbs add <b>-ed</b> (watch the spelling: stop → stopped, study → studied); irregular verbs change completely (go → went, see → saw).",
+    "<i>Was</i>/<i>were</i> is the past of <i>be</i>: I/he/she/it → was, you/we/they → were.",
+    "Negative: <b>didn't</b> + base verb. Question: <b>Did</b> + person + base verb — never add -ed after did.",
+    "Learn the irregular verbs in small groups — they don't follow a spelling rule."
+  ]
+}

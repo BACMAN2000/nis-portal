@@ -1,0 +1,199 @@
+{
+  "id": "prepositions-time-place",
+  "level": "ket",
+  "area": "Comparison & description",
+  "title": "Prepositions of time and place",
+  "tagline": "At six, on Monday, in May: the small words for time and place.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Listening Part 2 — note completion", "Speaking Part 2 — describing photos"],
+  "why": "Prepositions are tiny but everywhere: at, on and in change meaning completely, and verbs like listen and wait need their own partner word. In Listening Part 2 you'll hear times and dates fast, and in Reading Part 5 one wrong preposition means a wrong answer.",
+  "hook": {
+    "text": "It's Liam's first day. \"Your classroom is <b>next to</b> the library,\" says Nadia. \"Lessons start <b>at</b> eight, and football club is <b>on</b> Fridays.\" Liam looks confused: \"So many small words!\"",
+    "ask": "Next to, at and on are all small words that tell you where or when. Can you match each one to time or place?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "at, on or in? (time)",
+      "center": "Time",
+      "branches": [
+        {"label": "at", "items": ["at 6 o'clock", "at night", "at the weekend", "at Christmas"], "tone": "a"},
+        {"label": "on", "items": ["on Monday", "on my birthday", "on 3rd May"], "tone": "b"},
+        {"label": "in", "items": ["in May", "in summer", "in 2020", "in the morning"], "tone": "c"}
+      ]
+    },
+    {
+      "type": "blocks",
+      "title": "Verbs with their own preposition",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "listen", "role": "verb"}, {"t": "to", "role": "kw"}, {"t": "music", "role": "obj"}, {"t": "every day", "role": "time"}], "note": "listen + to"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "is waiting", "role": "verb"}, {"t": "for", "role": "kw"}, {"t": "the bus", "role": "obj"}], "note": "wait + for"},
+        {"parts": [{"t": "Look", "role": "verb"}, {"t": "at", "role": "kw"}, {"t": "that bird", "role": "obj"}, {"t": "!", "role": "x"}], "note": "look + at"}
+      ],
+      "caption": "Some verbs and their preposition are best learnt together, like one long word: listen-to, wait-for, look-at."
+    },
+    {
+      "type": "map",
+      "title": "Where is it? (place)",
+      "center": "Place",
+      "branches": [
+        {"label": "next to / near", "items": ["next to the door", "near the park"], "tone": "a"},
+        {"label": "opposite", "items": ["opposite the school", "opposite the bank"], "tone": "b"},
+        {"label": "between", "items": ["between the shop and the bank"], "tone": "c"},
+        {"label": "behind / in front of", "items": ["behind the house", "in front of the TV"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "at", "tone": "kw", "ex": "at 6 o'clock, at school"},
+      {"chip": "on", "tone": "a", "ex": "on Monday, on the wall"},
+      {"chip": "in", "tone": "b", "ex": "in May, in the kitchen"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "exact point / day / longer period", "tone": "c"}
+    ],
+    "table": {
+      "head": ["Preposition", "Time", "Place"],
+      "rows": [
+        ["at", "at 6 o'clock, at night, at the weekend", "at school, at the bus stop"],
+        ["on", "on Monday, on my birthday, on 3rd May", "on the wall, on the table"],
+        ["in", "in May, in summer, in 2020", "in the kitchen, in Peru"],
+        ["other", "from 9 to 5, until Friday, by 6, during the film, for two hours", "next to, opposite, between, behind, in front of, near"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "at, on, in for time",
+      "examples": [
+        {"text": "We start school <b>at</b> eight o'clock.", "note": "an exact time → at"},
+        {"text": "My birthday is <b>on</b> the third of May.", "note": "days and dates → on"},
+        {"text": "It always rains <b>in</b> February.", "note": "months, years and seasons → in"}
+      ]
+    },
+    {
+      "point": "at, on, in for place",
+      "examples": [
+        {"text": "Nadia is <b>at</b> school today.", "note": "a point or building → at"},
+        {"text": "There's a spider <b>on</b> the wall.", "note": "a surface → on"},
+        {"text": "My keys are <b>in</b> my bag.", "note": "inside something → in"}
+      ]
+    },
+    {
+      "point": "from…to, until, by, during, for",
+      "examples": [
+        {"text": "The shop is open <b>from</b> nine <b>to</b> five.", "note": "from…to shows the start and end"},
+        {"text": "Please finish your homework <b>by</b> Friday.", "note": "by = not later than"},
+        {"text": "We stayed at my grandma's house <b>for</b> two weeks <b>during</b> the holidays.", "note": "for + a length of time, during + an event"}
+      ]
+    },
+    {
+      "point": "Place prepositions and verbs + preposition",
+      "examples": [
+        {"text": "The bank is <b>opposite</b> the school, <b>next to</b> the bakery.", "note": "opposite = across from; next to = right beside"},
+        {"text": "Liam is sitting <b>between</b> Sofia and Nadia.", "note": "between = with one thing on each side"},
+        {"text": "I always <b>listen to</b> music on the bus.", "note": "listen always needs to"},
+        {"text": "We're <b>waiting for</b> the bus.", "note": "wait always needs for"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I wake up in six o'clock.", "right": "I wake up <b>at</b> six o'clock.", "why": "Exact clock times always use at."},
+    {"wrong": "My birthday is in Monday.", "right": "My birthday is <b>on</b> Monday.", "why": "Days of the week use on, not in."},
+    {"wrong": "She listens music every day.", "right": "She listens <b>to</b> music every day.", "why": "Listen always needs to before the thing you hear."},
+    {"wrong": "We are waiting the bus.", "right": "We are waiting <b>for</b> the bus.", "why": "Wait always needs for before the thing you're waiting for."},
+    {"wrong": "The bank is opposite to the school.", "right": "The bank is <b>opposite</b> the school.", "why": "Opposite doesn't need to after it."}
+  ],
+  "l1": [
+    {"es": "Nos vemos a las seis.", "wrong": "See you in six o'clock.", "right": "See you <b>at</b> six o'clock.", "why": "Exact clock times use at, never in."},
+    {"es": "Escucho música.", "wrong": "I listen music.", "right": "I listen <b>to</b> music.", "why": "Spanish escuchar has no preposition, but English listen always needs to."},
+    {"es": "Mi cumpleaños es en mayo.", "wrong": "My birthday is at May.", "right": "My birthday is <b>in</b> May.", "why": "Months use in, not at — even though Spanish en can feel like at."},
+    {"es": "Espero el bus.", "wrong": "I wait the bus.", "right": "I wait <b>for</b> the bus.", "why": "Spanish esperar has no preposition, but English wait always needs for."}
+  ],
+  "remember": {
+    "trick": "AT a point, ON a day or surface, IN a space or period.",
+    "tip": "Think of at as a tiny dot (6 o'clock, the bus stop), on as a flat line or day (Monday, the wall), and in as a box (May, the kitchen)."
+  },
+  "dialogue": {
+    "title": "Finding your way around",
+    "context": "It's Liam's first week. Nadia shows him around the school and explains the timetable.",
+    "lines": [
+      {"speaker": "Nadia", "text": "Your classroom is <b>next to</b> the library, <b>opposite</b> the school office."},
+      {"speaker": "Liam", "text": "And where's the canteen?"},
+      {"speaker": "Nadia", "text": "It's <b>behind</b> the gym, <b>between</b> the music room and the art room."},
+      {"speaker": "Liam", "text": "Thanks. What time do lessons start?"},
+      {"speaker": "Nadia", "text": "We start <b>at</b> eight o'clock, and we have lunch <b>at</b> half past twelve."},
+      {"speaker": "Liam", "text": "And the football club — is it <b>on</b> Fridays?"},
+      {"speaker": "Nadia", "text": "Yes, <b>on</b> Fridays, <b>from</b> four <b>to</b> five. You should <b>listen to</b> the announcements <b>in</b> the morning."},
+      {"speaker": "Liam", "text": "Great, I'll <b>wait for</b> you <b>at</b> the gate tomorrow!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct preposition.",
+      "items": [
+        {"sentence": "We start school ___ eight o'clock.", "options": ["at", "on", "in"], "answer": 0, "why": "exact clock time → at"},
+        {"sentence": "My birthday is ___ the third of May.", "options": ["at", "on", "in"], "answer": 1, "why": "a date → on"},
+        {"sentence": "It always rains ___ February.", "options": ["at", "on", "in"], "answer": 2, "why": "a month → in"},
+        {"sentence": "There's a spider ___ the wall.", "options": ["in", "on", "at"], "answer": 1, "why": "a surface → on"},
+        {"sentence": "My keys are ___ my bag.", "options": ["at", "on", "in"], "answer": 2, "why": "inside something → in"},
+        {"sentence": "Please finish your homework ___ Friday.", "options": ["until", "by", "during"], "answer": 1, "why": "by = not later than"},
+        {"sentence": "I always listen ___ music on the bus.", "options": ["at", "to", "for"], "answer": 1, "why": "listen always needs to"},
+        {"sentence": "We're waiting ___ the bus.", "options": ["for", "to", "at"], "answer": 0, "why": "wait always needs for"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct preposition: at, on, in, by, to or for.",
+      "items": [
+        {"sentence": "We start school ___ eight o'clock.", "answers": ["at"]},
+        {"sentence": "My birthday is ___ the third of May.", "answers": ["on"]},
+        {"sentence": "It always rains ___ February.", "answers": ["in"]},
+        {"sentence": "There's a spider ___ the wall.", "answers": ["on"]},
+        {"sentence": "My keys are ___ my bag.", "answers": ["in"]},
+        {"sentence": "Please finish your homework ___ Friday.", "answers": ["by"]},
+        {"sentence": "I always listen ___ music on the bus.", "answers": ["to"]},
+        {"sentence": "We're waiting ___ the bus.", "answers": ["for"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["at eight o'clock", "start school", "We", "."], "answer": "We start school at eight o'clock."},
+        {"words": ["is on the third of May", "My birthday", "."], "answer": "My birthday is on the third of May."},
+        {"words": ["on the wall", "There's a spider", "."], "answer": "There's a spider on the wall."},
+        {"words": ["are in my bag", "My keys", "."], "answer": "My keys are in my bag."},
+        {"words": ["by Friday", "finish your homework", "Please", "."], "answer": "Please finish your homework by Friday."},
+        {"words": ["waiting for the bus", "We're", "."], "answer": "We're waiting for the bus."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I wake up in six o'clock.", "ok": false, "fix": "I wake up <b>at</b> six o'clock.", "why": "exact clock times use at"},
+        {"sentence": "My birthday is on the third of May.", "ok": true, "why": "a date uses on"},
+        {"sentence": "She listens music every day.", "ok": false, "fix": "She listens <b>to</b> music every day.", "why": "listen always needs to"},
+        {"sentence": "There's a spider on the wall.", "ok": true, "why": "a surface uses on"},
+        {"sentence": "We are waiting the bus.", "ok": false, "fix": "We are waiting <b>for</b> the bus.", "why": "wait always needs for"},
+        {"sentence": "The bank is opposite the school.", "ok": true, "why": "opposite doesn't need to after it"},
+        {"sentence": "It always rains in February.", "ok": true, "why": "months use in"},
+        {"sentence": "My birthday is in Monday.", "ok": false, "fix": "My birthday is <b>on</b> Monday.", "why": "days of the week use on, not in"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use <i>at, on</i> and <i>in</i> for the right kind of time and place.",
+    "I can use <i>next to, opposite, between, behind</i> and <i>in front of</i> to describe where things are.",
+    "I can use the right preposition after verbs like <i>listen to, wait for</i> and <i>look at</i>."
+  ],
+  "summary": [
+    "Use <b>at</b> for an exact time or a point in place: <i>at 6 o'clock, at school</i>.",
+    "Use <b>on</b> for days, dates and surfaces: <i>on Monday, on the wall</i>.",
+    "Use <b>in</b> for months, years, seasons and spaces: <i>in May, in the kitchen</i>.",
+    "Some verbs always need a preposition: <i>listen to, wait for, look at</i> — learn them together as one chunk."
+  ]
+}

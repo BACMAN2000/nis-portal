@@ -1,0 +1,675 @@
+{
+  "id": "present-perfect-b1",
+  "level": "pet",
+  "area": "Tenses & time",
+  "title": "Present perfect simple and continuous",
+  "tagline": "Started in the past, still true now — the tense that links yesterday to today.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Speaking Part 1 — talking about your experiences"
+  ],
+  "why": "B1 Preliminary loves asking about your life so far — jobs, places, things you have or haven't done — and that means have/has + past participle, not the past simple. The cloze and the open cloze both test for vs since, been vs gone and the exact moment when already becomes yesterday, so this is one of the highest-value grammar points in the whole exam.",
+  "hook": {
+    "text": "Sofia: “How long <b>have</b> you <b>worked</b> at the bakery?” Liam: “I<b>'ve worked</b> there since June — I<b>'ve</b> just <b>finished</b> my first month!” Nadia: “Have you ever made bread yourself?”",
+    "ask": "Liam started the job in the past, but he's still doing it now. Find the verb forms that connect his past start to the present — what pattern do they follow?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "A line from the past to now",
+      "marks": [
+        {
+          "at": "before-past",
+          "label": "Liam started the job",
+          "sub": "since June — the beginning point"
+        },
+        {
+          "at": "now",
+          "label": "he's still working there",
+          "sub": "present perfect — the result continues now"
+        }
+      ],
+      "arrows": [
+        [
+          0,
+          1,
+          "since June, right up to now, unbroken"
+        ]
+      ],
+      "caption": "The present perfect draws one unbroken line from a past point to this exact moment."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Liam",
+              "role": "subj"
+            },
+            {
+              "t": "has",
+              "role": "aux"
+            },
+            {
+              "t": "worked",
+              "role": "verb"
+            },
+            {
+              "t": "at the bakery",
+              "role": "place"
+            },
+            {
+              "t": "since June",
+              "role": "time"
+            }
+          ],
+          "note": "present perfect simple — statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "Liam",
+              "role": "subj"
+            },
+            {
+              "t": "hasn't",
+              "role": "neg"
+            },
+            {
+              "t": "missed",
+              "role": "verb"
+            },
+            {
+              "t": "a single shift",
+              "role": "obj"
+            }
+          ],
+          "note": "present perfect simple — negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Has",
+              "role": "aux"
+            },
+            {
+              "t": "Liam",
+              "role": "subj"
+            },
+            {
+              "t": "ever",
+              "role": "x"
+            },
+            {
+              "t": "made",
+              "role": "verb"
+            },
+            {
+              "t": "bread",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "present perfect simple — question"
+        },
+        {
+          "parts": [
+            {
+              "t": "Liam",
+              "role": "subj"
+            },
+            {
+              "t": "has",
+              "role": "aux"
+            },
+            {
+              "t": "been working",
+              "role": "verb"
+            },
+            {
+              "t": "there",
+              "role": "place"
+            },
+            {
+              "t": "for three months",
+              "role": "time"
+            }
+          ],
+          "note": "present perfect continuous — focus on the activity itself"
+        }
+      ],
+      "caption": "Has/have + past participle gives the result; has/have been + -ing gives the ongoing activity."
+    },
+    {
+      "type": "contrast",
+      "title": "Present perfect or past simple?",
+      "columns": [
+        "Present perfect",
+        "Past simple"
+      ],
+      "rows": [
+        {
+          "label": "Use",
+          "cells": [
+            "unfinished time, a connection to now",
+            "finished time, no connection to now"
+          ]
+        },
+        {
+          "label": "Time words",
+          "cells": [
+            "for, since, ever, never, just, already, yet, still",
+            "yesterday, last month, in 2023, two weeks ago"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "I<b>'ve worked</b> here for three months.",
+            "I <b>started</b> in June."
+          ]
+        },
+        {
+          "label": "been vs gone",
+          "cells": [
+            "She<b>'s been</b> to the market (she's back).",
+            "She<b>'s gone</b> to the market (still there)."
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "have/has(n't)",
+        "tone": "kw"
+      },
+      {
+        "chip": "past participle",
+        "tone": "a",
+        "ex": "have worked"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "have/has(n't) been",
+        "tone": "kw"
+      },
+      {
+        "chip": "verb-ing",
+        "tone": "b",
+        "ex": "has been working"
+      }
+    ],
+    "table": {
+      "head": [
+        "Form",
+        "Positive",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "Present perfect simple",
+          "She has worked here for a year.",
+          "She hasn't worked here for a year.",
+          "Has she worked here for a year?"
+        ],
+        [
+          "Present perfect continuous",
+          "She has been working here since June.",
+          "She hasn't been working here since June.",
+          "Has she been working here since June?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "for, since, ever and never",
+      "examples": [
+        {
+          "text": "Liam <b>has worked</b> at the bakery <b>for</b> three months.",
+          "note": "for + a length of time"
+        },
+        {
+          "text": "He<b>'s worked</b> there <b>since</b> June.",
+          "note": "since + the starting point"
+        },
+        {
+          "text": "<b>Have</b> you <b>ever tried</b> making bread?",
+          "note": "ever = at any time up to now, in a question"
+        }
+      ]
+    },
+    {
+      "point": "just, already, yet and still",
+      "examples": [
+        {
+          "text": "Liam <b>has</b> just <b>finished</b> his shift.",
+          "note": "just = a moment ago"
+        },
+        {
+          "text": "He<b>'s</b> already <b>learnt</b> how to use the oven.",
+          "note": "already = sooner than expected"
+        },
+        {
+          "text": "He <b>hasn't finished</b> cleaning <b>yet</b>.",
+          "note": "yet = up to now, in a negative or a question"
+        }
+      ]
+    },
+    {
+      "point": "Present perfect vs past simple, and been vs gone",
+      "examples": [
+        {
+          "text": "I<b>'ve worked</b> here for three months, and I still work here now.",
+          "note": "unfinished time — the job continues"
+        },
+        {
+          "text": "I <b>started</b> the job in June.",
+          "note": "past simple — a finished action with a specific time"
+        },
+        {
+          "text": "Sofia<b>'s been</b> to the bakery to buy bread — she's back already.",
+          "note": "been to = went and came back"
+        }
+      ]
+    },
+    {
+      "point": "Present perfect continuous for how long something has been happening",
+      "examples": [
+        {
+          "text": "Liam <b>has been working</b> there for three months now.",
+          "note": "the focus is the ongoing activity, not just the result"
+        },
+        {
+          "text": "How long <b>have</b> you <b>been learning</b> to bake?",
+          "note": "How long…? + present perfect continuous"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I work here since June.",
+      "right": "I<b>'ve worked</b> here since June.",
+      "why": "Since connects a past start to now, so it needs the present perfect, not the present simple."
+    },
+    {
+      "wrong": "I have worked here since three months.",
+      "right": "I<b>'ve worked</b> here for three months / since June.",
+      "why": "For + a length of time, since + a point in time — don't mix them up."
+    },
+    {
+      "wrong": "I have seen him yesterday.",
+      "right": "I <b>saw</b> him yesterday.",
+      "why": "Yesterday is a finished time word, so it needs the past simple, never the present perfect."
+    },
+    {
+      "wrong": "She has went to the market.",
+      "right": "She<b>'s gone</b> to the market.",
+      "why": "The past participle of go is gone, not went."
+    },
+    {
+      "wrong": "She has been to the shop, she isn't back yet.",
+      "right": "She<b>'s gone</b> to the shop — she isn't back yet.",
+      "why": "Been to = went and came back; gone to = went and is still there."
+    },
+    {
+      "wrong": "How long do you work here?",
+      "right": "How long <b>have</b> you <b>worked</b> here?",
+      "why": "A question about an action that started in the past and continues needs the present perfect."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Vivo aquí desde 2020.",
+      "wrong": "I live here since 2020.",
+      "right": "I<b>'ve lived</b> here since 2020.",
+      "why": "Spanish uses the present tense with desde; English needs the present perfect for an action that continues to now."
+    },
+    {
+      "es": "Ya terminé la tarea.",
+      "wrong": "I have finished the homework already, yesterday.",
+      "right": "I<b>'ve</b> already <b>finished</b> the homework.",
+      "why": "Already goes with the present perfect (no exact time); a specific time word like yesterday needs the past simple instead."
+    },
+    {
+      "es": "Nunca he probado el ceviche.",
+      "wrong": "I never tried ceviche.",
+      "right": "I<b>'ve never tried</b> ceviche.",
+      "why": "An experience up to now (nunca + present perfect in Spanish) needs the present perfect in English too."
+    },
+    {
+      "es": "Fue a la tienda (y ya volvió).",
+      "wrong": "She has gone to the shop and she's back.",
+      "right": "She<b>'s been</b> to the shop and she's back.",
+      "why": "Been to shows a completed round trip; gone to means the person is still away."
+    }
+  ],
+  "remember": {
+    "trick": "Started in the past, still true? Use HAVE!",
+    "tip": "If you can add since or for and the action is still true now, use the present perfect, not the past simple."
+  },
+  "dialogue": {
+    "title": "Liam's first month at the bakery",
+    "context": "Sofia and Nadia ask Liam about his new part-time job at his uncle's bakery.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "How long <b>have</b> you <b>worked</b> at the bakery?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "I<b>'ve worked</b> there since June — I<b>'ve</b> just <b>finished</b> my first month!"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>Have</b> you ever <b>made</b> bread by yourself?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Yes, I<b>'ve</b> already <b>learnt</b> two recipes."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Has</b> your uncle <b>taught</b> you to use the big oven yet?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Not yet — I <b>haven't used</b> it on my own."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Sofia<b>'s been</b> to the bakery loads of times — she loves your bread!"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "True! I bought some just yesterday, actually."
+      },
+      {
+        "speaker": "Liam",
+        "text": "I<b>'ve been working</b> really hard, so business is getting better."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "How long <b>have</b> you <b>been learning</b> to bake at home too?"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "How long ___ you worked at the bakery?",
+          "options": [
+            "have",
+            "did",
+            "do"
+          ],
+          "answer": 0,
+          "why": "an action that started in the past and continues"
+        },
+        {
+          "sentence": "I've worked there ___ June.",
+          "options": [
+            "for",
+            "since",
+            "from"
+          ],
+          "answer": 1,
+          "why": "since + the starting point"
+        },
+        {
+          "sentence": "___ you ever tried ceviche?",
+          "options": [
+            "Did",
+            "Do",
+            "Have"
+          ],
+          "answer": 2,
+          "why": "ever asks about experience up to now"
+        },
+        {
+          "sentence": "She ___ to the shop — she's still there.",
+          "options": [
+            "has gone",
+            "has been",
+            "went"
+          ],
+          "answer": 0,
+          "why": "gone to = still there"
+        },
+        {
+          "sentence": "I ___ him yesterday at the market.",
+          "options": [
+            "have seen",
+            "saw",
+            "see"
+          ],
+          "answer": 1,
+          "why": "yesterday needs the past simple"
+        },
+        {
+          "sentence": "He hasn't finished his homework ___.",
+          "options": [
+            "already",
+            "just",
+            "yet"
+          ],
+          "answer": 2,
+          "why": "yet in a negative sentence"
+        },
+        {
+          "sentence": "Liam ___ working at the bakery for three months now.",
+          "options": [
+            "has been",
+            "is",
+            "was"
+          ],
+          "answer": 0,
+          "why": "present perfect continuous with for"
+        },
+        {
+          "sentence": "I've ___ finished my shift — five minutes ago!",
+          "options": [
+            "never",
+            "just",
+            "yet"
+          ],
+          "answer": 1,
+          "why": "just = a moment ago"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "How long ___ (you/work) at the bakery?",
+          "answers": [
+            "have you worked"
+          ]
+        },
+        {
+          "sentence": "I ___ (work) here since June.",
+          "answers": [
+            "have worked",
+            "'ve worked"
+          ]
+        },
+        {
+          "sentence": "___ you ever ___ (try) ceviche?",
+          "answers": [
+            "Have … tried",
+            "Have you tried"
+          ]
+        },
+        {
+          "sentence": "She ___ (go) to the shop — she's still there.",
+          "answers": [
+            "has gone"
+          ]
+        },
+        {
+          "sentence": "I ___ (see) him yesterday at the market.",
+          "answers": [
+            "saw"
+          ]
+        },
+        {
+          "sentence": "He ___ (not/finish) his homework yet.",
+          "answers": [
+            "hasn't finished"
+          ]
+        },
+        {
+          "sentence": "Liam ___ (work) at the bakery for three months now.",
+          "answers": [
+            "has been working"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "at the bakery",
+            "have",
+            "How long",
+            "you worked",
+            "?"
+          ],
+          "answer": "How long have you worked at the bakery?"
+        },
+        {
+          "words": [
+            "since June",
+            "I've worked",
+            "there",
+            "."
+          ],
+          "answer": "I've worked there since June."
+        },
+        {
+          "words": [
+            "ceviche",
+            "you ever tried",
+            "Have",
+            "?"
+          ],
+          "answer": "Have you ever tried ceviche?"
+        },
+        {
+          "words": [
+            "to the shop",
+            "gone",
+            "She has",
+            "."
+          ],
+          "answer": "She has gone to the shop."
+        },
+        {
+          "words": [
+            "at the market",
+            "yesterday",
+            "I saw him",
+            "."
+          ],
+          "answer": "I saw him yesterday at the market."
+        },
+        {
+          "words": [
+            "for three months",
+            "has been working",
+            "Liam",
+            "now",
+            "."
+          ],
+          "answer": "Liam has been working for three months now."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Liam started this job in June, and he still works there.",
+          "key": "WORKED",
+          "second_start": "Liam",
+          "second_end": "here since June.",
+          "answers": [
+            "has worked"
+          ]
+        },
+        {
+          "first": "This is the first time Sofia has tried ceviche.",
+          "key": "NEVER",
+          "second_start": "Sofia",
+          "second_end": "ceviche before.",
+          "answers": [
+            "has never tried",
+            "'s never tried"
+          ]
+        },
+        {
+          "first": "Liam finished his shift a moment ago.",
+          "key": "JUST",
+          "second_start": "Liam",
+          "second_end": "his shift.",
+          "answers": [
+            "has just finished"
+          ]
+        },
+        {
+          "first": "Nadia went to the market yesterday and she is back now.",
+          "key": "BEEN",
+          "second_start": "Nadia",
+          "second_end": "to the market.",
+          "answers": [
+            "has been"
+          ]
+        },
+        {
+          "first": "The homework isn't finished.",
+          "key": "YET",
+          "second_start": "He",
+          "second_end": "his homework.",
+          "answers": [
+            "hasn't finished yet"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about experiences and unfinished time with for, since, ever and never.",
+    "I can use just, already, yet and still with the present perfect.",
+    "I can choose between the present perfect and the past simple, and between been and gone."
+  ],
+  "summary": [
+    "Present perfect = have/has + past participle, connecting the past to now.",
+    "For + a length of time, since + a starting point, ever/never for experience, just/already/yet/still for recent news.",
+    "A specific past time word (yesterday, last year) always needs the past simple, not the present perfect.",
+    "Been to = went and came back; gone to = went and hasn't come back yet.",
+    "Present perfect continuous (have/has been + -ing) focuses on the activity itself, often with how long."
+  ]
+}

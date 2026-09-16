@@ -1,0 +1,202 @@
+{
+  "id": "pronouns-possessives",
+  "level": "ket",
+  "area": "Comparison & description",
+  "title": "Pronouns and possessives",
+  "tagline": "I, me, my, mine: pronouns and possessives for people and things.",
+  "cefr": "A2",
+  "exam": ["Reading Part 6 — open cloze", "Speaking Part 1 — questions about you"],
+  "why": "Pronouns save you from repeating names all the time, and possessives show who owns what — both come up in almost every sentence you say or write. Reading Part 6 loves testing whose, mine and each other because one small word changes the whole meaning.",
+  "hook": {
+    "text": "Miss Vega opens the lost property box. \"Whose jacket is this?\" she asks. \"It's not <b>mine</b>,\" says Liam. \"<b>Mine</b> is red.\" \"I think it's <b>Nadia's</b>,\" says Sofia.",
+    "ask": "Mine and Nadia's both show who owns something, but they work in different ways. Can you see how?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Four kinds of pronoun",
+      "center": "Pronouns",
+      "branches": [
+        {"label": "Subject", "items": ["I, you, he, she, it, we, they"], "tone": "a"},
+        {"label": "Object", "items": ["me, you, him, her, it, us, them"], "tone": "b"},
+        {"label": "Possessive adjective", "items": ["my, your, his, her, its, our, their"], "tone": "c"},
+        {"label": "Possessive pronoun", "items": ["mine, yours, his, hers, ours, theirs"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "blocks",
+      "title": "Where does the pronoun go?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "likes", "role": "verb"}, {"t": "him", "role": "obj"}], "note": "subject pronoun + object pronoun"},
+        {"parts": [{"t": "This", "role": "x"}, {"t": "is", "role": "aux"}, {"t": "my", "role": "kw"}, {"t": "book", "role": "obj"}], "note": "possessive adjective + noun"},
+        {"parts": [{"t": "That", "role": "x"}, {"t": "book", "role": "x"}, {"t": "is", "role": "aux"}, {"t": "mine", "role": "kw"}], "note": "possessive pronoun — no noun after it"}
+      ],
+      "caption": "My, your and her always bring a noun with them; mine, yours and hers stand alone."
+    },
+    {
+      "type": "spelling",
+      "title": "The apostrophe s",
+      "rules": [
+        {"rule": "One person: add 's", "examples": ["Sofia → Sofia<b>'s</b> bag", "the boy → the boy<b>'s</b> book"]},
+        {"rule": "Plural ending in -s: add just '", "examples": ["the boys → the boys<b>'</b> football", "my parents → my parents<b>'</b> car"]},
+        {"rule": "Irregular plural: add 's", "examples": ["children → children<b>'s</b> toys", "people → people<b>'s</b> opinions"]}
+      ],
+      "caption": "Listen for the sound: boys' and boy's sound almost the same, but the writing is different."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "a", "ex": "she"},
+      {"chip": "verb", "tone": "kw"},
+      {"chip": "object", "tone": "b", "ex": "him"},
+      {"chip": "possessive", "tone": "c", "ex": "her book / it's hers"}
+    ],
+    "table": {
+      "head": ["Subject", "Object", "Possessive adj.", "Possessive pronoun"],
+      "rows": [
+        ["I", "me", "my", "mine"],
+        ["you", "you", "your", "yours"],
+        ["he", "him", "his", "his"],
+        ["she", "her", "her", "hers"],
+        ["it", "it", "its", "—"],
+        ["we", "us", "our", "ours"],
+        ["they", "them", "their", "theirs"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Subject and object pronouns",
+      "examples": [
+        {"text": "<b>She</b> knows <b>him</b> from football club.", "note": "she = subject, him = object"},
+        {"text": "<b>We</b> saw <b>them</b> at the park.", "note": "we = subject, them = object"},
+        {"text": "Can you help <b>me</b>, please?", "note": "me = object, after a verb"}
+      ]
+    },
+    {
+      "point": "my vs mine: possessive adjective and possessive pronoun",
+      "examples": [
+        {"text": "This is <b>my</b> pencil case.", "note": "my + noun (pencil case)"},
+        {"text": "Is this pencil case <b>yours</b>?", "note": "yours has no noun after it"},
+        {"text": "That's not <b>her</b> bag — it's <b>hers</b>.", "note": "her + noun, but hers stands alone"}
+      ]
+    },
+    {
+      "point": "The apostrophe s and whose",
+      "examples": [
+        {"text": "<b>Sofia's</b> dog is very friendly.", "note": "one person → 's"},
+        {"text": "<b>Whose</b> jacket is this? — It's <b>Liam's</b>.", "note": "whose asks who owns it"},
+        {"text": "The <b>children's</b> books are on that shelf.", "note": "irregular plural still takes 's"}
+      ]
+    },
+    {
+      "point": "one/ones, reflexive pronouns, each other, some-/any-/every- words",
+      "examples": [
+        {"text": "I don't like this pen. Can I have the blue <b>one</b>?", "note": "one replaces a singular noun"},
+        {"text": "These shoes are old — I need new <b>ones</b>.", "note": "ones replaces a plural noun"},
+        {"text": "Liam hurt <b>himself</b> playing football.", "note": "reflexive — the action comes back to the subject"},
+        {"text": "Sofia and Nadia always help <b>each other</b> with homework.", "note": "each other = two people, both directions"},
+        {"text": "Is there <b>anyone</b> in the classroom? I can't find my bag <b>anywhere</b>.", "note": "someone/anyone/anywhere for people and places"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Me and him are friends.", "right": "<b>He</b> and <b>I</b> are friends.", "why": "Use subject pronouns before the verb, not object pronouns."},
+    {"wrong": "This is my's book.", "right": "This is <b>mine</b>.", "why": "Mine already means 'my book' — never add 's to a possessive pronoun."},
+    {"wrong": "Whose is this jacket? It's Liam.", "right": "Whose jacket is this? It's <b>Liam's</b>.", "why": "You need the apostrophe s to show it belongs to Liam."},
+    {"wrong": "I need a new one shoes.", "right": "I need new <b>ones</b>.", "why": "Ones replaces a plural noun — no a before it."},
+    {"wrong": "He hurt him playing football.", "right": "He hurt <b>himself</b> playing football.", "why": "When the action comes back to the same person, use a reflexive pronoun."}
+  ],
+  "l1": [
+    {"es": "Él y yo somos amigos.", "wrong": "Him and me are friends.", "right": "<b>He</b> and <b>I</b> are friends.", "why": "Before a verb, English needs subject pronouns, even when Spanish word order feels different."},
+    {"es": "Es mío.", "wrong": "It's my.", "right": "It's <b>mine</b>.", "why": "My always needs a noun after it; mine stands alone."},
+    {"es": "Se lastimó.", "wrong": "He hurt him.", "right": "He hurt <b>himself</b>.", "why": "Spanish se often becomes a reflexive pronoun like himself in English, not him."},
+    {"es": "¿De quién es esta chaqueta?", "wrong": "Who is this jacket?", "right": "<b>Whose</b> is this jacket?", "why": "Whose asks about ownership; who asks about a person's identity."}
+  ],
+  "remember": {
+    "trick": "MY needs a noun. MINE stands alone!",
+    "tip": "If a noun comes right after the word, it's my/your/her. If the word stands by itself, it's mine/yours/hers."
+  },
+  "dialogue": {
+    "title": "The lost property box",
+    "context": "Miss Vega opens the lost property box and the students try to find their things.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Whose jacket is this? Is it <b>yours</b>, Liam?"},
+      {"speaker": "Liam", "text": "No, it's not <b>mine</b>. <b>Mine</b> is red."},
+      {"speaker": "Sofia", "text": "It looks like <b>Nadia's</b>. She lost <b>hers</b> yesterday."},
+      {"speaker": "Nadia", "text": "Yes, it's <b>mine</b>! Thank you!"},
+      {"speaker": "Miss Vega", "text": "And these pens — does <b>anyone</b> recognise them?"},
+      {"speaker": "Mateo", "text": "I lost my blue pen. Can I have the blue <b>one</b>?"},
+      {"speaker": "Liam", "text": "Careful, Mateo — don't hurt <b>yourself</b> reaching over the box!"},
+      {"speaker": "Nadia", "text": "We should help <b>each other</b> find our things next time."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word or words.",
+      "items": [
+        {"sentence": "___ knows him from football club.", "options": ["She", "Her", "She's"], "answer": 0, "why": "subject pronoun before the verb"},
+        {"sentence": "Can you help ___, please?", "options": ["I", "me", "my"], "answer": 1, "why": "object pronoun after help"},
+        {"sentence": "Is this pencil case ___?", "options": ["your", "yours", "you"], "answer": 1, "why": "possessive pronoun stands alone"},
+        {"sentence": "___ dog is very friendly.", "options": ["Sofia's", "Sofias", "Sofia"], "answer": 0, "why": "apostrophe s shows who owns the dog"},
+        {"sentence": "___ jacket is this?", "options": ["Who", "Whose", "Who's"], "answer": 1, "why": "whose asks about ownership"},
+        {"sentence": "I don't like this pen. Can I have the blue ___?", "options": ["one", "ones", "it"], "answer": 0, "why": "one replaces a singular noun"},
+        {"sentence": "Liam hurt ___ playing football.", "options": ["him", "he", "himself"], "answer": 2, "why": "reflexive pronoun: the action comes back to Liam"},
+        {"sentence": "Sofia and Nadia always help ___ with homework.", "options": ["themselves", "each other", "them"], "answer": 1, "why": "each other = two people helping one another"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct pronoun or possessive.",
+      "items": [
+        {"sentence": "___ (she) knows him from football club.", "answers": ["She"]},
+        {"sentence": "Can you help ___ (I), please?", "answers": ["me"]},
+        {"sentence": "Is this pencil case ___ (you)?", "answers": ["yours"]},
+        {"sentence": "___ (Sofia) dog is very friendly.", "answers": ["Sofia's"]},
+        {"sentence": "___ jacket is this?", "answers": ["Whose"]},
+        {"sentence": "I don't like this pen. Can I have the blue ___?", "answers": ["one"]},
+        {"sentence": "Liam hurt ___ (he) playing football.", "answers": ["himself"]},
+        {"sentence": "Sofia and Nadia always help ___ with homework.", "answers": ["each other"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["from football club", "knows him", "She", "."], "answer": "She knows him from football club."},
+        {"words": ["please", "you help me", "Can", "?"], "answer": "Can you help me please?"},
+        {"words": ["is yours", "This pencil case", "."], "answer": "This pencil case is yours."},
+        {"words": ["is very friendly", "Sofia's dog", "."], "answer": "Sofia's dog is very friendly."},
+        {"words": ["playing football", "hurt himself", "Liam", "."], "answer": "Liam hurt himself playing football."},
+        {"words": ["always help each other", "They", "."], "answer": "They always help each other."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "Me and him are friends.", "ok": false, "fix": "<b>He</b> and <b>I</b> are friends.", "why": "subject pronouns before the verb, not object pronouns"},
+        {"sentence": "She knows him from football club.", "ok": true, "why": "subject + object pronoun correctly placed"},
+        {"sentence": "This is my's book.", "ok": false, "fix": "This is <b>mine</b>.", "why": "mine already means 'my book' — never add 's"},
+        {"sentence": "Is this pencil case yours?", "ok": true, "why": "yours stands alone, no noun needed"},
+        {"sentence": "Whose is this jacket? It's Liam.", "ok": false, "fix": "It's <b>Liam's</b>.", "why": "you need 's to show ownership"},
+        {"sentence": "The children's books are on that shelf.", "ok": true, "why": "irregular plural children still takes 's"},
+        {"sentence": "I need a new one shoes.", "ok": false, "fix": "I need new <b>ones</b>.", "why": "ones replaces a plural noun, no a before it"},
+        {"sentence": "Liam hurt himself playing football.", "ok": true, "why": "reflexive pronoun: the action comes back to Liam"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use subject pronouns (I, she) and object pronouns (me, her) correctly.",
+    "I can choose between <i>my</i> and <i>mine</i>, and use <i>'s</i> to show who something belongs to.",
+    "I can use <i>one/ones</i>, <i>myself/each other</i> and words like <i>someone/anywhere</i>."
+  ],
+  "summary": [
+    "Subject pronouns (<i>I, she, they</i>) go before the verb; object pronouns (<i>me, her, them</i>) go after it.",
+    "My, your, her + noun; mine, yours, hers alone — never add 's to mine, yours or hers.",
+    "Add <b>'s</b> to show who owns something: <i>Sofia's bag</i>; ask with <b>whose</b>.",
+    "One/ones replace a noun, reflexive pronouns (myself) show the action comes back, and each other means one to the other."
+  ]
+}

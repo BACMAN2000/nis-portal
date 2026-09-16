@@ -1,0 +1,697 @@
+{
+  "id": "be-am-is-are",
+  "level": "a1",
+  "area": "First words, first sentences",
+  "title": "The verb be: am, is, are",
+  "tagline": "The most important verb in English: who you are, where you are and how you feel.",
+  "cefr": "A1",
+  "exam": [
+    "Speaking Part 1 — questions about you",
+    "Reading Part 1 — signs and messages",
+    "Writing Part 6 — a short email"
+  ],
+  "why": "<i>Be</i> is in almost every conversation: your name, your age, where you are from, how you feel. In Speaking Part 1 the examiner asks <i>Where are you from?</i> and <i>How old are you?</i> — and you answer with <i>be</i>. If you say <i>I have twelve years</i>, everybody understands you, but it is a mistake. Get this verb right and you sound like a real English speaker from your first sentence.",
+  "hook": {
+    "text": "It's Monday morning. Sofia is at the school gate. <b>Where's</b> Mateo? <b>Is</b> he at home? No — look! He<b>'s</b> here, and he <b>is</b> very late. \"Sorry! I<b>'m</b> tired,\" he says. \"We<b>'re</b> all tired,\" says Nadia. \"It<b>'s</b> Monday!\"",
+    "ask": "The verb <i>be</i> has three shapes: <b>am</b>, <b>is</b> and <b>are</b>. Can you find all of them in the story? (Careful — some are hiding inside short forms like <i>he's</i>.)"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence with be",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "am",
+              "role": "kw"
+            },
+            {
+              "t": "twelve",
+              "role": "x"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "She",
+              "role": "subj"
+            },
+            {
+              "t": "is",
+              "role": "kw"
+            },
+            {
+              "t": "not",
+              "role": "neg"
+            },
+            {
+              "t": "at school",
+              "role": "place"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Are",
+              "role": "kw"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "from Lima",
+              "role": "place"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question — be jumps to the front"
+        },
+        {
+          "parts": [
+            {
+              "t": "Yes,",
+              "role": "x"
+            },
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "am",
+              "role": "kw"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "short answer"
+        }
+      ],
+      "caption": "One verb, three shapes: <b>am</b> goes with <i>I</i>, <b>is</b> with <i>he / she / it</i>, <b>are</b> with <i>you / we / they</i>. In a question, <i>be</i> jumps in front of the person."
+    },
+    {
+      "type": "map",
+      "title": "Who goes with which shape?",
+      "center": "be",
+      "branches": [
+        {
+          "label": "am",
+          "items": [
+            "I am → I'm"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "is",
+          "items": [
+            "he is → he's",
+            "she is → she's",
+            "it is → it's",
+            "Mateo is / the dog is"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "are",
+          "items": [
+            "you are → you're",
+            "we are → we're",
+            "they are → they're",
+            "Sofia and Liam are"
+          ],
+          "tone": "c"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to make a question with be",
+      "steps": [
+        {
+          "label": "Start with the statement",
+          "ex": "You are eleven."
+        },
+        {
+          "label": "Move be to the front",
+          "ex": "<b>Are</b> you eleven"
+        },
+        {
+          "label": "Add the question mark and go up with your voice",
+          "ex": "Are you eleven<b>?</b>"
+        }
+      ],
+      "caption": "No <i>do</i> is needed with <i>be</i>. <i>Be</i> makes its own questions by moving."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "person",
+        "tone": "a",
+        "ex": "I / she / they"
+      },
+      {
+        "chip": "am / is / are",
+        "tone": "kw",
+        "ex": "am"
+      },
+      {
+        "chip": "(not)",
+        "tone": "c",
+        "ex": "not → isn't / aren't"
+      },
+      {
+        "chip": "the rest",
+        "tone": "b",
+        "ex": "twelve / from Peru / happy"
+      }
+    ],
+    "table": {
+      "head": [
+        "Person",
+        "Statement",
+        "Short form",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "I",
+          "I am",
+          "I'm",
+          "I'm not",
+          "Am I…?"
+        ],
+        [
+          "you",
+          "you are",
+          "you're",
+          "you aren't",
+          "Are you…?"
+        ],
+        [
+          "he / she / it",
+          "he is",
+          "he's",
+          "he isn't",
+          "Is he…?"
+        ],
+        [
+          "we",
+          "we are",
+          "we're",
+          "we aren't",
+          "Are we…?"
+        ],
+        [
+          "they",
+          "they are",
+          "they're",
+          "they aren't",
+          "Are they…?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Who you are: name, age, nationality, job",
+      "examples": [
+        {
+          "text": "I<b>'m</b> Sofia and I<b>'m</b> twelve.",
+          "note": "age uses be, not have"
+        },
+        {
+          "text": "Mateo <b>is</b> from Arequipa. He<b>'s</b> Peruvian.",
+          "note": "from + city, nationality adjective"
+        },
+        {
+          "text": "Miss Vega <b>is</b> our English teacher.",
+          "note": "a job or a role"
+        },
+        {
+          "text": "Liam and Nadia <b>are</b> in my class.",
+          "note": "two people → are"
+        }
+      ]
+    },
+    {
+      "point": "Where you are",
+      "examples": [
+        {
+          "text": "We<b>'re</b> at school now.",
+          "note": "at + a place"
+        },
+        {
+          "text": "My mum <b>is</b> at work and my dad <b>is</b> at home.",
+          "note": "one person → is"
+        },
+        {
+          "text": "The books <b>are</b> on the table.",
+          "note": "things in the plural → are"
+        }
+      ]
+    },
+    {
+      "point": "How you feel and what things are like",
+      "examples": [
+        {
+          "text": "I<b>'m</b> hungry! <b>Is</b> it lunchtime?",
+          "note": "feelings: hungry, tired, happy, cold"
+        },
+        {
+          "text": "This exercise <b>is</b> easy, but that one <b>is</b> difficult.",
+          "note": "describing things"
+        },
+        {
+          "text": "It<b>'s</b> hot today and the sky <b>is</b> blue.",
+          "note": "weather always starts with it"
+        }
+      ]
+    },
+    {
+      "point": "Questions and short answers",
+      "examples": [
+        {
+          "text": "<b>Are</b> you ready? — Yes, I <b>am</b>. / No, I<b>'m</b> not.",
+          "note": "short answer = person + be"
+        },
+        {
+          "text": "<b>Is</b> Nadia here? — No, she <b>isn't</b>.",
+          "note": "no short form in a positive short answer: Yes, she is"
+        },
+        {
+          "text": "Where <b>are</b> you from? — I<b>'m</b> from Lima.",
+          "note": "question word + be + person"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I have twelve years.",
+      "right": "I <b>am</b> twelve. / I<b>'m</b> twelve years old.",
+      "why": "Age is a <i>be</i> sentence in English. <i>Years old</i> is optional, <i>am</i> is not."
+    },
+    {
+      "wrong": "She very happy today.",
+      "right": "She <b>is</b> very happy today.",
+      "why": "English needs the verb. Spanish can hide it, English never does."
+    },
+    {
+      "wrong": "You is my friend.",
+      "right": "You <b>are</b> my friend.",
+      "why": "<i>You</i> always takes <i>are</i> — even for one person."
+    },
+    {
+      "wrong": "Is hot today.",
+      "right": "<b>It</b> is hot today.",
+      "why": "The weather needs the little word <i>it</i>. No sentence starts with <i>is</i> unless it's a question."
+    },
+    {
+      "wrong": "Yes, I'm.",
+      "right": "Yes, I <b>am</b>.",
+      "why": "In a positive short answer, say the full form. Short forms only in negatives: <i>No, I'm not.</i>"
+    },
+    {
+      "wrong": "Are from Peru you?",
+      "right": "<b>Are you</b> from Peru?",
+      "why": "In a question, <i>be</i> comes first and the person comes second. Nothing else moves."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Tengo doce años.",
+      "wrong": "I have twelve years.",
+      "right": "I <b>am</b> twelve.",
+      "why": "In English, you <i>are</i> your age; you don't <i>have</i> it."
+    },
+    {
+      "es": "Tengo hambre / frío / sueño.",
+      "wrong": "I have hungry.",
+      "right": "I <b>am</b> hungry / cold / sleepy.",
+      "why": "Feelings like hungry, cold, hot and tired all use <i>be</i>."
+    },
+    {
+      "es": "Es lunes. Hace calor.",
+      "wrong": "Is Monday. Is hot.",
+      "right": "<b>It's</b> Monday. <b>It's</b> hot.",
+      "why": "English sentences need a subject. For days, time and weather, that subject is <i>it</i>."
+    },
+    {
+      "es": "Soy de Lima.",
+      "wrong": "I from Lima.",
+      "right": "I<b>'m</b> from Lima.",
+      "why": "Spanish can drop the person (<i>soy</i> already says it); English needs both the person and the verb."
+    }
+  ],
+  "remember": {
+    "trick": "I am · he/she/it is · everybody else ARE",
+    "tip": "Only <i>I</i> gets <i>am</i>. Only one person or thing gets <i>is</i>. <i>You</i>, <i>we</i>, <i>they</i> and any group get <i>are</i>. Say it like a chant three times and you'll never forget it."
+  },
+  "dialogue": {
+    "title": "New in class",
+    "context": "Liam is new at Nordic. Sofia and Mateo meet him in the corridor before the first lesson.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "Hi! <b>Are</b> you new here?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Yes, I <b>am</b>. I<b>'m</b> Liam. I<b>'m</b> from Trujillo."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Nice to meet you! I<b>'m</b> Mateo and this <b>is</b> Sofia. We<b>'re</b> in your class."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Great! <b>Is</b> the English teacher nice?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Miss Vega? She<b>'s</b> fantastic. Her lessons <b>are</b> fun."
+      },
+      {
+        "speaker": "Liam",
+        "text": "How old <b>are</b> you two?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I<b>'m</b> twelve and Sofia <b>is</b> eleven. Why?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "I<b>'m</b> twelve too! <b>Are</b> we late? It<b>'s</b> eight o'clock."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "No, we <b>aren't</b>. Look — Miss Vega <b>isn't</b> in the classroom yet."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Come on, Liam. Your seat <b>is</b> next to mine."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose am, is or are.",
+      "items": [
+        {
+          "sentence": "I ___ eleven years old.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": 0,
+          "why": "I → am"
+        },
+        {
+          "sentence": "My sister ___ a nurse.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": 1,
+          "why": "one person (she) → is"
+        },
+        {
+          "sentence": "Liam and Mateo ___ in the playground.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": 2,
+          "why": "two people (they) → are"
+        },
+        {
+          "sentence": "___ you from Cusco?",
+          "options": [
+            "Am",
+            "Is",
+            "Are"
+          ],
+          "answer": 2,
+          "why": "you → are; the verb goes first in a question"
+        },
+        {
+          "sentence": "It ___ cold in July in Lima.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": 1,
+          "why": "it → is"
+        },
+        {
+          "sentence": "We ___ not tired. We're happy!",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": 2,
+          "why": "we → are (+ not)"
+        },
+        {
+          "sentence": "Is Nadia here? — Yes, she ___.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": 1,
+          "why": "short answer: she → is"
+        },
+        {
+          "sentence": "The dogs ___ in the garden.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
+          "answer": 2,
+          "why": "plural things → are"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with am, is, are, 'm, 's or 're. Use the short form when you see an apostrophe.",
+      "items": [
+        {
+          "sentence": "Hello! I ___ Nadia and I'm twelve.",
+          "answers": [
+            "am",
+            "'m"
+          ]
+        },
+        {
+          "sentence": "Mateo ___ from Arequipa, in the south of Peru.",
+          "answers": [
+            "is",
+            "'s"
+          ]
+        },
+        {
+          "sentence": "Sofia and Liam ___ good friends.",
+          "answers": [
+            "are",
+            "'re"
+          ]
+        },
+        {
+          "sentence": "___ your brother at home now?",
+          "answers": [
+            "Is"
+          ]
+        },
+        {
+          "sentence": "We ___ not ready for the test.",
+          "answers": [
+            "are",
+            "'re"
+          ]
+        },
+        {
+          "sentence": "It ___ Monday today.",
+          "answers": [
+            "is",
+            "'s"
+          ]
+        },
+        {
+          "sentence": "Where ___ you from? — I'm from Lima.",
+          "answers": [
+            "are"
+          ]
+        },
+        {
+          "sentence": "The children ___ hungry after football.",
+          "answers": [
+            "are",
+            "'re"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "from",
+            "Sofia",
+            "Lima",
+            "is",
+            "."
+          ],
+          "answer": "Sofia is from Lima."
+        },
+        {
+          "words": [
+            "you",
+            "eleven",
+            "Are",
+            "?"
+          ],
+          "answer": "Are you eleven?"
+        },
+        {
+          "words": [
+            "very",
+            "We",
+            "today",
+            "are",
+            "happy",
+            "."
+          ],
+          "answer": "We are very happy today."
+        },
+        {
+          "words": [
+            "teacher",
+            "Miss Vega",
+            "our",
+            "is",
+            "."
+          ],
+          "answer": "Miss Vega is our teacher."
+        },
+        {
+          "words": [
+            "is",
+            "brother",
+            "Where",
+            "your",
+            "?"
+          ],
+          "answer": "Where is your brother?"
+        },
+        {
+          "words": [
+            "not",
+            "am",
+            "tired",
+            "I",
+            "."
+          ],
+          "answer": "I am not tired."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "I have twelve years.",
+          "ok": false,
+          "fix": "I <b>am</b> twelve.",
+          "why": "age → be"
+        },
+        {
+          "sentence": "My friends are from Cusco.",
+          "ok": true,
+          "why": "they → are"
+        },
+        {
+          "sentence": "She very tired today.",
+          "ok": false,
+          "fix": "She <b>is</b> very tired today.",
+          "why": "the verb is missing"
+        },
+        {
+          "sentence": "Are you hungry? — Yes, I am.",
+          "ok": true,
+          "why": "question + full short answer"
+        },
+        {
+          "sentence": "Is hot today.",
+          "ok": false,
+          "fix": "<b>It is</b> hot today.",
+          "why": "weather needs it"
+        },
+        {
+          "sentence": "Mateo and I are in the same class.",
+          "ok": true,
+          "why": "Mateo and I = we → are"
+        },
+        {
+          "sentence": "You is my best friend.",
+          "ok": false,
+          "fix": "You <b>are</b> my best friend.",
+          "why": "you → are, always"
+        },
+        {
+          "sentence": "It's eight o'clock and we're late!",
+          "ok": true,
+          "why": "it's + we're, both correct short forms"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say my name, my age and where I am from with <i>am, is</i> and <i>are</i>.",
+    "I can ask <i>Are you…?</i> / <i>Is she…?</i> and answer <i>Yes, I am</i> / <i>No, she isn't</i>.",
+    "I can use the short forms <i>I'm, he's, we're</i> when I speak and write."
+  ],
+  "summary": [
+    "<i>Be</i> has three shapes: <b>am</b> (I), <b>is</b> (he, she, it, one thing) and <b>are</b> (you, we, they, groups).",
+    "Age, feelings, weather and nationality are <i>be</i> sentences: <i>I'm twelve, I'm cold, it's hot, she's Peruvian</i>.",
+    "Negative: add <i>not</i> after the verb (<i>isn't, aren't, I'm not</i>).",
+    "Question: move <i>be</i> to the front — <i>Are you…? Is he…?</i> — no <i>do</i> needed.",
+    "Short answers use the full form: <i>Yes, I am</i>, never <i>Yes, I'm</i>."
+  ]
+}

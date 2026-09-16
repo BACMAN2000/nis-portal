@@ -1,0 +1,691 @@
+{
+  "id": "question-words-a1",
+  "level": "a1",
+  "area": "Every day",
+  "title": "Question words: What, Where, When, Who, How",
+  "tagline": "The small words that start every question — ask about anything, anyone, anywhere.",
+  "cefr": "A1",
+  "exam": [
+    "Speaking Part 1 — questions about you and your life",
+    "Writing Part 6 — a short email"
+  ],
+  "why": "In Speaking Part 1 the examiner asks you six or seven questions — <i>Where do you live? What's your favourite sport?</i> — and every one starts with a question word. The same little words help you write emails and understand notices. Learn these eight words and you can ask about anything.",
+  "hook": {
+    "text": "Sofia is doing a school project on a video call. \"<b>Where</b> do you live, Liam? <b>What's</b> your favourite food? <b>How old</b> is your sister?\" Liam laughs. \"One question at a time, Sofia!\"",
+    "ask": "Can you find three different question words in the story? What is each one asking about — a place, a thing or an age?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build a question",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Where",
+              "role": "kw"
+            },
+            {
+              "t": "do",
+              "role": "aux"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "live",
+              "role": "verb"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question with do"
+        },
+        {
+          "parts": [
+            {
+              "t": "What",
+              "role": "kw"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "your favourite food",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question with be"
+        },
+        {
+          "parts": [
+            {
+              "t": "How old",
+              "role": "kw"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "your sister",
+              "role": "subj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "how + adjective"
+        }
+      ],
+      "caption": "Every question starts with the question word. Then comes the helper (<b>be, do, does</b>), then the person."
+    },
+    {
+      "type": "map",
+      "title": "Who goes with which question word?",
+      "center": "Question words",
+      "branches": [
+        {
+          "label": "What",
+          "items": [
+            "What's your name?",
+            "What do you like?"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Where",
+          "items": [
+            "Where are you from?",
+            "Where do you live?"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "When",
+          "items": [
+            "When is your birthday?"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Who",
+          "items": [
+            "Who is your best friend?"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Why",
+          "items": [
+            "Why do you like football?"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "How",
+          "items": [
+            "How are you?",
+            "How old are you?",
+            "How many brothers?"
+          ],
+          "tone": "c"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to make a question with a question word",
+      "steps": [
+        {
+          "label": "Start with the question word",
+          "ex": "<b>Where</b>"
+        },
+        {
+          "label": "Add the helper verb (be, do, does)",
+          "ex": "Where <b>do</b> you"
+        },
+        {
+          "label": "Add the rest and the verb",
+          "ex": "Where do you <b>live</b>?"
+        }
+      ],
+      "caption": "The question word always comes first. Nothing ever goes in front of it."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "question word",
+        "tone": "kw",
+        "ex": "Where / What / How old"
+      },
+      {
+        "chip": "be / do / does",
+        "tone": "a",
+        "ex": "is / do / does"
+      },
+      {
+        "chip": "subject",
+        "tone": "b",
+        "ex": "you / she"
+      },
+      {
+        "chip": "verb + rest",
+        "tone": "c",
+        "ex": "live? / your name?"
+      }
+    ],
+    "table": {
+      "head": [
+        "Question word",
+        "Asks about",
+        "Example"
+      ],
+      "rows": [
+        [
+          "What",
+          "things, activities",
+          "What do you like?"
+        ],
+        [
+          "Where",
+          "places",
+          "Where are you from?"
+        ],
+        [
+          "When",
+          "time",
+          "When is the party?"
+        ],
+        [
+          "Who",
+          "people",
+          "Who is that?"
+        ],
+        [
+          "Why",
+          "reasons",
+          "Why are you late?"
+        ],
+        [
+          "How",
+          "manner, health, age, quantity",
+          "How are you? How old? How many?"
+        ],
+        [
+          "Which",
+          "choosing one thing",
+          "Which colour do you like?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "What, Where and Who — things, places and people",
+      "examples": [
+        {
+          "text": "<b>What's</b> your favourite subject?",
+          "note": "What + is (What's) for a thing"
+        },
+        {
+          "text": "<b>Where</b> do you live?",
+          "note": "Where + do + you for a place"
+        },
+        {
+          "text": "<b>Who</b> is your best friend?",
+          "note": "Who + is for a person"
+        }
+      ]
+    },
+    {
+      "point": "When and Why — time and reasons",
+      "examples": [
+        {
+          "text": "<b>When</b> is your English exam?",
+          "note": "When + is + noun for time"
+        },
+        {
+          "text": "<b>Why</b> are you late?",
+          "note": "Why + are + you for a reason"
+        },
+        {
+          "text": "<b>Why</b> do you like tennis? — Because it's fun.",
+          "note": "why...? — because... is the usual answer"
+        }
+      ]
+    },
+    {
+      "point": "How — health, manner, age and quantity",
+      "examples": [
+        {
+          "text": "<b>How</b> are you today?",
+          "note": "asking how somebody feels"
+        },
+        {
+          "text": "<b>How old</b> is your sister?",
+          "note": "how + old for age"
+        },
+        {
+          "text": "<b>How many</b> brothers and sisters have you got?",
+          "note": "how many + plural noun, for things you can count"
+        },
+        {
+          "text": "<b>How much</b> is this T-shirt?",
+          "note": "how much, for prices and things you can't count"
+        }
+      ]
+    },
+    {
+      "point": "Which — and the classic questions of Speaking Part 1",
+      "examples": [
+        {
+          "text": "<b>Which</b> colour do you like, blue or green?",
+          "note": "which, for choosing between options"
+        },
+        {
+          "text": "<b>What do you do</b> at the weekend?",
+          "note": "a classic Speaking Part 1 question"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Where you live?",
+      "right": "<b>Where do you live</b>?",
+      "why": "A normal verb needs the helper do/does before the person. You can't skip it."
+    },
+    {
+      "wrong": "What means this word?",
+      "right": "What <b>does</b> this word <b>mean</b>?",
+      "why": "With a normal verb you need does/do; the main verb doesn't move to the front."
+    },
+    {
+      "wrong": "How many money have you got?",
+      "right": "<b>How much</b> money have you got?",
+      "why": "Money can't be counted one by one, so use how much, not how many."
+    },
+    {
+      "wrong": "What's your name is?",
+      "right": "<b>What's</b> your name?",
+      "why": "Don't repeat the verb — What's already means What is."
+    },
+    {
+      "wrong": "How old you are?",
+      "right": "<b>How old are you</b>?",
+      "why": "In a question, the verb be jumps in front of the person, straight after the question word."
+    },
+    {
+      "wrong": "Why you don't like fish?",
+      "right": "<b>Why don't you</b> like fish?",
+      "why": "Don't stays with you, in the normal question order — question word, don't, you, verb."
+    }
+  ],
+  "l1": [
+    {
+      "es": "¿Cómo te llamas?",
+      "wrong": "How you call?",
+      "right": "<b>What's your name</b>?",
+      "why": "English doesn't ask 'how do you call yourself' — it asks for your name directly."
+    },
+    {
+      "es": "¿Cuántos años tienes?",
+      "wrong": "How many years do you have?",
+      "right": "<b>How old are you</b>?",
+      "why": "Age uses How old + be, not how many years + have."
+    },
+    {
+      "es": "¿De dónde eres?",
+      "wrong": "From where are you?",
+      "right": "<b>Where are you from</b>?",
+      "why": "In English, the small word from goes at the end of the question, not the start."
+    },
+    {
+      "es": "¿Por qué no vienes?",
+      "wrong": "Why not you come?",
+      "right": "<b>Why don't you come</b>?",
+      "why": "The negative don't stays next to you, in the normal question order."
+    },
+    {
+      "es": "¿Cómo es tu casa?",
+      "wrong": "How is your house?",
+      "right": "<b>What's your house like</b>?",
+      "why": "To describe something, ask What...like?. How...? asks about health or feelings, not appearance."
+    }
+  ],
+  "remember": {
+    "trick": "Question word → helper → you. Never swap the order!",
+    "tip": "Say it three times fast: Where do you...? Where do you...? Where do you...? Now you won't forget the order."
+  },
+  "dialogue": {
+    "title": "The video call interview",
+    "context": "Sofia is doing a school project. She calls Liam on a video call and asks him questions for the interview.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "Hi Liam! Can I ask you some questions for my project? <b>Where</b> do you live?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "I live in Trujillo, near the beach."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Nice! <b>What's</b> your favourite subject at school?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Science, definitely. <b>Why</b> do you ask?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "It's for my project! <b>How old</b> is your little sister?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "She's seven. <b>Who</b> is in your project group?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Mateo and Nadia. <b>How many</b> questions have I got left?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Just one more!"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "OK — <b>when</b> is your birthday?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "In October. Thanks for the interview, Sofia!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct question word.",
+      "items": [
+        {
+          "sentence": "___ do you live?",
+          "options": [
+            "Where",
+            "What",
+            "Who"
+          ],
+          "answer": 0,
+          "why": "Where asks about a place."
+        },
+        {
+          "sentence": "___ is your favourite colour?",
+          "options": [
+            "Where",
+            "What",
+            "When"
+          ],
+          "answer": 1,
+          "why": "What asks about a thing."
+        },
+        {
+          "sentence": "___ is your birthday?",
+          "options": [
+            "Who",
+            "When",
+            "How"
+          ],
+          "answer": 1,
+          "why": "When asks about time."
+        },
+        {
+          "sentence": "___ do you live with?",
+          "options": [
+            "Who",
+            "What",
+            "Where"
+          ],
+          "answer": 0,
+          "why": "Who asks about a person."
+        },
+        {
+          "sentence": "___ old is your brother?",
+          "options": [
+            "What",
+            "How",
+            "Where"
+          ],
+          "answer": 1,
+          "why": "How old asks about age."
+        },
+        {
+          "sentence": "___ many pets have you got?",
+          "options": [
+            "What",
+            "Where",
+            "How"
+          ],
+          "answer": 2,
+          "why": "How many + a plural noun asks about a number."
+        },
+        {
+          "sentence": "___ are you late?",
+          "options": [
+            "Why",
+            "Where",
+            "Who"
+          ],
+          "answer": 0,
+          "why": "Why asks for a reason."
+        },
+        {
+          "sentence": "___ is your English teacher?",
+          "options": [
+            "What",
+            "Who",
+            "When"
+          ],
+          "answer": 1,
+          "why": "Who asks about a person."
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct question word.",
+      "items": [
+        {
+          "sentence": "___ is your name?",
+          "answers": [
+            "What"
+          ]
+        },
+        {
+          "sentence": "___ are you from?",
+          "answers": [
+            "Where"
+          ]
+        },
+        {
+          "sentence": "___ is your birthday?",
+          "answers": [
+            "When"
+          ]
+        },
+        {
+          "sentence": "___ is that boy over there?",
+          "answers": [
+            "Who"
+          ]
+        },
+        {
+          "sentence": "___ are you crying?",
+          "answers": [
+            "Why"
+          ]
+        },
+        {
+          "sentence": "___ old are you?",
+          "answers": [
+            "How"
+          ]
+        },
+        {
+          "sentence": "___ many brothers have you got?",
+          "answers": [
+            "How"
+          ]
+        },
+        {
+          "sentence": "___ colour do you like best?",
+          "answers": [
+            "Which"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "do",
+            "you",
+            "live",
+            "Where",
+            "?"
+          ],
+          "answer": "Where do you live?"
+        },
+        {
+          "words": [
+            "favourite",
+            "What's",
+            "subject",
+            "your",
+            "?"
+          ],
+          "answer": "What's your favourite subject?"
+        },
+        {
+          "words": [
+            "party",
+            "is",
+            "the",
+            "When",
+            "?"
+          ],
+          "answer": "When is the party?"
+        },
+        {
+          "words": [
+            "many",
+            "brothers",
+            "How",
+            "have",
+            "you",
+            "got",
+            "?"
+          ],
+          "answer": "How many brothers have you got?"
+        },
+        {
+          "words": [
+            "are",
+            "you",
+            "late",
+            "Why",
+            "?"
+          ],
+          "answer": "Why are you late?"
+        },
+        {
+          "words": [
+            "your",
+            "is",
+            "teacher",
+            "Who",
+            "English",
+            "?"
+          ],
+          "answer": "Who is your English teacher?"
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "Where do you live?",
+          "ok": true,
+          "why": "question word + do + you + verb, correct order"
+        },
+        {
+          "sentence": "What means this word?",
+          "ok": false,
+          "fix": "What <b>does</b> this word <b>mean</b>?",
+          "why": "needs does + base verb"
+        },
+        {
+          "sentence": "How old are you?",
+          "ok": true,
+          "why": "how old + are + you, correct order"
+        },
+        {
+          "sentence": "Where you are from?",
+          "ok": false,
+          "fix": "<b>Where are you</b> from?",
+          "why": "the verb be must come before the person"
+        },
+        {
+          "sentence": "Who is your best friend?",
+          "ok": true,
+          "why": "who + is + noun, correct"
+        },
+        {
+          "sentence": "How many money have you got?",
+          "ok": false,
+          "fix": "<b>How much</b> money have you got?",
+          "why": "money is uncountable, use how much"
+        },
+        {
+          "sentence": "Why don't you like fish?",
+          "ok": true,
+          "why": "why + don't + you + verb, correct order"
+        },
+        {
+          "sentence": "What's your name is?",
+          "ok": false,
+          "fix": "<b>What's</b> your name?",
+          "why": "don't repeat the verb after the contraction"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can ask <i>What, Where, When, Who, Why</i> and <i>How</i> questions about people, places and things.",
+    "I can use <i>How old, How many</i> and <i>How much</i> correctly.",
+    "I can answer the Speaking Part 1 questions about myself in full sentences."
+  ],
+  "summary": [
+    "Question words go first: <b>What, Where, When, Who, Why, How</b> and <b>Which</b>.",
+    "After the question word comes the helper verb — <i>be</i>, <i>do</i> or <i>does</i> — then the person.",
+    "<i>How old</i>, <i>how many</i> and <i>how much</i> add a second word to <i>how</i>.",
+    "Answer Speaking Part 1 questions in full sentences, not just one word.",
+    "Never repeat the verb: it's <i>What's your name?</i>, not <i>What's your name is?</i>"
+  ]
+}

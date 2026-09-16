@@ -1,0 +1,201 @@
+{
+  "id": "comparatives-superlatives",
+  "level": "ket",
+  "area": "Comparison & description",
+  "title": "Comparatives and superlatives",
+  "tagline": "Small, smaller, the smallest: how to compare people, places and things.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Speaking Part 2 — comparing and choosing"],
+  "why": "You compare things all day: which bag is heavier, which exercise is easier, who is the tallest in the class. In Speaking Part 2 you compare photos, and in Reading Part 5 the exam checks whether you know <i>bigger</i> from <i>more big</i>. One small mistake here is one of the most common errors at this level.",
+  "hook": {
+    "text": "It's Geography class. Miss Vega shows two photos: Lima and Cusco. \"Which city is <b>bigger</b>?\" she asks. Sofia says, \"Lima is <b>bigger</b>, but Cusco is <b>higher</b>!\" Mateo laughs: \"And it's definitely <b>colder</b> in the mountains!\"",
+    "ask": "Bigger, higher and colder all compare two things. Can you see the small change at the end of each short word?"
+  },
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "Small, smaller, the smallest",
+      "left": "small",
+      "right": "huge",
+      "items": [
+        {"label": "Nadia's dog is small.", "pct": 15},
+        {"label": "Liam's dog is bigger.", "pct": 50},
+        {"label": "Mateo's dog is the biggest of the three.", "pct": 90}
+      ]
+    },
+    {
+      "type": "spelling",
+      "title": "Spelling: -er and -est",
+      "rules": [
+        {"rule": "Most short adjectives: + er / est", "examples": ["cheap → cheap<b>er</b>", "cheap → the cheap<b>est</b>"]},
+        {"rule": "Ends in -e: just add r / st", "examples": ["nice → nic<b>er</b>", "nice → the nic<b>est</b>"]},
+        {"rule": "One vowel + one consonant: double the consonant", "examples": ["big → big<b>ger</b>", "hot → the hot<b>test</b>"]},
+        {"rule": "Consonant + y: y becomes i", "examples": ["happy → happ<b>ier</b>", "happy → the happ<b>iest</b>"]}
+      ],
+      "caption": "Say the adjective out loud first, then add the ending — your ear usually knows the spelling."
+    },
+    {
+      "type": "contrast",
+      "title": "Short word or long word?",
+      "columns": ["Short adjective (1 syllable)", "Long adjective (2+ syllables)"],
+      "rows": [
+        {"label": "Comparative", "cells": ["cheap → cheap<b>er</b>", "expensive → <b>more</b> expensive"]},
+        {"label": "Superlative", "cells": ["cheap → the cheap<b>est</b>", "expensive → <b>the most</b> expensive"]},
+        {"label": "Example words", "cells": ["small, big, fast, tall, cold", "beautiful, interesting, modern"]},
+        {"label": "Rule", "cells": ["add -er / -est to the word", "put more / the most in front"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "adjective", "tone": "a", "ex": "big"},
+      {"chip": "+ -er / more", "tone": "kw", "ex": "bigger / more expensive"},
+      {"chip": "than", "tone": "arrow"},
+      {"chip": "the other thing", "tone": "b", "ex": "than Liam's dog"}
+    ],
+    "table": {
+      "head": ["Adjective", "Comparative", "Superlative"],
+      "rows": [
+        ["small", "smaller", "the smallest"],
+        ["big", "bigger", "the biggest"],
+        ["happy", "happier", "the happiest"],
+        ["expensive", "more expensive", "the most expensive"],
+        ["good", "better", "the best"],
+        ["bad", "worse", "the worst"],
+        ["far", "further / farther", "the furthest / farthest"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Comparing two things: -er or more",
+      "examples": [
+        {"text": "Mateo's bike is <b>faster</b> than Liam's.", "note": "short adjective → add -er"},
+        {"text": "This book is <b>more interesting</b> than that film.", "note": "long adjective → use more"},
+        {"text": "Cusco is <b>colder</b> than Lima in July.", "note": "comparing two places"}
+      ]
+    },
+    {
+      "point": "Superlatives: the best in the whole group",
+      "examples": [
+        {"text": "Huascarán is <b>the highest</b> mountain in Peru.", "note": "one thing out of a group → the + -est"},
+        {"text": "This is <b>the most difficult</b> question in the test.", "note": "long adjective → the most"},
+        {"text": "Nadia is <b>the youngest</b> student in our class.", "note": "comparing a person to the whole group"}
+      ]
+    },
+    {
+      "point": "Irregular comparatives and superlatives",
+      "examples": [
+        {"text": "The weather today is <b>better</b> than yesterday.", "note": "good → better → the best, no -er here"},
+        {"text": "My grades this term are <b>worse</b> than last term.", "note": "bad → worse → the worst"},
+        {"text": "Arequipa is <b>further</b> from Lima than Ica.", "note": "far → further/farther, both are correct"}
+      ]
+    },
+    {
+      "point": "as…as, not as…as and much + comparative",
+      "examples": [
+        {"text": "Sofia is <b>as tall as</b> Nadia.", "note": "two things are equal"},
+        {"text": "This exercise <b>isn't as easy as</b> the last one.", "note": "negative form shows there's a difference"},
+        {"text": "Today is <b>much colder</b> than yesterday.", "note": "much/a lot before the comparative for extra emphasis"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "This city is more big than Lima.", "right": "This city is <b>bigger</b> than Lima.", "why": "Short adjectives take -er, not more."},
+    {"wrong": "She is the beautifulest girl.", "right": "She is <b>the most beautiful</b> girl.", "why": "Long adjectives take most, not -est."},
+    {"wrong": "My phone is more good than yours.", "right": "My phone is <b>better</b> than yours.", "why": "Good has its own comparative: better, never more good."},
+    {"wrong": "Lima is as big than Arequipa.", "right": "Lima is <b>as big as</b> Arequipa.", "why": "as…as needs as on both sides, never as…than."},
+    {"wrong": "He is the tallest boy of the class.", "right": "He is <b>the tallest</b> boy <b>in</b> the class.", "why": "With a group of people, English uses in, not of."}
+  ],
+  "l1": [
+    {"es": "Es más grande que mi casa.", "wrong": "It's more big than my house.", "right": "It's <b>bigger</b> than my house.", "why": "Spanish always says más + adjective, but English changes short adjectives to -er instead of using more."},
+    {"es": "Es el chico más alto de la clase.", "wrong": "He's the tallest boy of the class.", "right": "He's the tallest boy <b>in</b> the class.", "why": "Spanish de becomes in with a group in English, not of."},
+    {"es": "Es tan alto como su hermano.", "wrong": "He is so tall as his brother.", "right": "He is <b>as</b> tall <b>as</b> his brother.", "why": "The Spanish tan…como pattern is as…as in English, not so…as."},
+    {"es": "Es el mejor jugador del equipo.", "wrong": "He's the goodest player of the team.", "right": "He's <b>the best</b> player in the team.", "why": "Good has no -est form: it becomes best, and groups use in."}
+  ],
+  "remember": {
+    "trick": "Short word + -er/-est. Long word + more/most.",
+    "tip": "Count the syllables in your head: one → add -er or -est. Two or more → put more or the most in front instead."
+  },
+  "dialogue": {
+    "title": "Cusco or Lima?",
+    "context": "In Geography class, Miss Vega asks the students to compare two Peruvian cities for a project.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "For your project, compare Cusco and Lima. Which city is <b>bigger</b>?"},
+      {"speaker": "Sofia", "text": "Lima is <b>much bigger</b> than Cusco. It's <b>the biggest</b> city in Peru!"},
+      {"speaker": "Mateo", "text": "But Cusco is <b>higher</b> than Lima — it's up in the mountains."},
+      {"speaker": "Liam", "text": "Is Cusco <b>colder</b> than Lima too?"},
+      {"speaker": "Nadia", "text": "Yes! In June, Cusco is <b>colder</b>, but Lima is <b>more humid</b>."},
+      {"speaker": "Sofia", "text": "I think Cusco is <b>the most beautiful</b> city in Peru, with all those old streets."},
+      {"speaker": "Miss Vega", "text": "Good point. Is it <b>as busy as</b> Lima?"},
+      {"speaker": "Mateo", "text": "No, it isn't <b>as busy as</b> Lima. Lima has <b>the most</b> traffic of any city I know!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word or words.",
+      "items": [
+        {"sentence": "This bag is ___ than mine.", "options": ["heavier", "more heavy", "heaviest"], "answer": 0, "why": "short adjective + -er"},
+        {"sentence": "Huascarán is ___ mountain in Peru.", "options": ["high", "the highest", "higher"], "answer": 1, "why": "one thing out of a group → the + -est"},
+        {"sentence": "Nadia is ___ than her brother.", "options": ["young", "the youngest", "younger"], "answer": 2, "why": "comparing two people → comparative"},
+        {"sentence": "This is ___ interesting book in the library.", "options": ["the most", "more", "most"], "answer": 0, "why": "long adjective, superlative → the most"},
+        {"sentence": "My phone is ___ than yours.", "options": ["gooder", "better", "more good"], "answer": 1, "why": "good → better, an irregular comparative"},
+        {"sentence": "Cusco is ___ Lima in July.", "options": ["cold than", "more cold than", "colder than"], "answer": 2, "why": "short adjective + er + than"},
+        {"sentence": "Sofia is ___ as Liam.", "options": ["as tall", "tall", "more tall"], "answer": 0, "why": "as…as shows two things are equal"},
+        {"sentence": "This test is ___ than the last one.", "options": ["difficulter", "more difficult", "most difficult"], "answer": 1, "why": "long adjective, comparative → more + adjective"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the comparative or superlative form of the adjective in brackets.",
+      "items": [
+        {"sentence": "This car is ___ (fast) than that one.", "answers": ["faster"]},
+        {"sentence": "Huascarán is ___ (high) mountain in Peru.", "answers": ["the highest"]},
+        {"sentence": "My sister is ___ (young) than me.", "answers": ["younger"]},
+        {"sentence": "This is ___ (interesting) museum in Lima.", "answers": ["the most interesting"]},
+        {"sentence": "Our new teacher is ___ (good) than the last one.", "answers": ["better"]},
+        {"sentence": "Arequipa is ___ (far) from Lima than Ica.", "answers": ["further", "farther"]},
+        {"sentence": "This exercise is ___ (easy) than the test.", "answers": ["easier"]},
+        {"sentence": "Liam is ___ (bad) at football than Mateo, but he's improving.", "answers": ["worse"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["is", "cheaper", "This bag", "than that one", "."], "answer": "This bag is cheaper than that one."},
+        {"words": ["higher", "is", "than Lima", "Cusco", "."], "answer": "Cusco is higher than Lima."},
+        {"words": ["the youngest", "She", "in the class", "is", "."], "answer": "She is the youngest in the class."},
+        {"words": ["is", "more interesting", "This book", "than that one", "."], "answer": "This book is more interesting than that one."},
+        {"words": ["is", "better", "My phone", "than yours", "."], "answer": "My phone is better than yours."},
+        {"words": ["is", "as tall as", "Sofia", "Nadia", "."], "answer": "Sofia is as tall as Nadia."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "This bag is more heavy than mine.", "ok": false, "fix": "This bag is <b>heavier</b> than mine.", "why": "short adjective → -er, not more"},
+        {"sentence": "Huascarán is the highest mountain in Peru.", "ok": true, "why": "the + -est for one thing from a group"},
+        {"sentence": "She is the beautifulest girl in the class.", "ok": false, "fix": "She is <b>the most beautiful</b> girl in the class.", "why": "long adjective → the most, not -est"},
+        {"sentence": "My grades are better this term.", "ok": true, "why": "good → better, an irregular comparative"},
+        {"sentence": "This test is more difficult than the last one.", "ok": true, "why": "long adjective → more + adjective"},
+        {"sentence": "He is the goodest player in the team.", "ok": false, "fix": "He is <b>the best</b> player in the team.", "why": "good has no -est form: it becomes best"},
+        {"sentence": "Cusco is as cold as Puno in June.", "ok": true, "why": "as…as = equal, both sides needed"},
+        {"sentence": "This backpack is heavier as that one.", "ok": false, "fix": "This backpack is heavier <b>than</b> that one.", "why": "comparatives need than, not as"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can compare two things using <i>-er</i>, <i>more</i> and <i>than</i>.",
+    "I can say which thing is the biggest, the best or the most interesting with superlatives.",
+    "I can use <i>as…as</i> to say two things are equal."
+  ],
+  "summary": [
+    "Short adjectives (one syllable) add <b>-er</b> and <b>the + -est</b>: <i>small → smaller → the smallest</i>.",
+    "Long adjectives (two or more syllables) use <b>more</b> and <b>the most</b>: <i>interesting → more interesting → the most interesting</i>.",
+    "Some adjectives are irregular: <i>good → better → the best</i>, <i>bad → worse → the worst</i>, <i>far → further → the furthest</i>.",
+    "Use <b>as…as</b> to say two things are equal, and <b>than</b> after any comparative."
+  ]
+}

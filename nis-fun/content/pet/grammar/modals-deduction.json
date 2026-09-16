@@ -1,0 +1,633 @@
+{
+  "id": "modals-deduction",
+  "level": "pet",
+  "area": "Modals",
+  "title": "Deduction: must, might, may, could, can't",
+  "tagline": "From 'no way' to 'definitely' — five modal verbs for guessing what's true.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 6 — open cloze",
+    "Speaking Part 3 — discussing a situation"
+  ],
+  "why": "Deduction modals turn up constantly in the open cloze and in the collaborative Speaking task, where you have to reason out loud about a picture or a situation together with your partner. Getting must, might, could and can't in the right order of certainty — and adding have + past participle for a guess about the past — is exactly the kind of natural, spoken grammar the exam rewards.",
+  "hook": {
+    "text": "Liam: “Did you hear that? It <b>might be</b> an animal outside!” Nadia: “Relax, it <b>can't be</b> anything dangerous — we're inside the fence.” Sofia: “It <b>must be</b> the wind in the trees.”",
+    "ask": "Three friends guess what's making the noise, but with different levels of certainty. Which guess sounds most sure, which sounds least sure, and which is a confident 'no way'?"
+  },
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How sure is the speaker?",
+      "left": "impossible",
+      "right": "certain",
+      "items": [
+        {
+          "label": "can't be",
+          "pct": 0
+        },
+        {
+          "label": "might be / may be / could be",
+          "pct": 45
+        },
+        {
+          "label": "must be",
+          "pct": 100
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Deduction, present and past",
+      "center": "Deduction",
+      "branches": [
+        {
+          "label": "Certain (present)",
+          "items": [
+            "must be"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Possible (present)",
+          "items": [
+            "might be",
+            "may be",
+            "could be"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Impossible (present)",
+          "items": [
+            "can't be"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "About the past",
+          "items": [
+            "must have been",
+            "might have been",
+            "can't have been"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "It",
+              "role": "subj"
+            },
+            {
+              "t": "must be",
+              "role": "aux"
+            },
+            {
+              "t": "the wind",
+              "role": "x"
+            }
+          ],
+          "note": "present deduction — almost certain"
+        },
+        {
+          "parts": [
+            {
+              "t": "It",
+              "role": "subj"
+            },
+            {
+              "t": "might be",
+              "role": "aux"
+            },
+            {
+              "t": "an animal",
+              "role": "x"
+            }
+          ],
+          "note": "present deduction — possible"
+        },
+        {
+          "parts": [
+            {
+              "t": "It",
+              "role": "subj"
+            },
+            {
+              "t": "can't be",
+              "role": "aux"
+            },
+            {
+              "t": "dangerous",
+              "role": "x"
+            }
+          ],
+          "note": "present deduction — impossible"
+        },
+        {
+          "parts": [
+            {
+              "t": "Someone",
+              "role": "subj"
+            },
+            {
+              "t": "must have eaten",
+              "role": "aux"
+            },
+            {
+              "t": "the snacks",
+              "role": "obj"
+            }
+          ],
+          "note": "past deduction — must have + past participle"
+        }
+      ],
+      "caption": "The modal goes straight before be, or before have + past participle for a guess about the past — never with to."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "must / might / could / can't",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ be",
+        "tone": "a",
+        "ex": "must be"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "must / might / could / can't",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ have + past participle",
+        "tone": "b",
+        "ex": "must have left"
+      }
+    ],
+    "table": {
+      "head": [
+        "Certainty",
+        "Present",
+        "Past"
+      ],
+      "rows": [
+        [
+          "Almost certain",
+          "It must be him.",
+          "He must have left already."
+        ],
+        [
+          "Possible",
+          "It might/may/could be him.",
+          "He might have left already."
+        ],
+        [
+          "Impossible",
+          "It can't be him.",
+          "He can't have left already."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "must for present deduction — almost certain",
+      "examples": [
+        {
+          "text": "It's midnight and the light is on — Miss Vega <b>must be</b> still awake.",
+          "note": "strong evidence, an almost certain conclusion"
+        },
+        {
+          "text": "You've walked for six hours — you <b>must be</b> exhausted.",
+          "note": "a logical, almost certain guess"
+        },
+        {
+          "text": "That noise <b>must be</b> an owl — we heard one earlier.",
+          "note": "based on clear evidence"
+        }
+      ]
+    },
+    {
+      "point": "might/may/could for present possibility",
+      "examples": [
+        {
+          "text": "It's dark, so it <b>might be</b> a fox out there.",
+          "note": "a real possibility, not certain"
+        },
+        {
+          "text": "The noise <b>could be</b> a branch falling — hard to tell.",
+          "note": "could = also possible, similar to might"
+        }
+      ]
+    },
+    {
+      "point": "can't for present impossibility",
+      "examples": [
+        {
+          "text": "It <b>can't be</b> dangerous — we're safely inside the fence.",
+          "note": "the opposite of must — impossible, not just unlikely"
+        },
+        {
+          "text": "Nadia <b>can't be</b> asleep already; it's only nine o'clock.",
+          "note": "logically impossible, given the evidence"
+        }
+      ]
+    },
+    {
+      "point": "deduction about the past: must have / might have / can't have + participle",
+      "examples": [
+        {
+          "text": "Someone <b>must have eaten</b> all the snacks — the bag is empty!",
+          "note": "an almost certain conclusion about something in the past"
+        },
+        {
+          "text": "Liam <b>might have dropped</b> his torch near the tent.",
+          "note": "a possible explanation for a past event"
+        },
+        {
+          "text": "It <b>can't have been</b> a bear — there aren't any bears here.",
+          "note": "impossible, about the past"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "It must to be the wind.",
+      "right": "It <b>must be</b> the wind.",
+      "why": "Modals for deduction go straight before be/have — no to."
+    },
+    {
+      "wrong": "It can be a bear, we're safe here.",
+      "right": "It <b>can't be</b> a bear — we're safe here.",
+      "why": "Can on its own doesn't mean impossible; the negative can't is the deduction form for 'impossible'."
+    },
+    {
+      "wrong": "Someone must ate the snacks.",
+      "right": "Someone <b>must have eaten</b> the snacks.",
+      "why": "Deduction about the past needs must have + past participle, not the simple past."
+    },
+    {
+      "wrong": "You must be tired, go and clean your tent now.",
+      "right": "You <b>must be</b> tired — rest for a while.",
+      "why": "Deduction must (a guess) is different from obligation must (an order) — don't confuse the two."
+    },
+    {
+      "wrong": "It might have to be an animal.",
+      "right": "It <b>might be</b> an animal.",
+      "why": "No to after a deduction modal — might/may/could go straight before be."
+    },
+    {
+      "wrong": "It can't have be a bear.",
+      "right": "It <b>can't have been</b> a bear.",
+      "why": "Past deduction needs have + been (the participle of be), not have + be."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Debe de estar despierta.",
+      "wrong": "She must to be awake.",
+      "right": "She <b>must be</b> awake.",
+      "why": "Spanish debe de + infinitivo becomes must + base verb in English, with no to and no de."
+    },
+    {
+      "es": "No puede ser un oso.",
+      "wrong": "It can be a bear.",
+      "right": "It <b>can't be</b> a bear.",
+      "why": "Spanish no puede ser (impossible) is can't be in English, not the positive can."
+    },
+    {
+      "es": "Debió de habérselos comido él mismo.",
+      "wrong": "He must ate the snacks.",
+      "right": "He <b>must have eaten</b> the snacks.",
+      "why": "Deduction about a past event needs must have + participle, not the simple past."
+    },
+    {
+      "es": "Puede que se le cayera la linterna.",
+      "wrong": "He can have dropped his torch.",
+      "right": "He <b>might have dropped</b> his torch.",
+      "why": "Puede que for a guess about the past is might/could have + participle, not can have."
+    }
+  ],
+  "remember": {
+    "trick": "can't → might → must: impossible to certain!",
+    "tip": "Say the sentence with sure, maybe or no way instead of the modal — if it still makes sense, you've picked the right one."
+  },
+  "dialogue": {
+    "title": "The noise outside the tent",
+    "context": "On a school camping trip in the mountains, Mateo, Sofia, Liam and Nadia hear a strange noise at night.",
+    "lines": [
+      {
+        "speaker": "Liam",
+        "text": "Did you hear that? It <b>might be</b> an animal outside!"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Relax, it <b>can't be</b> anything dangerous — we're inside the fence."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "It <b>must be</b> the wind in the trees."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Or it <b>could be</b> Miss Vega checking the tents."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Wait — my snack bag is empty! Someone <b>must have eaten</b> everything!"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "It <b>can't have been</b> me, I was asleep by nine."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "It <b>might have been</b> a fox — they love food like that."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Or you <b>must have eaten</b> it yourself and forgotten, Liam!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "No way! I <b>can't have</b> eaten a whole bag that fast."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Whatever it was, it <b>must be</b> gone by now — let's sleep."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "It's midnight and the light's on — she ___ still awake.",
+          "options": [
+            "must be",
+            "might be",
+            "can't be"
+          ],
+          "answer": 0,
+          "why": "strong evidence, almost certain"
+        },
+        {
+          "sentence": "It's dark, so it ___ a fox out there.",
+          "options": [
+            "must be",
+            "might be",
+            "can't be"
+          ],
+          "answer": 1,
+          "why": "a real possibility, not certain"
+        },
+        {
+          "sentence": "It ___ dangerous — we're safely inside the fence.",
+          "options": [
+            "might be",
+            "must be",
+            "can't be"
+          ],
+          "answer": 2,
+          "why": "the opposite of must — impossible"
+        },
+        {
+          "sentence": "Someone ___ all the snacks — the bag is empty!",
+          "options": [
+            "must have eaten",
+            "might have eaten",
+            "can't have eaten"
+          ],
+          "answer": 0,
+          "why": "clear evidence, almost certain about the past"
+        },
+        {
+          "sentence": "Liam ___ his torch near the tent — we're not sure.",
+          "options": [
+            "must have dropped",
+            "might have dropped",
+            "can't have dropped"
+          ],
+          "answer": 1,
+          "why": "a possible explanation, not certain"
+        },
+        {
+          "sentence": "It ___ a bear — there aren't any bears here.",
+          "options": [
+            "might have been",
+            "must have been",
+            "can't have been"
+          ],
+          "answer": 2,
+          "why": "impossible, about the past"
+        },
+        {
+          "sentence": "You've walked for six hours — you ___ exhausted.",
+          "options": [
+            "must be",
+            "might be",
+            "can't be"
+          ],
+          "answer": 0,
+          "why": "a logical, almost certain guess"
+        },
+        {
+          "sentence": "The noise ___ a branch falling — hard to tell.",
+          "options": [
+            "must be",
+            "could be",
+            "can't be"
+          ],
+          "answer": 1,
+          "why": "possible, similar to might"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct modal and the verb in brackets.",
+      "items": [
+        {
+          "sentence": "It's midnight and the light's on — she ___ (must/be) still awake.",
+          "answers": [
+            "must be"
+          ]
+        },
+        {
+          "sentence": "It's dark, so it ___ (might/be) a fox out there.",
+          "answers": [
+            "might be"
+          ]
+        },
+        {
+          "sentence": "It ___ (can't/be) dangerous — we're safely inside the fence.",
+          "answers": [
+            "can't be"
+          ]
+        },
+        {
+          "sentence": "Someone ___ (must/eat) all the snacks — the bag is empty!",
+          "answers": [
+            "must have eaten"
+          ]
+        },
+        {
+          "sentence": "Liam ___ (might/drop) his torch near the tent.",
+          "answers": [
+            "might have dropped"
+          ]
+        },
+        {
+          "sentence": "It ___ (can't/be) a bear — there aren't any bears here.",
+          "answers": [
+            "can't have been"
+          ]
+        },
+        {
+          "sentence": "You've walked for six hours — you ___ (must/be) exhausted.",
+          "answers": [
+            "must be"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "the wind",
+            "must be",
+            "It",
+            "."
+          ],
+          "answer": "It must be the wind."
+        },
+        {
+          "words": [
+            "an animal",
+            "might be",
+            "It",
+            "."
+          ],
+          "answer": "It might be an animal."
+        },
+        {
+          "words": [
+            "dangerous",
+            "can't be",
+            "It",
+            "."
+          ],
+          "answer": "It can't be dangerous."
+        },
+        {
+          "words": [
+            "the snacks",
+            "must have eaten",
+            "Someone",
+            "."
+          ],
+          "answer": "Someone must have eaten the snacks."
+        },
+        {
+          "words": [
+            "his torch",
+            "might have dropped",
+            "Liam",
+            "."
+          ],
+          "answer": "Liam might have dropped his torch."
+        },
+        {
+          "words": [
+            "a bear",
+            "can't have been",
+            "It",
+            "."
+          ],
+          "answer": "It can't have been a bear."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "I'm almost certain that noise is the wind.",
+          "key": "MUST",
+          "second_start": "That noise",
+          "second_end": "the wind.",
+          "answers": [
+            "must be"
+          ]
+        },
+        {
+          "first": "Maybe it's a fox outside — we can't be sure.",
+          "key": "MIGHT",
+          "second_start": "It",
+          "second_end": "a fox outside.",
+          "answers": [
+            "might be"
+          ]
+        },
+        {
+          "first": "It's impossible for it to be dangerous — we're safe.",
+          "key": "CAN'T",
+          "second_start": "It",
+          "second_end": "dangerous.",
+          "answers": [
+            "can't be"
+          ]
+        },
+        {
+          "first": "I'm sure someone ate all the snacks.",
+          "key": "MUST",
+          "second_start": "Someone",
+          "second_end": "all the snacks.",
+          "answers": [
+            "must have eaten"
+          ]
+        },
+        {
+          "first": "It's impossible that it was a bear — there aren't any here.",
+          "key": "CAN'T",
+          "second_start": "It",
+          "second_end": "a bear.",
+          "answers": [
+            "can't have been"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can guess about the present with must, might/may/could and can't.",
+    "I can guess about the past with must have, might have and can't have + past participle.",
+    "I can tell the difference between deduction must (a guess) and obligation must (a rule)."
+  ],
+  "summary": [
+    "Must be / must have been = an almost certain guess, based on strong evidence.",
+    "Might/may/could be = a real possibility, not certain.",
+    "Can't be / can't have been = a confident 'impossible', the opposite of must.",
+    "For the past, add have + past participle: must have left, might have dropped, can't have been.",
+    "Deduction must (a guess) is different from obligation must (a rule) — check the context."
+  ]
+}

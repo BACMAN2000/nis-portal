@@ -1,0 +1,645 @@
+{
+  "id": "wish-hope",
+  "level": "pet",
+  "area": "Conditionals & hypothesis",
+  "title": "wish, hope and I'd rather",
+  "tagline": "How to say you want things to be different — now, in the past, or just less annoying.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Writing Part 2 — story",
+    "Speaking Part 3 — long turn"
+  ],
+  "why": "Wishing things were different, hoping for good news, and saying what you'd prefer are things you do every day in English, and B1 Preliminary checks you can tell wish (imaginary) apart from hope (real) in the reading cloze. Using them naturally also makes your Speaking Part 3 photo description or your Writing Part 2 story sound much more personal.",
+  "hook": {
+    "text": "Sofia's birthday is tomorrow. Nadia: \"I <b>wish</b> we <b>had</b> more time to plan it!\" Liam: \"I <b>hope</b> she <b>doesn't find out</b> about the surprise.\" Mateo: \"I<b>'d rather</b> bake a cake than buy one.\"",
+    "ask": "Nadia's sentence is about now (an imaginary present). Liam's sentence is a real hope for the future. What tense follows wish, and what follows hope?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "wish: present or past?",
+      "marks": [
+        {
+          "at": "now",
+          "label": "we don't have more time",
+          "sub": "wish + past simple (had)"
+        },
+        {
+          "at": "past",
+          "label": "Sofia didn't get a party last year",
+          "sub": "wish + past perfect (had had)"
+        }
+      ],
+      "arrows": [],
+      "caption": "wish + past simple = a present regret. wish + past perfect = a past regret."
+    },
+    {
+      "type": "contrast",
+      "title": "wish vs hope",
+      "columns": [
+        "wish",
+        "hope"
+      ],
+      "rows": [
+        {
+          "label": "Feeling",
+          "cells": [
+            "something is NOT true — imaginary",
+            "something can still come true — real"
+          ]
+        },
+        {
+          "label": "Verb after it",
+          "cells": [
+            "past simple / past perfect / would",
+            "present simple or will"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "I <b>wish</b> I <b>had</b> a dog.",
+            "I <b>hope</b> I <b>get</b> a dog for my birthday."
+          ]
+        },
+        {
+          "label": "Time",
+          "cells": [
+            "now (past simple) or before now (past perfect)",
+            "now or the future"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to complain politely with wish + would",
+      "steps": [
+        {
+          "label": "wish + subject + would + verb",
+          "ex": "I <b>wish</b> you <b>would stop</b> tapping your pen."
+        },
+        {
+          "label": "use it for things that annoy you and could change",
+          "ex": "I <b>wish</b> it <b>would stop</b> raining."
+        },
+        {
+          "label": "don't use wish + would about yourself",
+          "ex": "NOT <i>I wish I would be taller</i> — say <i>I wish I were taller.</i>"
+        }
+      ],
+      "caption": "wish + would is for other people or things that bother you — not for yourself."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "wish",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ past simple",
+        "tone": "a",
+        "ex": "wish I had"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "a present regret",
+        "tone": "b"
+      },
+      {
+        "chip": "wish",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ past perfect",
+        "tone": "a",
+        "ex": "wish I'd had"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "a past regret",
+        "tone": "c"
+      },
+      {
+        "chip": "hope",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ present / will",
+        "tone": "a",
+        "ex": "hope she likes"
+      }
+    ],
+    "table": {
+      "head": [
+        "Structure",
+        "Form",
+        "Example",
+        "Meaning"
+      ],
+      "rows": [
+        [
+          "wish (now)",
+          "wish + past simple",
+          "I wish I had a bigger room.",
+          "not true now"
+        ],
+        [
+          "wish (past)",
+          "wish + past perfect",
+          "I wish I hadn't said that.",
+          "a regret about the past"
+        ],
+        [
+          "wish (annoying)",
+          "wish + would + verb",
+          "I wish you would listen.",
+          "I want someone/something to change"
+        ],
+        [
+          "hope",
+          "hope + present simple / will",
+          "I hope she likes the cake.",
+          "a real, possible wish"
+        ],
+        [
+          "preference",
+          "I'd rather + verb / I'd prefer + to",
+          "I'd rather stay home.",
+          "what you want more"
+        ],
+        [
+          "if only",
+          "if only + past simple / past perfect",
+          "If only I had more time!",
+          "a stronger, more emotional wish — no result half needed"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "wish + past simple: not true now",
+      "examples": [
+        {
+          "text": "I <b>wish</b> I <b>had</b> more free time this week.",
+          "note": "I don't have more time — a present regret"
+        },
+        {
+          "text": "Liam <b>wishes</b> he <b>could sing</b> better for the party.",
+          "note": "wishes + could = an imaginary present ability"
+        },
+        {
+          "text": "I <b>wish</b> it <b>weren't</b> so hot today.",
+          "note": "were, not was, after wish — just like the second conditional"
+        },
+        {
+          "text": "<b>If only</b> I <b>had</b> a bike like Liam's!",
+          "note": "if only is a stronger version of wish — same past simple, no result half"
+        }
+      ]
+    },
+    {
+      "point": "wish + past perfect: not true in the past",
+      "examples": [
+        {
+          "text": "I <b>wish</b> I <b>hadn't told</b> Sofia about the surprise.",
+          "note": "a regret about something already done"
+        },
+        {
+          "text": "Nadia <b>wishes</b> she <b>had bought</b> the present earlier.",
+          "note": "she didn't, and now it's too late"
+        },
+        {
+          "text": "We <b>wish</b> we<b>'d planned</b> the party sooner.",
+          "note": "'d planned = had planned, a regret about the past"
+        }
+      ]
+    },
+    {
+      "point": "wish + would: something annoying",
+      "examples": [
+        {
+          "text": "I <b>wish</b> Liam <b>would stop</b> checking his phone.",
+          "note": "it's annoying and could change"
+        },
+        {
+          "text": "Mateo <b>wishes</b> his little brother <b>would knock</b> before coming in.",
+          "note": "a habit that bothers him"
+        },
+        {
+          "text": "I <b>wish</b> it <b>would stop</b> raining before the party.",
+          "note": "about the weather, not about yourself"
+        }
+      ]
+    },
+    {
+      "point": "hope, I'd rather and I'd prefer",
+      "examples": [
+        {
+          "text": "I <b>hope</b> Sofia <b>likes</b> her present.",
+          "note": "a real, possible wish about now or the future"
+        },
+        {
+          "text": "We <b>hope</b> it <b>won't rain</b> tomorrow.",
+          "note": "hope + will for the future"
+        },
+        {
+          "text": "I<b>'d rather</b> bake a cake than buy one.",
+          "note": "a preference — no to before the verb"
+        },
+        {
+          "text": "Nadia <b>would prefer to</b> keep it a secret.",
+          "note": "would prefer + to + verb"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I wish I have more time.",
+      "right": "I wish I <b>had</b> more time.",
+      "why": "After wish about now, use the past simple, not the present."
+    },
+    {
+      "wrong": "I wish I would be taller.",
+      "right": "I wish I <b>were</b> taller.",
+      "why": "Don't use wish + would about yourself — use the past simple (were)."
+    },
+    {
+      "wrong": "I wish I hadn't say that.",
+      "right": "I wish I hadn't <b>said</b> that.",
+      "why": "wish + past perfect needs the past participle after hadn't."
+    },
+    {
+      "wrong": "I hope she will likes it.",
+      "right": "I hope she <b>likes</b> it.",
+      "why": "hope + present simple — never double the verb form with will and -s together."
+    },
+    {
+      "wrong": "I'd rather to stay home.",
+      "right": "I'd rather <b>stay</b> home.",
+      "why": "I'd rather is followed by the base verb, never to."
+    },
+    {
+      "wrong": "I'd prefer stay home.",
+      "right": "I'd prefer <b>to stay</b> home.",
+      "why": "I'd prefer needs to before the verb — the opposite rule from I'd rather."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Ojalá tuviera más tiempo.",
+      "wrong": "I wish I have more time.",
+      "right": "I wish I <b>had</b> more time.",
+      "why": "Ojalá + subjunctive becomes wish + past simple in English, never the present."
+    },
+    {
+      "es": "Ojalá lo hubiera dicho antes.",
+      "wrong": "I wish I said it before.",
+      "right": "I wish I<b>'d said</b> it before.",
+      "why": "A regret about the past needs wish + past perfect (had + participle)."
+    },
+    {
+      "es": "Espero que le guste.",
+      "wrong": "I wish she likes it.",
+      "right": "I <b>hope</b> she likes it.",
+      "why": "Espero (a real, possible wish) is hope, not wish — wish is for things that are NOT true."
+    },
+    {
+      "es": "Prefiero quedarme en casa.",
+      "wrong": "I prefer stay home.",
+      "right": "I<b>'d rather</b> stay home. / I<b>'d prefer to</b> stay home.",
+      "why": "Spanish prefiero needs a helper verb in English: rather + base verb or prefer + to + verb."
+    },
+    {
+      "es": "Ojalá dejara de llover.",
+      "wrong": "I wish it stops raining.",
+      "right": "I wish it <b>would stop</b> raining.",
+      "why": "A wish for something annoying to change uses wish + would, not the present simple."
+    }
+  ],
+  "remember": {
+    "trick": "Wish means 'not true' — hope means 'maybe yes'!",
+    "tip": "If it's real and possible, say hope. If it's imaginary or a past regret, say wish."
+  },
+  "dialogue": {
+    "title": "Sofia's surprise party",
+    "context": "Nadia, Liam and Mateo are planning a secret birthday party for Sofia and worry about the details.",
+    "lines": [
+      {
+        "speaker": "Nadia",
+        "text": "I <b>wish</b> we <b>had</b> more time — the party is tomorrow!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "I know. I <b>wish</b> we<b>'d started</b> planning last week."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I<b>'d rather</b> bake a cake than buy one from the shop."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Good idea. I <b>hope</b> Sofia <b>doesn't guess</b> anything."
+      },
+      {
+        "speaker": "Liam",
+        "text": "She won't. Although I <b>wish</b> you <b>would stop</b> talking about it at school!"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Sorry! I<b>'d prefer to</b> keep it quiet, I promise."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I <b>hope</b> the weather <b>stays</b> nice — we want the garden party."
+      },
+      {
+        "speaker": "Liam",
+        "text": "I <b>wish</b> I <b>could see</b> her face when she walks in."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Me too. I <b>wish</b> tomorrow <b>were</b> already here!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "I wish I ___ more free time.",
+          "options": [
+            "have",
+            "had",
+            "will have"
+          ],
+          "answer": 1,
+          "why": "wish + past simple about now"
+        },
+        {
+          "sentence": "Liam wishes he ___ sing better.",
+          "options": [
+            "can",
+            "could",
+            "will"
+          ],
+          "answer": 1,
+          "why": "wish + could for an imaginary present ability"
+        },
+        {
+          "sentence": "I wish I ___ that yesterday — it was rude.",
+          "options": [
+            "hadn't said",
+            "didn't say",
+            "don't say"
+          ],
+          "answer": 0,
+          "why": "wish + past perfect about the past"
+        },
+        {
+          "sentence": "I wish it ___ raining — I want to go outside.",
+          "options": [
+            "stops",
+            "would stop",
+            "stopped"
+          ],
+          "answer": 1,
+          "why": "wish + would for something annoying"
+        },
+        {
+          "sentence": "I ___ Sofia likes her present.",
+          "options": [
+            "wish",
+            "hope",
+            "would"
+          ],
+          "answer": 1,
+          "why": "a real, possible wish"
+        },
+        {
+          "sentence": "We hope it ___ rain tomorrow.",
+          "options": [
+            "won't",
+            "wouldn't",
+            "doesn't"
+          ],
+          "answer": 0,
+          "why": "hope + will for the future"
+        },
+        {
+          "sentence": "I'd rather ___ home tonight.",
+          "options": [
+            "stay",
+            "to stay",
+            "staying"
+          ],
+          "answer": 0,
+          "why": "I'd rather + base verb"
+        },
+        {
+          "sentence": "Nadia would prefer ___ the secret quiet.",
+          "options": [
+            "keep",
+            "keeping",
+            "to keep"
+          ],
+          "answer": 2,
+          "why": "would prefer + to + verb"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "I wish I ___ (have) a bigger room.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "sentence": "Liam wishes he ___ (can/sing) better.",
+          "answers": [
+            "could sing"
+          ]
+        },
+        {
+          "sentence": "I wish I ___ (not/say) that yesterday.",
+          "answers": [
+            "hadn't said",
+            "had not said"
+          ]
+        },
+        {
+          "sentence": "I wish it ___ (stop) raining.",
+          "answers": [
+            "would stop"
+          ]
+        },
+        {
+          "sentence": "I ___ (hope) Sofia likes her present.",
+          "answers": [
+            "hope"
+          ]
+        },
+        {
+          "sentence": "We hope it ___ (not/rain) tomorrow.",
+          "answers": [
+            "won't rain",
+            "will not rain"
+          ]
+        },
+        {
+          "sentence": "I'd rather ___ (stay) home than go out.",
+          "answers": [
+            "stay"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "more time",
+            ".",
+            "I had",
+            "I wish"
+          ],
+          "answer": "I wish I had more time."
+        },
+        {
+          "words": [
+            "that",
+            "I wish",
+            ".",
+            "I hadn't said"
+          ],
+          "answer": "I wish I hadn't said that."
+        },
+        {
+          "words": [
+            "raining",
+            "it would stop",
+            ".",
+            "I wish"
+          ],
+          "answer": "I wish it would stop raining."
+        },
+        {
+          "words": [
+            "her present",
+            ".",
+            "I hope",
+            "she likes"
+          ],
+          "answer": "I hope she likes her present."
+        },
+        {
+          "words": [
+            ".",
+            "stay home",
+            "I'd rather"
+          ],
+          "answer": "I'd rather stay home."
+        },
+        {
+          "words": [
+            "a secret",
+            "keep it",
+            ".",
+            "I'd prefer to"
+          ],
+          "answer": "I'd prefer to keep it a secret."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "I don't have a bigger room, unfortunately.",
+          "key": "HAD",
+          "second_start": "I wish I",
+          "second_end": "a bigger room.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "first": "I regret saying that yesterday.",
+          "key": "HADN'T",
+          "second_start": "I wish I",
+          "second_end": "that yesterday.",
+          "answers": [
+            "hadn't said"
+          ]
+        },
+        {
+          "first": "It's annoying that it keeps raining.",
+          "key": "WOULD",
+          "second_start": "I wish it",
+          "second_end": "raining.",
+          "answers": [
+            "would stop"
+          ]
+        },
+        {
+          "first": "I really want Sofia to like her present.",
+          "key": "HOPE",
+          "second_start": "I",
+          "second_end": "Sofia likes her present.",
+          "answers": [
+            "hope"
+          ]
+        },
+        {
+          "first": "Staying home is what I prefer, not going out.",
+          "key": "RATHER",
+          "second_start": "I'd",
+          "second_end": "than go out.",
+          "answers": [
+            "rather stay home"
+          ]
+        },
+        {
+          "first": "Keeping the secret is what Nadia prefers.",
+          "key": "PREFER",
+          "second_start": "Nadia would",
+          "second_end": "the secret.",
+          "answers": [
+            "prefer to keep"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what I wish were different now, with wish + past simple.",
+    "I can say what I regret about the past, with wish + past perfect.",
+    "I can talk about real hopes with hope, and preferences with I'd rather / I'd prefer to."
+  ],
+  "summary": [
+    "wish + past simple = something you want to be different now (I wish I had…); if only is a stronger version of the same idea.",
+    "wish + past perfect = a regret about the past (I wish I'd known…).",
+    "wish + would = you want someone or something (not yourself) to change.",
+    "hope + present/will is for real, possible wishes — the opposite feeling from wish.",
+    "I'd rather + base verb, but I'd prefer + to + verb — don't mix the two patterns."
+  ]
+}

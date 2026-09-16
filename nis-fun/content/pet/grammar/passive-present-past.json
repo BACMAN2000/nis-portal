@@ -1,0 +1,630 @@
+{
+  "id": "passive-present-past",
+  "level": "pet",
+  "area": "Passive & causative",
+  "title": "The passive: present and past",
+  "tagline": "When the action matters more than who did it.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 6 — open cloze",
+    "Reading Part 1 — signs and notices",
+    "Writing Part 2 — story or article"
+  ],
+  "why": "English uses the passive whenever the action matters more than who did it — in museum notices, news reports, instructions and formal writing, all of which appear in B1 Preliminary Reading and Writing. Choosing between the present and past passive, and deciding whether to add by + agent, is tested directly in the open cloze and rewarded in a well-written article or story.",
+  "hook": {
+    "text": "At the museum, Miss Vega says: \"This vase <b>was made</b> in Cusco 500 years ago. Nobody knows who made it, so we just say it <b>was made</b> by a skilled Inca artist.\" Mateo: \"So the vase <b>is displayed</b> here because it<b>'s</b> so old?\"",
+    "ask": "Miss Vega doesn't always say who did the action. Find the sentences where the subject RECEIVES the action instead of doing it. What form of be do they use?"
+  },
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Active → passive",
+      "before": {
+        "text": "An Inca artist made this vase.",
+        "hl": [
+          "made"
+        ]
+      },
+      "after": {
+        "text": "This vase was made by an Inca artist.",
+        "hl": [
+          "was made",
+          "by"
+        ]
+      },
+      "steps": [
+        "The object of the active sentence (this vase) becomes the subject.",
+        "Add the correct form of be + past participle (was made).",
+        "Add by + the doer only if it's useful information."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Active vs passive",
+      "columns": [
+        "Active",
+        "Passive"
+      ],
+      "rows": [
+        {
+          "label": "Focus",
+          "cells": [
+            "who does the action",
+            "what happens to something/someone"
+          ]
+        },
+        {
+          "label": "Form",
+          "cells": [
+            "subject + verb",
+            "subject + be + past participle"
+          ]
+        },
+        {
+          "label": "Example (present)",
+          "cells": [
+            "Workers clean the museum every night.",
+            "The museum <b>is cleaned</b> every night."
+          ]
+        },
+        {
+          "label": "Example (past)",
+          "cells": [
+            "Someone stole the painting.",
+            "The painting <b>was stolen</b>."
+          ]
+        },
+        {
+          "label": "The doer",
+          "cells": [
+            "always the subject",
+            "often left out, or after by"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to build the passive",
+      "steps": [
+        {
+          "label": "Find the object of the active sentence",
+          "ex": "They built <b>this castle</b> in 1200."
+        },
+        {
+          "label": "Move it to the front",
+          "ex": "<b>This castle</b> …"
+        },
+        {
+          "label": "Add be in the right tense + past participle",
+          "ex": "This castle <b>was built</b> in 1200."
+        },
+        {
+          "label": "Add by + agent only if it matters",
+          "ex": "This castle was built <b>by</b> local workers."
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "be (present)",
+        "tone": "kw",
+        "ex": "is/are"
+      },
+      {
+        "chip": "+ past participle",
+        "tone": "a",
+        "ex": "is cleaned"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "be (past)",
+        "tone": "kw",
+        "ex": "was/were"
+      },
+      {
+        "chip": "+ past participle",
+        "tone": "b",
+        "ex": "was built"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "have/has been",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ past participle",
+        "tone": "c",
+        "ex": "has been sold"
+      }
+    ],
+    "table": {
+      "head": [
+        "Tense",
+        "Active",
+        "Passive",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Present simple",
+          "clean(s)",
+          "am/is/are + participle",
+          "The rooms are cleaned every day."
+        ],
+        [
+          "Past simple",
+          "cleaned",
+          "was/were + participle",
+          "The rooms were cleaned yesterday."
+        ],
+        [
+          "Present perfect",
+          "has/have cleaned",
+          "has/have been + participle",
+          "The rooms have been cleaned already."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Present passive: routines and general facts",
+      "examples": [
+        {
+          "text": "This pottery <b>is made</b> by hand.",
+          "note": "a general fact about the process"
+        },
+        {
+          "text": "The museum <b>is closed</b> on Mondays.",
+          "note": "a routine — present simple passive"
+        },
+        {
+          "text": "English <b>is spoken</b> in many countries.",
+          "note": "the doer (people) isn't important"
+        }
+      ]
+    },
+    {
+      "point": "Past passive: finished actions",
+      "examples": [
+        {
+          "text": "This bridge <b>was built</b> in 1350.",
+          "note": "we know when, not always who"
+        },
+        {
+          "text": "The paintings <b>were stolen</b> last year.",
+          "note": "the object (paintings) is the focus, not the thief"
+        },
+        {
+          "text": "I <b>was told</b> not to touch the exhibits.",
+          "note": "someone told me — the doer isn't important here"
+        }
+      ]
+    },
+    {
+      "point": "with and without by + agent",
+      "examples": [
+        {
+          "text": "The vase <b>was made by</b> a famous Inca artist.",
+          "note": "by + agent when the doer is interesting"
+        },
+        {
+          "text": "This room <b>is cleaned</b> every night.",
+          "note": "no by — we don't care who cleans it"
+        },
+        {
+          "text": "The museum <b>was designed by</b> a Peruvian architect.",
+          "note": "by + agent gives extra, useful information"
+        }
+      ]
+    },
+    {
+      "point": "Questions, negatives and present perfect passive",
+      "examples": [
+        {
+          "text": "<b>Was</b> this statue <b>found</b> here in Peru?",
+          "note": "passive question: was/were + subject + participle"
+        },
+        {
+          "text": "The old wing <b>isn't used</b> anymore.",
+          "note": "negative passive: be + not + participle"
+        },
+        {
+          "text": "This exhibition <b>has been visited</b> by thousands of people.",
+          "note": "present perfect passive: has/have been + participle"
+        },
+        {
+          "text": "<b>Have</b> the tickets <b>been sold</b> yet?",
+          "note": "present perfect passive question"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "This vase made in Cusco.",
+      "right": "This vase <b>was made</b> in Cusco.",
+      "why": "The passive always needs a form of be — never the participle alone."
+    },
+    {
+      "wrong": "The museum is closing on Mondays.",
+      "right": "The museum <b>is closed</b> on Mondays.",
+      "why": "Is closing is active/continuous; the passive fact needs is closed."
+    },
+    {
+      "wrong": "The letter was wrote by Sofia.",
+      "right": "The letter <b>was written</b> by Sofia.",
+      "why": "Use the past participle (written), not the past simple (wrote), after be."
+    },
+    {
+      "wrong": "By an artist, the vase was made.",
+      "right": "The vase was made <b>by</b> an artist.",
+      "why": "By + agent goes at the end of the sentence, not the front."
+    },
+    {
+      "wrong": "This bridge is build in 1350.",
+      "right": "This bridge <b>was built</b> in 1350.",
+      "why": "A finished date in the past needs the past passive, not the present."
+    },
+    {
+      "wrong": "Have the tickets sold?",
+      "right": "Have the tickets <b>been sold</b>?",
+      "why": "The present perfect passive needs been before the participle."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Se habla español aquí.",
+      "wrong": "Is spoken Spanish here.",
+      "right": "Spanish <b>is spoken</b> here.",
+      "why": "The subject (Spanish) must come before is spoken — English can't start the sentence with the verb."
+    },
+    {
+      "es": "El museo fue construido en 1920.",
+      "wrong": "The museum was construct in 1920.",
+      "right": "The museum <b>was built</b> in 1920.",
+      "why": "English needs the past participle (built) after was, not the base or infinitive form."
+    },
+    {
+      "es": "Me dijeron que llegara temprano.",
+      "wrong": "I was said to arrive early.",
+      "right": "I <b>was told</b> to arrive early.",
+      "why": "Say cannot be used in the passive with a person as the subject — use tell/told."
+    },
+    {
+      "es": "El cuadro lo robaron anoche.",
+      "wrong": "The painting robbed it last night.",
+      "right": "The painting <b>was stolen</b> last night.",
+      "why": "Spanish can hide the passive inside an active sentence with se or lo; English needs be + participle and no extra pronoun."
+    }
+  ],
+  "remember": {
+    "trick": "No BE, no passive — that's the rule!",
+    "tip": "Find the form of be first (is, was, has been…) — the past participle always comes right after it."
+  },
+  "dialogue": {
+    "title": "A morning at the museum",
+    "context": "Miss Vega takes the class to a museum in Lima, and the students ask about the objects on display.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "This vase <b>was made</b> around 1400, long before the Spanish arrived."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Who <b>was</b> it <b>made</b> by?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Nobody knows exactly — it <b>was made</b> by a skilled local artist."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And this gold mask — <b>is</b> it <b>kept</b> here all year?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "No, it<b>'s moved</b> to a bigger museum every December."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Was</b> it ever <b>stolen</b>?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Once, in 1987. It <b>was found</b> two years later."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "This room <b>isn't used</b> for tours anymore, right?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Correct — it<b>'s only opened</b> for researchers now."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "This whole museum <b>has been visited</b> by millions of people."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "This bridge ___ in 1350.",
+          "options": [
+            "built",
+            "builds",
+            "was built"
+          ],
+          "answer": 2,
+          "why": "past passive for a finished date"
+        },
+        {
+          "sentence": "English ___ in many countries.",
+          "options": [
+            "speaks",
+            "spoke",
+            "is spoken"
+          ],
+          "answer": 2,
+          "why": "present passive for a general fact"
+        },
+        {
+          "sentence": "The museum ___ every night.",
+          "options": [
+            "is cleaned",
+            "cleans",
+            "cleaned"
+          ],
+          "answer": 0,
+          "why": "present passive for a routine"
+        },
+        {
+          "sentence": "The vase ___ by a famous artist.",
+          "options": [
+            "makes",
+            "was made",
+            "made"
+          ],
+          "answer": 1,
+          "why": "past passive with by + agent"
+        },
+        {
+          "sentence": "___ the tickets been sold yet?",
+          "options": [
+            "Was",
+            "Did",
+            "Have"
+          ],
+          "answer": 2,
+          "why": "present perfect passive question"
+        },
+        {
+          "sentence": "This room ___ for tours anymore.",
+          "options": [
+            "isn't used",
+            "doesn't use",
+            "not used"
+          ],
+          "answer": 0,
+          "why": "negative passive"
+        },
+        {
+          "sentence": "The letter ___ by Sofia yesterday.",
+          "options": [
+            "writes",
+            "was written",
+            "wrote"
+          ],
+          "answer": 1,
+          "why": "past passive, irregular participle"
+        },
+        {
+          "sentence": "This exhibition ___ by thousands of people.",
+          "options": [
+            "visited",
+            "has been visited",
+            "visits"
+          ],
+          "answer": 1,
+          "why": "present perfect passive"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "This bridge ___ (build) in 1350.",
+          "answers": [
+            "was built"
+          ]
+        },
+        {
+          "sentence": "English ___ (speak) in many countries.",
+          "answers": [
+            "is spoken"
+          ]
+        },
+        {
+          "sentence": "The museum ___ (clean) every night.",
+          "answers": [
+            "is cleaned"
+          ]
+        },
+        {
+          "sentence": "The vase ___ (make) by a famous artist.",
+          "answers": [
+            "was made"
+          ]
+        },
+        {
+          "sentence": "The tickets ___ (not/sell) yet.",
+          "answers": [
+            "haven't been sold",
+            "have not been sold"
+          ]
+        },
+        {
+          "sentence": "This room ___ (not/use) for tours anymore.",
+          "answers": [
+            "isn't used",
+            "is not used"
+          ]
+        },
+        {
+          "sentence": "The letter ___ (write) by Sofia yesterday.",
+          "answers": [
+            "was written"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "in 1350",
+            "was built",
+            ".",
+            "This bridge"
+          ],
+          "answer": "This bridge was built in 1350."
+        },
+        {
+          "words": [
+            "in many countries",
+            ".",
+            "English",
+            "is spoken"
+          ],
+          "answer": "English is spoken in many countries."
+        },
+        {
+          "words": [
+            "every night",
+            "The museum",
+            ".",
+            "is cleaned"
+          ],
+          "answer": "The museum is cleaned every night."
+        },
+        {
+          "words": [
+            "by a famous artist",
+            ".",
+            "The vase",
+            "was made"
+          ],
+          "answer": "The vase was made by a famous artist."
+        },
+        {
+          "words": [
+            "for tours anymore",
+            "isn't used",
+            ".",
+            "This room"
+          ],
+          "answer": "This room isn't used for tours anymore."
+        },
+        {
+          "words": [
+            "yet",
+            "Have",
+            "?",
+            "the tickets been sold"
+          ],
+          "answer": "Have the tickets been sold yet?"
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Someone built this bridge in 1350.",
+          "key": "WAS",
+          "second_start": "This bridge",
+          "second_end": "in 1350.",
+          "answers": [
+            "was built"
+          ]
+        },
+        {
+          "first": "People speak English in many countries.",
+          "key": "IS",
+          "second_start": "English",
+          "second_end": "in many countries.",
+          "answers": [
+            "is spoken"
+          ]
+        },
+        {
+          "first": "Somebody cleans the museum every night.",
+          "key": "IS",
+          "second_start": "The museum",
+          "second_end": "every night.",
+          "answers": [
+            "is cleaned"
+          ]
+        },
+        {
+          "first": "A famous artist made the vase.",
+          "key": "WAS",
+          "second_start": "The vase",
+          "second_end": "by a famous artist.",
+          "answers": [
+            "was made"
+          ]
+        },
+        {
+          "first": "Nobody uses this room for tours anymore.",
+          "key": "ISN'T",
+          "second_start": "This room",
+          "second_end": "for tours anymore.",
+          "answers": [
+            "isn't used"
+          ]
+        },
+        {
+          "first": "Thousands of people have visited this exhibition.",
+          "key": "BEEN",
+          "second_start": "This exhibition",
+          "second_end": "by thousands of people.",
+          "answers": [
+            "has been visited"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use the present and past passive to talk about facts, processes and finished actions.",
+    "I can decide when to add by + the doer and when to leave it out.",
+    "I can make passive questions and negatives, including with the present perfect."
+  ],
+  "summary": [
+    "Passive = be + past participle; the subject receives the action instead of doing it.",
+    "Present passive (is/are + participle) is for routines, facts and processes.",
+    "Past passive (was/were + participle) is for finished actions in the past.",
+    "Add by + agent only when the doer is interesting or important information.",
+    "Present perfect passive: has/have been + participle."
+  ]
+}

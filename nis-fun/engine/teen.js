@@ -28,9 +28,11 @@
 window.TEEN = (function () {
   'use strict';
 
-  const TEEN_V = '2026-09-16c';   // sube al cambiar fotos o audio del lab
+  const TEEN_V = '2026-09-16d';   // sube al cambiar fotos o audio del lab
 
   const NIV = {
+    a1: { name: 'A1 Foundations', full: 'A1 Foundations · the grammar before A2 Key', cefr: 'A1', icon: 'course',
+          blurb: 'The twelve things every beginner needs before A2 Key: be, have got, the present simple and continuous, can, questions and where things are — each one explained step by step, with a story, colour blocks, audio and practice.' },
     ket: { name: 'A2 Key', full: 'A2 Key for Schools', cefr: 'A2', icon: 'ket',
            blurb: 'Your first Cambridge exam: everyday English for school, home and free time — reading, writing, listening and speaking, in the real exam format.' },
     pet: { name: 'B1 Preliminary', full: 'B1 Preliminary for Schools', cefr: 'B1', icon: 'pet',
@@ -124,22 +126,34 @@ window.TEEN = (function () {
   }
   const labKey = id => `${LPFX}-gl-${LEVEL}-${id}`;
   function labProg(id) { try { return JSON.parse(localStorage.getItem(labKey(id)) || '{}'); } catch (e) { return {}; } }
-  function labHecho(id) { const p = labProg(id); return !!(p.mc && p.gap && p.transform); }
+  // hecho = todos los bloques de practica del tema (ket/pet traen cuatro; b2f/c1a, tres)
+  function labHecho(id) { const p = labProg(id); return p.hecho === true || !!(p.mc && p.gap && p.transform); }
   const AREA_FOTO = {
     'Tenses & time': 'area-tenses', 'Tenses & aspect': 'area-tenses', 'Modals': 'area-modals',
     'Conditionals & hypothesis': 'area-conditionals', 'Passive & causative': 'area-passive',
     'Passive & reporting': 'area-reporting', 'Reporting': 'area-reporting', 'Sentence building': 'area-sentence',
     'Comparison & description': 'area-comparison', 'Emphasis & questions': 'area-emphasis', 'Words': 'area-words',
+    'First words, first sentences': 'area-words', 'Every day': 'area-tenses', 'Here and now': 'area-sentence',
   };
   function labIndexHTML(lab) {
-    let n = 0;
+    let n = 0, etapa = null;
+    // las areas pueden venir agrupadas en etapas (ket: A1 Foundations → A2 Key)
     return lab.areas.map(ar => `
+      ${ar.stage && ar.stage !== etapa ? (etapa = ar.stage, `<div class="t-stage"><span class="t-kicker">${T('Stage', 'Étape')}</span><h2>${esc(ar.stage)}</h2></div>`) : ''}
       <div class="t-lab-area"><img src="${FOTO((AREA_FOTO[ar.area] || 'area-words') + '-s')}" alt="">
-        <div><h3>${esc(ar.area)}</h3><small>${ar.topics.length} ${T('topics', 'sujets')}</small></div></div>
+        <div><h3>${esc(ar.area)}</h3><small>${ar.topics.length} ${ar.topics.length === 1 ? T('topic', 'sujet') : T('topics', 'sujets')}</small></div></div>
       <div class="t-topics">${ar.topics.map(t => { n++; const done = labHecho(t.id);
         return `<a class="t-topic ${done ? 'done' : ''}" href="${Q(`?level=${LEVEL}&grammar=${t.id}`)}">
           <span class="n">${done ? '✓' : n}</span><span><b>${esc(t.title)}</b><small>${esc(t.tagline || '')}</small></span>
           <span class="cefr">${esc(t.cefr || NIV[LEVEL].cefr)}</span></a>`; }).join('')}</div>`).join('');
+  }
+
+  /* A1 Foundations y A2 Key se enlazan entre si: quien necesita la base baja,
+     quien ya la tiene sube */
+  function puente() {
+    if (LEVEL === 'a1') return `<a class="t-bridge" href="${Q('?level=ket&grammar=hub')}">${ico('rocket', 40)}<span><b>${T('Ready for more?', 'Prêt pour la suite ?')}</b><small>${T('Go on to the A2 Key Grammar Lab — 24 topics for the exam.', 'Passe au Grammar Lab A2 Key.')}</small></span><span class="go">›</span></a>`;
+    if (LEVEL === 'ket') return `<a class="t-bridge" href="${Q('?level=a1')}">${ico('compass', 40)}<span><b>${T('Need the basics first?', 'Besoin des bases ?')}</b><small>${T('A1 Foundations: be, have got, present simple, can, questions… twelve topics before A2.', 'A1 Foundations : douze sujets avant A2.')}</small></span><span class="go">›</span></a>`;
+    return '';
   }
 
   /* ---- el mapa del examen: papers, partes y tiempos ---- */
@@ -200,6 +214,31 @@ window.TEEN = (function () {
     const nLab = lab ? lab.areas.reduce((s, a) => s + a.topics.length, 0) : 0;
     const labHechos = lab ? lab.areas.reduce((s, a) => s + a.topics.filter(t => labHecho(t.id)).length, 0) : 0;
 
+    // A1 Foundations no tiene unidades: la portada ES su Grammar Lab
+    if (!unidades.length && lab) {
+      const sig = todos => todos.find(t => !labHecho(t.id));
+      const temas = lab.areas.flatMap(a => a.topics);
+      const prox = sig(temas) || temas[0];
+      SCREENS.montar(app, [{ titulo: n.full,
+        html: `<div class="scr-centro">
+          <div class="t-hero"><img class="bg" src="${FOTO(`${LEVEL}-cover`)}" alt="" onerror="this.remove()">
+            <div class="icon3d">${ico('cam:' + n.icon, 104)}</div>
+            <div class="in"><span class="t-kicker">Cambridge English · ${esc(n.cefr)}</span><h1>${esc(n.name)}</h1>
+              <p class="lead">${esc(n.blurb)}</p>
+              <div class="row"><span class="t-chip">${nLab} ${T('grammar topics', 'points de grammaire')}</span><span class="t-chip">${T('Story, colour blocks, audio', 'Histoire, blocs, audio')}</span><span class="t-chip">${T('4 rounds of practice each', '4 exercices par sujet')}</span></div></div>
+            ${credito(`${LEVEL}-cover`)}</div>
+          <section class="course-status" aria-label="${T('Course progress', 'Progression')}">
+            <div><h3>${labHechos ? T(`Continue with: ${prox.title}`, `Continuer : ${prox.title}`) : T(`Start with: ${prox.title}`, `Commencer : ${prox.title}`)}</h3>
+              <p>${T(`${labHechos} of ${nLab} topics completed`, `${labHechos} sujets sur ${nLab}`)}</p></div>
+            <a class="continue" href="${Q(`?level=${LEVEL}&grammar=${prox.id}`)}">${labHechos ? T('Continue', 'Continuer') : T('Start', 'Commencer')} <span aria-hidden="true">›</span></a>
+            <div class="course-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(labHechos * 100 / Math.max(1, nLab))}"><span style="--progress:${Math.round(labHechos * 100 / Math.max(1, nLab))}%"></span></div>
+          </section>
+          ${labIndexHTML(lab)}
+          ${puente()}</div>` }],
+        { arriba: { href: Q('?'), texto: T('Courses', 'Cours') }, portal: PORTAL });
+      return;
+    }
+
     const hero = `<div class="t-hero">
       <img class="bg" src="${FOTO(`${LEVEL}-cover`)}" alt="" onerror="this.remove()">
       <div class="icon3d">${ico('cam:' + n.icon, 104)}</div>
@@ -259,8 +298,8 @@ window.TEEN = (function () {
         <div class="t-hero" style="min-height:13rem"><img class="bg" src="${FOTO('area-sentence')}" alt="" onerror="this.remove()">
           <div class="icon3d">${ico('lab', 104)}</div>
           <div class="in"><span class="t-kicker">${esc(n.name)} · ${T('reference', 'référence')}</span><h1>Grammar Lab</h1>
-            <p class="lead">${T(`The ${nLab} structures a ${n.cefr} candidate is expected to control — each one in diagrams, with real examples, the mistakes to avoid, a conversation and three rounds of practice.`, `Les ${nLab} structures du niveau ${n.cefr}.`)}</p></div>${credito('area-sentence')}</div>
-        ${labIndexHTML(lab)}</div>`,
+            <p class="lead">${T(`The ${nLab} structures ${/^[AEIOU]/.test(n.cefr) ? "an" : "a"} ${n.cefr} candidate is expected to control — each one in diagrams, with real examples, the mistakes to avoid, a conversation and ${LEVEL === 'a1' || LEVEL === 'ket' || LEVEL === 'pet' ? 'four' : 'three'} rounds of practice.`, `Les ${nLab} structures du niveau ${n.cefr}.`)}</p></div>${credito('area-sentence')}</div>
+        ${puente()}${labIndexHTML(lab)}</div>`,
     });
     pantallas.push({ titulo: T('Exam map', 'Carte de l’examen'), html: `<div class="scr-centro">${examMapHTML()}</div>` });
 
@@ -392,11 +431,34 @@ window.TEEN = (function () {
      LOS DIAGRAMAS
      ====================================================================== */
   const inl = t => String(t == null ? '' : t).replace(/<(?!\/?[bi]>)/g, '&lt;');   // solo <b> e <i>
+  const KICKER = { timeline: 'Timeline', formula: 'Pattern', contrast: 'Compare', transform: 'Transform', map: 'Map', scale: 'Scale',
+                   blocks: 'Build it', steps: 'Step by step', spelling: 'Spelling' };
   function diagrama(g) {
-    const f = { timeline, formula, contrast, transform, map, scale }[g.type];
+    const f = { timeline, formula, contrast, transform, map, scale, blocks, steps, spelling }[g.type];
     if (!f) return '';
-    return `<div class="t-diag t-${g.type}"><h4><span class="t-kicker">${esc(g.type === 'timeline' ? 'Timeline' : g.type === 'formula' ? 'Pattern' : g.type === 'contrast' ? 'Compare' : g.type === 'transform' ? 'Transform' : g.type === 'map' ? 'Map' : 'Scale')}</span> ${inl(g.title || '')}</h4>
+    return `<div class="t-diag t-${g.type}"><h4><span class="t-kicker">${esc(KICKER[g.type] || g.type)}</span> ${inl(g.title || '')}</h4>
       ${f(g)}${g.caption ? `<p class="cap">${inl(g.caption)}</p>` : ''}</div>`;
+  }
+  /* la frase como bloques de colores (Lego): cada pieza lleva su papel y la
+     leyenda solo enseña los papeles que salen */
+  const ROL = { subj: ['Who', 'Qui'], aux: ['Helper verb', 'Auxiliaire'], verb: ['Verb', 'Verbe'], obj: ['What / who', 'Quoi / qui'],
+                neg: ['Not', 'Négation'], time: ['When', 'Quand'], place: ['Where', 'Où'], kw: ['Key word', 'Mot clé'], x: ['', ''] };
+  function blocks(g) {
+    const usados = [];
+    const filas = (g.sentences || []).map(sn => `<div class="t-bl-row">${(sn.parts || []).map(pt => {
+        const r = ROL[pt.role] ? pt.role : 'x';
+        if (r !== 'x' && !usados.includes(r)) usados.push(r);
+        const punt = /^[.,?!;:]$/.test(String(pt.t || '').trim());
+        return `<span class="t-brick ${r}${punt ? ' p' : ''}">${inl(pt.t)}</span>`; }).join('')}
+      ${sn.note ? `<span class="t-bl-note">${inl(sn.note)}</span>` : ''}</div>`).join('');
+    const leyenda = g.legend === false || !usados.length ? '' : `<div class="t-bl-legend">${usados.map(r => `<span><i class="t-brick ${r}"></i>${T(ROL[r][0], ROL[r][1])}</span>`).join('')}</div>`;
+    return `<div class="t-bl">${filas}${leyenda}</div>`;
+  }
+  function steps(g) {
+    return `<div class="t-st">${(g.steps || []).map((x, i) => `<div class="t-step"><span class="n">${i + 1}</span><div><b>${inl(x.label)}</b><span class="ex">${inl(x.ex)}</span></div></div>`).join('')}</div>`;
+  }
+  function spelling(g) {
+    return `<div class="t-sp">${(g.rules || []).map(r => `<div class="t-sp-rule"><b>${inl(r.rule)}</b><ul>${(r.examples || []).map(e => `<li>${inl(e)}</li>`).join('')}</ul></div>`).join('')}</div>`;
   }
   function timeline(g) {
     const X = { 'before-past': 120, past: 300, now: 520, future: 700 };
@@ -573,6 +635,71 @@ window.TEEN = (function () {
       <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
   }
 
+  /* ordenar: las piezas se pulsan una a una y forman la frase */
+  const junta = ws => ws.join(' ').replace(/\s+([.,?!;:])/g, '$1').replace(/\s+/g, ' ').trim();
+  const igual = (a, b) => junta(String(a).split(' ')).replace(/[’]/g, "'") === junta(String(b).split(' ')).replace(/[’]/g, "'");
+  function practicaOrder(bl) {
+    return `<div class="t-pr t-order"><p class="instr">${inl(bl.instructions || '')}</p>
+      ${bl.items.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}.</div>
+        <div class="line"></div>
+        <div class="tiles">${it.words.map((w, k) => `<button class="tile" type="button" data-k="${k}">${esc(w)}</button>`).join('')}</div>
+        <div class="tools"><button class="undo" type="button">↶ ${T('Undo', 'Annuler')}</button><span class="fix"></span></div></div>`).join('')}
+      <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
+  }
+  function montaOrder(el, bl, alTerminar) {
+    const items = bl.items;
+    el.querySelectorAll('.item').forEach(item => {
+      const it = items[+item.dataset.i], line = item.querySelector('.line'), tiles = item.querySelectorAll('.tile');
+      const pila = [];
+      const pinta = () => {
+        line.innerHTML = pila.length ? pila.map(k => `<span class="w">${esc(it.words[k])}</span>`).join('') : `<span class="ph">${T('Tap the words below, one by one…', 'Touche les mots, un par un…')}</span>`;
+        tiles.forEach(t => { t.disabled = pila.includes(+t.dataset.k); });
+      };
+      tiles.forEach(t => { t.onclick = () => { pila.push(+t.dataset.k); item.classList.remove('ok', 'bad'); pinta(); }; });
+      item.querySelector('.undo').onclick = () => { pila.pop(); item.classList.remove('ok', 'bad'); pinta(); };
+      item._pila = pila; pinta();
+    });
+    el.querySelector('.chk').onclick = () => {
+      let ok = 0;
+      el.querySelectorAll('.item').forEach(item => {
+        const it = items[+item.dataset.i], fix = item.querySelector('.fix');
+        const bien = item._pila.length === it.words.length && igual(junta(item._pila.map(k => it.words[k])), it.answer);
+        item.classList.remove('ok', 'bad'); item.classList.add(bien ? 'ok' : 'bad');
+        fix.textContent = bien ? '' : `→ ${it.answer}`;
+        if (bien) ok++;
+      });
+      const sc = el.querySelector('.score'); sc.textContent = `${ok} / ${items.length}`;
+      sc.className = 'score ' + (ok === items.length ? 'good' : 'partial');
+      if (alTerminar) alTerminar(ok, items.length);
+    };
+  }
+  /* ¿bien o mal?: dos botones; la frase incorrecta enseña su arreglo al corregir */
+  function practicaSpot(bl) {
+    return `<div class="t-pr t-spot"><p class="instr">${inl(bl.instructions || '')}</p>
+      ${bl.items.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence)}</div>
+        <div class="opts"><button class="obtn yes" type="button" data-k="1">✓ ${T('Right', 'Juste')}</button><button class="obtn no" type="button" data-k="0">✗ ${T('Wrong', 'Faux')}</button></div>
+        <p class="fixline"></p>${it.why ? `<p class="why">${inl(it.why)}</p>` : ''}</div>`).join('')}
+      <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
+  }
+  function montaSpot(el, bl, alTerminar) {
+    const items = bl.items;
+    montaMC(el, items.map(it => ({ answer: it.ok ? 1 : 0 })), (ok, t) => {
+      el.querySelectorAll('.item').forEach(item => {
+        const it = items[+item.dataset.i], f = item.querySelector('.fixline');
+        f.innerHTML = it.ok ? `<span class="okmsg">✓ ${T('This sentence is correct.', 'Cette phrase est correcte.')}</span>` : `<span class="fixmsg">→ ${inl(it.fix || '')}</span>`;
+      });
+      if (alTerminar) alTerminar(ok, t);
+    });
+  }
+  /* los bloques de practica que sabe montar el Lab, en el orden en que los trae el tema */
+  const PRACTICA = {
+    mc: { nombre: ['Choose', 'Choisir'], sub: () => T('Choose the correct option', 'Choisis la bonne réponse'), ik: 'target', html: practicaMC, monta: (el, bl, cb) => montaMC(el, bl.items, cb) },
+    gap: { nombre: ['Complete', 'Compléter'], sub: () => T('Complete the sentences', 'Complète les phrases'), ik: 'pencil', html: practicaGap, monta: (el, bl, cb) => montaGap(el, bl.items, cb) },
+    order: { nombre: ['Build', 'Construire'], sub: () => T('Put the words in order', 'Mets les mots dans l’ordre'), ik: 'gear', html: practicaOrder, monta: montaOrder },
+    spot: { nombre: ['Spot it', 'Repérer'], sub: () => T('Right or wrong?', 'Juste ou faux ?'), ik: 'search', html: practicaSpot, monta: montaSpot },
+    transform: { nombre: ['Transform', 'Transformer'], sub: bl => String((bl.items[0] || {}).first || '').includes('___') ? T('Word formation', 'Formation des mots') : T('Key word transformations', 'Transformations'), ik: 'rocket', html: practicaTransform, monta: (el, bl, cb) => montaGap(el, bl.items, cb) },
+  };
+
   /* ======================================================================
      EL GRAMMAR LAB: un tema
      ====================================================================== */
@@ -591,8 +718,8 @@ window.TEEN = (function () {
           <div class="t-hero" style="min-height:13rem"><img class="bg" src="${FOTO('area-sentence')}" alt="" onerror="this.remove()">
             <div class="icon3d">${ico('lab', 104)}</div>
             <div class="in"><span class="t-kicker">${esc(n.name)} · ${T('reference', 'référence')}</span><h1>Grammar Lab</h1>
-              <p class="lead">${lab ? T(`The ${todos.length} structures a ${n.cefr} candidate is expected to control — each one in diagrams, with real examples, the mistakes to avoid, a conversation and three rounds of practice.`, `Les ${todos.length} structures du niveau ${n.cefr}.`) : T('Coming soon for this level.', 'Bientôt.')}</p></div>${credito('area-sentence')}</div>
-          ${lab ? labIndexHTML(lab) : ''}</div>` }],
+              <p class="lead">${lab ? T(`The ${todos.length} structures ${/^[AEIOU]/.test(n.cefr) ? "an" : "a"} ${n.cefr} candidate is expected to control — each one in diagrams, with real examples, the mistakes to avoid, a conversation and ${LEVEL === 'a1' || LEVEL === 'ket' || LEVEL === 'pet' ? 'four' : 'three'} rounds of practice.`, `Les ${todos.length} structures du niveau ${n.cefr}.`) : T('Coming soon for this level.', 'Bientôt.')}</p></div>${credito('area-sentence')}</div>
+          ${lab ? puente() + labIndexHTML(lab) : ''}</div>` }],
         { arriba: { href: Q(`?level=${LEVEL}`), texto: n.name }, portal: PORTAL });
       return;
     }
@@ -604,6 +731,7 @@ window.TEEN = (function () {
     const prog = labProg(id);
     const guarda = (bloque, ok, total) => {
       prog[bloque] = ok === total; prog[bloque + '_score'] = `${ok}/${total}`;
+      prog.hecho = bloques.every(b => prog[b.type] === true);
       try { localStorage.setItem(labKey(id), JSON.stringify(prog)); } catch (e) {}
       if (window.BACKEND) BACKEND.guardar('grammar_lab', { nivel: LEVEL, unidad: 0, codigo: 'GL:' + id },
         { tema: d.title, area: meta.area, bloque, ok, total, hecho: labHecho(id) }).catch(() => {});
@@ -626,8 +754,22 @@ window.TEEN = (function () {
       ${(d.dialogue.lines || []).map((l, i) => `<div class="ln ${hablantes.indexOf(l.speaker) % 2 ? 'r' : ''}" data-i="${i}">${avatar(l.speaker)}
         <div class="bb"><span class="who">${esc(l.speaker)}</span>${inl(l.text)}<button class="say" type="button" data-i="${i}" aria-label="${T('Listen', 'Écoute')}">🔊</button></div></div>`).join('')}</div>`;
 
-    const bloques = { mc: d.practice.find(b => b.type === 'mc'), gap: d.practice.find(b => b.type === 'gap'), transform: d.practice.find(b => b.type === 'transform') };
-    const puntuacion = () => `<div class="t-scores">${['mc', 'gap', 'transform'].map(b => `<span class="t-chip ${prog[b] ? 'acc' : ''}">${prog[b] ? '✓' : '·'} ${b === 'mc' ? T('Choose', 'Choisir') : b === 'gap' ? T('Complete', 'Compléter') : T('Transform', 'Transformer')} ${prog[b + '_score'] ? prog[b + '_score'] : ''}</span>`).join('')}</div>`;
+    const bloques = (d.practice || []).filter(b => PRACTICA[b.type] && b.items && b.items.length);
+    const puntuacion = () => `<div class="t-scores">${bloques.map(b => `<span class="t-chip ${prog[b.type] ? 'acc' : ''}">${prog[b.type] ? '✓' : '·'} ${T(...PRACTICA[b.type].nombre)} ${prog[b.type + '_score'] ? prog[b.type + '_score'] : ''}</span>`).join('')}</div>`;
+    const decir = el => el.querySelectorAll('.ex-say').forEach(b => { b.onclick = () => SAY.frase(b.dataset.t, b, 'grammar'); });
+
+    // los niveles inferiores traen ademas: la escena inicial (hook), el truco
+    // de memoria (remember), las trampas del español (l1) y el semaforo (can_do)
+    const hook = d.hook ? `<div class="t-hook"><div class="nova"><img src="../assets/characters/ket/nova/pose-03.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('★'))"></div>
+        <div class="bb"><span class="t-kicker">${T('Look first', 'Observe d’abord')}</span><p class="story">${inl(d.hook.text)} <button class="ex-say" type="button" data-t="${esc(String(d.hook.text).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p>
+          <p class="ask">${ico('search', 22)} <span>${inl(d.hook.ask)}</span></p></div></div>` : '';
+    const recuerda = d.remember ? `<div class="t-remember"><span class="pin">📌</span><span class="t-kicker">${T('Remember', 'Retiens')}</span>
+        <p class="trick">${inl(d.remember.trick)} <button class="ex-say" type="button" data-t="${esc(String(d.remember.trick).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p><p class="tip">${inl(d.remember.tip)}</p></div>` : '';
+    const trampas = (d.l1 || []).length ? `${cab(T('Don’t translate!', 'Ne traduis pas !'), T('Traps for Spanish speakers', 'Pièges pour hispanophones'), 'brain')}
+      <div class="t-l1">${d.l1.map(x => `<div class="it"><div class="es"><span class="tag">ES</span>${inl(x.es)}</div><div class="w"><span>${inl(x.wrong)}</span></div><div class="r"><span>${inl(x.right)}</span></div><p class="why">${inl(x.why)}</p></div>`).join('')}</div>` : '';
+    const semaforo = (d.can_do || []).length ? `<div class="t-cando"><h4>${ico('selfcheck', 30)} ${T('Can you do it now?', 'Tu sais le faire ?')}</h4>
+        ${d.can_do.map((c, i) => `<div class="cd" data-i="${i}"><span>${inl(c)}</span><div class="lights">${[['g', T('Yes!', 'Oui !')], ['y', T('Almost', 'Presque')], ['r', T('Not yet', 'Pas encore')]].map(([l, tx]) => `<button type="button" class="lt ${l}" data-l="${l}" title="${esc(tx)}" aria-label="${esc(tx)}"></button>`).join('')}</div></div>`).join('')}
+        <p class="hint">${T('Green = I can do it · Amber = almost · Red = I need to look again.', 'Vert = je sais · Orange = presque · Rouge = à revoir.')}</p></div>` : '';
 
     const pantallas = [
       { titulo: d.title, etiquetaSiguiente: T('How it works', 'Comment ça marche'),
@@ -636,23 +778,28 @@ window.TEEN = (function () {
             <div class="icon3d">${ico('grammar', 96)}</div>
             <div class="in"><span class="t-kicker">Grammar Lab · ${esc(meta.area)} · ${esc(d.cefr)}</span><h1>${inl(d.title)}</h1><p class="lead">${inl(d.tagline)}</p>
               <div class="row">${(d.exam || []).map(x => `<span class="t-chip">${ico('exam', 16)} ${inl(x)}</span>`).join('')}</div></div>${credito(fotoArea)}</div>
-          <div class="t-why"><div class="box"><h4>${T('Why it matters', 'Pourquoi')}</h4><p>${inl(d.why)}</p></div></div>
-          ${dg[0] ? diagrama(dg[0]) : ''}</div>` },
+          ${hook}
+          ${dg[0] ? diagrama(dg[0]) : ''}
+          <div class="t-why"><div class="box"><h4>${T('Why it matters', 'Pourquoi')}</h4><p>${inl(d.why)}</p></div></div></div>`,
+        alMostrar: decir },
       { titulo: T('How it works', 'Comment ça marche'), etiquetaSiguiente: T('In use', 'En contexte'),
         html: `<div class="scr-centro">${cab(T('Form', 'Forme'), d.title, 'gear')}
           <div class="t-diag"><h4><span class="t-kicker">${T('Pattern', 'Structure')}</span></h4>${chips(d.form.formula)}
             ${d.form.table ? `<table class="t-contrast" style="margin-top:.8rem"><thead><tr>${d.form.table.head.map((h, i) => `<th${i ? '' : ' style="background:var(--t-navy);color:#fff;border-radius:10px 0 0 0"'}>${inl(h)}</th>`).join('')}</tr></thead>
               <tbody>${d.form.table.rows.map(r => `<tr>${r.map((c, i) => `<td${i ? '' : ' style="text-transform:none;letter-spacing:0;font-size:.9rem;width:auto"'}>${inl(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}</div>
-          ${dg.slice(1).map(diagrama).join('')}</div>` },
+          ${dg.slice(1).map(diagrama).join('')}
+          ${recuerda}</div>`,
+        alMostrar: decir },
       { titulo: T('In use', 'En contexte'), etiquetaSiguiente: T('Watch out', 'Attention'),
         html: `<div class="scr-centro">${cab(T('Use', 'Emploi'), T('When and how it is used', 'Quand et comment'), 'compass')}
           <div class="t-uses">${(d.use || []).map((u, i) => `<div class="t-use"><h4><span class="n">${i + 1}</span>${inl(u.point)}</h4>
             <ul>${(u.examples || []).map(e => `<li><button type="button" class="ex-say" data-t="${esc(String(e.text || '').replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button><span>${inl(e.text)}${e.note ? `<span class="note">${inl(e.note)}</span>` : ''}</span></li>`).join('')}</ul></div>`).join('')}</div></div>`,
-        alMostrar(el) { el.querySelectorAll('.ex-say').forEach(b => b.onclick = () => SAY.frase(b.dataset.t, b, 'grammar')); } },
+        alMostrar: decir },
       { titulo: T('Watch out', 'Attention'), etiquetaSiguiente: T('In conversation', 'En conversation'),
         html: `<div class="scr-centro">${cab(T('Common mistakes', 'Erreurs fréquentes'), T('What the examiner sees too often', 'Ce que l’examinateur voit trop souvent'), 'tip')}
-          <div class="t-wo">${(d.watch_out || []).map(w => `<div class="it"><div class="w"><span>${inl(w.wrong)}</span></div><div class="r"><span>${inl(w.right)}</span></div><p class="why">${inl(w.why)}</p></div>`).join('')}</div></div>` },
-      { titulo: T('In conversation', 'En conversation'), etiquetaSiguiente: T('Practice 1', 'Exercice 1'),
+          <div class="t-wo">${(d.watch_out || []).map(w => `<div class="it"><div class="w"><span>${inl(w.wrong)}</span></div><div class="r"><span>${inl(w.right)}</span></div><p class="why">${inl(w.why)}</p></div>`).join('')}</div>
+          ${trampas}</div>` },
+      { titulo: T('In conversation', 'En conversation'), etiquetaSiguiente: `${T('Practice', 'Exercice')} 1`,
         html: `<div class="scr-centro">${cab(T('Listen', 'Écoute'), d.dialogue.title, 'mic')}${dlg}</div>`,
         alMostrar(el) {
           const au = el.querySelector('.dlg-audio'), btn = el.querySelector('.dlg-play');
@@ -687,23 +834,31 @@ window.TEEN = (function () {
           el.querySelectorAll('.bb .say').forEach(b => b.onclick = () => {
             const l = lineas[+b.dataset.i]; SAY.frase(String(l.text).replace(/<[^>]+>/g, ''), b, 'grammar'); });
         } },
-      { titulo: T('Practice 1 — choose', 'Exercice 1'), etiquetaSiguiente: T('Practice 2', 'Exercice 2'),
-        html: `<div class="scr-centro">${cab(T('Practice 1', 'Exercice 1'), T('Choose the correct option', 'Choisis la bonne réponse'), 'target')}${practicaMC(bloques.mc)}</div>`,
-        alMostrar(el) { montaMC(el, bloques.mc.items, (ok, t) => guarda('mc', ok, t)); } },
-      { titulo: T('Practice 2 — complete', 'Exercice 2'), etiquetaSiguiente: T('Practice 3', 'Exercice 3'),
-        html: `<div class="scr-centro">${cab(T('Practice 2', 'Exercice 2'), T('Complete the sentences', 'Complète les phrases'), 'pencil')}${practicaGap(bloques.gap)}</div>`,
-        alMostrar(el) { montaGap(el, bloques.gap.items, (ok, t) => guarda('gap', ok, t)); } },
-      { titulo: T('Practice 3 — transform', 'Exercice 3'), etiquetaSiguiente: T('Summary', 'Résumé'),
-        html: `<div class="scr-centro">${cab(T('Practice 3', 'Exercice 3'), String((bloques.transform.items[0] || {}).first || '').includes('___') ? T('Word formation', 'Formation des mots') : T('Key word transformations', 'Transformations'), 'rocket')}${practicaTransform(bloques.transform)}</div>`,
-        alMostrar(el) { montaGap(el, bloques.transform.items, (ok, t) => guarda('transform', ok, t)); } },
+      // una pantalla por bloque de practica, en el orden del tema
+      ...bloques.map((bl, i) => { const P = PRACTICA[bl.type]; return {
+        titulo: `${T('Practice', 'Exercice')} ${i + 1} — ${T(...P.nombre).toLowerCase()}`,
+        etiquetaSiguiente: i + 1 < bloques.length ? `${T('Practice', 'Exercice')} ${i + 2}` : T('Summary', 'Résumé'),
+        html: `<div class="scr-centro">${cab(`${T('Practice', 'Exercice')} ${i + 1}`, P.sub(bl), P.ik)}${P.html(bl)}</div>`,
+        alMostrar(el) { P.monta(el, bl, (ok, t) => guarda(bl.type, ok, t)); } }; }),
       { titulo: T('Summary', 'Résumé'),
         html: `<div class="scr-centro">${cab(T('Take away', 'À retenir'), d.title, 'trophy')}
-          <div class="t-sum"><ul>${(d.summary || []).map(s => `<li><span>${inl(s)}</span></li>`).join('')}</ul></div>
+          <div class="t-sum"><ul>${(d.summary || []).map(x => `<li><span>${inl(x)}</span></li>`).join('')}</ul></div>
+          ${semaforo}
           <div id="gl-scores"></div>
           <div class="t-next">${ant ? `<a class="t-btn ghost" href="${Q(`?level=${LEVEL}&grammar=${ant.id}`)}">‹ ${esc(ant.title)}</a>` : ''}
             <a class="t-btn ghost" href="${Q(`?level=${LEVEL}&grammar=hub`)}">Grammar Lab</a>
             ${sig ? `<a class="t-btn" href="${Q(`?level=${LEVEL}&grammar=${sig.id}`)}">${esc(sig.title)} ›</a>` : ''}</div></div>`,
-        alMostrar(el) { const s = el.querySelector('#gl-scores'); if (s) s.innerHTML = puntuacion(); } },
+        alMostrar(el) {
+          const sc = el.querySelector('#gl-scores'); if (sc) sc.innerHTML = puntuacion();
+          // el semaforo "I can…": se guarda con el progreso del tema
+          const luces = prog.cando || {};
+          el.querySelectorAll('.t-cando .cd').forEach(cd => {
+            const i = cd.dataset.i;
+            const pinta = () => cd.querySelectorAll('.lt').forEach(b => b.classList.toggle('on', b.dataset.l === luces[i]));
+            cd.querySelectorAll('.lt').forEach(b => { b.onclick = () => { luces[i] = b.dataset.l; prog.cando = luces; try { localStorage.setItem(labKey(id), JSON.stringify(prog)); } catch (e) {} pinta(); }; });
+            pinta();
+          });
+        } },
     ];
     SCREENS.montar(app, pantallas, {
       arriba: { href: Q(`?level=${LEVEL}&grammar=hub`), texto: 'Grammar Lab' },

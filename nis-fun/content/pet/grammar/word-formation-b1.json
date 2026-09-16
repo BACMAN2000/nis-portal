@@ -1,0 +1,201 @@
+{
+  "id": "word-formation-b1",
+  "level": "pet",
+  "area": "Words",
+  "title": "Word formation: prefixes, suffixes and families",
+  "tagline": "One root word, many forms: add a suffix for a noun or adjective, a prefix to make it negative.",
+  "cefr": "B1",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Reading Part 6 — open cloze", "Writing Part 2 — story or article"],
+  "why": "One root word can give you a whole word family — succeed, success, successful, successfully — and B1 Preliminary Reading tests exactly this skill: choosing the right form of a word to fit the sentence. Knowing your suffixes and prefixes also means a much bigger active vocabulary for Writing, without learning a single new root.",
+  "hook": {
+    "text": "Nadia is nervous backstage. \"What if I'm not <b>successful</b>?\" Sofia: \"You'll be great — your <b>performance</b> was amazing in rehearsal!\" Nadia: \"I feel so nervous, it's <b>unbelievable</b>.\" Sofia: \"That's completely normal — everyone feels that way.\"",
+    "ask": "Successful, performance and unbelievable all come from smaller root words: succeed, perform and believe. What did English add to each root — and what does un- do to the meaning of believable?"
+  },
+  "diagrams": [
+    {
+      "type": "spelling",
+      "title": "Building a word family",
+      "rules": [
+        {"rule": "verb/noun → 'a person who does it': -er / -ist", "examples": ["teach → teach<b>er</b>", "art → art<b>ist</b>"]},
+        {"rule": "verb/adjective → noun (idea or result): -tion / -ment / -ness", "examples": ["act → ac<b>tion</b>", "enjoy → enjoy<b>ment</b>", "happy → happi<b>ness</b>"]},
+        {"rule": "noun/verb → adjective: -ful / -less / -able / -ive / -ous", "examples": ["care → care<b>ful</b>", "care → care<b>less</b>", "enjoy → enjoy<b>able</b>"]},
+        {"rule": "adjective → negative adjective: un- / dis- / im- / in- / ir-", "examples": ["happy → <b>un</b>happy", "honest → <b>dis</b>honest", "possible → <b>im</b>possible"]}
+      ],
+      "caption": "The suffix at the end usually decides the word class; the prefix at the start usually flips the meaning."
+    },
+    {
+      "type": "contrast",
+      "title": "Choosing the right negative prefix",
+      "columns": ["Used with", "Example"],
+      "rows": [
+        {"label": "un- (the most common)", "cells": ["most adjectives", "<b>un</b>happy, <b>un</b>fair, <b>un</b>usual"]},
+        {"label": "dis-", "cells": ["a fixed group of words", "<b>dis</b>honest, <b>dis</b>agree, <b>dis</b>appear"]},
+        {"label": "im-", "cells": ["before m, p, b", "<b>im</b>possible, <b>im</b>patient, <b>im</b>mature"]},
+        {"label": "in-", "cells": ["many other adjectives", "<b>in</b>correct, <b>in</b>visible, <b>in</b>dependent"]},
+        {"label": "ir-", "cells": ["before r", "<b>ir</b>regular, <b>ir</b>responsible"]}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to choose the right word form",
+      "steps": [
+        {"label": "Find the gap and decide: noun, verb, adjective or adverb?", "ex": "The play was a huge <b>success</b>. (noun)"},
+        {"label": "Check what comes before/after the gap for clues", "ex": "a <b>successful</b> play (adjective + noun)"},
+        {"label": "Add the right suffix to the root word", "ex": "success + ful → successful"},
+        {"label": "Check if you also need a negative prefix", "ex": "an <b>unsuccessful</b> attempt"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "root word", "tone": "a"},
+      {"chip": "+ suffix = noun / adjective / adverb", "tone": "kw"},
+      {"chip": "prefix + root = opposite meaning", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Word class", "Suffixes", "Example"],
+      "rows": [
+        ["Noun (thing/idea)", "-tion, -ment, -ness, -er, -ist", "enjoy → enjoy<b>ment</b>"],
+        ["Adjective", "-ful, -less, -able, -ive, -ous", "care → care<b>ful</b>"],
+        ["Adverb", "-ly", "careful → careful<b>ly</b>"],
+        ["Negative adjective", "un-, dis-, im-, in-, ir-", "happy → <b>un</b>happy"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Noun suffixes: -tion, -ment, -ness, -er, -ist",
+      "examples": [
+        {"text": "Her <b>performance</b> on stage was incredible.", "note": "perform (verb) + ance → noun"},
+        {"text": "Nadia felt a lot of <b>nervousness</b> before going on.", "note": "nervous (adjective) + ness → noun"},
+        {"text": "Liam wants to be a <b>musician</b> when he's older.", "note": "music (noun) + ian → a person who does it"},
+        {"text": "The teacher gave us useful <b>advice</b> about the audition.", "note": "advise (verb) becomes the noun advice — an irregular spelling change"}
+      ]
+    },
+    {
+      "point": "Adjective suffixes: -ful, -less, -able, -ive, -ous",
+      "examples": [
+        {"text": "Mateo felt <b>hopeful</b> about the results.", "note": "hope (noun) + ful = full of hope"},
+        {"text": "That was a <b>pointless</b> argument — nobody won.", "note": "point (noun) + less = without a point"},
+        {"text": "The song was really <b>enjoyable</b>.", "note": "enjoy (verb) + able = can be enjoyed"},
+        {"text": "Sofia gave a really <b>impressive</b> performance.", "note": "impress (verb) + ive"}
+      ]
+    },
+    {
+      "point": "Adverbs and negative prefixes",
+      "examples": [
+        {"text": "Nadia sang the song <b>beautifully</b>.", "note": "beautiful (adjective) + ly = adverb"},
+        {"text": "Mateo was <b>unhappy</b> with his mark at first.", "note": "un- + happy = opposite meaning"},
+        {"text": "It's <b>impossible</b> to learn a whole song in one day.", "note": "im- before p"},
+        {"text": "That's a very <b>irresponsible</b> thing to do.", "note": "ir- before r"}
+      ]
+    },
+    {
+      "point": "re-, over-, under- and spelling changes",
+      "examples": [
+        {"text": "Nadia had to <b>rewrite</b> the lyrics after the first draft.", "note": "re- = do it again"},
+        {"text": "Liam felt <b>overconfident</b> before the audition, and it showed.", "note": "over- = too much"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Her performation was amazing.", "right": "Her <b>performance</b> was amazing.", "why": "The noun from perform is performance, not performation — check the exact suffix, not just add -tion to everything."},
+    {"wrong": "It was a very successfully film.", "right": "It was a very <b>successful</b> film.", "why": "Adjectives use -ful, not the adverb ending -ly, after very and before a noun."},
+    {"wrong": "She sang beautiful.", "right": "She sang <b>beautifully</b>.", "why": "After a verb, you usually need the adverb (-ly form), not the adjective."},
+    {"wrong": "That's inpossible!", "right": "That's <b>impossible</b>!", "why": "The prefix before p, m or b changes to im-, not in-."},
+    {"wrong": "He was very unresponsible.", "right": "He was very <b>irresponsible</b>.", "why": "responsible takes ir-, not un-, because it starts with r."},
+    {"wrong": "The teacher gave us a useful advise.", "right": "The teacher gave us useful <b>advice</b>.", "why": "advice is the noun, spelled with c; advise is the verb, spelled with s."}
+  ],
+  "l1": [
+    {"es": "Su actuación fue increíble.", "wrong": "Her performation was incredible.", "right": "Her <b>performance</b> was incredible.", "why": "Spanish -ación often becomes -ation in English, but perform's noun is the irregular performance, not performation."},
+    {"es": "Es imposible.", "wrong": "It's inposible.", "right": "It's <b>impossible</b>.", "why": "Spanish always uses im- before p, just like English — but the double s in English (possible) is easy to forget."},
+    {"es": "Fue muy irresponsable.", "wrong": "He was very unresponsible.", "right": "He was very <b>irresponsible</b>.", "why": "Spanish irresponsable and English irresponsible both use ir-; don't swap it for the more common un-."},
+    {"es": "Le doy un consejo útil.", "wrong": "I give useful advise.", "right": "I give useful <b>advice</b>.", "why": "Spanish consejo is one word, but English splits it: advice (noun, with c) and advise (verb, with s)."}
+  ],
+  "remember": {
+    "trick": "One root, four jobs: noun, verb, adjective, adverb!",
+    "tip": "Learn a whole word family together, not one word at a time: success, succeed, successful, successfully."
+  },
+  "dialogue": {
+    "title": "Backstage nerves",
+    "context": "Nadia is about to audition for the school talent show and Sofia, Liam and Mateo help calm her nerves backstage.",
+    "lines": [
+      {"speaker": "Sofia", "text": "You'll be great, Nadia — your <b>performance</b> in rehearsal was amazing!"},
+      {"speaker": "Nadia", "text": "I just feel so much <b>nervousness</b>, I can hardly breathe."},
+      {"speaker": "Liam", "text": "That's completely normal. Everyone feels <b>hopeful</b> and terrified at the same time."},
+      {"speaker": "Mateo", "text": "It would be <b>impossible</b> not to be nervous before something this big."},
+      {"speaker": "Nadia", "text": "What if my singing isn't <b>enjoyable</b> to listen to?"},
+      {"speaker": "Sofia", "text": "It's really <b>impressive</b>, trust me. You sang it <b>beautifully</b> yesterday."},
+      {"speaker": "Liam", "text": "Don't be <b>unhappy</b> about small mistakes — the judges want to see confidence."},
+      {"speaker": "Mateo", "text": "Just don't be <b>overconfident</b> either — a bit of nerves helps too."},
+      {"speaker": "Nadia", "text": "OK, I think I'm ready. Wish me <b>success</b>!"},
+      {"speaker": "Sofia", "text": "You'll be <b>successful</b>, I'm sure of it. Go!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Her ___ on stage was incredible.", "options": ["performance", "performation", "performing"], "answer": 0, "why": "noun: perform + ance"},
+        {"sentence": "Nadia felt a lot of ___ before the audition.", "options": ["nervous", "nervously", "nervousness"], "answer": 2, "why": "noun: nervous + ness"},
+        {"sentence": "That was a really ___ song.", "options": ["enjoy", "enjoyable", "enjoyment"], "answer": 1, "why": "adjective: enjoy + able"},
+        {"sentence": "She sang the song ___.", "options": ["beautiful", "beautifully", "beauty"], "answer": 1, "why": "adverb: beautiful + ly"},
+        {"sentence": "It's ___ to learn a song in one day.", "options": ["impossible", "inpossible", "unpossible"], "answer": 0, "why": "prefix im- before p"},
+        {"sentence": "He was very ___ with his homework.", "options": ["unresponsible", "irresponsible", "disresponsible"], "answer": 1, "why": "prefix ir- before r"},
+        {"sentence": "The teacher gave us useful ___.", "options": ["advise", "advice", "advisement"], "answer": 1, "why": "noun advice, spelled with c, not the verb advise"},
+        {"sentence": "Liam felt ___ before the match and made mistakes.", "options": ["overconfident", "underconfident", "unconfident"], "answer": 0, "why": "over- = too much"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the word in brackets.",
+      "items": [
+        {"sentence": "Her ___ (perform) on stage was incredible.", "answers": ["performance"]},
+        {"sentence": "Nadia felt a lot of ___ (nervous) before the audition.", "answers": ["nervousness"]},
+        {"sentence": "That was a really ___ (enjoy) song.", "answers": ["enjoyable"]},
+        {"sentence": "She sang the song ___ (beautiful).", "answers": ["beautifully"]},
+        {"sentence": "It's ___ (possible) to learn a song in one day.", "answers": ["impossible"]},
+        {"sentence": "He was very ___ (responsible) with his homework.", "answers": ["irresponsible"]},
+        {"sentence": "The teacher gave us useful ___ (advise).", "answers": ["advice"]},
+        {"sentence": "Liam felt ___ (confident) before the match.", "answers": ["overconfident"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["on stage was incredible", "Her performance", "."], "answer": "Her performance on stage was incredible."},
+        {"words": ["before the audition", "Nadia felt", "a lot of nervousness", "."], "answer": "Nadia felt a lot of nervousness before the audition."},
+        {"words": ["a really enjoyable song", "That was", "."], "answer": "That was a really enjoyable song."},
+        {"words": ["the song beautifully", "She sang", "."], "answer": "She sang the song beautifully."},
+        {"words": ["to learn a song in one day", "It's impossible", "."], "answer": "It's impossible to learn a song in one day."},
+        {"words": ["with his homework", "He was", "very irresponsible", "."], "answer": "He was very irresponsible with his homework."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Use the word in capitals to form a word that fits in the gap.",
+      "items": [
+        {"first": "Her ___ on stage was incredible.", "key": "PERFORM", "answers": ["performance"]},
+        {"first": "Nadia felt a lot of ___ before the audition.", "key": "NERVOUS", "answers": ["nervousness"]},
+        {"first": "That was a really ___ song.", "key": "ENJOY", "answers": ["enjoyable"]},
+        {"first": "She sang the song ___.", "key": "BEAUTIFUL", "answers": ["beautifully"]},
+        {"first": "It's ___ to learn a song in one day.", "key": "POSSIBLE", "answers": ["impossible"]},
+        {"first": "He was very ___ with his homework.", "key": "RESPONSIBLE", "answers": ["irresponsible"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can build nouns from verbs and adjectives with -tion, -ment, -ness, -er and -ist.",
+    "I can build adjectives with -ful, -less, -able, -ive and -ous, and adverbs with -ly.",
+    "I can choose the right negative prefix: un-, dis-, im-, in- or ir-."
+  ],
+  "summary": [
+    "A word family shares one root but changes form: succeed (verb), success (noun), successful (adjective), successfully (adverb).",
+    "Noun suffixes: -tion, -ment, -ness, -er, -ist. Adjective suffixes: -ful, -less, -able, -ive, -ous. Adverbs: add -ly.",
+    "Negative prefixes depend on the first letter: im- before m/p/b, ir- before r, il- before l, un- and dis- elsewhere.",
+    "re- = do again; over- = too much; under- = not enough.",
+    "Watch the spelling changes: happy → happiness (y→i), advise (verb) → advice (noun)."
+  ]
+}

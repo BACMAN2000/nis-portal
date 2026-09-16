@@ -18,7 +18,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <link rel="stylesheet" href="../../nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="../../nis-tokens.css?v=b3bffd5c">
-<link rel="stylesheet" href="teen.css?v=efccc4d9">
+<link rel="stylesheet" href="teen.css?v=99cd4feb">
 <style>
   :root{
   --surface:#fff;
@@ -785,7 +785,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="backend.js?v=a2a5e35f"></script>
 <!-- secundaria: piel propia y Grammar Lab (ver teen.js); los iconos 3D de Cambridge son los del portal -->
 <script src="../../cambridge-icons.js?v=b0b90bf0"></script>
-<script src="teen.js?v=807f22b7"></script>
+<script src="teen.js?v=270cd7f1"></script>
 <main id="app"><div class="app-loading" role="status" aria-live="polite">
   <div><span aria-hidden="true"></span><strong id="splash-h2">Preparing your course…</strong>
     <small id="splash-sub">Loading activities and illustrations.</small></div></div></main>
@@ -821,7 +821,7 @@ const slugArte = k => String((window.VOCAB_ART && VOCAB_ART.base(k)) || k)
   if (el) el.textContent = txt;
 });
 const app = document.getElementById('app');
-const COLORS = { starters:'#d97d0d', movers:'#2f9268', flyers:'#3b6fb5', ket:'#6d5bd0', pet:'#0e7490', b2f:'#a3324e', c1a:'#334155' };
+const COLORS = { starters:'#d97d0d', movers:'#2f9268', flyers:'#3b6fb5', a1:'#db2777', ket:'#6d5bd0', pet:'#0e7490', b2f:'#a3324e', c1a:'#334155' };
 // Escapa el texto que va dentro de un atributo (las palabras del wordlist
 // llevan apostrofes: chemist's).
 // Modo demostracion (?demo=1): solo las dos primeras unidades de cada nivel,
@@ -896,7 +896,7 @@ const store = {
 
 // El contenido se cachea igual que los mp4: al cambiar una unidad hay que
 // subir esta fecha o el alumno sigue viendo la version anterior.
-const CONTENT_V = '2026-09-16-cursos-por-grado';
+const CONTENT_V = '2026-09-16-grammar-lab-a1-a2-b1';
 const AUDIO_V = '2026-08-27';   // sube al grabar audio nuevo
 window.AUDIO_V = AUDIO_V; window.CONTENT_V = CONTENT_V;
 /* Los dibujos tambien. Cloudflare los guarda siete dias, asi que una
@@ -1128,7 +1128,7 @@ const MASCOTA = {
                   "Je suis le facteur de l'école. J'apporte des lettres et des cartes postales de très loin — mais je me pose très mal !") },
 };
 
-const GUIA = { starters: 'pip', movers: 'luna', flyers: 'kili', ket: 'nova', pet: 'nova', b2f: 'nova', c1a: 'nova' };
+const GUIA = { starters: 'pip', movers: 'luna', flyers: 'kili', a1: 'nova', ket: 'nova', pet: 'nova', b2f: 'nova', c1a: 'nova' };
 
 /* La tira de la mascota presentando algo.
  *

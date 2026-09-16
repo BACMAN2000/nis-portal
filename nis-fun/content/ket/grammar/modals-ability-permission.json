@@ -1,0 +1,199 @@
+{
+  "id": "modals-ability-permission",
+  "level": "ket",
+  "area": "Modals",
+  "title": "can, could, may: ability, requests and permission",
+  "tagline": "Three small words for what you can do, and for asking politely.",
+  "cefr": "A2",
+  "exam": ["Speaking Part 1 — questions about you", "Reading Part 1 — signs and messages", "Listening Part 1 — short conversations"],
+  "why": "Can I…? Could you…? May I…? These are some of the most useful questions in English — for permission, for polite requests, and for saying what you're able to do. Speaking Part 1 often asks <i>What can you do?</i>, and Reading Part 1 signs use <i>can't</i> and <i>may not</i> for rules. Choosing between can, could and may is really about how polite you need to be.",
+  "hook": {
+    "text": "In Trujillo, Liam wants to try his cousin's skateboard. \"<b>Can</b> I try it?\" he asks. \"<b>Could</b> you wear a helmet first?\" says his aunt. \"Of course! I <b>can't</b> skate without one anyway,\" laughs Liam. \"<b>May</b> I watch?\" asks Nadia.",
+    "ask": "Three little words — can, could and may — all do a similar job here. Can you find them and say what each one is asking for?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Can, could and may — who does what?",
+      "center": "Ability & permission",
+      "branches": [
+        {"label": "Ability", "items": ["can — now", "could — in the past", "be able to — all tenses"], "tone": "a"},
+        {"label": "Asking permission", "items": ["Can I…? (everyday)", "Could I…? (more polite)", "May I…? (very polite)"], "tone": "b"},
+        {"label": "Asking someone else", "items": ["Can you…?", "Could you…? (more polite)"], "tone": "c"},
+        {"label": "Giving or refusing", "items": ["Yes, of course / Yes, you can", "No, sorry / I'm afraid not"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to ask for permission politely",
+      "steps": [
+        {"label": "Start with the modal", "ex": "<b>Could</b>"},
+        {"label": "Add I or the person", "ex": "Could <b>I</b>"},
+        {"label": "Add the base verb — no to", "ex": "Could I <b>borrow</b> your pen?"}
+      ],
+      "caption": "Could I…? and May I…? both end with a question mark — but the base verb never gets a to in front of it."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence with can, could, may",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "can", "role": "kw"}, {"t": "swim", "role": "verb"}, {"t": "very well", "role": "x"}, {"t": ".", "role": "x"}], "note": "ability now"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "couldn't", "role": "neg"}, {"t": "skate", "role": "verb"}, {"t": "when she was six", "role": "time"}, {"t": ".", "role": "x"}], "note": "ability in the past — negative"},
+        {"parts": [{"t": "Could", "role": "kw"}, {"t": "I", "role": "subj"}, {"t": "borrow", "role": "verb"}, {"t": "your pen", "role": "obj"}, {"t": "?", "role": "x"}], "note": "polite request"}
+      ],
+      "caption": "Can/could/may go straight before the base verb — never add to, and never add -s, even for he/she/it."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "person", "tone": "a", "ex": "I / she / they"},
+      {"chip": "can / could / may", "tone": "kw", "ex": "can"},
+      {"chip": "base verb (no to, no -s)", "tone": "b", "ex": "swim"},
+      {"chip": "the rest", "tone": "c", "ex": "very well / your pen"}
+    ],
+    "table": {
+      "head": ["Modal", "Statement", "Negative", "Question"],
+      "rows": [
+        ["can", "I can swim.", "I can't swim.", "Can you swim?"],
+        ["could", "I could swim at five.", "I couldn't swim at five.", "Could you swim at five?"],
+        ["may", "You may leave.", "You may not leave.", "May I leave?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "can/can't — ability now",
+      "examples": [
+        {"text": "Mateo <b>can</b> speak two languages.", "note": "ability = something you know how to do"},
+        {"text": "I <b>can't</b> skate — I've never tried.", "note": "can't = not able to"},
+        {"text": "<b>Can</b> you swim in the sea here?", "note": "question about ability"}
+      ]
+    },
+    {
+      "point": "could/couldn't — ability in the past",
+      "examples": [
+        {"text": "When she was six, Nadia <b>could</b> already read.", "note": "could = ability at a past time"},
+        {"text": "I <b>couldn't</b> ride a bike last year.", "note": "couldn't = not able to, in the past"},
+        {"text": "<b>Could</b> you skate when you were small?", "note": "question about past ability"}
+      ]
+    },
+    {
+      "point": "Can I…? / Could I…? / May I…? — asking for permission",
+      "examples": [
+        {"text": "<b>Can</b> I try the skateboard?", "note": "can I = the everyday way to ask"},
+        {"text": "<b>Could</b> I borrow your pen, please?", "note": "could I = more polite"},
+        {"text": "<b>May</b> I watch?", "note": "may I = the most polite, formal way to ask"}
+      ]
+    },
+    {
+      "point": "Can you…? / Could you…? — polite requests, and be able to",
+      "examples": [
+        {"text": "<b>Could</b> you wear a helmet, please?", "note": "could you = a polite request to someone else"},
+        {"text": "<b>Can</b> you help me with this bag?", "note": "can you = an everyday request"},
+        {"text": "I<b>'ll be able to</b> skate better after more practice.", "note": "be able to for the future — will can't be followed by can"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I can to swim.", "right": "I <b>can swim</b>.", "why": "Can/could/may go straight before the base verb — no to."},
+    {"wrong": "She cans swim very well.", "right": "She <b>can</b> swim very well.", "why": "Modal verbs never add -s, even for he/she/it."},
+    {"wrong": "I will can skate better soon.", "right": "I<b>'ll be able to</b> skate better soon.", "why": "You can't put two modals together — use be able to after will."},
+    {"wrong": "Can I to borrow your pen?", "right": "<b>Can I borrow</b> your pen?", "why": "No to after can, even in a question."},
+    {"wrong": "Yes, you can do.", "right": "Yes, you <b>can</b>.", "why": "The short answer stops at the modal — don't add do."}
+  ],
+  "l1": [
+    {"es": "Puedo nadar muy bien.", "wrong": "I can to swim very well.", "right": "I <b>can swim</b> very well.", "why": "The Spanish 'puedo + infinitivo' tempts you to add to — English can never takes to."},
+    {"es": "¿Puedo probarlo?", "wrong": "Can I to try it?", "right": "<b>Can I try</b> it?", "why": "The base verb comes straight after can, with no to, even in questions."},
+    {"es": "Sabía nadar cuando tenía seis años.", "wrong": "I knew swim when I had six years.", "right": "I <b>could swim</b> when I was six.", "why": "Past ability in English uses could, not a word-for-word translation of sabía — and age uses was, not had."},
+    {"es": "¿Me prestas tu lápiz?", "wrong": "You lend me your pencil?", "right": "<b>Could you lend</b> me your pencil?", "why": "A polite request in English starts with Could you…?, not a plain statement turned into a question."}
+  ],
+  "remember": {
+    "trick": "can = now, could = past or polite, may = most polite.",
+    "tip": "Think of a politeness ladder: can is the everyday step, could is one step up, and may is right at the top."
+  },
+  "dialogue": {
+    "title": "The skateboard in Trujillo",
+    "context": "Liam is visiting his cousins in Trujillo. He wants to try his cousin's skateboard.",
+    "lines": [
+      {"speaker": "Liam", "text": "<b>Can</b> I try your skateboard?"},
+      {"speaker": "Cousin", "text": "Sure! But <b>could</b> you wear a helmet first?"},
+      {"speaker": "Liam", "text": "Of course. I <b>can't</b> skate without one anyway!"},
+      {"speaker": "Nadia", "text": "<b>May</b> I watch?"},
+      {"speaker": "Cousin", "text": "Of course you may — sit over there."},
+      {"speaker": "Liam", "text": "I <b>couldn't</b> skate at all last year, but I<b>'m</b> better now."},
+      {"speaker": "Nadia", "text": "<b>Can</b> you do a trick?"},
+      {"speaker": "Liam", "text": "Not yet — but I<b>'ll be able to</b> soon, I hope!"},
+      {"speaker": "Cousin", "text": "<b>Could</b> you two help me carry the board home after?"},
+      {"speaker": "Nadia", "text": "Of course we can!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I ___ speak two languages.", "options": ["can", "cans", "canning"], "answer": 0, "why": "can + base verb, no -s"},
+        {"sentence": "___ you swim when you were five?", "options": ["Can", "Could", "May"], "answer": 1, "why": "past ability → could"},
+        {"sentence": "___ I try your skateboard?", "options": ["Cans", "Can", "Canned"], "answer": 1, "why": "everyday permission → Can I…?"},
+        {"sentence": "___ I watch, please?", "options": ["Can", "May", "Do"], "answer": 1, "why": "the most polite way to ask → May I…?"},
+        {"sentence": "She ___ swim very well.", "options": ["cans", "can to", "can"], "answer": 2, "why": "no -s, no to after can"},
+        {"sentence": "I ___ ride a bike when I was four.", "options": ["can", "cans", "could"], "answer": 2, "why": "ability in the past → could"},
+        {"sentence": "___ you lend me your pencil, please?", "options": ["Cans", "Do", "Could"], "answer": 2, "why": "a polite request → Could you…?"},
+        {"sentence": "I'll ___ skate better after more practice.", "options": ["can", "be able to", "could"], "answer": 1, "why": "future ability → be able to, never will can"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with can, could or may and the verb in brackets.",
+      "items": [
+        {"sentence": "I ___ (can/speak) two languages.", "answers": ["can speak"]},
+        {"sentence": "___ (you/can/swim) when you were five?", "answers": ["Could you swim"]},
+        {"sentence": "___ (I/can/try) your skateboard?", "answers": ["Can I try"]},
+        {"sentence": "___ (I/may/watch), please?", "answers": ["May I watch"]},
+        {"sentence": "She ___ (can/swim) very well.", "answers": ["can swim"]},
+        {"sentence": "I ___ (can/ride) a bike when I was four.", "answers": ["could ride"]},
+        {"sentence": "___ (you/could/lend) me your pencil, please?", "answers": ["Could you lend"]},
+        {"sentence": "I'll ___ (can/skate) better after more practice.", "answers": ["be able to skate"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["two languages", "can speak", "I", "."], "answer": "I can speak two languages."},
+        {"words": ["swim", "when you were five", "Could you", "?"], "answer": "Could you swim when you were five?"},
+        {"words": ["your skateboard", "try", "Can I", "?"], "answer": "Can I try your skateboard?"},
+        {"words": ["watch", "May I", "?"], "answer": "May I watch?"},
+        {"words": ["very well", "can swim", "She", "."], "answer": "She can swim very well."},
+        {"words": ["last year", "couldn't skate", "I", "."], "answer": "I couldn't skate last year."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I can to swim very well.", "ok": false, "fix": "I <b>can swim</b> very well.", "why": "no to after can"},
+        {"sentence": "Mateo can speak two languages.", "ok": true, "why": "can + base verb for ability"},
+        {"sentence": "She cans swim very well.", "ok": false, "fix": "She <b>can</b> swim very well.", "why": "modal verbs never add -s"},
+        {"sentence": "Could you lend me your pencil, please?", "ok": true, "why": "a polite request with Could you…?"},
+        {"sentence": "I will can skate better soon.", "ok": false, "fix": "I<b>'ll be able to</b> skate better soon.", "why": "you can't put two modals together"},
+        {"sentence": "May I watch?", "ok": true, "why": "a very polite way to ask permission"},
+        {"sentence": "Can I to try it?", "ok": false, "fix": "<b>Can I try</b> it?", "why": "no to after can, even in questions"},
+        {"sentence": "I couldn't skate at all last year.", "ok": true, "why": "couldn't = not able to, in the past"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what I can and can't do, now and in the past, with <i>can</i> and <i>could</i>.",
+    "I can ask for permission politely with <i>Can I…?</i>, <i>Could I…?</i> and <i>May I…?</i>.",
+    "I can make polite requests with <i>Can you…?</i> and <i>Could you…?</i>."
+  ],
+  "summary": [
+    "<b>Can/can't</b> = ability now; <b>could/couldn't</b> = ability in the past.",
+    "<i>Can I…?</i>, <i>Could I…?</i> and <i>May I…?</i> all ask for permission — may is the most polite.",
+    "<i>Can you…?</i> and <i>Could you…?</i> ask someone else to do something for you.",
+    "The base verb comes straight after can/could/may — no to, and no -s, even for he/she/it.",
+    "For the future, or after another modal, use <i>be able to</i> — you can't say 'will can'."
+  ]
+}

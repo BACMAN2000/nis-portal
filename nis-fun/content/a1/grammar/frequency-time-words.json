@@ -1,0 +1,685 @@
+{
+  "id": "frequency-time-words",
+  "level": "a1",
+  "area": "Every day",
+  "title": "How often? always, usually, sometimes, never",
+  "tagline": "Never 0%, always 100%: the words that say how often something happens.",
+  "cefr": "A1",
+  "exam": [
+    "Speaking Part 1 — questions about your free time",
+    "Reading Part 5 — open cloze (grammar gaps)"
+  ],
+  "why": "How often something happens is one of the first things people ask about your life: <i>How often do you play sport?</i> Words like <i>always, usually, sometimes, never</i> and phrases like <i>on Mondays</i> or <i>at the weekend</i> let you answer with real detail, not just yes or no.",
+  "hook": {
+    "text": "It's Sunday morning. Nadia texts Sofia: \"What do you do at the weekend?\" \"I <b>always</b> play football on Saturdays,\" says Sofia. \"I <b>never</b> do sport on Sundays — I <b>usually</b> read. <b>How often</b> do you swim?\" \"<b>Twice a week</b>,\" says Nadia, \"on Tuesdays and Fridays.\"",
+    "ask": "Find four different frequency words in the story. Which one means 0% of the time?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Where does the frequency word go?",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "always",
+              "role": "time"
+            },
+            {
+              "t": "play",
+              "role": "verb"
+            },
+            {
+              "t": "football",
+              "role": "obj"
+            },
+            {
+              "t": "on Saturdays",
+              "role": "time"
+            }
+          ],
+          "note": "before the main verb"
+        },
+        {
+          "parts": [
+            {
+              "t": "She",
+              "role": "subj"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "never",
+              "role": "time"
+            },
+            {
+              "t": "late",
+              "role": "x"
+            }
+          ],
+          "note": "after be"
+        },
+        {
+          "parts": [
+            {
+              "t": "We",
+              "role": "subj"
+            },
+            {
+              "t": "go",
+              "role": "verb"
+            },
+            {
+              "t": "swimming",
+              "role": "obj"
+            },
+            {
+              "t": "twice a week",
+              "role": "time"
+            }
+          ],
+          "note": "a frequency phrase goes at the end"
+        },
+        {
+          "parts": [
+            {
+              "t": "How often",
+              "role": "kw"
+            },
+            {
+              "t": "do",
+              "role": "aux"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "train",
+              "role": "verb"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question about frequency"
+        }
+      ],
+      "caption": "One-word frequency words (always, never, usually) go before the verb, but after <b>be</b>. Longer phrases (twice a week) go at the end."
+    },
+    {
+      "type": "scale",
+      "title": "How often does it happen?",
+      "left": "never (0%)",
+      "right": "always (100%)",
+      "items": [
+        {
+          "label": "never",
+          "pct": 0
+        },
+        {
+          "label": "sometimes",
+          "pct": 30
+        },
+        {
+          "label": "usually",
+          "pct": 75
+        },
+        {
+          "label": "always",
+          "pct": 100
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "title": "at, on or in?",
+      "center": "at / on / in",
+      "branches": [
+        {
+          "label": "at + times",
+          "items": [
+            "at eight o'clock",
+            "at the weekend",
+            "at night"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "on + days/dates",
+          "items": [
+            "on Monday",
+            "on my birthday"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "in + months/longer periods",
+          "items": [
+            "in July",
+            "in the morning"
+          ],
+          "tone": "c"
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "always/usually/often/sometimes/never",
+        "tone": "kw",
+        "ex": "always"
+      },
+      {
+        "chip": "before the main verb",
+        "tone": "a",
+        "ex": "I always play"
+      },
+      {
+        "chip": "after be",
+        "tone": "b",
+        "ex": "She is never late"
+      },
+      {
+        "chip": "time phrase at the end",
+        "tone": "c",
+        "ex": "twice a week"
+      }
+    ],
+    "table": {
+      "head": [
+        "Preposition",
+        "Use",
+        "Example"
+      ],
+      "rows": [
+        [
+          "at",
+          "clock times, night, the weekend",
+          "at 7 o'clock, at night"
+        ],
+        [
+          "on",
+          "days and dates",
+          "on Monday, on my birthday"
+        ],
+        [
+          "in",
+          "months, seasons, parts of the day",
+          "in July, in the morning"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Frequency words: before the main verb",
+      "examples": [
+        {
+          "text": "I <b>always</b> brush my teeth.",
+          "note": "100% of the time"
+        },
+        {
+          "text": "We <b>usually</b> walk to school.",
+          "note": "most of the time"
+        },
+        {
+          "text": "They <b>sometimes</b> play video games.",
+          "note": "not every time"
+        },
+        {
+          "text": "He <b>never</b> eats vegetables.",
+          "note": "0% of the time"
+        }
+      ]
+    },
+    {
+      "point": "Frequency words: after be",
+      "examples": [
+        {
+          "text": "She <b>is</b> always <b>happy</b> on Fridays.",
+          "note": "frequency word after be"
+        },
+        {
+          "text": "We <b>are</b> never <b>late</b> for school.",
+          "note": "frequency word after be"
+        },
+        {
+          "text": "I<b>'m</b> usually tired on Mondays.",
+          "note": "frequency word after be"
+        }
+      ]
+    },
+    {
+      "point": "How often…? and frequency phrases",
+      "examples": [
+        {
+          "text": "<b>How often</b> do you play tennis? — Twice a week.",
+          "note": "question about frequency"
+        },
+        {
+          "text": "We go swimming <b>once a week</b>.",
+          "note": "a phrase with a number"
+        },
+        {
+          "text": "I do my homework <b>every day</b>.",
+          "note": "every + time word"
+        }
+      ]
+    },
+    {
+      "point": "at, on, in with times, days and months",
+      "examples": [
+        {
+          "text": "My class starts <b>at</b> eight o'clock.",
+          "note": "at + clock time"
+        },
+        {
+          "text": "We have a test <b>on</b> Monday.",
+          "note": "on + day"
+        },
+        {
+          "text": "My birthday is <b>in</b> July.",
+          "note": "in + month"
+        },
+        {
+          "text": "I read <b>at</b> night and I visit my grandma <b>on</b> Sundays.",
+          "note": "at and on together in one sentence"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I play always football.",
+      "right": "I <b>always</b> play football.",
+      "why": "The frequency word goes before the main verb, not after."
+    },
+    {
+      "wrong": "She never is late.",
+      "right": "She <b>is never</b> late.",
+      "why": "With be, the frequency word goes after it, not before."
+    },
+    {
+      "wrong": "I go sometimes to the market.",
+      "right": "I <b>sometimes</b> go to the market.",
+      "why": "Sometimes goes before the main verb."
+    },
+    {
+      "wrong": "We have class in Monday.",
+      "right": "We have class <b>on</b> Monday.",
+      "why": "Days of the week use on, not in."
+    },
+    {
+      "wrong": "My birthday is on July.",
+      "right": "My birthday is <b>in</b> July.",
+      "why": "Months use in, not on."
+    },
+    {
+      "wrong": "How much often do you play?",
+      "right": "<b>How often</b> do you play?",
+      "why": "The fixed question phrase is How often, not a word-for-word translation."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Siempre juego fútbol los sábados.",
+      "wrong": "I play always football on Saturdays.",
+      "right": "I <b>always</b> play football on Saturdays.",
+      "why": "Spanish siempre can go after the verb; English always goes before the main verb."
+    },
+    {
+      "es": "Nunca está tarde.",
+      "wrong": "She never is late.",
+      "right": "She <b>is never</b> late.",
+      "why": "With the verb be, the frequency word goes after it, not before."
+    },
+    {
+      "es": "Tenemos clase el lunes.",
+      "wrong": "We have class in Monday.",
+      "right": "We have class <b>on</b> Monday.",
+      "why": "Spanish uses el for days; English uses on, not in."
+    },
+    {
+      "es": "Mi cumpleaños es en julio.",
+      "wrong": "My birthday is on July.",
+      "right": "My birthday is <b>in</b> July.",
+      "why": "Spanish en covers both days and months; English splits them into on (days) and in (months)."
+    },
+    {
+      "es": "¿Qué tan seguido…?",
+      "wrong": "How much often do you play?",
+      "right": "<b>How often</b> do you play?",
+      "why": "The fixed question phrase is How often, not a word-for-word translation."
+    }
+  ],
+  "remember": {
+    "trick": "Before the verb, after BE!",
+    "tip": "Frequency words like always, usually, sometimes and never go before the main verb, but after am/is/are: I always play, but I am never late."
+  },
+  "dialogue": {
+    "title": "A day in the life",
+    "context": "Mateo, Liam and Nadia are having lunch at school on Wednesday, talking about their weekly activities.",
+    "lines": [
+      {
+        "speaker": "Mateo",
+        "text": "I <b>always</b> have football practice on Wednesdays."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Really? I <b>never</b> play sport on Wednesdays — I have guitar lessons."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>How often</b> do you practise the guitar?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Twice a week</b> — on Mondays and Wednesdays."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I <b>usually</b> do my homework <b>at</b> six o'clock."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I<b>'m</b> usually busy <b>at</b> the weekend with my cousins."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Are you <b>ever</b> free <b>on</b> Saturdays?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>Sometimes</b> — not every Saturday."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "My birthday is <b>in</b> October. Let's plan something!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Good idea — I<b>'m</b> <b>never</b> busy <b>in</b> October."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "I ___ play football on Saturdays.",
+          "options": [
+            "always",
+            "is always",
+            "am always"
+          ],
+          "answer": 0,
+          "why": "the frequency word goes before the main verb"
+        },
+        {
+          "sentence": "She is ___ late for school.",
+          "options": [
+            "don't",
+            "never",
+            "not ever"
+          ],
+          "answer": 1,
+          "why": "after be, use never"
+        },
+        {
+          "sentence": "We have a test ___ Monday.",
+          "options": [
+            "in",
+            "at",
+            "on"
+          ],
+          "answer": 2,
+          "why": "on + day"
+        },
+        {
+          "sentence": "My birthday is ___ July.",
+          "options": [
+            "in",
+            "on",
+            "at"
+          ],
+          "answer": 0,
+          "why": "in + month"
+        },
+        {
+          "sentence": "___ do you play tennis? — Twice a week.",
+          "options": [
+            "How much",
+            "How often",
+            "How many"
+          ],
+          "answer": 1,
+          "why": "the fixed question is How often"
+        },
+        {
+          "sentence": "I ___ do my homework before dinner.",
+          "options": [
+            "is usually",
+            "am usually",
+            "usually"
+          ],
+          "answer": 2,
+          "why": "no be needed before an ordinary verb"
+        },
+        {
+          "sentence": "My class starts ___ eight o'clock.",
+          "options": [
+            "at",
+            "on",
+            "in"
+          ],
+          "answer": 0,
+          "why": "at + clock time"
+        },
+        {
+          "sentence": "We ___ go to the beach in December.",
+          "options": [
+            "not",
+            "never",
+            "no"
+          ],
+          "answer": 1,
+          "why": "never = the frequency word, before the verb"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct frequency word or preposition (at, on, in).",
+      "items": [
+        {
+          "sentence": "I ___ play football on Saturdays.",
+          "answers": [
+            "always"
+          ]
+        },
+        {
+          "sentence": "She is ___ late for school.",
+          "answers": [
+            "never"
+          ]
+        },
+        {
+          "sentence": "We have a test ___ Monday.",
+          "answers": [
+            "on"
+          ]
+        },
+        {
+          "sentence": "My birthday is ___ July.",
+          "answers": [
+            "in"
+          ]
+        },
+        {
+          "sentence": "___ do you play tennis?",
+          "answers": [
+            "How often"
+          ]
+        },
+        {
+          "sentence": "I ___ do my homework before dinner.",
+          "answers": [
+            "usually"
+          ]
+        },
+        {
+          "sentence": "My class starts ___ eight o'clock.",
+          "answers": [
+            "at"
+          ]
+        },
+        {
+          "sentence": "We ___ go to the beach in December.",
+          "answers": [
+            "never"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "play",
+            "always",
+            "I",
+            "football",
+            "."
+          ],
+          "answer": "I always play football."
+        },
+        {
+          "words": [
+            "late",
+            "never",
+            "is",
+            "She",
+            "."
+          ],
+          "answer": "She is never late."
+        },
+        {
+          "words": [
+            "have",
+            "We",
+            "a test",
+            "on Monday",
+            "."
+          ],
+          "answer": "We have a test on Monday."
+        },
+        {
+          "words": [
+            "is",
+            "My birthday",
+            "in July",
+            "."
+          ],
+          "answer": "My birthday is in July."
+        },
+        {
+          "words": [
+            "do",
+            "How often",
+            "you",
+            "play",
+            "tennis",
+            "?"
+          ],
+          "answer": "How often do you play tennis?"
+        },
+        {
+          "words": [
+            "usually",
+            "I",
+            "do",
+            "my homework",
+            "."
+          ],
+          "answer": "I usually do my homework."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "I always play football on Saturdays.",
+          "ok": true,
+          "why": "frequency word before the main verb, correct"
+        },
+        {
+          "sentence": "She never is late.",
+          "ok": false,
+          "fix": "She <b>is never</b> late.",
+          "why": "with be, the frequency word goes after it"
+        },
+        {
+          "sentence": "We have a test on Monday.",
+          "ok": true,
+          "why": "on + day, correct"
+        },
+        {
+          "sentence": "My birthday is on July.",
+          "ok": false,
+          "fix": "My birthday is <b>in</b> July.",
+          "why": "months use in, not on"
+        },
+        {
+          "sentence": "How often do you play tennis?",
+          "ok": true,
+          "why": "correct question about frequency"
+        },
+        {
+          "sentence": "I go sometimes to the market.",
+          "ok": false,
+          "fix": "I <b>sometimes</b> go to the market.",
+          "why": "sometimes goes before the main verb"
+        },
+        {
+          "sentence": "My class starts at eight o'clock.",
+          "ok": true,
+          "why": "at + clock time, correct"
+        },
+        {
+          "sentence": "How much often do you swim?",
+          "ok": false,
+          "fix": "<b>How often</b> do you swim?",
+          "why": "the fixed phrase is how often, not how much often"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use always, usually, sometimes and never in the right place in a sentence.",
+    "I can ask and answer <i>How often…?</i> with phrases like <i>twice a week</i> or <i>every day</i>.",
+    "I can use <i>at, on</i> and <i>in</i> with times, days and months."
+  ],
+  "summary": [
+    "Frequency words go before the main verb: <i>I always play football</i>.",
+    "With be, frequency words go after it: <i>She is never late</i>.",
+    "<b>How often…?</b> asks about frequency; answer with <i>once/twice a week, every day, on Mondays</i>.",
+    "Use <b>at</b> for times and night, <b>on</b> for days and dates, <b>in</b> for months and longer periods.",
+    "The most common order, from 0% to 100%: <i>never, sometimes, usually, always</i>."
+  ]
+}

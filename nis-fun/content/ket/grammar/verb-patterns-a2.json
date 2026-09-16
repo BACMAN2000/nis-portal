@@ -1,0 +1,203 @@
+{
+  "id": "verb-patterns-a2",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "Verb patterns: like doing, want to do",
+  "tagline": "After like, want, go and let's — is it -ing or to? Here's how to choose.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 7 — a short message", "Speaking Part 1 — talking about your free time"],
+  "why": "Verb patterns like this decide whether the next word is -ing or to — one of the most common grammar points in Reading Part 5. They also make your Speaking Part 1 answers about hobbies sound natural: <i>I enjoy playing…, I want to learn…</i>",
+  "hook": {
+    "text": "Break time. Nadia says: \"I <b>love playing</b> basketball!\" Mateo shakes his head. \"I <b>hate playing</b> it, but I <b>want to try</b> swimming.\" \"<b>Let's go</b> swimming after school, then!\" says Nadia.",
+    "ask": "Nadia and Mateo talk about sports in two different ways — with -ing and with to. Can you find one example of each?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence: -ing or to?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "like", "role": "verb"}, {"t": "swimming", "role": "obj"}], "note": "like + -ing"},
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "want", "role": "verb"}, {"t": "to swim", "role": "obj"}], "note": "want + to + base verb"},
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "go", "role": "verb"}, {"t": "swimming", "role": "obj"}, {"t": "every Saturday", "role": "time"}], "note": "go + -ing for sports and activities"},
+        {"parts": [{"t": "Let's", "role": "kw"}, {"t": "go", "role": "verb"}, {"t": "shopping", "role": "obj"}], "note": "let's + base verb"}
+      ],
+      "caption": "The first verb (like, want, go, let's) decides the shape of the second one."
+    },
+    {
+      "type": "spelling",
+      "title": "Adding -ing",
+      "rules": [
+        {"rule": "Most verbs: + ing", "examples": ["play → play<b>ing</b>", "watch → watch<b>ing</b>"]},
+        {"rule": "One vowel + one consonant: double the consonant", "examples": ["swim → swim<b>ming</b>", "run → run<b>ning</b>"]},
+        {"rule": "Verb ending in -e: drop the e, + ing", "examples": ["make → mak<b>ing</b>", "dance → danc<b>ing</b>"]},
+        {"rule": "Verb ending in -ie: change to -y, + ing", "examples": ["lie → ly<b>ing</b>", "die → dy<b>ing</b>"]}
+      ],
+      "caption": "The spelling changes, but the job of -ing stays the same."
+    },
+    {
+      "type": "map",
+      "title": "Verb + what?",
+      "center": "verb + …",
+      "branches": [
+        {"label": "+ -ing", "items": ["like", "love", "hate", "enjoy", "don't mind"], "tone": "a"},
+        {"label": "+ to", "items": ["want", "need", "would like", "hope", "decide", "learn"], "tone": "b"},
+        {"label": "+ both, same meaning", "items": ["start", "begin"], "tone": "c"},
+        {"label": "go + -ing", "items": ["go swimming", "go shopping", "go running"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "verb (like, want…)", "tone": "kw", "ex": "like"},
+      {"chip": "-ing or to + base verb", "tone": "a", "ex": "swimming / to swim"}
+    ],
+    "table": {
+      "head": ["Pattern", "Verbs", "Example"],
+      "rows": [
+        ["+ -ing", "like, love, hate, enjoy, don't mind", "I enjoy reading."],
+        ["+ to", "want, need, would like, hope, decide, learn", "I want to learn Chinese."],
+        ["go + -ing", "go (for sports and activities)", "We go swimming on Fridays."],
+        ["+ -ing or + to (same meaning)", "start, begin", "It started raining. / It started to rain."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "like, love, hate, enjoy, don't mind + -ing",
+      "examples": [
+        {"text": "I <b>love playing</b> football.", "note": "love + -ing = something you really enjoy"},
+        {"text": "Nadia <b>enjoys reading</b> comics.", "note": "enjoy + -ing"},
+        {"text": "Mateo <b>hates doing</b> homework on Sundays.", "note": "hate + -ing"},
+        {"text": "I <b>don't mind waiting</b> for the bus.", "note": "don't mind + -ing = it's OK for me"}
+      ]
+    },
+    {
+      "point": "want, need, would like, hope, decide, learn + to",
+      "examples": [
+        {"text": "I <b>want to learn</b> the guitar.", "note": "want + to + base verb"},
+        {"text": "She <b>needs to finish</b> her project tonight.", "note": "need + to"},
+        {"text": "I<b>'d like to visit</b> Cusco one day.", "note": "would like + to, a polite way to say want"},
+        {"text": "Liam <b>decided to join</b> the football team.", "note": "decide + to"}
+      ]
+    },
+    {
+      "point": "go + -ing, and suggestions with -ing",
+      "examples": [
+        {"text": "We <b>go swimming</b> every Saturday.", "note": "go + -ing = a sport or activity"},
+        {"text": "They <b>go shopping</b> at the weekend.", "note": "go shopping, go camping, go fishing…"},
+        {"text": "<b>Let's go swimming</b> this afternoon!", "note": "let's + -ing for a suggestion"},
+        {"text": "<b>How about going</b> to the cinema tonight?", "note": "how about + -ing for a suggestion"}
+      ]
+    },
+    {
+      "point": "start and begin — both patterns work",
+      "examples": [
+        {"text": "It <b>started raining</b> at lunchtime.", "note": "start + -ing"},
+        {"text": "It <b>started to rain</b> at lunchtime.", "note": "start + to — the meaning is the same"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I enjoy to play football.", "right": "I enjoy <b>playing</b> football.", "why": "Enjoy is always followed by -ing, never to."},
+    {"wrong": "I want playing tennis.", "right": "I want <b>to play</b> tennis.", "why": "Want is always followed by to + base verb, not -ing."},
+    {"wrong": "She go shopping every Saturday.", "right": "She <b>goes</b> shopping every Saturday.", "why": "Don't forget the -s with he/she/it in the present simple."},
+    {"wrong": "I'd like going to the beach.", "right": "I'd like <b>to go</b> to the beach.", "why": "Would like is always followed by to, like a polite want."},
+    {"wrong": "Let's to go swimming.", "right": "<b>Let's go</b> swimming.", "why": "Let's is followed by the base verb, with no to."},
+    {"wrong": "I don't mind to wait.", "right": "I don't mind <b>waiting</b>.", "why": "Don't mind is followed by -ing, not to."}
+  ],
+  "l1": [
+    {"es": "Me gusta nadar.", "wrong": "I like swim.", "right": "I like <b>swimming</b>.", "why": "In Spanish the infinitive follows gustar; in English, like usually takes -ing."},
+    {"es": "Quiero aprender inglés.", "wrong": "I want learning English.", "right": "I want <b>to learn</b> English.", "why": "Want is followed by to + base verb, not -ing."},
+    {"es": "Voy a nadar los sábados.", "wrong": "I go to swim on Saturdays.", "right": "I <b>go swimming</b> on Saturdays.", "why": "For sports and activities, English uses go + -ing, not go + to."},
+    {"es": "No me importa esperar.", "wrong": "I don't mind to wait.", "right": "I don't mind <b>waiting</b>.", "why": "Don't mind takes -ing, like enjoy and like."},
+    {"es": "Espero verte pronto.", "wrong": "I hope seeing you soon.", "right": "I hope <b>to see</b> you soon.", "why": "Hope is followed by to + base verb, not -ing."}
+  ],
+  "remember": {
+    "trick": "LIKE/LOVE/HATE + -ING · WANT/NEED/HOPE + TO",
+    "tip": "Feelings (like, love, hate, enjoy) usually take -ing. Plans and wishes (want, need, hope) usually take to."
+  },
+  "dialogue": {
+    "title": "Planning the weekend",
+    "context": "It's Friday afternoon. Liam, Nadia and Sofia plan what to do at the weekend.",
+    "lines": [
+      {"speaker": "Liam", "text": "I <b>love playing</b> football on Saturdays. Does anyone want to join?"},
+      {"speaker": "Nadia", "text": "I <b>don't mind watching</b>, but I <b>hate playing</b> in the rain!"},
+      {"speaker": "Sofia", "text": "<b>How about going</b> to the cinema instead, if it rains?"},
+      {"speaker": "Liam", "text": "Good idea. I <b>want to see</b> the new film."},
+      {"speaker": "Nadia", "text": "I <b>need to finish</b> my project first, though."},
+      {"speaker": "Sofia", "text": "<b>Let's meet</b> at eleven, then decide."},
+      {"speaker": "Liam", "text": "I<b>'d like to go</b> swimming on Sunday too. Anyone interested?"},
+      {"speaker": "Nadia", "text": "I <b>enjoy swimming</b>! Count me in."},
+      {"speaker": "Sofia", "text": "Me too. I<b>'ve decided to start</b> training for the school race."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I enjoy ___ football.", "options": ["playing", "play", "to play"], "answer": 0, "why": "enjoy + -ing"},
+        {"sentence": "I want ___ the guitar.", "options": ["learning", "to learn", "learn"], "answer": 1, "why": "want + to"},
+        {"sentence": "She ___ shopping every Saturday.", "options": ["go", "going", "goes"], "answer": 2, "why": "she → goes"},
+        {"sentence": "I don't mind ___ for the bus.", "options": ["waiting", "wait", "to wait"], "answer": 0, "why": "don't mind + -ing"},
+        {"sentence": "I'd like ___ Cusco one day.", "options": ["visiting", "to visit", "visit"], "answer": 1, "why": "would like + to"},
+        {"sentence": "___ go swimming this afternoon!", "options": ["Let's to", "We go", "Let's"], "answer": 2, "why": "let's + base verb"},
+        {"sentence": "It started ___ at lunchtime.", "options": ["to rain", "rain", "rained"], "answer": 0, "why": "start + to (or -ing)"},
+        {"sentence": "They ___ camping every summer.", "options": ["goes", "go", "going"], "answer": 1, "why": "they → go"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "I enjoy ___ (play) football.", "answers": ["playing"]},
+        {"sentence": "I want ___ (learn) the guitar.", "answers": ["to learn"]},
+        {"sentence": "She ___ (go) shopping every Saturday.", "answers": ["goes"]},
+        {"sentence": "I don't mind ___ (wait) for the bus.", "answers": ["waiting"]},
+        {"sentence": "I'd like ___ (visit) Cusco one day.", "answers": ["to visit"]},
+        {"sentence": "___ go swimming this afternoon! (let us)", "answers": ["Let's"]},
+        {"sentence": "It started ___ (rain) at lunchtime.", "answers": ["to rain", "raining"]},
+        {"sentence": "They ___ (go) camping every summer.", "answers": ["go"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["playing football", "I", ".", "enjoy"], "answer": "I enjoy playing football."},
+        {"words": ["the guitar", "I want", ".", "to learn"], "answer": "I want to learn the guitar."},
+        {"words": ["every Saturday", "She goes", ".", "shopping"], "answer": "She goes shopping every Saturday."},
+        {"words": ["for the bus", "I don't mind", ".", "waiting"], "answer": "I don't mind waiting for the bus."},
+        {"words": ["every Saturday", "We go", ".", "swimming"], "answer": "We go swimming every Saturday."},
+        {"words": ["this afternoon", "Let's go", ".", "shopping"], "answer": "Let's go shopping this afternoon."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I enjoy playing football.", "ok": true, "why": "enjoy + -ing, correct"},
+        {"sentence": "I want playing tennis.", "ok": false, "fix": "I want <b>to play</b> tennis.", "why": "want + to + base verb, not -ing"},
+        {"sentence": "She goes shopping every Saturday.", "ok": true, "why": "goes + shopping, correct -s and go + -ing"},
+        {"sentence": "I'd like going to the beach.", "ok": false, "fix": "I'd like <b>to go</b> to the beach.", "why": "would like + to, not -ing"},
+        {"sentence": "We go swimming every Saturday.", "ok": true, "why": "go + -ing for a sport, correct"},
+        {"sentence": "Let's to go swimming.", "ok": false, "fix": "<b>Let's go</b> swimming.", "why": "let's + base verb, no to"},
+        {"sentence": "I don't mind waiting for the bus.", "ok": true, "why": "don't mind + -ing, correct"},
+        {"sentence": "It started rain at lunchtime.", "ok": false, "fix": "It started <b>to rain</b> at lunchtime.", "why": "start needs to or -ing, not the bare verb"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use <i>like, love, hate, enjoy</i> and <i>don't mind</i> with the -ing form.",
+    "I can use <i>want, need, would like, hope, decide</i> and <i>learn</i> with to + base verb.",
+    "I can talk about activities with <i>go + -ing</i> and make suggestions with <i>let's / how about + -ing</i>."
+  ],
+  "summary": [
+    "<i>Like, love, hate, enjoy</i> and <i>don't mind</i> are followed by the -ing form.",
+    "<i>Want, need, would like, hope, decide</i> and <i>learn</i> are followed by to + base verb.",
+    "Use <i>go + -ing</i> for sports and activities: go swimming, go shopping, go camping.",
+    "<i>Start</i> and <i>begin</i> can take either -ing or to, with the same meaning.",
+    "Make suggestions with <i>let's, why don't we</i> and <i>how about</i> + -ing."
+  ]
+}

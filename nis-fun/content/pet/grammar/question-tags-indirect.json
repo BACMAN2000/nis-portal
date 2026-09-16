@@ -1,0 +1,205 @@
+{
+  "id": "question-tags-indirect",
+  "level": "pet",
+  "area": "Sentence building",
+  "title": "Question tags, indirect questions and so/neither",
+  "tagline": "Check what someone said with a tag, ask politely without sounding rude, and agree in three quick words.",
+  "cefr": "B1",
+  "exam": ["Speaking Part 1 — the interview", "Speaking Part 4 — general conversation", "Writing Part 1 — email"],
+  "why": "Question tags (isn't it?, don't you?) and indirect questions (Could you tell me where…?) are what real, polite spoken English sounds like, and B1 Preliminary Speaking examiners notice them immediately. So do I and Neither can I let you react naturally instead of repeating a whole sentence — small phrases that make a big difference to how fluent you sound.",
+  "hook": {
+    "text": "Liam: \"It's a great museum, <b>isn't it</b>?\" Nadia: \"It is! <b>Do you know where</b> the café is?\" Liam: \"No idea. <b>Could you tell me if</b> it's open on Sundays?\" Sofia: \"I love this place.\" Nadia: \"<b>So do I</b>.\"",
+    "ask": "Liam and Nadia check facts, ask politely and agree quickly. Find the tag question, the two polite indirect questions and the short way of agreeing. What changes in the word order of the indirect questions, compared to a normal question?"
+  },
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Turn a direct question into a polite one",
+      "before": {"text": "Where is the café?", "hl": ["Where is"]},
+      "after": {"text": "Could you tell me where the café is?", "hl": ["where the café is"]},
+      "steps": [
+        "Add a polite starter: Could you tell me… / Do you know… / I wonder…",
+        "Keep the question word, or use if/whether for a yes-no question.",
+        "Put the subject before the verb — no more inversion.",
+        "Drop the extra do/does/did — the main verb carries the tense instead."
+      ],
+      "caption": "The polite starter changes the word order back to a normal statement."
+    },
+    {
+      "type": "blocks",
+      "title": "Build a question tag",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "It", "role": "subj"}, {"t": "'s", "role": "aux"}, {"t": "a great museum", "role": "obj"}, {"t": ",", "role": "x"}, {"t": "isn't", "role": "aux"}, {"t": "it", "role": "subj"}, {"t": "?", "role": "x"}], "note": "positive statement → negative tag"},
+        {"parts": [{"t": "You", "role": "subj"}, {"t": "don't", "role": "neg"}, {"t": "like", "role": "verb"}, {"t": "spinach", "role": "obj"}, {"t": ",", "role": "x"}, {"t": "do", "role": "aux"}, {"t": "you", "role": "subj"}, {"t": "?", "role": "x"}], "note": "negative statement → positive tag"},
+        {"parts": [{"t": "Mateo", "role": "subj"}, {"t": "can", "role": "aux"}, {"t": "swim", "role": "verb"}, {"t": ",", "role": "x"}, {"t": "can't", "role": "aux"}, {"t": "he", "role": "subj"}, {"t": "?", "role": "x"}], "note": "modal statement → modal tag, same modal"}
+      ],
+      "caption": "The tag always copies the statement's auxiliary or modal, then flips positive/negative."
+    },
+    {
+      "type": "steps",
+      "title": "How to make an indirect question",
+      "steps": [
+        {"label": "Choose a polite starter", "ex": "<b>Could you tell me</b>… / <b>Do you know</b>… / <b>I wonder</b>…"},
+        {"label": "Keep the question word, or add if/whether", "ex": "…where… / …what time… / …if…"},
+        {"label": "Subject before verb — no inversion, no extra do/does/did", "ex": "…the museum <b>closes</b>? (not does the museum close)"},
+        {"label": "One question mark, right at the very end", "ex": "Could you tell me where the museum is?"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "statement (positive)", "tone": "a"},
+      {"chip": "negative tag: aux + n't + pronoun?", "tone": "kw"},
+      {"chip": "or", "tone": "arrow"},
+      {"chip": "statement (negative)", "tone": "a"},
+      {"chip": "positive tag: aux + pronoun?", "tone": "kw"}
+    ],
+    "table": {
+      "head": ["Statement type", "Tag", "Example"],
+      "rows": [
+        ["Positive", "negative tag (aux + n't + pronoun)", "You're Peruvian, <b>aren't you</b>?"],
+        ["Negative", "positive tag (aux + pronoun)", "You don't like coffee, <b>do you</b>?"],
+        ["With a modal", "same modal + pronoun", "She can dance, <b>can't she</b>?"],
+        ["With have (main verb)", "do/does/did + pronoun", "They have a dog, <b>don't they</b>?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Question tags: checking or confirming",
+      "examples": [
+        {"text": "This is your book, <b>isn't it</b>?", "note": "positive statement → negative tag"},
+        {"text": "You didn't finish the project, <b>did you</b>?", "note": "negative statement → positive tag"},
+        {"text": "Mateo can play the drums, <b>can't he</b>?", "note": "the tag repeats the same modal (can)"},
+        {"text": "There's a test tomorrow, <b>isn't there</b>?", "note": "there is/are also gets a tag"}
+      ]
+    },
+    {
+      "point": "Indirect questions: asking politely",
+      "examples": [
+        {"text": "<b>Could you tell me where</b> the nearest bus stop is?", "note": "polite starter + normal word order (subject before verb)"},
+        {"text": "<b>Do you know what time</b> the shop closes?", "note": "no does — the auxiliary disappears inside the question"},
+        {"text": "<b>I wonder if</b> the museum is open today.", "note": "if/whether for a yes-no question, with no question word"},
+        {"text": "<b>Can you tell me whether</b> this bus goes to the centre?", "note": "whether works exactly like if here"}
+      ]
+    },
+    {
+      "point": "So do I / Neither do I: short agreement",
+      "examples": [
+        {"text": "Sofia loves museums. <b>So does</b> Nadia.", "note": "so + auxiliary + subject = 'me too', for positive sentences"},
+        {"text": "I can't swim very well. <b>Neither can</b> Liam.", "note": "neither + auxiliary + subject = 'me neither', for negatives"}
+      ]
+    },
+    {
+      "point": "Short replies with be, do and modals",
+      "examples": [
+        {"text": "\"I'm hungry.\" \"<b>So am I</b>.\"", "note": "matching the auxiliary am with the first speaker"},
+        {"text": "\"I don't like spiders.\" \"<b>Neither do I</b>.\"", "note": "same idea, but for a negative sentence"},
+        {"text": "\"Are you coming tonight?\" \"<b>Yes, I am</b>.\"", "note": "short answer repeats the auxiliary, no full sentence"},
+        {"text": "\"Can Nadia drive?\" \"<b>No, she can't</b>.\"", "note": "the same modal reappears in the short answer"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "You are tired, are you?", "right": "You are tired, <b>aren't you</b>?", "why": "A positive statement takes a negative tag."},
+    {"wrong": "You aren't hungry, aren't you?", "right": "You aren't hungry, <b>are you</b>?", "why": "A negative statement takes a positive tag."},
+    {"wrong": "Could you tell me where is the station?", "right": "Could you tell me where <b>the station is</b>?", "why": "Indirect questions use normal word order — subject before verb, no inversion."},
+    {"wrong": "Do you know what time does the film start?", "right": "Do you know what time <b>the film starts</b>?", "why": "Don't add does/do again inside an indirect question."},
+    {"wrong": "\"I love pizza.\" \"So I do.\"", "right": "\"I love pizza.\" \"<b>So do I</b>.\"", "why": "The word order is so + auxiliary + subject, not so + subject + auxiliary."},
+    {"wrong": "She has a dog, has she?", "right": "She has a dog, <b>doesn't she</b>?", "why": "have as a main verb needs do/does/did in the tag, not has."}
+  ],
+  "l1": [
+    {"es": "¿Sabes dónde está la parada?", "wrong": "Do you know where is the bus stop?", "right": "Do you know where <b>the bus stop is</b>?", "why": "Spanish keeps the question word order after saber, but English changes to statement order after the polite starter."},
+    {"es": "Es un buen museo, ¿verdad?", "wrong": "It's a good museum, isn't?", "right": "It's a good museum, <b>isn't it</b>?", "why": "Spanish ¿verdad?/¿no? never changes, but English always needs a full auxiliary + pronoun tag."},
+    {"es": "A mí también me gusta.", "wrong": "To me also.", "right": "<b>So do I</b>.", "why": "Spanish a mí también is a fixed phrase that becomes a completely different structure in English, not a word-for-word translation."},
+    {"es": "¿Me podrías decir qué hora es?", "wrong": "Could you tell me what time is it?", "right": "Could you tell me <b>what time it is</b>?", "why": "The Spanish question order stays after decir, but English word order goes back to normal (subject before verb)."}
+  ],
+  "remember": {
+    "trick": "Positive gets negative, negative gets positive!",
+    "tip": "Cover the tag with your finger. The statement tells you everything: same auxiliary, opposite polarity, matching pronoun."
+  },
+  "dialogue": {
+    "title": "Lost in the museum",
+    "context": "During a school trip to a museum in Lima, Liam, Nadia, Sofia and Mateo get separated from the rest of the group and try to find their way, checking facts with each other and asking Miss Vega for help.",
+    "lines": [
+      {"speaker": "Liam", "text": "This is the right way to the exit, <b>isn't it</b>?"},
+      {"speaker": "Nadia", "text": "I'm not sure. <b>Do you know where</b> the main entrance is?"},
+      {"speaker": "Liam", "text": "No idea. Let's ask Miss Vega."},
+      {"speaker": "Sofia", "text": "Miss Vega, <b>could you tell me what time</b> the bus leaves?"},
+      {"speaker": "Miss Vega", "text": "It leaves at four. <b>Do you know if</b> everyone else is already there?"},
+      {"speaker": "Mateo", "text": "I think so, but <b>could you tell us where</b> the meeting point is?"},
+      {"speaker": "Miss Vega", "text": "Just outside the main entrance. You remember that, <b>don't you</b>?"},
+      {"speaker": "Nadia", "text": "Now I do! I love this museum."},
+      {"speaker": "Sofia", "text": "<b>So do I</b> — the dinosaur room was amazing."},
+      {"speaker": "Mateo", "text": "I didn't enjoy the dark room, though."},
+      {"speaker": "Liam", "text": "<b>Neither did I</b>. Let's hurry, we're late, <b>aren't we</b>?"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "You're coming to the party, ___?", "options": ["aren't you", "are you", "don't you"], "answer": 0, "why": "positive statement → negative tag"},
+        {"sentence": "She doesn't like tea, ___?", "options": ["doesn't she", "does she", "isn't she"], "answer": 1, "why": "negative statement → positive tag"},
+        {"sentence": "Could you tell me ___ the museum opens?", "options": ["what time does", "does it open", "what time"], "answer": 2, "why": "indirect question: no extra does"},
+        {"sentence": "Do you know ___ Mateo lives?", "options": ["where", "where does", "is where"], "answer": 0, "why": "indirect question: normal word order"},
+        {"sentence": "\"I'm tired.\" \"___.\"", "options": ["So I am", "So am I", "I so am"], "answer": 1, "why": "so + auxiliary + subject"},
+        {"sentence": "\"I can't dance.\" \"___.\"", "options": ["So can't I", "Neither I can", "Neither can I"], "answer": 2, "why": "neither + auxiliary + subject"},
+        {"sentence": "They have finished, ___?", "options": ["haven't they", "have they", "don't they"], "answer": 0, "why": "have as auxiliary here → negative tag"},
+        {"sentence": "I wonder ___ the shop is open on Sundays.", "options": ["is", "if", "that"], "answer": 1, "why": "if for a yes/no indirect question"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one word.",
+      "items": [
+        {"sentence": "This is delicious, ___ it?", "answers": ["isn't"]},
+        {"sentence": "You don't eat meat, ___ you?", "answers": ["do"]},
+        {"sentence": "Liam can swim really well, ___ he?", "answers": ["can't"]},
+        {"sentence": "They've already left, ___ they?", "answers": ["haven't"]},
+        {"sentence": "Could you tell me where the bus stop ___?", "answers": ["is"]},
+        {"sentence": "Do you know what time the film ___?", "answers": ["starts"]},
+        {"sentence": "\"I love this song.\" \"So ___ I.\"", "answers": ["do"]},
+        {"sentence": "\"I haven't finished.\" \"Neither ___ I.\"", "answers": ["have"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["aren't you", "You're coming tonight,", "?"], "answer": "You're coming tonight, aren't you?"},
+        {"words": ["where the station is", "Could you tell me", "?"], "answer": "Could you tell me where the station is?"},
+        {"words": ["what time the shop closes", "Do you know", "?"], "answer": "Do you know what time the shop closes?"},
+        {"words": ["can she", "She can't cook,", "?"], "answer": "She can't cook, can she?"},
+        {"words": ["Nadia", "So does", "."], "answer": "So does Nadia."},
+        {"words": ["swim very well", "Neither can I", "."], "answer": "Neither can I swim very well."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "Is the museum open today?", "key": "OPEN", "second_start": "Do you know if the museum", "second_end": "today?", "answers": ["is open"]},
+        {"first": "Where is the nearest bus stop?", "key": "TELL", "second_start": "Could you", "second_end": "the nearest bus stop is?", "answers": ["tell me where"]},
+        {"first": "You are Peruvian.", "key": "AREN'T", "second_start": "You're Peruvian,", "second_end": "?", "answers": ["aren't you"]},
+        {"first": "I love chocolate. Nadia loves it too.", "key": "SO", "second_start": "I love chocolate.", "second_end": "Nadia.", "answers": ["So does"]},
+        {"first": "I can't swim. Liam can't swim either.", "key": "NEITHER", "second_start": "I can't swim.", "second_end": "Liam.", "answers": ["Neither can"]},
+        {"first": "What time does the film start?", "key": "KNOW", "second_start": "Do you", "second_end": "the film starts?", "answers": ["know what time"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can add the right question tag to check or confirm information.",
+    "I can ask a polite indirect question without changing the word order.",
+    "I can agree quickly with So do I / Neither do I and give short answers."
+  ],
+  "summary": [
+    "Question tags repeat the auxiliary of the statement and flip positive/negative.",
+    "Indirect questions add a polite starter and go back to normal word order — no inversion, no extra do/does/did.",
+    "Use if or whether for a yes/no indirect question, since there's no question word.",
+    "So + auxiliary + subject agrees with a positive sentence; neither + auxiliary + subject agrees with a negative one.",
+    "Short answers repeat only the auxiliary or modal — never the full verb."
+  ]
+}

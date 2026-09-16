@@ -82,5 +82,105 @@
    {"id":"word-formation-advanced","title":"Word formation at C1","brief":"Nominalising suffixes (-ance/-ence/-ity/-ism/-hood); negative prefixes and their nuances (dis-/mis-/un-/in-/non-); compound adjectives (well-established, time-consuming); conversion (to google); -en/-ify/-ise verbs; strategy for Use of English Part 3."},
    {"id":"phrasal-idiomatic","title":"Phrasal verbs, dependent prepositions and idioms","brief":"Phrasal verbs with several meanings; what particles mean (up = completion, out = disappearance, off = separation, through = completion); separable/inseparable; dependent prepositions (Use of English Part 2); idiomatic collocations for C1 speaking and writing."}
   ]}
+ ]},
+  "a1": {"cefr":"A1","exam":"A1 Foundations","areas":[
+  {"area":"First words, first sentences","topics":[
+   {"id":"be-am-is-are","title":"The verb be: am, is, are","brief":"I am / you are / he is…; contractions (I'm, she's, they're); negatives (isn't, aren't); questions and short answers (Are you…? Yes, I am.); age, nationality, feelings and jobs with be; the classic trap I have 12 years."},
+   {"id":"nouns-plurals-this-that","title":"Nouns: a/an, plurals, this/that/these/those","brief":"a/an with a consonant or vowel sound (a dog, an apple, a uniform); plural -s/-es/-ies and the irregulars (children, people, feet, teeth, mice); this/that/these/those with near and far; What's this? / What are those?"},
+   {"id":"have-got-a1","title":"have got: what you have","brief":"I have got / she has got; contractions ('ve got, 's got); negatives (haven't got, hasn't got); questions (Have you got…? Has she got…?) and short answers; family, pets, possessions and describing people (She's got long hair)."},
+   {"id":"possessives-a1","title":"my, your, his, her and 's","brief":"Possessive adjectives (my, your, his, her, its, our, their); the apostrophe s (Sofia's bag, my parents' car); Whose…?; his vs her vs its; object pronouns (me, him, her, us, them) after verbs and prepositions."}
+  ]},
+  {"area":"Every day","topics":[
+   {"id":"present-simple-i-you","title":"Present simple: I, you, we, they","brief":"Routines, likes and facts with I/you/we/they; negatives with don't; questions with Do…? and short answers (Yes, I do. / No, they don't.); like/love/hate + noun; everyday time words (every day, at the weekend)."},
+   {"id":"present-simple-he-she-it","title":"Present simple: he, she, it and the -s","brief":"The third-person -s (she plays, he goes, it has); spelling -s/-es/-ies (watches, goes, studies); negatives with doesn't + base verb; questions with Does…?; the number one A1 error: She play / She don't."},
+   {"id":"frequency-time-words","title":"How often? always, usually, sometimes, never","brief":"Adverbs of frequency and their place (after be, before other verbs); once/twice a week, every day, on Mondays; at/on/in with times, days and months; How often do you…?; a day in the life of the cast."},
+   {"id":"question-words-a1","title":"Question words: What, Where, When, Who, How","brief":"What/Where/When/Who/Why/How/Which/How many/How old/How much; question word + be or do/does; word order in questions; the questions of Speaking Part 1 (Where are you from? What do you like doing?); answering in full."}
+  ]},
+  {"area":"Here and now","topics":[
+   {"id":"there-is-prepositions-place","title":"there is / there are and where things are","brief":"there is / there are with a, an, some and any; negatives and questions (Is there…? Are there any…?); prepositions of place (in, on, under, next to, behind, in front of, between, opposite, near); describing a room, a town, a picture (Listening Part 1)."},
+   {"id":"can-cant","title":"can and can't","brief":"can/can't for ability (I can swim), possibility and permission; questions (Can you…?) and short answers; can + base verb (never can to); Can I…? for asking, Can you…? for requests; pronunciation of can vs can't."},
+   {"id":"present-continuous-now","title":"Present continuous: what is happening now","brief":"am/is/are + -ing for now and today; spelling of -ing (sitting, making, studying); negatives and questions (Is she sleeping?); look! / listen! / now / at the moment; describing a picture of the cast; first contrast with the present simple."},
+   {"id":"imperatives-lets","title":"Imperatives and Let's","brief":"Instructions and classroom language (Open your books. Don't run.); negative imperatives with Don't; Let's + verb for suggestions; please and polite orders; signs and notices (Reading Part 1); recipes, directions and rules."}
+  ]}
+ ]},
+ "ket": {"cefr":"A2","exam":"A2 Key for Schools","areas":[
+  {"area":"Tenses & time","topics":[
+   {"id":"present-simple","title":"Present simple: be, have got and routines","brief":"am/is/are and have got; routines and facts; third person -s/-es; adverbs of frequency and their position; negatives and questions with do/does; short answers."},
+   {"id":"present-continuous","title":"Present continuous","brief":"am/is/are + -ing for now and around now; spelling of -ing (sit → sitting, make → making); simple vs continuous with now/today vs every day; state verbs (like, want, know, understand) stay simple."},
+   {"id":"past-simple","title":"Past simple","brief":"was/were; regular -ed (spelling: stop → stopped, study → studied) and the most useful irregular verbs; negatives and questions with did; ago, last, yesterday, in 2019."},
+   {"id":"past-continuous","title":"Past continuous with when and while","brief":"was/were + -ing for a background action; past simple for the event that interrupts; when vs while; the two orders of the sentence."},
+   {"id":"present-perfect","title":"Present perfect: ever, never, just, already, yet","brief":"have/has + past participle; regular and irregular participles; ever/never in questions and negatives; just/already/yet and where they go; been vs gone."},
+   {"id":"present-perfect-vs-past-simple","title":"Present perfect or past simple?","brief":"Finished time (yesterday, last week, in 2020, ago) → past simple; unfinished time or no time (ever, this week, for, since) → present perfect; for vs since; How long…?"},
+   {"id":"future-forms","title":"Talking about the future","brief":"will for decisions, offers and predictions; going to for plans and things you can see coming; present continuous for arrangements with a time; shall I / shall we for offers and suggestions."}
+  ]},
+  {"area":"Modals","topics":[
+   {"id":"modals-ability-permission","title":"can, could, may: ability, requests and permission","brief":"can/can't for ability and permission; could for past ability and polite requests; may for polite permission; be able to; Can I…? / Could you…? / May I…? and their answers."},
+   {"id":"modals-obligation-advice","title":"must, have to, should: rules and advice","brief":"must and have to for rules; mustn't vs don't have to (the big difference); should/shouldn't for advice; need to; had to for past obligation; the language of signs and notices (Reading Part 1)."}
+  ]},
+  {"area":"Conditionals & hypothesis","topics":[
+   {"id":"zero-first-conditional","title":"Zero and first conditional","brief":"if/when + present simple for things that are always true; if + present, will/won't for real future situations; imperatives and can in the result; unless = if not; the comma when if comes first."}
+  ]},
+  {"area":"Sentence building","topics":[
+   {"id":"questions","title":"Questions and short answers","brief":"Question words (what/where/when/who/why/how/which/whose); how + adjective (how often/how long/how much/how many/how far); word order with be, do/does/did and modals; short answers; questions about the subject (Who called?)."},
+   {"id":"linking-words","title":"Linking words: and, but, or, so, because","brief":"and/but/or/so/because; then/after that/when/before/after/while for time; also/too/as well; that's why; joining two short sentences into one for Writing Parts 6 and 7."},
+   {"id":"verb-patterns-a2","title":"Verb patterns: like doing, want to do","brief":"like/love/hate/enjoy/don't mind + -ing; want/need/would like/hope/decide/learn + to; go + -ing (go swimming); let's/why don't we/how about + -ing; start/begin with both."},
+   {"id":"relative-clauses-a2","title":"who, which, that, where","brief":"Defining relative clauses to say which person, thing or place you mean; who for people, which/that for things, where for places; leaving out the relative pronoun when it is the object (the film I saw)."},
+   {"id":"there-is-have-got","title":"there is/are and have got","brief":"there is/there are with some/any/a/an; there was/were; have got vs has got and their questions; have got vs there is (my town has got vs there is in my town); a lot of/lots of."},
+   {"id":"imperatives-suggestions","title":"Imperatives, suggestions and offers","brief":"Imperatives and negative imperatives (Don't forget…) for instructions, notices and messages; Let's…, Shall we…?, Why don't we…?, How about + -ing?, Would you like…?; accepting and refusing politely."},
+   {"id":"story-telling-sequencing","title":"Telling a story: sequencing and past tenses together","brief":"First/then/next/after that/finally; one day/suddenly/in the end; past simple and past continuous in the same story; time expressions; the shape of a 35-word story for Writing Part 7."}
+  ]},
+  {"area":"Comparison & description","topics":[
+   {"id":"comparatives-superlatives","title":"Comparatives and superlatives","brief":"-er/-est and more/most; spelling (big → bigger, happy → happiest); irregular (good/bad/far); than; the with superlatives; as…as and not as…as; much/a lot + comparative."},
+   {"id":"adjectives-adverbs-a2","title":"Adjectives and adverbs","brief":"Adjectives before nouns and after be/look/feel; -ed vs -ing (bored/boring); adverbs of manner with -ly (and irregular: well, fast, hard); too + adjective, adjective + enough, very/really/quite; two adjectives in order (a big red bag)."},
+   {"id":"articles-a2","title":"a, an, the or nothing?","brief":"a/an for one of many and for jobs; the for something known or unique; no article with meals, sports, languages and plural general nouns; go to school/bed/work; at home; the cinema/the beach/the station."},
+   {"id":"countable-uncountable","title":"Countable and uncountable: some, any, much, many","brief":"Countable vs uncountable nouns (money, information, homework, food); some/any in statements, questions and offers; much/many/a lot of; a few/a little; How much…? / How many…?; a piece of, a bottle of."},
+   {"id":"prepositions-time-place","title":"Prepositions of time and place","brief":"at/in/on for time (at 6, on Monday, in May) and place (at school, in the kitchen, on the wall); from…to, until, by, during, for; next to, opposite, between, behind, in front of, near; prepositions after verbs (listen to, wait for, look at)."},
+   {"id":"pronouns-possessives","title":"Pronouns and possessives","brief":"Subject and object pronouns; possessive adjectives (my) vs possessive pronouns (mine); the apostrophe s; whose; one/ones; reflexive pronouns (myself) and each other; someone/anything/everywhere."}
+  ]},
+  {"area":"Words","topics":[
+   {"id":"word-building-a2","title":"Word building and spelling","brief":"Nouns from verbs (swim → swimmer, teach → teacher); -ly adverbs; un- for opposites (happy → unhappy); compound nouns (bus stop, football match); plural spelling (-s/-es/-ies); the words that always cause spelling mistakes in Listening Part 2 and Writing."}
+  ]}
+ ]},
+ "pet": {"cefr":"B1","exam":"B1 Preliminary for Schools","areas":[
+  {"area":"Tenses & time","topics":[
+   {"id":"present-tenses-b1","title":"Present simple and continuous","brief":"Routines, facts and timetables vs actions now and temporary situations; state verbs; present continuous for future arrangements; adverbs of frequency; always + -ing for habits that annoy."},
+   {"id":"past-tenses-b1","title":"Past simple and past continuous","brief":"Past simple for finished events; past continuous for background and interrupted actions; when/while/as; time expressions; the irregular verbs you must know at B1."},
+   {"id":"past-perfect","title":"Past perfect","brief":"had + past participle for the earlier of two past events; after/before/by the time/when; past perfect with already/just/never; the story order vs the sentence order."},
+   {"id":"present-perfect-b1","title":"Present perfect simple and continuous","brief":"for/since/ever/never/just/already/yet/still; been vs gone; How long…?; present perfect vs past simple; present perfect continuous for how long something has been happening."},
+   {"id":"future-forms-b1","title":"Future forms","brief":"will/won't for predictions, decisions and promises; going to for plans and evidence; present continuous for arrangements; present simple for timetables; future time clauses (when/as soon as/until/before + present simple)."},
+   {"id":"used-to-would","title":"used to and would for past habits","brief":"used to/didn't use to/Did you use to…? for past habits and states that are different now; would for repeated past actions (not states); used to vs be used to (intro)."}
+  ]},
+  {"area":"Modals","topics":[
+   {"id":"modals-obligation-b1","title":"Obligation and advice: must, have to, should, ought to","brief":"must vs have to; mustn't vs don't have to/needn't; should/ought to/had better for advice; had to/didn't have to in the past; be allowed to; notices and rules (Reading Part 1)."},
+   {"id":"modals-deduction","title":"Deduction: must, might, may, could, can't","brief":"Present deduction (must be/can't be/might be) and past deduction (must have/can't have/might have + participle); degrees of certainty; deduction must vs obligation must."},
+   {"id":"modals-ability-possibility","title":"Ability, possibility, requests and offers","brief":"can/could/be able to/managed to for ability; may/might/could for possibility; Could you…?/Would you mind…? for requests; Shall I…?/I'll… for offers; may/can for permission."}
+  ]},
+  {"area":"Conditionals & hypothesis","topics":[
+   {"id":"first-second-conditional","title":"First and second conditional","brief":"if + present, will for real futures; if + past, would for unreal or unlikely situations; unless/as long as/in case; if I were you; will vs would in the result; mixing them up is the classic B1 error."},
+   {"id":"third-conditional","title":"Third conditional","brief":"if + past perfect, would have + participle for imaginary past situations and regrets; could have/might have in the result; contractions (I'd have); the difference from the second conditional."},
+   {"id":"wish-hope","title":"wish, hope, I'd rather, I'd prefer","brief":"wish + past simple for the present, wish + past perfect for the past, wish + would for annoying things; hope + present/will; I'd rather + verb, I'd prefer + to; if only (intro)."}
+  ]},
+  {"area":"Passive & causative","topics":[
+   {"id":"passive-present-past","title":"The passive: present and past","brief":"be + past participle in present simple, past simple and present perfect; by + agent (and when to leave it out); questions and negatives; why writers choose the passive (processes, news, formal notices)."},
+   {"id":"passive-other-tenses","title":"The passive in other tenses and with modals","brief":"Present and past continuous passive (is being built, was being repaired); past perfect passive; future passive (will be sent); modal passive (must be worn, can be seen); have something done (intro)."}
+  ]},
+  {"area":"Reporting","topics":[
+   {"id":"reported-speech","title":"Reported speech: statements","brief":"say vs tell; tense changes (present → past, will → would, can → could, past → past perfect); pronoun, time and place changes (tomorrow → the next day); when the tense does not change."},
+   {"id":"reported-questions-commands","title":"Reported questions, commands and requests","brief":"Reported yes/no questions with if/whether; wh- questions and their word order; ask/tell/want sb (not) to; suggest/advise/warn/promise/offer/refuse and their patterns."}
+  ]},
+  {"area":"Sentence building","topics":[
+   {"id":"relative-clauses-b1","title":"Relative clauses","brief":"Defining clauses with who/which/that/where/whose/when; leaving out the pronoun when it is the object; non-defining clauses with commas (intro); that is not used after a comma."},
+   {"id":"verb-patterns-b1","title":"Verb patterns: -ing or to?","brief":"Verbs + -ing (enjoy, finish, avoid, mind, suggest); verbs + to (want, decide, hope, promise, learn); both with a change of meaning (remember/forget/stop/try); make/let + verb; prepositions + -ing; adjectives + to."},
+   {"id":"linking-contrast-reason","title":"Linking: contrast, reason, purpose and result","brief":"although/though/even though/however/despite/in spite of; because/because of/as/since; so that/in order to/to; so/therefore/as a result; too/enough; punctuation with linkers in Writing Parts 1 and 2."},
+   {"id":"question-tags-indirect","title":"Question tags, indirect questions and so/neither","brief":"Question tags with be, do, modals and have; intonation and answers; indirect questions (Could you tell me where…? Do you know if…?) with no inversion; So do I / Neither can I; short replies."}
+  ]},
+  {"area":"Comparison & description","topics":[
+   {"id":"comparatives-b1","title":"Comparison at B1","brief":"Comparatives and superlatives, regular, irregular and with more/most; modifiers (much/far/a bit/a little/slightly); as…as/not as…as; the…the…; less/the least; comparative adverbs (more quickly, better); too/enough."},
+   {"id":"articles-quantifiers-b1","title":"Articles and quantifiers","brief":"a/an/the/zero article with places, meals, institutions and general nouns; all/most/some/no/none of; both/either/neither; each/every; too much/too many/enough/plenty of; a few/few/a little/little."},
+   {"id":"adjectives-adverbs-b1","title":"Adjectives and adverbs","brief":"Order of adjectives (a lovely old wooden box); -ed vs -ing; adverbs of manner, degree and frequency and their position; adjectives vs adverbs (hard/hardly, late/lately, good/well); so/such; extreme adjectives with absolutely."}
+  ]},
+  {"area":"Words","topics":[
+   {"id":"word-formation-b1","title":"Word formation: prefixes, suffixes and families","brief":"Word families (succeed/success/successful/successfully); noun suffixes (-tion/-ment/-ness/-er/-ist); adjective suffixes (-ful/-less/-able/-ive/-ous); -ly adverbs; negative prefixes (un-/dis-/im-/in-/ir-); re-/over-/under-; spelling changes; how Reading Parts 5 and 6 test them."}
+  ]}
  ]}
 }

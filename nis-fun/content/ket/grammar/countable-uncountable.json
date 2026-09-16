@@ -1,0 +1,198 @@
+{
+  "id": "countable-uncountable",
+  "level": "ket",
+  "area": "Comparison & description",
+  "title": "Countable and uncountable: some, any, much, many",
+  "tagline": "How many apples, how much juice: countable and uncountable nouns.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Reading Part 6 — open cloze"],
+  "why": "Every shopping list, recipe and conversation about money needs this: is it something you can count (apples, friends), or something you can't (water, homework)? Get it wrong and much/many, a few/a little come out backwards — a very common mistake the exam checks in Reading Parts 5 and 6.",
+  "hook": {
+    "text": "Miss Vega is making a shopping list for the party. \"How <b>many</b> apples do we need?\" she asks. \"Ten!\" says Sofia. \"And how <b>much</b> juice?\" Mateo thinks: \"A lot — we're always thirsty after football!\"",
+    "ask": "Many goes with apples, much goes with juice. Can you work out why they're different words?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Countable or uncountable?",
+      "center": "Nouns",
+      "branches": [
+        {"label": "Countable (you can count them)", "items": ["one apple, two apples", "a book, many books", "a friend, a few friends"], "tone": "a"},
+        {"label": "Uncountable (no plural)", "items": ["money", "homework", "information", "water"], "tone": "b"},
+        {"label": "some / any", "items": ["some apples / some water", "any apples? / any water?", "not any apples / not any water"], "tone": "c"},
+        {"label": "much / many", "items": ["How many apples?", "How much water?", "a lot of works for both"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to ask about quantity",
+      "steps": [
+        {"label": "Check: can you count it?", "ex": "apples ✓ countable / water ✗ uncountable"},
+        {"label": "Countable → use How many + plural noun", "ex": "<b>How many</b> apples do we need?"},
+        {"label": "Uncountable → use How much + noun", "ex": "<b>How much</b> water do we need?"}
+      ],
+      "caption": "Same question, different word — it all depends on whether you can count the noun."
+    },
+    {
+      "type": "contrast",
+      "title": "Countable vs uncountable",
+      "columns": ["Countable", "Uncountable"],
+      "rows": [
+        {"label": "Plural", "cells": ["apples, books, friends", "no plural: money, homework"]},
+        {"label": "Questions", "cells": ["How many apples?", "How much water?"]},
+        {"label": "Small amount", "cells": ["a few apples", "a little water"]},
+        {"label": "Making it countable", "cells": ["—", "a piece of cake, a bottle of water"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "countable noun", "tone": "a", "ex": "apples"},
+      {"chip": "how many / a few / many", "tone": "kw"},
+      {"chip": "vs", "tone": "arrow"},
+      {"chip": "uncountable noun", "tone": "b", "ex": "water"},
+      {"chip": "how much / a little / much", "tone": "c"}
+    ],
+    "table": {
+      "head": ["Noun type", "Example nouns", "Question word", "Small amount"],
+      "rows": [
+        ["Countable", "apple, book, friend", "How many?", "a few"],
+        ["Uncountable", "money, water, homework, information", "How much?", "a little"],
+        ["Both", "a lot of / lots of", "—", "apples AND water"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Countable nouns: you can count them",
+      "examples": [
+        {"text": "I've got <b>two apples</b> in my bag.", "note": "countable — it has a plural"},
+        {"text": "How many <b>friends</b> do you have in this school?", "note": "countable, plural noun"},
+        {"text": "There's <b>a spider</b> on the wall!", "note": "countable, singular with a"}
+      ]
+    },
+    {
+      "point": "Uncountable nouns: no plural, no a/an",
+      "examples": [
+        {"text": "I don't have much <b>money</b> this week.", "note": "uncountable — never say moneys"},
+        {"text": "We've got a lot of <b>homework</b> tonight.", "note": "uncountable — never say homeworks"},
+        {"text": "Can you give me some <b>information</b> about the trip?", "note": "uncountable — never say informations"}
+      ]
+    },
+    {
+      "point": "some, any and offers",
+      "examples": [
+        {"text": "There are <b>some</b> apples on the table.", "note": "some in a positive statement"},
+        {"text": "Is there <b>any</b> water in the fridge?", "note": "any in questions"},
+        {"text": "Would you like <b>some</b> cake?", "note": "some in offers, even though it's a question"}
+      ]
+    },
+    {
+      "point": "How much / how many, a lot of, a few, a little, containers",
+      "examples": [
+        {"text": "<b>How many</b> books have you got?", "note": "many + countable noun"},
+        {"text": "<b>How much</b> water do we need?", "note": "much + uncountable noun"},
+        {"text": "I only need <b>a few</b> minutes.", "note": "a few = a small number, countable"},
+        {"text": "Can I have <b>a piece of</b> cake and <b>a bottle of</b> water?", "note": "containers make uncountable nouns countable"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I have many homeworks.", "right": "I have a lot of <b>homework</b>.", "why": "Homework is uncountable: no plural, no many."},
+    {"wrong": "How much apples do you want?", "right": "<b>How many</b> apples do you want?", "why": "Apples is countable, so use many, not much."},
+    {"wrong": "Can I have any water? (as an offer)", "right": "Would you like <b>some</b> water?", "why": "Offers usually use some, even in a question."},
+    {"wrong": "I need a little apples.", "right": "I need <b>a few</b> apples.", "why": "A few is for countable nouns; a little is for uncountable nouns."},
+    {"wrong": "She gave me an information.", "right": "She gave me <b>some information</b>.", "why": "Information is uncountable: no a/an, no plural."}
+  ],
+  "l1": [
+    {"es": "Tengo mucho dinero.", "wrong": "I have many money.", "right": "I have <b>a lot of</b> money.", "why": "Money is uncountable in English, even though dinero can feel countable in Spanish."},
+    {"es": "Tengo mucha tarea.", "wrong": "I have many homeworks.", "right": "I have a lot of <b>homework</b>.", "why": "Homework has no plural in English."},
+    {"es": "¿Cuánta información tienes?", "wrong": "How many information do you have?", "right": "<b>How much</b> information do you have?", "why": "Information is uncountable, so it takes much, not many."},
+    {"es": "Dame un consejo.", "wrong": "Give me an advice.", "right": "Give me <b>some advice</b>.", "why": "Advice is uncountable in English — no a/an, no plural."}
+  ],
+  "remember": {
+    "trick": "Count it? many/few. Can't count it? much/little!",
+    "tip": "If you can put a number before it (two apples), it's countable → many/few. If you can't (money, water), it's uncountable → much/little."
+  },
+  "dialogue": {
+    "title": "Shopping for the class party",
+    "context": "Miss Vega and the students make a shopping list for the end-of-term party.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "How many <b>apples</b> do we need for the party?"},
+      {"speaker": "Sofia", "text": "I think ten apples is enough. But how much <b>juice</b> should we buy?"},
+      {"speaker": "Mateo", "text": "We need a lot of <b>juice</b> — everyone's thirsty after the football match!"},
+      {"speaker": "Nadia", "text": "Have we got <b>any</b> cups? I can't see <b>any</b> in the box."},
+      {"speaker": "Liam", "text": "There are <b>some</b> plates, but we need <b>a few</b> more cups."},
+      {"speaker": "Miss Vega", "text": "Good. And a piece of advice: buy <b>a bottle of</b> water for every table."},
+      {"speaker": "Sofia", "text": "Is there <b>any</b> money left for a cake?"},
+      {"speaker": "Mateo", "text": "Yes, we've got <b>a little</b> money — enough for one big cake."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word or words.",
+      "items": [
+        {"sentence": "How ___ apples do we need?", "options": ["many", "much", "a lot"], "answer": 0, "why": "apples is countable → many"},
+        {"sentence": "How ___ juice should we buy?", "options": ["many", "much", "a lot"], "answer": 1, "why": "juice is uncountable → much"},
+        {"sentence": "There isn't ___ money left.", "options": ["many", "a few", "much"], "answer": 2, "why": "money is uncountable → much"},
+        {"sentence": "Would you like ___ cake?", "options": ["some", "any", "much"], "answer": 0, "why": "offers use some, even in a question"},
+        {"sentence": "Is there ___ water in the fridge?", "options": ["some", "any", "many"], "answer": 1, "why": "questions usually use any"},
+        {"sentence": "I only need ___ minutes to finish.", "options": ["a little", "much", "a few"], "answer": 2, "why": "minutes is countable → a few"},
+        {"sentence": "We've got ___ money for one cake.", "options": ["a lot of", "many", "few"], "answer": 0, "why": "a lot of works for both countable and uncountable"},
+        {"sentence": "She gave me ___ advice before the exam.", "options": ["an", "some", "many"], "answer": 1, "why": "advice is uncountable, no a/an"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with much, many, some, any, a few, a little or a lot of.",
+      "items": [
+        {"sentence": "How ___ apples do we need?", "answers": ["many"]},
+        {"sentence": "How ___ juice should we buy?", "answers": ["much"]},
+        {"sentence": "There isn't ___ money left.", "answers": ["much"]},
+        {"sentence": "Would you like ___ cake?", "answers": ["some"]},
+        {"sentence": "Is there ___ water in the fridge?", "answers": ["any"]},
+        {"sentence": "I only need ___ minutes to finish.", "answers": ["a few"]},
+        {"sentence": "We've got ___ money for one cake.", "answers": ["a lot of"]},
+        {"sentence": "She gave me ___ advice before the exam.", "answers": ["some"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["a lot of juice", "need", "We", "."], "answer": "We need a lot of juice."},
+        {"words": ["?", "do we need", "How many apples"], "answer": "How many apples do we need?"},
+        {"words": ["left", "isn't much money", "There", "."], "answer": "There isn't much money left."},
+        {"words": ["some cake", "Would you like", "?"], "answer": "Would you like some cake?"},
+        {"words": ["a few minutes", "only need", "I", "."], "answer": "I only need a few minutes."},
+        {"words": ["some advice", "gave me", "She", "."], "answer": "She gave me some advice."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I have many homeworks.", "ok": false, "fix": "I have a lot of <b>homework</b>.", "why": "homework is uncountable, no plural"},
+        {"sentence": "How many apples do we need?", "ok": true, "why": "apples is countable → many"},
+        {"sentence": "How much apples do you want?", "ok": false, "fix": "<b>How many</b> apples do you want?", "why": "apples is countable → many, not much"},
+        {"sentence": "Would you like some cake?", "ok": true, "why": "offers use some, even in questions"},
+        {"sentence": "I need a little apples.", "ok": false, "fix": "I need <b>a few</b> apples.", "why": "apples is countable → a few, not a little"},
+        {"sentence": "She gave me some advice.", "ok": true, "why": "advice is uncountable, no a/an"},
+        {"sentence": "Is there any water in the fridge?", "ok": true, "why": "questions usually use any"},
+        {"sentence": "I have many money.", "ok": false, "fix": "I have <b>a lot of</b> money.", "why": "money is uncountable, no many"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can tell countable nouns (apple, friend) from uncountable nouns (money, homework).",
+    "I can use <i>some</i> and <i>any</i> correctly in statements, questions and offers.",
+    "I can ask <i>How many…?</i> and <i>How much…?</i> and answer with <i>a few</i>, <i>a little</i> or <i>a lot of</i>."
+  ],
+  "summary": [
+    "Countable nouns have a plural (<i>apples, friends</i>); uncountable nouns don't (<i>money, homework, information</i>).",
+    "Use <b>some</b> in statements and offers, <b>any</b> in questions and negatives.",
+    "Ask <b>How many</b> + plural noun, or <b>How much</b> + uncountable noun.",
+    "A few and many go with countable nouns; a little and much go with uncountable nouns — but a lot of works with both."
+  ]
+}

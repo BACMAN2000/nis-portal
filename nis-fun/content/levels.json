@@ -25,6 +25,22 @@
       "color": "#3b6fb5"
     },
     {
+      "id": "a1",
+      "name": "Cambridge · A1 Foundations",
+      "exam": "A1 · the grammar before A2 Key",
+      "cast": "A1 · Inspiring Nordic",
+      "mascot": "nova",
+      "color": "#db2777",
+      "grades": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
       "id": "ket",
       "name": "Cambridge · KET",
       "exam": "A2 Key for Schools",

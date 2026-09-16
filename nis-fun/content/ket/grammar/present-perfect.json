@@ -1,0 +1,199 @@
+{
+  "id": "present-perfect",
+  "level": "ket",
+  "area": "Tenses & time",
+  "title": "Present perfect: ever, never, just, already, yet",
+  "tagline": "A past action that still matters now — have/has + the third form of the verb.",
+  "cefr": "A2",
+  "exam": ["Reading Part 6 — open cloze", "Listening Part 2 — matching", "Writing Part 6 — a short email"],
+  "why": "Has your class finished the project? Have you ever tried ceviche? The present perfect connects the past to now — a completed action with a present result, or an experience at some point in your life without saying exactly when. At A2 Key it turns up in short emails (<i>I've already bought the tickets</i>) and in questions like <i>Have you ever been to…?</i>",
+  "hook": {
+    "text": "At the market, Miss Vega checks the shopping list. \"<b>Have</b> you <b>found</b> the mangoes, Nadia?\" \"Yes, I<b>'ve</b> already <b>found</b> them!\" \"And the bread, Mateo?\" \"I <b>haven't bought</b> it yet.\"",
+    "ask": "The present perfect always has two words together: <i>have/has</i> + a past participle (like <i>found</i> or <i>bought</i>). Can you find all three pairs in the story?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "A past action that connects to now",
+      "marks": [
+        {"at": "before-past", "label": "Nadia found the mangoes", "sub": "an action, no exact time"},
+        {"at": "now", "label": "the mangoes are in the bag now", "sub": "present perfect — the result now"}
+      ],
+      "arrows": [[0, 1, "the action connects to now"]],
+      "caption": "Present perfect links a past action to now — we don't say exactly when it happened."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence in the present perfect",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Nadia", "role": "subj"}, {"t": "has", "role": "aux"}, {"t": "already", "role": "kw"}, {"t": "found", "role": "verb"}, {"t": "the mangoes", "role": "obj"}, {"t": ".", "role": "x"}], "note": "statement"},
+        {"parts": [{"t": "Mateo", "role": "subj"}, {"t": "hasn't", "role": "neg"}, {"t": "bought", "role": "verb"}, {"t": "the bread", "role": "obj"}, {"t": "yet", "role": "kw"}, {"t": ".", "role": "x"}], "note": "negative"},
+        {"parts": [{"t": "Have", "role": "aux"}, {"t": "you", "role": "subj"}, {"t": "ever", "role": "kw"}, {"t": "tried", "role": "verb"}, {"t": "ceviche", "role": "obj"}, {"t": "?", "role": "x"}], "note": "question"}
+      ],
+      "caption": "The little words already, yet and ever move around the sentence, but they always sit next to have/has or the participle."
+    },
+    {
+      "type": "contrast",
+      "title": "been vs gone",
+      "columns": ["been", "gone"],
+      "rows": [
+        {"label": "Meaning", "cells": ["went there AND came back", "went there and is still there (or on the way)"]},
+        {"label": "Example", "cells": ["She has been to Cusco. (she's back now)", "She has gone to Cusco. (she's there now)"]},
+        {"label": "Use it for", "cells": ["life experiences — Have you ever been to…?", "where someone is right now"]}
+      ],
+      "caption": "Same participle idea, opposite result: been = there and back; gone = there and still away."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "person", "tone": "a", "ex": "I / she / they"},
+      {"chip": "have / has", "tone": "kw", "ex": "has"},
+      {"chip": "past participle", "tone": "b", "ex": "found / been / gone"},
+      {"chip": "ever / never / just / already / yet", "tone": "c", "ex": "already"}
+    ],
+    "table": {
+      "head": ["Person", "Statement", "Negative", "Question"],
+      "rows": [
+        ["I / you / we / they", "I've found it", "I haven't found it", "Have you found it…?"],
+        ["he / she / it", "she's found it", "she hasn't found it", "Has she found it…?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "have/has + past participle — regular and irregular",
+      "examples": [
+        {"text": "We <b>have tidied</b> the classroom.", "note": "regular participle: tidy → tidied"},
+        {"text": "Nadia <b>has found</b> the mangoes.", "note": "irregular participle: find → found"},
+        {"text": "I <b>have seen</b> that film twice.", "note": "irregular participle: see → seen"}
+      ]
+    },
+    {
+      "point": "ever and never — experiences in your life, no exact time",
+      "examples": [
+        {"text": "<b>Have</b> you <b>ever tried</b> ceviche?", "note": "ever in questions = at any time in your life"},
+        {"text": "I<b>'ve never been</b> to Trujillo.", "note": "never = at no time, always with a positive verb"},
+        {"text": "She<b>'s</b> the best cook I<b>'ve ever</b> met!", "note": "ever after a superlative"}
+      ]
+    },
+    {
+      "point": "just, already, yet — very close to now",
+      "examples": [
+        {"text": "I<b>'ve just bought</b> some avocados.", "note": "just = a moment ago, between have and the participle"},
+        {"text": "We<b>'ve already paid</b> for the mangoes.", "note": "already = sooner than expected, between have and the participle"},
+        {"text": "Mateo <b>hasn't bought</b> the bread <b>yet</b>.", "note": "yet = up to now, at the end of a negative"},
+        {"text": "Have you finished your shopping <b>yet</b>?", "note": "yet also goes at the end of a question"}
+      ]
+    },
+    {
+      "point": "been vs gone, negatives and questions",
+      "examples": [
+        {"text": "She<b>'s been</b> to the market — she<b>'s</b> home now.", "note": "been = went and came back"},
+        {"text": "He<b>'s gone</b> to the market — he isn't here.", "note": "gone = went and is still there"},
+        {"text": "<b>Have</b> you <b>finished</b>?", "note": "have + subject + participle for questions"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I have see that film.", "right": "I <b>have seen</b> that film.", "why": "The past participle of see is seen, not see — have/has always needs the third form of the verb."},
+    {"wrong": "I have finished my homework yesterday.", "right": "I <b>finished</b> my homework yesterday.", "why": "Yesterday is a finished time word — it needs the past simple, not the present perfect."},
+    {"wrong": "She has already went to the shop.", "right": "She has already <b>gone</b> to the shop.", "why": "After have/has, use the participle (gone), not the past simple form (went)."},
+    {"wrong": "I never have visited Cusco.", "right": "I<b>'ve never</b> visited Cusco.", "why": "Never usually goes between have/has and the participle, not before have."},
+    {"wrong": "Have you ever went to the beach?", "right": "Have you ever <b>been</b> to the beach?", "why": "After have, use been, not went — went is only for the past simple."}
+  ],
+  "l1": [
+    {"es": "He comido ya.", "wrong": "I have eat already.", "right": "I<b>'ve</b> already <b>eaten</b>.", "why": "The verb after have/has must be the participle (eaten), not the base form."},
+    {"es": "Fui a Cusco.", "wrong": "I went to Cusco.", "right": "I<b>'ve been</b> to Cusco.", "why": "For a life experience with no exact time, English prefers the present perfect — Spanish often just uses the simple past for both ideas."},
+    {"es": "Nunca he probado el ceviche.", "wrong": "I never have tried ceviche.", "right": "I<b>'ve never</b> tried ceviche.", "why": "Never sits after have/has, between the helper and the participle, not before it."},
+    {"es": "Ya terminé.", "wrong": "I have finish already.", "right": "I<b>'ve</b> already <b>finished</b>.", "why": "The participle of finish is finished (regular -ed) — don't drop the ending after have."},
+    {"es": "Se ha ido al mercado.", "wrong": "She has been to the market.", "right": "She<b>'s gone</b> to the market.", "why": "Gone means she is still there; been means she went and came back — the two are opposites in English."}
+  ],
+  "remember": {
+    "trick": "have/has + 3rd form = the past that matters NOW.",
+    "tip": "Think of it as a link: something happened, and it's still important right now — that's why have/has never lets go of now."
+  },
+  "dialogue": {
+    "title": "Shopping at the market",
+    "context": "Saturday morning at the market in Lima. Miss Vega and the class are buying food for the school picnic.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "<b>Have</b> you <b>found</b> the mangoes, Nadia?"},
+      {"speaker": "Nadia", "text": "Yes, I<b>'ve</b> already <b>found</b> them — they're in the bag."},
+      {"speaker": "Miss Vega", "text": "Great. Mateo, <b>have</b> you <b>bought</b> the bread yet?"},
+      {"speaker": "Mateo", "text": "Not yet. I <b>haven't gone</b> to that stall."},
+      {"speaker": "Sofia", "text": "I<b>'ve just bought</b> some avocados — look, three for one sol!"},
+      {"speaker": "Miss Vega", "text": "Well done. <b>Has</b> anyone <b>seen</b> Liam?"},
+      {"speaker": "Nadia", "text": "He<b>'s gone</b> to buy water. He isn't back yet."},
+      {"speaker": "Miss Vega", "text": "OK. <b>Have</b> you two <b>ever tried</b> a lucuma?"},
+      {"speaker": "Mateo", "text": "No, I<b>'ve never tried</b> one! Is it good?"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I ___ my homework already.", "options": ["have finished", "has finished", "finished"], "answer": 0, "why": "I → have finished"},
+        {"sentence": "She has ___ been to Trujillo.", "options": ["never", "not never", "no"], "answer": 0, "why": "never sits between has and the participle"},
+        {"sentence": "___ you ever tried ceviche?", "options": ["Do", "Have", "Has"], "answer": 1, "why": "you → Have"},
+        {"sentence": "Mateo hasn't bought the bread ___.", "options": ["already", "yet", "just"], "answer": 1, "why": "yet goes at the end of a negative"},
+        {"sentence": "I've ___ finished my lunch — five minutes ago!", "options": ["yet", "already", "just"], "answer": 2, "why": "just = a moment ago"},
+        {"sentence": "He's ___ to the market — he isn't here.", "options": ["been", "gone", "go"], "answer": 1, "why": "gone = still there"},
+        {"sentence": "___ she found her keys?", "options": ["Did", "Has", "Have"], "answer": 1, "why": "she → Has"},
+        {"sentence": "I have never ___ that film.", "options": ["see", "saw", "seen"], "answer": 2, "why": "have/has + past participle"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the present perfect form of the verb in brackets.",
+      "items": [
+        {"sentence": "I ___ (finish) my homework already.", "answers": ["have finished", "'ve finished"]},
+        {"sentence": "She ___ (not/see) that film yet.", "answers": ["hasn't seen"]},
+        {"sentence": "___ (you/ever/try) ceviche?", "answers": ["Have you ever tried"]},
+        {"sentence": "He ___ (go) to the market — he isn't here.", "answers": ["'s gone", "has gone"]},
+        {"sentence": "We ___ (just/buy) some avocados.", "answers": ["'ve just bought", "have just bought"]},
+        {"sentence": "___ (she/find) her keys yet?", "answers": ["Has she found"]},
+        {"sentence": "I ___ (never/visit) Cusco.", "answers": ["'ve never visited", "have never visited"]},
+        {"sentence": "They ___ (not/finish) their shopping yet.", "answers": ["haven't finished"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["found", "has", "Nadia", "the mangoes", "."], "answer": "Nadia has found the mangoes."},
+        {"words": ["you", "ever tried", "Have", "ceviche", "?"], "answer": "Have you ever tried ceviche?"},
+        {"words": ["to the market", "He's", "gone", "."], "answer": "He's gone to the market."},
+        {"words": ["some avocados", "just bought", "I've", "."], "answer": "I've just bought some avocados."},
+        {"words": ["the bread", "hasn't bought", "Mateo", "yet", "."], "answer": "Mateo hasn't bought the bread yet."},
+        {"words": ["her keys", "found", "Has", "she", "?"], "answer": "Has she found her keys?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I have see that film.", "ok": false, "fix": "I <b>have seen</b> that film.", "why": "the past participle of see is seen"},
+        {"sentence": "Nadia has found the mangoes.", "ok": true, "why": "has + irregular participle"},
+        {"sentence": "I have finished my homework yesterday.", "ok": false, "fix": "I <b>finished</b> my homework yesterday.", "why": "yesterday needs the past simple, not the present perfect"},
+        {"sentence": "I've never tried ceviche.", "ok": true, "why": "never goes between have and the participle"},
+        {"sentence": "She has already went to the shop.", "ok": false, "fix": "She has already <b>gone</b> to the shop.", "why": "after have/has, use the participle gone, not went"},
+        {"sentence": "He's gone to the market — he isn't here.", "ok": true, "why": "gone = still there"},
+        {"sentence": "Have you ever went to the beach?", "ok": false, "fix": "Have you ever <b>been</b> to the beach?", "why": "after have, use been, not went"},
+        {"sentence": "Mateo hasn't bought the bread yet.", "ok": true, "why": "correct negative with yet at the end"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about life experiences with <i>have/has + past participle</i> and <i>ever/never</i>.",
+    "I can use <i>just, already</i> and <i>yet</i> to say how recent or how complete something is.",
+    "I can tell the difference between <i>been</i> and <i>gone</i>."
+  ],
+  "summary": [
+    "Present perfect = <b>have/has + past participle</b>. It connects a past action to now, without saying exactly when.",
+    "<i>Ever</i> and <i>never</i> talk about experiences in your whole life; <i>just, already</i> and <i>yet</i> talk about something very close to now.",
+    "<i>Been</i> = went there and came back; <i>gone</i> = went there and is still away.",
+    "Finished-time words like yesterday and last week need the past simple, not the present perfect.",
+    "Negative: haven't/hasn't + participle. Question: Have/Has + person + participle."
+  ]
+}

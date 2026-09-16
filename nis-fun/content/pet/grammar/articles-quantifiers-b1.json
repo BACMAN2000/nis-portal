@@ -1,0 +1,206 @@
+{
+  "id": "articles-quantifiers-b1",
+  "level": "pet",
+  "area": "Comparison & description",
+  "title": "Articles and quantifiers",
+  "tagline": "Choose a, an, the or nothing at all, then say exactly how much or how many with the right word.",
+  "cefr": "B1",
+  "exam": ["Reading Part 6 — open cloze", "Reading Part 5 — multiple-choice cloze", "Writing Part 1 — email"],
+  "why": "Small words like a, the and enough are exactly what the open cloze tests, because they're easy to leave out and hard to hear in fast speech. Knowing go to school (no article) from go to the school (a specific building), and few from a few, makes your writing sound careful rather than translated.",
+  "hook": {
+    "text": "Nadia checks the camping list: \"We need <b>a</b> tent, <b>the</b> big one from Liam's garage, and <b>enough</b> water for everyone.\" Mateo: \"I've packed <b>too much</b> food and <b>too few</b> torches!\" Sofia: \"Typical. <b>Every</b> trip, the same problem.\"",
+    "ask": "Look at a, the, enough, too much, too few and every. Which words point to one specific thing everyone already knows about, and which ones tell you how much or how many?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "How much / how many?",
+      "center": "Quantifiers",
+      "branches": [
+        {"label": "Too much / too many", "items": ["too much food (uncountable)", "too many bags (countable)"], "tone": "a"},
+        {"label": "Enough / plenty of", "items": ["enough water", "plenty of time"], "tone": "b"},
+        {"label": "A few / few, a little / little", "items": ["a few torches — that's fine", "few torches — a problem", "a little water — some", "little water — almost none"], "tone": "c"},
+        {"label": "All / most / some / none of", "items": ["all the tents", "most of the food", "some water", "none of the bags"], "tone": "a"},
+        {"label": "Both / either / neither, each / every", "items": ["both tents", "either bag", "neither torch", "each camper", "every trip"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "a / the / no article",
+      "columns": ["a / an", "the", "no article"],
+      "rows": [
+        {"label": "First mention", "cells": ["<b>a</b> tent — any tent, one of many", "not yet", "not yet"]},
+        {"label": "Already known / specific", "cells": ["not any more", "<b>the</b> tent — the one we mentioned", "not here"]},
+        {"label": "Meals, sports, general plurals", "cells": ["not here", "not here", "have <b>breakfast</b>, love <b>animals</b>"]},
+        {"label": "Places for their usual purpose", "cells": ["not here", "the building itself", "go to <b>school</b>, go to <b>bed</b>"]}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to choose a, the or nothing",
+      "steps": [
+        {"label": "Countable, singular, first time you mention it?", "ex": "I bought <b>a</b> tent."},
+        {"label": "Something both speakers already know about?", "ex": "Where's <b>the</b> tent we bought?"},
+        {"label": "A meal, a general plural, or a place used for its usual purpose?", "ex": "We had <b>breakfast</b> and went to <b>school</b>."},
+        {"label": "Unique in the world?", "ex": "<b>The</b> sun was hot all afternoon."}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "a / an", "tone": "a"},
+      {"chip": "one of many / first mention", "tone": "kw"},
+      {"chip": "the", "tone": "b"},
+      {"chip": "specific / already known", "tone": "kw"},
+      {"chip": "no article", "tone": "c"},
+      {"chip": "meals / sports / general plurals", "tone": "kw"}
+    ],
+    "table": {
+      "head": ["Quantifier", "Use with", "Example"],
+      "rows": [
+        ["too much / too many", "much + uncountable, many + countable", "<b>Too many</b> people, <b>too much</b> noise."],
+        ["enough / plenty of", "both countable and uncountable", "We don't have <b>enough</b> chairs, but <b>plenty of</b> food."],
+        ["a few / few, a little / little", "few + countable, little + uncountable", "I have <b>a few</b> friends here; she has <b>little</b> money left."],
+        ["all / most / some / none of", "both, usually + of + the", "<b>Most of</b> the tents are new."],
+        ["both / either / neither", "two things", "<b>Neither</b> torch works."],
+        ["each / every", "one by one / all together", "<b>Each</b> camper has a job. <b>Every</b> tent needs pegs."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "a/an, the, or nothing at all",
+      "examples": [
+        {"text": "Mateo bought <b>a</b> new sleeping bag for the trip.", "note": "a = one of many, first time we hear about it"},
+        {"text": "Where's <b>the</b> sleeping bag you bought?", "note": "the = the specific one we already know about"},
+        {"text": "We always have <b>breakfast</b> before we leave.", "note": "no article with meals"},
+        {"text": "Nadia goes to <b>school</b> by bus, but on Saturdays she walks to <b>the school</b> for football practice.", "note": "school (general purpose) vs the school (the building)"}
+      ]
+    },
+    {
+      "point": "too much / too many, enough, plenty of",
+      "examples": [
+        {"text": "We packed <b>too many</b> bags for one car.", "note": "too many + countable plural"},
+        {"text": "There's <b>too much</b> food for four people.", "note": "too much + uncountable"},
+        {"text": "Have we got <b>enough</b> water for the whole weekend?", "note": "enough = just the right amount, or the minimum needed"},
+        {"text": "Don't worry, there's <b>plenty of</b> time before it gets dark.", "note": "plenty of = more than enough"}
+      ]
+    },
+    {
+      "point": "a few / few, a little / little",
+      "examples": [
+        {"text": "I brought <b>a few</b> torches, so we're fine.", "note": "a few = some, a positive idea"},
+        {"text": "We have <b>few</b> torches left — we need to buy more.", "note": "few = almost none, a negative idea"},
+        {"text": "There's <b>a little</b> water in this bottle still.", "note": "a little = some (uncountable)"},
+        {"text": "There's <b>little</b> water left — we should find more soon.", "note": "little = almost none (uncountable)"}
+      ]
+    },
+    {
+      "point": "all/most/none, both/either/neither, each/every",
+      "examples": [
+        {"text": "<b>Most of</b> the campers arrived on time.", "note": "most of + the + noun"},
+        {"text": "<b>Neither</b> of the tents is big enough.", "note": "neither = not one, not the other (two things)"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I go to the school every day.", "right": "I go to <b>school</b> every day.", "why": "No article when you mean school for its usual purpose — studying."},
+    {"wrong": "He plays the football on Saturdays.", "right": "He plays <b>football</b> on Saturdays.", "why": "No article with sports and games."},
+    {"wrong": "There is too much bags in the car.", "right": "There are too <b>many</b> bags in the car.", "why": "many + countable plural, much + uncountable — and the verb must agree too (are)."},
+    {"wrong": "We have a little friends here.", "right": "We have <b>a few</b> friends here.", "why": "a few is for countable nouns (friends); a little is for uncountable nouns."},
+    {"wrong": "Neither of the tent works.", "right": "Neither of <b>the tents works</b>.", "why": "Neither of + plural noun, even though the verb stays singular (works)."},
+    {"wrong": "Each campers has a job.", "right": "<b>Each</b> camper has a job.", "why": "each and every always take a singular noun, never a plural one."}
+  ],
+  "l1": [
+    {"es": "Voy a la escuela todos los días.", "wrong": "I go to the school every day.", "right": "I go to <b>school</b> every day.", "why": "Spanish always uses the article with places like school; English drops it when you mean the usual activity there."},
+    {"es": "Juego al fútbol los sábados.", "wrong": "I play the football on Saturdays.", "right": "I play <b>football</b> on Saturdays.", "why": "Spanish al keeps the article; English never uses one with sports."},
+    {"es": "Tengo pocos amigos aquí.", "wrong": "I have little friends here.", "right": "I have <b>few</b> friends here.", "why": "Spanish poco/poca doesn't show countable/uncountable, but English needs few for friends and little for uncountable nouns."},
+    {"es": "El amor es importante.", "wrong": "The love is important.", "right": "<b>Love</b> is important.", "why": "Spanish uses the article with abstract or general ideas, but English talks about them with no article at all."}
+  ],
+  "remember": {
+    "trick": "A = one of many. THE = the one we both know!",
+    "tip": "Ask yourself: could my listener point to exactly this one? Yes → the. No, just any one → a/an."
+  },
+  "dialogue": {
+    "title": "Packing for the camping trip",
+    "context": "Nadia, Mateo, Sofia and Liam are packing the car before a camping weekend in the mountains near Lima and checking they have everything they need.",
+    "lines": [
+      {"speaker": "Nadia", "text": "We need <b>a</b> tent — <b>the</b> big one from Liam's garage."},
+      {"speaker": "Liam", "text": "It's already in the car. Have we got <b>enough</b> water for everyone?"},
+      {"speaker": "Mateo", "text": "I think so, but I've packed <b>too much</b> food and <b>too few</b> torches!"},
+      {"speaker": "Sofia", "text": "Typical, Mateo. <b>Every</b> trip, the same problem."},
+      {"speaker": "Nadia", "text": "Don't worry, there's <b>plenty of</b> time to buy more torches before we leave."},
+      {"speaker": "Liam", "text": "<b>Neither</b> of my torches has batteries, actually."},
+      {"speaker": "Mateo", "text": "<b>Most of</b> my things are ready. I just need <b>a few</b> more snacks."},
+      {"speaker": "Sofia", "text": "We already have too many snacks! We need <b>a little</b> more water instead."},
+      {"speaker": "Nadia", "text": "OK, <b>each</b> of us checks one bag before we go."},
+      {"speaker": "Liam", "text": "Good idea. Let's go to <b>the school</b> first to pick up the sleeping bags from the storeroom."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I go to ___ every day to study.", "options": ["a school", "the school", "school"], "answer": 2, "why": "no article: usual purpose"},
+        {"sentence": "Where's ___ tent we bought last week?", "options": ["a", "no article", "the"], "answer": 2, "why": "the = specific, already known"},
+        {"sentence": "There's ___ noise outside — I can't sleep.", "options": ["too many", "enough", "too much"], "answer": 2, "why": "much + uncountable noun"},
+        {"sentence": "Have we got ___ chairs for everyone?", "options": ["enough", "much", "little"], "answer": 0, "why": "enough = the right amount"},
+        {"sentence": "I have ___ friends in this town — I just moved here.", "options": ["a little", "few", "a few"], "answer": 1, "why": "few = almost none, a negative idea"},
+        {"sentence": "There's ___ milk left — enough for one more coffee.", "options": ["a little", "little", "a few"], "answer": 0, "why": "a little = some, a positive idea"},
+        {"sentence": "___ of the tents is big enough for four people.", "options": ["Both", "All", "Neither"], "answer": 2, "why": "neither = not one, not the other (two things)"},
+        {"sentence": "___ of the students has to bring water.", "options": ["Every", "Each", "All"], "answer": 1, "why": "each, not every, can be followed by of + plural noun"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with a, the, or a suitable quantifier.",
+      "items": [
+        {"sentence": "We need ___ new tent for this trip.", "answers": ["a"]},
+        {"sentence": "Where's ___ tent we borrowed from Liam?", "answers": ["the"]},
+        {"sentence": "There isn't ___ water for everyone.", "answers": ["enough"]},
+        {"sentence": "We've packed too ___ bags for one car.", "answers": ["many"]},
+        {"sentence": "I have ___ friends here — I just moved.", "answers": ["few"]},
+        {"sentence": "There's only ___ milk left in the bottle.", "answers": ["little"]},
+        {"sentence": "___ of the torches works.", "answers": ["Neither"]},
+        {"sentence": "___ camper needs to bring a sleeping bag.", "answers": ["Each"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["for the weekend", "We need a tent", "."], "answer": "We need a tent for the weekend."},
+        {"words": ["we borrowed from Liam", "Where's the tent", "?"], "answer": "Where's the tent we borrowed from Liam?"},
+        {"words": ["for one car", "We packed", "too many bags", "."], "answer": "We packed too many bags for one car."},
+        {"words": ["for the whole weekend", "There's", "enough water", "."], "answer": "There's enough water for the whole weekend."},
+        {"words": ["has batteries", "Neither of the torches", "."], "answer": "Neither of the torches has batteries."},
+        {"words": ["a sleeping bag", "Each camper", "has to bring", "."], "answer": "Each camper has to bring a sleeping bag."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "This is not just any tent — it's the tent we bought last week.", "key": "THE", "second_start": "Where's", "second_end": "tent we bought?", "answers": ["the"]},
+        {"first": "We don't have the right number of chairs — we need more.", "key": "ENOUGH", "second_start": "We don't have", "second_end": "chairs.", "answers": ["enough"]},
+        {"first": "We packed more bags than we needed.", "key": "MANY", "second_start": "We packed too", "second_end": "for the car.", "answers": ["many bags"]},
+        {"first": "I only know one or two people in this town.", "key": "FEW", "second_start": "I have", "second_end": "in this town.", "answers": ["few friends"]},
+        {"first": "Not one of my two torches works.", "key": "NEITHER", "second_start": "Of my two torches,", "second_end": "works.", "answers": ["neither"]},
+        {"first": "All the campers, one by one, must bring their own water bottle.", "key": "EACH", "second_start": "", "second_end": "camper must bring their own water bottle.", "answers": ["Each"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can choose a/an, the or no article for places, meals and general ideas.",
+    "I can use too much/too many, enough and plenty of correctly.",
+    "I can use a few/few, a little/little, both/either/neither and each/every correctly."
+  ],
+  "summary": [
+    "a/an = one of many, first mention; the = something specific both speakers know.",
+    "No article with meals, sports, languages, general plurals, and places used for their usual purpose (school, bed, home).",
+    "too much/little go with uncountable nouns; too many/few go with countable nouns.",
+    "a few and a little are positive (some); few and little without a are negative (almost none).",
+    "both/either/neither talk about two things; each/every always take a singular noun."
+  ]
+}

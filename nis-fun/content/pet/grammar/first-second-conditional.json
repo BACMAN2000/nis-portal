@@ -1,0 +1,206 @@
+{
+  "id": "first-second-conditional",
+  "level": "pet",
+  "area": "Conditionals & hypothesis",
+  "title": "First and second conditional",
+  "tagline": "Real plans for the future, or a world that is only in your imagination.",
+  "cefr": "B1",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 2 — story or article", "Speaking Part 3 — discussing a situation"],
+  "why": "Every time you talk about a plan (<i>If it rains, we'll stay in</i>) or a dream (<i>If I had a million dollars…</i>), you need a conditional. B1 Preliminary tests the difference between the two in the reading cloze and expects you to use them naturally in your story and in the Speaking discussion. The number one B1 mistake is mixing the halves: <i>If I would have…</i> — and this topic fixes it for good.",
+  "hook": {
+    "text": "Saturday plans. Liam: \"<b>If</b> it<b>'s</b> sunny tomorrow, we<b>'ll</b> go to the beach.\" Nadia: \"And <b>if</b> I <b>had</b> a car, I<b>'d</b> drive us there in ten minutes!\" Liam laughs: \"You're fourteen. You can't drive.\" Nadia: \"I said <i>if</i>…\"",
+    "ask": "Liam's plan is real and possible. Nadia's idea is imaginary. Look at the verbs after <i>if</i> and after the comma: which tense does each one use, and why?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "The two halves of a conditional",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "If", "role": "kw"}, {"t": "it", "role": "subj"}, {"t": "rains", "role": "verb"}, {"t": ",", "role": "x"}, {"t": "we", "role": "subj"}, {"t": "will", "role": "aux"}, {"t": "stay", "role": "verb"}, {"t": "at home", "role": "place"}, {"t": ".", "role": "x"}], "note": "first conditional: real — present simple + will"},
+        {"parts": [{"t": "If", "role": "kw"}, {"t": "I", "role": "subj"}, {"t": "had", "role": "verb"}, {"t": "a car", "role": "obj"}, {"t": ",", "role": "x"}, {"t": "I", "role": "subj"}, {"t": "would", "role": "aux"}, {"t": "drive", "role": "verb"}, {"t": "to school", "role": "place"}, {"t": ".", "role": "x"}], "note": "second conditional: imaginary — past simple + would"},
+        {"parts": [{"t": "We", "role": "subj"}, {"t": "will", "role": "aux"}, {"t": "stay", "role": "verb"}, {"t": "at home", "role": "place"}, {"t": "if", "role": "kw"}, {"t": "it", "role": "subj"}, {"t": "rains", "role": "verb"}, {"t": ".", "role": "x"}], "note": "the if-half can go second — then no comma"}
+      ],
+      "caption": "The <i>if</i>-half never takes <i>will</i> or <i>would</i>. Those helpers live in the other half only."
+    },
+    {
+      "type": "contrast",
+      "title": "Real or imaginary?",
+      "columns": ["First conditional", "Second conditional"],
+      "rows": [
+        {"label": "The situation", "cells": ["real, possible, future", "imaginary, unlikely or impossible now"]},
+        {"label": "If-half", "cells": ["if + present simple", "if + past simple"]},
+        {"label": "Result half", "cells": ["will / won't + verb (or can, may, imperative)", "would / wouldn't + verb (or could, might)"]},
+        {"label": "Example", "cells": ["If I <b>pass</b> the exam, my parents <b>will be</b> happy.", "If I <b>were</b> the head teacher, I <b>would ban</b> homework."]},
+        {"label": "How the speaker feels", "cells": ["\"This can really happen.\"", "\"This is just a dream — or advice.\""]}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to choose the right conditional",
+      "steps": [
+        {"label": "Ask: is it possible?", "ex": "Rain tomorrow? Possible → <b>first</b>. Me with a car at fourteen? No → <b>second</b>."},
+        {"label": "Write the if-half with NO will/would", "ex": "If it <b>rains</b>… / If I <b>had</b> a car…"},
+        {"label": "Add will (real) or would (imaginary) to the result", "ex": "…we<b>'ll</b> stay in. / …I<b>'d</b> drive."},
+        {"label": "Comma only when if comes first", "ex": "If it rains<b>,</b> we'll stay in. → We'll stay in if it rains."}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "If", "tone": "kw"},
+      {"chip": "present simple", "tone": "a", "ex": "it rains"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "will + verb", "tone": "b", "ex": "we'll stay in"},
+      {"chip": "or", "tone": "arrow"},
+      {"chip": "If", "tone": "kw"},
+      {"chip": "past simple", "tone": "a", "ex": "I had a car"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "would + verb", "tone": "c", "ex": "I'd drive"}
+    ],
+    "table": {
+      "head": ["Type", "If-half", "Result half", "Use it for"],
+      "rows": [
+        ["First", "if + present simple", "will / won't + verb", "real future plans, promises, warnings"],
+        ["First (other results)", "if + present simple", "can / may / imperative", "advice and instructions: If you're cold, put on a coat."],
+        ["Second", "if + past simple", "would / wouldn't + verb", "dreams, unlikely situations, advice with if I were you"],
+        ["Second (other results)", "if + past simple", "could / might + verb", "possible results in the imaginary world"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "First conditional: real future situations",
+      "examples": [
+        {"text": "If it <b>rains</b> on Saturday, the match <b>will be</b> cancelled.", "note": "a real possibility"},
+        {"text": "You<b>'ll miss</b> the bus if you <b>don't hurry</b>.", "note": "a warning — if-half second, no comma"},
+        {"text": "If Sofia <b>finishes</b> early, she<b>'ll help</b> us with the poster.", "note": "a plan that depends on something"},
+        {"text": "I<b>'ll call</b> you if I <b>have</b> any news.", "note": "a promise"}
+      ]
+    },
+    {
+      "point": "First conditional with other results: can, may, imperatives",
+      "examples": [
+        {"text": "If you<b>'re</b> tired, <b>go</b> to bed early.", "note": "advice with an imperative"},
+        {"text": "If we <b>leave</b> now, we <b>can catch</b> the seven o'clock train.", "note": "can instead of will"},
+        {"text": "If the shop <b>is</b> open, <b>buy</b> some bread, please.", "note": "an instruction"}
+      ]
+    },
+    {
+      "point": "Second conditional: imaginary or unlikely situations",
+      "examples": [
+        {"text": "If I <b>had</b> more free time, I<b>'d learn</b> the guitar.", "note": "not true now — I'm busy"},
+        {"text": "If Mateo <b>lived</b> in Cusco, he<b>'d visit</b> Machu Picchu every weekend.", "note": "he doesn't live there"},
+        {"text": "What <b>would</b> you <b>do</b> if you <b>found</b> a wallet in the street?", "note": "a hypothetical question"},
+        {"text": "If dogs <b>could</b> talk, they<b>'d complain</b> about the cat.", "note": "impossible, just fun"}
+      ]
+    },
+    {
+      "point": "Second conditional for advice: if I were you",
+      "examples": [
+        {"text": "If I <b>were</b> you, I<b>'d tell</b> Miss Vega the truth.", "note": "were with I — the polite, correct form"},
+        {"text": "If I <b>were</b> Liam, I <b>wouldn't worry</b> about the test.", "note": "putting yourself in someone's place"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "If it will rain, we will stay at home.", "right": "If it <b>rains</b>, we will stay at home.", "why": "No <i>will</i> in the if-half. The present simple already talks about the future here."},
+    {"wrong": "If I would have a car, I would drive.", "right": "If I <b>had</b> a car, I would drive.", "why": "No <i>would</i> in the if-half either — past simple only."},
+    {"wrong": "If I had a million dollars, I will buy a house.", "right": "If I had a million dollars, I <b>would</b> buy a house.", "why": "Past simple in the if-half needs <i>would</i> in the result — don't mix the two types."},
+    {"wrong": "If I pass the exam I'll be happy, if I fail I'll try again.", "right": "If I pass the exam, I'll be happy. If I fail, I'll try again.", "why": "Comma after the if-half when it comes first, and a full stop between two sentences."},
+    {"wrong": "If I was you, I'd study more.", "right": "If I <b>were</b> you, I'd study more.", "why": "<i>If I were you</i> is a fixed phrase; examiners expect <i>were</i>."},
+    {"wrong": "If you'll help me, I'll help you.", "right": "If you <b>help</b> me, I'll help you.", "why": "Same rule again: after <i>if</i>, present simple — never <i>will</i>."}
+  ],
+  "l1": [
+    {"es": "Si llueve, nos quedaremos en casa.", "wrong": "If it will rain, we will stay at home.", "right": "If it <b>rains</b>, we'll stay at home.", "why": "Spanish uses the present after <i>si</i> too — copy that, and never add <i>will</i>."},
+    {"es": "Si tuviera un coche, te llevaría.", "wrong": "If I would have a car, I would take you.", "right": "If I <b>had</b> a car, I'd take you.", "why": "The Spanish <i>-ra</i> form becomes a plain past simple in English."},
+    {"es": "Si yo fuera tú…", "wrong": "If I was you…", "right": "If I <b>were</b> you…", "why": "Spanish <i>fuera</i> → English <i>were</i>, even with <i>I</i>."},
+    {"es": "¿Qué harías si ganaras la lotería?", "wrong": "What you would do if you win the lottery?", "right": "What <b>would you do</b> if you <b>won</b> the lottery?", "why": "Question order (<i>would you do</i>) and past simple after <i>if</i>."}
+  ],
+  "remember": {
+    "trick": "No will, no would, after IF you should!",
+    "tip": "Cover the <i>if</i>-half with your finger: if you see <i>will</i> or <i>would</i> there, it's wrong. Real → present + will. Imaginary → past + would."
+  },
+  "dialogue": {
+    "title": "The school trip vote",
+    "context": "The class has to choose between the beach and the mountains for the end-of-year trip. Nadia, Liam and Mateo argue about it at break time.",
+    "lines": [
+      {"speaker": "Nadia", "text": "<b>If</b> we <b>choose</b> the beach, we<b>'ll spend</b> the whole day swimming."},
+      {"speaker": "Liam", "text": "And <b>if</b> it<b>'s</b> cloudy, we<b>'ll spend</b> the whole day in the bus. The mountains are safer."},
+      {"speaker": "Mateo", "text": "Honestly, <b>if</b> I <b>had</b> the choice, I<b>'d stay</b> at home and sleep."},
+      {"speaker": "Nadia", "text": "You <b>would</b> say that! <b>If</b> you <b>came</b> to the beach, you<b>'d love</b> it."},
+      {"speaker": "Liam", "text": "OK, here's a deal. <b>If</b> the weather forecast <b>is</b> good, I<b>'ll vote</b> for the beach."},
+      {"speaker": "Mateo", "text": "And <b>if</b> it <b>isn't</b>?"},
+      {"speaker": "Liam", "text": "Then we<b>'ll go</b> to the mountains and you two <b>can complain</b> all day."},
+      {"speaker": "Nadia", "text": "<b>If</b> I <b>were</b> the teacher, I<b>'d let</b> us do both."},
+      {"speaker": "Mateo", "text": "<b>If</b> you <b>were</b> the teacher, Nadia, nobody <b>would pass</b> English."},
+      {"speaker": "Nadia", "text": "Very funny. Come on — <b>if</b> we <b>don't hurry</b>, we<b>'ll miss</b> the vote."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "If it ___ tomorrow, we'll play inside.", "options": ["will rain", "rains", "rained"], "answer": 1, "why": "first conditional: present simple after if"},
+        {"sentence": "If I ___ taller, I'd play basketball.", "options": ["am", "will be", "were"], "answer": 2, "why": "imaginary now → past simple (were)"},
+        {"sentence": "You ___ the train if you leave now.", "options": ["will catch", "would catch", "catch"], "answer": 0, "why": "real future result → will"},
+        {"sentence": "If Sofia ___ in London, she would speak English every day.", "options": ["lives", "lived", "will live"], "answer": 1, "why": "she doesn't live there → second conditional"},
+        {"sentence": "If you feel ill, ___ the nurse.", "options": ["you'd see", "see", "you would see"], "answer": 1, "why": "first conditional with an imperative"},
+        {"sentence": "What ___ if you found a lost dog?", "options": ["will you do", "do you do", "would you do"], "answer": 2, "why": "hypothetical question → would"},
+        {"sentence": "If I ___ you, I'd apologise.", "options": ["were", "am", "would be"], "answer": 0, "why": "fixed phrase: if I were you"},
+        {"sentence": "We ___ a picnic if the park isn't busy.", "options": ["would have", "have", "will have"], "answer": 2, "why": "real plan → will"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "If we ___ (win) the match, the coach will buy us pizza.", "answers": ["win"]},
+        {"sentence": "If I ___ (have) a pet, it would be a parrot.", "answers": ["had"]},
+        {"sentence": "Liam ___ (not/go) to the party if he has homework.", "answers": ["won't go", "will not go"]},
+        {"sentence": "If Nadia ___ (be) older, she'd travel alone.", "answers": ["were", "was"]},
+        {"sentence": "I ___ (buy) a new phone if I had the money.", "answers": ["would buy", "'d buy"]},
+        {"sentence": "If you ___ (not/water) the plants, they'll die.", "answers": ["don't water", "do not water"]},
+        {"sentence": "What ___ you ___ (do) if you saw a ghost?", "answers": ["would … do", "would do"]},
+        {"sentence": "If it ___ (be) sunny on Sunday, we'll cycle to the river.", "answers": ["is", "'s"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["rains", "If it", "stay in", ",", "we'll", "."], "answer": "If it rains, we'll stay in."},
+        {"words": ["a car", "I'd", "If I had", "drive", ",", "."], "answer": "If I had a car, I'd drive."},
+        {"words": ["if you", "You'll miss", "don't hurry", "the bus", "."], "answer": "You'll miss the bus if you don't hurry."},
+        {"words": ["would you", "What", "if you", "won", "do", "?"], "answer": "What would you do if you won?"},
+        {"words": ["I'd", "If I were you", "sooner", ",", "leave", "."], "answer": "If I were you, I'd leave sooner."},
+        {"words": ["the shop", "If", "is open", "some milk", ",", "buy", "."], "answer": "If the shop is open, buy some milk."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first. Use no more than three words.",
+      "items": [
+        {"first": "I don't have a bike, so I walk to school.", "key": "HAD", "second_start": "If I", "second_end": "a bike, I wouldn't walk to school.", "answers": ["had"]},
+        {"first": "Hurry up or you'll miss the train.", "key": "IF", "second_start": "You'll miss the train", "second_end": "hurry up.", "answers": ["if you don't", "if you do not"]},
+        {"first": "Study more — that's my advice.", "key": "WERE", "second_start": "If I", "second_end": ", I'd study more.", "answers": ["were you"]},
+        {"first": "It's possible that it will rain, and then the match will be cancelled.", "key": "RAINS", "second_start": "If it", "second_end": ", the match will be cancelled.", "answers": ["rains"]},
+        {"first": "Sofia isn't here, so she can't help us.", "key": "WOULD", "second_start": "If Sofia were here, she", "second_end": "us.", "answers": ["would help", "'d help"]},
+        {"first": "Call me when you have news.", "key": "IF", "second_start": "Call me", "second_end": "any news.", "answers": ["if you have", "if you get"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about a real plan or warning with <i>if</i> + present and <i>will</i>.",
+    "I can describe an imaginary situation with <i>if</i> + past and <i>would</i>.",
+    "I can give advice with <i>If I were you, I'd…</i> and choose the right conditional in a cloze."
+  ],
+  "summary": [
+    "First conditional = real and possible: <i>if</i> + present simple, <i>will</i> + verb.",
+    "Second conditional = imaginary, unlikely or advice: <i>if</i> + past simple, <i>would</i> + verb.",
+    "Never put <i>will</i> or <i>would</i> after <i>if</i> — the helper lives in the result half.",
+    "The result half can also use <i>can</i>, <i>may</i>, an imperative (first) or <i>could</i>, <i>might</i> (second).",
+    "Comma when the <i>if</i>-half comes first; <i>if I were you</i> is the fixed advice phrase."
+  ]
+}

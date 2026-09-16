@@ -4133,9 +4133,12 @@ window._sendWritingResult = async ()=>{
    grado por su cuenta (levels.json / fun_access). */
 /* Reparto del 16-sep-2026 (lo fijo el usuario): 6.º-7.º A2+B1 · 8.º A2+B1+B2 ·
    9.º-11.º A2+B1+B2+C1. Los mismos grados van en nis-fun/content/levels.json. */
-const SEC_COURSES = {g6:['ket','pet'],g7:['ket','pet'],g8:['ket','pet','b2f'],
-                     g9:['ket','pet','b2f','c1a'],g10:['ket','pet','b2f','c1a'],g11:['ket','pet','b2f','c1a']};
-const SEC_COURSE_NAMES = {ket:'A2 Key',pet:'B1 Preliminary',b2f:'B2 First',c1a:'C1 Advanced'};
+/* A1 Foundations (16-sep-2026) va en todos los grados: no prepara un examen,
+   es la gramatica de base para quien aun no esta listo para A2. */
+const SEC_COURSES = {g6:['a1','ket','pet'],g7:['a1','ket','pet'],g8:['a1','ket','pet','b2f'],
+                     g9:['a1','ket','pet','b2f','c1a'],g10:['a1','ket','pet','b2f','c1a'],g11:['a1','ket','pet','b2f','c1a']};
+const SEC_COURSE_NAMES = {a1:'A1 Foundations',ket:'A2 Key',pet:'B1 Preliminary',b2f:'B2 First',c1a:'C1 Advanced'};
+const SEC_COURSE_DESC = {a1:'The grammar every beginner needs before A2 Key: twelve topics explained step by step, with a story, colour blocks, audio and four rounds of practice each.'};
 function secCoursesFor(key){ return SEC_COURSES[key]||[]; }
 
 async function renderStudent(initial){
@@ -5242,7 +5245,7 @@ function studentGrade(key){
       ${_isPrimaryGrade(key)||_isEarlyGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${_isEarlyGrade(key) ? '' : nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
-      ${secCoursesFor(key).map(lv=>{const nm=SEC_COURSE_NAMES[lv];return _hubCard('🎓',nm+' course','The full '+nm+' course: units with audio, vocabulary and grammar, and real exam tasks — Reading &amp; Use of English, Listening, Writing and Speaking.',"window.open('nis-fun/engine/?level="+lv+"','_blank','noopener')");}).join('')}
+      ${secCoursesFor(key).map(lv=>{const nm=SEC_COURSE_NAMES[lv];return _hubCard('🎓',nm+' course',SEC_COURSE_DESC[lv]||('The full '+nm+' course: units with audio, vocabulary and grammar, and real exam tasks — Reading &amp; Use of English, Listening, Writing and Speaking.'),"window.open('nis-fun/engine/?level="+lv+"','_blank','noopener')");}).join('')}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=e47dece9',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}

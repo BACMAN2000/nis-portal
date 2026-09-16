@@ -1,0 +1,704 @@
+{
+  "id": "have-got-a1",
+  "level": "a1",
+  "area": "First words, first sentences",
+  "title": "have got: what you have",
+  "tagline": "Pets, family, hair and eyes: how to say what you've got — and what you haven't.",
+  "cefr": "A1",
+  "exam": [
+    "Speaking Part 1 — questions about you and your family",
+    "Reading Part 5 — open cloze (grammar gaps)"
+  ],
+  "why": "<i>Have got</i> is how you talk about your family, your pets and your things, and how you describe people — <i>She's got long hair</i>. In Speaking Part 1 the examiner often asks about your family or your pets, so this is a verb you need in your very first answers.",
+  "hook": {
+    "text": "On a video call, Liam shows his screen. \"I<b>'ve got</b> a new puppy!\" he says. \"<b>Has</b> he <b>got</b> a name?\" asks Mateo. \"Yes — <b>he's got</b> a name, Rocky! <b>Have</b> you <b>got</b> any pets?\" \"No,\" says Mateo, \"I <b>haven't got</b> a pet — just a goldfish!\"",
+    "ask": "The story uses have got, has got, haven't got and a question with Have. Can you find all four?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence with have got",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "have got",
+              "role": "kw"
+            },
+            {
+              "t": "a dog",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "I/you/we/they → have got"
+        },
+        {
+          "parts": [
+            {
+              "t": "She",
+              "role": "subj"
+            },
+            {
+              "t": "has got",
+              "role": "kw"
+            },
+            {
+              "t": "a cat",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "he/she/it → has got"
+        },
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "haven't got",
+              "role": "neg"
+            },
+            {
+              "t": "a bike",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "negative — haven't got / hasn't got"
+        },
+        {
+          "parts": [
+            {
+              "t": "Have",
+              "role": "kw"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "got",
+              "role": "kw"
+            },
+            {
+              "t": "a pet",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question — have/has jumps to the front"
+        }
+      ],
+      "caption": "One verb, two shapes: <b>have got</b> for I/you/we/they, <b>has got</b> for he/she/it. No <i>do</i> is needed anywhere."
+    },
+    {
+      "type": "map",
+      "title": "have or has?",
+      "center": "have got",
+      "branches": [
+        {
+          "label": "I / you / we / they",
+          "items": [
+            "have got",
+            "'ve got"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "he / she / it",
+          "items": [
+            "has got",
+            "'s got"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "negative",
+          "items": [
+            "haven't got",
+            "hasn't got"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "question",
+          "items": [
+            "Have you got…?",
+            "Has she got…?"
+          ],
+          "tone": "a"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to make a question with have got",
+      "steps": [
+        {
+          "label": "Start with have or has",
+          "ex": "<b>Have</b>"
+        },
+        {
+          "label": "Add the person",
+          "ex": "Have <b>you</b>"
+        },
+        {
+          "label": "Add got and the thing",
+          "ex": "Have you <b>got</b> a dog"
+        },
+        {
+          "label": "Add the question mark",
+          "ex": "Have you got a dog<b>?</b>"
+        }
+      ],
+      "caption": "No <i>do</i> is needed with have got. It makes its own questions by moving to the front, just like be."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "person",
+        "tone": "a",
+        "ex": "I / she / they"
+      },
+      {
+        "chip": "have got / has got",
+        "tone": "kw",
+        "ex": "have got"
+      },
+      {
+        "chip": "(not)",
+        "tone": "c",
+        "ex": "not → haven't / hasn't"
+      },
+      {
+        "chip": "the thing",
+        "tone": "b",
+        "ex": "a dog / long hair"
+      }
+    ],
+    "table": {
+      "head": [
+        "Person",
+        "Statement",
+        "Short form",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "I",
+          "I have got",
+          "I've got",
+          "I haven't got",
+          "Have I got…?"
+        ],
+        [
+          "you",
+          "you have got",
+          "you've got",
+          "you haven't got",
+          "Have you got…?"
+        ],
+        [
+          "he / she / it",
+          "he has got",
+          "he's got",
+          "he hasn't got",
+          "Has he got…?"
+        ],
+        [
+          "we",
+          "we have got",
+          "we've got",
+          "we haven't got",
+          "Have we got…?"
+        ],
+        [
+          "they",
+          "they have got",
+          "they've got",
+          "they haven't got",
+          "Have they got…?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Family and pets",
+      "examples": [
+        {
+          "text": "I<b>'ve got</b> two sisters and a dog.",
+          "note": "talking about family and pets"
+        },
+        {
+          "text": "Sofia<b>'s got</b> a cat called Luna.",
+          "note": "he/she/it → 's got"
+        },
+        {
+          "text": "We<b>'ve got</b> a new puppy at home.",
+          "note": "we → 've got"
+        }
+      ]
+    },
+    {
+      "point": "Describing people: hair, eyes, things",
+      "examples": [
+        {
+          "text": "Nadia<b>'s got</b> long dark hair.",
+          "note": "describing appearance with 's got"
+        },
+        {
+          "text": "He<b>'s got</b> brown eyes and a big smile.",
+          "note": "two things with one 's got"
+        },
+        {
+          "text": "You<b>'ve got</b> a new haircut!",
+          "note": "you → 've got"
+        }
+      ]
+    },
+    {
+      "point": "Negative: what you don't have",
+      "examples": [
+        {
+          "text": "I <b>haven't got</b> a bike.",
+          "note": "I → haven't got"
+        },
+        {
+          "text": "Liam <b>hasn't got</b> a brother.",
+          "note": "he/she/it → hasn't got"
+        },
+        {
+          "text": "They <b>haven't got</b> any homework today.",
+          "note": "they → haven't got"
+        }
+      ]
+    },
+    {
+      "point": "Questions and short answers",
+      "examples": [
+        {
+          "text": "<b>Have</b> you <b>got</b> a pet? — Yes, I have.",
+          "note": "question + short answer"
+        },
+        {
+          "text": "<b>Has</b> she <b>got</b> a phone? — No, she hasn't.",
+          "note": "he/she/it → has in the question"
+        },
+        {
+          "text": "<b>Have</b> they <b>got</b> a car? — Yes, they have.",
+          "note": "they → have in the question"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Do you have got a pet?",
+      "right": "<b>Have</b> you <b>got</b> a pet?",
+      "why": "Don't use do/does with have got — have or has moves to the front alone."
+    },
+    {
+      "wrong": "She have got a cat.",
+      "right": "She <b>has got</b> a cat.",
+      "why": "He/she/it needs has got, not have got."
+    },
+    {
+      "wrong": "I not got a bike.",
+      "right": "I <b>haven't got</b> a bike.",
+      "why": "The negative needs have/has + n't before got."
+    },
+    {
+      "wrong": "Has you got a sister?",
+      "right": "<b>Have</b> you got a sister?",
+      "why": "You always takes have, even in questions."
+    },
+    {
+      "wrong": "I've got hair brown.",
+      "right": "I've got <b>brown hair</b>.",
+      "why": "The adjective goes before the noun in English: brown hair, not hair brown."
+    },
+    {
+      "wrong": "She's a dog.",
+      "right": "She<b>'s got</b> a dog.",
+      "why": "Here 's means has, not is — don't forget got."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Tengo el pelo largo.",
+      "wrong": "I have the hair long.",
+      "right": "I<b>'ve got</b> long hair.",
+      "why": "No the with your own body parts, and the adjective (long) goes before the noun (hair)."
+    },
+    {
+      "es": "Tengo doce años.",
+      "wrong": "I've got twelve years.",
+      "right": "I<b>'m</b> twelve.",
+      "why": "Age uses be (am/is/are), not have got."
+    },
+    {
+      "es": "Tengo hambre.",
+      "wrong": "I've got hungry.",
+      "right": "I<b>'m</b> hungry.",
+      "why": "Feelings like hungry, cold and tired use be, not have got."
+    },
+    {
+      "es": "¿Tienes un perro?",
+      "wrong": "Do you have got a dog?",
+      "right": "<b>Have</b> you <b>got</b> a dog?",
+      "why": "Have got makes its own questions — it never needs do/does."
+    },
+    {
+      "es": "Ella tiene un gato.",
+      "wrong": "She have got a cat.",
+      "right": "She <b>has got</b> a cat.",
+      "why": "He/she/it changes have to has, even inside have got."
+    }
+  ],
+  "remember": {
+    "trick": "I/you/we/they HAVE got. He/she/it HAS got!",
+    "tip": "Has is only for one person or thing — he, she or it. Everybody else says have. Say the chant three times."
+  },
+  "dialogue": {
+    "title": "Saturday video call",
+    "context": "Mateo, Sofia and Liam are on a video call on Saturday morning, showing each other their pets and new things.",
+    "lines": [
+      {
+        "speaker": "Liam",
+        "text": "Look! I<b>'ve got</b> a new puppy!"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Wow! <b>Has</b> he <b>got</b> a name?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Yes, he<b>'s got</b> a name — Rocky."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Have</b> you <b>got</b> any other pets, Liam?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "No, I <b>haven't got</b> any other pets."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I <b>haven't got</b> a dog, but I<b>'ve got</b> a goldfish."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "My sister<b>'s got</b> a rabbit. It<b>'s got</b> really long ears!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Has</b> the rabbit <b>got</b> a name too?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Yes — Luna. She<b>'s got</b> white fur."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word.",
+      "items": [
+        {
+          "sentence": "I ___ got a new bike.",
+          "options": [
+            "have",
+            "has",
+            "having"
+          ],
+          "answer": 0,
+          "why": "I → have got"
+        },
+        {
+          "sentence": "She ___ got a cat.",
+          "options": [
+            "have",
+            "has",
+            "having"
+          ],
+          "answer": 1,
+          "why": "he/she/it → has got"
+        },
+        {
+          "sentence": "They ___ got any homework today.",
+          "options": [
+            "hasn't",
+            "don't",
+            "haven't"
+          ],
+          "answer": 2,
+          "why": "they → haven't got"
+        },
+        {
+          "sentence": "___ you got a sister?",
+          "options": [
+            "Have",
+            "Has",
+            "Do"
+          ],
+          "answer": 0,
+          "why": "you → have; have got makes its own question"
+        },
+        {
+          "sentence": "___ he got a phone?",
+          "options": [
+            "Have",
+            "Has",
+            "Do"
+          ],
+          "answer": 1,
+          "why": "he → has"
+        },
+        {
+          "sentence": "Have you got a dog? — Yes, I ___.",
+          "options": [
+            "do",
+            "has",
+            "have"
+          ],
+          "answer": 2,
+          "why": "short answer: I → have"
+        },
+        {
+          "sentence": "Nadia ___ got long hair.",
+          "options": [
+            "has",
+            "have",
+            "haves"
+          ],
+          "answer": 0,
+          "why": "he/she/it → has"
+        },
+        {
+          "sentence": "We ___ got a new teacher this year.",
+          "options": [
+            "has",
+            "have",
+            "haves"
+          ],
+          "answer": 1,
+          "why": "we → have got"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with have or has (or 've / 's).",
+      "items": [
+        {
+          "sentence": "I ___ got a big family.",
+          "answers": [
+            "have",
+            "'ve"
+          ]
+        },
+        {
+          "sentence": "Mateo ___ got two dogs.",
+          "answers": [
+            "has",
+            "'s"
+          ]
+        },
+        {
+          "sentence": "We ___ not got any milk.",
+          "answers": [
+            "have",
+            "'ve"
+          ]
+        },
+        {
+          "sentence": "___ you got a pencil case?",
+          "answers": [
+            "Have"
+          ]
+        },
+        {
+          "sentence": "___ she got a bike?",
+          "answers": [
+            "Has"
+          ]
+        },
+        {
+          "sentence": "They ___ got a new car.",
+          "answers": [
+            "have",
+            "'ve"
+          ]
+        },
+        {
+          "sentence": "Nadia ___ got curly hair.",
+          "answers": [
+            "has",
+            "'s"
+          ]
+        },
+        {
+          "sentence": "He ___ not got a phone yet.",
+          "answers": [
+            "has",
+            "'s"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "got",
+            "I've",
+            "a",
+            "dog",
+            "."
+          ],
+          "answer": "I've got a dog."
+        },
+        {
+          "words": [
+            "a",
+            "cat",
+            "She",
+            "has got",
+            "."
+          ],
+          "answer": "She has got a cat."
+        },
+        {
+          "words": [
+            "got",
+            "you",
+            "Have",
+            "a",
+            "pet",
+            "?"
+          ],
+          "answer": "Have you got a pet?"
+        },
+        {
+          "words": [
+            "haven't got",
+            "I",
+            "a",
+            "bike",
+            "."
+          ],
+          "answer": "I haven't got a bike."
+        },
+        {
+          "words": [
+            "got",
+            "Nadia's",
+            "hair",
+            "long",
+            "."
+          ],
+          "answer": "Nadia's got long hair."
+        },
+        {
+          "words": [
+            "hasn't got",
+            "He",
+            "a",
+            "sister",
+            "."
+          ],
+          "answer": "He hasn't got a sister."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "I've got a new bike.",
+          "ok": true,
+          "why": "have got + noun, correct"
+        },
+        {
+          "sentence": "She have got a dog.",
+          "ok": false,
+          "fix": "She <b>has got</b> a dog.",
+          "why": "he/she/it needs has got"
+        },
+        {
+          "sentence": "Have you got a pencil?",
+          "ok": true,
+          "why": "question form, correct"
+        },
+        {
+          "sentence": "He haven't got a car.",
+          "ok": false,
+          "fix": "He <b>hasn't got</b> a car.",
+          "why": "he/she/it → hasn't got, not haven't got"
+        },
+        {
+          "sentence": "Do you have got a phone?",
+          "ok": false,
+          "fix": "<b>Have</b> you <b>got</b> a phone?",
+          "why": "have got doesn't use do/does"
+        },
+        {
+          "sentence": "They've got two cats.",
+          "ok": true,
+          "why": "they → 've got, correct"
+        },
+        {
+          "sentence": "Nadia's got brown eyes.",
+          "ok": true,
+          "why": "'s got for describing appearance, correct"
+        },
+        {
+          "sentence": "I not got a sister.",
+          "ok": false,
+          "fix": "I <b>haven't got</b> a sister.",
+          "why": "the negative needs have/has + n't"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what I've got and haven't got — pets, things and family.",
+    "I can describe how people look with <i>'s got</i>, like <i>She's got brown eyes</i>.",
+    "I can ask <i>Have you got…?</i> / <i>Has she got…?</i> and answer with <i>Yes, I have</i> / <i>No, she hasn't</i>."
+  ],
+  "summary": [
+    "<b>Have got</b> = I/you/we/they; <b>has got</b> = he/she/it.",
+    "Negative: add <b>n't</b> — <i>haven't got, hasn't got</i>.",
+    "Question: <b>have/has</b> jumps to the front — no do/does needed.",
+    "Use have got for pets, family, possessions and describing people: <i>She's got long hair</i>.",
+    "Short answers: <i>Yes, I have. / No, she hasn't.</i>"
+  ]
+}

@@ -1,0 +1,697 @@
+{
+  "id": "nouns-plurals-this-that",
+  "level": "a1",
+  "area": "First words, first sentences",
+  "title": "Nouns: a/an, plurals, this/that/these/those",
+  "tagline": "The words for things: a or an, one or many, and pointing at what's near or far.",
+  "cefr": "A1",
+  "exam": [
+    "Reading Part 5 — open cloze (grammar gaps)",
+    "Speaking Part 1 — questions about you and your things"
+  ],
+  "why": "Nouns are the words for everything around you: your pens, your friends, your pets. Get <i>a/an</i> and the plural right, and every sentence is instantly clearer. <i>This, that, these, those</i> are some of the first words you need to point at things and ask <i>What's this?</i>",
+  "hook": {
+    "text": "At the market in Cusco, Nadia looks at the stalls. \"Is <b>this</b> a llama toy?\" she asks. \"No,\" says the seller, \"<b>that's</b> an alpaca! <b>This</b> one is the llama.\" Nadia laughs: \"I want <b>an</b> alpaca and two small <b>llamas</b>, please!\"",
+    "ask": "Find a word with <i>a</i>, a word with <i>an</i>, and a plural noun with <b>-s</b>. Which word points at something far away?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "have got",
+              "role": "verb"
+            },
+            {
+              "t": "a",
+              "role": "kw"
+            },
+            {
+              "t": "dog",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "singular — a + consonant sound"
+        },
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "have got",
+              "role": "verb"
+            },
+            {
+              "t": "an",
+              "role": "kw"
+            },
+            {
+              "t": "apple",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "singular — an + vowel sound"
+        },
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "have got",
+              "role": "verb"
+            },
+            {
+              "t": "two",
+              "role": "x"
+            },
+            {
+              "t": "apples",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "plural — add -s"
+        },
+        {
+          "parts": [
+            {
+              "t": "This",
+              "role": "kw"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "my pen",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "one thing, near you"
+        }
+      ],
+      "caption": "<b>A</b> and <b>an</b> depend on the sound. Add <b>-s</b> for more than one. <b>This/that/these/those</b> point at things."
+    },
+    {
+      "type": "spelling",
+      "title": "Making nouns plural",
+      "rules": [
+        {
+          "rule": "Most nouns: + s",
+          "examples": [
+            "dog → dog<b>s</b>",
+            "pen → pen<b>s</b>",
+            "book → book<b>s</b>"
+          ]
+        },
+        {
+          "rule": "-s, -sh, -ch, -x, -o: + es",
+          "examples": [
+            "bus → bus<b>es</b>",
+            "watch → watch<b>es</b>",
+            "box → box<b>es</b>"
+          ]
+        },
+        {
+          "rule": "consonant + y: y → ies",
+          "examples": [
+            "baby → bab<b>ies</b>",
+            "city → cit<b>ies</b>"
+          ]
+        },
+        {
+          "rule": "Some nouns are irregular — no rule!",
+          "examples": [
+            "child → <b>children</b>",
+            "person → <b>people</b>",
+            "foot → <b>feet</b>",
+            "mouse → <b>mice</b>"
+          ]
+        }
+      ],
+      "caption": "Say the word out loud — your ears usually know which ending sounds right."
+    },
+    {
+      "type": "contrast",
+      "title": "this, that, these, those",
+      "columns": [
+        "One thing (singular)",
+        "More than one (plural)"
+      ],
+      "rows": [
+        {
+          "label": "Near (close to you)",
+          "cells": [
+            "this",
+            "these"
+          ]
+        },
+        {
+          "label": "Far (away from you)",
+          "cells": [
+            "that",
+            "those"
+          ]
+        },
+        {
+          "label": "Question",
+          "cells": [
+            "What's this?",
+            "What are these?"
+          ]
+        },
+        {
+          "label": "Answer",
+          "cells": [
+            "It's a pen.",
+            "They're pens."
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "a / an",
+        "tone": "kw",
+        "ex": "a dog / an apple"
+      },
+      {
+        "chip": "noun (+ -s/-es/-ies)",
+        "tone": "a",
+        "ex": "dogs / boxes / babies"
+      },
+      {
+        "chip": "this / that / these / those",
+        "tone": "b",
+        "ex": "this dog / those apples"
+      }
+    ],
+    "table": {
+      "head": [
+        "",
+        "Singular",
+        "Plural"
+      ],
+      "rows": [
+        [
+          "Near",
+          "this",
+          "these"
+        ],
+        [
+          "Far",
+          "that",
+          "those"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "a or an: listen to the sound",
+      "examples": [
+        {
+          "text": "I've got <b>a</b> dog and <b>a</b> cat.",
+          "note": "dog, cat start with a consonant sound"
+        },
+        {
+          "text": "She's got <b>an</b> apple and <b>an</b> orange.",
+          "note": "apple, orange start with a vowel sound"
+        },
+        {
+          "text": "He's wearing <b>a</b> uniform.",
+          "note": "uniform sounds like \"yu-niform\" — a consonant sound"
+        }
+      ]
+    },
+    {
+      "point": "One noun, more than one noun (plurals)",
+      "examples": [
+        {
+          "text": "I've got two <b>dogs</b> and three <b>cats</b>.",
+          "note": "most nouns: just add -s"
+        },
+        {
+          "text": "There are five <b>buses</b> outside the school.",
+          "note": "-s, -sh, -ch, -x, -o nouns add -es"
+        },
+        {
+          "text": "She's got three <b>babies</b> in her family.",
+          "note": "consonant + y → change y to ies"
+        },
+        {
+          "text": "The <b>children</b> are playing in the garden.",
+          "note": "irregular plural — no -s at all"
+        }
+      ]
+    },
+    {
+      "point": "this / that: one thing",
+      "examples": [
+        {
+          "text": "<b>This</b> is my pen. It's in my hand.",
+          "note": "this = one thing, near you"
+        },
+        {
+          "text": "<b>That</b> is your bag. It's over there.",
+          "note": "that = one thing, far from you"
+        },
+        {
+          "text": "What's <b>this</b>? — It's a map of Peru.",
+          "note": "question with this + a singular answer"
+        }
+      ]
+    },
+    {
+      "point": "these / those: more than one thing",
+      "examples": [
+        {
+          "text": "<b>These</b> are my books. They're here.",
+          "note": "these = more than one, near you"
+        },
+        {
+          "text": "<b>Those</b> are your shoes. They're over there.",
+          "note": "those = more than one, far away"
+        },
+        {
+          "text": "What are <b>those</b>? — They're alpacas!",
+          "note": "question with those + a plural answer"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I have got a apple.",
+      "right": "I have got <b>an</b> apple.",
+      "why": "Apple starts with a vowel sound, so it needs an, not a."
+    },
+    {
+      "wrong": "I have got an university.",
+      "right": "I have got <b>a</b> university.",
+      "why": "University starts with a y sound, like \"you\" — a consonant sound, so it needs a."
+    },
+    {
+      "wrong": "Two childs are in my class.",
+      "right": "Two <b>children</b> are in my class.",
+      "why": "Child is irregular: the plural is children, never childs."
+    },
+    {
+      "wrong": "This are my friends.",
+      "right": "<b>These</b> are my friends.",
+      "why": "This is singular. For more than one person or thing, use these."
+    },
+    {
+      "wrong": "I've got two watch.",
+      "right": "I've got two <b>watches</b>.",
+      "why": "Watch ends in -ch, so the plural adds -es: watches."
+    },
+    {
+      "wrong": "That is my books.",
+      "right": "<b>Those</b> are my books.",
+      "why": "Books is plural, so you need those + are, not that + is."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Tengo una manzana.",
+      "wrong": "I have a apple.",
+      "right": "I have <b>an</b> apple.",
+      "why": "Before a vowel sound English uses an — Spanish un/una doesn't change like this."
+    },
+    {
+      "es": "Los niños están en el parque.",
+      "wrong": "The childs are in the park.",
+      "right": "The <b>children</b> are in the park.",
+      "why": "Spanish adds -s to everything; English has a few irregular plurals with no -s."
+    },
+    {
+      "es": "Estos son mis amigos.",
+      "wrong": "This are my friends.",
+      "right": "<b>These</b> are my friends.",
+      "why": "This/that only work with one thing. For more than one, use these/those."
+    },
+    {
+      "es": "Es una casa grande.",
+      "wrong": "It's one house.",
+      "right": "It's <b>a</b> house.",
+      "why": "Spanish un/una means both a and one; English keeps the two words separate."
+    },
+    {
+      "es": "Tengo dos cajas.",
+      "wrong": "I have two box.",
+      "right": "I have two <b>boxes</b>.",
+      "why": "Words ending in -x, -s, -sh or -ch add -es, not just -s."
+    }
+  ],
+  "remember": {
+    "trick": "Listen to the SOUND: a dog, an apple, a university!",
+    "tip": "Say the word out loud. If it starts with a vowel sound (a, e, i, o, u), use an. If not, use a — even when the letter looks different, like in a university or an hour."
+  },
+  "dialogue": {
+    "title": "At the market in Cusco",
+    "context": "Mateo, Sofia and Nadia are at the craft market in Cusco, choosing souvenirs for their families.",
+    "lines": [
+      {
+        "speaker": "Mateo",
+        "text": "Look at <b>this</b> hat! It's for my dad."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Nice! Is it <b>a</b> or <b>an</b> alpaca hat?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "It's <b>an</b> alpaca hat — look at the wool."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I want <b>these</b> two bracelets for my sisters."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And what about <b>those</b> bags over there?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "<b>That</b> one is nice, but it's expensive."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I need <b>a</b> small bag, not <b>a</b> big one."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Look — <b>children</b>'s toys! Llamas and alpacas."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Let's buy three <b>llamas</b> — one for each of us!"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Good idea! <b>This</b> market has everything."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word.",
+      "items": [
+        {
+          "sentence": "I've got ___ dog.",
+          "options": [
+            "a",
+            "an",
+            "some"
+          ],
+          "answer": 0,
+          "why": "dog starts with a consonant sound"
+        },
+        {
+          "sentence": "She's got ___ orange for lunch.",
+          "options": [
+            "a",
+            "an",
+            "some"
+          ],
+          "answer": 1,
+          "why": "orange starts with a vowel sound"
+        },
+        {
+          "sentence": "There are two ___ in the garden.",
+          "options": [
+            "dog",
+            "dogs",
+            "doges"
+          ],
+          "answer": 1,
+          "why": "most nouns: add -s"
+        },
+        {
+          "sentence": "I can see five ___ on the shelf.",
+          "options": [
+            "box",
+            "boxs",
+            "boxes"
+          ],
+          "answer": 2,
+          "why": "-x nouns add -es"
+        },
+        {
+          "sentence": "The ___ are playing football.",
+          "options": [
+            "childs",
+            "childrens",
+            "children"
+          ],
+          "answer": 2,
+          "why": "irregular plural, no -s"
+        },
+        {
+          "sentence": "___ is my pen. It's in my hand.",
+          "options": [
+            "This",
+            "These",
+            "Those"
+          ],
+          "answer": 0,
+          "why": "one thing, near you"
+        },
+        {
+          "sentence": "___ are your shoes, over there.",
+          "options": [
+            "This",
+            "That",
+            "Those"
+          ],
+          "answer": 2,
+          "why": "more than one, far away"
+        },
+        {
+          "sentence": "What's ___? — It's a map.",
+          "options": [
+            "this",
+            "these",
+            "those"
+          ],
+          "answer": 0,
+          "why": "question about one thing, near you"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with a, an, or the correct plural form of the word in brackets.",
+      "items": [
+        {
+          "sentence": "I've got ___ (a/an) egg for breakfast.",
+          "answers": [
+            "an"
+          ]
+        },
+        {
+          "sentence": "He's got ___ (a/an) dog and a cat.",
+          "answers": [
+            "a"
+          ]
+        },
+        {
+          "sentence": "There are three ___ (box) on the table.",
+          "answers": [
+            "boxes"
+          ]
+        },
+        {
+          "sentence": "There are two ___ (baby) in the family.",
+          "answers": [
+            "babies"
+          ]
+        },
+        {
+          "sentence": "The ___ (child) are at school today.",
+          "answers": [
+            "children"
+          ]
+        },
+        {
+          "sentence": "___ (this) is my brother's bike.",
+          "answers": [
+            "This"
+          ]
+        },
+        {
+          "sentence": "___ (that) are Nadia's books, over there.",
+          "answers": [
+            "Those"
+          ]
+        },
+        {
+          "sentence": "I need ___ (a/an) umbrella — it's raining!",
+          "answers": [
+            "an"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "got",
+            "I've",
+            "a",
+            "dog",
+            "."
+          ],
+          "answer": "I've got a dog."
+        },
+        {
+          "words": [
+            "an",
+            "She's",
+            "apple",
+            "got",
+            "."
+          ],
+          "answer": "She's got an apple."
+        },
+        {
+          "words": [
+            "boxes",
+            "are",
+            "three",
+            "There",
+            "on the table",
+            "."
+          ],
+          "answer": "There are three boxes on the table."
+        },
+        {
+          "words": [
+            "children",
+            "are",
+            "the",
+            "Where",
+            "?"
+          ],
+          "answer": "Where are the children?"
+        },
+        {
+          "words": [
+            "is",
+            "my",
+            "This",
+            "pen",
+            "."
+          ],
+          "answer": "This is my pen."
+        },
+        {
+          "words": [
+            "alpacas",
+            "are",
+            "Those",
+            "your",
+            "."
+          ],
+          "answer": "Those are your alpacas."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "I've got a apple.",
+          "ok": false,
+          "fix": "I've got <b>an</b> apple.",
+          "why": "apple starts with a vowel sound"
+        },
+        {
+          "sentence": "She's got two brothers.",
+          "ok": true,
+          "why": "brothers — regular plural with -s"
+        },
+        {
+          "sentence": "The childs are playing.",
+          "ok": false,
+          "fix": "The <b>children</b> are playing.",
+          "why": "child is irregular: children, not childs"
+        },
+        {
+          "sentence": "This are my keys.",
+          "ok": false,
+          "fix": "<b>These</b> are my keys.",
+          "why": "keys is plural, so use these, not this"
+        },
+        {
+          "sentence": "I need an umbrella today.",
+          "ok": true,
+          "why": "umbrella starts with a vowel sound"
+        },
+        {
+          "sentence": "There are five boxes in the shop.",
+          "ok": true,
+          "why": "box + es for the plural"
+        },
+        {
+          "sentence": "That is your bag, over there.",
+          "ok": true,
+          "why": "bag is singular and far away → that"
+        },
+        {
+          "sentence": "I've got three watch.",
+          "ok": false,
+          "fix": "I've got three <b>watches</b>.",
+          "why": "watch ends in -ch, so add -es"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use <i>a</i> and <i>an</i> with the right sound, and make nouns plural with <i>-s, -es</i> and <i>-ies</i>.",
+    "I can name irregular plurals I know, like <i>children, people</i> and <i>feet</i>.",
+    "I can use <i>this, that, these</i> and <i>those</i> to talk about things near me and far away."
+  ],
+  "summary": [
+    "Use <b>a</b> before a consonant sound and <b>an</b> before a vowel sound — listen, don't just look at the letter.",
+    "Most nouns add <b>-s</b> for the plural; words ending in <b>-s, -sh, -ch, -x</b> add <b>-es</b>; consonant + <b>-y</b> changes to <b>-ies</b>.",
+    "Some plurals are irregular: <i>child → children, person → people, foot → feet, mouse → mice</i>.",
+    "<b>This/that</b> = one thing; <b>these/those</b> = more than one thing.",
+    "<b>This/these</b> = near you; <b>that/those</b> = far away."
+  ]
+}

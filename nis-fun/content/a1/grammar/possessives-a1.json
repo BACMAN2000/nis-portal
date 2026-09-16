@@ -1,0 +1,707 @@
+{
+  "id": "possessives-a1",
+  "level": "a1",
+  "area": "First words, first sentences",
+  "title": "my, your, his, her and 's",
+  "tagline": "Who does it belong to? my, your, his, her, its, our, their, and the little apostrophe s.",
+  "cefr": "A1",
+  "exam": [
+    "Reading Part 5 — open cloze (grammar gaps)",
+    "Listening Part 1 — matching people and their things"
+  ],
+  "why": "You need possessives every time you talk about your family, your friends and your things: <i>my sister, her bike, Mateo's book</i>. Spanish <i>su</i> can mean his, her, its or their, so this is one of the easiest places for a Spanish speaker to make a small, confusing mistake.",
+  "hook": {
+    "text": "At Sofia's birthday party, the presents are mixed up! \"Is this <b>your</b> present, Liam?\" asks Nadia. \"No, that's <b>Mateo's</b>. <b>His</b> present is the blue one.\" \"<b>Whose</b> is this big one?\" \"That's <b>Sofia's</b> — it's <b>her</b> present!\"",
+    "ask": "Find a possessive adjective (like his or her), a word with an apostrophe s, and the question word that asks about owners."
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "This",
+              "role": "subj"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "my",
+              "role": "kw"
+            },
+            {
+              "t": "bag",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "possessive adjective + noun"
+        },
+        {
+          "parts": [
+            {
+              "t": "That",
+              "role": "subj"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "Sofia's",
+              "role": "kw"
+            },
+            {
+              "t": "bike",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "name + 's + noun"
+        },
+        {
+          "parts": [
+            {
+              "t": "Whose",
+              "role": "kw"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "this",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question about the owner"
+        },
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "can see",
+              "role": "verb"
+            },
+            {
+              "t": "her",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "object pronoun after the verb"
+        }
+      ],
+      "caption": "A possessive word always sits right before the noun it owns. <i>Whose</i> asks the question; <b>'s</b> or <b>his/her/its</b> gives the answer."
+    },
+    {
+      "type": "map",
+      "title": "Which possessive word?",
+      "center": "possessive adjectives",
+      "branches": [
+        {
+          "label": "I → my",
+          "items": [
+            "my bag"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "you → your",
+          "items": [
+            "your book"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "he → his · she → her · it → its",
+          "items": [
+            "his bike",
+            "her bag",
+            "its tail"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "we → our · they → their",
+          "items": [
+            "our class",
+            "their school"
+          ],
+          "tone": "c"
+        }
+      ]
+    },
+    {
+      "type": "spelling",
+      "title": "The apostrophe s",
+      "rules": [
+        {
+          "rule": "One owner: name + 's",
+          "examples": [
+            "Sofia → Sofia<b>'s</b> bag",
+            "Mateo → Mateo<b>'s</b> book"
+          ]
+        },
+        {
+          "rule": "Plural owners ending in -s: just add '",
+          "examples": [
+            "my parents → my parents<b>'</b> car",
+            "the girls → the girls<b>'</b> classroom"
+          ]
+        },
+        {
+          "rule": "Plural owners NOT ending in -s: + 's",
+          "examples": [
+            "the children → the children<b>'s</b> toys",
+            "the men → the men<b>'s</b> team"
+          ]
+        }
+      ],
+      "caption": "One owner, one name: add 's. More than one owner already ending in -s: just add the apostrophe."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "person / name",
+        "tone": "a",
+        "ex": "I / Sofia"
+      },
+      {
+        "chip": "my/your/his/her/its/our/their OR name's",
+        "tone": "kw",
+        "ex": "her / Sofia's"
+      },
+      {
+        "chip": "noun",
+        "tone": "b",
+        "ex": "bag"
+      }
+    ],
+    "table": {
+      "head": [
+        "Subject pronoun",
+        "Possessive adjective",
+        "Object pronoun"
+      ],
+      "rows": [
+        [
+          "I",
+          "my",
+          "me"
+        ],
+        [
+          "you",
+          "your",
+          "you"
+        ],
+        [
+          "he",
+          "his",
+          "him"
+        ],
+        [
+          "she",
+          "her",
+          "her"
+        ],
+        [
+          "it",
+          "its",
+          "it"
+        ],
+        [
+          "we",
+          "our",
+          "us"
+        ],
+        [
+          "they",
+          "their",
+          "them"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Possessive adjectives: whose it is",
+      "examples": [
+        {
+          "text": "This is <b>my</b> pencil case.",
+          "note": "my = belongs to me"
+        },
+        {
+          "text": "Is that <b>your</b> jacket?",
+          "note": "your = belongs to you"
+        },
+        {
+          "text": "Mateo is with <b>his</b> dog.",
+          "note": "his = belongs to a boy or man"
+        },
+        {
+          "text": "Nadia is with <b>her</b> cat.",
+          "note": "her = belongs to a girl or woman"
+        }
+      ]
+    },
+    {
+      "point": "its, our and their",
+      "examples": [
+        {
+          "text": "The dog is wagging <b>its</b> tail.",
+          "note": "its = belongs to an animal or a thing"
+        },
+        {
+          "text": "This is <b>our</b> classroom.",
+          "note": "our = belongs to us"
+        },
+        {
+          "text": "That's <b>their</b> football.",
+          "note": "their = belongs to them"
+        }
+      ]
+    },
+    {
+      "point": "The apostrophe s: name + 's",
+      "examples": [
+        {
+          "text": "That's <b>Sofia's</b> bag.",
+          "note": "one owner → name + 's"
+        },
+        {
+          "text": "<b>My parents'</b> car is red.",
+          "note": "plural owners ending in -s → just add '"
+        },
+        {
+          "text": "The <b>children's</b> toys are on the floor.",
+          "note": "plural not ending in -s → + 's"
+        }
+      ]
+    },
+    {
+      "point": "Whose…? and object pronouns",
+      "examples": [
+        {
+          "text": "<b>Whose</b> is this pen? — It's Liam's.",
+          "note": "whose asks about the owner"
+        },
+        {
+          "text": "Can you help <b>me</b>?",
+          "note": "object pronoun after the verb"
+        },
+        {
+          "text": "Miss Vega is looking at <b>them</b>.",
+          "note": "object pronoun after the verb: them"
+        },
+        {
+          "text": "This present is for <b>her</b>.",
+          "note": "object pronoun after a preposition: for her"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "This is the bag of Sofia.",
+      "right": "This is <b>Sofia's</b> bag.",
+      "why": "English usually shows ownership with 's after a name, not with of."
+    },
+    {
+      "wrong": "He is with his' dog.",
+      "right": "He is with <b>his</b> dog.",
+      "why": "His never takes an apostrophe — it's already a full possessive word."
+    },
+    {
+      "wrong": "The car has broken his lights.",
+      "right": "The car has broken <b>its</b> lights.",
+      "why": "Things use its, not his or her."
+    },
+    {
+      "wrong": "Is this you bag?",
+      "right": "Is this <b>your</b> bag?",
+      "why": "Don't confuse you (the person) with your (the possessive word)."
+    },
+    {
+      "wrong": "The childrens' toys are here.",
+      "right": "The <b>children's</b> toys are here.",
+      "why": "Children is already plural, so just add 's — not s'."
+    },
+    {
+      "wrong": "Give the book to I.",
+      "right": "Give the book to <b>me</b>.",
+      "why": "After a preposition or a verb, use the object pronoun me, not I."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Su perro es grande.",
+      "wrong": "Su dog is big.",
+      "right": "<b>His</b> dog is big. / <b>Her</b> dog is big.",
+      "why": "Spanish su can mean his, her, its or their — English needs a different word for each owner."
+    },
+    {
+      "es": "El coche de mi papá.",
+      "wrong": "The car of my dad.",
+      "right": "My dad<b>'s</b> car.",
+      "why": "English usually shows ownership with 's after the owner, not with of."
+    },
+    {
+      "es": "Dame el libro a mí.",
+      "wrong": "Give the book to I.",
+      "right": "Give the book to <b>me</b>.",
+      "why": "After to, for or a verb, English needs the object form: me, not I."
+    },
+    {
+      "es": "Los juguetes de los niños.",
+      "wrong": "The toys of the childrens.",
+      "right": "The <b>children's</b> toys.",
+      "why": "Children is already plural — don't add another -s, and use 's, not of."
+    },
+    {
+      "es": "¿De quién es esto?",
+      "wrong": "Who is this bag?",
+      "right": "<b>Whose</b> is this bag?",
+      "why": "Who asks about a person; whose asks about an owner — they look similar but mean different things."
+    }
+  ],
+  "remember": {
+    "trick": "MY YOUR HIS HER ITS OUR THEIR — before the noun!",
+    "tip": "A possessive word always comes right before the noun it owns: my bag, her cat, their house. It never stands alone."
+  },
+  "dialogue": {
+    "title": "Whose present is this?",
+    "context": "It's Sofia's birthday party at her house in Lima, and the presents on the table are all mixed up.",
+    "lines": [
+      {
+        "speaker": "Nadia",
+        "text": "<b>Whose</b> present is this, Liam?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "That's not mine — I think it's <b>Mateo's</b>."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Yes, that's <b>my</b> present! Where's <b>your</b> present, Nadia?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>My</b> present is the small red one."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Thank you! I love <b>your</b> presents, everyone."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Whose</b> is the big blue box?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "That's Miss Vega<b>'s</b> present for Sofia."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Look at <b>its</b> ribbon — it's huge!"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "I can't wait to open <b>them</b> all!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Open this one first — it's from <b>us</b>!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word.",
+      "items": [
+        {
+          "sentence": "Mateo has a dog. ___ dog is brown.",
+          "options": [
+            "His",
+            "Her",
+            "Its"
+          ],
+          "answer": 0,
+          "why": "Mateo = he → his"
+        },
+        {
+          "sentence": "Sofia has a cat. ___ cat is grey.",
+          "options": [
+            "His",
+            "Her",
+            "Its"
+          ],
+          "answer": 1,
+          "why": "Sofia = she → her"
+        },
+        {
+          "sentence": "The car has a flat tyre. ___ tyre is flat.",
+          "options": [
+            "His",
+            "Her",
+            "Its"
+          ],
+          "answer": 2,
+          "why": "car = it → its"
+        },
+        {
+          "sentence": "This is ___ book, not yours.",
+          "options": [
+            "my",
+            "I",
+            "me"
+          ],
+          "answer": 0,
+          "why": "possessive adjective + noun → my"
+        },
+        {
+          "sentence": "___ is this pencil? — It's Liam's.",
+          "options": [
+            "Who",
+            "Whose",
+            "Which"
+          ],
+          "answer": 1,
+          "why": "whose asks about the owner"
+        },
+        {
+          "sentence": "Give the ball to ___, please.",
+          "options": [
+            "she",
+            "hers",
+            "her"
+          ],
+          "answer": 2,
+          "why": "object pronoun after a verb → her"
+        },
+        {
+          "sentence": "That is ___ car.",
+          "options": [
+            "Sofia's",
+            "Sofia",
+            "Sofias"
+          ],
+          "answer": 0,
+          "why": "one owner → name + 's"
+        },
+        {
+          "sentence": "The ___ toys are on the floor.",
+          "options": [
+            "childrens'",
+            "children's",
+            "children"
+          ],
+          "answer": 1,
+          "why": "children is already plural → add 's"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct possessive word for the person in brackets.",
+      "items": [
+        {
+          "sentence": "This is ___ (I) bag.",
+          "answers": [
+            "my"
+          ]
+        },
+        {
+          "sentence": "Is that ___ (you) jacket?",
+          "answers": [
+            "your"
+          ]
+        },
+        {
+          "sentence": "Mateo is playing with ___ (he) dog.",
+          "answers": [
+            "his"
+          ]
+        },
+        {
+          "sentence": "Nadia is playing with ___ (she) cat.",
+          "answers": [
+            "her"
+          ]
+        },
+        {
+          "sentence": "The bike has lost ___ (it) wheel.",
+          "answers": [
+            "its"
+          ]
+        },
+        {
+          "sentence": "This is ___ (we) classroom.",
+          "answers": [
+            "our"
+          ]
+        },
+        {
+          "sentence": "That is ___ (Sofia) bag.",
+          "answers": [
+            "Sofia's"
+          ]
+        },
+        {
+          "sentence": "The ___ (child, plural) toys are here.",
+          "answers": [
+            "children's"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "is",
+            "my",
+            "This",
+            "bag",
+            "."
+          ],
+          "answer": "This is my bag."
+        },
+        {
+          "words": [
+            "his",
+            "dog",
+            "Mateo",
+            "is with",
+            "."
+          ],
+          "answer": "Mateo is with his dog."
+        },
+        {
+          "words": [
+            "this pen",
+            "Whose",
+            "is",
+            "?"
+          ],
+          "answer": "Whose is this pen?"
+        },
+        {
+          "words": [
+            "bag",
+            "That's",
+            "Sofia's",
+            "."
+          ],
+          "answer": "That's Sofia's bag."
+        },
+        {
+          "words": [
+            "toys",
+            "are here",
+            "The",
+            "children's",
+            "."
+          ],
+          "answer": "The children's toys are here."
+        },
+        {
+          "words": [
+            "to",
+            "me",
+            "Give the book",
+            "."
+          ],
+          "answer": "Give the book to me."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "This is my bag.",
+          "ok": true,
+          "why": "possessive adjective + noun, correct"
+        },
+        {
+          "sentence": "That is her's book.",
+          "ok": false,
+          "fix": "That is <b>her</b> book.",
+          "why": "her never takes 's — that's not a word"
+        },
+        {
+          "sentence": "Whose is this jacket?",
+          "ok": true,
+          "why": "whose asks about the owner, correct"
+        },
+        {
+          "sentence": "The dog is washing its tail.",
+          "ok": true,
+          "why": "its for a thing or animal, correct"
+        },
+        {
+          "sentence": "This is the bag of Mateo.",
+          "ok": false,
+          "fix": "This is <b>Mateo's</b> bag.",
+          "why": "use 's for a person's name, not of"
+        },
+        {
+          "sentence": "Give the ball to she.",
+          "ok": false,
+          "fix": "Give the ball to <b>her</b>.",
+          "why": "after to, use the object pronoun her, not she"
+        },
+        {
+          "sentence": "My parents' car is new.",
+          "ok": true,
+          "why": "plural owner ending in -s → just add '"
+        },
+        {
+          "sentence": "The childrens toys are here.",
+          "ok": false,
+          "fix": "The <b>children's</b> toys are here.",
+          "why": "children is already plural; add 's, not childrens"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say who things belong to with <i>my, your, his, her, its, our</i> and <i>their</i>.",
+    "I can use <i>'s</i> to show who owns something, like <i>Sofia's bag</i> or <i>my parents' car</i>.",
+    "I can ask <i>Whose is this?</i> and use <i>me, him, her, us</i> and <i>them</i> after a verb or preposition."
+  ],
+  "summary": [
+    "Possessive adjectives go before the noun: <i>my, your, his, her, its, our, their</i> + noun.",
+    "One owner: name + <b>'s</b> (<i>Sofia's bag</i>). Plural owner ending in -s: just add <b>'</b> (<i>my parents' car</i>). Plural not ending in -s: add <b>'s</b> (<i>children's toys</i>).",
+    "<b>His</b> is for a boy or man, <b>her</b> for a girl or woman, <b>its</b> for a thing or animal.",
+    "<b>Whose…?</b> asks who owns something — don't confuse it with <i>Who…?</i>.",
+    "After a verb or preposition, use the object pronoun: <i>me, you, him, her, it, us, them</i>."
+  ]
+}

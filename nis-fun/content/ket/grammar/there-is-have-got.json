@@ -1,0 +1,202 @@
+{
+  "id": "there-is-have-got",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "there is/are and have got",
+  "tagline": "Saying what exists in a place, and what a person or place has.",
+  "cefr": "A2",
+  "exam": ["Listening Part 1 — short conversations", "Reading Part 1 — signs and messages", "Speaking Part 2 — describing a place"],
+  "why": "Describing a town, a room or a house — with there is/are and have got — comes up constantly in Listening Part 1 and Speaking Part 2. Mixing the two structures together is the most common A2 mistake, so knowing when to use each one is worth extra marks.",
+  "hook": {
+    "text": "Nadia shows a photo. \"<b>There's</b> a big lake near my grandma's house, and it<b>'s got</b> a little boat.\" \"Wow,\" says Liam. \"<b>Are there</b> any fish in the lake?\"",
+    "ask": "Nadia uses two different structures to describe the lake and the boat. Can you find them both?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "there is/are or have got?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "There", "role": "kw"}, {"t": "is", "role": "aux"}, {"t": "a park", "role": "obj"}, {"t": "near my house", "role": "place"}], "note": "there + is/are + a/an/some + noun"},
+        {"parts": [{"t": "There", "role": "kw"}, {"t": "aren't", "role": "neg"}, {"t": "any shops", "role": "obj"}, {"t": "on this street", "role": "place"}], "note": "negative: there aren't + any"},
+        {"parts": [{"t": "Is", "role": "aux"}, {"t": "there", "role": "kw"}, {"t": "a bank", "role": "x"}, {"t": "near here", "role": "place"}, {"t": "?", "role": "x"}], "note": "question: is/are + there"},
+        {"parts": [{"t": "My town", "role": "subj"}, {"t": "has got", "role": "kw"}, {"t": "a big market", "role": "obj"}], "note": "have got = something belongs to / is part of something"}
+      ],
+      "caption": "There is/are talks about a place. Have got talks about a person, animal or place that possesses something."
+    },
+    {
+      "type": "contrast",
+      "title": "there is or have got?",
+      "columns": ["there is/are", "have got"],
+      "rows": [
+        {"label": "Says what", "cells": ["something exists in a place", "someone/something possesses or includes"]},
+        {"label": "Subject", "cells": ["there (no real subject)", "a person, animal or place"]},
+        {"label": "Example", "cells": ["There's a park near my house.", "My house has got a garden."]},
+        {"label": "Question", "cells": ["Is there…? / Are there…?", "Have you got…? / Has she got…?"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "there is/are + …",
+      "center": "there is/are + noun",
+      "branches": [
+        {"label": "singular", "items": ["a", "an"], "tone": "a"},
+        {"label": "plural (statements/offers)", "items": ["some"], "tone": "b"},
+        {"label": "plural (questions/negatives)", "items": ["any"], "tone": "c"},
+        {"label": "big numbers", "items": ["a lot of", "lots of"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "There", "tone": "kw"},
+      {"chip": "is/are/was/were", "tone": "a", "ex": "is"},
+      {"chip": "a/an/some/any + noun", "tone": "b", "ex": "a park"}
+    ],
+    "table": {
+      "head": ["Structure", "Positive", "Negative", "Question"],
+      "rows": [
+        ["there is/are", "There's a bank near here.", "There isn't a bank near here.", "Is there a bank near here?"],
+        ["have got", "I've got a bike.", "I haven't got a bike.", "Have you got a bike?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "there is/there are: saying what exists",
+      "examples": [
+        {"text": "<b>There's</b> a park near my house.", "note": "there's = there is, for one thing"},
+        {"text": "<b>There are</b> two bookshops in the town centre.", "note": "there are for more than one"},
+        {"text": "<b>There isn't</b> a swimming pool at our school.", "note": "negative: isn't/aren't"},
+        {"text": "<b>Are there</b> any cafés near here?", "note": "question: is/are + there"}
+      ]
+    },
+    {
+      "point": "some, any and a lot of",
+      "examples": [
+        {"text": "There are <b>some</b> nice shops on this street.", "note": "some, usually in positive sentences"},
+        {"text": "There aren't <b>any</b> buses after ten o'clock.", "note": "any, usually in negatives and questions"},
+        {"text": "There's <b>a lot of</b> traffic this morning.", "note": "a lot of + uncountable noun"},
+        {"text": "There are <b>lots of</b> tourists in Cusco.", "note": "lots of + plural noun, same meaning as a lot of"}
+      ]
+    },
+    {
+      "point": "have got and has got: what belongs to someone or something",
+      "examples": [
+        {"text": "I<b>'ve got</b> a new bike.", "note": "I/you/we/they + 've got"},
+        {"text": "My sister <b>has got</b> long hair.", "note": "he/she/it + 's got"},
+        {"text": "<b>Have you got</b> a pet?", "note": "question: have/has + subject + got"},
+        {"text": "She <b>hasn't got</b> a phone.", "note": "negative: hasn't got"}
+      ]
+    },
+    {
+      "point": "there is or have got? Don't mix them up",
+      "examples": [
+        {"text": "<b>There's</b> a market in my town.", "note": "one way to say it: the place, then the thing"},
+        {"text": "My town <b>has got</b> a market.", "note": "the other way: the place is the subject"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "There is two shops on this street.", "right": "There <b>are</b> two shops on this street.", "why": "Use are with plural nouns, not is."},
+    {"wrong": "Are there some shops on this street?", "right": "<b>Are there any</b> shops on this street?", "why": "Negatives and questions use any, not some."},
+    {"wrong": "My sister have got long hair.", "right": "My sister <b>has got</b> long hair.", "why": "He/she/it needs has got, not have got."},
+    {"wrong": "Has you got a pet?", "right": "<b>Have</b> you got a pet?", "why": "You always takes have, even in questions — has is only for he/she/it."},
+    {"wrong": "There's a lot of tourist in Cusco.", "right": "There are a lot of <b>tourists</b> in Cusco.", "why": "A lot of + plural noun needs the plural form (with -s)."},
+    {"wrong": "My town there's a market.", "right": "<b>There's</b> a market in my town. / My town <b>has got</b> a market.", "why": "Don't mix the two structures — choose one pattern per sentence."}
+  ],
+  "l1": [
+    {"es": "Hay un parque cerca de mi casa.", "wrong": "It has a park near my house.", "right": "<b>There's</b> a park near my house.", "why": "Spanish hay = there is/are in English, not it has."},
+    {"es": "Mi hermana tiene el pelo largo.", "wrong": "My sister have long hair.", "right": "My sister <b>has got</b> long hair.", "why": "He/she/it needs has (got), not have."},
+    {"es": "¿Hay un banco cerca de aquí?", "wrong": "There a bank near here?", "right": "<b>Is there</b> a bank near here?", "why": "The question needs is/are before there — you can't drop it."},
+    {"es": "No hay ningún café cerca.", "wrong": "There isn't some café near here.", "right": "There <b>isn't a café</b> near here. / There <b>aren't any cafés</b> near here.", "why": "Some doesn't go in negatives — use a/an (singular) or any (plural)."},
+    {"es": "Mi pueblo tiene un mercado grande.", "wrong": "My town is a big market.", "right": "My town <b>has got</b> a big market. / <b>There's</b> a big market in my town.", "why": "Describing what a place has needs have got or there is, not the verb be alone."}
+  ],
+  "remember": {
+    "trick": "THERE IS for a place · HAVE GOT for a person!",
+    "tip": "Ask: am I saying something exists (there is), or that someone/something owns or includes it (have got)?"
+  },
+  "dialogue": {
+    "title": "My town, your town",
+    "context": "For a geography project, Sofia and Mateo compare their home towns in front of the class.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Sofia, tell us about your town."},
+      {"speaker": "Sofia", "text": "<b>There's</b> a beautiful main square, and <b>there are</b> two churches."},
+      {"speaker": "Mateo", "text": "<b>Has</b> your town <b>got</b> a beach?"},
+      {"speaker": "Sofia", "text": "No, it <b>hasn't</b>. But <b>there's</b> a big market on Sundays."},
+      {"speaker": "Mateo", "text": "My town <b>has got</b> a beach! <b>There are</b> lots of fishing boats."},
+      {"speaker": "Sofia", "text": "Nice! <b>Are there</b> any restaurants near the beach?"},
+      {"speaker": "Mateo", "text": "Yes, <b>there are</b> a lot of them."},
+      {"speaker": "Miss Vega", "text": "Great descriptions! <b>Has</b> your town <b>got</b> a park too, Mateo?"},
+      {"speaker": "Mateo", "text": "Yes, it <b>has</b>. <b>There's</b> a small park with a football pitch."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ a park near my house.", "options": ["There's", "There are", "Have"], "answer": 0, "why": "there's + a + singular noun"},
+        {"sentence": "___ two bookshops in the town centre.", "options": ["There's", "There are", "Has"], "answer": 1, "why": "there are + plural noun"},
+        {"sentence": "___ any cafés near here?", "options": ["Is there", "Have there", "Are there"], "answer": 2, "why": "question with plural noun: are there"},
+        {"sentence": "My sister ___ long hair.", "options": ["has got", "have got", "is got"], "answer": 0, "why": "he/she/it → has got"},
+        {"sentence": "___ you got a pet?", "options": ["Has", "Have", "Is"], "answer": 1, "why": "you → have"},
+        {"sentence": "There ___ a lot of traffic this morning.", "options": ["are", "have", "is"], "answer": 2, "why": "a lot of + uncountable noun → is"},
+        {"sentence": "There aren't ___ buses after ten.", "options": ["any", "some", "a"], "answer": 0, "why": "negative → any"},
+        {"sentence": "My town ___ a big market.", "options": ["have got", "has got", "there's"], "answer": 1, "why": "town (it) → has got"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct word or words.",
+      "items": [
+        {"sentence": "___ a park near my house. (there is)", "answers": ["There's", "There is"]},
+        {"sentence": "___ two bookshops in the town centre. (there are)", "answers": ["There are"]},
+        {"sentence": "___ any cafés near here? (are there)", "answers": ["Are there"]},
+        {"sentence": "My sister ___ (have) long hair.", "answers": ["has got"]},
+        {"sentence": "___ you got a pet? (have)", "answers": ["Have"]},
+        {"sentence": "There ___ (be) a lot of traffic this morning.", "answers": ["is"]},
+        {"sentence": "There aren't ___ buses after ten. (any)", "answers": ["any"]},
+        {"sentence": "My town ___ (have) a big market.", "answers": ["has got"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["near my house", "There's", ".", "a park"], "answer": "There's a park near my house."},
+        {"words": ["in the town centre", "There are", ".", "two bookshops"], "answer": "There are two bookshops in the town centre."},
+        {"words": ["long hair", "My sister", ".", "has got"], "answer": "My sister has got long hair."},
+        {"words": ["a pet", "?", "Have you got"], "answer": "Have you got a pet?"},
+        {"words": ["at school", "There isn't", ".", "a swimming pool"], "answer": "There isn't a swimming pool at school."},
+        {"words": ["a big market", "My town", ".", "has got"], "answer": "My town has got a big market."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "There's a park near my house.", "ok": true, "why": "there is + a + singular noun, correct"},
+        {"sentence": "There is two shops on this street.", "ok": false, "fix": "There <b>are</b> two shops on this street.", "why": "plural noun needs are, not is"},
+        {"sentence": "My sister has got long hair.", "ok": true, "why": "he/she/it → has got, correct"},
+        {"sentence": "My sister have got long hair.", "ok": false, "fix": "My sister <b>has got</b> long hair.", "why": "he/she/it needs has got, not have got"},
+        {"sentence": "Are there any cafés near here?", "ok": true, "why": "question: are + there + any, correct"},
+        {"sentence": "Has you got a pet?", "ok": false, "fix": "<b>Have</b> you got a pet?", "why": "you always takes have, not has"},
+        {"sentence": "There isn't a swimming pool at our school.", "ok": true, "why": "there isn't + a + singular noun, correct"},
+        {"sentence": "There's a lot of tourist in Cusco.", "ok": false, "fix": "There are a lot of <b>tourists</b> in Cusco.", "why": "a lot of + plural noun needs the -s"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what exists in a place with <i>there is/are, was/were</i>.",
+    "I can use <i>some, any</i> and <i>a lot of/lots of</i> correctly with there is/are.",
+    "I can talk about what someone or something has with <i>have got/has got</i>."
+  ],
+  "summary": [
+    "<i>There is/are</i> says what exists in a place: There's a park. There are two shops.",
+    "Use <i>some</i> in positive sentences and <i>any</i> in negatives and questions.",
+    "<i>Have got/has got</i> says what a person, animal or place possesses or includes.",
+    "He/she/it needs <i>has got</i>; everyone else needs <i>have got</i>.",
+    "<i>A lot of</i> and <i>lots of</i> mean the same thing — don't forget the plural -s on the noun."
+  ]
+}

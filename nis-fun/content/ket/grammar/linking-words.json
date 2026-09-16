@@ -1,0 +1,202 @@
+{
+  "id": "linking-words",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "Linking words: and, but, or, so, because",
+  "tagline": "Turning two short sentences into one — and, but, or, so, because, and more.",
+  "cefr": "A2",
+  "exam": ["Writing Part 6 — word completion", "Writing Part 7 — a short message", "Reading Part 5 — multiple-choice cloze"],
+  "why": "Linking words turn two short, robotic sentences into one that sounds natural — exactly what Writing Parts 6 and 7 reward. Reading Part 5 tests them directly too, choosing the right connector to complete a text. Get and/but/or/so/because right and your writing jumps up a level.",
+  "hook": {
+    "text": "Nadia is writing about the school trip. \"We arrived, <b>and</b> then we had lunch. The museum was great, <b>but</b> the bus journey was long, <b>so</b> I slept!\" \"Nice sentences,\" says Miss Vega. \"You joined three short ideas into one.\"",
+    "ask": "Nadia uses three small words — <i>and, but, so</i> — to join her ideas. Can you say what job each one does?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Which linking word?",
+      "center": "Linking words",
+      "branches": [
+        {"label": "adding", "items": ["and", "also", "too", "as well"], "tone": "a"},
+        {"label": "contrast", "items": ["but"], "tone": "b"},
+        {"label": "choice", "items": ["or"], "tone": "c"},
+        {"label": "reason / result", "items": ["because", "so", "that's why"], "tone": "a"},
+        {"label": "time", "items": ["then", "after that", "when", "before", "after", "while"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "Join two short sentences",
+      "before": {"text": "I like football. I don't like basketball.", "hl": ["I like football", "I don't like basketball"]},
+      "after": {"text": "I like football, but I don't like basketball.", "hl": ["but"]},
+      "steps": ["Find the connection between the two ideas: same, different, reason or result?", "Choose the linking word that matches.", "Join the sentences and add a comma if it sounds like two parts."]
+    },
+    {
+      "type": "blocks",
+      "title": "Where does the linking word go?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "stayed", "role": "verb"}, {"t": "at home", "role": "place"}, {"t": "because", "role": "kw"}, {"t": "it was raining", "role": "x"}], "note": "because + reason, after the main idea"},
+        {"parts": [{"t": "Before", "role": "kw"}, {"t": "we", "role": "subj"}, {"t": "left", "role": "verb"}, {"t": "we", "role": "subj"}, {"t": "packed", "role": "verb"}, {"t": "our bags", "role": "obj"}], "note": "before + action, at the start of the sentence"},
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "like", "role": "verb"}, {"t": "football", "role": "obj"}, {"t": "and", "role": "kw"}, {"t": "I", "role": "subj"}, {"t": "like", "role": "verb"}, {"t": "tennis", "role": "obj"}, {"t": "too", "role": "x"}], "note": "and… too — adding a similar idea"}
+      ],
+      "caption": "A linking word can join two full ideas in the middle, or start the sentence — the meaning doesn't change."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "idea 1", "tone": "a", "ex": "I like football"},
+      {"chip": "linking word", "tone": "kw", "ex": "but"},
+      {"chip": "idea 2", "tone": "b", "ex": "I don't like basketball"}
+    ],
+    "table": {
+      "head": ["Linking word", "Meaning", "Example"],
+      "rows": [
+        ["and", "adding a similar idea", "I play football and I play tennis."],
+        ["but", "contrast, a different idea", "I like football, but I don't like rugby."],
+        ["or", "a choice", "Do you want tea or coffee?"],
+        ["so", "a result", "It was raining, so we stayed inside."],
+        ["because", "a reason", "We stayed inside because it was raining."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "and, but, or — joining two ideas",
+      "examples": [
+        {"text": "I play football <b>and</b> I play tennis.", "note": "and = adding a similar idea"},
+        {"text": "I like maths, <b>but</b> I don't like science.", "note": "but = a contrast, a different idea"},
+        {"text": "Do you want tea <b>or</b> coffee?", "note": "or = a choice between two things"}
+      ]
+    },
+    {
+      "point": "so and because — reason and result",
+      "examples": [
+        {"text": "It was raining, <b>so</b> we stayed inside.", "note": "so + result — comes after the reason"},
+        {"text": "We stayed inside <b>because</b> it was raining.", "note": "because + reason — often comes after the result"},
+        {"text": "<b>Because</b> it was raining, we stayed inside.", "note": "because can also start the sentence, with a comma"},
+        {"text": "I was tired, <b>that's why</b> I went to bed early.", "note": "that's why = so, a more informal result"}
+      ]
+    },
+    {
+      "point": "then, after that, when, before, after, while — putting events in time",
+      "examples": [
+        {"text": "I did my homework. <b>Then</b> I watched TV.", "note": "then = the next event"},
+        {"text": "We had lunch and <b>after that</b> we played football.", "note": "after that = a bit more formal than then"},
+        {"text": "<b>When</b> the bell rang, we went outside.", "note": "when = one action right after another"},
+        {"text": "I listened to music <b>while</b> I did my homework.", "note": "while = two actions at the same time"}
+      ]
+    },
+    {
+      "point": "also, too, as well — adding extra information",
+      "examples": [
+        {"text": "I like pizza. I <b>also</b> like pasta.", "note": "also usually goes before the main verb"},
+        {"text": "Sofia plays tennis. Liam plays tennis <b>too</b>.", "note": "too goes at the end of the sentence"},
+        {"text": "Nadia can swim <b>as well</b>.", "note": "as well = too, also at the end"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Because it was raining, so we stayed inside.", "right": "<b>Because</b> it was raining, we stayed inside.", "why": "Don't use because and so together — choose one."},
+    {"wrong": "I like football and but I don't like rugby.", "right": "I like football, <b>but</b> I don't like rugby.", "why": "Use only one linking word between two ideas."},
+    {"wrong": "I also like pasta too.", "right": "I <b>also</b> like pasta. / I like pasta <b>too</b>.", "why": "Also and too do the same job — don't use both together."},
+    {"wrong": "We stayed inside because of it was raining.", "right": "We stayed inside <b>because</b> it was raining.", "why": "Because + subject + verb; because of + a noun (because of the rain)."},
+    {"wrong": "I did my homework while I will watch TV.", "right": "I did my homework <b>while</b> I watched TV.", "why": "Both actions need the same past tense."},
+    {"wrong": "It's raining, that's why because we stayed inside.", "right": "It's raining, <b>that's why</b> we stayed inside.", "why": "That's why already means so — don't add because as well."}
+  ],
+  "l1": [
+    {"es": "Porque llovía, nos quedamos en casa.", "wrong": "Because it was raining, so we stayed at home.", "right": "<b>Because</b> it was raining, we stayed at home.", "why": "English only needs one linking word to show reason and result — not two."},
+    {"es": "También me gusta el fútbol.", "wrong": "Too I like football.", "right": "I <b>also</b> like football. / I like football <b>too</b>.", "why": "Too goes at the end of the sentence; also goes before the main verb, not at the start."},
+    {"es": "Es por eso que llegamos tarde.", "wrong": "It's for that we arrived late.", "right": "<b>That's why</b> we arrived late.", "why": "The fixed phrase in English is that's why, not a word-for-word translation."},
+    {"es": "Mientras estudio, escucho música.", "wrong": "During I study, I listen to music.", "right": "<b>While</b> I study, I listen to music.", "why": "While + subject + verb links two actions; during needs a noun (during class)."},
+    {"es": "Me gusta el fútbol y también el tenis.", "wrong": "I like football and also tennis, too.", "right": "I like football <b>and</b> tennis.", "why": "Don't stack also and too in the same sentence — choose one."}
+  ],
+  "remember": {
+    "trick": "AND adds, BUT fights, OR picks, SO/BECAUSE explain.",
+    "tip": "Ask yourself: same idea (and), different idea (but), a choice (or), a reason (because) or a result (so)?"
+  },
+  "dialogue": {
+    "title": "Writing the class blog post",
+    "context": "Nadia, Mateo and Miss Vega write a short blog post together about the school trip to Cusco.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Let's start. What did we do first?"},
+      {"speaker": "Nadia", "text": "We arrived, <b>and</b> then we had lunch."},
+      {"speaker": "Mateo", "text": "I liked the museum, <b>but</b> I didn't like the bus journey."},
+      {"speaker": "Miss Vega", "text": "Good! Why didn't you like the bus?"},
+      {"speaker": "Mateo", "text": "<b>Because</b> it was very long — six hours!"},
+      {"speaker": "Nadia", "text": "It was tiring, <b>so</b> we slept on the bus."},
+      {"speaker": "Mateo", "text": "We visited the market, <b>and after that</b> we walked to the square."},
+      {"speaker": "Nadia", "text": "I bought a hat. Sofia bought one <b>too</b>."},
+      {"speaker": "Miss Vega", "text": "Great sentences! Do you want to write about the food <b>or</b> the hotel next?"},
+      {"speaker": "Mateo", "text": "The food! It was amazing <b>while</b> it was <b>also</b> cheap."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct linking word.",
+      "items": [
+        {"sentence": "I like maths ___ I don't like science.", "options": ["and", "but", "so"], "answer": 1, "why": "but = a contrast"},
+        {"sentence": "Do you want tea ___ coffee?", "options": ["but", "so", "or"], "answer": 2, "why": "or = a choice"},
+        {"sentence": "It was raining, ___ we stayed inside.", "options": ["because", "so", "or"], "answer": 1, "why": "so = a result"},
+        {"sentence": "We stayed inside ___ it was raining.", "options": ["because", "so", "but"], "answer": 0, "why": "because = a reason"},
+        {"sentence": "I did my homework. ___ I watched TV.", "options": ["Then", "Because", "Or"], "answer": 0, "why": "then = the next event"},
+        {"sentence": "I listened to music ___ I did my homework.", "options": ["before", "while", "because"], "answer": 1, "why": "while = two actions together"},
+        {"sentence": "Sofia plays tennis. Liam plays tennis ___.", "options": ["too", "also", "because"], "answer": 0, "why": "too goes at the end of the sentence"},
+        {"sentence": "I ___ like pasta.", "options": ["too", "as well", "also"], "answer": 2, "why": "also goes before the main verb"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct linking word.",
+      "items": [
+        {"sentence": "I like maths ___ I don't like science.", "answers": ["but"]},
+        {"sentence": "Do you want tea ___ coffee?", "answers": ["or"]},
+        {"sentence": "It was raining, ___ we stayed inside.", "answers": ["so"]},
+        {"sentence": "We stayed inside ___ it was raining.", "answers": ["because"]},
+        {"sentence": "I did my homework. ___ I watched TV.", "answers": ["Then"]},
+        {"sentence": "I listened to music ___ I did my homework.", "answers": ["while"]},
+        {"sentence": "Sofia plays tennis. Liam plays tennis ___.", "answers": ["too"]},
+        {"sentence": "I ___ like pasta.", "answers": ["also"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["I don't like rugby", "I like football", ".", "but"], "answer": "I like football but I don't like rugby."},
+        {"words": ["we stayed inside", "It was raining", ".", "so"], "answer": "It was raining so we stayed inside."},
+        {"words": ["it was raining", "We stayed inside", ".", "because"], "answer": "We stayed inside because it was raining."},
+        {"words": ["I watched TV", "I did my homework", ".", "then"], "answer": "I did my homework then I watched TV."},
+        {"words": ["I did my homework", "I listened to music", ".", "while"], "answer": "I listened to music while I did my homework."},
+        {"words": ["Liam plays tennis too", "Sofia plays tennis", ".", "and"], "answer": "Sofia plays tennis and Liam plays tennis too."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I like football but I don't like rugby.", "ok": true, "why": "but = a correct contrast"},
+        {"sentence": "Because it was raining, so we stayed inside.", "ok": false, "fix": "<b>Because</b> it was raining, we stayed inside.", "why": "don't use because and so together"},
+        {"sentence": "It was raining, so we stayed inside.", "ok": true, "why": "so = a correct result"},
+        {"sentence": "I also like pasta too.", "ok": false, "fix": "I <b>also</b> like pasta.", "why": "also and too do the same job — don't use both"},
+        {"sentence": "We stayed inside because it was raining.", "ok": true, "why": "because + reason, correct"},
+        {"sentence": "We stayed inside because of it was raining.", "ok": false, "fix": "We stayed inside <b>because</b> it was raining.", "why": "because of needs a noun, not a full clause"},
+        {"sentence": "I did my homework while I listened to music.", "ok": true, "why": "while = two actions together, correct"},
+        {"sentence": "It's raining, that's why because we stayed inside.", "ok": false, "fix": "It's raining, <b>that's why</b> we stayed inside.", "why": "that's why already means so — no extra because"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can join two short sentences with <i>and, but, or, so</i> and <i>because</i>.",
+    "I can put events in order with <i>then, after that, when, before, after</i> and <i>while</i>.",
+    "I can add extra information with <i>also, too</i> and <i>as well</i>."
+  ],
+  "summary": [
+    "<i>And, but, or</i> join two ideas: adding, contrast or a choice.",
+    "<i>So</i> gives the result, <i>because</i> gives the reason — never use them together.",
+    "<i>Then, after that, when, before, after</i> and <i>while</i> put events in time order.",
+    "<i>Also</i> goes before the verb; <i>too</i> and <i>as well</i> go at the end of the sentence.",
+    "Joining two short sentences with one linking word is the key to a good answer in Writing Parts 6 and 7."
+  ]
+}

@@ -1,0 +1,666 @@
+{
+  "id": "past-perfect",
+  "level": "pet",
+  "area": "Tenses & time",
+  "title": "Past perfect",
+  "tagline": "Two events in the past — had + past participle shows which one really came first.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 6 — open cloze",
+    "Writing Part 2 — story or article"
+  ],
+  "why": "A good B1 story doesn't tell events in a flat line — it explains what had already happened before the main action, and that needs had + past participle. Reading Part 6 often tests the h in had as one of its missing grammar words, and examiners in Writing Part 2 reward a story where the order of events is completely clear, even when you don't tell them in the order they happened.",
+  "hook": {
+    "text": "Mateo: “We got to the hotel, but the room <b>had</b> already <b>been given</b> to someone else!” Sofia: “<b>Had</b> your parents <b>booked</b> it?” Mateo: “Yes, days before — the hotel <b>had</b> already <b>sold</b> it twice!”",
+    "ask": "Two things happened before Mateo's family arrived at the hotel. Find the verb forms with had + past participle — why do they come before the simple past arrived?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Which event came first?",
+      "marks": [
+        {
+          "at": "before-past",
+          "label": "the hotel had already given the room away",
+          "sub": "past perfect — the earlier event"
+        },
+        {
+          "at": "past",
+          "label": "the family arrived at the hotel",
+          "sub": "past simple — the main story moment"
+        }
+      ],
+      "arrows": [
+        [
+          0,
+          1,
+          "the earlier event explains the later one"
+        ]
+      ],
+      "caption": "Had + past participle sends an action back before the main past-tense moment of the story."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "The film",
+              "role": "subj"
+            },
+            {
+              "t": "had",
+              "role": "aux"
+            },
+            {
+              "t": "started",
+              "role": "verb"
+            },
+            {
+              "t": "before we arrived",
+              "role": "time"
+            }
+          ],
+          "note": "past perfect — statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "We",
+              "role": "subj"
+            },
+            {
+              "t": "hadn't",
+              "role": "neg"
+            },
+            {
+              "t": "seen",
+              "role": "verb"
+            },
+            {
+              "t": "the message",
+              "role": "obj"
+            }
+          ],
+          "note": "past perfect — negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Had",
+              "role": "aux"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "booked",
+              "role": "verb"
+            },
+            {
+              "t": "the room",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "past perfect — question"
+        },
+        {
+          "parts": [
+            {
+              "t": "By the time",
+              "role": "time"
+            },
+            {
+              "t": "we",
+              "role": "subj"
+            },
+            {
+              "t": "arrived",
+              "role": "verb"
+            },
+            {
+              "t": "they",
+              "role": "subj"
+            },
+            {
+              "t": "had",
+              "role": "aux"
+            },
+            {
+              "t": "sold",
+              "role": "verb"
+            },
+            {
+              "t": "the room",
+              "role": "obj"
+            }
+          ],
+          "note": "whole sentence — earlier action (had sold) + later action (arrived)"
+        }
+      ],
+      "caption": "Had/hadn't works exactly like did/didn't, but it points to an even earlier past moment."
+    },
+    {
+      "type": "contrast",
+      "title": "Story order or sentence order?",
+      "columns": [
+        "Past simple only",
+        "Past simple + past perfect"
+      ],
+      "rows": [
+        {
+          "label": "Structure",
+          "cells": [
+            "events told in the order they happened",
+            "either order is possible — had shows which came first"
+          ]
+        },
+        {
+          "label": "In story order",
+          "cells": [
+            "We arrived. Then we found the room was gone.",
+            "We arrived, but they had already given the room away."
+          ]
+        },
+        {
+          "label": "Reordered",
+          "cells": [
+            "not possible without confusing the reader",
+            "They had already given the room away by the time we arrived."
+          ]
+        },
+        {
+          "label": "Signal words",
+          "cells": [
+            "then, after that, next",
+            "already, just, never, by the time, before, after"
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "subject",
+        "tone": "a",
+        "ex": "they"
+      },
+      {
+        "chip": "had(n't)",
+        "tone": "kw"
+      },
+      {
+        "chip": "past participle",
+        "tone": "b",
+        "ex": "had already left"
+      }
+    ],
+    "table": {
+      "head": [
+        "Form",
+        "Positive",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "Past perfect",
+          "They had left.",
+          "They hadn't left.",
+          "Had they left?"
+        ],
+        [
+          "With already/just/never",
+          "They had already left.",
+          "They hadn't left yet.",
+          "Had they ever visited Cusco?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Past perfect for the earlier of two past actions",
+      "examples": [
+        {
+          "text": "When we arrived, the film <b>had</b> already <b>started</b>.",
+          "note": "started first, arrived second"
+        },
+        {
+          "text": "Mateo <b>had</b> already <b>eaten</b> before his sister got home.",
+          "note": "the eating happened first"
+        },
+        {
+          "text": "By the time the bus came, we <b>had waited</b> for half an hour.",
+          "note": "the waiting started before the bus came"
+        }
+      ]
+    },
+    {
+      "point": "before / after / by the time / when",
+      "examples": [
+        {
+          "text": "Sofia <b>had</b> finished her homework <b>before</b> dinner started.",
+          "note": "before + the later event"
+        },
+        {
+          "text": "<b>After</b> Miss Vega <b>had checked</b> the tickets, the bus left.",
+          "note": "after + the earlier event"
+        },
+        {
+          "text": "<b>By the time</b> we reached the hotel, the sun <b>had</b> already <b>set</b>.",
+          "note": "by the time = not later than this moment"
+        }
+      ]
+    },
+    {
+      "point": "already, just and never with the past perfect",
+      "examples": [
+        {
+          "text": "We <b>had</b> just <b>sat down</b> when the waiter arrived.",
+          "note": "just = a very short time before"
+        },
+        {
+          "text": "Nadia <b>had</b> never <b>visited</b> Cusco before that trip.",
+          "note": "never = not once, up to that past moment"
+        },
+        {
+          "text": "They <b>had</b> already <b>sold</b> our room twice by the time we arrived!",
+          "note": "already = sooner than expected"
+        }
+      ]
+    },
+    {
+      "point": "The story order and the sentence order don't have to match",
+      "examples": [
+        {
+          "text": "They <b>had given</b> the room away, so the family had to wait.",
+          "note": "the past perfect can come first in the sentence too"
+        },
+        {
+          "text": "The receptionist apologised because she <b>had made</b> a mistake.",
+          "note": "the earlier cause is explained after the later result"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "When we arrived, the film already started.",
+      "right": "When we arrived, the film <b>had</b> already <b>started</b>.",
+      "why": "The earlier of two past events needs had + past participle, not the simple past."
+    },
+    {
+      "wrong": "We had arrived, and then we had eaten.",
+      "right": "We <b>arrived</b>, and then we <b>ate</b>.",
+      "why": "Two events in normal story order just need the past simple — save had for the one that comes first when the sentence order is reversed."
+    },
+    {
+      "wrong": "Before I have finished, she left.",
+      "right": "Before I <b>had finished</b>, she left.",
+      "why": "Had, not have, goes with a past time reference like before I finished."
+    },
+    {
+      "wrong": "By the time we arrive, they had left.",
+      "right": "By the time we <b>arrived</b>, they had left.",
+      "why": "Both halves need a past form — the later event is past simple, the earlier one is past perfect."
+    },
+    {
+      "wrong": "Had you ever went to Cusco before?",
+      "right": "<b>Had</b> you ever <b>been</b> to Cusco before?",
+      "why": "After had, use the past participle (been), not the simple past (went)."
+    },
+    {
+      "wrong": "She had saw the message before she called.",
+      "right": "She <b>had seen</b> the message before she called.",
+      "why": "See → seen for the participle; saw is only the simple past form."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Cuando llegamos, la película ya había empezado.",
+      "wrong": "When we arrived, the film already started.",
+      "right": "When we arrived, the film <b>had</b> already <b>started</b>.",
+      "why": "Spanish había + participio matches English had + past participle exactly — use it for the earlier event."
+    },
+    {
+      "es": "Nunca había estado en Cusco.",
+      "wrong": "I never was in Cusco before.",
+      "right": "I<b>'d</b> never <b>been</b> to Cusco before.",
+      "why": "Never + a past experience before another past moment needs the past perfect, not the simple past."
+    },
+    {
+      "es": "Antes de que llegara, ya se habían ido.",
+      "wrong": "Before I arrived, they already left.",
+      "right": "Before I arrived, they <b>had</b> already <b>left</b>.",
+      "why": "The event that finished earlier keeps had, even though the sentence starts with before."
+    },
+    {
+      "es": "Recién habíamos llegado cuando empezó a llover.",
+      "wrong": "We just arrived when it started to rain.",
+      "right": "We<b>'d</b> just <b>arrived</b> when it started to rain.",
+      "why": "Recién + pluscuamperfecto = just + had + past participle for the action that finished a moment before."
+    }
+  ],
+  "remember": {
+    "trick": "The earlier event gets HAD — the later one doesn't!",
+    "tip": "Ask: which happened first? That one takes had + past participle; the second one stays in the simple past."
+  },
+  "dialogue": {
+    "title": "The room that wasn't there",
+    "context": "Mateo tells Sofia, Liam and Nadia about a problem on his family's weekend trip to Cusco.",
+    "lines": [
+      {
+        "speaker": "Mateo",
+        "text": "You won't believe it — we got to the hotel, and they <b>had given</b> our room to someone else!"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "What? <b>Had</b> your parents <b>booked</b> it?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Yes, days before! But someone <b>had cancelled</b>, and the hotel <b>had</b> already <b>sold</b> it again."
+      },
+      {
+        "speaker": "Liam",
+        "text": "So what <b>had happened</b> by the time you arrived?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "They gave us a smaller room instead, because they <b>hadn't checked</b> properly."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>Had</b> you <b>eaten</b> before you got there? You must have been exhausted."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "We <b>had</b> just <b>eaten</b> at a stop on the way, so it wasn't too bad."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "By the time you found a solution, <b>had</b> it <b>got</b> dark?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Yes — the sun <b>had</b> already <b>set</b> an hour before."
+      },
+      {
+        "speaker": "Liam",
+        "text": "At least your parents <b>had brought</b> warm jackets!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "When we arrived, the film ___ already started.",
+          "options": [
+            "had",
+            "has",
+            "was"
+          ],
+          "answer": 0,
+          "why": "the earlier of two past events"
+        },
+        {
+          "sentence": "___ you ever been to Cusco before that trip?",
+          "options": [
+            "Have",
+            "Had",
+            "Did"
+          ],
+          "answer": 1,
+          "why": "a past experience before another past moment"
+        },
+        {
+          "sentence": "By the time the bus came, we ___ waited for half an hour.",
+          "options": [
+            "have",
+            "were",
+            "had"
+          ],
+          "answer": 2,
+          "why": "the waiting started before the bus arrived"
+        },
+        {
+          "sentence": "She ___ seen the message before she called.",
+          "options": [
+            "had",
+            "has",
+            "was"
+          ],
+          "answer": 0,
+          "why": "seeing the message came first"
+        },
+        {
+          "sentence": "We ___ just sat down when the waiter arrived.",
+          "options": [
+            "have",
+            "had",
+            "were"
+          ],
+          "answer": 1,
+          "why": "just + had + participle for a moment before"
+        },
+        {
+          "sentence": "Nadia ___ never visited Cusco before that trip.",
+          "options": [
+            "was",
+            "has",
+            "had"
+          ],
+          "answer": 2,
+          "why": "never + past perfect for experience before a past moment"
+        },
+        {
+          "sentence": "Before I ___ finished, she left.",
+          "options": [
+            "had",
+            "have",
+            "was"
+          ],
+          "answer": 0,
+          "why": "had, not have, with a past time reference"
+        },
+        {
+          "sentence": "___ your parents booked the room online?",
+          "options": [
+            "Did",
+            "Had",
+            "Have"
+          ],
+          "answer": 1,
+          "why": "question form of the past perfect"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "When we arrived, the film ___ (already/start).",
+          "answers": [
+            "had already started"
+          ]
+        },
+        {
+          "sentence": "___ you ever ___ (be) to Cusco before that trip?",
+          "answers": [
+            "Had … been",
+            "Had you been"
+          ]
+        },
+        {
+          "sentence": "By the time the bus came, we ___ (wait) for half an hour.",
+          "answers": [
+            "had waited"
+          ]
+        },
+        {
+          "sentence": "She ___ (see) the message before she called.",
+          "answers": [
+            "had seen"
+          ]
+        },
+        {
+          "sentence": "We ___ (just/sit) down when the waiter arrived.",
+          "answers": [
+            "had just sat"
+          ]
+        },
+        {
+          "sentence": "Nadia ___ (never/visit) Cusco before that trip.",
+          "answers": [
+            "had never visited"
+          ]
+        },
+        {
+          "sentence": "Before I ___ (finish), she left.",
+          "answers": [
+            "had finished"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "already started",
+            "The film",
+            "when we arrived",
+            "had",
+            "."
+          ],
+          "answer": "The film had already started when we arrived."
+        },
+        {
+          "words": [
+            "ever been",
+            "you",
+            "Had",
+            "to Cusco before",
+            "?"
+          ],
+          "answer": "Had you ever been to Cusco before?"
+        },
+        {
+          "words": [
+            "for half an hour",
+            "We had waited",
+            "by the time the bus came",
+            "."
+          ],
+          "answer": "We had waited for half an hour by the time the bus came."
+        },
+        {
+          "words": [
+            "the message",
+            "She had seen",
+            "before she called",
+            "."
+          ],
+          "answer": "She had seen the message before she called."
+        },
+        {
+          "words": [
+            "down",
+            "We had just sat",
+            "when the waiter arrived",
+            "."
+          ],
+          "answer": "We had just sat down when the waiter arrived."
+        },
+        {
+          "words": [
+            "Cusco before that trip",
+            "had never visited",
+            "Nadia",
+            "."
+          ],
+          "answer": "Nadia had never visited Cusco before that trip."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "We arrived after the film started.",
+          "key": "HAD",
+          "second_start": "The film",
+          "second_end": "before we arrived.",
+          "answers": [
+            "had started"
+          ]
+        },
+        {
+          "first": "This was Nadia's first visit to Cusco.",
+          "key": "NEVER",
+          "second_start": "Nadia",
+          "second_end": "to Cusco before.",
+          "answers": [
+            "had never been",
+            "'d never been"
+          ]
+        },
+        {
+          "first": "The waiting lasted half an hour before the bus came.",
+          "key": "WAITED",
+          "second_start": "We",
+          "second_end": "for half an hour by the time the bus came.",
+          "answers": [
+            "had waited"
+          ]
+        },
+        {
+          "first": "She saw the message before she made the call.",
+          "key": "SEEN",
+          "second_start": "She",
+          "second_end": "the message before she called.",
+          "answers": [
+            "had seen"
+          ]
+        },
+        {
+          "first": "They sat down a moment before the waiter came.",
+          "key": "JUST",
+          "second_start": "They",
+          "second_end": "sat down when the waiter came.",
+          "answers": [
+            "had just"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say which of two past events happened first, using had + past participle.",
+    "I can use before, after, by the time and when to link the two events clearly.",
+    "I can use already, just and never with the past perfect to add detail to a story."
+  ],
+  "summary": [
+    "Past perfect = had + past participle, for the event that happened before another past event.",
+    "The later event in the story stays in the past simple.",
+    "Before, after, by the time and when link the two events and show their real order.",
+    "Already, just and never add detail to the earlier event.",
+    "The sentence order can be different from the story order — had shows which one really came first."
+  ]
+}

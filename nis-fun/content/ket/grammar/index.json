@@ -1,5 +1,182 @@
 {
   "level": "ket",
-  "count": 0,
-  "areas": []
+  "cefr": "A2",
+  "exam": "A2 Key for Schools",
+  "count": 24,
+  "areas": [
+    {
+      "area": "Tenses & time",
+      "topics": [
+        {
+          "id": "present-simple",
+          "title": "Present simple: be, have got and routines",
+          "tagline": "Facts, routines and habits — the tense for what is always or usually true.",
+          "cefr": "A2"
+        },
+        {
+          "id": "present-continuous",
+          "title": "Present continuous",
+          "tagline": "Now vs always — and the verbs that never take -ing.",
+          "cefr": "A2"
+        },
+        {
+          "id": "past-simple",
+          "title": "Past simple",
+          "tagline": "One tense for finished actions at a finished time: yesterday, last week, in 2019.",
+          "cefr": "A2"
+        },
+        {
+          "id": "past-continuous",
+          "title": "Past continuous with when and while",
+          "tagline": "The background action that was happening when something else interrupted it.",
+          "cefr": "A2"
+        },
+        {
+          "id": "present-perfect",
+          "title": "Present perfect: ever, never, just, already, yet",
+          "tagline": "A past action that still matters now — have/has + the third form of the verb.",
+          "cefr": "A2"
+        },
+        {
+          "id": "present-perfect-vs-past-simple",
+          "title": "Present perfect or past simple?",
+          "tagline": "One question decides it: does the sentence say exactly when?",
+          "cefr": "A2"
+        },
+        {
+          "id": "future-forms",
+          "title": "Talking about the future",
+          "tagline": "The future isn't one tense — it's a choice between will, going to and the present continuous.",
+          "cefr": "A2"
+        }
+      ]
+    },
+    {
+      "area": "Modals",
+      "topics": [
+        {
+          "id": "modals-ability-permission",
+          "title": "can, could, may: ability, requests and permission",
+          "tagline": "Three small words for what you can do, and for asking politely.",
+          "cefr": "A2"
+        },
+        {
+          "id": "modals-obligation-advice",
+          "title": "must, have to, should: rules and advice",
+          "tagline": "Rules, prohibitions and advice — and the two words that look alike but mean opposite things.",
+          "cefr": "A2"
+        }
+      ]
+    },
+    {
+      "area": "Conditionals & hypothesis",
+      "topics": [
+        {
+          "id": "zero-first-conditional",
+          "title": "Zero and first conditional",
+          "tagline": "Things that are always true, and real plans for the future.",
+          "cefr": "A2"
+        }
+      ]
+    },
+    {
+      "area": "Sentence building",
+      "topics": [
+        {
+          "id": "questions",
+          "title": "Questions and short answers",
+          "tagline": "Asking about people, places, times and reasons — the right word order every time.",
+          "cefr": "A2"
+        },
+        {
+          "id": "linking-words",
+          "title": "Linking words: and, but, or, so, because",
+          "tagline": "Turning two short sentences into one — and, but, or, so, because, and more.",
+          "cefr": "A2"
+        },
+        {
+          "id": "verb-patterns-a2",
+          "title": "Verb patterns: like doing, want to do",
+          "tagline": "After like, want, go and let's — is it -ing or to? Here's how to choose.",
+          "cefr": "A2"
+        },
+        {
+          "id": "relative-clauses-a2",
+          "title": "who, which, that, where",
+          "tagline": "Adding one extra detail about a person, thing or place without starting a new sentence.",
+          "cefr": "A2"
+        },
+        {
+          "id": "there-is-have-got",
+          "title": "there is/are and have got",
+          "tagline": "Saying what exists in a place, and what a person or place has.",
+          "cefr": "A2"
+        },
+        {
+          "id": "imperatives-suggestions",
+          "title": "Imperatives, suggestions and offers",
+          "tagline": "Giving instructions, making suggestions, and offering — politely.",
+          "cefr": "A2"
+        },
+        {
+          "id": "story-telling-sequencing",
+          "title": "Telling a story: sequencing and past tenses together",
+          "tagline": "Beginning, surprise, ending — the shape every good story shares.",
+          "cefr": "A2"
+        }
+      ]
+    },
+    {
+      "area": "Comparison & description",
+      "topics": [
+        {
+          "id": "comparatives-superlatives",
+          "title": "Comparatives and superlatives",
+          "tagline": "Small, smaller, the smallest: how to compare people, places and things.",
+          "cefr": "A2"
+        },
+        {
+          "id": "adjectives-adverbs-a2",
+          "title": "Adjectives and adverbs",
+          "tagline": "A big red bag, a bored student, a boring film: describing people, things and actions.",
+          "cefr": "A2"
+        },
+        {
+          "id": "articles-a2",
+          "title": "A, an, the or nothing?",
+          "tagline": "A, an, the or nothing: choosing the right article (or none at all).",
+          "cefr": "A2"
+        },
+        {
+          "id": "countable-uncountable",
+          "title": "Countable and uncountable: some, any, much, many",
+          "tagline": "How many apples, how much juice: countable and uncountable nouns.",
+          "cefr": "A2"
+        },
+        {
+          "id": "prepositions-time-place",
+          "title": "Prepositions of time and place",
+          "tagline": "At six, on Monday, in May: the small words for time and place.",
+          "cefr": "A2"
+        },
+        {
+          "id": "pronouns-possessives",
+          "title": "Pronouns and possessives",
+          "tagline": "I, me, my, mine: pronouns and possessives for people and things.",
+          "cefr": "A2"
+        }
+      ]
+    },
+    {
+      "area": "Words",
+      "topics": [
+        {
+          "id": "word-building-a2",
+          "title": "Word building and spelling",
+          "tagline": "Swim → swimmer, happy → unhappy: building and spelling new words.",
+          "cefr": "A2"
+        }
+      ]
+    }
+  ]
 }

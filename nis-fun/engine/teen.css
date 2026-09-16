@@ -280,6 +280,11 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
 .teen .t-pr .item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;margin-bottom:.6rem;box-shadow:var(--t-sh)}
 .teen .t-pr .stem{font-size:1.02rem;line-height:1.5;margin-bottom:.5rem}
 .teen .t-pr .stem b{border-bottom:2px solid var(--accent);padding:0 .3rem}
+/* Reading Part 1 (A2 Key / B1 Preliminary): el aviso, cartel o mensaje corto se pinta como un cartel
+   antes de la pregunta. Lo escribe el contenido como <div class="notice">…</div> dentro de sentence. */
+.teen .exam .stem .notice{display:block;max-width:26rem;margin:.25rem 0 .6rem;padding:.7rem 1rem;border:2px solid var(--ink,#1e293b);border-radius:10px;background:var(--surface);font-weight:700;letter-spacing:.01em;line-height:1.35;box-shadow:var(--t-sh)}
+.teen .exam .stem .notice.msg{font-weight:500;border-style:dashed;font-style:italic}
+.teen .exam .stem .notice small{display:block;font-weight:500;font-style:normal;opacity:.75;margin-top:.25rem}
 .teen .t-pr .opts{display:flex;flex-wrap:wrap;gap:.45rem}
 .teen .t-pr .obtn{padding:.45rem .85rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font:inherit;font-size:.92rem;color:inherit}
 .teen .t-pr .obtn.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface))}
@@ -326,4 +331,109 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
   .teen .t-dlg .bb{max-width:88%}
   .teen .t-contrast{font-size:.82rem}
   .teen .t-contrast td:first-child{width:5.5rem}
+}
+
+/* ---- Grammar Lab, niveles inferiores (A1/A2/B1): la caja de herramientas del maestro ---- */
+/* el puente A1 <-> A2 */
+.teen .t-bridge{display:flex;gap:.9rem;align-items:center;max-width:52rem;margin:1rem auto;padding:.9rem 1.1rem;border-radius:var(--t-r);text-align:left;text-decoration:none;color:inherit;background:color-mix(in srgb,var(--accent) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);box-shadow:var(--t-sh);transition:transform .12s}
+.teen .t-bridge:hover{transform:translateY(-2px)}
+.teen .t-bridge img{flex:none}
+.teen .t-bridge>span:not(.go){flex:1}
+.teen .t-bridge b{display:block;font-size:1rem}
+.teen .t-bridge small{color:var(--soft);line-height:1.4}
+.teen .t-bridge .go{font-size:1.6rem;color:var(--accent);font-weight:700}
+
+/* etapas del indice (A1 Foundations → A2 Key) */
+.teen .t-stage{margin:2rem 0 .2rem;text-align:left;padding:.9rem 1.2rem;border-radius:var(--t-r);background:linear-gradient(135deg,var(--t-navy),var(--t-navy2));color:#fff;box-shadow:var(--t-sh)}
+.teen .t-stage .t-kicker{color:rgba(255,255,255,.75)}
+.teen .t-stage h2{margin:.1rem 0 0;font-size:1.25rem}
+/* la escena inicial: Nova cuenta y pregunta antes de la regla */
+.teen .t-hook{max-width:52rem;margin:0 auto 1rem;display:flex;gap:.9rem;align-items:flex-start;text-align:left}
+.teen .t-hook .nova{flex:none;width:4.2rem;height:4.2rem;border-radius:50%;overflow:hidden;background:color-mix(in srgb,var(--accent) 14%,var(--surface));border:3px solid var(--surface);box-shadow:var(--t-sh);display:grid;place-items:center;font-size:1.6rem;color:var(--accent)}
+.teen .t-hook .nova img{width:100%;height:100%;object-fit:cover}
+.teen .t-hook .bb{flex:1;position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:.9rem 1.1rem;box-shadow:var(--t-sh)}
+.teen .t-hook .bb::before{content:'';position:absolute;left:-9px;top:1.3rem;width:16px;height:16px;background:var(--surface);border-left:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+.teen .t-hook .bb .t-kicker{color:var(--accent)}
+.teen .t-hook .story{margin:.3rem 0 .5rem;font-size:1.08rem;line-height:1.6}
+.teen .t-hook .story b{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:5px;padding:0 .2em}
+.teen .t-hook .ask{margin:0;display:flex;gap:.5rem;align-items:flex-start;padding:.6rem .8rem;border-radius:12px;background:color-mix(in srgb,var(--t-kw) 14%,var(--surface));line-height:1.5;font-weight:600}
+.teen .t-hook .ask img{flex:none;margin-top:.1rem}
+.teen .ex-say{border:0;background:var(--surface2);border-radius:50%;width:1.8rem;height:1.8rem;cursor:pointer;font-size:.85rem;vertical-align:middle;box-shadow:var(--t-sh)}
+.teen .ex-say:hover{background:var(--accent);color:#fff}
+/* bloques de colores: la frase como Lego */
+.teen .t-bl{display:grid;gap:.6rem}
+.teen .t-bl-row{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.teen .t-brick{--c:#94a3b8;display:inline-block;padding:.45rem .7rem;border-radius:9px;font-weight:700;font-size:1rem;line-height:1.15;color:#fff;background:var(--c);box-shadow:inset 0 -3px 0 rgba(0,0,0,.18),0 1px 2px rgba(0,0,0,.12)}
+.teen .t-brick.subj{--c:var(--t-pa)}.teen .t-brick.verb{--c:var(--t-bad)}.teen .t-brick.aux{--c:#f97316}.teen .t-brick.obj{--c:var(--t-pb)}
+.teen .t-brick.neg{--c:var(--t-navy2)}.teen .t-brick.time{--c:var(--t-pc)}.teen .t-brick.place{--c:#0891b2}.teen .t-brick.kw{--c:var(--t-kw);color:#1f1300}
+.teen .t-brick.x{--c:#94a3b8}
+.teen .t-brick.p{background:none;box-shadow:none;color:var(--ink);padding:.45rem .1rem;font-size:1.15rem}
+.teen .t-bl-note{margin-left:.3rem;font-size:.8rem;color:var(--soft);font-style:italic}
+.teen .t-bl-legend{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin-top:.3rem;padding-top:.6rem;border-top:1px dashed var(--line);font-size:.78rem;color:var(--soft)}
+.teen .t-bl-legend span{display:inline-flex;align-items:center;gap:.35rem}
+.teen .t-bl-legend i.t-brick{width:.9rem;height:.9rem;padding:0;border-radius:3px;box-shadow:none}
+/* pasos numerados */
+.teen .t-st{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr))}
+.teen .t-step{display:flex;gap:.7rem;align-items:flex-start;padding:.8rem .9rem;border-radius:14px;background:var(--surface2);border:1px solid var(--line);position:relative}
+.teen .t-step .n{flex:none;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.95rem}
+.teen .t-step b{display:block;font-size:.92rem;line-height:1.3}
+.teen .t-step .ex{display:block;margin-top:.35rem;font-size:1.02rem;line-height:1.4;padding:.35rem .55rem;border-radius:8px;background:var(--surface);border:1px dashed var(--line)}
+.teen .t-step .ex b{display:inline;color:var(--accent)}
+/* tarjetas de ortografia */
+.teen .t-sp{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr))}
+.teen .t-sp-rule{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.teen .t-sp-rule>b{display:block;padding:.5rem .8rem;background:var(--t-navy);color:#fff;font-size:.88rem}
+.teen .t-sp-rule ul{list-style:none;margin:0;padding:.5rem .8rem .6rem;font-size:1rem;line-height:1.7}
+.teen .t-sp-rule li b{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:4px;padding:0 .15em}
+/* el truco de memoria: nota adhesiva */
+.teen .t-remember{position:relative;max-width:52rem;margin:1rem auto 0;text-align:left;padding:1rem 1.2rem 1rem 1.3rem;border-radius:6px 18px 18px 18px;background:color-mix(in srgb,var(--t-kw) 22%,var(--surface));border:1px solid color-mix(in srgb,var(--t-kw) 50%,transparent);box-shadow:var(--t-sh);transform:rotate(-.4deg)}
+.teen .t-remember .pin{position:absolute;left:-.5rem;top:-.7rem;font-size:1.4rem;transform:rotate(-20deg)}
+.teen .t-remember .t-kicker{color:#92400e}
+:root[data-theme="dark"] .teen .t-remember .t-kicker{color:#fcd34d}
+.teen .t-remember .trick{margin:.25rem 0 .35rem;font-size:1.35rem;font-weight:800;line-height:1.3;letter-spacing:-.01em}
+.teen .t-remember .tip{margin:0;line-height:1.55;font-size:.98rem}
+/* trampas del español */
+.teen .t-l1{max-width:52rem;margin:0 auto;text-align:left;display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(22rem,1fr))}
+.teen .t-l1 .it{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.8rem .9rem;box-shadow:var(--t-sh);font-size:.95rem}
+.teen .t-l1 .es{font-weight:700;margin-bottom:.4rem;display:flex;gap:.5rem;align-items:center;color:var(--ink)}
+.teen .t-l1 .es .tag{font-size:.65rem;letter-spacing:.1em;padding:.15rem .45rem;border-radius:6px;background:var(--t-navy);color:#fff}
+.teen .t-l1 .w,.teen .t-l1 .r{display:flex;gap:.5rem;align-items:flex-start;line-height:1.45}
+.teen .t-l1 .w{color:var(--t-bad);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--t-bad) 60%,transparent)}
+.teen .t-l1 .r{color:var(--ink);margin-top:.25rem}
+.teen .t-l1 .w::before{content:'✗';flex:none;font-weight:700;text-decoration:none}
+.teen .t-l1 .r::before{content:'✓';flex:none;color:var(--t-ok);font-weight:700}
+.teen .t-l1 .why{margin:.4rem 0 0;font-size:.82rem;color:var(--soft);padding-left:1.2rem}
+/* ordenar palabras */
+.teen .t-order .line{min-height:2.7rem;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;padding:.4rem .6rem;border-radius:10px;border:2px dashed var(--line);background:var(--surface2);margin-bottom:.55rem}
+.teen .t-order .line .ph{color:var(--soft);font-style:italic;font-size:.9rem}
+.teen .t-order .line .w{padding:.3rem .6rem;border-radius:8px;background:var(--surface);border:1px solid var(--line);font-weight:600}
+.teen .t-order .item.ok .line{border-color:var(--t-ok);background:color-mix(in srgb,var(--t-ok) 10%,var(--surface))}
+.teen .t-order .item.bad .line{border-color:var(--t-bad);background:color-mix(in srgb,var(--t-bad) 8%,var(--surface))}
+.teen .t-order .tiles{display:flex;flex-wrap:wrap;gap:.4rem}
+.teen .t-order .tile{padding:.5rem .85rem;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font:inherit;font-size:1rem;font-weight:600;color:inherit;box-shadow:var(--t-sh)}
+.teen .t-order .tile:hover:not(:disabled){border-color:var(--accent);transform:translateY(-1px)}
+.teen .t-order .tile:disabled{opacity:.25;cursor:default}
+.teen .t-order .tools{display:flex;gap:.6rem;align-items:center;margin-top:.5rem}
+.teen .t-order .undo{border:0;background:none;color:var(--soft);cursor:pointer;font:inherit;font-size:.85rem;padding:.2rem .4rem}
+.teen .t-order .undo:hover{color:var(--accent)}
+/* ¿bien o mal? */
+.teen .t-spot .fixline{margin:.4rem 0 0;font-size:.95rem;font-weight:600}
+.teen .t-spot .fixline .okmsg{color:var(--t-ok)}
+.teen .t-spot .fixline .fixmsg{color:var(--t-bad)}
+.teen .t-spot .fixline .fixmsg b{color:var(--t-ok)}
+/* el semaforo "I can…" */
+.teen .t-cando{max-width:44rem;margin:1.2rem auto 0;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--t-r);padding:1rem 1.2rem;box-shadow:var(--t-sh)}
+.teen .t-cando h4{margin:0 0 .6rem;display:flex;gap:.5rem;align-items:center;font-size:1rem}
+.teen .t-cando .cd{display:flex;gap:.8rem;align-items:center;justify-content:space-between;padding:.6rem 0;border-top:1px dashed var(--line);line-height:1.45}
+.teen .t-cando .lights{display:flex;gap:.35rem;flex:none}
+.teen .t-cando .lt{width:1.7rem;height:1.7rem;border-radius:50%;border:2px solid var(--line);background:var(--surface2);cursor:pointer;opacity:.55;transition:transform .12s}
+.teen .t-cando .lt:hover{transform:scale(1.12);opacity:1}
+.teen .t-cando .lt.g{background:var(--t-ok)}.teen .t-cando .lt.y{background:var(--t-kw)}.teen .t-cando .lt.r{background:var(--t-bad)}
+.teen .t-cando .lt.on{opacity:1;border-color:var(--ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--ink) 15%,transparent)}
+.teen .t-cando .hint{margin:.6rem 0 0;font-size:.8rem;color:var(--soft)}
+@media (max-width:640px){
+  .teen .t-hook{flex-direction:column}
+  .teen .t-hook .bb::before{display:none}
+  .teen .t-cando .cd{flex-direction:column;align-items:flex-start;gap:.4rem}
+  .teen .t-brick{font-size:.92rem;padding:.4rem .55rem}
 }

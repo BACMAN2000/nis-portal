@@ -1,0 +1,627 @@
+{
+  "id": "articles-a2",
+  "level": "ket",
+  "area": "Comparison & description",
+  "title": "A, an, the or nothing?",
+  "tagline": "A, an, the or nothing: choosing the right article (or none at all).",
+  "cefr": "A2",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Reading Part 6 — open cloze",
+    "Writing Part 7 — a short story"
+  ],
+  "why": "Articles are tiny words, but they're everywhere: a pencil, the sun, no article before football or breakfast. Getting them right is one of the hardest things for Spanish speakers, and the exam checks it constantly in Reading Parts 5 and 6.",
+  "hook": {
+    "text": "It's Friday. Miss Vega asks about the weekend. \"I'm going to <b>the</b> cinema,\" says Sofia. \"I'm playing <b>football</b>,\" says Mateo. \"I want to read <b>a</b> book about <b>an</b> astronaut,\" says Nadia.",
+    "ask": "Some words have a or an, some have the, and some have no article at all. Can you spot all three types in the story?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "a, an, the or nothing?",
+      "center": "Articles",
+      "branches": [
+        {
+          "label": "a / an",
+          "items": [
+            "a teacher",
+            "an apple",
+            "a football (one of many)"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "the",
+          "items": [
+            "the sun (only one)",
+            "the cinema (a known place)",
+            "the book on the table (specific)"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "no article",
+          "items": [
+            "breakfast",
+            "football",
+            "Spanish",
+            "cats (in general)"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "fixed places",
+          "items": [
+            "go to school",
+            "go to bed",
+            "at home",
+            "go to work"
+          ],
+          "tone": "a"
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to choose a or an",
+      "steps": [
+        {
+          "label": "Listen to the sound of the next word, not the letter",
+          "ex": "an hour (the h is silent)"
+        },
+        {
+          "label": "Consonant sound → a",
+          "ex": "<b>a</b> university"
+        },
+        {
+          "label": "Vowel sound → an",
+          "ex": "<b>an</b> egg, <b>an</b> hour"
+        }
+      ],
+      "caption": "It's the sound that matters, not the spelling: a university (sounds like 'y'), an hour (silent h)."
+    },
+    {
+      "type": "contrast",
+      "title": "a/an, the or no article?",
+      "columns": [
+        "a / an",
+        "the",
+        "no article"
+      ],
+      "rows": [
+        {
+          "label": "When",
+          "cells": [
+            "first time, one of many",
+            "known, unique, or mentioned again",
+            "general things, meals, sports, languages"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "I bought a bike.",
+            "The bike is red.",
+            "We have breakfast at seven."
+          ]
+        },
+        {
+          "label": "Also for",
+          "cells": [
+            "jobs: She's a nurse.",
+            "superlatives: the best day",
+            "plural general nouns: Cats are independent."
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "a / an",
+        "tone": "kw",
+        "ex": "a book, an egg"
+      },
+      {
+        "chip": "the",
+        "tone": "a",
+        "ex": "the book (we both know which one)"
+      },
+      {
+        "chip": "(no article)",
+        "tone": "c",
+        "ex": "breakfast, football, cats"
+      }
+    ],
+    "table": {
+      "head": [
+        "Situation",
+        "Article",
+        "Example"
+      ],
+      "rows": [
+        [
+          "one of many things",
+          "a/an",
+          "I need a pencil."
+        ],
+        [
+          "something specific or unique",
+          "the",
+          "The sun is bright today."
+        ],
+        [
+          "a job",
+          "a/an",
+          "He's an engineer."
+        ],
+        [
+          "a meal, sport or language",
+          "no article",
+          "We have lunch at one. I play tennis."
+        ],
+        [
+          "a fixed place or activity",
+          "no article",
+          "go to school, go to bed, at home"
+        ],
+        [
+          "a real, specific place",
+          "the",
+          "go to the cinema, the beach, the station"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "a/an: one of many, or a job",
+      "examples": [
+        {
+          "text": "I need <b>a</b> pencil for the test.",
+          "note": "one of many pencils"
+        },
+        {
+          "text": "She's <b>an</b> engineer.",
+          "note": "jobs always use a/an"
+        },
+        {
+          "text": "There's <b>a</b> spider on the wall!",
+          "note": "the first time you mention something"
+        }
+      ]
+    },
+    {
+      "point": "the: something specific, known or unique",
+      "examples": [
+        {
+          "text": "<b>The</b> sun is very bright today.",
+          "note": "there's only one sun"
+        },
+        {
+          "text": "I saw a dog in the park. <b>The</b> dog was brown.",
+          "note": "the second time you mention it, it's specific"
+        },
+        {
+          "text": "Can you close <b>the</b> door, please?",
+          "note": "both people know which door"
+        }
+      ]
+    },
+    {
+      "point": "No article: meals, sports, languages, general plurals",
+      "examples": [
+        {
+          "text": "We have <b>breakfast</b> at seven.",
+          "note": "meals in general take no article"
+        },
+        {
+          "text": "Mateo plays <b>football</b> every Saturday.",
+          "note": "sports in general take no article"
+        },
+        {
+          "text": "<b>Cats</b> are very independent animals.",
+          "note": "general plural nouns take no article"
+        }
+      ]
+    },
+    {
+      "point": "Fixed expressions: go to school/bed, at home, the cinema",
+      "examples": [
+        {
+          "text": "Liam goes to <b>school</b> by bus.",
+          "note": "no article for the activity of school"
+        },
+        {
+          "text": "I'm tired — I'm going to <b>bed</b>.",
+          "note": "no article with bed in this expression"
+        },
+        {
+          "text": "We stayed <b>at home</b> all weekend.",
+          "note": "no article with home in this phrase"
+        },
+        {
+          "text": "On Saturday we went to <b>the cinema</b> and then to <b>the beach</b>.",
+          "note": "real, specific places need the"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I am engineer.",
+      "right": "I am <b>an</b> engineer.",
+      "why": "Jobs always need a or an in English."
+    },
+    {
+      "wrong": "The football is my favourite sport.",
+      "right": "<b>Football</b> is my favourite sport.",
+      "why": "Sports in general take no article."
+    },
+    {
+      "wrong": "I go to the school every day.",
+      "right": "I go to <b>school</b> every day.",
+      "why": "The activity of studying takes no article."
+    },
+    {
+      "wrong": "We had the lunch at one o'clock.",
+      "right": "We had <b>lunch</b> at one o'clock.",
+      "why": "Meals take no article when you talk about them in general."
+    },
+    {
+      "wrong": "Sun is very hot today.",
+      "right": "<b>The</b> sun is very hot today.",
+      "why": "Unique things like the sun, the moon and the sky always need the."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Soy profesora.",
+      "wrong": "I am teacher.",
+      "right": "I am <b>a</b> teacher.",
+      "why": "Spanish drops the article with jobs, but English never does."
+    },
+    {
+      "es": "Me gusta el fútbol.",
+      "wrong": "I like the football.",
+      "right": "I like <b>football</b>.",
+      "why": "Spanish uses el with sports in general; English uses no article."
+    },
+    {
+      "es": "Voy al colegio en bus.",
+      "wrong": "I go to the school by bus.",
+      "right": "I go to <b>school</b> by bus.",
+      "why": "Talking about the activity of studying, English drops the — not just the preposition."
+    },
+    {
+      "es": "El sol es una estrella.",
+      "wrong": "Sol is a star.",
+      "right": "<b>The</b> sun is a star.",
+      "why": "English never drops the article before a unique thing like the sun."
+    }
+  ],
+  "remember": {
+    "trick": "A/an = one of many. THE = we both know it!",
+    "tip": "Ask yourself: is this just ONE OF MANY things (a/an), or do we BOTH already know which one (the)?"
+  },
+  "dialogue": {
+    "title": "Weekend plans",
+    "context": "On Friday afternoon, Miss Vega's students talk about their weekend before going home.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "Any plans for the weekend?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Yes! On Saturday I'm going to <b>the cinema</b> with my mum."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I'm playing <b>football</b> in the morning, then I'm going to <b>the beach</b>."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I'm staying <b>at home</b>. I want to read <b>a</b> book."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>The</b> book you're reading — is it good?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Yes, it's about <b>an</b> astronaut who lives on <b>the</b> moon!"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Sounds interesting. Don't forget: we have <b>lunch</b> together on Monday for my birthday."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Great! I'll bring <b>a</b> cake."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose a, an, the or — (no article).",
+      "items": [
+        {
+          "sentence": "I need ___ pencil for the test.",
+          "options": [
+            "a",
+            "an",
+            "the"
+          ],
+          "answer": 0,
+          "why": "a before a consonant sound"
+        },
+        {
+          "sentence": "She's ___ engineer.",
+          "options": [
+            "a",
+            "an",
+            "the"
+          ],
+          "answer": 1,
+          "why": "an before a vowel sound"
+        },
+        {
+          "sentence": "___ sun is very bright today.",
+          "options": [
+            "A",
+            "An",
+            "The"
+          ],
+          "answer": 2,
+          "why": "a unique thing → the"
+        },
+        {
+          "sentence": "We have ___ breakfast at seven.",
+          "options": [
+            "a",
+            "the",
+            "— (nothing)"
+          ],
+          "answer": 2,
+          "why": "meals in general take no article"
+        },
+        {
+          "sentence": "Mateo plays ___ football every Saturday.",
+          "options": [
+            "a",
+            "— (nothing)",
+            "the"
+          ],
+          "answer": 1,
+          "why": "sports in general take no article"
+        },
+        {
+          "sentence": "I go to ___ school by bus.",
+          "options": [
+            "a",
+            "the",
+            "— (nothing)"
+          ],
+          "answer": 2,
+          "why": "the activity of school takes no article"
+        },
+        {
+          "sentence": "On Saturday we're going to ___ cinema.",
+          "options": [
+            "the",
+            "a",
+            "— (nothing)"
+          ],
+          "answer": 0,
+          "why": "a real, specific place needs the"
+        },
+        {
+          "sentence": "I'm going to ___ bed early tonight.",
+          "options": [
+            "a",
+            "— (nothing)",
+            "the"
+          ],
+          "answer": 1,
+          "why": "bed as an activity takes no article"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with a, an, the or write — if no article is needed. If no article is needed, leave the gap empty or write x.",
+      "items": [
+        {
+          "sentence": "I need ___ pencil.",
+          "answers": [
+            "a"
+          ]
+        },
+        {
+          "sentence": "She's ___ engineer.",
+          "answers": [
+            "an"
+          ]
+        },
+        {
+          "sentence": "___ sun is very bright today.",
+          "answers": [
+            "The"
+          ]
+        },
+        {
+          "sentence": "We have ___ breakfast at seven.",
+          "answers": [
+            "—",
+            "-",
+            "x",
+            "nothing",
+            "no article",
+            ""
+          ]
+        },
+        {
+          "sentence": "Mateo plays ___ football every Saturday.",
+          "answers": [
+            "—",
+            "-",
+            "x",
+            "nothing",
+            "no article",
+            ""
+          ]
+        },
+        {
+          "sentence": "I go to ___ school by bus.",
+          "answers": [
+            "—",
+            "-",
+            "x",
+            "nothing",
+            "no article",
+            ""
+          ]
+        },
+        {
+          "sentence": "On Saturday we're going to ___ cinema.",
+          "answers": [
+            "the"
+          ]
+        },
+        {
+          "sentence": "I'm going to ___ bed early tonight.",
+          "answers": [
+            "—",
+            "-",
+            "x",
+            "nothing",
+            "no article",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "for the test",
+            "a pencil",
+            "I need",
+            "."
+          ],
+          "answer": "I need a pencil for the test."
+        },
+        {
+          "words": [
+            "an engineer",
+            "She's",
+            "."
+          ],
+          "answer": "She's an engineer."
+        },
+        {
+          "words": [
+            "is very bright today",
+            "The sun",
+            "."
+          ],
+          "answer": "The sun is very bright today."
+        },
+        {
+          "words": [
+            "at seven",
+            "have breakfast",
+            "We",
+            "."
+          ],
+          "answer": "We have breakfast at seven."
+        },
+        {
+          "words": [
+            "every Saturday",
+            "plays football",
+            "Mateo",
+            "."
+          ],
+          "answer": "Mateo plays football every Saturday."
+        },
+        {
+          "words": [
+            "on Saturday",
+            "going to the cinema",
+            "I'm",
+            "."
+          ],
+          "answer": "I'm going to the cinema on Saturday."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "I am engineer.",
+          "ok": false,
+          "fix": "I am <b>an</b> engineer.",
+          "why": "jobs always need a or an"
+        },
+        {
+          "sentence": "Football is my favourite sport.",
+          "ok": true,
+          "why": "sports in general take no article"
+        },
+        {
+          "sentence": "I go to the school every day.",
+          "ok": false,
+          "fix": "I go to <b>school</b> every day.",
+          "why": "the activity of studying takes no article"
+        },
+        {
+          "sentence": "We had lunch at one o'clock.",
+          "ok": true,
+          "why": "meals in general take no article"
+        },
+        {
+          "sentence": "Sun is very hot today.",
+          "ok": false,
+          "fix": "<b>The</b> sun is very hot today.",
+          "why": "unique things like the sun always need the"
+        },
+        {
+          "sentence": "On Saturday we're going to the beach.",
+          "ok": true,
+          "why": "a real, specific place needs the"
+        },
+        {
+          "sentence": "She's a astronaut.",
+          "ok": false,
+          "fix": "She's <b>an</b> astronaut.",
+          "why": "use an before a vowel sound"
+        },
+        {
+          "sentence": "Cats are very independent animals.",
+          "ok": true,
+          "why": "general plural nouns take no article"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use <i>a</i> and <i>an</i> for one of many things and for jobs.",
+    "I can use <i>the</i> for something specific, known or unique.",
+    "I can leave out the article with meals, sports, languages and places like <i>school</i> and <i>home</i>."
+  ],
+  "summary": [
+    "Use <b>a/an</b> for one of many things, and always with jobs: <i>a teacher, an engineer</i>.",
+    "Use <b>the</b> for something specific, known, unique or mentioned before: <i>the sun, the book on the table</i>.",
+    "Meals, sports, languages and general plurals take <b>no article</b>: <i>breakfast, football, Spanish, cats</i>.",
+    "Some places are fixed expressions: <i>go to school/bed/work, at home</i>, but real places need the: <i>the cinema, the beach</i>."
+  ]
+}

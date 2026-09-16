@@ -1,0 +1,681 @@
+{
+  "id": "present-tenses-b1",
+  "level": "pet",
+  "area": "Tenses & time",
+  "title": "Present simple and present continuous",
+  "tagline": "Habits and facts, or right now and fixed plans — even when both talk about tomorrow.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Listening Part 3 — gap-fill note-taking",
+    "Speaking Part 1 — talking about your routine"
+  ],
+  "why": "Every notice, timetable and message in the exam mixes the present simple and the present continuous, and B1 Preliminary tests whether you can tell a routine from something happening now — or an already-arranged plan for tomorrow. The multiple-choice cloze and the note-taking listening both punish the classic mistake of putting -ing on a state verb like <i>like</i> or <i>have</i>. Get this contrast automatic and a big chunk of the grammar questions become easy.",
+  "hook": {
+    "text": "Science fair countdown. Sofia says: “Mateo, you always <b>forget</b> your notes!” Mateo: “Relax — I<b>'m meeting</b> Miss Vega after school to print them.” Sofia: “OK, because the fair <b>starts</b> at nine tomorrow.”",
+    "ask": "Look at the three verbs in bold. One is a routine, one is an arranged plan for later today, and one is a fixed timetable. Which is which, and why?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Same action, different time",
+      "marks": [
+        {
+          "at": "past",
+          "label": "she checks her phone every morning",
+          "sub": "present simple — a routine, again and again"
+        },
+        {
+          "at": "now",
+          "label": "she's checking her phone right now",
+          "sub": "present continuous — happening this moment"
+        },
+        {
+          "at": "future",
+          "label": "she's meeting Liam at five",
+          "sub": "present continuous — a fixed arrangement"
+        }
+      ],
+      "arrows": [
+        [
+          0,
+          1,
+          "same habit, seen right now"
+        ]
+      ],
+      "caption": "Present simple repeats across time like a stamp. Present continuous freezes one moment — now, or an already-arranged moment in the future."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Mateo",
+              "role": "subj"
+            },
+            {
+              "t": "checks",
+              "role": "verb"
+            },
+            {
+              "t": "his email",
+              "role": "obj"
+            },
+            {
+              "t": "every evening",
+              "role": "time"
+            }
+          ],
+          "note": "present simple — statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "Mateo",
+              "role": "subj"
+            },
+            {
+              "t": "doesn't",
+              "role": "neg"
+            },
+            {
+              "t": "check",
+              "role": "verb"
+            },
+            {
+              "t": "his email",
+              "role": "obj"
+            },
+            {
+              "t": "on Sundays",
+              "role": "time"
+            }
+          ],
+          "note": "present simple — negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Sofia",
+              "role": "subj"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "printing",
+              "role": "verb"
+            },
+            {
+              "t": "the poster",
+              "role": "obj"
+            },
+            {
+              "t": "now",
+              "role": "time"
+            }
+          ],
+          "note": "present continuous — statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "Is",
+              "role": "aux"
+            },
+            {
+              "t": "Sofia",
+              "role": "subj"
+            },
+            {
+              "t": "printing",
+              "role": "verb"
+            },
+            {
+              "t": "the poster",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "present continuous — question"
+        }
+      ],
+      "caption": "The helper <b>does/doesn't</b> carries the S in the simple form; <b>is/are</b> carries the question in the continuous form."
+    },
+    {
+      "type": "contrast",
+      "title": "Present simple or present continuous?",
+      "columns": [
+        "Present simple",
+        "Present continuous"
+      ],
+      "rows": [
+        {
+          "label": "Use",
+          "cells": [
+            "routines, facts, timetables",
+            "now, this week, temporary situations, future arrangements"
+          ]
+        },
+        {
+          "label": "Time words",
+          "cells": [
+            "always, usually, every day, on Mondays",
+            "now, at the moment, these days, tomorrow (arranged)"
+          ]
+        },
+        {
+          "label": "State verbs (like, know, want)",
+          "cells": [
+            "yes — I <b>like</b> pizza",
+            "no — not <i>I'm liking</i>"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "The bus <b>leaves</b> at 7.15.",
+            "We<b>'re leaving</b> for Cusco on Friday."
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "Present simple:",
+        "tone": "kw"
+      },
+      {
+        "chip": "subject + verb(-s)",
+        "tone": "a",
+        "ex": "she plays"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "Present continuous:",
+        "tone": "kw"
+      },
+      {
+        "chip": "am/is/are + verb-ing",
+        "tone": "b",
+        "ex": "she's playing"
+      }
+    ],
+    "table": {
+      "head": [
+        "Tense",
+        "Positive",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "Present simple",
+          "She plays tennis.",
+          "She doesn't play tennis.",
+          "Does she play tennis?"
+        ],
+        [
+          "Present continuous",
+          "She's playing tennis.",
+          "She isn't playing tennis.",
+          "Is she playing tennis?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Present simple for routines, facts and general truths",
+      "examples": [
+        {
+          "text": "Nadia <b>plays</b> volleyball every Tuesday.",
+          "note": "a routine, again and again"
+        },
+        {
+          "text": "Water <b>boils</b> at 100 degrees.",
+          "note": "a scientific fact, always true"
+        },
+        {
+          "text": "Liam <b>doesn't like</b> maths, but he <b>loves</b> science.",
+          "note": "state verbs describe feelings, not actions happening now"
+        }
+      ]
+    },
+    {
+      "point": "Present simple for timetables and schedules",
+      "examples": [
+        {
+          "text": "The train to Arequipa <b>leaves</b> at six.",
+          "note": "a fixed timetable, even though it's about the future"
+        },
+        {
+          "text": "The science fair <b>starts</b> at nine tomorrow.",
+          "note": "school events work the same way as trains and buses"
+        }
+      ]
+    },
+    {
+      "point": "Present continuous for actions happening now or around now",
+      "examples": [
+        {
+          "text": "Sofia <b>is printing</b> the posters at this moment.",
+          "note": "happening right now, as we speak"
+        },
+        {
+          "text": "We<b>'re studying</b> really hard this month because of the exams.",
+          "note": "around now — a temporary situation, not forever"
+        },
+        {
+          "text": "Why <b>are</b> you <b>smiling</b>?",
+          "note": "a question about something happening now"
+        }
+      ]
+    },
+    {
+      "point": "Present continuous for future arrangements, and always + -ing for habits that annoy",
+      "examples": [
+        {
+          "text": "I<b>'m meeting</b> Liam at the stadium at five.",
+          "note": "an arranged plan — time and place already fixed"
+        },
+        {
+          "text": "Mateo and Nadia <b>are visiting</b> their grandparents next weekend.",
+          "note": "another fixed future plan, not a guess"
+        },
+        {
+          "text": "Mateo <b>is always losing</b> his keys!",
+          "note": "always + -ing — a habit that annoys the speaker"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "She like chocolate.",
+      "right": "She <b>likes</b> chocolate.",
+      "why": "He/she/it takes an -s in the present simple."
+    },
+    {
+      "wrong": "I am liking this song.",
+      "right": "I <b>like</b> this song.",
+      "why": "Like is a state verb — it doesn't normally take the continuous form."
+    },
+    {
+      "wrong": "Look, she sings very well right now.",
+      "right": "Look, she<b>'s singing</b> very well right now.",
+      "why": "Something happening at this moment needs the continuous, not the simple."
+    },
+    {
+      "wrong": "We are meeting Liam tomorrow at five, maybe.",
+      "right": "We<b>'re meeting</b> Liam tomorrow at five.",
+      "why": "A real arrangement, with time and place fixed, doesn't need 'maybe' — that's a prediction, not an arrangement."
+    },
+    {
+      "wrong": "Does she plays tennis on Saturdays?",
+      "right": "<b>Does</b> she <b>play</b> tennis on Saturdays?",
+      "why": "After does/doesn't, the verb goes back to its base form — no extra -s."
+    },
+    {
+      "wrong": "The film starting at eight tonight.",
+      "right": "The film <b>starts</b> at eight tonight.",
+      "why": "Timetables use the present simple, not the continuous, even when they talk about the future."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Vivo en Lima.",
+      "wrong": "I'm living in Lima.",
+      "right": "I <b>live</b> in Lima.",
+      "why": "Live as a permanent state uses the simple form, not the continuous, even though Spanish sometimes prefers estoy + gerundio."
+    },
+    {
+      "es": "Tengo dos hermanos.",
+      "wrong": "I'm having two brothers.",
+      "right": "I <b>have</b> two brothers.",
+      "why": "Have meaning possess is a state verb — never in the continuous."
+    },
+    {
+      "es": "Ella siempre pierde las llaves.",
+      "wrong": "She always loses the keys, that's normal.",
+      "right": "She<b>'s always losing</b> her keys!",
+      "why": "Spanish uses siempre + simple present for annoying habits; English prefers always + -ing to show it's irritating."
+    },
+    {
+      "es": "El tren sale a las seis.",
+      "wrong": "The train is leaving at six, maybe.",
+      "right": "The train <b>leaves</b> at six.",
+      "why": "Spanish and English agree here: a timetable is present simple, not continuous."
+    }
+  ],
+  "remember": {
+    "trick": "Every day, add an -s. Right now? Use -ing!",
+    "tip": "If you can say 'always' or 'usually' before the verb, add -s for he/she/it. If you can point at it happening now, use am/is/are + -ing."
+  },
+  "dialogue": {
+    "title": "The science fair countdown",
+    "context": "Sofia and Mateo are getting ready for tomorrow's school science fair; Liam and Miss Vega join to check the last details.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "Mateo, the fair <b>starts</b> at nine. Where's your project?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Relax! I<b>'m finishing</b> the poster right now."
+      },
+      {
+        "speaker": "Liam",
+        "text": "I need some help — Miss Vega, <b>are</b> you <b>coming</b> to check our stand?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Yes, I<b>'m visiting</b> every group before the doors open."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Mateo <b>always leaves</b> everything for the last minute!"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "That's not true — I<b>'m working</b> right now, look."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Does</b> your experiment <b>need</b> water or electricity?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Both — it <b>uses</b> a small battery."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Great. Remember, the judges <b>arrive</b> at half past nine sharp."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Then we<b>'re meeting</b> here at eight to set everything up."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "Nadia ___ volleyball every Tuesday.",
+          "options": [
+            "play",
+            "plays",
+            "is playing"
+          ],
+          "answer": 1,
+          "why": "a habit + he/she/it → add -s"
+        },
+        {
+          "sentence": "Look! Liam ___ across the yard.",
+          "options": [
+            "runs",
+            "is running",
+            "run"
+          ],
+          "answer": 1,
+          "why": "happening right now"
+        },
+        {
+          "sentence": "The bus to Arequipa ___ at six.",
+          "options": [
+            "leaves",
+            "is leaving",
+            "leave"
+          ],
+          "answer": 0,
+          "why": "a timetable uses the present simple"
+        },
+        {
+          "sentence": "I ___ Sofia at the stadium at five tomorrow.",
+          "options": [
+            "meet",
+            "am meeting",
+            "meets"
+          ],
+          "answer": 1,
+          "why": "a fixed future arrangement"
+        },
+        {
+          "sentence": "Mateo ___ chocolate — he eats it every day.",
+          "options": [
+            "loves",
+            "is loving",
+            "love"
+          ],
+          "answer": 0,
+          "why": "like/love are state verbs — no continuous form"
+        },
+        {
+          "sentence": "___ you play football after school?",
+          "options": [
+            "Do",
+            "Are",
+            "Does"
+          ],
+          "answer": 0,
+          "why": "you takes do, not does"
+        },
+        {
+          "sentence": "Right now, Miss Vega ___ our science projects.",
+          "options": [
+            "checks",
+            "is checking",
+            "check"
+          ],
+          "answer": 1,
+          "why": "happening at this moment"
+        },
+        {
+          "sentence": "The science fair ___ tomorrow at nine.",
+          "options": [
+            "starts",
+            "is starting",
+            "start"
+          ],
+          "answer": 0,
+          "why": "school events follow a timetable"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "Sofia ___ (check) her email every morning.",
+          "answers": [
+            "checks"
+          ]
+        },
+        {
+          "sentence": "Mateo ___ (not/like) getting up early.",
+          "answers": [
+            "doesn't like"
+          ]
+        },
+        {
+          "sentence": "Look, the judges ___ (arrive) now!",
+          "answers": [
+            "are arriving",
+            "'re arriving"
+          ]
+        },
+        {
+          "sentence": "The train to Cusco ___ (leave) at half past six every day.",
+          "answers": [
+            "leaves"
+          ]
+        },
+        {
+          "sentence": "We ___ (meet) Liam at the cinema at six tomorrow.",
+          "answers": [
+            "are meeting",
+            "'re meeting"
+          ]
+        },
+        {
+          "sentence": "___ Nadia ___ (play) the guitar every weekend?",
+          "answers": [
+            "Does … play",
+            "Does Nadia play"
+          ]
+        },
+        {
+          "sentence": "Right now, Miss Vega ___ (explain) the rules of the fair.",
+          "answers": [
+            "is explaining",
+            "'s explaining"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "every Tuesday",
+            "volleyball",
+            "Nadia",
+            "plays",
+            "."
+          ],
+          "answer": "Nadia plays volleyball every Tuesday."
+        },
+        {
+          "words": [
+            "is printing",
+            "the poster",
+            "Sofia",
+            "now",
+            "."
+          ],
+          "answer": "Sofia is printing the poster now."
+        },
+        {
+          "words": [
+            "at six",
+            "The bus",
+            "leaves",
+            "."
+          ],
+          "answer": "The bus leaves at six."
+        },
+        {
+          "words": [
+            "you play",
+            "after school",
+            "football",
+            "Do",
+            "?"
+          ],
+          "answer": "Do you play football after school?"
+        },
+        {
+          "words": [
+            "is always losing",
+            "Mateo",
+            "his keys",
+            "."
+          ],
+          "answer": "Mateo is always losing his keys."
+        },
+        {
+          "words": [
+            "tomorrow",
+            "We're meeting",
+            "Liam",
+            "at five",
+            "."
+          ],
+          "answer": "We're meeting Liam at five tomorrow."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Mateo eats breakfast at seven every day.",
+          "key": "USUALLY",
+          "second_start": "Mateo",
+          "second_end": "breakfast at seven.",
+          "answers": [
+            "usually eats"
+          ]
+        },
+        {
+          "first": "Right now, Sofia is finishing her poster.",
+          "key": "FINISHING",
+          "second_start": "Sofia",
+          "second_end": "her poster right now.",
+          "answers": [
+            "is finishing"
+          ]
+        },
+        {
+          "first": "The plan is fixed: we meet Liam at five tomorrow.",
+          "key": "MEETING",
+          "second_start": "We",
+          "second_end": "Liam at five tomorrow.",
+          "answers": [
+            "are meeting",
+            "'re meeting"
+          ]
+        },
+        {
+          "first": "It's a fact — the train leaves the station at six.",
+          "key": "LEAVES",
+          "second_start": "The train",
+          "second_end": "the station at six.",
+          "answers": [
+            "leaves"
+          ]
+        },
+        {
+          "first": "Mateo loses his keys again and again — it's really annoying.",
+          "key": "ALWAYS",
+          "second_start": "Mateo",
+          "second_end": "his keys!",
+          "answers": [
+            "is always losing"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about my routines and general facts with the present simple, remembering the -s for he/she/it.",
+    "I can describe what is happening right now, or around now, with the present continuous.",
+    "I can use the present continuous for arrangements already fixed, and the present simple for timetables."
+  ],
+  "summary": [
+    "Present simple = routines, facts, timetables: add -s for he/she/it.",
+    "Present continuous = happening now, temporary situations, and fixed future arrangements.",
+    "State verbs (like, love, have, know, want) don't usually take the continuous form.",
+    "Always + -ing describes a habit that annoys the speaker, not a simple fact.",
+    "Timetables and scheduled events (trains, films, school fairs) use the present simple, even when they're about the future."
+  ]
+}

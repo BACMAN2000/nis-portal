@@ -1,0 +1,201 @@
+{
+  "id": "modals-obligation-advice",
+  "level": "ket",
+  "area": "Modals",
+  "title": "must, have to, should: rules and advice",
+  "tagline": "Rules, prohibitions and advice — and the two words that look alike but mean opposite things.",
+  "cefr": "A2",
+  "exam": ["Reading Part 1 — signs and messages", "Writing Part 6 — a short email", "Speaking Part 1 — questions about you"],
+  "why": "School rules, exam rules, health advice — must, have to and should are how English gives instructions and opinions. Reading Part 1 is full of signs that use must, mustn't and don't have to, and the exam itself has its own rules (you must bring a pencil; you mustn't use a phone). Confusing mustn't with don't have to is the single biggest trap in this area.",
+  "hook": {
+    "text": "Before the test, Miss Vega says: \"You <b>must</b> bring a pencil. You <b>mustn't</b> talk during the test. You <b>don't have to</b> finish early — you can use all the time.\" \"<b>Should</b> we bring a calculator?\" asks Sofia. \"You don't need one,\" says Miss Vega.",
+    "ask": "Must, mustn't and don't have to look similar but they mean very different things. Can you find all three and say what each one really means?"
+  },
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How strong is the rule?",
+      "left": "no obligation",
+      "right": "forbidden",
+      "items": [
+        {"label": "don't have to / don't need to", "pct": 10},
+        {"label": "should / shouldn't (advice)", "pct": 45},
+        {"label": "have to / must (obligation)", "pct": 85},
+        {"label": "mustn't (prohibition)", "pct": 100}
+      ],
+      "caption": "Should is an opinion; have to/must is a rule; mustn't is a rule that forbids."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence with must, have to, should",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "You", "role": "subj"}, {"t": "must", "role": "kw"}, {"t": "bring", "role": "verb"}, {"t": "a pencil", "role": "obj"}, {"t": ".", "role": "x"}], "note": "a strong rule"},
+        {"parts": [{"t": "You", "role": "subj"}, {"t": "mustn't", "role": "neg"}, {"t": "talk", "role": "verb"}, {"t": "during the test", "role": "time"}, {"t": ".", "role": "x"}], "note": "forbidden"},
+        {"parts": [{"t": "You", "role": "subj"}, {"t": "don't have to", "role": "neg"}, {"t": "finish", "role": "verb"}, {"t": "early", "role": "time"}, {"t": ".", "role": "x"}], "note": "not necessary"}
+      ],
+      "caption": "Mustn't = it's forbidden. Don't have to = it's not necessary, but you can if you want. They look similar — they are opposites."
+    },
+    {
+      "type": "map",
+      "title": "Rules and advice, at school and beyond",
+      "center": "must / have to / should",
+      "branches": [
+        {"label": "Strong rule (now)", "items": ["must — the speaker's own rule", "have to — a rule from outside"], "tone": "a"},
+        {"label": "Advice / opinion", "items": ["should — a good idea", "shouldn't — a bad idea"], "tone": "b"},
+        {"label": "No obligation", "items": ["don't have to", "don't need to"], "tone": "c"},
+        {"label": "Past obligation", "items": ["had to", "didn't have to"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "person", "tone": "a", "ex": "you / we"},
+      {"chip": "must / have to / should", "tone": "kw", "ex": "must"},
+      {"chip": "base verb", "tone": "b", "ex": "bring"},
+      {"chip": "the rest", "tone": "c", "ex": "a pencil"}
+    ],
+    "table": {
+      "head": ["Modal", "Meaning", "Negative", "Past"],
+      "rows": [
+        ["must", "a rule (the speaker decides)", "mustn't = forbidden", "no past — use had to"],
+        ["have to", "a rule (from outside, a fact)", "don't have to = not necessary", "had to / didn't have to"],
+        ["should", "advice, an opinion", "shouldn't = bad idea", "should stays the same"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "must and have to — strong obligation",
+      "examples": [
+        {"text": "You <b>must</b> bring a pencil to the exam.", "note": "must = the speaker's own rule"},
+        {"text": "We <b>have to</b> wear a uniform at school.", "note": "have to = a rule from outside (the school)"},
+        {"text": "I <b>have to</b> finish this project by Friday.", "note": "have to for a fact or rule, not just an opinion"}
+      ]
+    },
+    {
+      "point": "mustn't vs don't have to — the big difference",
+      "examples": [
+        {"text": "You <b>mustn't</b> use your phone during the test.", "note": "mustn't = it is forbidden"},
+        {"text": "You <b>don't have to</b> finish early.", "note": "don't have to = not necessary, but you can if you want"},
+        {"text": "We <b>don't need to</b> bring a calculator.", "note": "don't need to = the same meaning as don't have to"}
+      ]
+    },
+    {
+      "point": "should/shouldn't — advice and opinions",
+      "examples": [
+        {"text": "You <b>should</b> study before the test.", "note": "should = good advice, an opinion"},
+        {"text": "You <b>shouldn't</b> stay up too late.", "note": "shouldn't = bad idea"},
+        {"text": "<b>Should</b> we bring a dictionary?", "note": "question asking for advice"}
+      ]
+    },
+    {
+      "point": "had to — obligation in the past",
+      "examples": [
+        {"text": "Last year, we <b>had to</b> wear a different uniform.", "note": "had to = the past of have to and must"},
+        {"text": "I <b>didn't have to</b> do homework yesterday — no classes!", "note": "didn't have to = wasn't necessary, in the past"},
+        {"text": "<b>Did</b> you <b>have to</b> study a lot for the last test?", "note": "question with did + have to"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "You mustn't finish early — you can if you want.", "right": "You <b>don't have to</b> finish early.", "why": "Mustn't means forbidden; don't have to means not necessary — they are opposites."},
+    {"wrong": "We must to wear a uniform.", "right": "We <b>have to</b> wear a uniform.", "why": "Have to (and must) go straight before the base verb — no to."},
+    {"wrong": "She musts bring a pencil.", "right": "She <b>must</b> bring a pencil.", "why": "Must never adds -s, even for he/she/it."},
+    {"wrong": "Yesterday, I must study a lot.", "right": "Yesterday, I <b>had to</b> study a lot.", "why": "Must has no past form — use had to for the past."},
+    {"wrong": "You should to ask the teacher.", "right": "You <b>should ask</b> the teacher.", "why": "Should goes straight before the base verb, like must — no to."}
+  ],
+  "l1": [
+    {"es": "No tienes que terminar temprano.", "wrong": "You mustn't finish early.", "right": "You <b>don't have to</b> finish early.", "why": "Spanish 'no tienes que' means it's not necessary — in English that's don't have to, not mustn't (which means forbidden)."},
+    {"es": "Debemos usar uniforme.", "wrong": "We must to wear uniform.", "right": "We <b>have to</b> wear a uniform.", "why": "The Spanish pattern 'deber + infinitivo' tempts you to add to — English have to/must never takes to."},
+    {"es": "Deberías estudiar más.", "wrong": "You would should study more.", "right": "You <b>should</b> study more.", "why": "Should is already the whole modal — don't add would or another helper before it."},
+    {"es": "Tuve que estudiar mucho ayer.", "wrong": "I must studied a lot yesterday.", "right": "I <b>had to</b> study a lot yesterday.", "why": "Must has no past tense — the past of must/have to is always had to."}
+  ],
+  "remember": {
+    "trick": "must/have to = rule, should = advice, mustn't = forbidden!",
+    "tip": "Remember the opposite pair: mustn't (you can't) and don't have to (you don't need to, but you can)."
+  },
+  "dialogue": {
+    "title": "Before the test",
+    "context": "Miss Vega explains the rules to the class before an exam at school.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Listen carefully. You <b>must</b> bring a pencil and a rubber."},
+      {"speaker": "Mateo", "text": "<b>Must</b> we bring a pen too?"},
+      {"speaker": "Miss Vega", "text": "No, you <b>don't have to</b> — a pencil is enough."},
+      {"speaker": "Sofia", "text": "<b>Should</b> we bring a calculator?"},
+      {"speaker": "Miss Vega", "text": "You don't need one for this test. But you <b>mustn't</b> use your phone."},
+      {"speaker": "Liam", "text": "What happens if we finish early?"},
+      {"speaker": "Miss Vega", "text": "You <b>don't have to</b> finish early — you can check your answers."},
+      {"speaker": "Nadia", "text": "Last year we <b>had to</b> write the date in Spanish. Is it the same this year?"},
+      {"speaker": "Miss Vega", "text": "No, this year you <b>should</b> write it in English."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "You ___ bring a pencil to the exam.", "options": ["must", "musts", "must to"], "answer": 0, "why": "a strong rule → must"},
+        {"sentence": "We ___ finish early — we can stay.", "options": ["mustn't", "don't have to", "have to"], "answer": 1, "why": "not necessary → don't have to"},
+        {"sentence": "You ___ use your phone during the test — it's forbidden.", "options": ["mustn't", "don't have to", "should"], "answer": 0, "why": "forbidden → mustn't"},
+        {"sentence": "You ___ study more before the exam.", "options": ["should", "musts", "have"], "answer": 0, "why": "advice → should"},
+        {"sentence": "Last year, we ___ wear a different uniform.", "options": ["must", "have to", "had to"], "answer": 2, "why": "past obligation → had to"},
+        {"sentence": "___ we bring a dictionary?", "options": ["Must", "Should", "Have"], "answer": 1, "why": "asking for advice → Should we…?"},
+        {"sentence": "She ___ study a lot yesterday.", "options": ["must", "had to", "have to"], "answer": 1, "why": "must has no past form"},
+        {"sentence": "You should ___ the teacher.", "options": ["ask", "to ask", "asking"], "answer": 0, "why": "should + base verb, no to"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with must, have to or should and the verb in brackets.",
+      "items": [
+        {"sentence": "You ___ (must/bring) a pencil to the exam.", "answers": ["must bring"]},
+        {"sentence": "We ___ (not/have to/finish) early.", "answers": ["don't have to finish"]},
+        {"sentence": "You ___ (mustn't/use) your phone during the test.", "answers": ["mustn't use"]},
+        {"sentence": "You ___ (should/study) more before the exam.", "answers": ["should study"]},
+        {"sentence": "Last year, we ___ (have to/wear) a different uniform.", "answers": ["had to wear"]},
+        {"sentence": "___ (we/should/bring) a dictionary?", "answers": ["Should we bring"]},
+        {"sentence": "She ___ (have to/study) a lot yesterday.", "answers": ["had to study"]},
+        {"sentence": "___ (you/have to/study) a lot for the last test?", "answers": ["Did you have to study"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["a pencil", "must bring", "You", "."], "answer": "You must bring a pencil."},
+        {"words": ["finish early", "don't have to", "We", "."], "answer": "We don't have to finish early."},
+        {"words": ["your phone", "mustn't use", "You", "."], "answer": "You mustn't use your phone."},
+        {"words": ["a dictionary", "bring", "Should we", "?"], "answer": "Should we bring a dictionary?"},
+        {"words": ["a uniform", "had to wear", "We", "."], "answer": "We had to wear a uniform."},
+        {"words": ["too late", "shouldn't stay up", "You", "."], "answer": "You shouldn't stay up too late."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "You mustn't finish early — you can if you want.", "ok": false, "fix": "You <b>don't have to</b> finish early.", "why": "mustn't means forbidden, not just optional"},
+        {"sentence": "You must bring a pencil to the exam.", "ok": true, "why": "must + base verb for a strong rule"},
+        {"sentence": "We must to wear a uniform.", "ok": false, "fix": "We <b>have to</b> wear a uniform.", "why": "have to/must go straight before the base verb, no to"},
+        {"sentence": "You shouldn't stay up too late.", "ok": true, "why": "shouldn't for advice — a bad idea"},
+        {"sentence": "She musts bring a pencil.", "ok": false, "fix": "She <b>must</b> bring a pencil.", "why": "must never adds -s"},
+        {"sentence": "Last year, we had to wear a different uniform.", "ok": true, "why": "had to = the past of have to/must"},
+        {"sentence": "Yesterday, I must study a lot.", "ok": false, "fix": "Yesterday, I <b>had to</b> study a lot.", "why": "must has no past form — use had to"},
+        {"sentence": "We don't have to bring a calculator.", "ok": true, "why": "don't have to = not necessary"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about rules with <i>must</i> and <i>have to</i>.",
+    "I can tell the difference between <i>mustn't</i> (forbidden) and <i>don't have to</i> (not necessary).",
+    "I can give advice with <i>should/shouldn't</i> and talk about past obligation with <i>had to</i>."
+  ],
+  "summary": [
+    "<b>Must</b> and <b>have to</b> = a strong rule — you have no choice.",
+    "<b>Mustn't</b> = forbidden (you can't). <b>Don't have to</b> = not necessary (you can, but you don't need to). They are opposites, not the same.",
+    "<b>Should/shouldn't</b> = advice and opinions, not rules.",
+    "Must has no past form — for the past, always use <b>had to</b> / <b>didn't have to</b>.",
+    "All of these modals go straight before the base verb — no to, and no -s."
+  ]
+}

@@ -1,0 +1,688 @@
+{
+  "id": "future-forms-b1",
+  "level": "pet",
+  "area": "Tenses & time",
+  "title": "Future forms",
+  "tagline": "Four ways to talk about tomorrow — and B1 wants you to pick exactly the right one.",
+  "cefr": "B1",
+  "exam": [
+    "Listening Part 3 — gap-fill note-taking",
+    "Writing Part 1 — an email arranging plans",
+    "Speaking Part 3 — discussing a situation"
+  ],
+  "why": "B1 Preliminary tests future forms everywhere: predicting a football score, arranging to meet a friend by email, or reading a cinema programme. Mixing up will and going to, or using will after when, is one of the most common B1 errors — and one of the easiest to fix once you know the four clear jobs each form does.",
+  "hook": {
+    "text": "Nadia: “I<b>'m going to buy</b> tickets for the concert — look at this queue, it<b>'s going to sell out</b>!” Mateo: “I think I<b>'ll come</b> too.” Sofia: “Great, I<b>'m meeting</b> Liam there at seven anyway.”",
+    "ask": "Four future forms appear in bold. Which is a prediction based on evidence, which is a quick decision, and which is an arrangement already fixed with someone else?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Three ways to talk about later",
+      "marks": [
+        {
+          "at": "now",
+          "label": "decides right now: 'I'll come too'",
+          "sub": "will — an instant decision"
+        },
+        {
+          "at": "future",
+          "label": "evidence now: 'it's going to sell out'",
+          "sub": "going to — a prediction with evidence"
+        },
+        {
+          "at": "future",
+          "label": "fixed with Liam: 'I'm meeting him at seven'",
+          "sub": "present continuous — an arrangement"
+        }
+      ],
+      "arrows": [
+        [
+          0,
+          1,
+          "a decision can lead to a plan"
+        ]
+      ],
+      "caption": "Will is decided at the moment of speaking; going to and the present continuous both look forward to something already fixed."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "'ll",
+              "role": "aux"
+            },
+            {
+              "t": "carry",
+              "role": "verb"
+            },
+            {
+              "t": "your bag",
+              "role": "obj"
+            }
+          ],
+          "note": "will — instant decision or offer"
+        },
+        {
+          "parts": [
+            {
+              "t": "It",
+              "role": "subj"
+            },
+            {
+              "t": "'s going to",
+              "role": "aux"
+            },
+            {
+              "t": "rain",
+              "role": "verb"
+            },
+            {
+              "t": "tonight",
+              "role": "time"
+            }
+          ],
+          "note": "going to — prediction with evidence"
+        },
+        {
+          "parts": [
+            {
+              "t": "We",
+              "role": "subj"
+            },
+            {
+              "t": "'re",
+              "role": "aux"
+            },
+            {
+              "t": "meeting",
+              "role": "verb"
+            },
+            {
+              "t": "Liam",
+              "role": "obj"
+            },
+            {
+              "t": "at seven",
+              "role": "time"
+            }
+          ],
+          "note": "present continuous — fixed arrangement"
+        },
+        {
+          "parts": [
+            {
+              "t": "The concert",
+              "role": "subj"
+            },
+            {
+              "t": "starts",
+              "role": "verb"
+            },
+            {
+              "t": "at eight",
+              "role": "time"
+            }
+          ],
+          "note": "present simple — a timetable or programme"
+        }
+      ],
+      "caption": "Four different forms, four different jobs — all pointing at the future."
+    },
+    {
+      "type": "contrast",
+      "title": "Will, going to, or present continuous?",
+      "columns": [
+        "Will",
+        "Going to",
+        "Present continuous"
+      ],
+      "rows": [
+        {
+          "label": "Use",
+          "cells": [
+            "instant decisions, promises, opinions",
+            "plans already made, predictions with evidence",
+            "arrangements with a fixed time and place"
+          ]
+        },
+        {
+          "label": "Evidence now?",
+          "cells": [
+            "no — just an opinion",
+            "yes — something you can see now",
+            "yes — already organised with someone"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "I think Peru <b>will win</b>.",
+            "Look at those clouds — it<b>'s going to rain</b>.",
+            "I<b>'m meeting</b> Sofia at seven."
+          ]
+        },
+        {
+          "label": "Typical words",
+          "cells": [
+            "I think, probably, I'm sure",
+            "look, those clouds",
+            "already arranged, a definite time"
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "will/won't",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ infinitive",
+        "tone": "a",
+        "ex": "will win"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "am/is/are (not) going to",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ infinitive",
+        "tone": "b",
+        "ex": "going to rain"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "am/is/are",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ verb-ing",
+        "tone": "c",
+        "ex": "meeting at seven"
+      }
+    ],
+    "table": {
+      "head": [
+        "Form",
+        "Positive",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "Will",
+          "She'll help.",
+          "She won't help.",
+          "Will she help?"
+        ],
+        [
+          "Going to",
+          "She's going to help.",
+          "She isn't going to help.",
+          "Is she going to help?"
+        ],
+        [
+          "Present continuous",
+          "She's helping tomorrow.",
+          "She isn't helping tomorrow.",
+          "Is she helping tomorrow?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "will/won't for predictions, decisions and promises",
+      "examples": [
+        {
+          "text": "I think Peru <b>will win</b> the match tonight.",
+          "note": "a prediction — opinion, not evidence"
+        },
+        {
+          "text": "I<b>'ll carry</b> your bag — it looks heavy!",
+          "note": "an instant decision, made right now"
+        },
+        {
+          "text": "I promise I <b>won't be</b> late for the concert.",
+          "note": "a promise"
+        }
+      ]
+    },
+    {
+      "point": "going to for plans and evidence",
+      "examples": [
+        {
+          "text": "We<b>'re going to buy</b> tickets online tonight.",
+          "note": "a plan already decided before now"
+        },
+        {
+          "text": "Look at that queue — the tickets <b>are going to sell out</b>!",
+          "note": "a prediction based on evidence you can see now"
+        },
+        {
+          "text": "Careful, you<b>'re going to drop</b> your phone!",
+          "note": "evidence right in front of you"
+        }
+      ]
+    },
+    {
+      "point": "present continuous for fixed arrangements",
+      "examples": [
+        {
+          "text": "I<b>'m meeting</b> Liam outside the stadium at seven.",
+          "note": "time and place already fixed with someone"
+        },
+        {
+          "text": "Sofia and Nadia <b>are going</b> to the concert together.",
+          "note": "an arranged plan between two people"
+        },
+        {
+          "text": "What <b>are</b> you <b>doing</b> after the show?",
+          "note": "asking about someone's fixed plans"
+        }
+      ]
+    },
+    {
+      "point": "present simple for timetables, and future time clauses",
+      "examples": [
+        {
+          "text": "The concert <b>starts</b> at eight and <b>finishes</b> at half past ten.",
+          "note": "a programme, exactly like a timetable"
+        },
+        {
+          "text": "As soon as the doors <b>open</b>, we<b>'ll run</b> to the front.",
+          "note": "present simple after as soon as, will in the main clause"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I will go to the concert with Sofia at seven, we arranged it yesterday.",
+      "right": "I<b>'m going</b> to the concert with Sofia at seven — we arranged it yesterday.",
+      "why": "An arrangement already fixed with another person needs the present continuous, not will."
+    },
+    {
+      "wrong": "Look at those clouds, it will rain.",
+      "right": "Look at those clouds, it<b>'s going to rain</b>.",
+      "why": "A prediction based on evidence you can see now needs going to, not will."
+    },
+    {
+      "wrong": "The concert is going to start at eight, according to the programme.",
+      "right": "The concert <b>starts</b> at eight, according to the programme.",
+      "why": "A fixed timetable or programme uses the present simple, not going to."
+    },
+    {
+      "wrong": "When the concert will start, we'll find our seats.",
+      "right": "When the concert <b>starts</b>, we'll find our seats.",
+      "why": "After when/as soon as/before/until, use the present simple, never will, even though the meaning is future."
+    },
+    {
+      "wrong": "I'm sure she going to like the band.",
+      "right": "I'm sure she<b>'ll like</b> the band.",
+      "why": "A prediction that's just an opinion (I'm sure, I think) usually takes will, not going to."
+    },
+    {
+      "wrong": "I decide to buy a ticket now.",
+      "right": "I<b>'ll buy</b> a ticket now — I've decided!",
+      "why": "An instant decision made at the moment of speaking uses will, not the present simple."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Voy a comprar las entradas esta noche.",
+      "wrong": "I will buy the tickets tonight.",
+      "right": "I<b>'m going to buy</b> the tickets tonight.",
+      "why": "Voy a + infinitivo describes a plan already decided — that's going to in English, not will."
+    },
+    {
+      "es": "Creo que va a llover.",
+      "wrong": "I think it will rain, look at those clouds.",
+      "right": "Look at those clouds — it<b>'s going to rain</b>.",
+      "why": "Evidence you can see right now (clouds) needs going to, even though creo que often makes learners reach for will."
+    },
+    {
+      "es": "Cuando llegue, te llamo.",
+      "wrong": "When I will arrive, I'll call you.",
+      "right": "When I <b>arrive</b>, I'll call you.",
+      "why": "Spanish uses the subjunctive after cuando for the future; English simply uses the present simple, never will."
+    },
+    {
+      "es": "Quedamos a las siete.",
+      "wrong": "We will meet at seven.",
+      "right": "We<b>'re meeting</b> at seven.",
+      "why": "A fixed arrangement with someone else (quedamos) is the present continuous in English, not will."
+    }
+  ],
+  "remember": {
+    "trick": "Plan + evidence = GOING TO. Fixed with someone = -ING!",
+    "tip": "Can you see the evidence right now, or did you decide before this moment? That's going to. Already arranged with someone else? That's the present continuous."
+  },
+  "dialogue": {
+    "title": "Tickets for the big concert",
+    "context": "Nadia, Mateo, Sofia and Liam are planning how to get tickets for a concert this weekend.",
+    "lines": [
+      {
+        "speaker": "Nadia",
+        "text": "Look at this queue online — the tickets <b>are going to sell out</b>!"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Buy them now! I<b>'ll pay</b> you back tomorrow."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "OK, I<b>'m buying</b> four tickets right now."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Perfect — I<b>'m meeting</b> Liam outside the stadium at seven anyway."
+      },
+      {
+        "speaker": "Liam",
+        "text": "The doors <b>open</b> at six, and the show <b>starts</b> at eight."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "As soon as the doors <b>open</b>, we<b>'ll run</b> to the front!"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "I think the support band <b>will be</b> really good too."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Careful with your phone, Mateo — you<b>'re going to drop</b> it!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "Don't worry, I <b>won't lose</b> my ticket this time, I promise."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "What <b>are</b> we all <b>doing</b> before the show — dinner first?"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "Look at those clouds — it ___ rain.",
+          "options": [
+            "'s going to",
+            "will",
+            "is"
+          ],
+          "answer": 0,
+          "why": "evidence you can see right now"
+        },
+        {
+          "sentence": "I think Peru ___ win tonight.",
+          "options": [
+            "is going to",
+            "will",
+            "is"
+          ],
+          "answer": 1,
+          "why": "a prediction that's just an opinion"
+        },
+        {
+          "sentence": "We ___ Liam at seven — it's all arranged.",
+          "options": [
+            "will meet",
+            "are going to meet",
+            "'re meeting"
+          ],
+          "answer": 2,
+          "why": "a fixed arrangement with someone else"
+        },
+        {
+          "sentence": "The film ___ at nine, according to the website.",
+          "options": [
+            "starts",
+            "is going to start",
+            "will start"
+          ],
+          "answer": 0,
+          "why": "a programme, like a timetable"
+        },
+        {
+          "sentence": "Careful, you ___ drop that!",
+          "options": [
+            "will",
+            "'re going to",
+            "are"
+          ],
+          "answer": 1,
+          "why": "evidence right in front of you"
+        },
+        {
+          "sentence": "When the concert ___, we'll find our seats.",
+          "options": [
+            "will start",
+            "is starting",
+            "starts"
+          ],
+          "answer": 2,
+          "why": "present simple after when, never will"
+        },
+        {
+          "sentence": "___ carry your bag — it looks heavy!",
+          "options": [
+            "I'll",
+            "I'm going to",
+            "I'm"
+          ],
+          "answer": 0,
+          "why": "an instant decision, made right now"
+        },
+        {
+          "sentence": "As soon as the doors ___, we'll run to the front.",
+          "options": [
+            "will open",
+            "open",
+            "are opening"
+          ],
+          "answer": 1,
+          "why": "present simple after as soon as"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct future form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "Look at those clouds — it ___ (rain).",
+          "answers": [
+            "'s going to rain",
+            "is going to rain"
+          ]
+        },
+        {
+          "sentence": "I think Peru ___ (win) tonight.",
+          "answers": [
+            "will win"
+          ]
+        },
+        {
+          "sentence": "We ___ (meet) Liam at seven — it's all arranged.",
+          "answers": [
+            "are meeting",
+            "'re meeting"
+          ]
+        },
+        {
+          "sentence": "The film ___ (start) at nine, according to the website.",
+          "answers": [
+            "starts"
+          ]
+        },
+        {
+          "sentence": "Careful, you ___ (drop) that!",
+          "answers": [
+            "are going to drop",
+            "'re going to drop"
+          ]
+        },
+        {
+          "sentence": "When the concert ___ (start), we'll find our seats.",
+          "answers": [
+            "starts"
+          ]
+        },
+        {
+          "sentence": "As soon as the doors ___ (open), we'll run to the front.",
+          "answers": [
+            "open"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "going to sell out",
+            "are",
+            "The tickets",
+            "."
+          ],
+          "answer": "The tickets are going to sell out."
+        },
+        {
+          "words": [
+            "carry",
+            "I'll",
+            "your bag",
+            "."
+          ],
+          "answer": "I'll carry your bag."
+        },
+        {
+          "words": [
+            "at seven",
+            "Liam",
+            "I'm meeting",
+            "."
+          ],
+          "answer": "I'm meeting Liam at seven."
+        },
+        {
+          "words": [
+            "at eight",
+            "The concert",
+            "starts",
+            "."
+          ],
+          "answer": "The concert starts at eight."
+        },
+        {
+          "words": [
+            "to the front",
+            "We'll run",
+            "as soon as",
+            "the doors open",
+            "."
+          ],
+          "answer": "We'll run to the front as soon as the doors open."
+        },
+        {
+          "words": [
+            "that phone",
+            "going to drop",
+            "You're",
+            "."
+          ],
+          "answer": "You're going to drop that phone."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Nadia decided before now to buy the tickets online.",
+          "key": "GOING",
+          "second_start": "Nadia",
+          "second_end": "buy the tickets online.",
+          "answers": [
+            "is going to"
+          ]
+        },
+        {
+          "first": "It's arranged — Sofia and Liam meet at seven outside the stadium.",
+          "key": "MEETING",
+          "second_start": "Sofia and Liam",
+          "second_end": "at seven outside the stadium.",
+          "answers": [
+            "are meeting"
+          ]
+        },
+        {
+          "first": "According to the programme, the concert begins at eight.",
+          "key": "STARTS",
+          "second_start": "The concert",
+          "second_end": "at eight.",
+          "answers": [
+            "starts"
+          ]
+        },
+        {
+          "first": "I promise not to lose my ticket this time.",
+          "key": "WON'T",
+          "second_start": "I",
+          "second_end": "lose my ticket this time.",
+          "answers": [
+            "won't"
+          ]
+        },
+        {
+          "first": "The moment the doors open, we are going to run to the front.",
+          "key": "AS",
+          "second_start": "We'll run to the front",
+          "second_end": "the doors open.",
+          "answers": [
+            "as soon as"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can make predictions and instant decisions with will, and plans with going to.",
+    "I can use the present continuous for arrangements and the present simple for timetables.",
+    "I can use when, as soon as, until and before + present simple to talk about the future."
+  ],
+  "summary": [
+    "Will/won't = predictions (opinion), instant decisions and promises.",
+    "Going to = plans already decided, and predictions based on evidence you can see now.",
+    "Present continuous = arrangements with a fixed time and place, already organised with someone.",
+    "Present simple = timetables and fixed programmes, even about the future.",
+    "After when, as soon as, until and before, always use the present simple, never will."
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "id": "past-continuous",
+  "level": "ket",
+  "area": "Tenses & time",
+  "title": "Past continuous with when and while",
+  "tagline": "The background action that was happening when something else interrupted it.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 7 — a short story", "Listening Part 3 — multiple choice"],
+  "why": "Good stories need two layers: what was already happening, and what suddenly happened next. In Writing Part 7 that means <i>was/were + -ing</i> for the background, and the past simple for the surprise. Reading and Listening test the same idea: does the sentence need the action in progress, or the shorter one that interrupted it?",
+  "hook": {
+    "text": "In Cusco, Liam and Sofia are exploring an old street. Liam <b>was taking</b> photos when it <b>started</b> to rain. \"I <b>was walking</b> behind you,\" says Sofia, \"when I <b>slipped</b>!\" \"Are you OK?\" asks Liam.",
+    "ask": "Two actions here are longer (in progress) and two are shorter (they just happen). Can you find the <i>was/were + -ing</i> forms and match each one to the shorter action that interrupts it?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "An action in progress, interrupted",
+      "marks": [
+        {"at": "before-past", "label": "Sofia was walking", "sub": "past continuous — already in progress"},
+        {"at": "past", "label": "she slipped", "sub": "past simple — the shorter action"}
+      ],
+      "arrows": [[0, 1, "the background action was happening when the second one happened"]],
+      "caption": "The past continuous paints the background; the past simple is the action that happens in the middle of it."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence in the past continuous",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Liam", "role": "subj"}, {"t": "was", "role": "aux"}, {"t": "taking", "role": "verb"}, {"t": "photos", "role": "obj"}, {"t": "when it started to rain", "role": "time"}, {"t": ".", "role": "x"}], "note": "statement — background + shorter action"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "wasn't", "role": "neg"}, {"t": "listening", "role": "verb"}, {"t": "when the teacher called her name", "role": "time"}, {"t": ".", "role": "x"}], "note": "negative"},
+        {"parts": [{"t": "What", "role": "kw"}, {"t": "was", "role": "aux"}, {"t": "she", "role": "subj"}, {"t": "doing", "role": "verb"}, {"t": "when you called", "role": "time"}, {"t": "?", "role": "x"}], "note": "question"}
+      ],
+      "caption": "The action in progress uses <b>was/were + -ing</b>; the interrupting action stays in the past simple."
+    },
+    {
+      "type": "spelling",
+      "title": "Adding -ing",
+      "rules": [
+        {"rule": "Most verbs: + ing", "examples": ["walk → walk<b>ing</b>", "play → play<b>ing</b>"]},
+        {"rule": "Verb ends in -e: drop e + ing", "examples": ["take → tak<b>ing</b>", "dance → danc<b>ing</b>"]},
+        {"rule": "Short verb, one vowel + one consonant: double it", "examples": ["run → run<b>ning</b>", "sit → sit<b>ting</b>"]},
+        {"rule": "Verb ends in -ie: ie → y + ing", "examples": ["lie → ly<b>ing</b>", "die → dy<b>ing</b>"]}
+      ],
+      "caption": "Same -ing rules as the present continuous — learn them once, use them for both tenses."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "person", "tone": "a", "ex": "I / she / they"},
+      {"chip": "was / were", "tone": "kw", "ex": "was"},
+      {"chip": "verb-ing", "tone": "b", "ex": "walking"},
+      {"chip": "when / while + past simple", "tone": "c", "ex": "when it rained"}
+    ],
+    "table": {
+      "head": ["Person", "Statement", "Negative", "Question"],
+      "rows": [
+        ["I / he / she / it", "I was walking", "I wasn't walking", "Was he walking…?"],
+        ["you / we / they", "we were walking", "we weren't walking", "Were you walking…?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "A background action in progress at a moment in the past",
+      "examples": [
+        {"text": "At eight o'clock, we <b>were walking</b> to the market.", "note": "an action in progress at a stated time"},
+        {"text": "Sofia <b>was studying</b> at six last night.", "note": "was + verb-ing for one person"},
+        {"text": "Mateo and Liam <b>were playing</b> football at four.", "note": "were + verb-ing for more than one person"}
+      ]
+    },
+    {
+      "point": "One action interrupts another — when + past simple",
+      "examples": [
+        {"text": "I <b>was having</b> lunch <b>when</b> the phone <b>rang</b>.", "note": "longer action (continuous) + when + shorter action (simple)"},
+        {"text": "Liam <b>was taking</b> photos <b>when</b> it <b>started</b> to rain.", "note": "background action, then the interruption"},
+        {"text": "The bus <b>arrived when</b> we <b>were waiting</b> at the stop.", "note": "the sentence can start with either half"}
+      ]
+    },
+    {
+      "point": "Two things happening at the same time — while",
+      "examples": [
+        {"text": "Nadia <b>was reading</b> <b>while</b> Sofia <b>was drawing</b>.", "note": "two continuous actions at the same time"},
+        {"text": "I <b>was cooking while</b> my brother <b>was doing</b> his homework.", "note": "while + two background actions"},
+        {"text": "While we <b>were walking</b>, Miss Vega <b>was talking</b> about the Incas.", "note": "while can start the sentence too"}
+      ]
+    },
+    {
+      "point": "Negatives and questions",
+      "examples": [
+        {"text": "I <b>wasn't listening</b> when the teacher called my name.", "note": "wasn't + verb-ing"},
+        {"text": "<b>What were</b> you <b>doing</b> at nine last night?", "note": "question word + were + person + verb-ing"},
+        {"text": "<b>Were</b> they <b>sleeping</b> when you arrived?", "note": "were + subject + verb-ing"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I walking to school when it started to rain.", "right": "I <b>was walking</b> to school when it started to rain.", "why": "-ing always needs was/were with it — it can't stand alone."},
+    {"wrong": "I was seeing a snake and I screamed.", "right": "I <b>saw</b> a snake and I screamed.", "why": "A short, sudden action uses the past simple, not the continuous."},
+    {"wrong": "She was runing in the park.", "right": "She was <b>running</b> in the park.", "why": "Short verb, one vowel + one consonant: double the last letter before -ing (run → running)."},
+    {"wrong": "What you were doing at six?", "right": "What <b>were you doing</b> at six?", "why": "In a question, were comes before the person — don't leave it in statement order."},
+    {"wrong": "We were walking when we were seeing Machu Picchu.", "right": "We were walking when we <b>saw</b> Machu Picchu.", "why": "The moment you first see something is a short action — use the past simple, not was/were + -ing."}
+  ],
+  "l1": [
+    {"es": "Estaba caminando cuando empezó a llover.", "wrong": "I was walk when it started to rain.", "right": "I <b>was walking</b> when it started to rain.", "why": "The continuous always needs the -ing form after was/were — the Spanish gerundio doesn't need this extra helper, so it's easy to forget the -ing."},
+    {"es": "Mientras yo leía, mi hermana dibujaba.", "wrong": "While I read, my sister drew.", "right": "While I <b>was reading</b>, my sister <b>was drawing</b>.", "why": "While usually introduces two actions happening together — English marks that with was/were + -ing on both sides, even though Spanish often just uses the imperfecto."},
+    {"es": "Vi una serpiente.", "wrong": "I was seeing a snake.", "right": "I <b>saw</b> a snake.", "why": "A quick, one-moment action is past simple, not continuous — don't translate every imperfecto as was/were + -ing."},
+    {"es": "¿Qué estabas haciendo?", "wrong": "What you was doing?", "right": "What <b>were you doing</b>?", "why": "The question needs were before you, and you always takes were, never was."}
+  ],
+  "remember": {
+    "trick": "Long action + was/were-ing; short action + past simple.",
+    "tip": "Picture the long action like a video playing in the background — the short action is the photo that interrupts it."
+  },
+  "dialogue": {
+    "title": "The rain in Cusco",
+    "context": "Liam and Sofia are on a school trip to Cusco. They are telling Miss Vega what happened during the storm.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "<b>Were</b> you two still outside when the storm started?"},
+      {"speaker": "Liam", "text": "Yes! I <b>was taking</b> photos of the old street when it <b>started</b> to rain."},
+      {"speaker": "Sofia", "text": "And I <b>was walking</b> behind him when I <b>slipped</b> on the stones!"},
+      {"speaker": "Miss Vega", "text": "Oh no! <b>Were</b> you hurt, Sofia?"},
+      {"speaker": "Sofia", "text": "No, I <b>wasn't</b>. Liam <b>was laughing</b>, not helping!"},
+      {"speaker": "Liam", "text": "I <b>wasn't laughing</b> at you — I <b>was laughing</b> because my hat flew away!"},
+      {"speaker": "Miss Vega", "text": "What <b>were</b> Mateo and Nadia <b>doing</b> at that moment?"},
+      {"speaker": "Sofia", "text": "They <b>were waiting</b> under a roof. They <b>weren't</b> in the rain at all."},
+      {"speaker": "Miss Vega", "text": "Lucky them! Next time, check the sky while you are walking."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct past continuous or past simple form.",
+      "items": [
+        {"sentence": "I ___ lunch when the phone rang.", "options": ["was having", "am having", "have"], "answer": 0, "why": "background action + when + shorter action"},
+        {"sentence": "___ you sleeping at midnight?", "options": ["Did", "Are", "Were"], "answer": 2, "why": "were + you + -ing"},
+        {"sentence": "Liam ___ photos when it started to rain.", "options": ["was taking", "is taking", "took"], "answer": 0, "why": "the background action was in progress"},
+        {"sentence": "They ___ football at four — I saw them.", "options": ["play", "were playing", "are playing"], "answer": 1, "why": "an action in progress at a stated time"},
+        {"sentence": "She ___ when the teacher called her name.", "options": ["wasn't listening", "isn't listening", "didn't listened"], "answer": 0, "why": "negative past continuous"},
+        {"sentence": "While we ___, Miss Vega was talking about the Incas.", "options": ["walk", "were walking", "walked"], "answer": 1, "why": "while + two background actions"},
+        {"sentence": "What ___ you doing at nine last night?", "options": ["did", "were", "was"], "answer": 1, "why": "question word + were + you + -ing"},
+        {"sentence": "I ___ a snake and I screamed.", "options": ["was seeing", "saw", "see"], "answer": 1, "why": "a quick action stays in the past simple"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the past continuous or past simple form of the verb in brackets.",
+      "items": [
+        {"sentence": "Yesterday at six, I ___ (do) my homework.", "answers": ["was doing"]},
+        {"sentence": "We ___ (not/watch) TV when you called.", "answers": ["weren't watching"]},
+        {"sentence": "___ (you/sleep) when I texted you?", "answers": ["Were you sleeping"]},
+        {"sentence": "Liam ___ (take) photos when it started to rain.", "answers": ["was taking"]},
+        {"sentence": "While Sofia ___ (draw), Nadia was reading.", "answers": ["was drawing"]},
+        {"sentence": "The children ___ (not/listen) to the guide.", "answers": ["weren't listening"]},
+        {"sentence": "What ___ (you/do) at nine last night?", "answers": ["were you doing"]},
+        {"sentence": "I ___ (run) in the park when I saw Mateo.", "answers": ["was running"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["taking photos", "was", "Liam", "."], "answer": "Liam was taking photos."},
+        {"words": ["to the market", "were walking", "We", "."], "answer": "We were walking to the market."},
+        {"words": ["sleeping", "you", "at midnight", "Were", "?"], "answer": "Were you sleeping at midnight?"},
+        {"words": ["to the teacher", "wasn't listening", "I", "."], "answer": "I wasn't listening to the teacher."},
+        {"words": ["were you doing", "What", "at six", "?"], "answer": "What were you doing at six?"},
+        {"words": ["was drawing", "Sofia", "while Nadia was reading", "."], "answer": "Sofia was drawing while Nadia was reading."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I walking to school when it started to rain.", "ok": false, "fix": "I <b>was walking</b> to school when it started to rain.", "why": "-ing needs was/were with it"},
+        {"sentence": "Liam was taking photos when it started to rain.", "ok": true, "why": "background action + when + shorter action"},
+        {"sentence": "She was runing in the park.", "ok": false, "fix": "She was <b>running</b> in the park.", "why": "double the consonant: run → running"},
+        {"sentence": "While Sofia was drawing, Nadia was reading.", "ok": true, "why": "two background actions with while"},
+        {"sentence": "What you were doing at six?", "ok": false, "fix": "What <b>were you doing</b> at six?", "why": "were comes before the person in a question"},
+        {"sentence": "I saw a snake and I screamed.", "ok": true, "why": "a quick action stays in the past simple"},
+        {"sentence": "We were walking when we were seeing Machu Picchu.", "ok": false, "fix": "We were walking when we <b>saw</b> Machu Picchu.", "why": "the moment you first see something is a short, simple action"},
+        {"sentence": "They weren't listening to the guide.", "ok": true, "why": "correct negative of the past continuous"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can describe what was happening at a moment in the past with <i>was/were + -ing</i>.",
+    "I can join a background action and a shorter action with <i>when</i> and <i>while</i>.",
+    "I can make negatives and questions in the past continuous (<i>wasn't listening</i>, <i>What were you doing?</i>)."
+  ],
+  "summary": [
+    "Past continuous = <b>was/were + -ing</b>, an action in progress at a moment in the past.",
+    "It's the background: something longer that was happening when a shorter action (past simple) interrupted it.",
+    "<i>When</i> usually introduces the shorter action; <i>while</i> often joins two continuous actions happening together.",
+    "Negative: wasn't/weren't + -ing. Question: was/were + person + -ing.",
+    "The -ing spelling rules are the same ones you use for the present continuous."
+  ]
+}

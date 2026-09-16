@@ -1,0 +1,199 @@
+{
+  "id": "linking-contrast-reason",
+  "level": "pet",
+  "area": "Sentence building",
+  "title": "Linking: contrast, reason, purpose and result",
+  "tagline": "Join ideas that disagree, explain why, say what for, or show the result — with the right linker and comma.",
+  "cefr": "B1",
+  "exam": ["Writing Part 1 — email", "Writing Part 2 — story or article", "Reading Part 6 — open cloze"],
+  "why": "Every B1 Preliminary email and story needs to connect ideas smoothly, and examiners reward candidates who go beyond and/but/so. Although, despite, so that and as a result show you can build longer, more mature sentences — and the open cloze often tests exactly which linker fits which gap.",
+  "hook": {
+    "text": "Nadia: \"<b>Although</b> it's raining, I still want to go for a run.\" Liam: \"<b>Because of</b> the rain? You'll get soaked!\" Nadia: \"I know, <b>so</b> I'll take an umbrella — <b>in order to</b> stay a bit drier.\"",
+    "ask": "Nadia uses four different linking words: although, because of, so and in order to. Which one shows a contrast, which shows a reason, which shows a result, and which shows a purpose?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Linking words by job",
+      "center": "Linking words",
+      "branches": [
+        {"label": "Contrast", "items": ["although", "though", "even though", "however", "despite", "in spite of"], "tone": "a"},
+        {"label": "Reason", "items": ["because", "because of", "as", "since"], "tone": "b"},
+        {"label": "Purpose", "items": ["so that", "in order to", "to"], "tone": "c"},
+        {"label": "Result", "items": ["so", "therefore", "as a result"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Although vs despite / in spite of",
+      "columns": ["although / though / even though", "despite / in spite of"],
+      "rows": [
+        {"label": "Followed by", "cells": ["a clause: subject + verb", "a noun or -ing form — no verb"]},
+        {"label": "Example", "cells": ["<b>Although</b> it was raining, we went out.", "<b>Despite</b> the rain, we went out."]},
+        {"label": "Comma?", "cells": ["comma after the clause if it comes first", "comma after the phrase if it comes first"]},
+        {"label": "however", "cells": ["a separate sentence: '…. However, …'", "not used this way"]}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to punctuate a linking sentence",
+      "steps": [
+        {"label": "Decide which idea comes first", "ex": "Although it was raining, … / We went out although it was raining."},
+        {"label": "Comma only when the linker starts the sentence", "ex": "<b>Although</b> it was raining, we went out."},
+        {"label": "No comma when the linker is in the middle", "ex": "We went out <b>although</b> it was raining."},
+        {"label": "however always needs its own sentence and a comma", "ex": "It was raining. <b>However</b>, we went out."}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "idea 1", "tone": "a"},
+      {"chip": "linker (although / because / so that / so…)", "tone": "kw"},
+      {"chip": "idea 2", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Function", "Linkers", "Example"],
+      "rows": [
+        ["Contrast", "although, though, even though, however, despite, in spite of", "<b>Although</b> he was tired, he finished the race."],
+        ["Reason", "because, because of, as, since", "We stayed at home <b>because</b> it was cold."],
+        ["Purpose", "so that, in order to, to", "She left early <b>in order to</b> catch the bus."],
+        ["Result", "so, therefore, as a result", "It rained all day, <b>so</b> the match was cancelled."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Contrast: although, though, despite",
+      "examples": [
+        {"text": "<b>Although</b> Sofia was nervous, she gave a great presentation.", "note": "although + clause (subject + verb)"},
+        {"text": "<b>Despite</b> the rain, the match continued.", "note": "despite + noun, no verb after it"},
+        {"text": "He passed the test <b>even though</b> he hadn't studied much.", "note": "even though = a stronger although"},
+        {"text": "The film was long. <b>However</b>, nobody left the cinema.", "note": "however starts a new sentence, with a comma"}
+      ]
+    },
+    {
+      "point": "Reason: because, because of, as, since",
+      "examples": [
+        {"text": "We were late <b>because</b> the bus didn't arrive.", "note": "because + clause"},
+        {"text": "The trip was cancelled <b>because of</b> the storm.", "note": "because of + noun"},
+        {"text": "<b>As</b> it was Mateo's birthday, we brought a cake.", "note": "as = because, often at the start of a sentence"}
+      ]
+    },
+    {
+      "point": "Purpose: so that, in order to, to",
+      "examples": [
+        {"text": "Nadia studies every evening <b>so that</b> she can pass her exams.", "note": "so that + subject + can/will"},
+        {"text": "Liam left early <b>in order to</b> get a good seat.", "note": "in order to + verb, a little more formal than to"},
+        {"text": "I called Sofia <b>to</b> ask about the homework.", "note": "to + verb, the simplest way to say why"}
+      ]
+    },
+    {
+      "point": "Result: so, therefore, as a result",
+      "examples": [
+        {"text": "It was snowing, <b>so</b> school was closed.", "note": "so joins two clauses, informal and very common"},
+        {"text": "The team trained hard. <b>As a result</b>, they won the final.", "note": "as a result starts a new sentence, with a comma"},
+        {"text": "Mateo forgot his kit. <b>Therefore</b>, he couldn't play.", "note": "therefore = more formal than so"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Although it was raining, but we went out.", "right": "<b>Although</b> it was raining, we went out.", "why": "Never use although and but together — the sentence only needs one linker."},
+    {"wrong": "Despite it was raining, we went out.", "right": "Despite <b>the rain</b>, we went out.", "why": "despite/in spite of are followed by a noun or -ing, never by a full clause with a subject and verb."},
+    {"wrong": "We stayed home because the cold weather.", "right": "We stayed home because <b>of</b> the cold weather.", "why": "because + clause, but because of + noun — don't mix them."},
+    {"wrong": "It was late, however we kept working.", "right": "It was late. <b>However</b>, we kept working.", "why": "however needs a full stop before it, and a comma after."},
+    {"wrong": "I studied hard so that pass the exam.", "right": "I studied hard so that I <b>could pass</b> the exam.", "why": "so that needs a subject and can/could/would after it."},
+    {"wrong": "He is very intelligent so he doesn't study hard, however.", "right": "He is very intelligent, <b>so</b> he doesn't study hard.", "why": "Don't stack extra linkers at the end — one clear connector is enough."}
+  ],
+  "l1": [
+    {"es": "Aunque llovía, salimos, pero nos mojamos.", "wrong": "Although it was raining, but we went out.", "right": "<b>Although</b> it was raining, we went out.", "why": "Spanish can repeat aunque…pero, but English never uses although and but in the same sentence."},
+    {"es": "A pesar de que llovía, salimos.", "wrong": "Despite it was raining, we went out.", "right": "<b>Despite</b> the rain, we went out.", "why": "Despite/in spite of need a noun or -ing, not a full clause like a pesar de que in Spanish."},
+    {"es": "Como era su cumpleaños, así que hicimos una fiesta.", "wrong": "Because it was his birthday, so we had a party.", "right": "<b>Because</b> it was his birthday, we had a party.", "why": "Spanish sometimes doubles the connector (como…, así que…); English needs only one."},
+    {"es": "Estudio para aprobar el examen.", "wrong": "I study for pass the exam.", "right": "I study <b>to pass</b> the exam.", "why": "Spanish para + infinitive becomes to + verb in English, not for + verb."}
+  ],
+  "remember": {
+    "trick": "One idea needs ONE linker — never two at once!",
+    "tip": "If you already used although or because, don't add but or so at the end — that's the classic double-linker mistake."
+  },
+  "dialogue": {
+    "title": "The homework debate",
+    "context": "Miss Vega asks the class to debate whether homework should be banned at weekends, and Nadia, Liam, Sofia and Mateo take different sides.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Today's debate: should homework be banned at weekends? <b>Although</b> some of you will disagree, let's hear both sides."},
+      {"speaker": "Liam", "text": "<b>Because of</b> sport and family time, weekends should be free."},
+      {"speaker": "Sofia", "text": "<b>Although</b> I understand that, students need practice, <b>so</b> some homework is useful."},
+      {"speaker": "Nadia", "text": "I do extra reading at home <b>in order to</b> improve my English."},
+      {"speaker": "Mateo", "text": "<b>Despite</b> the extra practice, most of us feel too tired to study on Sundays."},
+      {"speaker": "Liam", "text": "Exactly — <b>as a result</b>, weekend homework often isn't even finished properly."},
+      {"speaker": "Sofia", "text": "Maybe teachers could set less homework <b>so that</b> we still have free time."},
+      {"speaker": "Miss Vega", "text": "A good compromise. <b>Since</b> you all agree on that, let's write it down."},
+      {"speaker": "Nadia", "text": "I'll email you a summary <b>to</b> remind everyone of our ideas."},
+      {"speaker": "Mateo", "text": "Great debate — <b>however</b>, I still hope for a homework-free Saturday!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ it was raining, we went to the beach.", "options": ["Although", "Because", "So"], "answer": 0, "why": "contrast + clause, comma after"},
+        {"sentence": "We cancelled the picnic ___ the storm.", "options": ["although", "because of", "so"], "answer": 1, "why": "because of + noun"},
+        {"sentence": "She left early ___ catch the train.", "options": ["however", "so", "in order to"], "answer": 2, "why": "purpose: in order to + verb"},
+        {"sentence": "It was very cold, ___ we stayed inside.", "options": ["so", "despite", "because"], "answer": 0, "why": "result: so joins the two clauses"},
+        {"sentence": "___ the traffic, we arrived on time.", "options": ["Because", "Despite", "So"], "answer": 1, "why": "despite + noun (traffic)"},
+        {"sentence": "He trains every day ___ he can win the race.", "options": ["despite", "because of", "so that"], "answer": 2, "why": "purpose: so that + can"},
+        {"sentence": "The exam was hard. ___, most students passed.", "options": ["However", "Because", "So that"], "answer": 0, "why": "however starts a new sentence, with a comma"},
+        {"sentence": "We were tired ___ we had walked all day.", "options": ["so", "because", "despite"], "answer": 1, "why": "reason + clause"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with a suitable linking word or phrase.",
+      "items": [
+        {"sentence": "___ she was tired, Nadia finished the race.", "answers": ["Although", "Though", "Even though"]},
+        {"sentence": "The show was cancelled ___ the bad weather.", "answers": ["because of"]},
+        {"sentence": "We left early ___ avoid the traffic.", "answers": ["to", "in order to"]},
+        {"sentence": "It started to rain, ___ we went home.", "answers": ["so"]},
+        {"sentence": "___ the noise, everyone slept well.", "answers": ["Despite", "In spite of"]},
+        {"sentence": "Mateo trains every day ___ he can join the team.", "answers": ["so that"]},
+        {"sentence": "The bus was late. ___, we missed the film.", "answers": ["Therefore", "As a result"]},
+        {"sentence": "___ it was a holiday, the shops were closed.", "answers": ["As", "Since", "Because"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["we went for a walk", "Although it was raining,", "."], "answer": "Although it was raining, we went for a walk."},
+        {"words": ["the match continued", "Despite the rain,", "."], "answer": "Despite the rain, the match continued."},
+        {"words": ["because it was cold", "We stayed at home", "."], "answer": "We stayed at home because it was cold."},
+        {"words": ["in order to catch the bus", "She left early", "."], "answer": "She left early in order to catch the bus."},
+        {"words": ["the match was cancelled", "It rained all day,", "so", "."], "answer": "It rained all day, so the match was cancelled."},
+        {"words": ["they won the final", "As a result,", "The team trained hard.", "."], "answer": "The team trained hard. As a result, they won the final."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "It was raining, but we still went out.", "key": "ALTHOUGH", "second_start": "We went out", "second_end": "it was raining.", "answers": ["although"]},
+        {"first": "It was raining, but we went out anyway.", "key": "DESPITE", "second_start": "We went out", "second_end": "the rain.", "answers": ["despite"]},
+        {"first": "The storm was the reason the picnic was cancelled.", "key": "BECAUSE", "second_start": "The picnic was cancelled", "second_end": "there was a storm.", "answers": ["because"]},
+        {"first": "The reason we stayed at home was the cold weather.", "key": "OF", "second_start": "We stayed at home because", "second_end": "the cold weather.", "answers": ["of"]},
+        {"first": "Liam's purpose in leaving early was to catch the bus.", "key": "ORDER", "second_start": "Liam left early in", "second_end": "catch the bus.", "answers": ["order to"]},
+        {"first": "It rained all day, so the match was cancelled.", "key": "RESULT", "second_start": "It rained all day. As a", "second_end": ", the match was cancelled.", "answers": ["result"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can show a contrast with although, though, however or despite.",
+    "I can give a reason with because, because of, as or since.",
+    "I can show a purpose with so that or in order to, and a result with so or therefore."
+  ],
+  "summary": [
+    "Although/though/even though + clause; despite/in spite of + noun or -ing — never mix the two patterns.",
+    "However starts a new sentence with a comma; although joins two ideas in one sentence.",
+    "because + clause; because of + noun.",
+    "so that/in order to show purpose (why you do something); so/therefore/as a result show the result.",
+    "Never use two linkers for one idea — although…but or because…so together are always wrong."
+  ]
+}

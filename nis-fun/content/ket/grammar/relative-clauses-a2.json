@@ -1,0 +1,195 @@
+{
+  "id": "relative-clauses-a2",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "who, which, that, where",
+  "tagline": "Adding one extra detail about a person, thing or place without starting a new sentence.",
+  "cefr": "A2",
+  "exam": ["Reading Part 4 — a long text", "Reading Part 5 — multiple-choice cloze", "Writing Part 7 — a short message"],
+  "why": "Relative clauses let you give one extra, useful detail without starting a new sentence — Cambridge texts use them constantly in Reading Part 4, and using one well in your own writing makes a short answer sound much more natural.",
+  "hook": {
+    "text": "Sofia points at a boy. \"That's the boy <b>who</b> sits next to me.\" Then at a building. \"And that's the library <b>where</b> I do my homework.\" \"What about the book you're reading?\" asks Liam.",
+    "ask": "Sofia describes a person and a place using two different linking words. Which word does she use for the boy, and which for the library?"
+  },
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Join two sentences with who",
+      "before": {"text": "I have a friend. She lives in Cusco.", "hl": ["I have a friend", "She lives in Cusco"]},
+      "after": {"text": "I have a friend who lives in Cusco.", "hl": ["who"]},
+      "steps": ["Find the noun both sentences talk about (a friend / she).", "Replace the pronoun (she) with who, which or that.", "Join the two sentences into one."]
+    },
+    {
+      "type": "blocks",
+      "title": "Who, which/that, or where?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "the woman", "role": "x"}, {"t": "who", "role": "kw"}, {"t": "teaches", "role": "verb"}, {"t": "us English", "role": "obj"}], "note": "who = the subject of the clause — can't be left out"},
+        {"parts": [{"t": "the film", "role": "x"}, {"t": "(that)", "role": "kw"}, {"t": "I", "role": "subj"}, {"t": "saw", "role": "verb"}, {"t": "last night", "role": "time"}], "note": "that is the object here — you can leave it out"},
+        {"parts": [{"t": "the town", "role": "x"}, {"t": "where", "role": "kw"}, {"t": "I", "role": "subj"}, {"t": "was born", "role": "verb"}], "note": "where = a place"}
+      ],
+      "caption": "When the pronoun is the object of the clause, you can drop it — but a subject pronoun always stays."
+    },
+    {
+      "type": "map",
+      "title": "Which word?",
+      "center": "relative clause",
+      "branches": [
+        {"label": "people", "items": ["who", "that"], "tone": "a"},
+        {"label": "things", "items": ["which", "that"], "tone": "b"},
+        {"label": "places", "items": ["where"], "tone": "c"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "noun", "tone": "a", "ex": "the girl"},
+      {"chip": "who / which / that / where", "tone": "kw", "ex": "who"},
+      {"chip": "rest of the sentence", "tone": "b", "ex": "lives next door"}
+    ],
+    "table": {
+      "head": ["Pronoun", "Used for", "Example"],
+      "rows": [
+        ["who", "people", "the teacher who helps us"],
+        ["which", "things", "the book which is on the table"],
+        ["that", "people or things (more informal)", "the film that I saw"],
+        ["where", "places", "the town where I was born"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "who for people",
+      "examples": [
+        {"text": "Miss Vega is the teacher <b>who</b> teaches us science.", "note": "who = a person, the subject of the clause"},
+        {"text": "I have a cousin <b>who</b> lives in Arequipa.", "note": "who + verb, no other subject needed"},
+        {"text": "The boy <b>who</b> sits next to me is called Liam.", "note": "who describes 'the boy'"}
+      ]
+    },
+    {
+      "point": "which and that for things",
+      "examples": [
+        {"text": "The book <b>which</b> is on the table is mine.", "note": "which = a thing, the subject of the clause"},
+        {"text": "I like the shoes <b>that</b> you bought.", "note": "that is more common in speaking"},
+        {"text": "This is the phone <b>which</b> Nadia lost.", "note": "which describes 'the phone'"}
+      ]
+    },
+    {
+      "point": "where for places",
+      "examples": [
+        {"text": "Cusco is the city <b>where</b> the Incas built Machu Picchu.", "note": "where + a place"},
+        {"text": "That's the school <b>where</b> my sister studies.", "note": "where replaces 'in that school'"}
+      ]
+    },
+    {
+      "point": "leaving out who/which/that when it is the object",
+      "examples": [
+        {"text": "The film <b>(that) I saw</b> was fantastic.", "note": "I saw the film → that is the object, so you can drop it"},
+        {"text": "The girl <b>(who) you met</b> is my sister.", "note": "you met the girl → who is the object here, so it's optional"},
+        {"text": "The teacher <b>who teaches us</b> is very kind.", "note": "here who is the subject — you can NEVER leave it out"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I have a cousin she lives in Arequipa.", "right": "I have a cousin <b>who</b> lives in Arequipa.", "why": "Don't use a pronoun (she) and who together — who replaces it."},
+    {"wrong": "The book which it is on the table is mine.", "right": "The book <b>which</b> is on the table is mine.", "why": "Don't repeat the subject (it) after which."},
+    {"wrong": "The teacher teaches us is kind.", "right": "The teacher <b>who</b> teaches us is kind.", "why": "When who is the subject of the clause, you can't leave it out."},
+    {"wrong": "That's the school where my sister studies there.", "right": "That's the school <b>where</b> my sister studies.", "why": "Where already means 'in that place' — don't add there as well."},
+    {"wrong": "The film I saw it was fantastic.", "right": "The film <b>(that) I saw</b> was fantastic.", "why": "Don't add it after the verb — the relative pronoun already does that job."},
+    {"wrong": "This is the man which helps us.", "right": "This is the man <b>who</b> helps us.", "why": "Use who (or that) for people, not which."}
+  ],
+  "l1": [
+    {"es": "Tengo un primo que vive en Arequipa.", "wrong": "I have a cousin that he lives in Arequipa.", "right": "I have a cousin <b>who</b> lives in Arequipa.", "why": "English never uses a pronoun (he) after who/that — the relative pronoun already means 'he'."},
+    {"es": "La chica que conociste es mi hermana.", "wrong": "The girl that you met her is my sister.", "right": "The girl <b>(who) you met</b> is my sister.", "why": "Don't add her — the object is already the relative pronoun (or nothing, since it can be dropped)."},
+    {"es": "Es el pueblo donde nací.", "wrong": "It's the town where I was born there.", "right": "It's the town <b>where</b> I was born.", "why": "Where already carries the meaning of 'there' — don't add it twice."},
+    {"es": "El hombre que enseña inglés es simpático.", "wrong": "The man which teaches English is nice.", "right": "The man <b>who</b> teaches English is nice.", "why": "Use who (not which) for people — which is only for things."},
+    {"es": "La película que vi anoche fue genial.", "wrong": "The film that I saw it last night was great.", "right": "The film <b>(that) I saw</b> last night was great.", "why": "Don't add it — the object pronoun is already the relative clause (or can be left out completely)."}
+  ],
+  "remember": {
+    "trick": "WHO for people, WHICH for things, WHERE for places!",
+    "tip": "Say the noun, ask 'person, thing or place?', then pick who, which/that or where — and never repeat it with another pronoun."
+  },
+  "dialogue": {
+    "title": "The guessing game",
+    "context": "In class, Miss Vega's students play a guessing game, describing people and places with clues.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "OK, team — describe someone in the room, but don't say the name!"},
+      {"speaker": "Sofia", "text": "It's a girl <b>who</b> sits near the window."},
+      {"speaker": "Mateo", "text": "Is it Nadia?"},
+      {"speaker": "Sofia", "text": "Yes! Now — it's a place <b>where</b> we have lunch."},
+      {"speaker": "Liam", "text": "The canteen! Easy. My turn: it's a person <b>who</b> teaches us science."},
+      {"speaker": "Nadia", "text": "Miss Vega, of course! Now a hard one: it's the book <b>that</b> we read last term."},
+      {"speaker": "Mateo", "text": "Was it the one <b>which</b> Liam lost?"},
+      {"speaker": "Liam", "text": "Hey! That's the book <b>(that) I found</b> again yesterday!"},
+      {"speaker": "Miss Vega", "text": "Great game, everyone. You all used relative clauses perfectly."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Miss Vega is the teacher ___ teaches us science.", "options": ["who", "which", "where"], "answer": 0, "why": "who = a person, the subject"},
+        {"sentence": "The book ___ is on the table is mine.", "options": ["who", "which", "where"], "answer": 1, "why": "which = a thing"},
+        {"sentence": "That's the school ___ my sister studies.", "options": ["who", "which", "where"], "answer": 2, "why": "where = a place"},
+        {"sentence": "I have a cousin ___ lives in Arequipa.", "options": ["who", "which", "where"], "answer": 0, "why": "who = a person"},
+        {"sentence": "This is the phone ___ Nadia lost.", "options": ["where", "which", "who"], "answer": 1, "why": "which = a thing"},
+        {"sentence": "Cusco is the city ___ the Incas built Machu Picchu.", "options": ["who", "which", "where"], "answer": 2, "why": "where = a place"},
+        {"sentence": "The film ___ I saw was fantastic.", "options": ["that", "who", "where"], "answer": 0, "why": "that = a thing, the object of the clause"},
+        {"sentence": "The man ___ helps us is very kind.", "options": ["which", "who", "where"], "answer": 1, "why": "who = a person"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with who, which, that or where.",
+      "items": [
+        {"sentence": "Miss Vega is the teacher ___ teaches us science.", "answers": ["who"]},
+        {"sentence": "The book ___ is on the table is mine.", "answers": ["which", "that"]},
+        {"sentence": "That's the school ___ my sister studies.", "answers": ["where"]},
+        {"sentence": "I have a cousin ___ lives in Arequipa.", "answers": ["who"]},
+        {"sentence": "This is the phone ___ Nadia lost.", "answers": ["which", "that"]},
+        {"sentence": "Cusco is the city ___ the Incas built Machu Picchu.", "answers": ["where"]},
+        {"sentence": "The film ___ I saw was fantastic.", "answers": ["that", "which"]},
+        {"sentence": "The man ___ helps us is very kind.", "answers": ["who", "that"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["lives in Arequipa", "I have a cousin", ".", "who"], "answer": "I have a cousin who lives in Arequipa."},
+        {"words": ["is mine", "The book", "is on the table", ".", "which"], "answer": "The book which is on the table is mine."},
+        {"words": ["my sister studies", "That's the school", ".", "where"], "answer": "That's the school where my sister studies."},
+        {"words": ["Nadia lost", "This is the phone", ".", "which"], "answer": "This is the phone which Nadia lost."},
+        {"words": ["is very kind", "The man", "helps us", ".", "who"], "answer": "The man who helps us is very kind."},
+        {"words": ["the Incas built Machu Picchu", "Cusco is the city", ".", "where"], "answer": "Cusco is the city where the Incas built Machu Picchu."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "Miss Vega is the teacher who teaches us science.", "ok": true, "why": "who + verb, correct — who is the subject"},
+        {"sentence": "I have a cousin she lives in Arequipa.", "ok": false, "fix": "I have a cousin <b>who</b> lives in Arequipa.", "why": "don't use a pronoun and who together"},
+        {"sentence": "The book which is on the table is mine.", "ok": true, "why": "which = a thing, correct"},
+        {"sentence": "The teacher teaches us is kind.", "ok": false, "fix": "The teacher <b>who</b> teaches us is kind.", "why": "who can't be left out when it's the subject"},
+        {"sentence": "That's the school where my sister studies.", "ok": true, "why": "where + place, correct"},
+        {"sentence": "That's the school where my sister studies there.", "ok": false, "fix": "That's the school <b>where</b> my sister studies.", "why": "where already means 'in that place' — don't add there as well"},
+        {"sentence": "This is the man which helps us.", "ok": false, "fix": "This is the man <b>who</b> helps us.", "why": "use who for people, not which"},
+        {"sentence": "The film I saw was fantastic.", "ok": true, "why": "the relative pronoun (that) can be left out when it's the object"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use <i>who</i> to describe people and <i>which/that</i> to describe things.",
+    "I can use <i>where</i> to describe a place.",
+    "I can leave out <i>who/which/that</i> when it is the object of the clause."
+  ],
+  "summary": [
+    "Use <i>who</i> for people, <i>which</i> for things, and <i>that</i> for either.",
+    "Use <i>where</i> for places — it already means 'in that place', so don't add there.",
+    "Never repeat the noun with another pronoun (he, it, there) after the relative clause.",
+    "You can leave out <i>who/which/that</i> when it is the object of the clause: the film (that) I saw.",
+    "You can NEVER leave it out when it is the subject: the teacher who teaches us."
+  ]
+}

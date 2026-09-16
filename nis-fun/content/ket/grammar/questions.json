@@ -1,0 +1,205 @@
+{
+  "id": "questions",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "Questions and short answers",
+  "tagline": "Asking about people, places, times and reasons — the right word order every time.",
+  "cefr": "A2",
+  "exam": ["Speaking Part 1 — questions about you", "Reading Part 3 — a conversation", "Listening Part 5 — note completion"],
+  "why": "Every Speaking Part 1 exchange is built from questions, and Reading Part 3 tests whether you can match the right question to the right answer. Get the order wrong — put the helper verb in the wrong place, or forget do — and it's hard for people to understand you.",
+  "hook": {
+    "text": "Sofia has a notebook. \"<b>Where</b> are you from, Liam?\" \"Trujillo.\" \"<b>Do</b> you play any sports?\" \"Football.\" \"<b>Who</b> is your best friend here?\" Liam smiles. \"You, Sofia — you ask great questions!\"",
+    "ask": "Look at Sofia's three questions. Which word comes first each time — and what comes right after it?"
+  },
+  "diagrams": [
+    {
+      "type": "steps",
+      "title": "How to build a question",
+      "steps": [
+        {"label": "Start with the question word (if there is one)", "ex": "<b>Where</b>"},
+        {"label": "Add the helper: be / do-does-did / a modal", "ex": "Where <b>do</b>"},
+        {"label": "Add the person", "ex": "Where do <b>you</b>"},
+        {"label": "Add the rest and the question mark", "ex": "Where do you live<b>?</b>"}
+      ],
+      "caption": "The helper always comes before the person — that's what makes it a question."
+    },
+    {
+      "type": "blocks",
+      "title": "Questions about the object vs the subject",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Where", "role": "kw"}, {"t": "do", "role": "aux"}, {"t": "you", "role": "subj"}, {"t": "live", "role": "verb"}, {"t": "?", "role": "x"}], "note": "asking about the place — needs do"},
+        {"parts": [{"t": "Who", "role": "kw"}, {"t": "called", "role": "verb"}, {"t": "you", "role": "x"}, {"t": "?", "role": "x"}], "note": "who is the subject — no do, word order stays normal"},
+        {"parts": [{"t": "How old", "role": "kw"}, {"t": "are", "role": "aux"}, {"t": "you", "role": "subj"}, {"t": "?", "role": "x"}], "note": "with be, no do is needed"}
+      ],
+      "caption": "When <b>who</b> or <b>what</b> IS the person doing the action, the sentence keeps its normal order — no <i>do</i>."
+    },
+    {
+      "type": "map",
+      "title": "Which question word?",
+      "center": "Question words",
+      "branches": [
+        {"label": "person / thing", "items": ["Who…?", "What…?", "Which…?"], "tone": "a"},
+        {"label": "place / time", "items": ["Where…?", "When…?"], "tone": "b"},
+        {"label": "reason / manner", "items": ["Why…?", "How…?"], "tone": "c"},
+        {"label": "how + adjective", "items": ["How often…?", "How long…?", "How many…?", "How much…?", "How far…?"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "question word", "tone": "kw", "ex": "Where"},
+      {"chip": "be / do-does-did / modal", "tone": "a", "ex": "do"},
+      {"chip": "subject", "tone": "b", "ex": "you"},
+      {"chip": "rest of the question", "tone": "c", "ex": "live?"}
+    ],
+    "table": {
+      "head": ["Question type", "Word order", "Example"],
+      "rows": [
+        ["Yes/No with be", "be + subject + rest?", "Are you ready?"],
+        ["Yes/No with do/does/did", "do/does/did + subject + base verb?", "Does she play tennis?"],
+        ["Wh- question (object/place/time)", "question word + be/do + subject + rest?", "Where do you live?"],
+        ["Wh- question about the subject", "question word (=subject) + verb?", "Who called you?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Yes/No questions: be, do/does/did and modals go first",
+      "examples": [
+        {"text": "<b>Are</b> you ready for the test?", "note": "be goes to the front"},
+        {"text": "<b>Does</b> Sofia like pizza?", "note": "does + base verb (like, not likes)"},
+        {"text": "<b>Did</b> you finish your homework?", "note": "did + base verb, not the past form"},
+        {"text": "<b>Can</b> you swim?", "note": "modals make their own questions, just like be"}
+      ]
+    },
+    {
+      "point": "Wh- questions: about the object, place, time or reason",
+      "examples": [
+        {"text": "<b>Where</b> do you live?", "note": "question word + do + subject + verb"},
+        {"text": "<b>What</b> time does the film start?", "note": "what + noun can go together"},
+        {"text": "<b>Why</b> are you late?", "note": "why + be + subject"},
+        {"text": "<b>Which</b> bag is yours?", "note": "which = choosing between options"}
+      ]
+    },
+    {
+      "point": "Questions about the subject: no do, no change",
+      "examples": [
+        {"text": "<b>Who</b> called you?", "note": "who is the subject — the word order stays the same"},
+        {"text": "<b>What</b> happened at break time?", "note": "what is the subject here, so no does"}
+      ]
+    },
+    {
+      "point": "How + adjective, and short answers",
+      "examples": [
+        {"text": "<b>How often</b> do you play football?", "note": "how often asks about frequency"},
+        {"text": "<b>How long</b> is the film?", "note": "how long asks about duration"},
+        {"text": "<b>How many</b> brothers have you got?", "note": "how many + countable plural noun"},
+        {"text": "<b>Are</b> you hungry? — Yes, I am.", "note": "short answer = subject + the same auxiliary"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Where you live?", "right": "<b>Where do you live?</b>", "why": "Wh- questions about the object need do/does/did — don't skip it."},
+    {"wrong": "What means this word?", "right": "What <b>does</b> this word <b>mean</b>?", "why": "does + base verb, not the -s form."},
+    {"wrong": "Who did call you?", "right": "<b>Who called you?</b>", "why": "Questions about the subject don't use do — the word order doesn't change."},
+    {"wrong": "How many money have you got?", "right": "How <b>much</b> money have you got?", "why": "Money is uncountable — use how much, not how many."},
+    {"wrong": "Yes, I do. (answering Are you ready?)", "right": "Yes, I <b>am</b>.", "why": "The short answer repeats the auxiliary in the question — be needs am/is/are, not do."},
+    {"wrong": "You are from where?", "right": "<b>Where are you from?</b>", "why": "The question word always goes first, not last."}
+  ],
+  "l1": [
+    {"es": "¿De dónde eres?", "wrong": "From where are you?", "right": "<b>Where are you from?</b>", "why": "In English, the question word always starts the sentence, and the preposition moves to the end."},
+    {"es": "¿Cuántos años tienes?", "wrong": "How many years do you have?", "right": "<b>How old are you?</b>", "why": "Age uses how old + be, not how many years + have."},
+    {"es": "¿Qué significa esto?", "wrong": "What means this?", "right": "What <b>does</b> this <b>mean</b>?", "why": "English questions with a normal verb need do/does — Spanish doesn't."},
+    {"es": "¿Quién llamó?", "wrong": "Who did call?", "right": "<b>Who called?</b>", "why": "When who is the subject, there's no do — the sentence keeps the normal word order."},
+    {"es": "¿Cuánto cuesta?", "wrong": "How much cost it?", "right": "How much <b>does it cost</b>?", "why": "You still need do/does before the subject and verb in a question."}
+  ],
+  "remember": {
+    "trick": "Question word first, then the helper, then YOU!",
+    "tip": "Say the question word, then ask 'what helps?' — be, do/does/did or a modal — before the person."
+  },
+  "dialogue": {
+    "title": "The school magazine interview",
+    "context": "Sofia is writing for the school magazine. She interviews Liam at lunchtime.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Hi Liam! Can I ask you some questions for the magazine?"},
+      {"speaker": "Liam", "text": "Sure! <b>What</b> do you want to know?"},
+      {"speaker": "Sofia", "text": "OK — <b>where</b> are you from?"},
+      {"speaker": "Liam", "text": "I'm from Trujillo. <b>Why</b> do you ask?"},
+      {"speaker": "Sofia", "text": "Just curious! <b>How long</b> have you lived in Lima?"},
+      {"speaker": "Liam", "text": "About two years. <b>Who</b> else are you interviewing?"},
+      {"speaker": "Sofia", "text": "Nadia and Mateo. <b>Do</b> you play any sports?"},
+      {"speaker": "Liam", "text": "Yes, I do — football. <b>How often</b> do you write for the magazine?"},
+      {"speaker": "Sofia", "text": "Every month! One last question: <b>what</b> is your favourite subject?"},
+      {"speaker": "Liam", "text": "Easy — science, with Miss Vega."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ you like pizza?", "options": ["Do", "Does", "Are"], "answer": 0, "why": "you → do"},
+        {"sentence": "___ your sister like football?", "options": ["Are", "Does", "Do"], "answer": 1, "why": "your sister (she) → does"},
+        {"sentence": "___ they at school now?", "options": ["Do", "Does", "Are"], "answer": 2, "why": "be question: are + they"},
+        {"sentence": "Who ___ you at the party?", "options": ["saw", "did see", "does see"], "answer": 0, "why": "who = subject, no do needed"},
+        {"sentence": "___ is your birthday?", "options": ["What", "When", "Who"], "answer": 1, "why": "asking about a date → when"},
+        {"sentence": "How ___ are you?", "options": ["What", "Which", "old"], "answer": 2, "why": "how old = age"},
+        {"sentence": "How ___ brothers have you got?", "options": ["many", "much", "long"], "answer": 0, "why": "brothers = countable plural → how many"},
+        {"sentence": "Are you tired? — Yes, I ___.", "options": ["do", "am", "are"], "answer": 1, "why": "short answer repeats be: am"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the missing word.",
+      "items": [
+        {"sentence": "___ you like pizza?", "answers": ["Do"]},
+        {"sentence": "___ your sister like football?", "answers": ["Does"]},
+        {"sentence": "___ they at school now?", "answers": ["Are"]},
+        {"sentence": "Who ___ (see) you at the party?", "answers": ["saw"]},
+        {"sentence": "___ is your birthday?", "answers": ["When"]},
+        {"sentence": "How ___ are you?", "answers": ["old"]},
+        {"sentence": "How ___ brothers have you got?", "answers": ["many"]},
+        {"sentence": "Are you tired? — Yes, I ___.", "answers": ["am"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["live", "Where", "?", "do you"], "answer": "Where do you live?"},
+        {"words": ["like pizza", "Does", "?", "Sofia"], "answer": "Does Sofia like pizza?"},
+        {"words": ["yesterday", "Who", "?", "called you"], "answer": "Who called you yesterday?"},
+        {"words": ["got", "How many brothers", "?", "have you"], "answer": "How many brothers have you got?"},
+        {"words": ["start", "What time", "?", "does the film"], "answer": "What time does the film start?"},
+        {"words": ["for the test", "Are you", "?", "ready"], "answer": "Are you ready for the test?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "Where do you live?", "ok": true, "why": "wh- question about a place, correct word order"},
+        {"sentence": "What means this word?", "ok": false, "fix": "What <b>does</b> this word <b>mean</b>?", "why": "needs does + base verb mean"},
+        {"sentence": "Who called you yesterday?", "ok": true, "why": "question about the subject — no do needed"},
+        {"sentence": "How many money have you got?", "ok": false, "fix": "How <b>much</b> money have you got?", "why": "money is uncountable"},
+        {"sentence": "Does she like tennis?", "ok": true, "why": "does + base verb like"},
+        {"sentence": "You are from where?", "ok": false, "fix": "<b>Where are you from?</b>", "why": "the question word goes first"},
+        {"sentence": "How old are you?", "ok": true, "why": "how old + be, correct"},
+        {"sentence": "Who did call you?", "ok": false, "fix": "<b>Who called you?</b>", "why": "no do needed when who is the subject"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can make Yes/No questions with <i>be</i>, <i>do/does/did</i> and modals.",
+    "I can ask Wh- questions about people, places, times and reasons.",
+    "I can ask <i>Who…?</i> and <i>What…?</i> about the subject without do."
+  ],
+  "summary": [
+    "Yes/No questions start with <i>be</i>, <i>do/does/did</i> or a modal.",
+    "Wh- questions about the object, place or time need do/does/did too: <i>Where do you live?</i>",
+    "When <i>who</i> or <i>what</i> is the subject, there's no do: <i>Who called you?</i>",
+    "Use <i>how</i> + adjective for details: <i>how often, how long, how many, how much, how far</i>.",
+    "Short answers repeat the same auxiliary as the question: <i>Are you ready? — Yes, I am.</i>"
+  ]
+}

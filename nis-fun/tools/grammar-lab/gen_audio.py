@@ -29,7 +29,7 @@ async def main():
     nivel = args[args.index("--level") + 1] if "--level" in args else None
     only = args[args.index("--only") + 1] if "--only" in args else None
     jobs = []
-    for lv in ([nivel] if nivel else ["b2f", "c1a"]):
+    for lv in ([nivel] if nivel else ["a1", "ket", "pet", "b2f", "c1a"]):
         for p in sorted(glob.glob(os.path.join(ROOT, "content", lv, "grammar", "*.json"))):
             tid = os.path.splitext(os.path.basename(p))[0]
             if tid == "index" or (only and tid != only):

@@ -1,0 +1,204 @@
+{
+  "id": "present-simple",
+  "level": "ket",
+  "area": "Tenses & time",
+  "title": "Present simple: be, have got and routines",
+  "tagline": "Facts, routines and habits — the tense for what is always or usually true.",
+  "cefr": "A2",
+  "exam": ["Reading Part 6 — a text about someone's daily life", "Speaking Part 1 — questions about your daily routine", "Writing Part 6 — a short email"],
+  "why": "The present simple is the tense of everyday life: what you do, what you have and what is always true. It brings together three things you already know — <i>be</i>, <i>have got</i> and the third-person <i>-s</i> — into one system that A2 Key tests again and again, from reading texts about people's routines to your own Speaking Part 1 answers.",
+  "hook": {
+    "text": "Miss Vega gives the class a survey. \"How often <b>do</b> you <b>study</b> English?\" Nadia writes: \"I <b>study</b> every day, but my brother only <b>studies</b> on Fridays.\" Liam adds: \"I <b>haven't got</b> a brother — I<b>'ve got</b> two sisters!\"",
+    "ask": "Find the -s endings on the verbs in the story. Why does study become studies for Nadia's brother but stay study for Nadia?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "The present simple system",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "studies", "role": "verb"}, {"t": "every day", "role": "time"}, {"t": ".", "role": "x"}], "note": "ordinary verb, he/she/it + -ies"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "doesn't study", "role": "neg"}, {"t": "at the weekend", "role": "time"}, {"t": ".", "role": "x"}], "note": "negative with doesn't"},
+        {"parts": [{"t": "Does", "role": "aux"}, {"t": "she", "role": "subj"}, {"t": "study", "role": "verb"}, {"t": "every day", "role": "time"}, {"t": "?", "role": "x"}], "note": "question with does"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "'s got", "role": "kw"}, {"t": "a lot of homework", "role": "obj"}, {"t": ".", "role": "x"}], "note": "have got, for possession"}
+      ],
+      "caption": "Ordinary verbs add <b>-s/-es/-ies</b> for he/she/it. The helper <b>does</b> carries the question and the negative, so the main verb goes back to its base form."
+    },
+    {
+      "type": "spelling",
+      "title": "-s / -es / -ies for he, she, it",
+      "rules": [
+        {"rule": "Most verbs: + s", "examples": ["play → play<b>s</b>", "live → live<b>s</b>"]},
+        {"rule": "-s, -sh, -ch, -x, -o: + es", "examples": ["watch → watch<b>es</b>", "go → go<b>es</b>", "do → do<b>es</b>"]},
+        {"rule": "consonant + y: y → ies", "examples": ["study → stud<b>ies</b>", "carry → carr<b>ies</b>"]},
+        {"rule": "have and be are irregular", "examples": ["have → ha<b>s</b>", "be → i<b>s</b>"]}
+      ],
+      "caption": "If you can't say the word easily with just + s, it probably needs -es or -ies."
+    },
+    {
+      "type": "map",
+      "title": "Adverbs of frequency: where do they go?",
+      "center": "how often?",
+      "branches": [
+        {"label": "before the main verb", "items": ["I always study.", "She usually walks to school."], "tone": "a"},
+        {"label": "after be", "items": ["I'm never late.", "He's usually tired."], "tone": "b"},
+        {"label": "at the start or end for emphasis", "items": ["Sometimes I forget my homework.", "I go swimming once a week."], "tone": "c"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "a", "ex": "I / she / they"},
+      {"chip": "be / have got / verb(+s)", "tone": "kw", "ex": "is / has got / studies"},
+      {"chip": "(don't / doesn't)", "tone": "c", "ex": "doesn't study"},
+      {"chip": "the rest", "tone": "b", "ex": "every day"}
+    ],
+    "table": {
+      "head": ["Person", "be", "have got", "ordinary verb"],
+      "rows": [
+        ["I", "I am", "I've got", "I study"],
+        ["you", "You are", "You've got", "You study"],
+        ["he / she / it", "He is", "He's got", "He studies"],
+        ["we", "We are", "We've got", "We study"],
+        ["they", "They are", "They've got", "They study"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Routines and facts — I, you, we, they",
+      "examples": [
+        {"text": "I <b>study</b> English every day.", "note": "a routine, repeated regularly"},
+        {"text": "We <b>go</b> to school at half past seven.", "note": "a fact about the group"},
+        {"text": "They <b>live</b> in Trujillo.", "note": "a permanent fact"}
+      ]
+    },
+    {
+      "point": "He, she, it — the -s ending",
+      "examples": [
+        {"text": "Miss Vega <b>teaches</b> English and Science.", "note": "teach + es, one person"},
+        {"text": "My brother only <b>studies</b> on Fridays.", "note": "study → studies, consonant + y"},
+        {"text": "The shop <b>closes</b> at nine.", "note": "close + s, a fact about the shop"}
+      ]
+    },
+    {
+      "point": "have got — for family, pets and possessions",
+      "examples": [
+        {"text": "I<b>'ve got</b> two sisters.", "note": "have got = have, for possession"},
+        {"text": "She<b>'s got</b> a new bike.", "note": "has got, one person"},
+        {"text": "<b>Have</b> you <b>got</b> a pencil case?", "note": "question with have got"}
+      ]
+    },
+    {
+      "point": "Negatives, questions and how often",
+      "examples": [
+        {"text": "I <b>don't watch</b> TV in the morning.", "note": "don't + base verb, for I/you/we/they"},
+        {"text": "He <b>doesn't like</b> maths very much.", "note": "doesn't + base verb, for he/she/it"},
+        {"text": "<b>Does</b> she <b>walk</b> to school? — Yes, she <b>does</b>.", "note": "question and short answer with does"},
+        {"text": "I <b>always do</b> my homework, but I <b>never</b> forget my football boots.", "note": "adverbs of frequency before the main verb"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She study every day.", "right": "She <b>studies</b> every day.", "why": "he/she/it needs the -s/-es/-ies ending on the verb."},
+    {"wrong": "She don't like maths.", "right": "She <b>doesn't like</b> maths.", "why": "he/she/it uses doesn't, not don't, in the negative."},
+    {"wrong": "Does she likes maths?", "right": "<b>Does</b> she <b>like</b> maths?", "why": "does already carries the -s — the main verb goes back to its base form."},
+    {"wrong": "I have got 12 years.", "right": "I<b>'m</b> 12 (years old).", "why": "age uses be in English, not have got."},
+    {"wrong": "I do always my homework.", "right": "I <b>always do</b> my homework.", "why": "the adverb of frequency goes before the main verb, but after be."},
+    {"wrong": "She has got a car?", "right": "<b>Has</b> she <b>got</b> a car?", "why": "in a question, has/have moves to the front, before the person."}
+  ],
+  "l1": [
+    {"es": "Ella estudia todos los días.", "wrong": "She study every day.", "right": "She <b>studies</b> every day.", "why": "Spanish doesn't mark the verb specially for ella; English adds -s/-es/-ies for he/she/it."},
+    {"es": "Tengo doce años.", "wrong": "I have got 12 years.", "right": "I<b>'m</b> 12.", "why": "Age uses be in English, not have got."},
+    {"es": "No le gustan las matemáticas.", "wrong": "She don't like maths.", "right": "She <b>doesn't like</b> maths.", "why": "he/she/it takes doesn't, not don't."},
+    {"es": "Siempre hago mis deberes.", "wrong": "I do always my homework.", "right": "I <b>always do</b> my homework.", "why": "In English, the frequency adverb goes before the main verb, not after."},
+    {"es": "¿Tiene ella un perro?", "wrong": "Has she a dog?", "right": "<b>Has she got</b> a dog?", "why": "In British English, questions about possession usually add got after has/have."}
+  ],
+  "remember": {
+    "trick": "He, she, it — don't forget the S!",
+    "tip": "Every time the subject is he, she or it, listen for the s on the end of the verb — studies, watches, has."
+  },
+  "dialogue": {
+    "title": "Lunchtime survey",
+    "context": "At lunch, Nadia is doing a class survey about daily routines. She asks Liam some questions.",
+    "lines": [
+      {"speaker": "Nadia", "text": "Hi Liam! <b>Do</b> you <b>study</b> English every day?"},
+      {"speaker": "Liam", "text": "Yes, I <b>do</b>. I <b>always study</b> for twenty minutes after dinner."},
+      {"speaker": "Nadia", "text": "Nice! <b>Does</b> your sister <b>study</b> too?"},
+      {"speaker": "Liam", "text": "I <b>haven't got</b> a sister — I<b>'ve got</b> two brothers."},
+      {"speaker": "Nadia", "text": "OK! <b>Do</b> your brothers <b>play</b> any sport?"},
+      {"speaker": "Liam", "text": "One of them <b>plays</b> football, but the other one <b>doesn't like</b> sport at all."},
+      {"speaker": "Nadia", "text": "And what about you? <b>Do</b> you <b>walk</b> to school?"},
+      {"speaker": "Liam", "text": "No, I <b>don't</b>. My mum drives me every morning."},
+      {"speaker": "Nadia", "text": "Thanks, Liam! That's my survey finished."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "My brother ___ football every weekend.", "options": ["plays", "play", "playing"], "answer": 0, "why": "he takes the -s ending: plays."},
+        {"sentence": "___ she like maths?", "options": ["Do", "Does", "Is"], "answer": 1, "why": "she takes does in a question."},
+        {"sentence": "I ___ two sisters.", "options": ["'s got", "has got", "'ve got"], "answer": 2, "why": "I takes 've got, not 's got or has got."},
+        {"sentence": "Miss Vega ___ English and Science.", "options": ["teaches", "teach", "teachs"], "answer": 0, "why": "teach ends in ch, so it takes -es: teaches."},
+        {"sentence": "He ___ like sport at all.", "options": ["don't", "doesn't", "isn't"], "answer": 1, "why": "he takes doesn't in the negative."},
+        {"sentence": "I ___ do my homework before dinner.", "options": ["do always", "doing always", "always do"], "answer": 2, "why": "the frequency adverb goes before the main verb."},
+        {"sentence": "___ your brothers got a dog?", "options": ["Have", "Has", "Is"], "answer": 0, "why": "your brothers is plural, so it takes have."},
+        {"sentence": "The shop ___ at nine o'clock.", "options": ["close", "closes", "closing"], "answer": 1, "why": "the shop (it) takes the -s ending: closes."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct present simple form of the verb in brackets.",
+      "items": [
+        {"sentence": "My brother ___ (play) football every weekend.", "answers": ["plays"]},
+        {"sentence": "Miss Vega ___ (teach) English and Science.", "answers": ["teaches"]},
+        {"sentence": "I ___ (have got) two sisters.", "answers": ["'ve got", "have got"]},
+        {"sentence": "He ___ (not/like) sport at all.", "answers": ["doesn't like"]},
+        {"sentence": "___ (you/walk) to school every day?", "answers": ["Do you walk"]},
+        {"sentence": "I ___ (always/do) my homework before dinner.", "answers": ["always do"]},
+        {"sentence": "___ (your brothers/have got) a dog?", "answers": ["Have your brothers got"]},
+        {"sentence": "The shop ___ (close) at nine o'clock.", "answers": ["closes"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["football", "plays", "brother", "My", "every weekend", "."], "answer": "My brother plays football every weekend."},
+        {"words": ["like", "she", "Does", "maths", "?"], "answer": "Does she like maths?"},
+        {"words": ["two sisters", "got", "I've", "."], "answer": "I've got two sisters."},
+        {"words": ["like", "doesn't", "sport", "He", "at all", "."], "answer": "He doesn't like sport at all."},
+        {"words": ["homework", "do", "my", "always", "I", "."], "answer": "I always do my homework."},
+        {"words": ["a dog", "got", "your brothers", "Have", "?"], "answer": "Have your brothers got a dog?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "My brother plays football every weekend.", "ok": true, "why": "he → plays, correct -s ending"},
+        {"sentence": "Does she like maths?", "ok": true, "why": "does + base verb, correct question"},
+        {"sentence": "I've got two sisters.", "ok": true, "why": "have got for possession, correct form for I"},
+        {"sentence": "I always do my homework before dinner.", "ok": true, "why": "always before the main verb, correct position"},
+        {"sentence": "She study every day.", "ok": false, "fix": "She <b>studies</b> every day.", "why": "he/she/it needs the -s/-es/-ies ending"},
+        {"sentence": "She don't like maths.", "ok": false, "fix": "She <b>doesn't like</b> maths.", "why": "he/she/it uses doesn't, not don't"},
+        {"sentence": "I have got 12 years.", "ok": false, "fix": "I<b>'m</b> 12.", "why": "age uses be, not have got"},
+        {"sentence": "I do always my homework.", "ok": false, "fix": "I <b>always do</b> my homework.", "why": "the frequency adverb goes before the main verb"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about routines and facts using <i>be, have got</i> and ordinary verbs.",
+    "I can spell and pronounce the -s/-es/-ies ending correctly for he/she/it.",
+    "I can make negatives and questions with <i>don't/doesn't</i> and use adverbs of frequency in the right place."
+  ],
+  "summary": [
+    "Present simple = routines, facts and things that are always true: <i>be, have got</i> and ordinary verbs.",
+    "he/she/it adds <b>-s/-es/-ies</b> to the ordinary verb: <i>plays, watches, studies</i>.",
+    "Negative and question use <i>don't/doesn't</i> — and the main verb goes back to its base form.",
+    "Adverbs of frequency go before the main verb, but after <i>be</i>: <i>I always study. I'm never late.</i>",
+    "<i>have got</i> is common for possession: <i>I've got, she's got, have they got…?</i>"
+  ]
+}

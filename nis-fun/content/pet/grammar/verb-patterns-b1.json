@@ -1,0 +1,201 @@
+{
+  "id": "verb-patterns-b1",
+  "level": "pet",
+  "area": "Sentence building",
+  "title": "Verb patterns: -ing or to?",
+  "tagline": "Some verbs need -ing, some need to, and a few change meaning depending on which one you pick.",
+  "cefr": "B1",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 1 — email", "Speaking Part 3 — discussing a situation"],
+  "why": "The verb right after enjoy, want, decide or hope has to be in the correct form, and B1 Preliminary uses exactly this choice as a distractor in the multiple-choice cloze. It also matters every time you write an email about your plans or talk about your hobbies in the Speaking test — get enjoy to play or want going wrong and it sounds instantly foreign.",
+  "hook": {
+    "text": "Liam: \"I <b>enjoy playing</b> football, but I <b>hate running</b>.\" Sofia: \"Really? I <b>want to try</b> the new dance class. Do you fancy coming?\" Liam: \"Maybe — but I <b>promise to think</b> about it!\"",
+    "ask": "Look at the verbs in bold. Some are followed by an -ing form (playing, running) and some by to + verb (to try, to think). Can you guess which first verb — enjoy or want — decides the pattern?"
+  },
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Which pattern does the verb take?",
+      "center": "Verb patterns",
+      "branches": [
+        {"label": "+ -ing", "items": ["enjoy", "finish", "avoid", "mind", "suggest", "keep"], "tone": "a"},
+        {"label": "+ to", "items": ["want", "decide", "hope", "promise", "learn", "agree"], "tone": "b"},
+        {"label": "both — meaning changes", "items": ["remember", "forget", "stop", "try"], "tone": "c"},
+        {"label": "make / let + base verb", "items": ["make me laugh", "let us go"], "tone": "a"},
+        {"label": "preposition + -ing", "items": ["good at swimming", "interested in learning"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Same verb, different meaning",
+      "columns": ["+ -ing", "+ to"],
+      "rows": [
+        {"label": "remember", "cells": ["a memory of the past", "not forgetting a duty"]},
+        {"label": "forget", "cells": ["don't remember an experience", "fail to do something necessary"]},
+        {"label": "stop", "cells": ["end an activity completely", "pause in order to do something else"]},
+        {"label": "try", "cells": ["experiment, test something out", "make an effort to do something difficult"]}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to choose the right pattern",
+      "steps": [
+        {"label": "Find the first verb", "ex": "I <b>enjoy</b>… / I <b>want</b>…"},
+        {"label": "Check which list it's on", "ex": "enjoy → -ing / want → to"},
+        {"label": "Add the second verb in the right form", "ex": "I enjoy <b>swimming</b>. / I want <b>to swim</b>."},
+        {"label": "Watch remember/forget/stop/try — the meaning changes", "ex": "I stopped <b>to buy</b> milk ≠ I stopped <b>buying</b> milk"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "verb 1 (enjoy, want…)", "tone": "a"},
+      {"chip": "+ -ing OR to + verb", "tone": "kw"},
+      {"chip": "verb 2", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Pattern", "Verbs", "Example"],
+      "rows": [
+        ["+ -ing", "enjoy, finish, avoid, mind, suggest, keep, practise", "She <b>enjoys reading</b> comics."],
+        ["+ to", "want, decide, hope, promise, learn, agree, plan", "He <b>decided to leave</b> early."],
+        ["+ -ing or + to (meaning changes)", "remember, forget, stop, try", "I <b>stopped to answer</b> the phone. / I <b>stopped answering</b> messages."],
+        ["make/let + base verb (no to)", "make, let", "My parents <b>let me stay</b> up late."],
+        ["preposition + -ing", "good at, interested in, keen on, afraid of, instead of", "Nadia is good at <b>dancing</b>."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Verbs followed by -ing",
+      "examples": [
+        {"text": "Mateo <b>enjoys playing</b> the guitar every evening.", "note": "enjoy + -ing = something you like doing"},
+        {"text": "Have you <b>finished doing</b> your homework?", "note": "finish + -ing, never finish to do"},
+        {"text": "I <b>can't avoid seeing</b> him — we're in the same class.", "note": "avoid + -ing"},
+        {"text": "Would you <b>mind opening</b> the window?", "note": "mind + -ing, a polite request"}
+      ]
+    },
+    {
+      "point": "Verbs followed by to + infinitive",
+      "examples": [
+        {"text": "Nadia <b>hopes to travel</b> to Cusco this year.", "note": "hope + to"},
+        {"text": "We <b>decided to walk</b> instead of taking the bus.", "note": "decide + to"},
+        {"text": "Liam <b>promised to help</b> with the project.", "note": "promise + to"}
+      ]
+    },
+    {
+      "point": "Same verb, different meaning: remember, forget, stop, try",
+      "examples": [
+        {"text": "I <b>stopped eating</b> meat two years ago.", "note": "stopped an activity completely"},
+        {"text": "On the way home, I <b>stopped to buy</b> some bread.", "note": "paused in order to do something else"},
+        {"text": "Please <b>remember to bring</b> your project tomorrow.", "note": "don't forget the duty"},
+        {"text": "I <b>remember meeting</b> Miss Vega on my first day.", "note": "a memory of the past"}
+      ]
+    },
+    {
+      "point": "make/let + base verb, and prepositions + -ing",
+      "examples": [
+        {"text": "My parents <b>let me stay</b> at Sofia's house.", "note": "let + person + base verb, no to"},
+        {"text": "The film <b>made everyone laugh</b>.", "note": "make + person + base verb, no to"},
+        {"text": "Nadia is really <b>interested in learning</b> French.", "note": "preposition + -ing, never + to"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I enjoy to play football.", "right": "I enjoy <b>playing</b> football.", "why": "enjoy is always followed by -ing, never to + verb."},
+    {"wrong": "She wants going to the party.", "right": "She wants <b>to go</b> to the party.", "why": "want is always followed by to + verb."},
+    {"wrong": "I stopped to smoke five years ago (I don't smoke any more).", "right": "I stopped <b>smoking</b> five years ago.", "why": "stop + -ing = end a habit; stop + to = pause to do something else."},
+    {"wrong": "My mum let me to go out.", "right": "My mum let me <b>go</b> out.", "why": "let and make take the base verb, with no to."},
+    {"wrong": "Liam is good at play chess.", "right": "Liam is good at <b>playing</b> chess.", "why": "After a preposition (at, in, on…), verbs always take -ing."},
+    {"wrong": "I finished to do my homework.", "right": "I finished <b>doing</b> my homework.", "why": "finish is always followed by -ing, like enjoy."}
+  ],
+  "l1": [
+    {"es": "Disfruto jugar fútbol.", "wrong": "I enjoy to play football.", "right": "I enjoy <b>playing</b> football.", "why": "Spanish uses the infinitive after disfruto, but enjoy always takes -ing in English."},
+    {"es": "Espero ir a la fiesta.", "wrong": "I hope going to the party.", "right": "I hope <b>to go</b> to the party.", "why": "hope needs to + verb, not -ing, even though it feels similar to other -ing verbs."},
+    {"es": "Mis padres me dejaron salir.", "wrong": "My parents let me to go out.", "right": "My parents let me <b>go</b> out.", "why": "Spanish dejar + infinitive sometimes adds a, but English let never uses to."},
+    {"es": "Terminé de hacer la tarea.", "wrong": "I finished to do my homework.", "right": "I finished <b>doing</b> my homework.", "why": "Spanish terminar de + infinitive becomes finish + -ing in English, not finish to do."}
+  ],
+  "remember": {
+    "trick": "Enjoy, finish, mind → -ING. Want, hope, decide → TO!",
+    "tip": "Learn the two lists like a short song. If a verb isn't on either list, the safer guess is usually to + verb."
+  },
+  "dialogue": {
+    "title": "The summer job advert",
+    "context": "Liam has found an advert for weekend jobs at a new café and tries to convince Sofia and Nadia to apply with him.",
+    "lines": [
+      {"speaker": "Liam", "text": "Look at this advert! They <b>want to hire</b> three students for the weekends."},
+      {"speaker": "Sofia", "text": "I don't know… I <b>hate waking up</b> early on Saturdays."},
+      {"speaker": "Liam", "text": "But you <b>enjoy talking</b> to people, and you're really good at it!"},
+      {"speaker": "Nadia", "text": "I'd <b>love to try</b> it, actually. I <b>need to earn</b> some money for my trip."},
+      {"speaker": "Sofia", "text": "OK, I <b>promise to think</b> about it tonight."},
+      {"speaker": "Liam", "text": "Great! Don't <b>forget to bring</b> your ID when we apply."},
+      {"speaker": "Nadia", "text": "And we <b>should avoid arriving</b> late — that never makes a good impression."},
+      {"speaker": "Sofia", "text": "Fine, I've <b>decided to apply</b>. Let's go together tomorrow."},
+      {"speaker": "Liam", "text": "Perfect! My parents will <b>let me stay</b> out a bit later for it."},
+      {"speaker": "Nadia", "text": "Mine too, as long as I <b>keep doing</b> well at school."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I really ___ playing video games with my friends.", "options": ["enjoy", "want", "promise"], "answer": 0, "why": "enjoy + -ing"},
+        {"sentence": "Nadia ___ to visit her cousins this summer.", "options": ["enjoys", "hopes", "avoids"], "answer": 1, "why": "hope + to"},
+        {"sentence": "Would you mind ___ the door, please?", "options": ["close", "to close", "closing"], "answer": 2, "why": "mind + -ing"},
+        {"sentence": "We decided ___ the bus instead of walking.", "options": ["taking", "to take", "take"], "answer": 1, "why": "decide + to"},
+        {"sentence": "My teacher let me ___ the classroom early.", "options": ["to leave", "leaving", "leave"], "answer": 2, "why": "let + base verb, no to"},
+        {"sentence": "Liam is interested ___ football.", "options": ["in playing", "to play", "play"], "answer": 0, "why": "preposition + -ing"},
+        {"sentence": "Don't forget ___ your homework tomorrow!", "options": ["bringing", "to bring", "bring"], "answer": 1, "why": "forget to do = don't forget the duty"},
+        {"sentence": "I remember ___ this song when I was little.", "options": ["to hear", "hear", "hearing"], "answer": 2, "why": "remember + -ing = a memory"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "I enjoy ___ (read) comics on Sundays.", "answers": ["reading"]},
+        {"sentence": "She hopes ___ (become) a doctor one day.", "answers": ["to become"]},
+        {"sentence": "We finished ___ (paint) the poster before the bell rang.", "answers": ["painting"]},
+        {"sentence": "My parents let me ___ (go) to the concert.", "answers": ["go"]},
+        {"sentence": "He's really good at ___ (draw).", "answers": ["drawing"]},
+        {"sentence": "Please remember ___ (lock) the door when you leave.", "answers": ["to lock"]},
+        {"sentence": "I stopped ___ (eat) sugar last month.", "answers": ["eating"]},
+        {"sentence": "They promised ___ (call) us when they arrived.", "answers": ["to call"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["after school", "I enjoy", "playing basketball", "."], "answer": "I enjoy playing basketball after school."},
+        {"words": ["this year", "Nadia wants", "to learn French", "."], "answer": "Nadia wants to learn French this year."},
+        {"words": ["closing the window", "Would you mind", "?"], "answer": "Would you mind closing the window?"},
+        {"words": ["stay out late", "My parents", "let me", "."], "answer": "My parents let me stay out late."},
+        {"words": ["telling jokes", "Liam is", "good at", "."], "answer": "Liam is good at telling jokes."},
+        {"words": ["your book tomorrow", "Don't forget", "to bring", "."], "answer": "Don't forget to bring your book tomorrow."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "Mateo likes playing chess.", "key": "ENJOYS", "second_start": "Mateo", "second_end": "chess.", "answers": ["enjoys playing"]},
+        {"first": "Nadia's plan is to become a vet.", "key": "HOPES", "second_start": "Nadia", "second_end": "a vet.", "answers": ["hopes to become"]},
+        {"first": "\"Close the door, please,\" said Sofia.", "key": "MIND", "second_start": "Would you", "second_end": "the door?", "answers": ["mind closing"]},
+        {"first": "Mateo can't stay out after ten — his parents don't allow it.", "key": "LET", "second_start": "His parents don't", "second_end": "stay out after ten.", "answers": ["let him"]},
+        {"first": "I have great memories of visiting Cusco as a child.", "key": "REMEMBER", "second_start": "I", "second_end": "Cusco as a child.", "answers": ["remember visiting"]},
+        {"first": "Halfway through the walk, we paused for a photo.", "key": "STOPPED", "second_start": "We", "second_end": "a photo.", "answers": ["stopped to take"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use -ing after verbs like enjoy, finish, avoid and mind.",
+    "I can use to + verb after verbs like want, decide, hope and promise.",
+    "I can use remember, forget, stop and try correctly, choosing -ing or to for the right meaning."
+  ],
+  "summary": [
+    "Some verbs are always followed by -ing: enjoy, finish, avoid, mind, suggest, keep, practise.",
+    "Some verbs are always followed by to + verb: want, decide, hope, promise, learn, agree, plan.",
+    "Remember, forget, stop and try change their meaning depending on -ing or to.",
+    "make and let take the base verb with no to; verbs after a preposition always take -ing."
+  ]
+}

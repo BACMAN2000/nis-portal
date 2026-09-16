@@ -1,0 +1,203 @@
+{
+  "id": "comparatives-b1",
+  "level": "pet",
+  "area": "Comparison & description",
+  "title": "Comparison at B1",
+  "tagline": "Say how much bigger, faster or better something is — and use the…the… like a native speaker.",
+  "cefr": "B1",
+  "exam": ["Speaking Part 2 — comparing two photographs", "Reading Part 5 — multiple-choice cloze", "Writing Part 2 — story or article"],
+  "why": "B1 Preliminary Speaking Part 2 literally asks you to compare two photos, so modifiers like much, a bit and far are the difference between a flat answer and a natural one. The cloze also loves testing less/the least and as…as, because they're so easy to confuse with the simple -er/-est pattern you learnt at A2.",
+  "hook": {
+    "text": "Sofia holds up two jackets. \"This one's <b>a bit more expensive</b>, but it's <b>far nicer</b>.\" Nadia: \"True, but that one's <b>not as warm as</b> the blue one.\" Sofia: \"<b>The warmer</b> it is, <b>the happier</b> I am in winter!\"",
+    "ask": "Sofia doesn't just say more expensive — she says a bit more expensive and far nicer. What do a bit and far actually add to the comparison, and what does the warmer… the happier… pattern mean?"
+  },
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How big is the difference?",
+      "left": "a small difference",
+      "right": "a big difference",
+      "items": [
+        {"label": "a bit / a little / slightly bigger", "pct": 15},
+        {"label": "a lot / much bigger", "pct": 60},
+        {"label": "far / by far the bigger one", "pct": 95}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Comparative or superlative?",
+      "columns": ["Comparative (2 things)", "Superlative (3+ things)"],
+      "rows": [
+        {"label": "Short adjectives (1 syllable)", "cells": ["adjective + er: <b>bigger</b>", "the + adjective + est: <b>the biggest</b>"]},
+        {"label": "Long adjectives (2+ syllables)", "cells": ["more + adjective: <b>more expensive</b>", "the most + adjective: <b>the most expensive</b>"]},
+        {"label": "Irregular", "cells": ["good→better, bad→worse, far→further", "good→the best, bad→the worst, far→the furthest"]},
+        {"label": "as…as", "cells": ["not as tall as = shorter", "(no superlative form)"]}
+      ]
+    },
+    {
+      "type": "spelling",
+      "title": "Spelling: -er and -est",
+      "rules": [
+        {"rule": "one syllable, vowel + consonant: double the consonant", "examples": ["big → big<b>ger</b>", "hot → hot<b>test</b>"]},
+        {"rule": "ends in -e: just add -r / -st", "examples": ["nice → nice<b>r</b>", "large → large<b>st</b>"]},
+        {"rule": "ends in consonant + y: y → i", "examples": ["happy → happ<b>ier</b>", "easy → eas<b>iest</b>"]},
+        {"rule": "two or more syllables: use more/most instead", "examples": ["modern → more modern", "expensive → most expensive"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "adjective", "tone": "a"},
+      {"chip": "comparative: -er / more + than", "tone": "kw"},
+      {"chip": "or", "tone": "arrow"},
+      {"chip": "superlative: the -est / the most", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Form", "Rule", "Example"],
+      "rows": [
+        ["Comparative", "short adj + -er + than", "This bag is <b>cheaper than</b> that one."],
+        ["Comparative", "more + long adj + than", "This film is <b>more interesting than</b> the last one."],
+        ["Superlative", "the + short adj + -est", "Mateo is <b>the tallest</b> boy in the class."],
+        ["Superlative", "the most + long adj", "That's <b>the most expensive</b> shop in the mall."],
+        ["Equal", "as + adjective + as", "This jacket is <b>as warm as</b> that one."],
+        ["Not equal", "not as + adjective + as", "This jacket <b>isn't as warm as</b> that one."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Comparatives with modifiers: a bit, much, far, a lot",
+      "examples": [
+        {"text": "This phone is <b>a bit more expensive</b> than mine.", "note": "a small difference"},
+        {"text": "Liam is <b>much taller</b> than his brother.", "note": "a big difference — much/a lot"},
+        {"text": "The blue jacket is <b>far nicer</b> than the green one.", "note": "far = a really big difference"},
+        {"text": "Today is <b>slightly colder</b> than yesterday.", "note": "slightly = a very small difference"}
+      ]
+    },
+    {
+      "point": "Superlatives",
+      "examples": [
+        {"text": "This is <b>the cheapest</b> shop in the market.", "note": "short adjective + -est"},
+        {"text": "That was <b>the most exciting</b> match of the season.", "note": "long adjective → the most + adjective"},
+        {"text": "Mateo is <b>the best</b> player on the team.", "note": "good → the best, an irregular superlative"}
+      ]
+    },
+    {
+      "point": "as…as, not as…as and the…the…",
+      "examples": [
+        {"text": "Sofia is <b>as tall as</b> her mum now.", "note": "as + adjective + as = equal"},
+        {"text": "This bag <b>isn't as expensive as</b> that one.", "note": "not as + adjective + as = less than"},
+        {"text": "<b>The more</b> you practise, <b>the better</b> you get.", "note": "the + comparative, the + comparative — they change together"},
+        {"text": "<b>The sooner</b> we leave, <b>the earlier</b> we'll arrive.", "note": "same pattern, with adverbs"}
+      ]
+    },
+    {
+      "point": "less, the least, and comparative adverbs",
+      "examples": [
+        {"text": "This model is <b>less popular</b> than the last one.", "note": "less = opposite of more"},
+        {"text": "That was <b>the least interesting</b> film I've ever seen.", "note": "the least = opposite of the most"},
+        {"text": "Nadia runs <b>more quickly</b> than me, but I swim <b>better</b>.", "note": "comparative adverbs: more + adverb, or an irregular form like better"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "This bag is more cheap than that one.", "right": "This bag is <b>cheaper</b> than that one.", "why": "Short adjectives use -er, not more + adjective."},
+    {"wrong": "That's the most easy exercise.", "right": "That's <b>the easiest</b> exercise.", "why": "Short adjectives use the -est, not the most + adjective."},
+    {"wrong": "She is more good at Maths than me.", "right": "She is <b>better</b> at Maths than me.", "why": "good is irregular: better, not more good."},
+    {"wrong": "This jacket isn't so warm than that one.", "right": "This jacket isn't <b>as warm as</b> that one.", "why": "The negative comparison is not as…as, not so…than."},
+    {"wrong": "The more you practise, better you get.", "right": "The more you practise, <b>the better</b> you get.", "why": "Both halves of the pattern need the: the…, the…."},
+    {"wrong": "This is a very more expensive phone.", "right": "This is <b>a much more expensive</b> phone.", "why": "very doesn't modify a comparative — use much, a lot or far instead."}
+  ],
+  "l1": [
+    {"es": "Es más rápido que yo.", "wrong": "He is more fast than me.", "right": "He is <b>faster</b> than me.", "why": "Spanish más + adjective is always more + adjective, but short English adjectives use -er instead."},
+    {"es": "Es el más inteligente de la clase.", "wrong": "He is the more intelligent of the class.", "right": "He is <b>the most intelligent</b> in the class.", "why": "Spanish el más uses el/la + más for everything; English switches between -est and the most, and uses in, not of, with a group."},
+    {"es": "Cuanto más estudias, mejor.", "wrong": "The more you study, good.", "right": "The more you study, <b>the better</b>.", "why": "Spanish drops the second cuanto, but English always repeats the before both comparatives."},
+    {"es": "No es tan alto como su hermano.", "wrong": "He isn't so tall than his brother.", "right": "He isn't <b>as tall as</b> his brother.", "why": "Spanish tan…como becomes as…as in English, never so…than."}
+  ],
+  "remember": {
+    "trick": "Short word, add -ER. Long word, add MORE!",
+    "tip": "Count the syllables: one (or a short two like happy) → -er/-est. Three or more → more/most. Two is the tricky middle ground, so check the word."
+  },
+  "dialogue": {
+    "title": "Choosing a jacket",
+    "context": "Sofia and Nadia are shopping for winter jackets and comparing prices, colours and warmth, while Liam and Mateo wait outside the shop.",
+    "lines": [
+      {"speaker": "Sofia", "text": "This jacket is <b>a bit more expensive</b>, but it's <b>far nicer</b> than the other one."},
+      {"speaker": "Nadia", "text": "True, but it <b>isn't as warm as</b> the blue one."},
+      {"speaker": "Sofia", "text": "You're right. <b>The warmer</b> it is, <b>the happier</b> I am in winter."},
+      {"speaker": "Nadia", "text": "Let's try <b>the cheapest</b> one first, just to compare."},
+      {"speaker": "Sofia", "text": "OK. Actually, this grey one is <b>much better</b> than I expected."},
+      {"speaker": "Nadia", "text": "It's also <b>the most comfortable</b> jacket in the shop."},
+      {"speaker": "Liam", "text": "Are you two nearly finished? You're <b>slower</b> than snails!"},
+      {"speaker": "Mateo", "text": "Give them time — Sofia always finds <b>the best</b> deal in the end."},
+      {"speaker": "Sofia", "text": "Found it! This one is <b>as warm as</b> the expensive one, but <b>much cheaper</b>."},
+      {"speaker": "Nadia", "text": "Perfect. <b>The sooner</b> we pay, <b>the sooner</b> we can go and eat."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "This bag is ___ than that one.", "options": ["cheaper", "cheap", "more cheap"], "answer": 0, "why": "short adjective + -er"},
+        {"sentence": "That was ___ film I've ever seen.", "options": ["more boring", "the most boring", "the boringest"], "answer": 1, "why": "long adjective → the most"},
+        {"sentence": "She's ___ than her brother at football.", "options": ["more good", "gooder", "better"], "answer": 2, "why": "good → better, irregular"},
+        {"sentence": "This phone is ___ expensive than mine.", "options": ["a bit", "very", "so"], "answer": 0, "why": "a bit modifies a comparative"},
+        {"sentence": "This jacket ___ as warm as that one.", "options": ["doesn't", "isn't", "not"], "answer": 1, "why": "negative comparison: isn't as…as"},
+        {"sentence": "The more you practise, ___ you get.", "options": ["good", "better", "the better"], "answer": 2, "why": "both halves need the"},
+        {"sentence": "Nadia runs ___ than me.", "options": ["more quickly", "quicklier", "quickly more"], "answer": 0, "why": "comparative adverb: more + adverb"},
+        {"sentence": "This is ___ shop in town — everything's cheap.", "options": ["cheaper", "the cheapest", "the more cheap"], "answer": 1, "why": "short adjective → the -est"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the word in brackets.",
+      "items": [
+        {"sentence": "This bag is ___ (cheap) than that one.", "answers": ["cheaper"]},
+        {"sentence": "That was ___ (boring) film I've seen this year.", "answers": ["the most boring"]},
+        {"sentence": "She plays ___ (good) than her brother.", "answers": ["better"]},
+        {"sentence": "This phone is a bit ___ (expensive) than mine.", "answers": ["more expensive"]},
+        {"sentence": "This jacket isn't ___ (warm) as that one.", "answers": ["as warm"]},
+        {"sentence": "The more you practise, the ___ (good) you get.", "answers": ["better"]},
+        {"sentence": "Nadia runs ___ (quickly) than me.", "answers": ["more quickly"]},
+        {"sentence": "This is ___ (cheap) shop in town.", "answers": ["the cheapest"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["much cheaper than that one", "This bag is", "."], "answer": "This bag is much cheaper than that one."},
+        {"words": ["of the season", "That was", "the most exciting match", "."], "answer": "That was the most exciting match of the season."},
+        {"words": ["as the blue one", "This jacket isn't", "as warm", "."], "answer": "This jacket isn't as warm as the blue one."},
+        {"words": ["you get", "The more you practise,", "the better", "."], "answer": "The more you practise, the better you get."},
+        {"words": ["on the team", "Mateo is", "the best player", "."], "answer": "Mateo is the best player on the team."},
+        {"words": ["than her sister", "Nadia runs", "more quickly", "."], "answer": "Nadia runs more quickly than her sister."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "That jacket costs more than this one.", "key": "CHEAPER", "second_start": "This jacket is", "second_end": "than that one.", "answers": ["cheaper"]},
+        {"first": "No film I've seen was more boring than that one.", "key": "MOST", "second_start": "That was", "second_end": "film I've ever seen.", "answers": ["the most boring"]},
+        {"first": "No one in the team is as tall as Mateo.", "key": "TALLEST", "second_start": "Mateo is", "second_end": "in the team.", "answers": ["the tallest"]},
+        {"first": "This bag is not expensive at all, but that one is very expensive.", "key": "AS", "second_start": "This bag isn't", "second_end": "as that one.", "answers": ["as expensive"]},
+        {"first": "If you practise more, you will improve more.", "key": "THE", "second_start": "The more you practise,", "second_end": "you get.", "answers": ["the better"]},
+        {"first": "Nadia is a quicker runner than her sister.", "key": "MORE", "second_start": "Nadia runs", "second_end": "than her sister.", "answers": ["more quickly"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can make comparatives and superlatives, regular and irregular.",
+    "I can show how big a difference is with a bit, much, far and slightly.",
+    "I can use as…as, not as…as and the…the… to compare things naturally."
+  ],
+  "summary": [
+    "Short adjectives take -er/-est; longer adjectives take more/most.",
+    "good, bad and far are irregular: better/best, worse/worst, further/furthest.",
+    "Modifiers show how big the difference is: a bit/a little/slightly (small) vs much/a lot/far (big).",
+    "as + adjective + as = equal; not as + adjective + as = less than.",
+    "The + comparative, the + comparative shows two things changing together."
+  ]
+}

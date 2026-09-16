@@ -1,0 +1,675 @@
+{
+  "id": "present-simple-he-she-it",
+  "level": "a1",
+  "area": "Every day",
+  "title": "Present simple: he, she, it and the -s",
+  "tagline": "The one small letter that trips everyone up: he, she, it — and the verb gets an -s.",
+  "cefr": "A1",
+  "exam": [
+    "Speaking Part 1 — questions about a friend or family member",
+    "Reading Part 5 — open cloze (grammar gaps)"
+  ],
+  "why": "This is the number one A1 mistake: forgetting the -s for he, she and it, or adding it where it doesn't belong. Get this right and every description of a friend, a pet or a teacher — <i>She trains every day, he doesn't like maths</i> — sounds correct straight away.",
+  "hook": {
+    "text": "At the football pitch, Sofia watches her friend. \"Nadia <b>plays</b> really well!\" she says. \"She <b>doesn't stop</b> running. Look, she <b>scores</b> a goal! <b>Does</b> she <b>train</b> every day?\" \"Yes,\" says Mateo, \"she <b>trains</b> every morning before school.\"",
+    "ask": "Find three verbs with an extra letter at the end, the negative with doesn't, and the question with Does."
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "She",
+              "role": "subj"
+            },
+            {
+              "t": "plays",
+              "role": "verb"
+            },
+            {
+              "t": "football",
+              "role": "obj"
+            },
+            {
+              "t": "every day",
+              "role": "time"
+            }
+          ],
+          "note": "statement — add -s"
+        },
+        {
+          "parts": [
+            {
+              "t": "He",
+              "role": "subj"
+            },
+            {
+              "t": "doesn't",
+              "role": "neg"
+            },
+            {
+              "t": "play",
+              "role": "verb"
+            },
+            {
+              "t": "tennis",
+              "role": "obj"
+            }
+          ],
+          "note": "negative — doesn't + base verb"
+        },
+        {
+          "parts": [
+            {
+              "t": "Does",
+              "role": "aux"
+            },
+            {
+              "t": "she",
+              "role": "subj"
+            },
+            {
+              "t": "play",
+              "role": "verb"
+            },
+            {
+              "t": "basketball",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question — Does + base verb"
+        },
+        {
+          "parts": [
+            {
+              "t": "Yes,",
+              "role": "x"
+            },
+            {
+              "t": "she",
+              "role": "subj"
+            },
+            {
+              "t": "does",
+              "role": "aux"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "short answer"
+        }
+      ],
+      "caption": "The helper <b>does</b> already carries the -s, so the verb goes back to <i>play</i> in questions and negatives."
+    },
+    {
+      "type": "spelling",
+      "title": "Adding -s for he, she, it",
+      "rules": [
+        {
+          "rule": "Most verbs: + s",
+          "examples": [
+            "play → play<b>s</b>",
+            "run → run<b>s</b>"
+          ]
+        },
+        {
+          "rule": "-s, -sh, -ch, -x, -o: + es",
+          "examples": [
+            "watch → watch<b>es</b>",
+            "go → go<b>es</b>",
+            "do → do<b>es</b>"
+          ]
+        },
+        {
+          "rule": "consonant + y: y → ies",
+          "examples": [
+            "study → stud<b>ies</b>",
+            "try → tr<b>ies</b>"
+          ]
+        }
+      ],
+      "caption": "Say the verb out loud — if it's hard to say with just -s, it probably needs -es. One verb breaks every rule: have → <b>has</b>."
+    },
+    {
+      "type": "steps",
+      "title": "How to make a question with does",
+      "steps": [
+        {
+          "label": "Start with Does",
+          "ex": "<b>Does</b>"
+        },
+        {
+          "label": "Add the person",
+          "ex": "Does <b>she</b>"
+        },
+        {
+          "label": "Add the verb with NO -s",
+          "ex": "Does she <b>play</b> tennis"
+        },
+        {
+          "label": "Add the question mark",
+          "ex": "Does she play tennis<b>?</b>"
+        }
+      ],
+      "caption": "No <i>do</i> is needed with does. Does already means he/she/it, so the verb loses its -s."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "he / she / it",
+        "tone": "a",
+        "ex": "she"
+      },
+      {
+        "chip": "(doesn't)",
+        "tone": "c",
+        "ex": "doesn't"
+      },
+      {
+        "chip": "verb (+s/es/ies) / base verb",
+        "tone": "kw",
+        "ex": "plays / play"
+      },
+      {
+        "chip": "the rest",
+        "tone": "b",
+        "ex": "tennis / every day"
+      }
+    ],
+    "table": {
+      "head": [
+        "Type",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Statement",
+          "She plays tennis."
+        ],
+        [
+          "Negative",
+          "She doesn't play tennis."
+        ],
+        [
+          "Question",
+          "Does she play tennis?"
+        ],
+        [
+          "Short answer (yes)",
+          "Yes, she does."
+        ],
+        [
+          "Short answer (no)",
+          "No, he doesn't."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "he, she, it: add -s",
+      "examples": [
+        {
+          "text": "Liam <b>plays</b> the guitar.",
+          "note": "most verbs: just add -s"
+        },
+        {
+          "text": "Nadia <b>swims</b> every morning.",
+          "note": "he/she/it → -s"
+        },
+        {
+          "text": "It <b>rains</b> a lot in the mountains.",
+          "note": "it (the weather) → -s too"
+        }
+      ]
+    },
+    {
+      "point": "Spelling: -es and -ies",
+      "examples": [
+        {
+          "text": "Mateo <b>watches</b> cartoons on Saturday.",
+          "note": "-ch → add -es"
+        },
+        {
+          "text": "Sofia <b>goes</b> to bed at nine.",
+          "note": "-o → add -es"
+        },
+        {
+          "text": "She <b>studies</b> every evening.",
+          "note": "consonant + y → ies"
+        },
+        {
+          "text": "Miss Vega <b>has</b> three classes today.",
+          "note": "have is irregular → has"
+        }
+      ]
+    },
+    {
+      "point": "Negative with doesn't",
+      "examples": [
+        {
+          "text": "He <b>doesn't like</b> broccoli.",
+          "note": "he → doesn't + base verb"
+        },
+        {
+          "text": "Nadia <b>doesn't play</b> video games.",
+          "note": "she → doesn't + base verb"
+        },
+        {
+          "text": "It <b>doesn't rain</b> much here.",
+          "note": "it → doesn't + base verb"
+        }
+      ]
+    },
+    {
+      "point": "Questions and short answers",
+      "examples": [
+        {
+          "text": "<b>Does</b> she <b>train</b> every day? — Yes, she does.",
+          "note": "question + short answer"
+        },
+        {
+          "text": "<b>Does</b> he <b>live</b> near school? — No, he doesn't.",
+          "note": "he → does in the question"
+        },
+        {
+          "text": "<b>Does</b> it <b>bite</b>? — No, it doesn't.",
+          "note": "it → does in the question"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "She play tennis.",
+      "right": "She <b>plays</b> tennis.",
+      "why": "He/she/it needs the extra -s in a statement."
+    },
+    {
+      "wrong": "He don't like fish.",
+      "right": "He <b>doesn't like</b> fish.",
+      "why": "He/she/it needs doesn't, not don't."
+    },
+    {
+      "wrong": "She doesn't likes fish.",
+      "right": "She <b>doesn't like</b> fish.",
+      "why": "After doesn't, the verb goes back to its base form — no -s."
+    },
+    {
+      "wrong": "Does she plays tennis?",
+      "right": "Does she <b>play</b> tennis?",
+      "why": "After does, the verb loses its -s too."
+    },
+    {
+      "wrong": "She go to bed early.",
+      "right": "She <b>goes</b> to bed early.",
+      "why": "Verbs ending in -o add -es, not just -s."
+    },
+    {
+      "wrong": "Miss Vega haves a car.",
+      "right": "Miss Vega <b>has</b> a car.",
+      "why": "Have is irregular — the he/she/it form is has, not haves."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Ella juega fútbol.",
+      "wrong": "She play football.",
+      "right": "She <b>plays</b> football.",
+      "why": "Spanish verbs for he/she/it don't need an extra letter — English adds -s."
+    },
+    {
+      "es": "Él no come carne.",
+      "wrong": "He don't eat meat.",
+      "right": "He <b>doesn't eat</b> meat.",
+      "why": "He/she/it needs doesn't (does + not), not don't."
+    },
+    {
+      "es": "¿Estudia ella todos los días?",
+      "wrong": "Does she studies every day?",
+      "right": "Does she <b>study</b> every day?",
+      "why": "Does already shows the question is about he/she/it, so the verb after it has no -s."
+    },
+    {
+      "es": "Ella tiene un perro.",
+      "wrong": "She haves a dog.",
+      "right": "She <b>has</b> a dog.",
+      "why": "Have is irregular in the he/she/it form: has, not haves."
+    },
+    {
+      "es": "Mi papá trabaja mucho.",
+      "wrong": "My dad work a lot.",
+      "right": "My dad <b>works</b> a lot.",
+      "why": "A name or \"my dad\" is also he/she/it, and needs the -s too."
+    }
+  ],
+  "remember": {
+    "trick": "HE, SHE, IT — don't forget the S on the verb!",
+    "tip": "Every time you say he, she or it, listen for the little -s at the end of the verb. No -s in questions or negatives though — does and doesn't already carry it."
+  },
+  "dialogue": {
+    "title": "Nadia's football match",
+    "context": "Sofia and Mateo are watching Nadia play in a school football match on Saturday morning.",
+    "lines": [
+      {
+        "speaker": "Sofia",
+        "text": "Nadia <b>plays</b> really well!"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "She <b>doesn't stop</b> running — look at her!"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Does</b> she <b>train</b> every day?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Yes, she <b>does</b>. She <b>trains</b> every morning before school."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Wow, she <b>scores</b> a goal!"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Our team <b>doesn't lose</b> when Nadia plays."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Does</b> the coach <b>shout</b> a lot?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "No, he <b>doesn't</b>. He <b>watches</b> quietly."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "He <b>studies</b> every player's style, I think."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "That's why our team <b>wins</b> so often!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "Nadia ___ football every Saturday.",
+          "options": [
+            "plays",
+            "play",
+            "playing"
+          ],
+          "answer": 0,
+          "why": "he/she/it → add -s"
+        },
+        {
+          "sentence": "He ___ like broccoli.",
+          "options": [
+            "don't",
+            "doesn't",
+            "not"
+          ],
+          "answer": 1,
+          "why": "he/she/it → doesn't"
+        },
+        {
+          "sentence": "___ she train every day?",
+          "options": [
+            "Do",
+            "Is",
+            "Does"
+          ],
+          "answer": 2,
+          "why": "she → Does"
+        },
+        {
+          "sentence": "Miss Vega ___ three classes today.",
+          "options": [
+            "has",
+            "haves",
+            "have"
+          ],
+          "answer": 0,
+          "why": "have → has for he/she/it"
+        },
+        {
+          "sentence": "Sofia ___ to bed at nine.",
+          "options": [
+            "go",
+            "goes",
+            "going"
+          ],
+          "answer": 1,
+          "why": "-o verbs add -es"
+        },
+        {
+          "sentence": "___ it bite? — No, it doesn't.",
+          "options": [
+            "Do",
+            "Is",
+            "Does"
+          ],
+          "answer": 2,
+          "why": "it → Does"
+        },
+        {
+          "sentence": "Mateo ___ cartoons on Saturday.",
+          "options": [
+            "watches",
+            "watch",
+            "watching"
+          ],
+          "answer": 0,
+          "why": "-ch verbs add -es"
+        },
+        {
+          "sentence": "She ___ study every evening.",
+          "options": [
+            "don't",
+            "doesn't",
+            "not"
+          ],
+          "answer": 1,
+          "why": "she → doesn't"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets, or does/Does.",
+      "items": [
+        {
+          "sentence": "Nadia ___ (play) football every Saturday.",
+          "answers": [
+            "plays"
+          ]
+        },
+        {
+          "sentence": "He ___ not (like) broccoli.",
+          "answers": [
+            "does"
+          ]
+        },
+        {
+          "sentence": "___ she train every day?",
+          "answers": [
+            "Does"
+          ]
+        },
+        {
+          "sentence": "Miss Vega ___ (have) three classes today.",
+          "answers": [
+            "has"
+          ]
+        },
+        {
+          "sentence": "Sofia ___ (go) to bed at nine.",
+          "answers": [
+            "goes"
+          ]
+        },
+        {
+          "sentence": "It ___ not (bite).",
+          "answers": [
+            "does"
+          ]
+        },
+        {
+          "sentence": "Mateo ___ (watch) cartoons on Saturday.",
+          "answers": [
+            "watches"
+          ]
+        },
+        {
+          "sentence": "She ___ (study) every evening.",
+          "answers": [
+            "studies"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "plays",
+            "Nadia",
+            "football",
+            "every Saturday",
+            "."
+          ],
+          "answer": "Nadia plays football every Saturday."
+        },
+        {
+          "words": [
+            "like",
+            "doesn't",
+            "He",
+            "broccoli",
+            "."
+          ],
+          "answer": "He doesn't like broccoli."
+        },
+        {
+          "words": [
+            "she",
+            "Does",
+            "every day",
+            "train",
+            "?"
+          ],
+          "answer": "Does she train every day?"
+        },
+        {
+          "words": [
+            "has",
+            "Miss Vega",
+            "a car",
+            "."
+          ],
+          "answer": "Miss Vega has a car."
+        },
+        {
+          "words": [
+            "goes",
+            "Sofia",
+            "to bed",
+            "early",
+            "."
+          ],
+          "answer": "Sofia goes to bed early."
+        },
+        {
+          "words": [
+            "it",
+            "Does",
+            "bite",
+            "?"
+          ],
+          "answer": "Does it bite?"
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "Nadia plays football every day.",
+          "ok": true,
+          "why": "he/she/it + -s, correct"
+        },
+        {
+          "sentence": "She play tennis.",
+          "ok": false,
+          "fix": "She <b>plays</b> tennis.",
+          "why": "he/she/it needs the -s"
+        },
+        {
+          "sentence": "Does he live near school?",
+          "ok": true,
+          "why": "question with does, correct"
+        },
+        {
+          "sentence": "He don't like fish.",
+          "ok": false,
+          "fix": "He <b>doesn't like</b> fish.",
+          "why": "he/she/it needs doesn't, not don't"
+        },
+        {
+          "sentence": "Miss Vega has a car.",
+          "ok": true,
+          "why": "have → has, correct"
+        },
+        {
+          "sentence": "She doesn't likes fish.",
+          "ok": false,
+          "fix": "She <b>doesn't like</b> fish.",
+          "why": "after doesn't, no -s on the verb"
+        },
+        {
+          "sentence": "It rains a lot here.",
+          "ok": true,
+          "why": "it + -s, correct"
+        },
+        {
+          "sentence": "Does she plays tennis?",
+          "ok": false,
+          "fix": "Does she <b>play</b> tennis?",
+          "why": "after does, the verb loses its -s too"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can add -s, -es or -ies to a verb for he, she and it.",
+    "I can make negatives with <i>doesn't</i> and questions with <i>Does…?</i>.",
+    "I can talk about someone else's routine, like <i>She trains every morning</i>."
+  ],
+  "summary": [
+    "He/she/it statements need an extra letter on the verb: <i>play → plays, watch → watches, study → studies, have → has</i>.",
+    "Negative: <b>doesn't</b> + base verb (no -s) — <i>She doesn't play</i>.",
+    "Question: <b>Does</b> + he/she/it + base verb (no -s) — <i>Does he play?</i>",
+    "Doesn't and does already carry the -s, so the main verb goes back to its base form.",
+    "Short answers: <i>Yes, she does. / No, he doesn't.</i>"
+  ]
+}

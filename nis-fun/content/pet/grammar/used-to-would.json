@@ -1,0 +1,662 @@
+{
+  "id": "used-to-would",
+  "level": "pet",
+  "area": "Tenses & time",
+  "title": "used to and would for past habits",
+  "tagline": "How things were, again and again, before they changed — but only one form works for states.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 6 — open cloze",
+    "Speaking Part 4 — follow-up discussion"
+  ],
+  "why": "Reading Part 6's open cloze regularly tests used to/didn't use to as a missing grammar word, and Speaking Part 4 asks you to compare life now with life before — the natural home of used to and would. Knowing that would can't describe a state (like be, have or like) is the single detail that separates a confident B1 answer from a shaky one.",
+  "hook": {
+    "text": "Miss Vega: “When I was a new teacher here, we <b>didn't use to</b> have computers in class!” Mateo: “<b>Did</b> you <b>use to</b> write everything on the board?” Miss Vega: “Yes — and we<b>'d</b> often lose the chalk!”",
+    "ask": "Miss Vega uses three past-habit forms in bold. Which ones can also describe a state (like not having computers), and which one is only for repeated actions?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "How it was, and how it is now",
+      "marks": [
+        {
+          "at": "before-past",
+          "label": "the school used to be much smaller",
+          "sub": "used to — a repeated past state, not true anymore"
+        },
+        {
+          "at": "now",
+          "label": "the school has two new buildings now",
+          "sub": "present simple — true today"
+        }
+      ],
+      "arrows": [
+        [
+          0,
+          1,
+          "how things were → how they are now"
+        ]
+      ],
+      "caption": "Used to points at something that was regularly true in the past and has since changed."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "The school",
+              "role": "subj"
+            },
+            {
+              "t": "used to",
+              "role": "aux"
+            },
+            {
+              "t": "be",
+              "role": "verb"
+            },
+            {
+              "t": "much smaller",
+              "role": "obj"
+            }
+          ],
+          "note": "used to — statement, a past state"
+        },
+        {
+          "parts": [
+            {
+              "t": "We",
+              "role": "subj"
+            },
+            {
+              "t": "didn't use to",
+              "role": "neg"
+            },
+            {
+              "t": "have",
+              "role": "verb"
+            },
+            {
+              "t": "computers",
+              "role": "obj"
+            }
+          ],
+          "note": "used to — negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Did",
+              "role": "aux"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "use to",
+              "role": "verb"
+            },
+            {
+              "t": "write on the board",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "used to — question"
+        },
+        {
+          "parts": [
+            {
+              "t": "Miss Vega",
+              "role": "subj"
+            },
+            {
+              "t": "'d",
+              "role": "aux"
+            },
+            {
+              "t": "often lose",
+              "role": "verb"
+            },
+            {
+              "t": "the chalk",
+              "role": "obj"
+            }
+          ],
+          "note": "would — a repeated action, not a state"
+        }
+      ],
+      "caption": "Did + use to (no -d) builds the question and the negative; would never changes its form."
+    },
+    {
+      "type": "contrast",
+      "title": "used to or would?",
+      "columns": [
+        "used to",
+        "would"
+      ],
+      "rows": [
+        {
+          "label": "Describes actions?",
+          "cells": [
+            "yes",
+            "yes"
+          ]
+        },
+        {
+          "label": "Describes states (be, have, like, know)?",
+          "cells": [
+            "yes — <b>used to be</b> smaller",
+            "no — never <i>would be</i> smaller"
+          ]
+        },
+        {
+          "label": "Negative / question",
+          "cells": [
+            "didn't use to / Did you use to…?",
+            "rarely used in the negative or question"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "We <b>used to</b> have three classrooms.",
+            "Miss Vega<b>'d</b> always <b>bring</b> chalk from home."
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "used to",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ infinitive",
+        "tone": "a",
+        "ex": "used to walk"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "would",
+        "tone": "kw"
+      },
+      {
+        "chip": "+ infinitive",
+        "tone": "b",
+        "ex": "would walk"
+      }
+    ],
+    "table": {
+      "head": [
+        "Form",
+        "Positive",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "used to",
+          "We used to walk to school.",
+          "We didn't use to walk to school.",
+          "Did you use to walk to school?"
+        ],
+        [
+          "would (actions only)",
+          "She would always arrive early.",
+          "She wouldn't usually arrive late.",
+          "—"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "used to for past habits that are different now",
+      "examples": [
+        {
+          "text": "Students <b>used to</b> <b>wear</b> a different uniform.",
+          "note": "a repeated habit, not true anymore"
+        },
+        {
+          "text": "Miss Vega <b>used to</b> <b>teach</b> in a much smaller classroom.",
+          "note": "another habit, now changed"
+        },
+        {
+          "text": "<b>Did</b> you <b>use to</b> walk to school, Miss Vega?",
+          "note": "the question form: did + use to"
+        }
+      ]
+    },
+    {
+      "point": "used to for past states (be, have, like)",
+      "examples": [
+        {
+          "text": "The school <b>used to</b> <b>be</b> much smaller.",
+          "note": "a state, not an action — used to can describe this"
+        },
+        {
+          "text": "We <b>didn't use to</b> <b>have</b> computers in every classroom.",
+          "note": "negative state — didn't use to + have"
+        }
+      ]
+    },
+    {
+      "point": "would for repeated past actions (not states)",
+      "examples": [
+        {
+          "text": "Miss Vega<b>'d</b> always <b>bring</b> extra chalk to class.",
+          "note": "would for a repeated action"
+        },
+        {
+          "text": "The students <b>would</b> often <b>share</b> one textbook between three people.",
+          "note": "another repeated action"
+        },
+        {
+          "text": "On Fridays, the whole school <b>would gather</b> outside for assembly.",
+          "note": "a habitual event, repeated every week"
+        }
+      ]
+    },
+    {
+      "point": "would can't describe states, and used to vs be used to",
+      "examples": [
+        {
+          "text": "We <b>used to</b> <b>have</b> only one computer — you can't say <i>would have</i> here.",
+          "note": "would doesn't work with states like have, be, like"
+        },
+        {
+          "text": "At first the new building felt strange, but now everyone <b>is used to</b> it.",
+          "note": "be used to = familiar with something now, a different idea altogether"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "The school would be much smaller.",
+      "right": "The school <b>used to</b> be much smaller.",
+      "why": "Would can't describe a state like be — only used to works here."
+    },
+    {
+      "wrong": "We use to have three classrooms.",
+      "right": "We <b>used to</b> have three classrooms.",
+      "why": "Used to always ends in -d, even though it sounds like use to in speech."
+    },
+    {
+      "wrong": "Did you used to walk to school?",
+      "right": "<b>Did</b> you <b>use to</b> walk to school?",
+      "why": "After did, the verb goes back to its base form: use to, not used to."
+    },
+    {
+      "wrong": "Miss Vega used to like walking to school every Friday, again and again.",
+      "right": "Miss Vega <b>would</b> walk to school every Friday.",
+      "why": "For a clearly repeated action (not a state), would sounds more natural once used to has already set the scene."
+    },
+    {
+      "wrong": "I am used to walk to school now.",
+      "right": "I<b>'m used to</b> <b>walking</b> to school now.",
+      "why": "Be used to is followed by -ing (or a noun), not the infinitive — it means 'familiar with', a different meaning from used to."
+    },
+    {
+      "wrong": "We didn't used to have computers.",
+      "right": "We <b>didn't use to</b> have computers.",
+      "why": "The negative uses didn't + use to (base form), never didn't used to."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Solía caminar al colegio.",
+      "wrong": "I used walk to school.",
+      "right": "I <b>used to</b> walk to school.",
+      "why": "Solía + infinitivo needs the full form used to + infinitive in English, not just used."
+    },
+    {
+      "es": "El colegio antes era más pequeño.",
+      "wrong": "The school was smaller before, all the time.",
+      "right": "The school <b>used to</b> be smaller.",
+      "why": "Spanish antes + imperfecto for a changed state becomes used to + be in English."
+    },
+    {
+      "es": "Solíamos compartir un libro entre tres.",
+      "wrong": "We would share one book between three, that was normal.",
+      "right": "We <b>used to</b> share one book between three.",
+      "why": "For a general past habit (not clearly repeated events), used to is the safer, more natural choice than would."
+    },
+    {
+      "es": "Ya me he acostumbrado a las clases nuevas.",
+      "wrong": "I used to the new classes now.",
+      "right": "I<b>'m used to</b> the new classes now.",
+      "why": "Acostumbrarse a = be used to (familiar with now), completely different from the past-habit used to."
+    }
+  ],
+  "remember": {
+    "trick": "USED TO for how it WAS — not anymore!",
+    "tip": "If you can replace it with a state verb like be, have or like, only used to works — would is for repeated actions only."
+  },
+  "dialogue": {
+    "title": "How the school used to be",
+    "context": "For the school's anniversary, Mateo, Sofia, Liam and Nadia interview Miss Vega about what school life used to be like.",
+    "lines": [
+      {
+        "speaker": "Mateo",
+        "text": "Miss Vega, what <b>did</b> the school <b>use to</b> be like?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "It <b>used to</b> be much smaller — just two buildings!"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Did</b> you <b>use to</b> have computers in class?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "No, we <b>didn't use to</b> have any — we wrote everything on the board."
+      },
+      {
+        "speaker": "Liam",
+        "text": "And we<b>'d</b> often lose the chalk, right?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Every week! Students <b>would</b> always “borrow” it for something else."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>Did</b> you <b>use to</b> walk to school like us?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Yes, and on Fridays the whole school <b>would gather</b> outside for assembly."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "It sounds so different from now."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "It was! But I<b>'m used to</b> the new building already — I love it."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "The school ___ be much smaller.",
+          "options": [
+            "used to",
+            "would",
+            "was"
+          ],
+          "answer": 0,
+          "why": "a past state, only used to works"
+        },
+        {
+          "sentence": "Miss Vega ___ often bring extra chalk to class.",
+          "options": [
+            "used to",
+            "would",
+            "was"
+          ],
+          "answer": 1,
+          "why": "a repeated action"
+        },
+        {
+          "sentence": "___ you use to walk to school?",
+          "options": [
+            "Were",
+            "Used",
+            "Did"
+          ],
+          "answer": 2,
+          "why": "question form: did + use to"
+        },
+        {
+          "sentence": "We ___ have computers in every classroom.",
+          "options": [
+            "didn't use to",
+            "wouldn't",
+            "weren't"
+          ],
+          "answer": 0,
+          "why": "negative state: didn't use to"
+        },
+        {
+          "sentence": "On Fridays, the whole school ___ gather outside.",
+          "options": [
+            "used to",
+            "would",
+            "was"
+          ],
+          "answer": 1,
+          "why": "a habitual, repeated event"
+        },
+        {
+          "sentence": "___ they use to have a big playground?",
+          "options": [
+            "Were",
+            "Used",
+            "Did"
+          ],
+          "answer": 2,
+          "why": "question form: did + use to"
+        },
+        {
+          "sentence": "Now I ___ the new building — I love it.",
+          "options": [
+            "'m used to",
+            "used to",
+            "would"
+          ],
+          "answer": 0,
+          "why": "be used to = familiar with something now"
+        },
+        {
+          "sentence": "We ___ share one textbook between three students.",
+          "options": [
+            "used to",
+            "would",
+            "was"
+          ],
+          "answer": 1,
+          "why": "a repeated action"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with used to, didn't use to, would, or be used to, and the verb in brackets.",
+      "items": [
+        {
+          "sentence": "The school ___ (use to/be) much smaller.",
+          "answers": [
+            "used to be"
+          ]
+        },
+        {
+          "sentence": "Miss Vega ___ (often/bring) extra chalk to class.",
+          "answers": [
+            "would often bring",
+            "often would bring"
+          ]
+        },
+        {
+          "sentence": "We ___ (not/use to/have) computers in every classroom.",
+          "answers": [
+            "didn't use to have"
+          ]
+        },
+        {
+          "sentence": "___ you ___ (use to/walk) to school, Miss Vega?",
+          "answers": [
+            "Did … use to walk",
+            "Did you use to walk"
+          ]
+        },
+        {
+          "sentence": "On Fridays, the whole school ___ (gather) outside.",
+          "answers": [
+            "would gather"
+          ]
+        },
+        {
+          "sentence": "We ___ (share) one textbook between three students.",
+          "answers": [
+            "would share"
+          ]
+        },
+        {
+          "sentence": "Now I ___ (use to) the new building — I love it.",
+          "answers": [
+            "'m used to",
+            "am used to"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "much smaller",
+            "used to",
+            "The school",
+            "be",
+            "."
+          ],
+          "answer": "The school used to be much smaller."
+        },
+        {
+          "words": [
+            "extra chalk to class",
+            "would often bring",
+            "Miss Vega",
+            "."
+          ],
+          "answer": "Miss Vega would often bring extra chalk to class."
+        },
+        {
+          "words": [
+            "have computers",
+            "didn't use to",
+            "We",
+            "."
+          ],
+          "answer": "We didn't use to have computers."
+        },
+        {
+          "words": [
+            "to school",
+            "use to walk",
+            "Did you",
+            "?"
+          ],
+          "answer": "Did you use to walk to school?"
+        },
+        {
+          "words": [
+            "outside",
+            "would gather",
+            "the whole school",
+            "On Fridays",
+            "."
+          ],
+          "answer": "On Fridays the whole school would gather outside."
+        },
+        {
+          "words": [
+            "the new building",
+            "used to",
+            "I'm",
+            "now",
+            "."
+          ],
+          "answer": "I'm used to the new building now."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "In the past, the school was much smaller than now.",
+          "key": "USED",
+          "second_start": "The school",
+          "second_end": "much smaller.",
+          "answers": [
+            "used to be"
+          ]
+        },
+        {
+          "first": "Miss Vega often brought extra chalk to class, again and again.",
+          "key": "WOULD",
+          "second_start": "Miss Vega",
+          "second_end": "extra chalk to class.",
+          "answers": [
+            "would often bring",
+            "would bring"
+          ]
+        },
+        {
+          "first": "It wasn't normal for the school to have computers back then.",
+          "key": "USE",
+          "second_start": "The school",
+          "second_end": "computers back then.",
+          "answers": [
+            "didn't use to have"
+          ]
+        },
+        {
+          "first": "Every Friday, the whole school gathered outside — it happened every single week.",
+          "key": "WOULD",
+          "second_start": "Every Friday, the whole school",
+          "second_end": "outside.",
+          "answers": [
+            "would gather"
+          ]
+        },
+        {
+          "first": "I've become familiar with the new building now.",
+          "key": "USED",
+          "second_start": "I",
+          "second_end": "the new building now.",
+          "answers": [
+            "am used to",
+            "'m used to"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about past habits and states that are different now with used to.",
+    "I can use would for actions that happened again and again in the past.",
+    "I can ask and answer questions with did you use to…? and understand be used to as a different idea."
+  ],
+  "summary": [
+    "Used to + infinitive = a past habit or state that isn't true anymore.",
+    "Would + infinitive = a repeated past action, but never a state like be, have or like.",
+    "The negative and question forms are didn't use to / Did you use to…? — never used to in these two.",
+    "Used to is the safer choice for a general past situation; would works best once the scene is already set.",
+    "Be used to (+ -ing) means familiar with something now — a completely different idea from the past habit used to."
+  ]
+}

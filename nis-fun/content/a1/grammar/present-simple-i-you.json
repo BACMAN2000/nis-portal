@@ -1,0 +1,675 @@
+{
+  "id": "present-simple-i-you",
+  "level": "a1",
+  "area": "Every day",
+  "title": "Present simple: I, you, we, they",
+  "tagline": "Your everyday life: routines, likes and facts with I, you, we and they.",
+  "cefr": "A1",
+  "exam": [
+    "Speaking Part 1 — questions about your daily routine",
+    "Reading Part 3 — a longer text about someone's life"
+  ],
+  "why": "Present simple is how you talk about your everyday life: what you do every day, what you like, and what is true. In Speaking Part 1 the examiner asks about your routine and your free time — and you always answer with the present simple.",
+  "hook": {
+    "text": "On the school bus, Sofia asks Mateo about his morning. \"I <b>get up</b> at half past six,\" he says. \"I <b>don't have</b> breakfast at school — I <b>eat</b> at home. <b>Do</b> you <b>walk</b> to the bus stop?\" \"No, I <b>don't</b>. My mum and I <b>drive</b>!\" says Sofia.",
+    "ask": "Find the negative with don't, the question with Do, and the short answer. Which verbs have no -s?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "play",
+              "role": "verb"
+            },
+            {
+              "t": "football",
+              "role": "obj"
+            },
+            {
+              "t": "every day",
+              "role": "time"
+            }
+          ],
+          "note": "statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "They",
+              "role": "subj"
+            },
+            {
+              "t": "don't",
+              "role": "neg"
+            },
+            {
+              "t": "like",
+              "role": "verb"
+            },
+            {
+              "t": "maths",
+              "role": "obj"
+            }
+          ],
+          "note": "negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Do",
+              "role": "aux"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "play",
+              "role": "verb"
+            },
+            {
+              "t": "tennis",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question"
+        },
+        {
+          "parts": [
+            {
+              "t": "Yes,",
+              "role": "x"
+            },
+            {
+              "t": "I",
+              "role": "subj"
+            },
+            {
+              "t": "do",
+              "role": "aux"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "short answer"
+        }
+      ],
+      "caption": "For I/you/we/they, the verb never changes. The helper <b>do</b> handles the negative and the question."
+    },
+    {
+      "type": "steps",
+      "title": "How to make a negative",
+      "steps": [
+        {
+          "label": "Start with the person",
+          "ex": "They"
+        },
+        {
+          "label": "Add don't",
+          "ex": "They <b>don't</b>"
+        },
+        {
+          "label": "Add the base verb — no -s",
+          "ex": "They don't <b>like</b> maths"
+        }
+      ],
+      "caption": "Don't already carries the negative meaning, so the verb after it stays in its simplest form."
+    },
+    {
+      "type": "map",
+      "title": "Present simple: I / you / we / they",
+      "center": "present simple",
+      "branches": [
+        {
+          "label": "Statement",
+          "items": [
+            "I play tennis."
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Negative",
+          "items": [
+            "I don't play tennis."
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Question",
+          "items": [
+            "Do you play tennis?"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Short answer",
+          "items": [
+            "Yes, I do.",
+            "No, I don't."
+          ],
+          "tone": "a"
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "I / you / we / they",
+        "tone": "a",
+        "ex": "I"
+      },
+      {
+        "chip": "(don't)",
+        "tone": "c",
+        "ex": "don't"
+      },
+      {
+        "chip": "base verb",
+        "tone": "kw",
+        "ex": "play"
+      },
+      {
+        "chip": "the rest",
+        "tone": "b",
+        "ex": "tennis / every day"
+      }
+    ],
+    "table": {
+      "head": [
+        "Type",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Statement",
+          "I play tennis."
+        ],
+        [
+          "Negative",
+          "I don't play tennis."
+        ],
+        [
+          "Question",
+          "Do you play tennis?"
+        ],
+        [
+          "Short answer (yes)",
+          "Yes, I do."
+        ],
+        [
+          "Short answer (no)",
+          "No, we don't."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Routines and habits",
+      "examples": [
+        {
+          "text": "I <b>get up</b> at seven o'clock.",
+          "note": "a daily routine"
+        },
+        {
+          "text": "We <b>walk</b> to school every day.",
+          "note": "we = a group, no -s"
+        },
+        {
+          "text": "They <b>do</b> their homework after school.",
+          "note": "they = more than one person"
+        }
+      ]
+    },
+    {
+      "point": "Likes, loves and hates + noun",
+      "examples": [
+        {
+          "text": "I <b>love</b> pizza.",
+          "note": "like/love/hate + noun, no to"
+        },
+        {
+          "text": "You <b>like</b> football.",
+          "note": "an opinion or a fact about you"
+        },
+        {
+          "text": "We <b>hate</b> maths homework.",
+          "note": "a strong dislike"
+        }
+      ]
+    },
+    {
+      "point": "Negative with don't",
+      "examples": [
+        {
+          "text": "I <b>don't like</b> spiders.",
+          "note": "I → don't + base verb"
+        },
+        {
+          "text": "We <b>don't watch</b> TV on school nights.",
+          "note": "we → don't + base verb"
+        },
+        {
+          "text": "They <b>don't play</b> video games at school.",
+          "note": "they → don't + base verb"
+        }
+      ]
+    },
+    {
+      "point": "Questions, short answers and everyday time words",
+      "examples": [
+        {
+          "text": "<b>Do</b> you <b>play</b> a sport? — Yes, I do.",
+          "note": "question + short answer"
+        },
+        {
+          "text": "<b>Do</b> they <b>go</b> to bed early? — No, they don't.",
+          "note": "they → do in the question"
+        },
+        {
+          "text": "I read <b>every day</b> and I swim <b>at the weekend</b>.",
+          "note": "everyday time words show how often"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I no like fish.",
+      "right": "I <b>don't like</b> fish.",
+      "why": "The negative needs the helper don't, not just no."
+    },
+    {
+      "wrong": "Do you plays football?",
+      "right": "Do you <b>play</b> football?",
+      "why": "After do/does, the verb goes back to its base form — no -s."
+    },
+    {
+      "wrong": "I like play basketball.",
+      "right": "I like <b>playing</b> basketball.",
+      "why": "After like/love/hate, English uses -ing (or just a noun), not the base verb."
+    },
+    {
+      "wrong": "Yes, I like.",
+      "right": "Yes, I <b>do</b>.",
+      "why": "Short answers repeat do/don't, not the main verb."
+    },
+    {
+      "wrong": "We don't likes maths.",
+      "right": "We <b>don't like</b> maths.",
+      "why": "After don't, the verb never takes -s."
+    },
+    {
+      "wrong": "Not I like spiders.",
+      "right": "I <b>don't like</b> spiders.",
+      "why": "Don't goes after the person, not before the whole sentence."
+    }
+  ],
+  "l1": [
+    {
+      "es": "No me gusta el pescado.",
+      "wrong": "I no like fish.",
+      "right": "I <b>don't like</b> fish.",
+      "why": "Spanish makes a negative with no + verb; English needs the helper verb don't."
+    },
+    {
+      "es": "Me gusta jugar fútbol.",
+      "wrong": "I like play football.",
+      "right": "I like <b>playing</b> football.",
+      "why": "After like, English uses -ing (or just the noun), not the base verb."
+    },
+    {
+      "es": "¿Juegas fútbol?",
+      "wrong": "Play you football?",
+      "right": "<b>Do</b> you <b>play</b> football?",
+      "why": "English questions need do/does — the verb doesn't move to the front on its own."
+    },
+    {
+      "es": "Sí, me gusta.",
+      "wrong": "Yes, I like.",
+      "right": "Yes, I <b>do</b>.",
+      "why": "Short answers repeat do/does, not the main verb like."
+    },
+    {
+      "es": "Nosotros no vemos la tele.",
+      "wrong": "We not watch TV.",
+      "right": "We <b>don't watch</b> TV.",
+      "why": "Not can't stand alone before a verb — it needs the helper don't with it."
+    }
+  ],
+  "remember": {
+    "trick": "DO helps I, you, we, they. DON'T for the negative!",
+    "tip": "Do is the helper for questions and don't for negatives — the main verb never changes: play, not plays."
+  },
+  "dialogue": {
+    "title": "Free time at the beach",
+    "context": "Mateo, Nadia and Liam are on a school trip to a beach near Lima, talking about what they do every day.",
+    "lines": [
+      {
+        "speaker": "Mateo",
+        "text": "I <b>love</b> the beach! We <b>come</b> here every summer."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Really? I <b>don't like</b> swimming in the sea — too cold!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Do</b> you <b>surf</b>, Mateo?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "No, I <b>don't</b>. I only <b>play</b> football on the sand."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "We <b>play</b> volleyball at the weekend with my cousins."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Do</b> your cousins <b>live</b> near the beach?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Yes, they <b>do</b>. They <b>walk</b> here every day!"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I <b>don't walk</b> to the beach — it's too far from my house."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Let's <b>build</b> a sandcastle! I <b>love</b> that."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Good idea — we <b>don't have</b> much time left."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "I ___ tennis every day.",
+          "options": [
+            "play",
+            "plays",
+            "playing"
+          ],
+          "answer": 0,
+          "why": "I → base verb, no -s"
+        },
+        {
+          "sentence": "They ___ like maths.",
+          "options": [
+            "doesn't",
+            "don't",
+            "not"
+          ],
+          "answer": 1,
+          "why": "they → don't + base verb"
+        },
+        {
+          "sentence": "___ you play basketball?",
+          "options": [
+            "Does",
+            "Is",
+            "Do"
+          ],
+          "answer": 2,
+          "why": "you → Do"
+        },
+        {
+          "sentence": "We ___ our homework every night.",
+          "options": [
+            "do",
+            "does",
+            "doing"
+          ],
+          "answer": 0,
+          "why": "we → base verb"
+        },
+        {
+          "sentence": "Do you like spiders? — No, I ___.",
+          "options": [
+            "doesn't",
+            "don't",
+            "not"
+          ],
+          "answer": 1,
+          "why": "short answer: I → don't"
+        },
+        {
+          "sentence": "___ they live near the beach? — Yes, they do.",
+          "options": [
+            "Does",
+            "Are",
+            "Do"
+          ],
+          "answer": 2,
+          "why": "they → Do"
+        },
+        {
+          "sentence": "I ___ swimming in the sea.",
+          "options": [
+            "love",
+            "loves",
+            "loving"
+          ],
+          "answer": 0,
+          "why": "I → base verb"
+        },
+        {
+          "sentence": "We ___ walk to school — we go by bus.",
+          "options": [
+            "doesn't",
+            "don't",
+            "not"
+          ],
+          "answer": 1,
+          "why": "we → don't + base verb"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with do, don't, Do or the base form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "I ___ (play) football every day.",
+          "answers": [
+            "play"
+          ]
+        },
+        {
+          "sentence": "They ___ not (like) maths.",
+          "answers": [
+            "do"
+          ]
+        },
+        {
+          "sentence": "___ you like pizza?",
+          "answers": [
+            "Do"
+          ]
+        },
+        {
+          "sentence": "We ___ (go) to school by bus.",
+          "answers": [
+            "go"
+          ]
+        },
+        {
+          "sentence": "___ they play football at the weekend?",
+          "answers": [
+            "Do"
+          ]
+        },
+        {
+          "sentence": "I ___ not (watch) TV on school nights.",
+          "answers": [
+            "do"
+          ]
+        },
+        {
+          "sentence": "We ___ (love) the beach.",
+          "answers": [
+            "love"
+          ]
+        },
+        {
+          "sentence": "Do you like spiders? — No, I ___.",
+          "answers": [
+            "don't"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "play",
+            "I",
+            "tennis",
+            "every day",
+            "."
+          ],
+          "answer": "I play tennis every day."
+        },
+        {
+          "words": [
+            "like",
+            "don't",
+            "They",
+            "maths",
+            "."
+          ],
+          "answer": "They don't like maths."
+        },
+        {
+          "words": [
+            "you",
+            "Do",
+            "football",
+            "play",
+            "?"
+          ],
+          "answer": "Do you play football?"
+        },
+        {
+          "words": [
+            "do",
+            "our homework",
+            "We",
+            "."
+          ],
+          "answer": "We do our homework."
+        },
+        {
+          "words": [
+            "walk",
+            "don't",
+            "We",
+            "to school",
+            "."
+          ],
+          "answer": "We don't walk to school."
+        },
+        {
+          "words": [
+            "they",
+            "Do",
+            "near the beach",
+            "live",
+            "?"
+          ],
+          "answer": "Do they live near the beach?"
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "I play tennis every day.",
+          "ok": true,
+          "why": "base verb, no -s, correct"
+        },
+        {
+          "sentence": "They likes music.",
+          "ok": false,
+          "fix": "They <b>like</b> music.",
+          "why": "they → base verb, no -s"
+        },
+        {
+          "sentence": "Do you like pizza?",
+          "ok": true,
+          "why": "question with do, correct"
+        },
+        {
+          "sentence": "We don't watch scary films.",
+          "ok": true,
+          "why": "don't + base verb, correct"
+        },
+        {
+          "sentence": "Play you football?",
+          "ok": false,
+          "fix": "<b>Do</b> you <b>play</b> football?",
+          "why": "questions need do/does; the verb can't move alone"
+        },
+        {
+          "sentence": "I no like spiders.",
+          "ok": false,
+          "fix": "I <b>don't like</b> spiders.",
+          "why": "the negative needs don't, not no"
+        },
+        {
+          "sentence": "We love the beach.",
+          "ok": true,
+          "why": "like/love + noun, correct"
+        },
+        {
+          "sentence": "Yes, I like.",
+          "ok": false,
+          "fix": "Yes, I <b>do</b>.",
+          "why": "short answers use do/don't, not the main verb"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about my everyday routine with I, you, we and they.",
+    "I can say what I like, love and hate, and make negatives with don't.",
+    "I can ask <i>Do you…?</i> and answer <i>Yes, I do</i> / <i>No, we don't</i>."
+  ],
+  "summary": [
+    "For I/you/we/they, the verb stays in its base form: <i>I play, you play, we play, they play</i>.",
+    "Negative: <b>don't</b> + base verb — <i>I don't like maths</i>.",
+    "Question: <b>Do</b> + person + base verb — <i>Do you play tennis?</i>",
+    "Short answers: <i>Yes, I do. / No, they don't.</i> — never repeat the main verb.",
+    "Use like/love/hate + a noun or + -ing: <i>I love pizza, I love swimming</i>."
+  ]
+}

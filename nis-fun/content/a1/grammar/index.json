@@ -1,0 +1,95 @@
+{
+  "level": "a1",
+  "cefr": "A1",
+  "exam": "A1 Foundations",
+  "count": 12,
+  "areas": [
+    {
+      "area": "First words, first sentences",
+      "topics": [
+        {
+          "id": "be-am-is-are",
+          "title": "The verb be: am, is, are",
+          "tagline": "The most important verb in English: who you are, where you are and how you feel.",
+          "cefr": "A1"
+        },
+        {
+          "id": "nouns-plurals-this-that",
+          "title": "Nouns: a/an, plurals, this/that/these/those",
+          "tagline": "The words for things: a or an, one or many, and pointing at what's near or far.",
+          "cefr": "A1"
+        },
+        {
+          "id": "have-got-a1",
+          "title": "have got: what you have",
+          "tagline": "Pets, family, hair and eyes: how to say what you've got — and what you haven't.",
+          "cefr": "A1"
+        },
+        {
+          "id": "possessives-a1",
+          "title": "my, your, his, her and 's",
+          "tagline": "Who does it belong to? my, your, his, her, its, our, their, and the little apostrophe s.",
+          "cefr": "A1"
+        }
+      ]
+    },
+    {
+      "area": "Every day",
+      "topics": [
+        {
+          "id": "present-simple-i-you",
+          "title": "Present simple: I, you, we, they",
+          "tagline": "Your everyday life: routines, likes and facts with I, you, we and they.",
+          "cefr": "A1"
+        },
+        {
+          "id": "present-simple-he-she-it",
+          "title": "Present simple: he, she, it and the -s",
+          "tagline": "The one small letter that trips everyone up: he, she, it — and the verb gets an -s.",
+          "cefr": "A1"
+        },
+        {
+          "id": "frequency-time-words",
+          "title": "How often? always, usually, sometimes, never",
+          "tagline": "Never 0%, always 100%: the words that say how often something happens.",
+          "cefr": "A1"
+        },
+        {
+          "id": "question-words-a1",
+          "title": "Question words: What, Where, When, Who, How",
+          "tagline": "The small words that start every question — ask about anything, anyone, anywhere.",
+          "cefr": "A1"
+        }
+      ]
+    },
+    {
+      "area": "Here and now",
+      "topics": [
+        {
+          "id": "there-is-prepositions-place",
+          "title": "there is / there are and where things are",
+          "tagline": "Say what's in a room, a bag or a town — and exactly where it is.",
+          "cefr": "A1"
+        },
+        {
+          "id": "can-cant",
+          "title": "can and can't",
+          "tagline": "One little word for ability, permission and polite requests.",
+          "cefr": "A1"
+        },
+        {
+          "id": "present-continuous-now",
+          "title": "Present continuous: what is happening now",
+          "tagline": "am/is/are + -ing — for the exact moment you're speaking.",
+          "cefr": "A1"
+        },
+        {
+          "id": "imperatives-lets",
+          "title": "Imperatives and Let's",
+          "tagline": "Give instructions, make rules and suggest things to do together.",
+          "cefr": "A1"
+        }
+      ]
+    }
+  ]
+}

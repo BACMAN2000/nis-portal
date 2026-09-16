@@ -1,0 +1,669 @@
+{
+  "id": "past-tenses-b1",
+  "level": "pet",
+  "area": "Tenses & time",
+  "title": "Past simple and past continuous",
+  "tagline": "One action was already going on; another one just happened — telling a story means knowing which is which.",
+  "cefr": "B1",
+  "exam": [
+    "Writing Part 2 — story or article",
+    "Reading Part 4 — multiple choice on a long text",
+    "Listening Part 4 — true/false on a conversation"
+  ],
+  "why": "Reading Part 4 texts are often short stories or news reports, and Writing Part 2 asks you to write your own story — both need the past simple for events and the past continuous for the scene around them. B1 Preliminary rewards when/while/as used correctly to link two actions, and irregular past forms (went, fell, saw, heard) that examiners expect you to know by heart, not guess.",
+  "hook": {
+    "text": "Nadia: “My phone! I can't find it anywhere!” Liam: “We <b>were walking</b> to the bus stop when you <b>opened</b> your bag.” Sofia: “That's it — it probably <b>fell</b> out then!”",
+    "ask": "Two verbs describe things that were already happening; one verb describes the single moment something happened. Find them — which is which?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "The scene, and the moment something happened",
+      "marks": [
+        {
+          "at": "before-past",
+          "label": "they were walking to the bus stop",
+          "sub": "past continuous — already in progress"
+        },
+        {
+          "at": "past",
+          "label": "the phone fell out of the bag",
+          "sub": "past simple — the interrupting moment"
+        }
+      ],
+      "arrows": [
+        [
+          0,
+          1,
+          "the shorter action cuts across the longer one"
+        ]
+      ],
+      "caption": "The past continuous paints the background; the past simple is the one thing that happened inside it."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Nadia",
+              "role": "subj"
+            },
+            {
+              "t": "lost",
+              "role": "verb"
+            },
+            {
+              "t": "her phone",
+              "role": "obj"
+            },
+            {
+              "t": "yesterday",
+              "role": "time"
+            }
+          ],
+          "note": "past simple — statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "Nadia",
+              "role": "subj"
+            },
+            {
+              "t": "didn't",
+              "role": "neg"
+            },
+            {
+              "t": "notice",
+              "role": "verb"
+            },
+            {
+              "t": "anything",
+              "role": "obj"
+            }
+          ],
+          "note": "past simple — negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "They",
+              "role": "subj"
+            },
+            {
+              "t": "were",
+              "role": "aux"
+            },
+            {
+              "t": "walking",
+              "role": "verb"
+            },
+            {
+              "t": "to the bus stop",
+              "role": "place"
+            },
+            {
+              "t": "at six",
+              "role": "time"
+            }
+          ],
+          "note": "past continuous — statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "What",
+              "role": "x"
+            },
+            {
+              "t": "were",
+              "role": "aux"
+            },
+            {
+              "t": "you",
+              "role": "subj"
+            },
+            {
+              "t": "doing",
+              "role": "verb"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "past continuous — question"
+        }
+      ],
+      "caption": "Did carries the question and the negative in the simple form; was/were does the same job in the continuous."
+    },
+    {
+      "type": "contrast",
+      "title": "Past simple or past continuous?",
+      "columns": [
+        "Past simple",
+        "Past continuous"
+      ],
+      "rows": [
+        {
+          "label": "Use",
+          "cells": [
+            "a finished action or event",
+            "an action in progress around a past time — the background"
+          ]
+        },
+        {
+          "label": "Time words",
+          "cells": [
+            "yesterday, last week, in 2020, two hours ago",
+            "at six o'clock, all morning, while"
+          ]
+        },
+        {
+          "label": "Linking word",
+          "cells": [
+            "when + past simple = the sudden event",
+            "while / as + past continuous = the scene"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "The phone <b>fell</b> out of the bag.",
+            "They <b>were walking</b> when it fell."
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "Past simple:",
+        "tone": "kw"
+      },
+      {
+        "chip": "verb+ed / irregular form",
+        "tone": "a",
+        "ex": "walked / fell"
+      },
+      {
+        "chip": "or",
+        "tone": "arrow"
+      },
+      {
+        "chip": "Past continuous:",
+        "tone": "kw"
+      },
+      {
+        "chip": "was/were + verb-ing",
+        "tone": "b",
+        "ex": "was falling"
+      }
+    ],
+    "table": {
+      "head": [
+        "Tense",
+        "Positive",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "Past simple",
+          "She lost her phone.",
+          "She didn't lose her phone.",
+          "Did she lose her phone?"
+        ],
+        [
+          "Past continuous",
+          "They were walking home.",
+          "They weren't walking home.",
+          "Were they walking home?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Past simple for finished actions and events",
+      "examples": [
+        {
+          "text": "Nadia <b>lost</b> her phone yesterday afternoon.",
+          "note": "a single, completed action"
+        },
+        {
+          "text": "The four friends <b>met</b> at the bus stop at half past five.",
+          "note": "an event that started and finished"
+        },
+        {
+          "text": "Liam <b>didn't see</b> anything unusual.",
+          "note": "negative — the event didn't happen"
+        }
+      ]
+    },
+    {
+      "point": "Past continuous for the background of a story",
+      "examples": [
+        {
+          "text": "It <b>was raining</b> when they left school.",
+          "note": "the scene — already happening"
+        },
+        {
+          "text": "Sofia <b>was talking</b> to Miss Vega, so she wasn't watching the bags.",
+          "note": "an action in progress that explains what happened"
+        },
+        {
+          "text": "The friends <b>were waiting</b> for the bus for almost twenty minutes.",
+          "note": "a long action in progress"
+        }
+      ]
+    },
+    {
+      "point": "Two actions at the same time, or one interrupting the other",
+      "examples": [
+        {
+          "text": "While Nadia <b>was looking</b> for her keys, her phone <b>fell</b> out of her bag.",
+          "note": "while + past continuous, then the past simple interrupts"
+        },
+        {
+          "text": "Mateo <b>was checking</b> his messages when Liam <b>shouted</b> at him.",
+          "note": "when + past simple interrupts the longer action"
+        },
+        {
+          "text": "As they <b>were leaving</b> the shop, the alarm <b>went off</b>.",
+          "note": "as introduces the background action too"
+        }
+      ]
+    },
+    {
+      "point": "Irregular verbs and time expressions you need at B1",
+      "examples": [
+        {
+          "text": "They <b>went</b> back to the bus stop and <b>found</b> nothing.",
+          "note": "go → went, find → found — no -ed"
+        },
+        {
+          "text": "Two hours later, Nadia <b>rang</b> her own number and <b>heard</b> it ring inside her bag!",
+          "note": "ring → rang, hear → heard"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Yesterday I go to the cinema.",
+      "right": "Yesterday I <b>went</b> to the cinema.",
+      "why": "A finished action needs the past simple, not the present."
+    },
+    {
+      "wrong": "While I walked home, it started to rain.",
+      "right": "While I <b>was walking</b> home, it started to rain.",
+      "why": "The background, already-in-progress action needs the continuous after while."
+    },
+    {
+      "wrong": "I was seeing Sofia at the market this morning.",
+      "right": "I <b>saw</b> Sofia at the market this morning.",
+      "why": "A single, complete meeting takes the past simple — see isn't normally used in the continuous."
+    },
+    {
+      "wrong": "She falled off her bike.",
+      "right": "She <b>fell</b> off her bike.",
+      "why": "Fall is irregular: fall → fell, never falled."
+    },
+    {
+      "wrong": "When the phone was ringing, Nadia was answering it.",
+      "right": "When the phone <b>rang</b>, Nadia <b>answered</b> it.",
+      "why": "Two short, complete actions one after the other both take the past simple."
+    },
+    {
+      "wrong": "Did you went to the party?",
+      "right": "<b>Did</b> you <b>go</b> to the party?",
+      "why": "Did already shows the past, so the main verb stays in its base form."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Fui al cine ayer.",
+      "wrong": "I go to the cinema yesterday.",
+      "right": "I <b>went</b> to the cinema yesterday.",
+      "why": "A finished past action always needs the past simple form in English, never the present."
+    },
+    {
+      "es": "Mientras caminaba, empezó a llover.",
+      "wrong": "While I walked, it started to rain.",
+      "right": "While I <b>was walking</b>, it started to rain.",
+      "why": "Spanish mientras + imperfecto = English while + past continuous, the ongoing background action."
+    },
+    {
+      "es": "Se cayó de la bicicleta.",
+      "wrong": "She falled off her bike.",
+      "right": "She <b>fell</b> off her bike.",
+      "why": "Regular -ed doesn't exist for irregular verbs like fall — you have to learn fell."
+    },
+    {
+      "es": "¿Fuiste a la fiesta?",
+      "wrong": "Did you went to the party?",
+      "right": "<b>Did</b> you <b>go</b> to the party?",
+      "why": "Did already shows the past, so the main verb stays in its base form, not the past."
+    }
+  ],
+  "remember": {
+    "trick": "One thing WAS happening, one thing just happened!",
+    "tip": "Was/were + -ing paints the scene; the plain past tells the one thing that actually happened."
+  },
+  "dialogue": {
+    "title": "The missing phone",
+    "context": "Nadia can't find her phone after school; Mateo, Sofia and Liam try to remember exactly what happened.",
+    "lines": [
+      {
+        "speaker": "Nadia",
+        "text": "My phone! I can't find it anywhere!"
+      },
+      {
+        "speaker": "Liam",
+        "text": "We <b>were walking</b> to the bus stop when you <b>opened</b> your bag."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "That's true — you <b>were looking</b> for your keys at the same time."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "<b>Did</b> you <b>check</b> your jacket pocket?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Yes, I <b>checked</b> everywhere already."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Wait — it <b>was raining</b>, so you <b>put</b> your hood up. Maybe it <b>fell</b> then."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "While we <b>were talking</b> to Miss Vega, nobody <b>watched</b> the bags."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I <b>rang</b> my own number… and I <b>heard</b> something!"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "It's ringing inside your backpack!"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Found it! It <b>was</b> there the whole time."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "Yesterday, Nadia ___ her phone.",
+          "options": [
+            "lost",
+            "loses",
+            "was losing"
+          ],
+          "answer": 0,
+          "why": "a single, finished action"
+        },
+        {
+          "sentence": "While Liam ___ his messages, the bell rang.",
+          "options": [
+            "checks",
+            "was checking",
+            "checked"
+          ],
+          "answer": 1,
+          "why": "the background action, already in progress"
+        },
+        {
+          "sentence": "It ___ when they left school.",
+          "options": [
+            "rains",
+            "rained",
+            "was raining"
+          ],
+          "answer": 2,
+          "why": "the scene, already happening"
+        },
+        {
+          "sentence": "They ___ nothing unusual at first.",
+          "options": [
+            "saw",
+            "were seeing",
+            "see"
+          ],
+          "answer": 0,
+          "why": "a single, complete action"
+        },
+        {
+          "sentence": "___ you go to the concert last Friday?",
+          "options": [
+            "Were",
+            "Did",
+            "Was"
+          ],
+          "answer": 1,
+          "why": "questions about a finished action use did"
+        },
+        {
+          "sentence": "She ___ off her bike and hurt her knee.",
+          "options": [
+            "falled",
+            "was falling",
+            "fell"
+          ],
+          "answer": 2,
+          "why": "fall is irregular: fall → fell"
+        },
+        {
+          "sentence": "As they ___ the shop, the alarm went off.",
+          "options": [
+            "were leaving",
+            "left",
+            "leave"
+          ],
+          "answer": 0,
+          "why": "the background action introduced by as"
+        },
+        {
+          "sentence": "When the phone ___, Nadia answered immediately.",
+          "options": [
+            "was ringing",
+            "rang",
+            "rings"
+          ],
+          "answer": 1,
+          "why": "two short actions in sequence, both past simple"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "Nadia ___ (lose) her phone yesterday.",
+          "answers": [
+            "lost"
+          ]
+        },
+        {
+          "sentence": "While Sofia ___ (talk) to Miss Vega, nobody watched the bags.",
+          "answers": [
+            "was talking"
+          ]
+        },
+        {
+          "sentence": "It ___ (rain) hard when they left the classroom.",
+          "answers": [
+            "was raining"
+          ]
+        },
+        {
+          "sentence": "___ you ___ (see) anything strange on the bus?",
+          "answers": [
+            "Did … see",
+            "Did you see"
+          ]
+        },
+        {
+          "sentence": "She ___ (fall) off her bike near the park.",
+          "answers": [
+            "fell"
+          ]
+        },
+        {
+          "sentence": "As they ___ (leave) the shop, the alarm went off.",
+          "answers": [
+            "were leaving"
+          ]
+        },
+        {
+          "sentence": "When the phone ___ (ring), Nadia ___ (answer) it at once.",
+          "answers": [
+            "rang … answered",
+            "rang, answered"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "her phone",
+            "Nadia",
+            "yesterday",
+            "lost",
+            "."
+          ],
+          "answer": "Nadia lost her phone yesterday."
+        },
+        {
+          "words": [
+            "was raining",
+            "It",
+            "left school",
+            "when they",
+            "."
+          ],
+          "answer": "It was raining when they left school."
+        },
+        {
+          "words": [
+            "her bike",
+            "off",
+            "fell",
+            "She",
+            "."
+          ],
+          "answer": "She fell off her bike."
+        },
+        {
+          "words": [
+            "you go",
+            "to the party",
+            "Did",
+            "?"
+          ],
+          "answer": "Did you go to the party?"
+        },
+        {
+          "words": [
+            "went off",
+            "The alarm",
+            "as they",
+            "left the shop",
+            "."
+          ],
+          "answer": "The alarm went off as they left the shop."
+        },
+        {
+          "words": [
+            "the phone",
+            "Nadia answered",
+            "when it rang",
+            "."
+          ],
+          "answer": "Nadia answered the phone when it rang."
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given.",
+      "items": [
+        {
+          "first": "Nadia's phone disappeared while she was walking to the bus stop.",
+          "key": "WALKING",
+          "second_start": "While Nadia",
+          "second_end": "to the bus stop, her phone disappeared.",
+          "answers": [
+            "was walking"
+          ]
+        },
+        {
+          "first": "It started to rain before they left the classroom.",
+          "key": "WAS",
+          "second_start": "It",
+          "second_end": "when they left the classroom.",
+          "answers": [
+            "was raining"
+          ]
+        },
+        {
+          "first": "She came off her bike near the park.",
+          "key": "FELL",
+          "second_start": "She",
+          "second_end": "off her bike near the park.",
+          "answers": [
+            "fell"
+          ]
+        },
+        {
+          "first": "The party happened, but Liam didn't go.",
+          "key": "DIDN'T",
+          "second_start": "Liam",
+          "second_end": "to the party.",
+          "answers": [
+            "didn't go"
+          ]
+        },
+        {
+          "first": "The alarm rang exactly when they were leaving the shop.",
+          "key": "LEAVING",
+          "second_start": "The alarm rang as they",
+          "second_end": "the shop.",
+          "answers": [
+            "were leaving"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can tell a story about something that happened, using the past simple for the events.",
+    "I can describe what was already happening in the background with the past continuous.",
+    "I can link two past actions with when, while and as, and use the key irregular verbs."
+  ],
+  "summary": [
+    "Past simple = a finished action or event: regular -ed or an irregular form (went, fell, saw…).",
+    "Past continuous = was/were + -ing, an action already in progress around a past time.",
+    "When + past simple introduces the sudden event; while/as + past continuous sets the background scene.",
+    "Two short actions in sequence both take the past simple, even close together in time.",
+    "Learn irregular past forms one by one — there's no rule, only memory."
+  ]
+}

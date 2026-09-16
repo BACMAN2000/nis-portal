@@ -1,0 +1,203 @@
+{
+  "id": "story-telling-sequencing",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "Telling a story: sequencing and past tenses together",
+  "tagline": "Beginning, surprise, ending — the shape every good story shares.",
+  "cefr": "A2",
+  "exam": ["Writing Part 7 — a picture story", "Speaking Part 2 — telling a short story", "Reading Part 4 — a long text"],
+  "why": "Writing Part 7 asks for a 35-word story from three pictures, and the difference between a good answer and a weak one is almost always sequencing words plus the past continuous/past simple combination. The same skills help you follow a narrative in Reading Part 4 and tell a good story in Speaking.",
+  "hook": {
+    "text": "Mateo tells his story. \"<b>One day</b>, we <b>were walking</b> by the river. <b>Suddenly</b>, Nadia's hat fell in! <b>In the end</b>, my dad got it back.\" \"Great story!\" says Miss Vega.",
+    "ask": "Mateo's story has three parts: a beginning, a surprise and an ending. Which words show each part?"
+  },
+  "diagrams": [
+    {
+      "type": "steps",
+      "title": "The shape of a 35-word story",
+      "steps": [
+        {"label": "Start the scene", "ex": "<b>One day</b>, Liam was walking to school."},
+        {"label": "Something happens", "ex": "<b>Suddenly</b>, it started to rain."},
+        {"label": "What happened next", "ex": "<b>Then</b> he ran to the bus stop."},
+        {"label": "How it ends", "ex": "<b>In the end</b>, his friend gave him an umbrella."}
+      ],
+      "caption": "Every good story moves through these four steps, even in just 35 words."
+    },
+    {
+      "type": "blocks",
+      "title": "Background action + the event",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Liam", "role": "subj"}, {"t": "was walking", "role": "verb"}, {"t": "to school", "role": "place"}, {"t": "when", "role": "kw"}, {"t": "it started", "role": "x"}, {"t": "to rain", "role": "x"}], "note": "past continuous (background) + past simple (the event)"},
+        {"parts": [{"t": "One day", "role": "time"}, {"t": "Sofia", "role": "subj"}, {"t": "found", "role": "verb"}, {"t": "a wallet", "role": "obj"}, {"t": "in the park", "role": "place"}], "note": "past simple for the main story event"},
+        {"parts": [{"t": "Suddenly", "role": "kw"}, {"t": "the dog", "role": "subj"}, {"t": "ran", "role": "verb"}, {"t": "across the road", "role": "place"}], "note": "suddenly + past simple, a surprise"}
+      ],
+      "caption": "The long, background action is past continuous. The short, surprising action is past simple."
+    },
+    {
+      "type": "map",
+      "title": "Story words",
+      "center": "Telling a story",
+      "branches": [
+        {"label": "beginning", "items": ["One day…", "Once…", "Last summer…"], "tone": "a"},
+        {"label": "sequence", "items": ["First…", "Then…", "Next…", "After that…"], "tone": "b"},
+        {"label": "surprise", "items": ["Suddenly…"], "tone": "c"},
+        {"label": "ending", "items": ["In the end…", "Finally…"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "time word", "tone": "kw", "ex": "Suddenly"},
+      {"chip": "past simple / past continuous", "tone": "a", "ex": "it started raining"}
+    ],
+    "table": {
+      "head": ["Part of the story", "Time words", "Example"],
+      "rows": [
+        ["Beginning", "One day, Once, Last summer", "One day, Sofia was walking home."],
+        ["Background action", "(no time word — use past continuous)", "She was listening to music"],
+        ["The event", "Suddenly, then, when", "when she saw a lost dog."],
+        ["Next steps", "Then, next, after that", "Then she took a photo."],
+        ["Ending", "In the end, finally", "In the end, she found the owner."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Starting the story",
+      "examples": [
+        {"text": "<b>One day</b>, Nadia was walking to school.", "note": "one day = a classic story opener"},
+        {"text": "<b>Once</b>, there was a boy who loved football.", "note": "once = a storytelling beginning, like a fairy tale"},
+        {"text": "<b>Last summer</b>, we went to the mountains.", "note": "a specific time in the past"}
+      ]
+    },
+    {
+      "point": "Past simple and past continuous together",
+      "examples": [
+        {"text": "Liam <b>was walking</b> to school <b>when</b> it <b>started</b> to rain.", "note": "past continuous (background) + past simple (the event)"},
+        {"text": "While Sofia <b>was reading</b>, her phone <b>rang</b>.", "note": "while + past continuous, past simple for the interruption"},
+        {"text": "Mateo <b>was playing</b> football <b>when</b> he <b>saw</b> the accident.", "note": "the same pattern again"}
+      ]
+    },
+    {
+      "point": "Sequencing: first, then, next, after that",
+      "examples": [
+        {"text": "<b>First</b>, she called her mum.", "note": "first = the first step"},
+        {"text": "<b>Then</b> she ran to get help.", "note": "then = the next step"},
+        {"text": "<b>After that</b>, everyone was safe.", "note": "after that = a bit more formal than then"},
+        {"text": "<b>Next</b>, they walked home together.", "note": "next = another way to say then"}
+      ]
+    },
+    {
+      "point": "Surprises and endings",
+      "examples": [
+        {"text": "<b>Suddenly</b>, a dog ran into the road!", "note": "suddenly = something unexpected"},
+        {"text": "<b>In the end</b>, the dog's owner said thank you.", "note": "in the end = how the story finishes"},
+        {"text": "<b>Finally</b>, they all went home happy.", "note": "finally = another way to end the story"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "One day Nadia is walking to school.", "right": "One day Nadia <b>was walking</b> to school.", "why": "A story is told in the past — use past tenses throughout, not the present."},
+    {"wrong": "Liam walked to school when it was raining started.", "right": "Liam <b>was walking</b> to school when it <b>started</b> to rain.", "why": "The background action needs the past continuous; the interrupting event needs the past simple."},
+    {"wrong": "Then, then she ran to get help.", "right": "<b>Then</b> she ran to get help.", "why": "Use one time word per sentence — don't repeat then."},
+    {"wrong": "In the end, then everyone was safe.", "right": "<b>In the end</b>, everyone was safe.", "why": "Choose one ending phrase — don't mix then and in the end."},
+    {"wrong": "Suddenly a dog was running into the road.", "right": "<b>Suddenly</b>, a dog <b>ran</b> into the road.", "why": "After suddenly, use the past simple for the surprising action, not the past continuous."},
+    {"wrong": "First she call her mum.", "right": "<b>First</b>, she <b>called</b> her mum.", "why": "Don't forget the -ed on regular past simple verbs."}
+  ],
+  "l1": [
+    {"es": "Un día, Nadia caminaba a la escuela.", "wrong": "One day, Nadia walks to school.", "right": "One day, Nadia <b>was walking</b> to school.", "why": "A story about the past always uses past tenses, even though the Spanish imperfect can feel close to a present form."},
+    {"es": "De repente, empezó a llover.", "wrong": "Of sudden, it started to rain.", "right": "<b>Suddenly</b>, it started to rain.", "why": "The English word is suddenly, not a word-for-word translation of de repente."},
+    {"es": "Mientras leía, sonó el teléfono.", "wrong": "While she read, the phone was ringing.", "right": "While she <b>was reading</b>, the phone <b>rang</b>.", "why": "While takes the past continuous for the longer action; the short, sudden action takes the past simple."},
+    {"es": "Al final, todos estaban a salvo.", "wrong": "At the final, everyone was safe.", "right": "<b>In the end</b>, everyone was safe.", "why": "The fixed English phrase is in the end, not at the final."},
+    {"es": "Primero llamó a su mamá.", "wrong": "First time she called her mum.", "right": "<b>First</b>, she called her mum.", "why": "First on its own means the first step; first time means the first occasion something ever happened — a different meaning."}
+  ],
+  "remember": {
+    "trick": "ONE DAY… SUDDENLY… IN THE END!",
+    "tip": "Every good story has three moves: how it starts, what goes wrong (suddenly), and how it ends (in the end)."
+  },
+  "dialogue": {
+    "title": "Mateo's camping story",
+    "context": "Miss Vega asks the class to tell a short story about the weekend. Mateo tells his camping adventure.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Mateo, tell us what happened at the campsite."},
+      {"speaker": "Mateo", "text": "<b>One day</b>, we <b>were walking</b> near the river."},
+      {"speaker": "Liam", "text": "What happened next?"},
+      {"speaker": "Mateo", "text": "<b>Suddenly</b>, Nadia's hat fell into the water!"},
+      {"speaker": "Nadia", "text": "It's true — I was so surprised!"},
+      {"speaker": "Mateo", "text": "<b>Then</b> my dad jumped in to get it."},
+      {"speaker": "Sofia", "text": "Was the water cold?"},
+      {"speaker": "Mateo", "text": "Very! <b>After that</b>, we made a fire to warm up."},
+      {"speaker": "Nadia", "text": "<b>In the end</b>, we all laughed about it."},
+      {"speaker": "Miss Vega", "text": "Great story — perfect sequencing words!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___, Sofia was walking home.", "options": ["One day", "Suddenly", "Then"], "answer": 0, "why": "one day = a story opener"},
+        {"sentence": "Liam ___ football when he saw the accident.", "options": ["played", "was playing", "play"], "answer": 1, "why": "background action → past continuous"},
+        {"sentence": "While she was reading, the phone ___.", "options": ["was ringing", "rang", "rings"], "answer": 1, "why": "the interrupting event → past simple"},
+        {"sentence": "___, she called her mum.", "options": ["First", "Suddenly", "Finally"], "answer": 0, "why": "first = the first step"},
+        {"sentence": "First she called her mum. ___ she ran for help.", "options": ["Suddenly", "One day", "Then"], "answer": 2, "why": "then = the next step"},
+        {"sentence": "___, a dog ran into the road!", "options": ["First", "Suddenly", "Then"], "answer": 1, "why": "suddenly = something unexpected"},
+        {"sentence": "___, everyone was safe.", "options": ["In the end", "Suddenly", "First"], "answer": 0, "why": "in the end = how the story finishes"},
+        {"sentence": "They played in the park. ___ it started to rain.", "options": ["then", "suddenly", "in the end"], "answer": 1, "why": "suddenly = an unexpected event"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct word or words.",
+      "items": [
+        {"sentence": "___, Sofia was walking home. (one day)", "answers": ["One day"]},
+        {"sentence": "Liam ___ (play) football when he saw the accident.", "answers": ["was playing"]},
+        {"sentence": "While she was reading, the phone ___ (ring).", "answers": ["rang"]},
+        {"sentence": "___, she called her mum. (first)", "answers": ["First"]},
+        {"sentence": "First she called her mum. ___ she ran for help. (then)", "answers": ["Then"]},
+        {"sentence": "___, a dog ran into the road! (suddenly)", "answers": ["Suddenly"]},
+        {"sentence": "___, everyone was safe. (in the end)", "answers": ["In the end"]},
+        {"sentence": "They played in the park. ___ it started to rain. (suddenly)", "answers": ["Suddenly"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["home", "One day", ".", "was walking", "Sofia"], "answer": "One day Sofia was walking home."},
+        {"words": ["into the road", "Suddenly", ".", "ran", "a dog"], "answer": "Suddenly a dog ran into the road."},
+        {"words": ["the accident", "Liam was playing", ".", "when he saw", "football"], "answer": "Liam was playing football when he saw the accident."},
+        {"words": ["her mum", "First", ".", "she called"], "answer": "First she called her mum."},
+        {"words": ["was safe", "In the end", ".", "everyone"], "answer": "In the end everyone was safe."},
+        {"words": ["to warm up", "They made", ".", "a fire"], "answer": "They made a fire to warm up."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "One day, Sofia was walking home.", "ok": true, "why": "past continuous for the background scene, correct"},
+        {"sentence": "One day Nadia is walking to school.", "ok": false, "fix": "One day Nadia <b>was walking</b> to school.", "why": "a story needs past tenses, not the present"},
+        {"sentence": "Suddenly, a dog ran into the road.", "ok": true, "why": "suddenly + past simple, correct"},
+        {"sentence": "Suddenly a dog was running into the road.", "ok": false, "fix": "Suddenly a dog <b>ran</b> into the road.", "why": "after suddenly, use the past simple for the surprising action"},
+        {"sentence": "While she was reading, the phone rang.", "ok": true, "why": "past continuous (background) + past simple (event), correct"},
+        {"sentence": "First she call her mum.", "ok": false, "fix": "First she <b>called</b> her mum.", "why": "don't forget -ed in the past simple"},
+        {"sentence": "In the end, everyone was safe.", "ok": true, "why": "in the end for the ending, correct"},
+        {"sentence": "In the end, then everyone was safe.", "ok": false, "fix": "<b>In the end</b>, everyone was safe.", "why": "choose one ending phrase — don't mix then and in the end"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can start a story with <i>one day, once</i> or a specific past time.",
+    "I can mix past simple and past continuous to show a background action and an event.",
+    "I can sequence a story with <i>first, then, next, after that, suddenly</i> and <i>in the end</i>."
+  ],
+  "summary": [
+    "Start a story with <i>one day, once</i> or a specific past time.",
+    "Use the past continuous for the background and the past simple for the event: <i>She was walking when it started to rain.</i>",
+    "Sequence the middle with <i>first, then, next</i> and <i>after that</i>.",
+    "<i>Suddenly</i> introduces a surprise; <i>in the end/finally</i> closes the story.",
+    "A good 35-word story has a beginning, a surprise and an ending — that's the shape Writing Part 7 wants."
+  ]
+}

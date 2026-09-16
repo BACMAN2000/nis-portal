@@ -1,0 +1,205 @@
+{
+  "id": "relative-clauses-b1",
+  "level": "pet",
+  "area": "Sentence building",
+  "title": "Relative clauses",
+  "tagline": "Add extra information about people, things, places and time — all in one longer, smarter sentence.",
+  "cefr": "B1",
+  "exam": ["Reading Part 6 — open cloze", "Reading Part 4 — gapped text", "Speaking Part 2 — describing a photograph"],
+  "why": "Relative clauses let you give extra information about a noun without starting a new sentence, and B1 Preliminary tests them constantly: the open cloze often has a missing who, which or whose, and photo descriptions sound far more natural with 'a boy who is wearing a red cap' than with two short sentences. Get the pronoun and the comma right and both your writing and your speaking sound like a real B1 candidate.",
+  "hook": {
+    "text": "Sofia points at a house. \"That's the family <b>who</b> just moved in.\" Nadia: \"The ones <b>whose</b> dog barks all night?\" Sofia: \"That's them — the house <b>where</b> the old bakery used to be.\"",
+    "ask": "Sofia uses who, whose and where to add information about the family, the dog and the house. Which word points to a person, which one shows something belongs to someone, and which one points to a place?"
+  },
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Join two sentences into one",
+      "before": {"text": "I know a family. The family just moved in.", "hl": ["The family"]},
+      "after": {"text": "I know a family who just moved in.", "hl": ["who"]},
+      "steps": [
+        "Find the noun that both sentences share.",
+        "Delete it from the second sentence.",
+        "Put who (people), which (things) or where (places) in its place.",
+        "Join the two sentences into one, with no full stop in the middle."
+      ],
+      "caption": "One relative pronoun does the job of a whole repeated noun."
+    },
+    {
+      "type": "contrast",
+      "title": "Defining or non-defining?",
+      "columns": ["Defining clause", "Non-defining clause"],
+      "rows": [
+        {"label": "What it does", "cells": ["Says exactly which person or thing you mean", "Adds extra information — not essential"]},
+        {"label": "Commas?", "cells": ["No commas", "Yes — one comma before, one after (or at the end)"]},
+        {"label": "Remove it?", "cells": ["No — the sentence loses its meaning", "Yes — the sentence still makes sense without it"]},
+        {"label": "Can you use that?", "cells": ["Yes: who/which/that", "No — never that straight after a comma"]},
+        {"label": "Example", "cells": ["The boy <b>who sits next to me</b> is Peruvian.", "Mateo, <b>who sits next to me</b>, is Peruvian."]}
+      ]
+    },
+    {
+      "type": "blocks",
+      "title": "Build a relative clause",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "The girl", "role": "subj"}, {"t": "who", "role": "kw"}, {"t": "lives", "role": "verb"}, {"t": "next door", "role": "place"}, {"t": "is", "role": "aux"}, {"t": "my best friend", "role": "obj"}, {"t": ".", "role": "x"}], "note": "who = subject of its own clause (who lives…)"},
+        {"parts": [{"t": "The book", "role": "subj"}, {"t": "(that)", "role": "kw"}, {"t": "I'm reading", "role": "verb"}, {"t": "is amazing", "role": "x"}, {"t": ".", "role": "x"}], "note": "that is optional — it's the object of reading"},
+        {"parts": [{"t": "That's", "role": "x"}, {"t": "the boy", "role": "subj"}, {"t": "whose", "role": "kw"}, {"t": "dog", "role": "obj"}, {"t": "barks", "role": "verb"}, {"t": "all night", "role": "time"}, {"t": ".", "role": "x"}], "note": "whose shows the dog belongs to the boy"}
+      ],
+      "caption": "The clause starts right after the noun it describes — as close as possible."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "noun (person / thing / place)", "tone": "a"},
+      {"chip": "who / which / that / whose / where / when", "tone": "kw"},
+      {"chip": "+ clause (subject + verb…)", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Pronoun", "Refers to", "Example"],
+      "rows": [
+        ["who", "a person, as subject or object", "the woman <b>who</b> teaches us"],
+        ["which", "a thing, as subject or object", "the film <b>which</b> we watched"],
+        ["that", "a person or thing (informal, defining only)", "the shop <b>that</b> sells shoes"],
+        ["whose", "possession — it belongs to someone", "the boy <b>whose</b> bike is red"],
+        ["where", "a place", "the café <b>where</b> we met"],
+        ["when", "a time", "the day <b>when</b> we arrived"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Who, which and that: naming exactly who or what you mean",
+      "examples": [
+        {"text": "The girl <b>who</b> sits next to Mateo is new.", "note": "who = person, subject of the clause"},
+        {"text": "I didn't like the film <b>that</b> we watched last night.", "note": "that = thing, informal and very common"},
+        {"text": "Miss Vega is the teacher <b>who</b> also coaches the football team.", "note": "adds essential information about which teacher"},
+        {"text": "Nadia found the keys <b>which</b> I lost yesterday.", "note": "which = thing, a little more formal than that"}
+      ]
+    },
+    {
+      "point": "Whose, where and when: possession, place and time",
+      "examples": [
+        {"text": "That's the boy <b>whose</b> sister is in our class.", "note": "whose = it belongs to him"},
+        {"text": "This is the park <b>where</b> we play football on Sundays.", "note": "where = place, instead of in which"},
+        {"text": "Sunday is the day <b>when</b> the market opens early.", "note": "when = time, instead of on which"}
+      ]
+    },
+    {
+      "point": "Leaving out the pronoun when it is the object",
+      "examples": [
+        {"text": "The pizza (<b>that</b>) we ordered was cold.", "note": "that is optional — it's the object of ordered"},
+        {"text": "Have you met the boy (<b>who</b>) Sofia is talking to?", "note": "the pronoun can disappear when it isn't the subject"},
+        {"text": "The photos (<b>which</b>) Liam took are great.", "note": "you can drop which/that here, but never a pronoun that is the subject"}
+      ]
+    },
+    {
+      "point": "Non-defining clauses: extra information, not essential",
+      "examples": [
+        {"text": "Mateo, <b>who</b> is Nadia's cousin, lives on our street.", "note": "commas around extra info — the sentence works without it"},
+        {"text": "Cusco, <b>where</b> my grandmother was born, is in the mountains.", "note": "a comma before and a comma after the clause"},
+        {"text": "My phone, <b>which</b> I bought last year, stopped working.", "note": "which, never that, is used right after a comma"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "The people which live next door are noisy.", "right": "The people <b>who</b> live next door are noisy.", "why": "which is for things; use who for people."},
+    {"wrong": "Mateo, that is my cousin, is 14.", "right": "Mateo, <b>who</b> is my cousin, is 14.", "why": "Never use that straight after a comma — only who or which."},
+    {"wrong": "The boy who his dog is brown lives here.", "right": "The boy <b>whose</b> dog is brown lives here.", "why": "Use whose for possession, not who + his/her together."},
+    {"wrong": "The film that I saw it was boring.", "right": "The film that I saw was boring.", "why": "Don't repeat the object pronoun (it) — that already does that job."},
+    {"wrong": "This is the restaurant which we ate dinner.", "right": "This is the restaurant <b>where</b> we ate dinner.", "why": "A clause about a place usually needs where, not which, with no preposition left over."},
+    {"wrong": "The teacher who teach us Science is new.", "right": "The teacher who <b>teaches</b> us Science is new.", "why": "The verb still agrees with the noun before who (teacher = he/she)."}
+  ],
+  "l1": [
+    {"es": "La gente que vive aquí es simpática.", "wrong": "The people who is friendly.", "right": "The people <b>who are</b> friendly.", "why": "people is a plural noun in English, even though gente feels singular in Spanish."},
+    {"es": "El chico cuyo perro ladra mucho.", "wrong": "The boy who his dog barks a lot.", "right": "The boy <b>whose</b> dog barks a lot.", "why": "Spanish cuyo becomes whose — don't add his/her as well."},
+    {"es": "El libro que compré.", "wrong": "The book that I bought it.", "right": "The book that I bought.", "why": "In Spanish que never disappears, but the English pronoun it is not repeated — that already does the job."},
+    {"es": "El día que nací.", "wrong": "The day where I was born.", "right": "The day <b>when</b> I was born.", "why": "que after a time word becomes when in English — where is only for places."}
+  ],
+  "remember": {
+    "trick": "People who, things which, places where, owners whose!",
+    "tip": "If you can remove the clause and the sentence still makes sense, no commas are needed — that's a defining clause."
+  },
+  "dialogue": {
+    "title": "The new neighbour",
+    "context": "Sofia and Nadia see removal vans outside a house on their street and talk about the family moving in, while Mateo tries to guess who they are.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Look — that's the family <b>who</b> just moved into the blue house."},
+      {"speaker": "Nadia", "text": "The ones <b>whose</b> dog barks every morning?"},
+      {"speaker": "Sofia", "text": "Exactly. The house is the one <b>where</b> the old bakery used to be."},
+      {"speaker": "Mateo", "text": "Do you know the boy <b>who</b> was carrying all those boxes?"},
+      {"speaker": "Sofia", "text": "That's their son. He's the one <b>whose</b> bike is parked outside."},
+      {"speaker": "Nadia", "text": "Is he the boy (<b>who</b>) you saw at the park last week?"},
+      {"speaker": "Mateo", "text": "Maybe! I only remember the day <b>when</b> he nearly fell off it."},
+      {"speaker": "Sofia", "text": "The bike (<b>that</b>) he rides is really cool, actually."},
+      {"speaker": "Nadia", "text": "Let's say hello tomorrow, the day <b>when</b> school starts again."},
+      {"speaker": "Mateo", "text": "Good idea. I hope he's someone <b>who</b> likes football."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The girl ___ sits next to me is new.", "options": ["which", "who", "because"], "answer": 1, "why": "who = person, subject of the clause"},
+        {"sentence": "This is the café ___ we always meet.", "options": ["where", "which", "who"], "answer": 0, "why": "where = place"},
+        {"sentence": "Mateo, ___ is Nadia's cousin, lives near school.", "options": ["that", "who", "whose"], "answer": 1, "why": "who after a comma, never that"},
+        {"sentence": "The boy ___ bike was stolen is upset.", "options": ["whose", "who", "which"], "answer": 0, "why": "whose = possession"},
+        {"sentence": "I loved the book ___ you gave me.", "options": ["where", "that", "who"], "answer": 1, "why": "that = thing"},
+        {"sentence": "Sunday is the day ___ the market opens.", "options": ["who", "when", "where"], "answer": 1, "why": "when = time"},
+        {"sentence": "The people ___ live next door are noisy.", "options": ["whose", "which", "who"], "answer": 2, "why": "who = people"},
+        {"sentence": "Cusco is the city ___ my grandmother was born.", "options": ["where", "who", "that"], "answer": 0, "why": "where = place"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with who, which, that, whose, where or when.",
+      "items": [
+        {"sentence": "The man ___ lives next door is a doctor.", "answers": ["who", "that"]},
+        {"sentence": "This is the town ___ I was born.", "answers": ["where"]},
+        {"sentence": "Nadia, ___ is my best friend, moved here last year.", "answers": ["who"]},
+        {"sentence": "That's the girl ___ notebook I borrowed.", "answers": ["whose"]},
+        {"sentence": "I don't remember the day ___ we first met.", "answers": ["when"]},
+        {"sentence": "The shoes ___ I bought yesterday are too small.", "answers": ["that", "which"]},
+        {"sentence": "Miss Vega is the teacher ___ helped me with my project.", "answers": ["who", "that"]},
+        {"sentence": "This is the restaurant ___ we celebrated Mateo's birthday.", "answers": ["where"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["is my cousin", "who called you", "The boy", "."], "answer": "The boy who called you is my cousin."},
+        {"words": ["last night", "That's the film", "which we watched", "."], "answer": "That's the film which we watched last night."},
+        {"words": ["where we play football", "This is", "the park", "."], "answer": "This is the park where we play football."},
+        {"words": ["whose sister plays the guitar", "Nadia met", "a boy", "."], "answer": "Nadia met a boy whose sister plays the guitar."},
+        {"words": ["when we arrived", "Do you remember", "the day", "?"], "answer": "Do you remember the day when we arrived?"},
+        {"words": ["are on the table", "The keys", "that I lost", "."], "answer": "The keys that I lost are on the table."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "I know a boy. His sister is famous.", "key": "WHOSE", "second_start": "I know a boy", "second_end": "is famous.", "answers": ["whose sister"]},
+        {"first": "This is the town. I was born in this town.", "key": "WHERE", "second_start": "This is the town", "second_end": "I was born.", "answers": ["where"]},
+        {"first": "Mateo has a dog. The dog is very friendly.", "key": "WHICH", "second_start": "Mateo has a dog", "second_end": "is very friendly.", "answers": ["which"]},
+        {"first": "Do you remember the day? We met on that day.", "key": "WHEN", "second_start": "Do you remember the day", "second_end": "we met?", "answers": ["when"]},
+        {"first": "I have a friend. She lives in Cusco.", "key": "WHO", "second_start": "I have a friend", "second_end": "in Cusco.", "answers": ["who lives"]},
+        {"first": "I found my keys. I lost them yesterday.", "key": "THAT", "second_start": "I found the keys", "second_end": "yesterday.", "answers": ["that I lost"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can add information about a person, thing or place using who, which, that or where.",
+    "I can use whose to show that something belongs to someone, and when for a time.",
+    "I can leave out who/which/that when it isn't the subject, and use commas for extra information."
+  ],
+  "summary": [
+    "Relative clauses join two sentences into one by adding information about a noun.",
+    "Who and that are for people; which and that are for things; whose = possession; where = place; when = time.",
+    "Defining clauses (no commas) say exactly who or what you mean; non-defining clauses (with commas) add extra facts.",
+    "You can drop who/which/that when it is the object of the clause, but never when it is the subject.",
+    "That never follows a comma — only who or which introduce non-defining clauses."
+  ]
+}

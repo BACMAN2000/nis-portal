@@ -1,0 +1,685 @@
+{
+  "id": "present-continuous-now",
+  "level": "a1",
+  "area": "Here and now",
+  "title": "Present continuous: what is happening now",
+  "tagline": "am/is/are + -ing — for the exact moment you're speaking.",
+  "cefr": "A1",
+  "exam": [
+    "Listening Part 1 — a picture and five short conversations",
+    "Speaking Part 1 — describing what's happening now"
+  ],
+  "why": "The present continuous is the tense for right now — what people are doing at this exact moment, in a photo or in a conversation. It's everywhere in Listening Part 1, where you match a picture to what people are doing. Get the -ing spelling right and this tense is easy.",
+  "hook": {
+    "text": "The class is in Cusco! Miss Vega takes a photo. \"Look — Mateo <b>is climbing</b> the steps, Sofia <b>is taking</b> photos, and Liam and Nadia <b>are eating</b> ice cream. What <b>are</b> you <b>doing</b>?\" \"I<b>'m watching</b> all of you!\"",
+    "ask": "Find five -ing verbs in the story. Which words tell you the action is happening right now?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence with be + -ing",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Mateo",
+              "role": "subj"
+            },
+            {
+              "t": "is",
+              "role": "aux"
+            },
+            {
+              "t": "climbing",
+              "role": "verb"
+            },
+            {
+              "t": "the steps",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "statement"
+        },
+        {
+          "parts": [
+            {
+              "t": "Liam",
+              "role": "subj"
+            },
+            {
+              "t": "isn't",
+              "role": "neg"
+            },
+            {
+              "t": "eating",
+              "role": "verb"
+            },
+            {
+              "t": "ice cream",
+              "role": "obj"
+            },
+            {
+              "t": ".",
+              "role": "x"
+            }
+          ],
+          "note": "negative"
+        },
+        {
+          "parts": [
+            {
+              "t": "Is",
+              "role": "aux"
+            },
+            {
+              "t": "Sofia",
+              "role": "subj"
+            },
+            {
+              "t": "taking",
+              "role": "verb"
+            },
+            {
+              "t": "photos",
+              "role": "obj"
+            },
+            {
+              "t": "?",
+              "role": "x"
+            }
+          ],
+          "note": "question"
+        }
+      ],
+      "caption": "<b>am/is/are</b> + verb-<b>ing</b>. The helper be moves to the front to make a question."
+    },
+    {
+      "type": "map",
+      "title": "Words that signal present continuous",
+      "center": "happening now",
+      "branches": [
+        {
+          "label": "now",
+          "items": [
+            "I'm eating now."
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Look! / Listen!",
+          "items": [
+            "Look! She's dancing.",
+            "Listen! They're singing."
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "at the moment",
+          "items": [
+            "He's studying at the moment."
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "today",
+          "items": [
+            "It's raining today."
+          ],
+          "tone": "a"
+        }
+      ]
+    },
+    {
+      "type": "spelling",
+      "title": "Spelling the -ing form",
+      "rules": [
+        {
+          "rule": "Most verbs: + ing",
+          "examples": [
+            "eat → eat<b>ing</b>",
+            "climb → climb<b>ing</b>"
+          ]
+        },
+        {
+          "rule": "one vowel + one consonant: double the consonant",
+          "examples": [
+            "sit → sit<b>ting</b>",
+            "run → run<b>ning</b>"
+          ]
+        },
+        {
+          "rule": "verb ending in -e: drop the e + ing",
+          "examples": [
+            "take → tak<b>ing</b>",
+            "make → mak<b>ing</b>"
+          ]
+        },
+        {
+          "rule": "verb ending in -ie: change to -y + ing",
+          "examples": [
+            "lie → ly<b>ing</b>",
+            "die → dy<b>ing</b>"
+          ]
+        }
+      ],
+      "caption": "Say the word out loud — if the vowel sounds short, double the last letter."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "person",
+        "tone": "a",
+        "ex": "I / she / they"
+      },
+      {
+        "chip": "am / is / are (+ not)",
+        "tone": "kw",
+        "ex": "is / isn't"
+      },
+      {
+        "chip": "verb-ing",
+        "tone": "b",
+        "ex": "climbing"
+      },
+      {
+        "chip": "the rest",
+        "tone": "c",
+        "ex": "the steps"
+      }
+    ],
+    "table": {
+      "head": [
+        "Person",
+        "Statement",
+        "Negative",
+        "Question"
+      ],
+      "rows": [
+        [
+          "I",
+          "I'm climbing.",
+          "I'm not climbing.",
+          "Am I climbing?"
+        ],
+        [
+          "you",
+          "You're climbing.",
+          "You aren't climbing.",
+          "Are you climbing?"
+        ],
+        [
+          "he / she / it",
+          "She's climbing.",
+          "She isn't climbing.",
+          "Is she climbing?"
+        ],
+        [
+          "we",
+          "We're climbing.",
+          "We aren't climbing.",
+          "Are we climbing?"
+        ],
+        [
+          "they",
+          "They're climbing.",
+          "They aren't climbing.",
+          "Are they climbing?"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Right now, at this exact moment",
+      "examples": [
+        {
+          "text": "<b>Look!</b> Mateo <b>is climbing</b> the steps.",
+          "note": "look! + is + verb-ing, happening right now"
+        },
+        {
+          "text": "<b>Listen!</b> Someone <b>is singing</b> in the square.",
+          "note": "listen! for a sound happening now"
+        },
+        {
+          "text": "I<b>'m writing</b> a postcard <b>at the moment</b>.",
+          "note": "at the moment = right now"
+        }
+      ]
+    },
+    {
+      "point": "Around now — today, this week",
+      "examples": [
+        {
+          "text": "We<b>'re staying</b> in a small hotel this week.",
+          "note": "a longer action, still not finished"
+        },
+        {
+          "text": "It<b>'s raining</b> today, so we<b>'re wearing</b> jackets.",
+          "note": "today = a temporary situation"
+        }
+      ]
+    },
+    {
+      "point": "Negatives and questions",
+      "examples": [
+        {
+          "text": "Liam <b>isn't eating</b> ice cream — he<b>'s eating</b> a sandwich.",
+          "note": "isn't + verb-ing = negative"
+        },
+        {
+          "text": "<b>Are</b> you <b>taking</b> photos too?",
+          "note": "am/is/are jumps to the front"
+        },
+        {
+          "text": "<b>Is</b> Sofia <b>having</b> a good time? — Yes, she <b>is</b>.",
+          "note": "short answer = person + is/am/are"
+        }
+      ]
+    },
+    {
+      "point": "The spelling of the -ing form",
+      "examples": [
+        {
+          "text": "Nadia <b>is sitting</b> on the wall.",
+          "note": "sit → sitting, double the t"
+        },
+        {
+          "text": "Miss Vega <b>is making</b> a video.",
+          "note": "make → making, drop the e"
+        },
+        {
+          "text": "Everyone <b>is studying</b> the map.",
+          "note": "study → studying, just add ing after y"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "She is study now.",
+      "right": "She <b>is studying</b> now.",
+      "why": "Don't forget the -ing ending on the verb."
+    },
+    {
+      "wrong": "I am eat now.",
+      "right": "I <b>am eating</b> now.",
+      "why": "Present continuous always needs be + verb-ing, not just be + verb."
+    },
+    {
+      "wrong": "Mateo climbing the steps.",
+      "right": "Mateo <b>is climbing</b> the steps.",
+      "why": "You can't drop be — English needs it before the -ing verb."
+    },
+    {
+      "wrong": "She is siting on the wall.",
+      "right": "She is <b>sitting</b> on the wall.",
+      "why": "Sit ends in one vowel + one consonant, so double the t: sitting."
+    },
+    {
+      "wrong": "What you are doing?",
+      "right": "What <b>are you doing</b>?",
+      "why": "In a question, be jumps in front of the person, right after the question word."
+    },
+    {
+      "wrong": "I'm liking this song a lot.",
+      "right": "I <b>like</b> this song a lot.",
+      "why": "Like describes a feeling, not an action, so it doesn't usually take -ing."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Estoy comiendo.",
+      "wrong": "I eating.",
+      "right": "I<b>'m eating</b>.",
+      "why": "English always needs am/is/are before the -ing verb; Spanish estoy already includes it."
+    },
+    {
+      "es": "Está lloviendo.",
+      "wrong": "Is raining.",
+      "right": "<b>It's raining</b>.",
+      "why": "English sentences need a subject — use it for weather."
+    },
+    {
+      "es": "Mateo está subiendo las escaleras.",
+      "wrong": "Mateo is climb the steps.",
+      "right": "Mateo <b>is climbing</b> the steps.",
+      "why": "The verb after is needs the -ing ending, not the base form."
+    },
+    {
+      "es": "¿Qué estás haciendo?",
+      "wrong": "What you doing?",
+      "right": "What <b>are you doing</b>?",
+      "why": "Don't drop the helper verb are — it's needed in every present continuous question."
+    },
+    {
+      "es": "Me gusta esta canción.",
+      "wrong": "I'm liking this song.",
+      "right": "I <b>like</b> this song.",
+      "why": "Like describes a feeling (a state), so it stays in the present simple, not -ing."
+    }
+  ],
+  "remember": {
+    "trick": "Be + verb-ing = happening RIGHT NOW!",
+    "tip": "Point at your watch when you say it: be + verb-ing means it's happening at this exact second."
+  },
+  "dialogue": {
+    "title": "Photos from Cusco",
+    "context": "The class is on a school trip to Cusco. Miss Vega checks in with Sofia as she looks around the main square.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "Sofia, where's Mateo? What <b>is</b> he <b>doing</b>?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>He's climbing</b> the old steps over there!"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Careful, Mateo! And where are Liam and Nadia?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>They're eating</b> ice cream near the square."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "<b>Is</b> Nadia <b>taking</b> photos too?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Yes, she <b>is</b>. She<b>'s</b> always <b>taking</b> photos!"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Great. What about you? What <b>are</b> you <b>doing</b>?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>I'm writing</b> a postcard for my parents."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Lovely. Don't forget to look at the mountains too!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "Look! Mateo ___ the steps.",
+          "options": [
+            "climb",
+            "climbs",
+            "is climbing"
+          ],
+          "answer": 2,
+          "why": "look! signals something happening right now."
+        },
+        {
+          "sentence": "She ___ a video right now.",
+          "options": [
+            "is making",
+            "is makeing",
+            "makes"
+          ],
+          "answer": 0,
+          "why": "make drops the e before -ing: making."
+        },
+        {
+          "sentence": "They ___ ice cream at the moment.",
+          "options": [
+            "eats",
+            "are eating",
+            "eat"
+          ],
+          "answer": 1,
+          "why": "at the moment signals the present continuous."
+        },
+        {
+          "sentence": "___ you doing your homework now?",
+          "options": [
+            "Are",
+            "Do",
+            "Is"
+          ],
+          "answer": 0,
+          "why": "you always takes are, and now signals the continuous."
+        },
+        {
+          "sentence": "Nadia ___ on the wall.",
+          "options": [
+            "is sitting",
+            "is siting",
+            "sits"
+          ],
+          "answer": 0,
+          "why": "sit doubles the t before -ing: sitting."
+        },
+        {
+          "sentence": "We ___ watching TV — we're outside.",
+          "options": [
+            "isn't",
+            "aren't",
+            "don't"
+          ],
+          "answer": 1,
+          "why": "we takes aren't in the negative continuous."
+        },
+        {
+          "sentence": "___ Sofia taking photos? — Yes, she is.",
+          "options": [
+            "Does",
+            "Is",
+            "Do"
+          ],
+          "answer": 1,
+          "why": "the short answer is/she matches the question is."
+        },
+        {
+          "sentence": "Everyone ___ the map right now.",
+          "options": [
+            "studys",
+            "is studying",
+            "studies"
+          ],
+          "answer": 1,
+          "why": "right now signals the present continuous, and study → studying."
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the present continuous of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "Look! Mateo ___ (climb) the steps.",
+          "answers": [
+            "is climbing"
+          ]
+        },
+        {
+          "sentence": "They ___ (eat) ice cream at the moment.",
+          "answers": [
+            "are eating"
+          ]
+        },
+        {
+          "sentence": "Nadia ___ (sit) on the wall right now.",
+          "answers": [
+            "is sitting"
+          ]
+        },
+        {
+          "sentence": "We ___ (not/watch) TV — we're outside.",
+          "answers": [
+            "aren't watching",
+            "are not watching"
+          ]
+        },
+        {
+          "sentence": "___ (you/do) your homework now?",
+          "answers": [
+            "Are you doing"
+          ]
+        },
+        {
+          "sentence": "Everyone ___ (study) the map at the moment.",
+          "answers": [
+            "is studying"
+          ]
+        },
+        {
+          "sentence": "Miss Vega ___ (make) a video of the trip.",
+          "answers": [
+            "is making"
+          ]
+        },
+        {
+          "sentence": "___ (it/rain) at the moment?",
+          "answers": [
+            "Is it raining"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "climbing",
+            "Mateo",
+            "the steps",
+            "is",
+            "."
+          ],
+          "answer": "Mateo is climbing the steps."
+        },
+        {
+          "words": [
+            "you",
+            "are",
+            "doing",
+            "What",
+            "?"
+          ],
+          "answer": "What are you doing?"
+        },
+        {
+          "words": [
+            "eating",
+            "ice cream",
+            "are",
+            "They",
+            "."
+          ],
+          "answer": "They are eating ice cream."
+        },
+        {
+          "words": [
+            "taking",
+            "Is",
+            "photos",
+            "she",
+            "?"
+          ],
+          "answer": "Is she taking photos?"
+        },
+        {
+          "words": [
+            "sitting",
+            "the wall",
+            "is",
+            "Nadia",
+            "on",
+            "."
+          ],
+          "answer": "Nadia is sitting on the wall."
+        },
+        {
+          "words": [
+            "watching",
+            "aren't",
+            "We",
+            "TV",
+            "."
+          ],
+          "answer": "We aren't watching TV."
+        }
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {
+          "sentence": "Look! Mateo is climbing the steps.",
+          "ok": true,
+          "why": "look! + is + verb-ing, happening now"
+        },
+        {
+          "sentence": "Is Sofia taking photos?",
+          "ok": true,
+          "why": "is jumps to the front in a question"
+        },
+        {
+          "sentence": "Nadia is sitting on the wall.",
+          "ok": true,
+          "why": "sit → sitting (double t), correct"
+        },
+        {
+          "sentence": "We aren't watching TV — we're outside.",
+          "ok": true,
+          "why": "aren't + verb-ing, correct negative"
+        },
+        {
+          "sentence": "She is study now.",
+          "ok": false,
+          "fix": "She is <b>studying</b> now.",
+          "why": "the verb needs the -ing ending"
+        },
+        {
+          "sentence": "Mateo climbing the steps.",
+          "ok": false,
+          "fix": "Mateo <b>is climbing</b> the steps.",
+          "why": "be can't be dropped before the -ing verb"
+        },
+        {
+          "sentence": "What you are doing?",
+          "ok": false,
+          "fix": "What <b>are you doing</b>?",
+          "why": "be jumps in front of the person in a question"
+        },
+        {
+          "sentence": "She is siting on the wall.",
+          "ok": false,
+          "fix": "She is <b>sitting</b> on the wall.",
+          "why": "sit doubles the t before -ing"
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what is happening right now using <i>am/is/are + -ing</i>.",
+    "I can spell the -ing form correctly (sit → sitting, make → making, study → studying).",
+    "I can ask and answer <i>What are you doing?</i> and <i>Is she…ing?</i>"
+  ],
+  "summary": [
+    "Present continuous = <b>am/is/are + verb-ing</b>, for right now.",
+    "Signal words: <i>look!, listen!, now, at the moment, today</i>.",
+    "Watch the spelling: <i>sit → sitting, make → making, study → studying</i>.",
+    "Question: <i>am/is/are</i> jumps to the front — <i>Is she…ing? What are you doing?</i>",
+    "State verbs like <i>like, want, know</i> don't usually take -ing."
+  ]
+}

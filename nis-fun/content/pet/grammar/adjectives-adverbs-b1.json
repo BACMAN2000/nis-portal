@@ -1,0 +1,200 @@
+{
+  "id": "adjectives-adverbs-b1",
+  "level": "pet",
+  "area": "Comparison & description",
+  "title": "Adjectives and adverbs",
+  "tagline": "Put adjectives in the right order, choose -ed or -ing, and know when hard becomes hardly.",
+  "cefr": "B1",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Speaking Part 2 — describing a photograph", "Writing Part 2 — story or article"],
+  "why": "A lovely old wooden box sounds natural; an old lovely wooden box doesn't, and B1 Preliminary examiners expect the right order without thinking. The cloze also loves testing -ed/-ing pairs like bored/boring and sneaky pairs like hard/hardly, where one small change completely changes the meaning.",
+  "hook": {
+    "text": "Liam: \"That was a <b>really boring</b> film.\" Sofia: \"I know — I was so <b>bored</b> I nearly fell asleep!\" Nadia: \"At least the <b>beautiful old</b> soundtrack was good. Liam <b>hardly</b> noticed it, though.\"",
+    "ask": "Boring and bored look similar but mean different things — which one describes the film, and which one describes how Liam felt? And does hardly mean Liam works hard, or that he barely notices things?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Put adjectives in the right order",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "a", "role": "kw"}, {"t": "lovely", "role": "x"}, {"t": "old", "role": "x"}, {"t": "wooden", "role": "x"}, {"t": "box", "role": "obj"}], "note": "opinion (lovely) → age (old) → material (wooden) → noun"},
+        {"parts": [{"t": "a", "role": "kw"}, {"t": "tall", "role": "x"}, {"t": "young", "role": "x"}, {"t": "Peruvian", "role": "x"}, {"t": "actor", "role": "obj"}], "note": "size (tall) → age (young) → origin (Peruvian) → noun"},
+        {"parts": [{"t": "an", "role": "kw"}, {"t": "exciting", "role": "x"}, {"t": "new", "role": "x"}, {"t": "action", "role": "x"}, {"t": "film", "role": "obj"}], "note": "opinion (exciting) → age (new) → type (action) → noun"}
+      ],
+      "caption": "Opinion always goes first; the noun's own type or purpose goes right next to it."
+    },
+    {
+      "type": "contrast",
+      "title": "-ed or -ing?",
+      "columns": ["-ed (how you feel)", "-ing (what it's like)"],
+      "rows": [
+        {"label": "Meaning", "cells": ["describes a person's feeling", "describes the thing that causes the feeling"]},
+        {"label": "Example", "cells": ["I was <b>bored</b>.", "The film was <b>boring</b>."]},
+        {"label": "Other pairs", "cells": ["interested, excited, surprised, tired", "interesting, exciting, surprising, tiring"]}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "Where do adverbs go?",
+      "steps": [
+        {"label": "Manner (how): usually after the verb or object", "ex": "She sings <b>beautifully</b>."},
+        {"label": "Degree (how much): before the adjective or adverb it describes", "ex": "It was <b>really</b> exciting."},
+        {"label": "Frequency (how often): before the main verb, after be", "ex": "I <b>usually</b> walk to school. / I'm <b>usually</b> late."},
+        {"label": "so + adjective, such + a/an + adjective + noun", "ex": "It was <b>so</b> boring. / It was <b>such</b> a boring film."}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "opinion", "tone": "a"},
+      {"chip": "size / age / shape", "tone": "b"},
+      {"chip": "colour / origin / material", "tone": "c"},
+      {"chip": "noun", "tone": "kw"}
+    ],
+    "table": {
+      "head": ["Category", "Examples", "Order"],
+      "rows": [
+        ["Opinion", "lovely, nice, terrible, boring", "1st"],
+        ["Size / age / shape", "big, old, round, young", "2nd"],
+        ["Colour / origin / material", "red, Peruvian, wooden, cotton", "3rd"],
+        ["Purpose / type", "action (film), tennis (shoes)", "4th, right before the noun"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Adjective order: opinion before fact",
+      "examples": [
+        {"text": "Nadia has <b>a lovely old</b> guitar.", "note": "opinion (lovely) before age (old)"},
+        {"text": "We watched <b>an exciting new</b> film last night.", "note": "opinion (exciting) before age (new)"},
+        {"text": "He wore <b>a smart black</b> jacket to the interview.", "note": "opinion (smart) before colour (black)"},
+        {"text": "That's <b>a tall young</b> actor from the new series.", "note": "size (tall) before age (young)"}
+      ]
+    },
+    {
+      "point": "-ed vs -ing adjectives",
+      "examples": [
+        {"text": "I was really <b>bored</b> during the maths class.", "note": "-ed = how a person feels"},
+        {"text": "The maths class was really <b>boring</b>.", "note": "-ing = what causes the feeling"},
+        {"text": "Sofia felt <b>excited</b> before the match.", "note": "-ed describes Sofia's feeling"},
+        {"text": "The match was <b>exciting</b> from start to finish.", "note": "-ing describes the match itself"}
+      ]
+    },
+    {
+      "point": "Adverbs: manner, degree and frequency",
+      "examples": [
+        {"text": "Liam plays the guitar <b>brilliantly</b>.", "note": "manner = how — usually after the verb/object"},
+        {"text": "The film was <b>absolutely</b> amazing.", "note": "degree = how much — before the adjective"},
+        {"text": "Nadia <b>often</b> watches films at the weekend.", "note": "frequency = how often — before the main verb"},
+        {"text": "I'm <b>usually</b> free on Saturdays.", "note": "frequency — straight after be"}
+      ]
+    },
+    {
+      "point": "hard/hardly, late/lately, good/well, so/such",
+      "examples": [
+        {"text": "Mateo studied <b>hard</b> for the test, but he <b>hardly</b> slept.", "note": "hard = a lot; hardly = almost not at all — very different meanings"},
+        {"text": "It was <b>such a</b> good film that we watched it twice.", "note": "such + a/an + adjective + noun"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "an old lovely wooden box", "right": "<b>a lovely old wooden</b> box", "why": "Opinion (lovely) comes before fact adjectives like age (old) and material (wooden)."},
+    {"wrong": "I'm boring in this class.", "right": "I'm <b>bored</b> in this class.", "why": "Use -ed for how you feel; -ing describes the thing that causes the feeling."},
+    {"wrong": "She sang beautiful.", "right": "She sang <b>beautifully</b>.", "why": "Adverbs of manner usually need -ly, even after verbs like sing."},
+    {"wrong": "He works hardly every day.", "right": "He works <b>hard</b> every day.", "why": "hard = a lot of effort; hardly means 'almost not at all' — they aren't related words."},
+    {"wrong": "It was so good film.", "right": "It was <b>such a</b> good film.", "why": "such + a/an + adjective + noun; so is only used with an adjective alone (so good)."},
+    {"wrong": "I drive good.", "right": "I drive <b>well</b>.", "why": "good is an adjective; well is the adverb that goes with verbs like drive."}
+  ],
+  "l1": [
+    {"es": "Una caja vieja y bonita.", "wrong": "an old and lovely box", "right": "<b>a lovely old</b> box", "why": "Spanish often links adjectives with y in any order; English drops the and and follows a fixed order — opinion first."},
+    {"es": "Estoy aburrido.", "wrong": "I'm boring.", "right": "I'm <b>bored</b>.", "why": "Spanish aburrido can suggest both feelings; English needs -ed for the feeling and -ing for the cause."},
+    {"es": "Trabaja duro todos los días.", "wrong": "He works hardly every day.", "right": "He works <b>hard</b> every day.", "why": "duro looks like hardly, but the correct adverb is hard — hardly means something completely different."},
+    {"es": "Canta muy bien.", "wrong": "She sings very good.", "right": "She sings very <b>well</b>.", "why": "Spanish bien becomes well with a verb like sing, not the adjective good."}
+  ],
+  "remember": {
+    "trick": "Opinion first, then fact — feelings before facts!",
+    "tip": "-ED is how YOU feel; -ING is what IT is like. I'm bored because the film is boring."
+  },
+  "dialogue": {
+    "title": "Film club review",
+    "context": "Liam, Sofia, Nadia and Mateo just watched a film together and are giving their opinions for the school film club blog.",
+    "lines": [
+      {"speaker": "Liam", "text": "That was a <b>really boring</b> film, honestly."},
+      {"speaker": "Sofia", "text": "I know — I was so <b>bored</b> I nearly fell asleep!"},
+      {"speaker": "Nadia", "text": "At least the <b>beautiful old</b> soundtrack was good."},
+      {"speaker": "Liam", "text": "I <b>hardly</b> noticed the music, to be honest."},
+      {"speaker": "Mateo", "text": "The main actor was <b>a talented young</b> Peruvian actor, though."},
+      {"speaker": "Sofia", "text": "True. He acted <b>brilliantly</b> in the sad scenes."},
+      {"speaker": "Nadia", "text": "It was <b>such a</b> slow story, that's the problem."},
+      {"speaker": "Liam", "text": "Exactly. I <b>usually</b> love action films, but this one wasn't <b>exciting</b> at all."},
+      {"speaker": "Mateo", "text": "Let's write that in the review: <b>an interesting</b> idea, but a <b>disappointingly</b> slow film."},
+      {"speaker": "Sofia", "text": "Perfect. And let's watch <b>a really good</b> comedy next time!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "She has ___ guitar.", "options": ["a lovely old", "an old lovely", "old a lovely"], "answer": 0, "why": "opinion before age"},
+        {"sentence": "I was really ___ during the film.", "options": ["bore", "bored", "boring"], "answer": 1, "why": "-ed = how you feel"},
+        {"sentence": "The film was really ___.", "options": ["boring", "bored", "bore"], "answer": 0, "why": "-ing = what it's like"},
+        {"sentence": "Nadia sings ___.", "options": ["beauty", "beautifully", "beautiful"], "answer": 1, "why": "adverb of manner needs -ly"},
+        {"sentence": "Mateo studied ___ for the exam.", "options": ["hard", "hardly", "hardness"], "answer": 0, "why": "hard = a lot of effort"},
+        {"sentence": "I ___ watch horror films — I don't like them.", "options": ["hardness", "hardly", "hard"], "answer": 1, "why": "hardly = almost never"},
+        {"sentence": "It was ___ good film that we watched it twice.", "options": ["such", "so", "such a"], "answer": 2, "why": "such + a + adjective + noun"},
+        {"sentence": "She drives really ___.", "options": ["goodly", "good", "well"], "answer": 2, "why": "well is the adverb, good is the adjective"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the word in brackets, or a suitable word.",
+      "items": [
+        {"sentence": "I was really ___ (bore) during the film.", "answers": ["bored"]},
+        {"sentence": "The film was really ___ (bore).", "answers": ["boring"]},
+        {"sentence": "Nadia sings ___ (beautiful).", "answers": ["beautifully"]},
+        {"sentence": "Mateo studied ___ (hard) for the exam.", "answers": ["hard"]},
+        {"sentence": "I ___ (rarely) watch horror films.", "answers": ["hardly"]},
+        {"sentence": "She drives really ___ (good).", "answers": ["well"]},
+        {"sentence": "It was such ___ good film that we watched it twice.", "answers": ["a"]},
+        {"sentence": "That's a tall ___ (young) actor.", "answers": ["young"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["a lovely old guitar", "She has", "."], "answer": "She has a lovely old guitar."},
+        {"words": ["during the film", "I was really bored", "."], "answer": "I was really bored during the film."},
+        {"words": ["really boring", "The film was", "."], "answer": "The film was really boring."},
+        {"words": ["really beautifully", "Nadia sings", "."], "answer": "Nadia sings really beautifully."},
+        {"words": ["before the exam", "Mateo hardly slept", "."], "answer": "Mateo hardly slept before the exam."},
+        {"words": ["a boring film", "It was such", "."], "answer": "It was such a boring film."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "It's an old box, and it's also lovely.", "key": "LOVELY", "second_start": "It's", "second_end": "old box.", "answers": ["a lovely"]},
+        {"first": "The film made me feel bored.", "key": "BORING", "second_start": "The film was", "second_end": ".", "answers": ["boring"]},
+        {"first": "I felt very bored during the lesson.", "key": "BORED", "second_start": "I was really", "second_end": "during the lesson.", "answers": ["bored"]},
+        {"first": "Nadia is a beautiful singer.", "key": "BEAUTIFULLY", "second_start": "Nadia sings", "second_end": ".", "answers": ["beautifully"]},
+        {"first": "Mateo made a big effort when he studied for the exam.", "key": "HARD", "second_start": "Mateo studied", "second_end": "for the exam.", "answers": ["hard"]},
+        {"first": "This film is very good — one of the best I've seen.", "key": "SUCH", "second_start": "It's", "second_end": "good film.", "answers": ["such a"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can put two or three adjectives in the right order before a noun.",
+    "I can choose between -ed and -ing adjectives correctly.",
+    "I can position adverbs of manner, degree and frequency, and use hard/hardly, good/well correctly."
+  ],
+  "summary": [
+    "Adjective order: opinion, then size/age/shape, then colour/origin/material, then the noun.",
+    "-ed adjectives describe feelings; -ing adjectives describe the thing that causes them.",
+    "Adverbs of manner usually go after the verb or object; degree adverbs go before the adjective; frequency adverbs go before the main verb but after be.",
+    "hard/hardly, late/lately and good/well are different words, not the same word with -ly added.",
+    "so + adjective alone; such + a/an + adjective + noun."
+  ]
+}

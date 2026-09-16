@@ -1,0 +1,201 @@
+{
+  "id": "adjectives-adverbs-a2",
+  "level": "ket",
+  "area": "Comparison & description",
+  "title": "Adjectives and adverbs",
+  "tagline": "A big red bag, a bored student, a boring film: describing people, things and actions.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 7 — a short story", "Speaking Part 2 — describing photos"],
+  "why": "Adjectives and adverbs make your English colourful: instead of 'a bag', you can say 'a big red bag'; instead of 'ran', you can say 'ran quickly'. The exam tests small but important choices — bored or boring, good or well — in Reading Part 5 and in your own writing and speaking.",
+  "hook": {
+    "text": "In the school magazine office, Liam looks at photos. \"This one is <b>boring</b>,\" he says. \"No, it's <b>lovely</b>! Look at that <b>big green</b> field,\" says Nadia. \"And everyone looks so <b>excited</b>!\"",
+    "ask": "Can you find the words that describe things? Two of them look similar — <i>boring</i> and <i>excited</i> — but they work in different ways. Can you guess why?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Where does the adjective go?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Nadia", "role": "subj"}, {"t": "has", "role": "verb"}, {"t": "a", "role": "x"}, {"t": "new", "role": "kw"}, {"t": "bag", "role": "obj"}], "note": "adjective before the noun"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "has", "role": "verb"}, {"t": "a", "role": "x"}, {"t": "big", "role": "kw"}, {"t": "red", "role": "kw"}, {"t": "bag", "role": "obj"}], "note": "two adjectives: size before colour"},
+        {"parts": [{"t": "The film", "role": "subj"}, {"t": "is", "role": "aux"}, {"t": "really", "role": "x"}, {"t": "boring", "role": "kw"}], "note": "adjective after be — no noun needed"}
+      ],
+      "caption": "An adjective can sit right before a noun, or after be / look / feel / taste with no noun at all."
+    },
+    {
+      "type": "spelling",
+      "title": "Making adverbs with -ly",
+      "rules": [
+        {"rule": "Most adjectives: + ly", "examples": ["quiet → quiet<b>ly</b>", "quick → quick<b>ly</b>"]},
+        {"rule": "Ends in -y: y becomes i + ly", "examples": ["happy → happ<b>ily</b>", "easy → eas<b>ily</b>"]},
+        {"rule": "Ends in -le: e becomes y", "examples": ["gentle → gent<b>ly</b>", "simple → simp<b>ly</b>"]},
+        {"rule": "Irregular: no -ly at all", "examples": ["good → <b>well</b>", "fast → fast", "hard → hard"]}
+      ],
+      "caption": "Fast and hard look like adjectives and adverbs at the same time — don't add -ly to them."
+    },
+    {
+      "type": "contrast",
+      "title": "-ed or -ing?",
+      "columns": ["-ed (how you feel)", "-ing (what it's like)"],
+      "rows": [
+        {"label": "Example", "cells": ["I'm bored.", "The film is boring."]},
+        {"label": "Describes", "cells": ["the person who feels it", "the thing that causes the feeling"]},
+        {"label": "More pairs", "cells": ["interested, excited, tired", "interesting, exciting, tiring"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "adjective", "tone": "a", "ex": "quiet"},
+      {"chip": "+ -ly", "tone": "kw", "ex": "quietly"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "describes the verb", "tone": "b", "ex": "She speaks quietly."}
+    ],
+    "table": {
+      "head": ["Adjective", "Adverb", "Example"],
+      "rows": [
+        ["quiet", "quietly", "She speaks quietly."],
+        ["quick", "quickly", "He ran quickly."],
+        ["happy", "happily", "They played happily."],
+        ["good", "well", "She sings well."],
+        ["fast", "fast", "He runs fast."],
+        ["hard", "hard", "They worked hard."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Adjectives before the noun and after be/look/feel",
+      "examples": [
+        {"text": "Nadia has a <b>new</b> bag.", "note": "adjective right before the noun"},
+        {"text": "This soup tastes <b>delicious</b>.", "note": "adjective after taste, look or feel — no -ly here"},
+        {"text": "The exam was <b>difficult</b>.", "note": "adjective after be"}
+      ]
+    },
+    {
+      "point": "Two adjectives together: the order matters",
+      "examples": [
+        {"text": "She's got a <b>big red</b> bag.", "note": "size before colour"},
+        {"text": "He bought a <b>lovely old</b> table.", "note": "opinion before age"},
+        {"text": "We saw a <b>small brown</b> dog in the park.", "note": "size before colour, again"}
+      ]
+    },
+    {
+      "point": "-ed or -ing: who feels it, what causes it",
+      "examples": [
+        {"text": "I'm <b>bored</b> — this game is <b>boring</b>.", "note": "bored = how I feel, boring = what it's like"},
+        {"text": "We were <b>excited</b> about the <b>exciting</b> match.", "note": "same pattern: person feels it, thing causes it"},
+        {"text": "Miss Vega was <b>tired</b> after a <b>tiring</b> day.", "note": "the day is tiring, so Miss Vega is tired"}
+      ]
+    },
+    {
+      "point": "Adverbs and how much: manner and intensifiers",
+      "examples": [
+        {"text": "Liam ran <b>quickly</b> to catch the bus.", "note": "-ly adverb describes the verb"},
+        {"text": "She sings really <b>well</b>.", "note": "good → well, an irregular adverb"},
+        {"text": "This bag is <b>too heavy</b> for me to carry.", "note": "too + adjective = more than you want"},
+        {"text": "I'm not <b>tall enough</b> to reach the shelf.", "note": "enough comes after the adjective"},
+        {"text": "The film wasn't very exciting, but it was <b>quite</b> good.", "note": "very/really/quite show how strong the adjective is"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "a red big bag", "right": "a <b>big red</b> bag", "why": "Size comes before colour in English word order."},
+    {"wrong": "I'm boring today.", "right": "I'm <b>bored</b> today.", "why": "Use -ed for how you feel, not -ing."},
+    {"wrong": "She sings good.", "right": "She sings <b>well</b>.", "why": "Well is the adverb for good, not good itself."},
+    {"wrong": "It's enough big for two people.", "right": "It's <b>big enough</b> for two people.", "why": "Enough goes after the adjective, not before."},
+    {"wrong": "The music is loud too.", "right": "The music is <b>too loud</b>.", "why": "Too goes before the adjective, not after."}
+  ],
+  "l1": [
+    {"es": "una mochila roja grande", "wrong": "a red big bag", "right": "a <b>big red</b> bag", "why": "Spanish can put the colour first; English always puts size before colour."},
+    {"es": "Canta bien.", "wrong": "She sings good.", "right": "She sings <b>well</b>.", "why": "Spanish bien looks like good, but the adverb in English is well."},
+    {"es": "Estoy aburrido.", "wrong": "I'm boring.", "right": "I'm <b>bored</b>.", "why": "Boring describes the thing that causes boredom, not the person who feels it."},
+    {"es": "Es demasiado caro.", "wrong": "It's very expensive for me to buy.", "right": "It's <b>too expensive</b> for me to buy.", "why": "Demasiado means more than you want — that's too, not very."}
+  ],
+  "remember": {
+    "trick": "Big before red. -ed is you, -ing is the thing!",
+    "tip": "Size comes before colour, and if YOU feel it use -ed; if THE THING causes it, use -ing."
+  },
+  "dialogue": {
+    "title": "Choosing a photo for the yearbook",
+    "context": "Sofia, Liam and Nadia look through photos for the school yearbook while Miss Vega listens.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Look at this one! It's a <b>lovely old</b> photo of the football team."},
+      {"speaker": "Liam", "text": "I don't like it. The colours are <b>boring</b>."},
+      {"speaker": "Nadia", "text": "This one is better — a <b>big green</b> field and everyone is smiling."},
+      {"speaker": "Miss Vega", "text": "Good choice. Does anyone look <b>bored</b> or <b>tired</b> in that photo? No — everyone looks <b>excited</b>!"},
+      {"speaker": "Sofia", "text": "Liam looks <b>really happy</b> in this photo."},
+      {"speaker": "Liam", "text": "That's because we won <b>easily</b>! It wasn't a <b>difficult</b> match."},
+      {"speaker": "Nadia", "text": "This photo is <b>too dark</b>, though. Can we choose a brighter one?"},
+      {"speaker": "Miss Vega", "text": "Yes, that one's <b>bright enough</b> for the front page."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word or words.",
+      "items": [
+        {"sentence": "She's got a ___ bag.", "options": ["big red", "red big", "bigly red"], "answer": 0, "why": "size before colour"},
+        {"sentence": "I'm really ___ — let's do something else.", "options": ["boring", "bored", "bore"], "answer": 1, "why": "bored describes how you feel"},
+        {"sentence": "This film is quite ___.", "options": ["bore", "bored", "boring"], "answer": 2, "why": "boring describes the thing itself"},
+        {"sentence": "He sings ___.", "options": ["well", "good", "goodly"], "answer": 0, "why": "well is the adverb for good"},
+        {"sentence": "Liam ran ___ to catch the bus.", "options": ["quick", "quickly", "quickness"], "answer": 1, "why": "-ly adverb after the verb"},
+        {"sentence": "This box is ___ for me to carry.", "options": ["enough heavy", "heavy too", "too heavy"], "answer": 2, "why": "too comes before the adjective"},
+        {"sentence": "I'm not tall ___ to reach the shelf.", "options": ["enough", "too", "very"], "answer": 0, "why": "enough goes after the adjective"},
+        {"sentence": "The exam wasn't very hard, it was ___ easy.", "options": ["real", "quite", "much"], "answer": 1, "why": "quite shows a medium degree"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete the sentences. Use the correct form of the word in brackets, or add too/enough where needed.",
+      "items": [
+        {"sentence": "Liam ran ___ (quick) to catch the bus.", "answers": ["quickly"]},
+        {"sentence": "My sister sings really ___ (good).", "answers": ["well"]},
+        {"sentence": "I'm ___ (bore) today — there's nothing to do.", "answers": ["bored"]},
+        {"sentence": "This match is really ___ (excite)!", "answers": ["exciting"]},
+        {"sentence": "They worked ___ (hard) all weekend.", "answers": ["hard"]},
+        {"sentence": "I'm not tall ___ to reach the top shelf.", "answers": ["enough"]},
+        {"sentence": "This soup is ___ hot for the baby to eat.", "answers": ["too"]},
+        {"sentence": "We were ___ (tire) after the long walk.", "answers": ["tired"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["a big red bag", "She's got", "."], "answer": "She's got a big red bag."},
+        {"words": ["to catch the bus", "quickly", "Liam ran", "."], "answer": "Liam ran quickly to catch the bus."},
+        {"words": ["today", "bored", "I'm", "."], "answer": "I'm bored today."},
+        {"words": ["is really boring", ".", "This film"], "answer": "This film is really boring."},
+        {"words": ["all weekend", "worked hard", "They", "."], "answer": "They worked hard all weekend."},
+        {"words": ["to reach the shelf", "not tall enough", "I'm", "."], "answer": "I'm not tall enough to reach the shelf."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "She's got a red big bag.", "ok": false, "fix": "She's got a <b>big red</b> bag.", "why": "size comes before colour"},
+        {"sentence": "I'm bored because this game is boring.", "ok": true, "why": "bored = how I feel, boring = what it's like"},
+        {"sentence": "He sings very good.", "ok": false, "fix": "He sings very <b>well</b>.", "why": "well is the adverb, not good"},
+        {"sentence": "Liam ran quickly to catch the bus.", "ok": true, "why": "-ly adverb after the verb"},
+        {"sentence": "This box is heavy too for me to carry.", "ok": false, "fix": "This box is <b>too heavy</b> for me to carry.", "why": "too goes before the adjective"},
+        {"sentence": "I'm not tall enough to reach the shelf.", "ok": true, "why": "enough goes after the adjective"},
+        {"sentence": "They worked hardly all weekend.", "ok": false, "fix": "They worked <b>hard</b> all weekend.", "why": "hard has no -ly form with this meaning; hardly means almost not at all"},
+        {"sentence": "This film wasn't very exciting, but it was quite good.", "ok": true, "why": "very and quite both show how strong the adjective is"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can put two adjectives in the right order, like <i>a big red bag</i>.",
+    "I can tell the difference between <i>bored</i> and <i>boring</i>.",
+    "I can use <i>-ly</i> adverbs and words like <i>well</i>, <i>too</i> and <i>enough</i> to describe actions."
+  ],
+  "summary": [
+    "Put adjectives in the right order: size before colour, like <i>a big red bag</i>.",
+    "Use <b>-ed</b> for how you feel and <b>-ing</b> for what causes the feeling: <i>I'm bored, the film is boring</i>.",
+    "Most adverbs add <b>-ly</b> to the adjective, but <i>good → well</i>, and <i>fast</i>/<i>hard</i> don't change.",
+    "Too means more than you want; enough comes after the adjective: <i>too heavy</i>, <i>tall enough</i>."
+  ]
+}

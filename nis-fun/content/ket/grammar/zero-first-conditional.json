@@ -1,0 +1,198 @@
+{
+  "id": "zero-first-conditional",
+  "level": "ket",
+  "area": "Conditionals & hypothesis",
+  "title": "Zero and first conditional",
+  "tagline": "Things that are always true, and real plans for the future.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 7 — a short story", "Speaking Part 2 — talking about plans"],
+  "why": "Zero and first conditional are everywhere at A2: school rules, the weather, real plans for the weekend. Reading Part 5 tests the grammar directly, and in Speaking you often need to say what happens next. Learn one simple rule — present after <i>if</i>, <i>will</i> only in the result — and these sentences become automatic.",
+  "hook": {
+    "text": "Lunchtime. Dark clouds outside. Sofia says: \"If it <b>rains</b>, we <b>can't</b> play outside.\" Liam checks his phone. \"When it <b>rains</b> here, it always <b>stops</b> fast. But if it <b>doesn't stop</b>, we<b>'ll go</b> to the gym instead.\"",
+    "ask": "These <i>if</i> sentences mean two different things — one is always true, and one is a real plan for today. Can you find both?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the conditional sentence",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "If", "role": "kw"}, {"t": "you", "role": "subj"}, {"t": "heat", "role": "verb"}, {"t": "ice", "role": "obj"}, {"t": "it melts", "role": "x"}], "note": "zero conditional — always true"},
+        {"parts": [{"t": "If", "role": "kw"}, {"t": "it", "role": "subj"}, {"t": "rains", "role": "verb"}, {"t": "tomorrow", "role": "time"}, {"t": "we", "role": "subj"}, {"t": "'ll stay", "role": "verb"}, {"t": "inside", "role": "place"}], "note": "first conditional — a real future plan"},
+        {"parts": [{"t": "Unless", "role": "kw"}, {"t": "you", "role": "subj"}, {"t": "hurry", "role": "verb"}, {"t": "you", "role": "subj"}, {"t": "'ll miss", "role": "verb"}, {"t": "the bus", "role": "obj"}], "note": "unless = if not"}
+      ],
+      "caption": "After <b>if</b>, always the present simple. <b>Will</b> only lives in the result."
+    },
+    {
+      "type": "contrast",
+      "title": "Zero or first?",
+      "columns": ["Zero conditional", "First conditional"],
+      "rows": [
+        {"label": "If-clause", "cells": ["if/when + present simple", "if + present simple"]},
+        {"label": "Result", "cells": ["present simple", "will/won't + base verb"]},
+        {"label": "Meaning", "cells": ["always true — a fact or a rule", "a real possibility in the future"]},
+        {"label": "Example", "cells": ["If you heat ice, it melts.", "If it rains, we'll stay inside."]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "If + present, then what?",
+      "center": "If + present simple",
+      "branches": [
+        {"label": "will/won't", "items": ["I'll be happy.", "She won't come."], "tone": "a"},
+        {"label": "imperative", "items": ["Call me if you're late.", "Don't go if it's dark."], "tone": "b"},
+        {"label": "can", "items": ["If you finish early, you can go home."], "tone": "c"},
+        {"label": "unless = if not", "items": ["Unless you hurry, you'll be late."], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "If", "tone": "kw"},
+      {"chip": "present simple", "tone": "a", "ex": "it rains"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "will/won't + base verb", "tone": "b", "ex": "we'll stay"}
+    ],
+    "table": {
+      "head": ["Type", "If-clause", "Result", "Meaning"],
+      "rows": [
+        ["Zero", "if/when + present simple", "present simple", "always true, a fact or rule"],
+        ["First", "if + present simple", "will/won't + base verb", "a real possibility in the future"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Zero conditional: facts and rules that are always true",
+      "examples": [
+        {"text": "If you <b>mix</b> blue and yellow, you <b>get</b> green.", "note": "a fact about colours — always true"},
+        {"text": "When the sun <b>goes</b> down, it <b>gets</b> dark.", "note": "when = if, for things that always happen"},
+        {"text": "If Miss Vega <b>sees</b> your phone in class, she <b>takes</b> it.", "note": "a school rule"}
+      ]
+    },
+    {
+      "point": "First conditional: real possibilities in the future",
+      "examples": [
+        {"text": "If it <b>doesn't rain</b>, we<b>'ll play</b> football after school.", "note": "a real plan for later today"},
+        {"text": "She<b>'ll pass</b> the test if she <b>studies</b> tonight.", "note": "the result can come first"},
+        {"text": "If you <b>don't hurry</b>, you<b>'ll miss</b> the bus.", "note": "a friendly warning"}
+      ]
+    },
+    {
+      "point": "Unless, and other ways to finish the result",
+      "examples": [
+        {"text": "<b>Unless</b> you <b>bring</b> your homework, Miss Vega won't be happy.", "note": "unless = if not"},
+        {"text": "If you<b>'re</b> tired, <b>go</b> to bed early.", "note": "imperative instead of will — an instruction"},
+        {"text": "If you finish your work, you <b>can</b> go outside.", "note": "can instead of will — a permission"}
+      ]
+    },
+    {
+      "point": "Where the comma goes",
+      "examples": [
+        {"text": "<b>If</b> it rains, we<b>'ll stay</b> inside.", "note": "if-clause first → comma before the result"},
+        {"text": "We<b>'ll stay</b> inside <b>if</b> it rains.", "note": "result first → no comma needed"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "If it will rain, we will stay inside.", "right": "If it <b>rains</b>, we'll stay inside.", "why": "No <i>will</i> in the if-clause — only the present simple."},
+    {"wrong": "If you mixed blue and yellow, you get green.", "right": "If you <b>mix</b> blue and yellow, you get green.", "why": "Zero conditional needs the present simple in both parts, not the past."},
+    {"wrong": "Unless you don't hurry, you'll be late.", "right": "<b>Unless</b> you hurry, you'll be late.", "why": "Unless already means 'if not' — don't add another negative."},
+    {"wrong": "If it rains we'll stay inside.", "right": "If it rains<b>,</b> we'll stay inside.", "why": "Put a comma when the if-clause comes first."},
+    {"wrong": "If she will study, she'll pass.", "right": "If she <b>studies</b>, she'll pass.", "why": "Present simple after if — will only lives in the result."},
+    {"wrong": "When it rains, it will get cold.", "right": "When it rains, it <b>gets</b> cold.", "why": "For something that is always true, use present simple in both parts, not will."}
+  ],
+  "l1": [
+    {"es": "Si llueve, nos quedaremos en casa.", "wrong": "If it will rain, we will stay at home.", "right": "If it <b>rains</b>, we<b>'ll stay</b> at home.", "why": "Spanish uses the future in both parts; English never puts will after if."},
+    {"es": "Cuando llueve, hace frío.", "wrong": "When it rains, it will make cold.", "right": "When it rains, it <b>gets</b> cold.", "why": "English uses get + adjective for a change, not make."},
+    {"es": "A menos que estudies, no aprobarás.", "wrong": "Unless you don't study, you won't pass.", "right": "<b>Unless</b> you study, you won't pass.", "why": "Unless already has a negative meaning — a second not is a mistake."},
+    {"es": "Cuando termino la tarea, veo la tele.", "wrong": "If I finish my homework, I watch TV.", "right": "<b>When</b> I finish my homework, I watch TV.", "why": "For something you always do, use when, not if — if means it might not happen."},
+    {"es": "Iré a la fiesta si me invitan.", "wrong": "I go to the party if they invite me.", "right": "I<b>'ll go</b> to the party if they invite me.", "why": "The result needs will for a real future plan, not the present simple."}
+  ],
+  "remember": {
+    "trick": "IF + present now, WILL in the end!",
+    "tip": "After if, always use the present — even when you mean the future. Save will for the result."
+  },
+  "dialogue": {
+    "title": "Ice, science and Saturday's match",
+    "context": "In science class, Miss Vega's group experiments with ice while planning Saturday's football match.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "OK, everyone — <b>if</b> you <b>heat</b> ice, what happens?"},
+      {"speaker": "Nadia", "text": "It melts! <b>If</b> you <b>heat</b> it, it always <b>melts</b>."},
+      {"speaker": "Mateo", "text": "Easy! Now can we talk about Saturday? <b>If</b> it <b>doesn't rain</b>, we<b>'ll play</b> football."},
+      {"speaker": "Liam", "text": "And <b>if</b> it <b>rains</b>? We <b>can't</b> play on a wet field."},
+      {"speaker": "Sofia", "text": "<b>Unless</b> it <b>stops</b> before ten, we<b>'ll move</b> the match to Sunday."},
+      {"speaker": "Miss Vega", "text": "Good thinking! Remember: <b>if</b> plus present, <b>will</b> in the result."},
+      {"speaker": "Nadia", "text": "So... <b>if</b> the ice <b>melts</b> fast, does that mean it<b>'s</b> warm in here?"},
+      {"speaker": "Mateo", "text": "Ha! <b>If</b> you <b>ask</b> too many questions, we<b>'ll be</b> here all day!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "If you heat ice, it ___.", "options": ["melt", "melts", "will melt"], "answer": 1, "why": "zero conditional: present simple in the result"},
+        {"sentence": "If it ___ tomorrow, we'll stay inside.", "options": ["rain", "rains", "will rain"], "answer": 1, "why": "no will after if"},
+        {"sentence": "___ you don't hurry, you'll miss the bus.", "options": ["If", "When", "Unless"], "answer": 2, "why": "unless = if not"},
+        {"sentence": "If she studies hard, she ___ the exam.", "options": ["pass", "passes", "'ll pass"], "answer": 2, "why": "first conditional: will + base verb in the result"},
+        {"sentence": "When the school bell ___, everyone goes home.", "options": ["ring", "rings", "will ring"], "answer": 1, "why": "zero conditional with when: present simple"},
+        {"sentence": "If it's sunny tomorrow, we ___ a picnic.", "options": ["have", "has", "'ll have"], "answer": 2, "why": "a real plan for the future"},
+        {"sentence": "If you mix red and white, you ___ pink.", "options": ["get", "gets", "will get"], "answer": 0, "why": "zero conditional with you: base form, no -s"},
+        {"sentence": "Call me if you ___ late.", "options": ["are", "will be", "were"], "answer": 0, "why": "present simple after if"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "If you ___ (heat) ice, it melts.", "answers": ["heat"]},
+        {"sentence": "If it ___ (rain) tomorrow, we'll stay inside.", "answers": ["rains"]},
+        {"sentence": "___ you hurry, you'll miss the bus. (unless)", "answers": ["Unless"]},
+        {"sentence": "If she studies, she ___ (pass) the exam.", "answers": ["'ll pass", "will pass"]},
+        {"sentence": "When the bell ___ (ring), everyone goes home.", "answers": ["rings"]},
+        {"sentence": "If it's sunny, we ___ (have) a picnic.", "answers": ["'ll have", "will have"]},
+        {"sentence": "If you mix blue and yellow, you ___ (get) green.", "answers": ["get"]},
+        {"sentence": "Call me if you ___ (be) late.", "answers": ["are"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["if it doesn't rain", ".", "football", "We'll play"], "answer": "We'll play football if it doesn't rain."},
+        {"words": ["if you mix blue and yellow", "You get", ".", "green"], "answer": "You get green if you mix blue and yellow."},
+        {"words": ["unless you hurry", ".", "the bus", "You'll miss"], "answer": "You'll miss the bus unless you hurry."},
+        {"words": ["if it's sunny tomorrow", "a picnic", ".", "We'll have"], "answer": "We'll have a picnic if it's sunny tomorrow."},
+        {"words": ["when the bell rings", "home", ".", "Everyone goes"], "answer": "Everyone goes home when the bell rings."},
+        {"words": ["if you're late", "me", ".", "Call"], "answer": "Call me if you're late."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "If you heat ice, it melts.", "ok": true, "why": "zero conditional: present simple + present simple"},
+        {"sentence": "If it will rain tomorrow, we'll stay inside.", "ok": false, "fix": "If it <b>rains</b> tomorrow, we'll stay inside.", "why": "no will after if"},
+        {"sentence": "Unless you hurry, you'll be late.", "ok": true, "why": "unless = if not, correctly used"},
+        {"sentence": "If she studies, she pass the exam.", "ok": false, "fix": "If she studies, she <b>'ll pass</b> the exam.", "why": "the result needs will + base verb"},
+        {"sentence": "When the sun goes down, it gets dark.", "ok": true, "why": "zero conditional with when: always true"},
+        {"sentence": "Unless you don't hurry, you'll miss the bus.", "ok": false, "fix": "<b>Unless</b> you hurry, you'll miss the bus.", "why": "unless already means if not — no extra negative"},
+        {"sentence": "If you mix red and white, you get pink.", "ok": true, "why": "zero conditional: a fact"},
+        {"sentence": "If it's sunny tomorrow we have a picnic.", "ok": false, "fix": "If it's sunny tomorrow, we<b>'ll have</b> a picnic.", "why": "a real future plan needs will, not present simple"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can talk about things that are always true with <i>if/when</i> + present simple.",
+    "I can talk about real future plans with <i>if</i> + present simple, <i>will/won't</i>.",
+    "I can use <i>unless</i> to mean 'if not' in a sentence."
+  ],
+  "summary": [
+    "Zero conditional (<i>if/when</i> + present simple, present simple) is for things that are always true.",
+    "First conditional (<i>if</i> + present simple, <i>will/won't</i>) is for real possibilities in the future.",
+    "Never put <i>will</i> after <i>if</i> — the if-clause always uses the present simple.",
+    "<i>Unless</i> means 'if not' — don't add another negative after it.",
+    "Put a comma when the if-clause comes first; no comma is needed when it comes second."
+  ]
+}

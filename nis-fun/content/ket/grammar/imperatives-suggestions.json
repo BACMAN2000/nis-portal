@@ -1,0 +1,205 @@
+{
+  "id": "imperatives-suggestions",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "Imperatives, suggestions and offers",
+  "tagline": "Giving instructions, making suggestions, and offering — politely.",
+  "cefr": "A2",
+  "exam": ["Reading Part 1 — signs and messages", "Writing Part 6 — word completion", "Speaking Part 2 — making a decision together"],
+  "why": "Signs, notices and short messages in Reading Part 1 are full of imperatives (Don't touch, Keep off the grass), and Speaking Part 2 asks you to make suggestions and reach a decision with a partner — the exact job of Let's…, Shall we…? and How about…?",
+  "hook": {
+    "text": "Miss Vega claps her hands. \"<b>Open</b> your books, please. <b>Don't forget</b> your pencils!\" Later, Sofia whispers: \"<b>Let's sit</b> together — <b>shall we</b> ask Miss Vega first?\"",
+    "ask": "Miss Vega gives instructions, and Sofia makes a suggestion. Which words does each of them use to start?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Instruction, negative, or suggestion?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Close", "role": "verb"}, {"t": "the door", "role": "obj"}, {"t": "please", "role": "x"}], "note": "imperative: base verb first, no subject"},
+        {"parts": [{"t": "Don't", "role": "neg"}, {"t": "run", "role": "verb"}, {"t": "in the corridor", "role": "place"}], "note": "negative imperative: don't + base verb"},
+        {"parts": [{"t": "Let's", "role": "kw"}, {"t": "go", "role": "verb"}, {"t": "to the park", "role": "place"}], "note": "let's + base verb, a suggestion for you and me"},
+        {"parts": [{"t": "Why don't", "role": "kw"}, {"t": "we", "role": "subj"}, {"t": "try", "role": "verb"}, {"t": "the new café", "role": "obj"}, {"t": "?", "role": "x"}], "note": "why don't we + base verb, another way to suggest"}
+      ],
+      "caption": "Imperatives jump straight to the verb. Suggestions add a little phrase (let's, shall we, why don't we) first."
+    },
+    {
+      "type": "map",
+      "title": "Making a suggestion",
+      "center": "Let's do something!",
+      "branches": [
+        {"label": "let's", "items": ["Let's go swimming."], "tone": "a"},
+        {"label": "shall we", "items": ["Shall we watch a film?"], "tone": "b"},
+        {"label": "why don't we", "items": ["Why don't we ask Miss Vega?"], "tone": "c"},
+        {"label": "how about + -ing", "items": ["How about going to the park?"], "tone": "a"},
+        {"label": "would you like", "items": ["Would you like to come?"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to accept or refuse politely",
+      "steps": [
+        {"label": "React to the idea first", "ex": "That sounds great!"},
+        {"label": "Accept or refuse clearly", "ex": "<b>Yes, let's!</b> / I'm sorry, I can't."},
+        {"label": "Give a short, polite reason if you refuse", "ex": "I<b>'ve got</b> homework."}
+      ],
+      "caption": "A polite answer is quick — react, decide, and give a reason only if you say no."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "(Don't)", "tone": "c", "ex": "Don't"},
+      {"chip": "base verb", "tone": "kw", "ex": "run"},
+      {"chip": "the rest", "tone": "a", "ex": "in the corridor"}
+    ],
+    "table": {
+      "head": ["Function", "Structure", "Example"],
+      "rows": [
+        ["instruction", "base verb (+ please)", "Close the door, please."],
+        ["negative instruction", "Don't + base verb", "Don't run in the corridor."],
+        ["suggestion (you + me)", "Let's + base verb", "Let's go to the park."],
+        ["suggestion (question)", "Shall we / Why don't we + base verb?", "Shall we watch a film?"],
+        ["suggestion", "How about + -ing?", "How about going swimming?"],
+        ["offer", "Would you like + to/noun?", "Would you like a drink?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Imperatives: instructions, notices and messages",
+      "examples": [
+        {"text": "<b>Open</b> your books, page ten.", "note": "base verb, no subject — a classroom instruction"},
+        {"text": "<b>Be</b> quiet in the library.", "note": "be also works as an imperative"},
+        {"text": "<b>Take</b> your shoes off at the door.", "note": "a house rule or a sign"}
+      ]
+    },
+    {
+      "point": "Negative imperatives: don't",
+      "examples": [
+        {"text": "<b>Don't run</b> in the corridor.", "note": "don't + base verb"},
+        {"text": "<b>Don't forget</b> your homework.", "note": "a common warning"},
+        {"text": "<b>Don't touch</b> the paintings.", "note": "a museum notice"}
+      ]
+    },
+    {
+      "point": "Suggestions: let's, shall we, why don't we, how about",
+      "examples": [
+        {"text": "<b>Let's go</b> to the park this afternoon.", "note": "let's + base verb, for you and me"},
+        {"text": "<b>Shall we</b> watch a film tonight?", "note": "shall we + base verb, a friendly question"},
+        {"text": "<b>Why don't we</b> ask Miss Vega for help?", "note": "why don't we + base verb"},
+        {"text": "<b>How about going</b> swimming on Saturday?", "note": "how about + -ing"}
+      ]
+    },
+    {
+      "point": "Offers and polite answers",
+      "examples": [
+        {"text": "<b>Would you like</b> some water?", "note": "would you like + noun or to + base verb"},
+        {"text": "That sounds great, <b>let's do it</b>!", "note": "accepting a suggestion"},
+        {"text": "I<b>'d love to</b>, but I<b>'ve got</b> homework.", "note": "politely refusing, with a reason"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "You close the door.", "right": "<b>Close</b> the door.", "why": "Imperatives don't use a subject (you) — just the base verb."},
+    {"wrong": "Not run in the corridor.", "right": "<b>Don't run</b> in the corridor.", "why": "The negative imperative needs don't, not just not."},
+    {"wrong": "Let's to go to the park.", "right": "<b>Let's go</b> to the park.", "why": "Let's is followed by the base verb, with no to."},
+    {"wrong": "Shall we watching a film?", "right": "<b>Shall we watch</b> a film?", "why": "Shall we + base verb, not -ing."},
+    {"wrong": "How about go swimming?", "right": "<b>How about going</b> swimming?", "why": "How about is followed by -ing, not the base verb."},
+    {"wrong": "Would you like coming with us?", "right": "<b>Would you like to come</b> with us?", "why": "Would you like + to + base verb (or a noun), not -ing."}
+  ],
+  "l1": [
+    {"es": "Cierra la puerta.", "wrong": "You close the door.", "right": "<b>Close</b> the door.", "why": "English imperatives never use a subject pronoun, even though Spanish sometimes implies tú."},
+    {"es": "¿Vamos al parque?", "wrong": "We go to the park?", "right": "<b>Shall we go</b> to the park? / <b>Let's go</b> to the park.", "why": "A Spanish question with vamos needs a real suggestion structure in English, not just a statement with a question mark."},
+    {"es": "¿Qué tal si vamos a nadar?", "wrong": "What about if we go swimming?", "right": "<b>How about going</b> swimming?", "why": "How about is followed directly by -ing, with no if."},
+    {"es": "Me encantaría, pero tengo tarea.", "wrong": "I would love, but I have homework.", "right": "I<b>'d love to</b>, but I<b>'ve got</b> homework.", "why": "Love needs to after it here (I'd love to), and got often follows have in British English."},
+    {"es": "No toques eso.", "wrong": "No touch that.", "right": "<b>Don't touch</b> that.", "why": "The English negative imperative always uses don't, not no."}
+  ],
+  "remember": {
+    "trick": "DON'T + verb to stop it, LET'S + verb to start it!",
+    "tip": "An imperative has no subject — it jumps straight to the verb. A suggestion usually needs let's, shall we or how about first."
+  },
+  "dialogue": {
+    "title": "Planning Nadia's surprise",
+    "context": "Sofia, Mateo and Liam plan a surprise party for Nadia after school, with Miss Vega's help.",
+    "lines": [
+      {"speaker": "Sofia", "text": "OK, first — <b>don't tell</b> Nadia anything!"},
+      {"speaker": "Mateo", "text": "Don't worry, my lips are sealed. <b>Let's decorate</b> the classroom."},
+      {"speaker": "Liam", "text": "<b>Shall we</b> make a banner too?"},
+      {"speaker": "Sofia", "text": "Good idea! Mateo, <b>bring</b> some balloons tomorrow."},
+      {"speaker": "Mateo", "text": "OK. <b>How about bringing</b> a cake as well?"},
+      {"speaker": "Miss Vega", "text": "<b>Would you like</b> some help from me?"},
+      {"speaker": "Sofia", "text": "Yes, please! <b>Why don't we</b> ask you to keep Nadia busy at three o'clock?"},
+      {"speaker": "Miss Vega", "text": "I<b>'d love to</b>. Now — <b>don't forget</b> to keep it a secret!"},
+      {"speaker": "Liam", "text": "We won't! <b>Let's start</b> right now."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ the door, please.", "options": ["Close", "You close", "Closing"], "answer": 0, "why": "imperative: base verb"},
+        {"sentence": "___ run in the corridor.", "options": ["Not", "Don't", "No"], "answer": 1, "why": "negative imperative: don't"},
+        {"sentence": "___ go to the park this afternoon.", "options": ["Let's", "We", "Shall"], "answer": 0, "why": "let's + base verb"},
+        {"sentence": "___ we watch a film tonight?", "options": ["Let's", "Do", "Shall"], "answer": 2, "why": "shall we + base verb"},
+        {"sentence": "___ we ask Miss Vega for help?", "options": ["Why don't", "How about", "Would"], "answer": 0, "why": "why don't we + base verb"},
+        {"sentence": "How about ___ swimming on Saturday?", "options": ["go", "to go", "going"], "answer": 2, "why": "how about + -ing"},
+        {"sentence": "___ you like some water?", "options": ["Do", "Would", "Shall"], "answer": 1, "why": "would you like + noun"},
+        {"sentence": "I'd love to, but I ___ homework.", "options": ["'ve got", "has got", "got"], "answer": 0, "why": "I → 've got"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the missing word or words.",
+      "items": [
+        {"sentence": "___ the door, please. (close)", "answers": ["Close"]},
+        {"sentence": "___ run in the corridor. (don't)", "answers": ["Don't"]},
+        {"sentence": "___ go to the park this afternoon. (let us)", "answers": ["Let's"]},
+        {"sentence": "___ we watch a film tonight? (shall)", "answers": ["Shall"]},
+        {"sentence": "___ we ask Miss Vega for help? (why don't)", "answers": ["Why don't"]},
+        {"sentence": "How about ___ (go) swimming on Saturday?", "answers": ["going"]},
+        {"sentence": "___ you like some water? (would)", "answers": ["Would"]},
+        {"sentence": "I'd love to, but I ___ (have) homework.", "answers": ["'ve got", "have got"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["please", "Close", ".", "the door"], "answer": "Close the door please."},
+        {"words": ["in the corridor", ".", "Don't run"], "answer": "Don't run in the corridor."},
+        {"words": ["to the park", ".", "Let's go"], "answer": "Let's go to the park."},
+        {"words": ["tonight", "Shall we watch", "?", "a film"], "answer": "Shall we watch a film tonight?"},
+        {"words": ["Miss Vega", "?", "Why don't we ask"], "answer": "Why don't we ask Miss Vega?"},
+        {"words": ["some water", "?", "Would you like"], "answer": "Would you like some water?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "Close the door, please.", "ok": true, "why": "imperative: base verb first, correct"},
+        {"sentence": "You close the door.", "ok": false, "fix": "<b>Close</b> the door.", "why": "imperatives don't use a subject"},
+        {"sentence": "Don't run in the corridor.", "ok": true, "why": "don't + base verb, correct"},
+        {"sentence": "Not run in the corridor.", "ok": false, "fix": "<b>Don't run</b> in the corridor.", "why": "the negative imperative needs don't"},
+        {"sentence": "Let's go to the park.", "ok": true, "why": "let's + base verb, correct"},
+        {"sentence": "Let's to go to the park.", "ok": false, "fix": "<b>Let's go</b> to the park.", "why": "let's + base verb, no to"},
+        {"sentence": "How about going swimming?", "ok": true, "why": "how about + -ing, correct"},
+        {"sentence": "How about go swimming?", "ok": false, "fix": "<b>How about going</b> swimming?", "why": "how about needs -ing, not the base verb"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can give instructions and warnings with imperatives and <i>don't</i> + verb.",
+    "I can make suggestions with <i>Let's…, Shall we…?, Why don't we…?</i> and <i>How about + -ing?</i>",
+    "I can accept or politely refuse an offer or a suggestion."
+  ],
+  "summary": [
+    "Imperatives use the base verb with no subject: <i>Close the door. Be quiet.</i>",
+    "Negative imperatives use <i>don't</i> + base verb: <i>Don't run.</i>",
+    "Suggest with <i>Let's, Shall we…?, Why don't we…?</i> and <i>How about + -ing?</i>",
+    "Offer with <i>Would you like…?</i> + a noun or to + base verb.",
+    "Accept warmly (<i>Let's do it!</i>) or refuse politely, with a short reason."
+  ]
+}

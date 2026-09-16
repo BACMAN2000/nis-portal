@@ -1,0 +1,198 @@
+{
+  "id": "word-building-a2",
+  "level": "ket",
+  "area": "Words",
+  "title": "Word building and spelling",
+  "tagline": "Swim → swimmer, happy → unhappy: building and spelling new words.",
+  "cefr": "A2",
+  "exam": ["Listening Part 2 — note completion", "Reading Part 6 — open cloze", "Writing Part 7 — a short story"],
+  "why": "New words don't just appear — you build them from ones you already know: add -er for the person who does something, un- for the opposite, -s or -es for more than one. Listening Part 2 and your own writing both punish small spelling slips here.",
+  "hook": {
+    "text": "The class is writing the school newsletter. \"Is it 'runer' or 'runner'?\" asks Mateo. \"<b>Runner</b> — double the n!\" says Miss Vega. \"And a person who teaches is a <b>teacher</b>, right?\" \"Exactly!\"",
+    "ask": "Runner and teacher both name a person who does something. Can you see the small change from the verb?"
+  },
+  "diagrams": [
+    {
+      "type": "spelling",
+      "title": "Making a word for the person who does it",
+      "rules": [
+        {"rule": "Most verbs: + er", "examples": ["teach → teach<b>er</b>", "play → play<b>er</b>"]},
+        {"rule": "Verb ends in -e: just add r", "examples": ["write → writ<b>er</b>", "dance → danc<b>er</b>"]},
+        {"rule": "Short vowel + one consonant: double it", "examples": ["swim → swimm<b>er</b>", "run → runn<b>er</b>"]}
+      ],
+      "caption": "The -er ending turns an action (swim, teach) into the person who does it (swimmer, teacher)."
+    },
+    {
+      "type": "map",
+      "title": "Compound nouns: two words, one idea",
+      "center": "Compound nouns",
+      "branches": [
+        {"label": "Places", "items": ["bus stop", "car park", "classroom"], "tone": "a"},
+        {"label": "Sport", "items": ["football match", "tennis court"], "tone": "b"},
+        {"label": "School life", "items": ["homework", "classmate", "notebook"], "tone": "c"}
+      ]
+    },
+    {
+      "type": "spelling",
+      "title": "Plural spelling: -s, -es, -ies",
+      "rules": [
+        {"rule": "Most nouns: + s", "examples": ["book → book<b>s</b>", "pen → pen<b>s</b>"]},
+        {"rule": "-s, -sh, -ch, -x, -o: + es", "examples": ["bus → bus<b>es</b>", "watch → watch<b>es</b>"]},
+        {"rule": "Consonant + y: y becomes i + es", "examples": ["city → cit<b>ies</b>", "baby → bab<b>ies</b>"]}
+      ],
+      "caption": "Say the plural out loud — if you hear an extra syllable, you probably need -es."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "verb", "tone": "a", "ex": "teach"},
+      {"chip": "+ -er", "tone": "kw", "ex": "teacher"},
+      {"chip": "un- + adjective", "tone": "b", "ex": "unhappy"},
+      {"chip": "+ -ly", "tone": "c", "ex": "quickly"}
+    ],
+    "table": {
+      "head": ["Base word", "Change", "New word"],
+      "rows": [
+        ["teach (verb)", "+ -er", "teacher"],
+        ["swim (verb)", "double + -er", "swimmer"],
+        ["happy (adjective)", "un- +", "unhappy"],
+        ["quick (adjective)", "+ -ly", "quickly"],
+        ["bus (noun)", "+ -es", "buses"],
+        ["city (noun)", "y → ies", "cities"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Nouns from verbs: the person who does it",
+      "examples": [
+        {"text": "Sofia is a great <b>swimmer</b> — she trains every day.", "note": "swim → swimmer, the person who swims"},
+        {"text": "Mateo wants to be a football <b>player</b> one day.", "note": "play → player"},
+        {"text": "Miss Vega is our English <b>teacher</b>.", "note": "teach → teacher"}
+      ]
+    },
+    {
+      "point": "-ly adverbs and un- opposites",
+      "examples": [
+        {"text": "Liam speaks English <b>quickly</b> and clearly.", "note": "quick → quickly"},
+        {"text": "I'm <b>unhappy</b> about my test result.", "note": "happy → unhappy, un- = the opposite"},
+        {"text": "It's <b>unfair</b> that we have three tests this week.", "note": "fair → unfair"}
+      ]
+    },
+    {
+      "point": "Compound nouns: two words, one idea",
+      "examples": [
+        {"text": "Wait for me at the <b>bus stop</b>.", "note": "bus + stop = one place"},
+        {"text": "There's a big <b>football match</b> on Saturday.", "note": "football + match = one event"},
+        {"text": "Nadia is my best <b>classmate</b>.", "note": "class + mate = one word, one idea"}
+      ]
+    },
+    {
+      "point": "Plural spelling: -s, -es, -ies",
+      "examples": [
+        {"text": "I've got two <b>brothers</b> and one sister.", "note": "most nouns just add -s"},
+        {"text": "There are three red <b>buses</b> outside the school.", "note": "bus ends in -s → add -es"},
+        {"text": "We visited two <b>cities</b> on our trip.", "note": "consonant + y → ies"},
+        {"text": "The <b>babies</b> in that photo are my cousins.", "note": "same rule: y → ies"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She is a swim.", "right": "She is a <b>swimmer</b>.", "why": "Add -er to the verb to name the person who does it."},
+    {"wrong": "I'm unglad about the result.", "right": "I'm <b>unhappy</b> about the result.", "why": "Un- only works with certain adjectives — happy, fair, kind — not every word."},
+    {"wrong": "Wait for me at the stop bus.", "right": "Wait for me at the <b>bus stop</b>.", "why": "In English compound nouns, the first word describes the second: bus stop, not stop bus."},
+    {"wrong": "There are three buss outside.", "right": "There are three <b>buses</b> outside.", "why": "Words ending in -s, -sh, -ch, -x or -o add -es for the plural."},
+    {"wrong": "We visited two citys.", "right": "We visited two <b>cities</b>.", "why": "Consonant + y becomes ies in the plural."}
+  ],
+  "l1": [
+    {"es": "Ella es nadadora.", "wrong": "She is a swim.", "right": "She is a <b>swimmer</b>.", "why": "Spanish changes the whole word (nadar → nadadora); English usually just adds -er to the verb."},
+    {"es": "Estoy infeliz.", "wrong": "I'm infeliz.", "right": "I'm <b>unhappy</b>.", "why": "Don't borrow the Spanish prefix in- — English uses un- with happy."},
+    {"es": "la parada de autobús", "wrong": "the stop of bus", "right": "the <b>bus stop</b>", "why": "English joins two nouns directly (bus stop); it doesn't use of like Spanish de."},
+    {"es": "Visitamos dos ciudades.", "wrong": "We visited two citys.", "right": "We visited two <b>cities</b>.", "why": "Spanish ciudades doesn't show you the English spelling rule: consonant + y becomes ies."}
+  ],
+  "remember": {
+    "trick": "Verb + er = the doer. Consonant+y? Swap y for ies!",
+    "tip": "Say the new word out loud — teacher, swimmer, cities — your ear will often tell you if the spelling sounds right."
+  },
+  "dialogue": {
+    "title": "Writing the school newsletter",
+    "context": "Sofia, Mateo and Liam write a short article about sports day, and Miss Vega checks their spelling.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Good article! But check your spelling — is it <b>buses</b> or busses?"},
+      {"speaker": "Sofia", "text": "<b>Buses</b>! Bus already ends in -s, so we add -es."},
+      {"speaker": "Mateo", "text": "And what about the person who wins a race?"},
+      {"speaker": "Miss Vega", "text": "It's <b>runner</b> — double the n before -er."},
+      {"speaker": "Liam", "text": "I wrote that Nadia is <b>unhappy</b> about losing. Is that right?"},
+      {"speaker": "Miss Vega", "text": "Yes. And remember: <b>bus stop</b> is two words, but one idea."},
+      {"speaker": "Sofia", "text": "Should I write 'two babys' or 'two babies'?"},
+      {"speaker": "Mateo", "text": "<b>Babies</b>! Consonant plus y becomes ies."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word.",
+      "items": [
+        {"sentence": "Sofia is a great ___ — she trains every day.", "options": ["swimmer", "swim", "swimming"], "answer": 0, "why": "verb + -er = the person who does it"},
+        {"sentence": "Miss Vega is our English ___.", "options": ["teach", "teacher", "teaching"], "answer": 1, "why": "teach + er = teacher"},
+        {"sentence": "Liam speaks English ___.", "options": ["quick", "quickness", "quickly"], "answer": 2, "why": "adjective + ly = adverb"},
+        {"sentence": "I'm ___ about my test result.", "options": ["unhappy", "happy", "happily"], "answer": 0, "why": "un- + happy = the opposite"},
+        {"sentence": "Wait for me at the ___.", "options": ["stop bus", "buses stop", "bus stop"], "answer": 2, "why": "compound noun: the first word describes the second"},
+        {"sentence": "I've got two ___.", "options": ["brotheres", "brother", "brothers"], "answer": 2, "why": "most nouns just add -s"},
+        {"sentence": "There are three red ___ outside.", "options": ["buses", "bus", "buss"], "answer": 0, "why": "-s, -sh, -ch, -x, -o nouns add -es"},
+        {"sentence": "We visited two ___ on our trip.", "options": ["city", "citys", "cities"], "answer": 2, "why": "consonant + y becomes ies"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the word in brackets (add -er, -ly, un- or the plural, as needed).",
+      "items": [
+        {"sentence": "Sofia is a great ___ (swim) — she trains every day.", "answers": ["swimmer"]},
+        {"sentence": "Miss Vega is our English ___ (teach).", "answers": ["teacher"]},
+        {"sentence": "Liam speaks English ___ (quick).", "answers": ["quickly"]},
+        {"sentence": "I'm ___ (happy) about my test result.", "answers": ["unhappy"]},
+        {"sentence": "Wait for me at the ___ (bus + stop).", "answers": ["bus stop"]},
+        {"sentence": "I've got two ___ (brother).", "answers": ["brothers"]},
+        {"sentence": "There are three red ___ (bus) outside.", "answers": ["buses"]},
+        {"sentence": "We visited two ___ (city) on our trip.", "answers": ["cities"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["is a great swimmer", "Sofia", "."], "answer": "Sofia is a great swimmer."},
+        {"words": ["is our English teacher", "Miss Vega", "."], "answer": "Miss Vega is our English teacher."},
+        {"words": ["speaks English quickly", "Liam", "."], "answer": "Liam speaks English quickly."},
+        {"words": ["about my test result", "unhappy", "I'm", "."], "answer": "I'm unhappy about my test result."},
+        {"words": ["at the bus stop", "for me", "Wait", "."], "answer": "Wait for me at the bus stop."},
+        {"words": ["on our trip", "visited two cities", "We", "."], "answer": "We visited two cities on our trip."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "She is a swim.", "ok": false, "fix": "She is a <b>swimmer</b>.", "why": "add -er to the verb for the person who does it"},
+        {"sentence": "Miss Vega is our English teacher.", "ok": true, "why": "teach + er = teacher"},
+        {"sentence": "I'm unglad about the result.", "ok": false, "fix": "I'm <b>unhappy</b> about the result.", "why": "un- works with happy, not every adjective"},
+        {"sentence": "Liam speaks English quickly.", "ok": true, "why": "adjective + ly = adverb"},
+        {"sentence": "Wait for me at the stop bus.", "ok": false, "fix": "Wait for me at the <b>bus stop</b>.", "why": "the first word describes the second in a compound noun"},
+        {"sentence": "There are three red buses outside.", "ok": true, "why": "-s, -sh, -ch, -x, -o nouns add -es"},
+        {"sentence": "We visited two citys.", "ok": false, "fix": "We visited two <b>cities</b>.", "why": "consonant + y becomes ies"},
+        {"sentence": "I've got two brothers.", "ok": true, "why": "most nouns just add -s"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can make a noun for a person from a verb, like <i>swim → swimmer</i>.",
+    "I can use <i>-ly</i> adverbs and <i>un-</i> to make the opposite of an adjective.",
+    "I can spell plurals correctly with <i>-s, -es</i> and <i>-ies</i>, and recognise compound nouns like <i>bus stop</i>."
+  ],
+  "summary": [
+    "Add <b>-er</b> to a verb to name the person who does it: <i>swim → swimmer, teach → teacher</i>.",
+    "Add <b>-ly</b> to make an adverb, and <b>un-</b> to make the opposite of some adjectives: <i>quick → quickly, happy → unhappy</i>.",
+    "Compound nouns join two words into one idea: <i>bus stop, football match</i>.",
+    "Plurals add <b>-s</b>, but <b>-es</b> after -s/-sh/-ch/-x/-o, and <b>-ies</b> after a consonant + y."
+  ]
+}

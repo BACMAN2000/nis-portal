@@ -1,0 +1,197 @@
+{
+  "id": "future-forms",
+  "level": "ket",
+  "area": "Tenses & time",
+  "title": "Talking about the future",
+  "tagline": "The future isn't one tense — it's a choice between will, going to and the present continuous.",
+  "cefr": "A2",
+  "exam": ["Speaking Part 2 — making plans together", "Writing Part 6 — a short email", "Listening Part 5 — gap fill"],
+  "why": "Will is for a decision you make right now or a guess; going to is for a plan already in your head; the present continuous is for something in your diary with a time and a place. Get the choice right and Speaking Part 2 (planning something with a partner) and Writing Part 6 (arranging to meet a friend) both sound natural, not like a grammar exercise.",
+  "hook": {
+    "text": "Miss Vega tells the class: \"We<b>'re going to visit</b> Arequipa next month.\" \"I<b>'ll</b> bring my camera!\" says Mateo. \"We<b>'re meeting</b> at the airport at six,\" adds Miss Vega. \"Six? I think I<b>'ll</b> be late!\" laughs Nadia.",
+    "ask": "Three different future forms are hiding here — a plan, a fixed arrangement, and a decision made right now. Can you match each one to its job?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "A decision now, or a plan already made?",
+      "marks": [
+        {"at": "now", "label": "Right now: \"I'll bring my camera!\"", "sub": "will — decided this second"},
+        {"at": "future", "label": "Next month: the trip to Arequipa", "sub": "going to — planned before now"}
+      ],
+      "arrows": [[0, 1, "both point to the same future"]],
+      "caption": "Will = the decision happens now, in the moment. Going to = the plan was already in your head before you spoke."
+    },
+    {
+      "type": "blocks",
+      "title": "Three ways to talk about the future",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "We", "role": "subj"}, {"t": "'re", "role": "aux"}, {"t": "going to", "role": "kw"}, {"t": "visit", "role": "verb"}, {"t": "Arequipa", "role": "obj"}, {"t": "next month", "role": "time"}, {"t": ".", "role": "x"}], "note": "going to — a plan"},
+        {"parts": [{"t": "We", "role": "subj"}, {"t": "'re", "role": "aux"}, {"t": "meeting", "role": "verb"}, {"t": "at the airport", "role": "place"}, {"t": "at six", "role": "time"}, {"t": ".", "role": "x"}], "note": "present continuous — an arrangement"},
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "'ll", "role": "kw"}, {"t": "bring", "role": "verb"}, {"t": "my camera", "role": "obj"}, {"t": ".", "role": "x"}], "note": "will — a decision now"}
+      ],
+      "caption": "Going to and the present continuous both need am/is/are; will only needs 'll — no am/is/are with it."
+    },
+    {
+      "type": "contrast",
+      "title": "will vs going to vs present continuous",
+      "columns": ["will", "going to", "present continuous"],
+      "rows": [
+        {"label": "Job", "cells": ["decision now, offer, prediction", "plan already made, evidence now", "arrangement — time and place fixed"]},
+        {"label": "Example", "cells": ["I'll help you.", "We're going to visit Arequipa.", "We're meeting at six."]},
+        {"label": "Signal", "cells": ["I think…, probably, Shall I…?", "I've decided…, look at that!", "a diary time: at six, on Friday"]}
+      ],
+      "caption": "All three can be correct — the difference is how sure you are, and whether it's already arranged."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "will + base verb", "tone": "a", "ex": "I'll help"},
+      {"chip": "am/is/are + going to + base verb", "tone": "b", "ex": "we're going to visit"},
+      {"chip": "am/is/are + verb-ing + time", "tone": "c", "ex": "we're meeting at six"}
+    ],
+    "table": {
+      "head": ["Form", "Job", "Example"],
+      "rows": [
+        ["will", "decision now / offer / prediction", "I'll carry your bag."],
+        ["going to", "plan already made / evidence", "She's going to be a doctor."],
+        ["present continuous", "arrangement with a time", "We're leaving at nine."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "will — a decision made right now, an offer, or a prediction",
+      "examples": [
+        {"text": "It's heavy — I<b>'ll</b> carry it for you.", "note": "an offer made at this moment"},
+        {"text": "I think it <b>will</b> rain tomorrow.", "note": "a prediction with I think"},
+        {"text": "Don't worry, we <b>won't</b> be late.", "note": "a promise — negative won't"}
+      ]
+    },
+    {
+      "point": "going to — a plan already in your head, or evidence you can see now",
+      "examples": [
+        {"text": "We<b>'re going to visit</b> Arequipa next month.", "note": "a plan you've already decided"},
+        {"text": "Look at those clouds — it<b>'s going to</b> rain!", "note": "evidence you can see right now"},
+        {"text": "Mateo<b>'s going to</b> study medicine.", "note": "a plan for the future"}
+      ]
+    },
+    {
+      "point": "present continuous — an arrangement with a time and a place",
+      "examples": [
+        {"text": "We<b>'re meeting</b> at the airport at six.", "note": "a fixed arrangement — time + place"},
+        {"text": "I<b>'m having</b> lunch with Nadia on Friday.", "note": "something already in the diary"},
+        {"text": "Sofia<b>'s not coming</b> to the trip — she's ill.", "note": "negative arrangement"}
+      ]
+    },
+    {
+      "point": "shall — offers and suggestions",
+      "examples": [
+        {"text": "<b>Shall I</b> open the window?", "note": "shall I = an offer, asking if you should do something"},
+        {"text": "<b>Shall we</b> go to the market after school?", "note": "shall we = a suggestion for both of you"},
+        {"text": "What time <b>shall we</b> meet?", "note": "shall we in a question about a plan"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I think it will to rain.", "right": "I think it <b>will rain</b>.", "why": "Will is followed straight by the base verb — no to."},
+    {"wrong": "We go to visit Arequipa next month.", "right": "We<b>'re going to visit</b> Arequipa next month.", "why": "Going to needs am/is/are before it — it can't stand alone."},
+    {"wrong": "Shall I to help you?", "right": "<b>Shall I help</b> you?", "why": "Shall is followed straight by the base verb — no to, just like will."},
+    {"wrong": "We meet at six tomorrow.", "right": "We<b>'re meeting</b> at six tomorrow.", "why": "A fixed arrangement with a time uses the present continuous, not the present simple."},
+    {"wrong": "Look at those clouds — it will rain.", "right": "Look at those clouds — it<b>'s going to</b> rain!", "why": "When you can see the evidence right now, use going to, not will."}
+  ],
+  "l1": [
+    {"es": "Voy a visitar Arequipa.", "wrong": "I go to visit Arequipa.", "right": "I<b>'m going to visit</b> Arequipa.", "why": "The Spanish 'voy a' becomes am/is/are + going to in English — not just go to."},
+    {"es": "Creo que va a llover.", "wrong": "I think it will rain.", "right": "I think it<b>'s going to</b> rain.", "why": "When you can see the evidence now (dark clouds), English prefers going to over will."},
+    {"es": "¿Te ayudo?", "wrong": "I help you?", "right": "<b>Shall I help</b> you?", "why": "A spontaneous offer uses Shall I…? or will, not just the base verb as a question."},
+    {"es": "Nos vemos a las seis.", "wrong": "We see each other at six.", "right": "We<b>'re meeting</b> at six.", "why": "A fixed plan with a time uses the present continuous in English, not the present simple."}
+  ],
+  "remember": {
+    "trick": "Decide now? WILL. Plan already made? GOING TO.",
+    "tip": "If you already had the idea before you started speaking, it's going to. If the idea comes to you as you speak, it's will."
+  },
+  "dialogue": {
+    "title": "Planning the trip to Arequipa",
+    "context": "Miss Vega tells the class about next month's school trip to Arequipa.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Next month we<b>'re going to visit</b> Arequipa!"},
+      {"speaker": "Mateo", "text": "Amazing! I<b>'ll</b> bring my camera."},
+      {"speaker": "Nadia", "text": "<b>Will</b> we see the volcano?"},
+      {"speaker": "Miss Vega", "text": "Yes, I think we <b>will</b> — if the weather is good."},
+      {"speaker": "Sofia", "text": "<b>Shall we</b> take some snacks for the bus?"},
+      {"speaker": "Miss Vega", "text": "Good idea. We<b>'re meeting</b> at the school at six in the morning."},
+      {"speaker": "Mateo", "text": "Six? I think I<b>'ll</b> be tired!"},
+      {"speaker": "Nadia", "text": "Look at that map — it<b>'s going to</b> be a long trip!"},
+      {"speaker": "Miss Vega", "text": "Don't worry, it <b>won't</b> feel long — there's a lot to see."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct future form.",
+      "items": [
+        {"sentence": "It's heavy — I ___ carry it for you.", "options": ["'ll carry", "carry", "'m carrying"], "answer": 0, "why": "an offer made now → will"},
+        {"sentence": "We ___ visit Arequipa next month — we decided yesterday.", "options": ["'re going to", "will", "'re carrying"], "answer": 0, "why": "a plan already made → going to"},
+        {"sentence": "Look at those clouds — it ___ rain!", "options": ["will", "'s going to", "carries"], "answer": 1, "why": "evidence now → going to"},
+        {"sentence": "We ___ at the airport at six tomorrow.", "options": ["meet", "'re meeting", "will meeting"], "answer": 1, "why": "a fixed arrangement → present continuous"},
+        {"sentence": "___ I open the window?", "options": ["Will", "Shall", "Do"], "answer": 1, "why": "an offer → Shall I…?"},
+        {"sentence": "I think it ___ rain tomorrow.", "options": ["'s going to", "will", "meets"], "answer": 1, "why": "a prediction with I think → will"},
+        {"sentence": "___ we go to the market after school?", "options": ["Do", "Are", "Shall"], "answer": 2, "why": "a suggestion for both of you → Shall we…?"},
+        {"sentence": "Don't worry, we ___ be late.", "options": ["don't", "aren't", "won't"], "answer": 2, "why": "a promise → won't"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct future form of the verb in brackets.",
+      "items": [
+        {"sentence": "It's heavy — I ___ (carry) it for you.", "answers": ["'ll carry", "will carry"]},
+        {"sentence": "We ___ (go/visit) Arequipa next month.", "answers": ["'re going to visit", "are going to visit"]},
+        {"sentence": "Look at those clouds — it ___ (rain)!", "answers": ["'s going to rain", "is going to rain"]},
+        {"sentence": "We ___ (meet) at the airport at six tomorrow.", "answers": ["'re meeting", "are meeting"]},
+        {"sentence": "___ (I/open) the window?", "answers": ["Shall I open"]},
+        {"sentence": "I think it ___ (rain) tomorrow.", "answers": ["will rain", "'ll rain"]},
+        {"sentence": "___ (we/go) to the market after school?", "answers": ["Shall we go"]},
+        {"sentence": "Don't worry, we ___ (not/be) late.", "answers": ["won't be"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["for you", "I'll carry", "it", "."], "answer": "I'll carry it for you."},
+        {"words": ["Arequipa", "We're going to", "visit", "."], "answer": "We're going to visit Arequipa."},
+        {"words": ["the window", "open", "Shall I", "?"], "answer": "Shall I open the window?"},
+        {"words": ["at six tomorrow", "We're meeting", "."], "answer": "We're meeting at six tomorrow."},
+        {"words": ["going to rain", "It's", "."], "answer": "It's going to rain."},
+        {"words": ["to the market", "go", "Shall we", "?"], "answer": "Shall we go to the market?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I think it will to rain.", "ok": false, "fix": "I think it <b>will rain</b>.", "why": "will is followed straight by the base verb — no to"},
+        {"sentence": "We're going to visit Arequipa next month.", "ok": true, "why": "a plan already decided"},
+        {"sentence": "We go to visit Arequipa next month.", "ok": false, "fix": "We<b>'re going to visit</b> Arequipa next month.", "why": "going to needs am/is/are before it"},
+        {"sentence": "Shall we go to the market after school?", "ok": true, "why": "shall we = a suggestion for both of you"},
+        {"sentence": "Look at those clouds — it will rain.", "ok": false, "fix": "Look at those clouds — it<b>'s going to</b> rain!", "why": "evidence you can see now needs going to, not will"},
+        {"sentence": "We're meeting at the airport at six.", "ok": true, "why": "a fixed arrangement with a time"},
+        {"sentence": "Shall I to help you?", "ok": false, "fix": "<b>Shall I help</b> you?", "why": "shall is followed straight by the base verb — no to"},
+        {"sentence": "Don't worry, we won't be late.", "ok": true, "why": "won't = will not, a promise"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can use <i>will</i> for decisions I make right now, offers and predictions.",
+    "I can use <i>going to</i> for plans I've already made and things I can see coming.",
+    "I can use the present continuous for fixed arrangements, and <i>Shall I/we…?</i> for offers and suggestions."
+  ],
+  "summary": [
+    "<b>Will</b> + base verb: a decision made right now, an offer, or a prediction (I think it will rain).",
+    "<b>Going to</b>: a plan you already had, or something you can see coming right now (look at those clouds!).",
+    "Present continuous + a time: a fixed arrangement, already in your diary (we're meeting at six).",
+    "<b>Shall I/we…?</b> offers help or makes a suggestion for both of you.",
+    "Will and shall go straight to the base verb — no to. Going to and the present continuous both need am/is/are."
+  ]
+}

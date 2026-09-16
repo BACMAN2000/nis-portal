@@ -1,5 +1,192 @@
 {
   "level": "pet",
-  "count": 0,
-  "areas": []
+  "cefr": "B1",
+  "exam": "B1 Preliminary for Schools",
+  "count": 24,
+  "areas": [
+    {
+      "area": "Tenses & time",
+      "topics": [
+        {
+          "id": "present-tenses-b1",
+          "title": "Present simple and present continuous",
+          "tagline": "Habits and facts, or right now and fixed plans — even when both talk about tomorrow.",
+          "cefr": "B1"
+        },
+        {
+          "id": "past-tenses-b1",
+          "title": "Past simple and past continuous",
+          "tagline": "One action was already going on; another one just happened — telling a story means knowing which is which.",
+          "cefr": "B1"
+        },
+        {
+          "id": "past-perfect",
+          "title": "Past perfect",
+          "tagline": "Two events in the past — had + past participle shows which one really came first.",
+          "cefr": "B1"
+        },
+        {
+          "id": "present-perfect-b1",
+          "title": "Present perfect simple and continuous",
+          "tagline": "Started in the past, still true now — the tense that links yesterday to today.",
+          "cefr": "B1"
+        },
+        {
+          "id": "future-forms-b1",
+          "title": "Future forms",
+          "tagline": "Four ways to talk about tomorrow — and B1 wants you to pick exactly the right one.",
+          "cefr": "B1"
+        },
+        {
+          "id": "used-to-would",
+          "title": "used to and would for past habits",
+          "tagline": "How things were, again and again, before they changed — but only one form works for states.",
+          "cefr": "B1"
+        }
+      ]
+    },
+    {
+      "area": "Modals",
+      "topics": [
+        {
+          "id": "modals-obligation-b1",
+          "title": "Obligation and advice: must, have to, should, ought to",
+          "tagline": "Rules, warnings and friendly advice — four modal verbs, four different strengths.",
+          "cefr": "B1"
+        },
+        {
+          "id": "modals-deduction",
+          "title": "Deduction: must, might, may, could, can't",
+          "tagline": "From 'no way' to 'definitely' — five modal verbs for guessing what's true.",
+          "cefr": "B1"
+        },
+        {
+          "id": "modals-ability-possibility",
+          "title": "Ability, possibility, requests and offers",
+          "tagline": "Can you do it, could it happen, and how do you ask nicely?",
+          "cefr": "B1"
+        }
+      ]
+    },
+    {
+      "area": "Conditionals & hypothesis",
+      "topics": [
+        {
+          "id": "first-second-conditional",
+          "title": "First and second conditional",
+          "tagline": "Real plans for the future, or a world that is only in your imagination.",
+          "cefr": "B1"
+        },
+        {
+          "id": "third-conditional",
+          "title": "Third conditional",
+          "tagline": "Imaginary pasts: what would have happened if things had been different.",
+          "cefr": "B1"
+        },
+        {
+          "id": "wish-hope",
+          "title": "wish, hope and I'd rather",
+          "tagline": "How to say you want things to be different — now, in the past, or just less annoying.",
+          "cefr": "B1"
+        }
+      ]
+    },
+    {
+      "area": "Passive & causative",
+      "topics": [
+        {
+          "id": "passive-present-past",
+          "title": "The passive: present and past",
+          "tagline": "When the action matters more than who did it.",
+          "cefr": "B1"
+        },
+        {
+          "id": "passive-other-tenses",
+          "title": "The passive in other tenses",
+          "tagline": "What's being built, what will be sent, and what must be worn.",
+          "cefr": "B1"
+        }
+      ]
+    },
+    {
+      "area": "Reporting",
+      "topics": [
+        {
+          "id": "reported-speech",
+          "title": "Reported speech: statements",
+          "tagline": "Telling someone what somebody else said, without quoting their exact words.",
+          "cefr": "B1"
+        },
+        {
+          "id": "reported-questions-commands",
+          "title": "Reported questions, commands and requests",
+          "tagline": "How to report what someone asked or told you to do, without the question mark.",
+          "cefr": "B1"
+        }
+      ]
+    },
+    {
+      "area": "Sentence building",
+      "topics": [
+        {
+          "id": "relative-clauses-b1",
+          "title": "Relative clauses",
+          "tagline": "Add extra information about people, things, places and time — all in one longer, smarter sentence.",
+          "cefr": "B1"
+        },
+        {
+          "id": "verb-patterns-b1",
+          "title": "Verb patterns: -ing or to?",
+          "tagline": "Some verbs need -ing, some need to, and a few change meaning depending on which one you pick.",
+          "cefr": "B1"
+        },
+        {
+          "id": "linking-contrast-reason",
+          "title": "Linking: contrast, reason, purpose and result",
+          "tagline": "Join ideas that disagree, explain why, say what for, or show the result — with the right linker and comma.",
+          "cefr": "B1"
+        },
+        {
+          "id": "question-tags-indirect",
+          "title": "Question tags, indirect questions and so/neither",
+          "tagline": "Check what someone said with a tag, ask politely without sounding rude, and agree in three quick words.",
+          "cefr": "B1"
+        }
+      ]
+    },
+    {
+      "area": "Comparison & description",
+      "topics": [
+        {
+          "id": "comparatives-b1",
+          "title": "Comparison at B1",
+          "tagline": "Say how much bigger, faster or better something is — and use the…the… like a native speaker.",
+          "cefr": "B1"
+        },
+        {
+          "id": "articles-quantifiers-b1",
+          "title": "Articles and quantifiers",
+          "tagline": "Choose a, an, the or nothing at all, then say exactly how much or how many with the right word.",
+          "cefr": "B1"
+        },
+        {
+          "id": "adjectives-adverbs-b1",
+          "title": "Adjectives and adverbs",
+          "tagline": "Put adjectives in the right order, choose -ed or -ing, and know when hard becomes hardly.",
+          "cefr": "B1"
+        }
+      ]
+    },
+    {
+      "area": "Words",
+      "topics": [
+        {
+          "id": "word-formation-b1",
+          "title": "Word formation: prefixes, suffixes and families",
+          "tagline": "One root word, many forms: add a suffix for a noun or adjective, a prefix to make it negative.",
+          "cefr": "B1"
+        }
+      ]
+    }
+  ]
 }
