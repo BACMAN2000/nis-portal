@@ -212,6 +212,7 @@ textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(
 <script src="activity-save.js?v=a082b30c"></script>
 <!-- /NIS-ONLY -->
 <script src="yle-media.js?v=8e201b2b"></script>
+<script src="yle-words.js?v=f5d89fe4"></script>
 <script src="yle/fluent3d.js?v=fa6d9e1d"></script>
 <script src="paint-layer.js?v=ec3cb86d"></script>
 <script>
@@ -223,11 +224,14 @@ var esc = function(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').
 var norm = function(s){ return String(s == null ? '' : s).trim().toLowerCase().replace(/^(a|an|the)\s+/, '').replace(/[.,;:!?'"’]/g, '').replace(/\s+/g, ' '); };
 var ART = window.YLE_ART || {};
 /* Ilustraciones por palabra (frutas, animales, cosas) en vez de emoji.
-   Viven en yle-img/words/<slug>.jpg; yle-img/words/index.json lista las que
-   existen. Mientras una palabra no tenga ilustracion, se dibuja con el emoji
-   3D de siempre (sin peticiones 404). Las anade tools/yle_word_images.py. */
+   Viven en yle-img/words/<slug>.jpg y las sirve el backend via YM(). La lista de
+   las que existen la trae yle-words.js (window.YLE_WORDS_HAVE), estatico de raiz,
+   porque en nis.cohasset.pe /yle-img/ lo intercepta el backend y su index.json da
+   404. Mientras una palabra no tenga ilustracion, se dibuja con el emoji 3D de
+   siempre (sin peticiones 404). Las anaden tools/yle_word_images.py y
+   tools/yle_slice_sheet.py, que reescriben index.json y yle-words.js. */
 var WORD_IMG = 'yle-img/words/';
-var WORDS_HAVE = {};                  // slug -> true (se rellena al arrancar)
+var WORDS_HAVE = {};                  // slug -> true (se rellena al arrancar desde YLE_WORDS_HAVE)
 var wslug = function(w){ return String(w == null ? '' : w).toLowerCase().replace(/^(a|an|the)\s+/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); };
 var emojiPic = function(word, size){ var e = ART.wordEmoji ? ART.wordEmoji(word) : null; return e ? ART.pic3d(e, size || 64) : '<span class="emoji" style="font-size:' + Math.round((size || 64) * .8) + 'px">🖼️</span>'; };
 /* Si la palabra tiene ilustracion de la libreria, la ilustracion GANA sobre el
@@ -331,7 +335,11 @@ function init(){
   $('#hLv').textContent = LEVEL.charAt(0).toUpperCase() + LEVEL.slice(1); $('#hLv').className = 'lv ' + LEVEL;
   $('#levels').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){ return '<a class="tbtn' + (l === LEVEL ? ' on' : '') + '" href="?level=' + l + '" style="text-decoration:none;color:inherit"><b>' + NAMES[l] + '</b></a>'; }).join('');
   asideToggle();
-  json(WORD_IMG + 'index.json').then(function(list){ (list || []).forEach(function(sl){ WORDS_HAVE[sl] = true; }); }).catch(function(){});
+  /* La lista de palabras con ilustracion la trae yle-words.js (estatico de raiz):
+     en nis.cohasset.pe /yle-img/ lo intercepta el backend y no sirve el index.json
+     (404), asi que WORDS_HAVE quedaba vacio y todo caia a emoji. Las IMAGENES si las
+     sirve el backend via YM(). */
+  try { var _wh = window.YLE_WORDS_HAVE; if(_wh){ for(var _k in _wh){ WORDS_HAVE[_k] = true; } } } catch(e){}
   Promise.all([json('yle/specs.json'), listaTests()]).then(function(r){
     SPECS = r[0]; INDEX = r[1];
     return nisGate().then(function(){

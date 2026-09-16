@@ -63,6 +63,13 @@ def rebuild_index():
     slugs = sorted(os.path.splitext(os.path.basename(f))[0]
                    for f in glob.glob(os.path.join(WORDS, "*.jpg")))
     json.dump(slugs, open(os.path.join(WORDS, "index.json"), "w"), ensure_ascii=False)
+    # yle-words.js (estatico de raiz): lo lee el motor porque en nis.cohasset.pe
+    # /yle-img/ lo intercepta el backend y su index.json da 404.
+    with open(os.path.join(ROOT, "yle-words.js"), "w", encoding="utf-8") as fh:
+        fh.write("/* Generado por tools/yle_slice_sheet.py y tools/yle_word_images.py: slugs\n"
+                 "   con ilustracion. Estatico de raiz para llenar WORDS_HAVE en\n"
+                 "   nis.cohasset.pe (alli /yle-img/ lo sirve el backend y su index.json da 404). */\n"
+                 "window.YLE_WORDS_HAVE=" + json.dumps({s: 1 for s in slugs}, ensure_ascii=False, separators=(",", ":")) + ";\n")
     return slugs
 
 
