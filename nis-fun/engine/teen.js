@@ -28,7 +28,7 @@
 window.TEEN = (function () {
   'use strict';
 
-  const TEEN_V = '2026-09-16a';   // sube al cambiar fotos o audio del lab
+  const TEEN_V = '2026-09-16c';   // sube al cambiar fotos o audio del lab
 
   const NIV = {
     ket: { name: 'A2 Key', full: 'A2 Key for Schools', cefr: 'A2', icon: 'ket',
