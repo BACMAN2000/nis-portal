@@ -4132,6 +4132,15 @@ async function renderStudent(initial){
     {key:'home',label:'🏠 Home'},
     {key:'english',label:'🇬🇧 English'},
     {key:'french',label:'🇫🇷 French'},
+    // Cambridge en la barra, con sus dos puertas a los simulacros. Hasta ahora
+    // el alumno llegaba a Practice Tests y a Mocks solo desde las tarjetas de
+    // English: tres clics para lo que hace cada semana. Las claves son las
+    // mismas rutas de siempre (practice, mocks), asi que la tarjeta y el menu
+    // llevan al mismo sitio y solo uno queda resaltado.
+    {group:'Cambridge', icon:'🎓', items:[
+      {key:'practice',label:'🎯 Practice Tests'},
+      {key:'mocks',label:'🎓 Mocks'},
+    ]},
     // 'General' salio de la barra: sus dos unicas tarjetas (Library y MUN) ya
     // estaban identicas en Home, asi que era una pestaña que no llevaba a
     // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
@@ -4158,7 +4167,15 @@ async function renderStudent(initial){
   if(initial==='results') window._nav('results'); else studentHub();
   window.__nisPaso='alumno:hub-ok';
 }
-function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
+function _setNav(k){
+  document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k));
+  // La barra del alumno se pinta una sola vez, asi que el punto de la cabecera
+  // del grupo (clase aqui, ver navHTML) hay que moverlo aqui al cambiar de ruta.
+  document.querySelectorAll('.nav-group').forEach(g=>{
+    const h=g.querySelector('.nav-head'); if(!h) return;
+    h.classList.toggle('aqui', !!g.querySelector(`.nav-sub [data-nav="${k}"]`));
+  });
+}
 function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
 function studentCoach(){ _setNav('coach'); $('#main').innerHTML = coachPanel(); }
 
@@ -5663,6 +5680,9 @@ function studentMocks(){
 /* ---------- Practice Tests: siempre disponibles (sin QR, sin re-registro) ---------- */
 function studentPractice(){
   _setNav('practice');
+  // Desde el menu se llega aqui sin pasar por la tarjeta de English, que es
+  // la que ponia el candado: se comprueba el mismo nodo (english.practice).
+  if(_isStudent() && !nodeVisible(CAMBRIDGE_PRACTICE_NODE)){ _lockedView('', '🎯 Practice Tests'); return; }
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
     <p class="muted" style="margin-top:-6px">Practice tests 1, 2 and 3 in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.</p>
     <div class="grid cols-3" style="margin-top:12px">
