@@ -3463,13 +3463,16 @@ async function funNordicPanel(){
 
   const NIVELES = ['starters','movers','flyers'];
   const COLS = 'id,student_id,level,unit,activity_code,kind,payload,audio_path,duration_sec,score,feedback,reviewed_at,created_at';
-  let q = sb.from('fun_submissions').select(COLS).order('created_at', { ascending: false }).limit(400);
+  // Solo lo que se corrige: las filas 'progress' (tiempo de uso) y 'grammar_lab'
+  // (Grammar Lab de secundaria) tambien viven en fun_submissions y no van aqui.
+  const KINDS = ['writing','speaking','selfcheck'];
+  let q = sb.from('fun_submissions').select(COLS).in('kind', KINDS).order('created_at', { ascending: false }).limit(400);
   if (funFiltro) q = q.eq('level', funFiltro);
   // el filtro acota la consulta (hay tope de 400), pero las cuentas de las
   // pastillas se piden aparte para que sigan siendo del total de cada nivel
   const [res, ...cuentas] = await Promise.all([
     q,
-    ...NIVELES.map(n => sb.from('fun_submissions').select('id', { count:'exact', head:true }).eq('level', n))
+    ...NIVELES.map(n => sb.from('fun_submissions').select('id', { count:'exact', head:true }).in('kind', KINDS).eq('level', n))
   ]);
   const { data, error } = res;
   const nPorNivel = Object.fromEntries(NIVELES.map((n,i)=>[n, cuentas[i].count||0]));
