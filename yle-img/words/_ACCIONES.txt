@@ -1,0 +1,9 @@
+ACCIONES YLE — generar en Gemini (una ESCENA por accion: una persona/nino haciendola)
+PROMPT: "Flat 3D cartoon illustration of a child <ACTION>, simple scene on a plain white background, soft shadows, bright friendly colours, children's English course style, no text, one clear action."  Ej.: a child riding a bike / a child washing the car.
+Guarda cada archivo con el nombre de la accion (riding a bike.jpg, washing the car.jpg).
+
+== ACCIONES (37) ==
+cleaning the floor, climbing a mountain, cooking, dancing, doing homework, doing the shopping, driving, eating, feeding the dog, fishing, have a picnic, making the beds, painted, painting, played football, playing, playing football, playing tennis, playing the guitar, playing the piano, reading, ride bikes, riding a bike, riding a horse, running, sailing, skating, sleep, sleeping, swim, swimming, taking photos, washing clothes, washing the car, watched TV, watching films, watering the plants
+
+Variantes que pueden COMPARTIR la misma escena (genera una, se reusa):
+  sleep = sleeping · swim = swimming · painting = painted · playing football = played football = football · riding a bike = ride bikes · watching films = watched TV

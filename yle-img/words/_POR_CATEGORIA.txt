@@ -1,0 +1,43 @@
+ILUSTRACIONES YLE POR CATEGORIA — OBJETOS — generar en Gemini, un objeto por palabra
+
+== Animales (23) ==
+bear, bird, cat, cow, crocodile, dog, dolphin, duck, elephant, fish, frog, giraffe, goat, hippo, horse, kangaroo, monkey, panda, rabbit, shark, sheep, snake, whale
+
+== Comida y bebida (27) ==
+apple, banana, bananas, bread, burger, cake, carrot, cheese, chicken, chips, egg, eggs, grapes, ice cream, juice, milk, onion, orange, pasta, pear, potato, potatoes, rice, sandwich, soup, tomatoes, water
+
+== Ropa (19) ==
+a jumper, a red coat, a scarf, a shirt, boot, boots, coat, dress, glasses, hat, jacket, shoe, shoes, shorts, skirt, sock, socks, t-shirt, trousers
+
+== Casa y muebles (17) ==
+a lamp, bath, bathroom, bed, bedroom, bowl, chair, cup, garden, house, kitchen, plate, soap, sofa, table, tent, towel
+
+== Escuela y material (11) ==
+a comic, board, book, classroom, crayon, desk, library, pen, pencil, ruler, school
+
+== Juguetes y objetos (17) ==
+bag, ball, balloon, box, brush, camera, computer, doll, game, guitar, kite, phone, photo, photos, piano, radio, watch
+
+== Lugares (13) ==
+beach, city, field, hospital, lake, market, mountains, park, playground, river, shop, supermarket, village
+
+== Transporte (8) ==
+a lorry, a tractor, bike, boat, bus, car, plane, train
+
+== Naturaleza y clima (8) ==
+cloud, flower, flowers, grass, rain, sun, tree, wind
+
+== Deportes (6) ==
+badminton, basketball, football, music, table tennis, tennis
+
+== Acciones ==
+En archivo aparte: _ACCIONES.txt (son escenas, con otro prompt)
+
+== Personajes (3) ==
+alien, monster, robot
+
+== Varios / revisar (2) ==
+film, shopping
+
+== NO ILUSTRAR (frases, adjetivos, dias — 44) — se quedan con su emoji ==
+Monday, Thursday, Tuesday, about a plane, about animals, about the sea, after lunch, at school, at the beach, before school, behind the bread, behind the door, behind the station, cloudy, cold, happy, hot, in the bag, in the car, in the classroom, in the cupboard, in the evening, in the field, in the house, in the library, in the park, in the playground, in the river, on the bed, on the chair, on the grass, on the roof, opposite the school, sunny, to the field, to the river, to the village, under the bed, under the tree, wet, windy, with a bird, with flowers, with stars
