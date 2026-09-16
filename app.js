@@ -344,7 +344,7 @@ function navHTML(navItems, activeKey){
 }
 /* Las claves de todas las pestanas, con grupos o sin ellos. */
 function navKeys(navItems){
-  return navItems.reduce((a,n)=> a.concat(n.items ? n.items.map(i=>i.key) : [n.key]), []);
+  return navItems.reduce((a,n)=> a.concat(n.items ? n.items.map(i=>i.key) : [n.key]), []).filter(Boolean);
 }
 function shell(navItems, activeKey, body, wide){
   /* wide = paneles de gestion (admin y profesor). Son tablas con muchas
@@ -4127,7 +4127,19 @@ window._sendWritingResult = async ()=>{
 };
 
 /* ===================== STUDENT ===================== */
+/* Los cursos Cambridge de secundaria (motor nis-fun), por grado. Lo leen el
+   hub del grado (studentGrade) y el grupo Cambridge de la barra del alumno:
+   una sola lista para que las dos puertas no se desvien. El motor cierra por
+   grado por su cuenta (levels.json / fun_access). */
+/* Reparto del 16-sep-2026 (lo fijo el usuario): 6.º-7.º A2+B1 · 8.º A2+B1+B2 ·
+   9.º-11.º A2+B1+B2+C1. Los mismos grados van en nis-fun/content/levels.json. */
+const SEC_COURSES = {g6:['ket','pet'],g7:['ket','pet'],g8:['ket','pet','b2f'],
+                     g9:['ket','pet','b2f','c1a'],g10:['ket','pet','b2f','c1a'],g11:['ket','pet','b2f','c1a']};
+const SEC_COURSE_NAMES = {ket:'A2 Key',pet:'B1 Preliminary',b2f:'B2 First',c1a:'C1 Advanced'};
+function secCoursesFor(key){ return SEC_COURSES[key]||[]; }
+
 async function renderStudent(initial){
+  const gkey = 'g'+((state.profile&&state.profile.grade_id)||0);
   document.body.innerHTML = shell([
     {key:'home',label:'🏠 Home'},
     {key:'english',label:'🇬🇧 English'},
@@ -4138,6 +4150,9 @@ async function renderStudent(initial){
     // mismas rutas de siempre (practice, mocks), asi que la tarjeta y el menu
     // llevan al mismo sitio y solo uno queda resaltado.
     {group:'Cambridge', icon:'🎓', items:[
+      // El curso del grado (o los dos de 9.º) va primero: es lo que se estudia;
+      // los simulacros lo miden. Un alumno de primaria no tiene curso aqui.
+      ...secCoursesFor(gkey).map(lv=>({href:'nis-fun/engine/?level='+lv, label:'📘 '+SEC_COURSE_NAMES[lv]+' course'})),
       {key:'practice',label:'🎯 Practice Tests'},
       {key:'mocks',label:'🎓 Mocks'},
     ]},
@@ -5227,7 +5242,7 @@ function studentGrade(key){
       ${_isPrimaryGrade(key)||_isEarlyGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${_isEarlyGrade(key) ? '' : nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
-      ${(({g6:['ket'],g7:['ket'],g8:['pet'],g9:['pet','b2f'],g10:['b2f'],g11:['c1a']})[key]||[]).map(lv=>{const nm={ket:'A2 Key',pet:'B1 Preliminary',b2f:'B2 First',c1a:'C1 Advanced'}[lv];return _hubCard('🎓',nm+' course','The full Cambridge course for '+label+': units with audio, vocabulary and grammar, and real exam tasks — Reading &amp; Use of English, Listening, Writing and Speaking.',"window.open('nis-fun/engine/?level="+lv+"','_blank','noopener')");}).join('')}
+      ${secCoursesFor(key).map(lv=>{const nm=SEC_COURSE_NAMES[lv];return _hubCard('🎓',nm+' course','The full '+nm+' course: units with audio, vocabulary and grammar, and real exam tasks — Reading &amp; Use of English, Listening, Writing and Speaking.',"window.open('nis-fun/engine/?level="+lv+"','_blank','noopener')");}).join('')}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=e47dece9',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}

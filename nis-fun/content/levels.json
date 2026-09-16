@@ -28,46 +28,58 @@
       "id": "ket",
       "name": "Cambridge · KET",
       "exam": "A2 Key for Schools",
-      "cast": "Grade 6 · Inspiring Nordic",
+      "cast": "A2 · Inspiring Nordic",
       "mascot": "nova",
       "color": "#6d5bd0",
       "grades": [
         6,
-        7
+        7,
+        8,
+        9,
+        10,
+        11
       ]
     },
     {
       "id": "pet",
       "name": "Cambridge · PET",
       "exam": "B1 Preliminary for Schools",
-      "cast": "Grade 8 · Inspiring Nordic",
+      "cast": "B1 · Inspiring Nordic",
       "mascot": "nova",
       "color": "#0e7490",
       "grades": [
+        6,
+        7,
         8,
-        9
+        9,
+        10,
+        11
       ]
     },
     {
       "id": "b2f",
       "name": "Cambridge · B2 First",
       "exam": "B2 First for Schools",
-      "cast": "Grade 10 · Inspiring Nordic",
+      "cast": "B2 · Inspiring Nordic",
       "mascot": "nova",
       "color": "#a3324e",
       "grades": [
+        8,
         9,
-        10
+        10,
+        11
       ]
     },
     {
       "id": "c1a",
       "name": "Cambridge · C1 Advanced",
       "exam": "C1 Advanced for Schools",
-      "cast": "Grade 11 · Inspiring Nordic",
+      "cast": "C1 · Inspiring Nordic",
       "mascot": "nova",
       "color": "#334155",
       "grades": [
+        9,
+        10,
         11
       ]
     }
