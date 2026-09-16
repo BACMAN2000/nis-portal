@@ -222,7 +222,20 @@ var $$ = function(s, r){ return Array.prototype.slice.call((r || document).query
 var esc = function(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
 var norm = function(s){ return String(s == null ? '' : s).trim().toLowerCase().replace(/^(a|an|the)\s+/, '').replace(/[.,;:!?'"’]/g, '').replace(/\s+/g, ' '); };
 var ART = window.YLE_ART || {};
-var pic = function(word, size){ var e = ART.wordEmoji ? ART.wordEmoji(word) : null; return e ? ART.pic3d(e, size || 64) : '<span class="emoji" style="font-size:' + Math.round((size || 64) * .8) + 'px">🖼️</span>'; };
+/* Ilustraciones por palabra (frutas, animales, cosas) en vez de emoji.
+   Viven en yle-img/words/<slug>.jpg; yle-img/words/index.json lista las que
+   existen. Mientras una palabra no tenga ilustracion, se dibuja con el emoji
+   3D de siempre (sin peticiones 404). Las anade tools/yle_word_images.py. */
+var WORD_IMG = 'yle-img/words/';
+var WORDS_HAVE = {};                  // slug -> true (se rellena al arrancar)
+var wslug = function(w){ return String(w == null ? '' : w).toLowerCase().replace(/^(a|an|the)\s+/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); };
+var emojiPic = function(word, size){ var e = ART.wordEmoji ? ART.wordEmoji(word) : null; return e ? ART.pic3d(e, size || 64) : '<span class="emoji" style="font-size:' + Math.round((size || 64) * .8) + 'px">🖼️</span>'; };
+var pic = function(word, size){
+  var s = size || 64, sl = wslug(word);
+  if(!WORDS_HAVE[sl]) return emojiPic(word, s);
+  var fb = emojiPic(word, s).replace(/"/g, '&quot;');
+  return '<img class="wpic" src="' + YM(WORD_IMG + sl + '.jpg') + '" width="' + s + '" height="' + s + '" alt="' + esc(word) + '" loading="lazy" style="object-fit:contain;vertical-align:middle" data-fb="' + fb + '" onerror="var d=document.createElement(\'span\');d.innerHTML=this.getAttribute(\'data-fb\');this.replaceWith(d.firstChild||d);">';
+};
 
 var qs = new URLSearchParams(location.search);
 var LEVEL = ['starters', 'movers', 'flyers'].indexOf(qs.get('level')) >= 0 ? qs.get('level') : 'starters';
@@ -310,6 +323,7 @@ function init(){
   $('#hLv').textContent = LEVEL.charAt(0).toUpperCase() + LEVEL.slice(1); $('#hLv').className = 'lv ' + LEVEL;
   $('#levels').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){ return '<a class="tbtn' + (l === LEVEL ? ' on' : '') + '" href="?level=' + l + '" style="text-decoration:none;color:inherit"><b>' + NAMES[l] + '</b></a>'; }).join('');
   asideToggle();
+  json(WORD_IMG + 'index.json').then(function(list){ (list || []).forEach(function(sl){ WORDS_HAVE[sl] = true; }); }).catch(function(){});
   Promise.all([json('yle/specs.json'), listaTests()]).then(function(r){
     SPECS = r[0]; INDEX = r[1];
     return nisGate().then(function(){
