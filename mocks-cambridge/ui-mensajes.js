@@ -156,7 +156,7 @@
         icono: op.icono,
         detalle: op.detalle,
         valorEscape: undefined,
-        botones: [{ texto: op.cerrar || 'Entendido', valor: undefined }]
+        botones: [{ texto: op.cerrar || 'Got it', valor: undefined }]
       });
     },
 
@@ -171,15 +171,15 @@
       var p = parte(mensaje);
       return pinta({
         mensaje: op.titulo ? mensaje : p.cuerpo,
-        titulo: op.titulo || p.titulo || '¿Confirmas?',
+        titulo: op.titulo || p.titulo || 'Are you sure?',
         tono: op.tono || 'ojo',
         icono: op.icono,
         detalle: op.detalle,
         escapa: true,
         valorEscape: false,
         botones: [
-          { texto: op.no || 'Cancelar', valor: false, clase: 'ghost' },
-          { texto: op.si || 'Continuar', valor: true, clase: op.peligro ? 'peligro' : '' }
+          { texto: op.no || 'Cancel', valor: false, clase: 'ghost' },
+          { texto: op.si || 'Continue', valor: true, clase: op.peligro ? 'peligro' : '' }
         ]
       });
     },

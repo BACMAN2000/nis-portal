@@ -113,7 +113,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <nav class="topnav">
   <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
   <span class="nav-sp"></span>
-  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn" href="activities.html">🎲 Activities</a>
   <a class="navbtn primary" href="./">🏫 Portal</a>
 </nav>
 <header>
@@ -392,7 +392,7 @@ function load(){
   document.getElementById('gate').style.display = '';
   document.getElementById('round').style.display = 'none';
   document.getElementById('cluebox').classList.remove('show');
-  document.getElementById('startBtn').textContent = done[level] ? '⚔️ Volver a jugar' : '⚔️ Start battle';
+  document.getElementById('startBtn').textContent = done[level] ? '⚔️ Play again' : '⚔️ Start battle';
   feedback(''); note('');
   drawStatus(); drawBoss(); renderDefeated(); updateScore(); buildTabs();
 }
@@ -512,7 +512,7 @@ function win(){
   b.classList.add('show');
   document.getElementById('round').style.display = 'none';
   document.getElementById('gate').style.display = '';
-  document.getElementById('startBtn').textContent = '⚔️ Volver a jugar';
+  document.getElementById('startBtn').textContent = '⚔️ Play again';
   started = false;
   feedback('');
   buildTabs();

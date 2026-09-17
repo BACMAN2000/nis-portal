@@ -446,7 +446,7 @@ window.NISACT = (function () {
   function avisaGuardado(ok, motivo){
     var P = 'Guardando tu resultado\u2026';
     var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
-              : ok ? 'Tu resultado quedo guardado en My Results.'
+              : ok ? 'Your result is saved in My Results.'
               : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
     document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
       if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
