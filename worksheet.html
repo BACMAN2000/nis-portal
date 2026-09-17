@@ -122,7 +122,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
   <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
   <div class="spacer"></div>
   <span class="guardado" id="guardado"></span>
-  <a class="back" href="./" id="backBtn">&#8592; Back</a>
+  <a class="back" href="./" id="backBtn" data-nis-back>&#8592; Back</a>
 </header>
 
 <div class="wrap" id="app"><div class="card"><p class="state">Loading…</p></div></div>
@@ -138,7 +138,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=720edc7d"></script>
-<script src="nis-nav.js?v=c3230c7d"></script>
+<script src="nis-nav.js?v=c6e39903"></script>
 <script src="worksheet-items.js?v=0f9d5fb1"></script>
 <script src="writing-trace.js?v=321f3e2c"></script>
 <script>
@@ -157,7 +157,7 @@ const SES   = parseInt(Q.get('session')||'0',10);
 const LEVEL = (Q.get('level')||'').toUpperCase();
 const HITO  = 'w' + WEEK + 's' + SES;
 
-document.getElementById('backBtn').href=`unit.html?grade=${encodeURIComponent(GRADE)}&unit=${UNIT}&section=weeks`;
+document.getElementById('backBtn').setAttribute('data-nis-back-default',`unit.html?grade=${encodeURIComponent(GRADE)}&unit=${UNIT}&section=weeks`);
 
 const $  = s => document.querySelector(s);
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));

@@ -46,7 +46,14 @@
       return u.pathname + u.search + u.hash;
     }catch(_){ return ''; }
   }
-  function target(){ return fromParam() || fromReferrer() || PORTAL; }
+  /* Una página puede declarar a dónde ir cuando no hay ?back= ni referrer
+     (p. ej. worksheet.html → la lista de semanas de su unidad): atributo
+     data-nis-back-default en el propio botón. Sigue siendo relativo y seguro. */
+  function fromDefault(){
+    try{ var s=document.querySelector('[data-nis-back-default]'); return s ? safeRel(s.getAttribute('data-nis-back-default')) : ''; }
+    catch(_){ return ''; }
+  }
+  function target(){ return fromParam() || fromReferrer() || fromDefault() || PORTAL; }
   function abs(u){ try{ return new URL(u, location.href).href; }catch(_){ return ''; } }
 
   /* Una página con pantallas internas registra aquí su propio "atrás":

@@ -883,7 +883,7 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=6a8fc4f5&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=f0c78d89&embed=1" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -4785,7 +4785,7 @@ async function studentCambridgePortal(){
     </div></div>`;
   };
   const practice = nodeVisible(CAMBRIDGE_PRACTICE_NODE) ? `
-    <a class="cam-practice" href="${QUIZ_URL}quizzes.html">
+    <a class="cam-practice" href="${_withBack(QUIZ_URL+'quizzes.html',route)}">
       <div class="cam-pwrap">
         ${_camIco('practice', 84)}
         <div class="cam-ptxt">
@@ -5251,7 +5251,7 @@ function studentGrade(key){
       ${secCoursesFor(key).map(lv=>{const nm=SEC_COURSE_NAMES[lv];return _hubCard('🎓',nm+' course',SEC_COURSE_DESC[lv]||('The full '+nm+' course: units with audio, vocabulary and grammar, and real exam tasks — Reading &amp; Use of English, Listening, Writing and Speaking.'),"window.open('nis-fun/engine/?level="+lv+"','_blank','noopener')");}).join('')}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=e47dece9',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=27b10657',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -5692,9 +5692,9 @@ function studentMocks(){
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
     <p class="muted" style="margin-top:-6px">MOCK 1 and MOCK 2 in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${_skillCard('📖','Reading & Use of English','KET/PET/FCE/CAE-style texts and tasks with a timer.',QUIZ_URL+'reading-quiz.html?branch=mocks')}
-      ${_skillCard('🎧','Listening','Real audio in Cambridge format, with a timer.',QUIZ_URL+'listening-quiz.html?branch=mocks')}
-      ${_skillCard('✍️','Writing','Part 1 compulsory + Part 2 of your choice. Graded by your teacher. B1 · B2 · C1 only.',QUIZ_URL+'writing-quiz.html?branch=mocks')}
+      ${_skillCard('📖','Reading & Use of English','KET/PET/FCE/CAE-style texts and tasks with a timer.',_withBack(QUIZ_URL+'reading-quiz.html?branch=mocks','mocks'))}
+      ${_skillCard('🎧','Listening','Real audio in Cambridge format, with a timer.',_withBack(QUIZ_URL+'listening-quiz.html?branch=mocks','mocks'))}
+      ${_skillCard('✍️','Writing','Part 1 compulsory + Part 2 of your choice. Graded by your teacher. B1 · B2 · C1 only.',_withBack(QUIZ_URL+'writing-quiz.html?branch=mocks','mocks'))}
       ${_soonCard('🗣️','Speaking','Cambridge-style interview with an examiner.')}
     </div>`;
 }
@@ -5708,9 +5708,9 @@ function studentPractice(){
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
     <p class="muted" style="margin-top:-6px">Practice tests 1, 2 and 3 in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.</p>
     <div class="grid cols-3" style="margin-top:12px">
-      ${_skillCard('📖','Reading & Use of English','Practice 1 · 2 · 3 with automatic marking and CEFR feedback.',QUIZ_URL+'reading-quiz.html?branch=practice')}
-      ${_skillCard('🎧','Listening','Practice with real audio and automatic marking.',QUIZ_URL+'listening-quiz.html?branch=practice')}
-      ${_skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',QUIZ_URL+'writing-quiz.html?branch=practice')}
+      ${_skillCard('📖','Reading & Use of English','Practice 1 · 2 · 3 with automatic marking and CEFR feedback.',_withBack(QUIZ_URL+'reading-quiz.html?branch=practice','practice'))}
+      ${_skillCard('🎧','Listening','Practice with real audio and automatic marking.',_withBack(QUIZ_URL+'listening-quiz.html?branch=practice','practice'))}
+      ${_skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',_withBack(QUIZ_URL+'writing-quiz.html?branch=practice','practice'))}
     </div>`;
 }
 
@@ -5733,7 +5733,7 @@ async function studentLibrary(){
       <div style="font-size:2.6rem;line-height:1">${m.icon}</div>
       <h2 style="margin:8px 0 2px;color:var(--blue-d)">${esc(m.title)}</h2>
       <div class="muted" style="font-size:.85rem;margin-bottom:8px">${esc(c[2].split('—')[0].trim())} · ${m.chapters} chapters · A2–C2</div>
-      ${mine?`<a class="btn sm" style="text-decoration:none" href="${c[3]}">Open the reader →</a>`
+      ${mine?`<a class="btn sm" style="text-decoration:none" href="${_withBack(c[3],'library')}">Open the reader →</a>`
             :'<span class="muted" style="font-size:.8rem">Not assigned to your class this year.</span>'}
     </div>`; }).join('');
   const panel = staff ? await _assignPanel() : '';
