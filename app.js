@@ -1184,10 +1184,12 @@ async function renderAdmin(tab='users'){
   // Los simulacros viven fuera del SPA (mocks-cambridge/): se sale a ellos,
   // igual que hace el panel del profesor.
   if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
-  /* Agrupado por lo que se va a HACER, no por lo que es cada cosa: primero
-     quien existe, luego lo que hay que corregir (el trabajo diario), lo que
-     solo se consulta, lo que se ensena, lo que el alumno usa y, al final, lo
-     que se abre y se cierra. Resumen queda fuera: es la portada.
+  /* Desde el 17-sep-2026 el menu ESPEJA las pistas del alumno (Home · My
+     classes · Cambridge · Practice tools · My progress): primero quien
+     existe, luego Clases, Cambridge y Herramientas de practica en el mismo
+     orden en que las ve el alumno, despues lo que hay que corregir y lo que
+     solo se consulta, y al final lo que se abre y se cierra. Resumen queda
+     fuera: es la portada.
      La secuencia (scope) esta tambien aqui y no solo en el menu del profesor:
      desde coordinacion no habia por donde entrar. */
   document.body.innerHTML = shell([
@@ -1195,6 +1197,61 @@ async function renderAdmin(tab='users'){
     {group:'People', icon:'👥', items:[
       {key:'users',label:'👥 Users'},
       {key:'teachers',label:'👨‍🏫 Teachers'},
+    ]},
+    /* Clases = dar clase: la materia, la secuencia, el material y las dos
+       herramientas del profesor. Antes esto se llamaba Ensenanza y tenia doce
+       pestanas: la materia, la planificacion, los tres cursos de primaria, un
+       permiso, los materiales, dos herramientas y la biblioteca. Era el cajon
+       de sastre del menu. */
+    {group:'Classes', icon:'🏫', items:[
+      {key:'classes',label:'🏫 Classes'},
+      // French vivia SOLO en el hub del alumno, y el admin nunca pasa por ese
+      // hub (route() lo manda a renderAdmin): la materia entera quedaba sin
+      // puerta de entrada, aunque sus candados si estuvieran en 🔐 Accesos.
+      {key:'french',label:'🇫🇷 French'},
+      {key:'scope',label:'📚 Scope & Sequence'},
+      {key:'materiales',label:'📄 Class materials'},
+      // Tenia handler pero no entrada en el menu del admin: desde
+      // administracion no habia forma de llegar a Little Readers.
+      {key:'littlereaders',label:'🧒 Little Readers'},
+      // Rimas y el curso de frances son material de clase de primaria, no
+      // preparacion de examen: van con las clases (17-sep, menu espejo).
+      {key:'rhymes',label:'🎶 Rhymes & chants'},
+      {key:'fr',label:'🇫🇷 Cap sur le français'},
+      {key:'pizarra',label:'📝 Whiteboard'},
+      {key:'corrector',label:'✍️ Material corrector'},
+      {key:'library',label:'📚 Library'},
+    ]},
+    /* Cambridge, en el mismo orden que la pista del alumno (17-sep-2026, menu
+       espejo pedido por Paolo): primero los cursos que preparan el examen
+       (Fun for Nordic 1-3 = Starters/Movers/Flyers), luego el hub, los
+       simulacros y las apps, y al final los candados, que dicen "Abrir" para
+       que no se confundan con la app. Las entregas de Fun for Nordic se
+       corrigen en Correccion. */
+    {group:'Cambridge', icon:'🎓', items:[
+      {key:'funstarters',label:'🐧 Starters course'},
+      {key:'funmovers',label:'🐺 Movers course'},
+      {key:'funflyers',label:'🦅 Flyers course'},
+      {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
+      {key:'yle',label:'🛡️ YLE panel'},
+      {key:'studyplan',label:'📋 Study plan'},
+      {key:'exams',label:'🎧 Mock exams and Practice'},
+      {key:'uoe',label:'🧩 Use of English'},
+      {key:'cambridgeinfo',label:'📘 Cambridge info'},
+      {key:'mocks',label:'🔓 Open Mocks'},
+      {key:'practice',label:'🔓 Open Practice Tests'},
+    ]},
+    {group:'Practice tools', icon:'🧰', items:[
+      {key:'games',label:'🎲 Games Lab'},
+      {key:'livequiz',label:'🎮 NIShoot Live'},
+      {key:'mun',label:'🌐 MUN Academy'},
+      {key:'phonics',label:'🔤 Phonics'},
+      {key:'phrasal',label:'🔗 Phrasal verbs'},
+      {key:'collocations',label:'🪢 Collocations'},
+      {key:'idioms',label:'💬 Idioms'},
+      {key:'wordform',label:'🧩 Word formation'},
+      {key:'dict',label:'📖 NIS Dictionary'},
+      {key:'coach',label:'🎙️ Pronunciation'},
     ]},
     /* Correccion = todo lo que espera una nota o hay que abrir para que se
        pueda entregar. Los controles de lectura y los examenes de unidad
@@ -1216,61 +1273,6 @@ async function renderAdmin(tab='users'){
       {key:'final',label:'🎓 Final result'},
       {key:'tiempo',label:'⏱️ Screen time'},
       {key:'honesty',label:'🛡️ Honesty'},
-    ]},
-    /* Clases = dar clase: la materia, la secuencia, el material y las dos
-       herramientas del profesor. Antes esto se llamaba Ensenanza y tenia doce
-       pestanas: la materia, la planificacion, los tres cursos de primaria, un
-       permiso, los materiales, dos herramientas y la biblioteca. Era el cajon
-       de sastre del menu. */
-    {group:'Classes', icon:'🏫', items:[
-      {key:'classes',label:'🏫 Classes'},
-      // French vivia SOLO en el hub del alumno, y el admin nunca pasa por ese
-      // hub (route() lo manda a renderAdmin): la materia entera quedaba sin
-      // puerta de entrada, aunque sus candados si estuvieran en 🔐 Accesos.
-      {key:'french',label:'🇫🇷 French'},
-      {key:'scope',label:'📚 Scope & Sequence'},
-      {key:'materiales',label:'📄 Class materials'},
-      // Tenia handler pero no entrada en el menu del admin: desde
-      // administracion no habia forma de llegar a Little Readers.
-      {key:'littlereaders',label:'🧒 Little Readers'},
-      {key:'pizarra',label:'📝 Whiteboard'},
-      {key:'corrector',label:'✍️ Material corrector'},
-      {key:'library',label:'📚 Library'},
-    ]},
-    /* Los cursos propios, en su grupo. Son las clases de G1–G5 y el curso de
-       frances: no son "Cambridge" aunque preparen los YLE, ni caben ya dentro
-       de Clases. */
-    {group:'Nordic courses', icon:'🧸', items:[
-      {key:'funstarters',label:'🐧 Starters'},
-      {key:'funmovers',label:'🐺 Movers'},
-      {key:'funflyers',label:'🦅 Flyers'},
-      {key:'rhymes',label:'🎶 Rhymes & chants'},
-      {key:'fr',label:'🇫🇷 Cap sur le français'},
-    ]},
-    /* Cambridge: las apps del examen y los dos candados que lo abren. Los
-       candados dicen "Abrir" para que no se confundan con la app. Fun for
-       Nordic salio de aqui: era su TERCERA aparicion en el mismo menu. */
-    {group:'Cambridge', icon:'🎓', items:[
-      {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
-      {key:'yle',label:'🛡️ YLE panel'},
-      {key:'studyplan',label:'📋 Study plan'},
-      {key:'exams',label:'🎧 Mock exams and Practice'},
-      {key:'uoe',label:'🧩 Use of English'},
-      {key:'cambridgeinfo',label:'📘 Cambridge info'},
-      {key:'mocks',label:'🔓 Open Mocks'},
-      {key:'practice',label:'🔓 Open Practice Tests'},
-    ]},
-    {group:'Activities', icon:'🎮', items:[
-      {key:'games',label:'🎲 Games Lab'},
-      {key:'livequiz',label:'🎮 NIShoot Live'},
-      {key:'mun',label:'🌐 MUN Academy'},
-      {key:'phonics',label:'🔤 Phonics'},
-      {key:'phrasal',label:'🔗 Phrasal verbs'},
-      {key:'collocations',label:'🪢 Collocations'},
-      {key:'idioms',label:'💬 Idioms'},
-      {key:'wordform',label:'🧩 Word formation'},
-      {key:'dict',label:'📖 NIS Dictionary'},
-      {key:'coach',label:'🎙️ Pronunciation'},
     ]},
     /* Permisos = lo que se abre y se cierra por grado. "Abrir examenes de
        unidad" estaba aqui repitiendo la MISMA clave que en Seguimiento, y una
@@ -3599,7 +3601,7 @@ async function renderTeacher(tab){
      igual. Un grupo que se queda sin pestanas (porque el profesor no tiene
      ese acceso) no se pinta. Alumnos va suelto arriba: es por donde entra
      casi siempre. */
-  const suelto=[], correccion=[], seguimiento=[], clases=[], cursos=[], cambridge=[], permisos=[];
+  const suelto=[], correccion=[], seguimiento=[], clases=[], cambridge=[], permisos=[];
   suelto.push({key:'overview',label:'🏠 Overview'});
   if(acc.can_students) suelto.push({key:'students',label:'👥 Students'});
   if(acc.can_results||acc.can_students) correccion.push({key:'levels',label:'🧭 Levels & roadmap'});
@@ -3621,16 +3623,17 @@ async function renderTeacher(tab){
   clases.push({key:'scope',label:'📚 Scope & Sequence'});
   if(acc.can_results) clases.push({key:'materiales',label:'📄 Class materials'});
   clases.push({key:'littlereaders',label:'🧒 Little Readers'});
+  clases.push({key:'rhymes',label:'🎶 Rhymes & chants'});
+  clases.push({key:'fr',label:'🇫🇷 Cap sur le français'});
   clases.push({key:'pizarra',label:'📝 Whiteboard'});
   clases.push({key:'corrector',label:'✍️ Material corrector'});
-  /* Los tres cursos de primaria y el de frances. Van sin candado, como Little
-     Readers: son material de consulta, no datos de alumnos. Sus entregas se
-     corrigen en Correccion > Fun for Nordic. */
-  cursos.push({key:'funstarters',label:'🐧 Starters'});
-  cursos.push({key:'funmovers',label:'🐺 Movers'});
-  cursos.push({key:'funflyers',label:'🦅 Flyers'});
-  cursos.push({key:'rhymes',label:'🎶 Rhymes & chants'});
-  cursos.push({key:'fr',label:'🇫🇷 Cap sur le français'});
+  /* Cambridge en el orden de la pista del alumno: primero los tres cursos
+     de primaria (van sin candado, como Little Readers: son material de
+     consulta, no datos de alumnos; sus entregas se corrigen en Correccion >
+     Fun for Nordic), luego el hub, los simulacros, las apps y los candados. */
+  cambridge.push({key:'funstarters',label:'🐧 Starters course'});
+  cambridge.push({key:'funmovers',label:'🐺 Movers course'});
+  cambridge.push({key:'funflyers',label:'🦅 Flyers course'});
   cambridge.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
   if(teacherAllowedGrades().length) cambridge.push({key:'yle',label:'🛡️ YLE panel'});
   cambridge.push({key:'exams',label:'🎧 Mock exams and Practice'});
@@ -3647,12 +3650,11 @@ async function renderTeacher(tab){
   if(suelto.length) nav.push(...suelto);
   else if(!acc.can_results) nav.push({key:'none',label:'— no access —'});
   const grupo = (g,ic,items)=>{ if(items.length) nav.push({group:g, icon:ic, items:items}); };
-  grupo('Marking','✅',correccion);
-  grupo('Tracking','📈',seguimiento);
+  // Espejo de las pistas del alumno (17-sep-2026): Clases · Cambridge ·
+  // Herramientas de practica, y despues el trabajo del profesor.
   grupo('Classes','🏫',clases);
-  grupo('Nordic courses','🧸',cursos);
   grupo('Cambridge','🎓',cambridge);
-  grupo('Activities','🎮',[
+  grupo('Practice tools','🧰',[
     {key:'games',label:'🎲 Games Lab'},
     {key:'livequiz',label:'🎮 NIShoot Live'},
     {key:'mun',label:'🌐 MUN Academy'},
@@ -3664,6 +3666,8 @@ async function renderTeacher(tab){
     {key:'dict',label:'📖 NIS Dictionary'},
     {key:'coach',label:'🎙️ Pronunciation'},
   ]);
+  grupo('Marking','✅',correccion);
+  grupo('Tracking','📈',seguimiento);
   grupo('Permissions','🔐',permisos);
   nav.push({key:'help',label:'❓ Help'});
   const claves = navKeys(nav);
