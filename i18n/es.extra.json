@@ -163,7 +163,35 @@
   "full practice test, with Speaking.": "test de práctica completo, con Speaking.",
   "practice test in exam mode, with the official timing.": "test de práctica en modo examen, con el tiempo oficial.",
   "dress rehearsal, same format as the real day.": "ensayo general, mismo formato que el día real.",
-  "reports for families and the guide for the exam day.": "informes para las familias y la guía del día del examen."
+  "reports for families and the guide for the exam day.": "informes para las familias y la guía del día del examen.",
+  "📈 Tracking": "📈 Seguimiento",
+  "🎶 Rhymes & chants": "🎶 Rimas y cantos",
+  "Open in full screen ↗": "Abrir a pantalla completa ↗",
+  "🖥️ Open in full screen ↗": "🖥️ Abrir a pantalla completa ↗",
+  "to mark": "por corregir",
+  "student(s)": "alumno(s)",
+  "marked · not sent": "corregido · sin enviar",
+  "Last time": "Última vez",
+  "Your teacher": "Tu profesor",
+  "Automatic part:": "Parte automática:",
+  "nothing waiting": "nada pendiente",
+  "nothing to mark": "nada por corregir",
+  "did something this week": "hicieron algo esta semana",
+  "latest week recorded": "última semana registrada",
+  "games & labs this week": "juegos y labs esta semana",
+  "mocks & practice this week": "simulacros y práctica esta semana",
+  "products, worksheets, exam writing, Fun": "productos, fichas, writing de examen, Fun",
+  "Handed in and not yet marked. Click a line to open it.": "Entregado y aún sin corregir. Pulsa una línea para abrirlo.",
+  "🏫 My grades": "🏫 Mis grados",
+  "🎓 Cambridge calendar": "🎓 Calendario Cambridge",
+  "✏️ To mark": "✏️ Por corregir",
+  "Active students": "Alumnos activos",
+  "Exam attempts": "Intentos de examen",
+  "done": "hecho",
+  "LAST WORK": "ÚLTIMO TRABAJO",
+  "EXAM": "EXAMEN",
+  "LEVEL": "NIVEL",
+  "AGE": "EDAD"
  },
  "patterns": [
   [
@@ -333,6 +361,86 @@
   [
    "^(\\d+) minutes? ago$",
    "hace $1 minutos"
+  ],
+  [
+   "^(\\d+) grade\\(s\\) with students$",
+   "$1 grado(s) con alumnos"
+  ],
+  [
+   "^this week · \\+(\\d+) activity saves$",
+   "esta semana · +$1 guardados de actividades"
+  ],
+  [
+   "^in (\\d+) days$",
+   "en $1 días"
+  ],
+  [
+   "^~(\\d+) weeks?$",
+   "~$1 semanas"
+  ],
+  [
+   "^(\\d+) marked and not yet sent in your grades$",
+   "$1 corregidos y aún sin enviar en tus grados"
+  ],
+  [
+   "^· (\\d+) without level in your grades$",
+   "· $1 sin nivel en tus grados"
+  ],
+  [
+   "^(\\d+) students · (\\d+) with level$",
+   "$1 alumnos · $2 con nivel"
+  ],
+  [
+   "^(\\d+) exams · (\\d+) open$",
+   "$1 exámenes · $2 abiertos"
+  ],
+  [
+   "^(G\\d+) · (\\d+) students? \\(A: (\\d+), B: (\\d+)\\)$",
+   "$1 · $2 alumnos (A: $3, B: $4)"
+  ],
+  [
+   "^(G\\d+) · (\\d+) students?$",
+   "$1 · $2 alumnos"
+  ],
+  [
+   "^(\\d+) to mark$",
+   "$1 por corregir"
+  ],
+  [
+   "^(\\d+) submissions? ·$",
+   "$1 entregas ·"
+  ],
+  [
+   "^Week (\\d+) · Session (\\d+) — (.+)$",
+   "Semana $1 · Sesión $2 — $3"
+  ],
+  [
+   "^Units (\\d+) and (\\d+)$",
+   "Unidades $1 y $2"
+  ],
+  [
+   "^(\\d+) units ready$",
+   "$1 unidades listas"
+  ],
+  [
+   "^(\\d+) of (\\d+) units$",
+   "$1 de $2 unidades"
+  ],
+  [
+   "^of (\\d+) in the filter$",
+   "de $1 en el filtro"
+  ],
+  [
+   "^\\+ (\\d+)h (\\d+)m in exercises$",
+   "+ $1h $2m en ejercicios"
+  ],
+  [
+   "^(\\d+) fields answered$",
+   "$1 campos respondidos"
+  ],
+  [
+   "^Wednesday (\\d+) September · last 7 days · your grades: (.+)$",
+   "Miércoles $1 de septiembre · últimos 7 días · tus grados: $2"
   ]
  ]
 }

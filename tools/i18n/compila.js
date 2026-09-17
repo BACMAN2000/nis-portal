@@ -18,7 +18,7 @@ for (const k of Object.keys(strings)) {
   if (!/[A-Za-z]/.test(k) || v == null || String(v) === k || TEMPLATE.test(k) || ESCAPE.test(k) || TEMPLATE.test(String(v)) || ESCAPE.test(String(v))) { delete strings[k]; fuera++; continue; }
   // palabras sueltas en minúscula («because», «due to»): casi nunca son rótulos
   // y sí vocabulario que el alumno debe ver en inglés
-  if (/^[a-z]/.test(k) && k.split(' ').length <= 2 && !(extra.strings && k in extra.strings)) { delete strings[k]; fuera++; }
+  if (/^[a-z]/.test(k) && k.split(' ').length <= 2 && !(extra.strings && k in extra.strings) && !(k in lotes)) { delete strings[k]; fuera++; }
 }
 const out = { strings, patterns: extra.patterns || [] };
 fs.writeFileSync(path.join(ROOT, 'i18n', 'es.json'), JSON.stringify(out));
