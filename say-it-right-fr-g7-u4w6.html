@@ -168,7 +168,7 @@ window.NISACT=(function(){
     const s=await student(); if(!s){ avisaGuardado(null); return {skipped:true}; }
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
-      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration,detail:r.detail||null});
       if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
@@ -408,7 +408,7 @@ function finish(){
                   '<br>Saving your result…';
     if(!wasDone && window.NISACT) NISACT.submit({
       activity:'say-it-right', title:'Say It Right — FR 7e Semaine 6', level:level,
-      score:hits, total:queue.length, hints:0, lives:a, duration:elapsed });
+      score:hits, total:queue.length, hints:0, lives:a, duration:elapsed, detail:{items:results.map(r=>({word:r.word,ok:r.ok})),meta:(function(){try{var f=(window.NIS_WORK&&NIS_WORK.ficha)?NIS_WORK.ficha():{};return{grade:f.grade||null,unit:(f.unit==null?null:f.unit),week:(f.week==null?null:f.week),slug:f.slug||null,lang:/-fr(-|\.html)/.test(location.pathname)?'fr':'en'};}catch(e){return null;}})()} });
     buildTabs();
   } else {
     b.className = 'banner lose show';

@@ -25,6 +25,16 @@ global.document = { querySelector: (sel) => (sel === '#main' ? mainStub : null) 
 global.esc = s => (s == null ? '' : String(s)).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 global.$ = (s, r) => (r || document).querySelector(s);
 
+/* ---------- NISUI y `state` de mentira, para el modo edición (WP-G) ---------- */
+global.state = { session: { user: { id: 'u-test-profesor' } } };
+const nisui = { preguntaLlamadas: 0, preguntaResuelve: true, avisas: [], avisos: [] };
+global.NISUI = {
+  pregunta: () => { nisui.preguntaLlamadas++; return Promise.resolve(nisui.preguntaResuelve); },
+  avisa: (msg) => { nisui.avisas.push(msg); return Promise.resolve(); },
+  aviso: (msg) => { nisui.avisos.push(msg); },
+};
+function resetNisui() { nisui.preguntaLlamadas = 0; nisui.preguntaResuelve = true; nisui.avisas.length = 0; nisui.avisos.length = 0; }
+
 /* ---------- datos sintéticos ---------- */
 const HOY = new Date();
 const AYER = new Date(HOY.getTime() - 864e5).toISOString();
@@ -107,6 +117,58 @@ function makeSb(tables, tablaQueFalla) {
       return builder;
     },
   };
+}
+
+/* ---------- sb de mentira para el modo edición: lee igual que makeSb, pero
+   además registra cada upsert()/delete() en `.escrituras` (tabla, filas,
+   filtros de eq/neq) y puede simular que las escrituras de UNA tabla fallan
+   (RLS), sin tocar las lecturas de esa misma tabla. ---------- */
+function makeSbEdicion(tables, escrituraFalla) {
+  const escrituras = [];
+  function lector(name) {
+    let rows = (tables[name] || []).slice();
+    const b = {
+      select: () => b,
+      eq: (c, v) => { rows = filtro(rows, c, v, 'eq'); return b; },
+      in: (c, v) => { rows = filtro(rows, c, v, 'in'); return b; },
+      order: () => b,
+      then: (res, rej) => Promise.resolve({ data: rows, error: null }).then(res, rej),
+    };
+    return b;
+  }
+  function escritor(name, tipo, payload, opts) {
+    const entrada = { tabla: name, tipo, payload, opts, filtros: {}, filtrosNeq: {} };
+    escrituras.push(entrada);
+    const b = {
+      eq: (c, v) => { entrada.filtros[c] = v; return b; },
+      neq: (c, v) => { entrada.filtrosNeq[c] = v; return b; },
+      then: (res, rej) => {
+        const error = name === escrituraFalla ? { message: 'permission denied (RLS)' } : null;
+        return Promise.resolve({ data: error ? null : payload, error }).then(res, rej);
+      },
+    };
+    return b;
+  }
+  return {
+    escrituras,
+    from(name) {
+      return {
+        select: (...a) => lector(name).select(...a),
+        upsert: (payload, opts) => escritor(name, 'upsert', payload, opts),
+        delete: () => escritor(name, 'delete', null),
+      };
+    },
+  };
+}
+/* Botón/fila de mentira para _apFunGuardar: solo necesita closest('tr') y,
+   en la fila, querySelector de los tres campos que lee la función. */
+function trFunDeMentira(nivel, desde, hasta) {
+  const campos = {
+    '.ap-fun-nivel': { value: nivel },
+    '.ap-fun-desde': { value: String(desde) },
+    '.ap-fun-hasta': { value: String(hasta) },
+  };
+  return { querySelector: (sel) => campos[sel] };
 }
 
 /* datos vivos que en el portal cargan otros scripts (activities-data.js / unit-plans.js) */
@@ -195,6 +257,74 @@ function noContiene(html, txt, msg) { afirma(html.indexOf(txt) < 0, msg + '  [no
   };
   const htmlPuro = window.accessPanel._render(true, gradosFalsos, datosFalsos, { grade: 9, section: '' });
   contiene(htmlPuro, '🏫 Classes', 'render() puro también trae las secciones esperadas');
+
+  console.log('\n4) Modo edición (WP-G): abrir/cerrar un nodo, fun_access, mocks solo admin, error de servidor');
+  let sbE = makeSbEdicion(TABLES, null);
+  global.sb = sbE;
+  resetNisui();
+  await window.accessPanel({ admin: true, grades: [9] });
+  window._apEditar();
+  html = mainStub.innerHTML;
+  contiene(html, '✅ Done', 'el botón «Edit» pasa a «Done» en modo edición');
+  contiene(html, 'Editing G9', 'la cabecera dice qué grado se está editando');
+
+  // (1) abrir un nodo (Activities de 9.º está cerrado a mano en los datos) no pide confirmación
+  await window._apToggle(9, 'node_access', 'english.classes.g9.activities', true, { checked: false, disabled: false });
+  afirma(nisui.preguntaLlamadas === 0, 'abrir un nodo no pide confirmación');
+  let ultima = sbE.escrituras[sbE.escrituras.length - 1];
+  afirma(!!ultima && ultima.tabla === 'node_access' && ultima.tipo === 'upsert', 'abrir un nodo escribe (upsert) en node_access');
+  afirma(ultima.payload.grade_id === 9 && ultima.payload.node_key === 'english.classes.g9.activities' && ultima.payload.unlocked === true,
+    'el upsert manda {grade_id, node_key, unlocked:true}');
+  afirma(ultima.opts && ultima.opts.onConflict === 'grade_id,node_key', 'el upsert usa onConflict:"grade_id,node_key"');
+
+  // (2) cerrar pide confirmación; si se cancela, no escribe
+  const escriturasAntes = sbE.escrituras.length;
+  nisui.preguntaLlamadas = 0; nisui.preguntaResuelve = false; // el usuario pulsa Cancel
+  await window._apToggle(9, 'node_access', 'english.classes.g9.grammar', false, { checked: true, disabled: false });
+  afirma(nisui.preguntaLlamadas === 1, 'cerrar un nodo pide confirmación');
+  afirma(sbE.escrituras.length === escriturasAntes, 'cancelar la confirmación no escribe nada');
+  nisui.preguntaResuelve = true; // ahora confirma
+  await window._apToggle(9, 'node_access', 'english.classes.g9.grammar', false, { checked: true, disabled: false });
+  ultima = sbE.escrituras[sbE.escrituras.length - 1];
+  afirma(ultima.tabla === 'node_access' && ultima.payload.unlocked === false, 'confirmar el cierre sí escribe unlocked:false');
+
+  // (3) fun_access: borra los otros niveles del idioma ANTES del upsert (9.º no tiene fila en 'en': rango infinito -> confirma)
+  const antesFun = sbE.escrituras.length;
+  nisui.preguntaResuelve = true;
+  const btnFun = { closest: () => trFunDeMentira('flyers', 1, 20) };
+  await window._apFunGuardar(9, 'en', btnFun);
+  const escritasFun = sbE.escrituras.slice(antesFun);
+  afirma(escritasFun.length === 2 && escritasFun[0].tipo === 'delete' && escritasFun[1].tipo === 'upsert',
+    'guardar Fun for Nordic borra los otros niveles ANTES de escribir el nuevo');
+  afirma(escritasFun[0].tabla === 'fun_access' && escritasFun[0].filtros.grade_id === 9 && escritasFun[0].filtros.lang === 'en' && escritasFun[0].filtrosNeq.level === 'flyers',
+    'el delete es por grade_id+lang y excluye el nivel que se está guardando');
+  afirma(escritasFun[1].tabla === 'fun_access' && escritasFun[1].payload.grade_id === 9 && escritasFun[1].payload.lang === 'en'
+    && escritasFun[1].payload.level === 'flyers' && escritasFun[1].payload.desde === 1 && escritasFun[1].payload.hasta === 20 && escritasFun[1].payload.unlocked === true,
+    'el upsert trae la fila completa {grade_id, lang, level, desde, hasta, unlocked}');
+
+  // (4) el profesor no ve el interruptor de Mocks (admin-only); sí ve el de Practice tests
+  global.sb = makeSbEdicion(TABLES, null);
+  await window.accessPanel({ admin: false, grades: [9] });
+  window._apEditar();
+  html = mainStub.innerHTML;
+  noContiene(html, "'mock_access'", 'profesor en modo edición: NO ve el interruptor de Mocks');
+  contiene(html, "'practice_access'", 'profesor en modo edición: SÍ ve el interruptor de Practice tests');
+  global.sb = makeSbEdicion(TABLES, null);
+  await window.accessPanel({ admin: true, grades: [9] });
+  window._apEditar();
+  html = mainStub.innerHTML;
+  contiene(html, "'mock_access'", 'admin en modo edición: SÍ ve el interruptor de Mocks');
+
+  // (5) un error del servidor sale por NISUI.avisa y no rompe el panel
+  const sbFalla = makeSbEdicion(TABLES, 'node_access'); // las ESCRITURAS a node_access fallan (la lectura inicial sigue bien)
+  global.sb = sbFalla;
+  await window.accessPanel({ admin: true, grades: [9] });
+  window._apEditar();
+  resetNisui();
+  await window._apToggle(9, 'node_access', 'english.classes.g9.activities', true, { checked: false, disabled: false });
+  afirma(nisui.avisas.length === 1 && /Could not save/.test(nisui.avisas[0]), 'el error del servidor sale por NISUI.avisa');
+  html = mainStub.innerHTML;
+  contiene(html, '🏫 Classes', 'el panel se sigue pintando aunque la escritura falle');
 
   console.log('\n' + ok + ' aciertos, ' + mal + ' fallos.');
   process.exit(mal ? 1 : 0);

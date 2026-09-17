@@ -285,7 +285,7 @@ window.NISACT = (function () {
     const s=await student(); if(!s){ avisaGuardado(null); return {skipped:true}; }
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,
-      level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration});
+      level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration,detail:r.detail||null});
       if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'sin conexion'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
@@ -395,7 +395,7 @@ function jump(i){ slide=i; seen.add(i); renderLearn(); }
 /* ===================================================================
  *  JUEGOS
  * =================================================================== */
-let clock=null, tick=null;
+let clock=null, tick=null, qlog=[], slog=[], tlog=[];
 function stopClocks(){ clearInterval(clock); clearInterval(tick); clock=null; tick=null; }
 function startGame(g){
   if(g.type==='quiz')  return startQuiz(g);
@@ -404,16 +404,18 @@ function startGame(g){
   if(g.type==='type')  return startType(g);
   $('main').innerHTML='<div class="card">Unknown game type.</div>';
 }
-function save(g,score,total,dur,points,lives){
+function save(g,score,total,dur,points,lives,items){
   const pct = total? Math.round(score/total*100) : 0;
   setBest(g,pct); drawTabs();
   if(window.NISACT) NISACT.submit({activity:'grammar-lab-'+T.id, title:T.title+' — '+g.label,
-    level:g.key, score:score, total:total, lives:lives||3, duration:Math.max(1,dur), points:points||0});
+    level:g.key, score:score, total:total, lives:lives||3, duration:Math.max(1,dur), points:points||0,
+    detail:{items:Array.isArray(items)?items.slice(0,200):undefined,
+      meta:{grade:GRADE||null, unit:(T.unit!=null?T.unit:null), week:null, slug:'grammar-lab-'+T.id}}});
   return pct;
 }
 function stars(pct){ return pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':pct>=50?'⭐':'✨'; }
-function results(g,score,total,dur,points,extra){
-  const pct = save(g,score,total,dur,points);
+function results(g,score,total,dur,points,extra,items){
+  const pct = save(g,score,total,dur,points,null,items);
   const idx = T.games.indexOf(g), nxt = T.games[idx+1];
   $('main').innerHTML = `<div class="card res">
     <div class="stars">${stars(pct)}</div>
@@ -440,7 +442,7 @@ function startQuiz(g){
     const ord=shuffle(it.o.map((_,i)=>i));
     return Object.assign({},it,{o:ord.map(i=>it.o[i]),a:ord.indexOf(it.a)});
   });
-  qi=0; qsc=0; qpt=0; qstk=0; qbest=0; qlives=3; qel=0;
+  qi=0; qsc=0; qpt=0; qstk=0; qbest=0; qlives=3; qel=0; qlog=[];
   $('main').innerHTML = `<div class="card">${g.intro?`<p class="intro">${g.intro}</p>`:''}<div id="qa"></div></div>`+moreCards();
   drawQ(g);
 }
@@ -477,10 +479,11 @@ function ansQ(i){
     if(i>=0) opts[i].classList.add('wrong');
     qstk=0; qlives--;
   }
+  qlog.push({n:qi+1, given:i>=0?(q.o[i]||''):'—', correct:q.o[q.a]||'', ok:i===q.a});
   $('qw').classList.add('show');
   document.querySelector('.hud').outerHTML = qhud();
   const last = qi>=qs.length-1;
-  setTimeout(()=>{ if(qlives<=0||last) results(g,qsc,qs.length,qel,qpt,qlives<=0?'<span>💔 out of lives</span>':'');
+  setTimeout(()=>{ if(qlives<=0||last) results(g,qsc,qs.length,qel,qpt,qlives<=0?'<span>💔 out of lives</span>':'',qlog);
                    else { qi++; drawQ(g); } }, i===q.a?1150:1750);
 }
 
@@ -488,7 +491,7 @@ function ansQ(i){
 let ss=[],si=0,ssc=0,sel=0,slock=false;
 function startSort(g){
   ss = g.n ? shuffle(g.items).slice(0,g.n) : shuffle(g.items);
-  si=0; ssc=0; sel=0; slock=false;
+  si=0; ssc=0; sel=0; slock=false; slog=[];
   const n = Math.min(4,g.buckets.length);
   $('main').innerHTML = `<div class="card">
     ${g.intro?`<p class="intro">${g.intro}</p>`:''}
@@ -515,12 +518,14 @@ function pickS(id){
   const ok = id===c.a;
   if(ok){ ssc++; $('sc').textContent=ssc; }
   const label=(g.buckets.filter(b=>b.id===c.a)[0]||{}).t||'';
+  const givenLabel=(g.buckets.filter(b=>b.id===id)[0]||{}).t||id;
+  slog.push({n:si+1, given:givenLabel, correct:label, ok:ok});
   const w=$('sw2');
   w.innerHTML=(ok?'✅ Correct! ':`❌ It goes in <b>${esc(label)}</b>. `)+(c.why||'');
   w.classList.add('show');
   setTimeout(()=>{
     bk.classList.remove('flash');
-    if(si>=ss.length-1){ clearInterval(clock); results(g,ssc,ss.length,sel); }
+    if(si>=ss.length-1){ clearInterval(clock); results(g,ssc,ss.length,sel,0,'',slog); }
     else { si++; drawS(); }
   }, ok?750:1800);
 }
@@ -550,7 +555,8 @@ function mPickR(j){
   if(mL===j){
     lEl.classList.add('matched'); el.classList.add('matched'); lEl.classList.remove('sel'); mL=null; mDone++;
     $('ms').textContent=mDone+'/'+mPairs.length;
-    if(mDone===mPairs.length){ clearInterval(clock); results(T.games[tab-1],mPairs.length,mPairs.length,mel); }
+    if(mDone===mPairs.length){ clearInterval(clock);
+      results(T.games[tab-1],mPairs.length,mPairs.length,mel,0,'',mPairs.map((p,i)=>({n:i+1,given:p[1],correct:p[1],ok:true}))); }
   } else { el.classList.add('bad'); lEl.classList.remove('sel'); setTimeout(()=>el.classList.remove('bad'),300); mL=null; }
 }
 
@@ -559,7 +565,7 @@ let ts=[],ti=0,tsc=0,tel=0,thints=0,tlock=false;
 const norm = s => String(s).toLowerCase().replace(/[’‘`´]/g,"'").replace(/[“”]/g,'"')
   .replace(/\s+/g,' ').replace(/[.,;:!?]+$/,'').trim();
 function startType(g){
-  ts=g.items.slice(); ti=0; tsc=0; tel=0; thints=0;
+  ts=g.items.slice(); ti=0; tsc=0; tel=0; thints=0; tlog=[];
   $('main').innerHTML=`<div class="card">
     ${g.intro?`<p class="intro">${g.intro}</p>`:''}
     <div class="hud"><span class="h">✍️ <span id="tp">1/${ts.length}</span></span>
@@ -592,22 +598,24 @@ function endT(ok,it){
   w.classList.add('show');
   const g=T.games[tab-1];
   setTimeout(()=>{
-    if(ti>=ts.length-1){ clearInterval(clock); results(g,tsc,ts.length,tel,0,thints?`<span>💡 ${thints} shown</span>`:''); }
+    if(ti>=ts.length-1){ clearInterval(clock); results(g,tsc,ts.length,tel,0,thints?`<span>💡 ${thints} shown</span>`:'',tlog); }
     else { ti++; drawT(); }
   }, ok?900:2300);
 }
 function checkT(){
   if(tlock) return; const it=ts[ti], el=$('tin'); if(!el) return;
   const v=norm(el.value); if(!v) { el.focus(); return; }
-  tlock=true; el.disabled=true;
+  tlock=true; const given=el.value; el.disabled=true;
   const ok = it.answers.some(a=>norm(a)===v);
   el.classList.add(ok?'right':'wrong');
   if(ok){ tsc++; $('tc').textContent=tsc; }
+  tlog.push({n:ti+1, given:String(given||'').slice(0,300), correct:it.answers[0], ok:ok});
   endT(ok,it);
 }
 function hintT(){
   if(tlock) return; tlock=true; thints++;
   const it=ts[ti], el=$('tin'); if(el){ el.value=it.answers[0]; el.disabled=true; el.classList.add('wrong'); }
+  tlog.push({n:ti+1, given:'', correct:it.answers[0], ok:false});
   endT(false,it);
 }
 

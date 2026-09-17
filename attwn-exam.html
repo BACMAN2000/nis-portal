@@ -732,12 +732,14 @@ window.submitExam=async(force)=>{
   if(!force && n<EX.qs.length && !await _preguntaUI('You have answered '+n+' of '+EX.qs.length+' questions. The rest will be marked wrong.',
       {titulo:'Submit unfinished?', si:'Yes, submit', no:'Go back and answer', tono:'ojo'})) return;
   EX.done=true; clearInterval(EX.timer); clearInterval(EX.gracia); EX.gracia=null; stopQAudio();
-  let score=0;
+  let score=0; const items=[];
   const review=EX.qs.map((q,i)=>{
     const a=EX.ans[i]; let good=false, your='—';
     if(q.type==='mc'){ good=a!=null&&q.opts[a].ok; your=a!=null?q.opts[a].t:'—'; }
     else{ good=norm(a)===norm(q.answer); your=(a&&String(a).trim())||'—'; }
     if(good) score++;
+    const buena=q.type==='mc'?((q.opts.find(o=>o.ok)||{}).t||''):q.answer;
+    items.push({n:i+1, given:String(your||'').slice(0,300), correct:String(buena||'').slice(0,300), ok:good});
     let body='';
     if(q.type==='mc'){
       body=q.opts.map((o,j)=>`<button class="opt ${o.ok?'correct':(j===a?'wrong':'')}" disabled>${esc(o.t)}</button>`).join('');
@@ -762,7 +764,8 @@ window.submitExam=async(force)=>{
     if(sb&&me&&me.uid){
       await sb.from('activity_attempts').insert({student_id:me.uid,activity:EX.rid+'-exam-'+EX.lvl+'-ch'+EX.ch,
         title:bookOf(EX.rid).title+' — EXAM '+EX.lvl.toUpperCase()+' · Ch.'+EX.ch+' '+EX.title,level:EX.lvl.toUpperCase(),
-        score,total:EX.qs.length,hints_used:0,lives_left:3,duration_sec:dur});
+        score,total:EX.qs.length,hints_used:0,lives_left:3,duration_sec:dur,
+        detail:{items:items.slice(0,200), meta:{grade:null, unit:null, week:null, slug:EX.rid+'-exam-'+EX.lvl+'-ch'+EX.ch}}});
       const mm=Math.floor(dur/60), ss=dur%60;
       fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Reader Exam',name:me.full_name||me.first_name||'',email:me.email||'',

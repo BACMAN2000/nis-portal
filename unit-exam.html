@@ -917,12 +917,13 @@ window.submit=async(forzado)=>{
       {titulo:'Submit unfinished?', si:'Yes, submit', no:'Go back and answer', tono:'ojo'})) return;
   EX.done=true; clearInterval(EX.timer); clearInterval(EX.gracia); EX.gracia=null;
   paraAudio();
-  let score=0; const filas=[]; const porParte=[];
+  let score=0; const filas=[]; const porParte=[]; const items=[];
   EX.partes.forEach(p=>{
     if(p.type==='writing') return;
     let bienes=0;
     p.items.forEach(it=>{
       const c=corrige(p,it); if(c.bien){ score++; bienes++; }
+      items.push({part:p.n, n:it._n, given:String(c.tuya||'').slice(0,300), correct:String(c.buena||'').slice(0,300), ok:c.bien});
       filas.push(`<div class="q">
         <div class="tag">${esc(p.title)} · ${it._n}/${EX.total}</div>
         <h3>${it.q||esc(it.lead||it.sent||'')}</h3>
@@ -937,7 +938,9 @@ window.submit=async(forzado)=>{
   /* Cada papel suma las preguntas de sus partes. */
   const papers={};
   porParte.forEach(x=>{ const o=papers[PAPER(x[4])]||(papers[PAPER(x[4])]={ok:0,of:0}); o.ok+=x[2]; o.of+=x[3]; });
-  const detail={parts:porParte.map(x=>({n:x[0],type:x[4],title:x[1],ok:x[2],of:x[3]})), papers};
+  const detail={parts:porParte.map(x=>({n:x[0],type:x[4],title:x[1],ok:x[2],of:x[3]})), papers,
+    items:items.slice(0,200),
+    meta:{grade:GRADE||null, unit:UNITS||null, week:null, slug:'unitexam-'+GRADE+'-u'+UNITS+'-'+EX.kind+'-'+EX.lvl}};
   clearInterval(EX.poll);
   const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
   let wrEstado='';

@@ -20,15 +20,22 @@
  *  - El resto de tablas (practice_access, mock_access, fun_access, yle_access,
  *    reader_exam_access) se resuelven con la misma regla exacta que usan sus
  *    paneles en app.js/yle-panel.js (ver comentario de cada función).
- *  - No se escribe nada: ni upsert ni delete en ninguna tabla.
+ *  - Modo edición (WP-G, 17-sep-2026): el botón «✏️ Edit» convierte cada fila
+ *    de estado en un control que SÍ escribe (node_access, practice_access,
+ *    mock_access, fun_access, yle_access — las mismas reglas que usan los
+ *    paneles de siempre, ver comentario de cada _ap* más abajo). Cerrar algo
+ *    pide confirmación con NISUI.pregunta; abrir no. Tras escribir se vuelve
+ *    a consultar la tabla (nunca se adivina el estado) y se repinta. reader_
+ *    exam_access y student_access siguen sin editarse aquí.
  *
  * API: window.accessPanel({admin:boolean, grades:[id,...]}).
  *   `grades` ya viene filtrada por rol (todas para admin, las suyas para el
  *   profesor) — este panel no vuelve a decidir quién ve qué grado.
  * Usa las globales de app.js: sb, esc, $ (las mismas tres que overview-panel.js
- * declara como dependencia). Todo lo demás que hace falta para resolver un
- * estado se recalcula aquí mismo, para poder probar este archivo sin cargar
- * las 9000 líneas de app.js.
+ * declara como dependencia), y desde el modo edición también `state` (para
+ * updated_by) y `NISUI` (para pregunta/avisa/aviso). Todo lo demás que hace
+ * falta para resolver un estado se recalcula aquí mismo, para poder probar
+ * este archivo sin cargar las 9000 líneas de app.js.
  */
 (function () {
   'use strict';
@@ -208,6 +215,107 @@
   /* ===================== estado del panel ===================== */
   let DATA = null;      // lo que se cargó de Supabase (crudo + mapas)
   let V = { grade: null, section: '' };
+  let EDIT = false;      // modo edición (botón «✏️ Edit» / «✅ Done»)
+
+  /* Vuelve a consultar Supabase (los mismos grados que ya se estaban viendo)
+     y repinta. Se llama tras CUALQUIER escritura, haya ido bien o mal: nunca
+     se adivina el estado a partir de lo que se mandó, siempre se relee. */
+  async function recargarYPinta() {
+    DATA = await cargar(V.grades.map(g => g.id));
+    pintar();
+  }
+
+  /* Control ✅/🔒 de una fila respaldada por node_access (key obligatoria) o
+     por practice_access/mock_access (sin key: candado único por grado). */
+  function toggleHTML(gradeId, tabla, key, on) {
+    return `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer">` +
+      `<input type="checkbox" ${on ? 'checked' : ''} onchange="window._apToggle(${gradeId},'${tabla}','${key || ''}',this.checked,this)">` +
+      `<span>${on ? '✅' : '🔒'}</span></label>`;
+  }
+  window._apEditar = () => { EDIT = !EDIT; pintar(); };
+  window._apToggle = async (gradeId, tabla, key, to, el) => {
+    if (!to) {
+      const ok = await NISUI.pregunta('Closing it leaves students in this grade without it.', { titulo: 'Close this?', si: 'Apply', no: 'Cancel', tono: 'ojo' });
+      if (!ok) { el.checked = true; return; }
+    }
+    el.disabled = true;
+    const updated_at = new Date().toISOString();
+    const updated_by = (state.session && state.session.user && state.session.user.id) || null;
+    let error;
+    if (tabla === 'node_access') {
+      ({ error } = await sb.from('node_access').upsert({ grade_id: gradeId, node_key: key, unlocked: to, updated_at, updated_by }, { onConflict: 'grade_id,node_key' }));
+    } else if (tabla === 'practice_access') {
+      ({ error } = await sb.from('practice_access').upsert({ grade_id: gradeId, unlocked: to, updated_at, updated_by }, { onConflict: 'grade_id' }));
+    } else if (tabla === 'mock_access') {
+      ({ error } = await sb.from('mock_access').upsert({ grade_id: gradeId, unlocked: to, updated_at, updated_by }, { onConflict: 'grade_id' }));
+    }
+    el.disabled = false;
+    if (error) await NISUI.avisa('Could not save: ' + error.message, { titulo: 'Error', tono: 'mal' });
+    else NISUI.aviso('Saved ✓', 'bien', 1800);
+    await recargarYPinta();
+  };
+
+  /* Fun for Nordic: un grado tiene UN nivel activo por idioma — guardar borra
+     los otros niveles de ese grado+idioma antes del upsert (igual que
+     _funAccessGuardar en app.js). «Remove rule» borra la fila entera: el
+     grado vuelve a depender del default del idioma (todo abierto si el
+     idioma no tiene ninguna fila, nada si tiene filas de otros grados). */
+  window._apFunGuardar = async (gradeId, lang, btn) => {
+    const tr = btn.closest('tr');
+    const nivel = tr.querySelector('.ap-fun-nivel').value;
+    const desde = Number(tr.querySelector('.ap-fun-desde').value);
+    const hasta = Number(tr.querySelector('.ap-fun-hasta').value);
+    if (!nivel) { await NISUI.avisa('Choose a level, or use "Remove rule" to leave the grade without one.', { titulo: 'Missing level', tono: 'ojo' }); return; }
+    if (!(desde >= 1) || !(hasta >= desde)) { await NISUI.avisa('The range does not add up: "to" must be greater than or equal to "from".', { titulo: 'Invalid range', tono: 'ojo' }); return; }
+    const filaActual = (DATA.fun || []).find(r => r.grade_id === gradeId && r.lang === lang);
+    const prevSpan = filaActual ? (filaActual.hasta - filaActual.desde) : Infinity; // sin fila = todo el idioma abierto
+    if ((hasta - desde) < prevSpan) {
+      const ok = await NISUI.pregunta('This narrows what the grade can see: units outside the new range become unavailable.', { titulo: 'Apply the shorter range?', si: 'Apply', no: 'Cancel', tono: 'ojo' });
+      if (!ok) return;
+    }
+    btn.disabled = true;
+    await sb.from('fun_access').delete().eq('grade_id', gradeId).eq('lang', lang).neq('level', nivel);
+    const { error } = await sb.from('fun_access').upsert({
+      grade_id: gradeId, lang, level: nivel, desde, hasta, unlocked: true,
+      updated_at: new Date().toISOString(), updated_by: (state.session && state.session.user && state.session.user.id) || null,
+    }, { onConflict: 'grade_id,lang,level' });
+    btn.disabled = false;
+    if (error) await NISUI.avisa('Could not save: ' + error.message, { titulo: 'Error', tono: 'mal' });
+    else NISUI.aviso('Saved ✓', 'bien', 1800);
+    await recargarYPinta();
+  };
+  window._apFunQuitar = async (gradeId, lang, btn) => {
+    const ok = await NISUI.pregunta('With no row, that grade sees nothing of this language.', { titulo: 'Remove access?', si: 'Remove', no: 'Cancel', tono: 'mal', peligro: true });
+    if (!ok) return;
+    btn.disabled = true;
+    const { error } = await sb.from('fun_access').delete().eq('grade_id', gradeId).eq('lang', lang);
+    btn.disabled = false;
+    if (error) await NISUI.avisa('Could not remove: ' + error.message, { titulo: 'Error', tono: 'mal' });
+    else NISUI.aviso('Saved ✓', 'bien', 1800);
+    await recargarYPinta();
+  };
+
+  /* YLE: un solo número resume unlocked+max_test (0 = cerrado, N = hasta el
+     test N, 99 = todos) — igual que interpreta yleEstado() más arriba. */
+  window._apYleGuardar = async (gradeId, level, el) => {
+    const val = Number(el.value);
+    if (!(val >= 0)) { return; }
+    const filaActual = (DATA.yle || []).find(r => r.grade_id === gradeId && r.level === level);
+    const prevMax = filaActual ? (filaActual.unlocked ? (filaActual.max_test == null ? 99 : filaActual.max_test) : 0) : 99; // sin fila = abierto con todos los tests
+    if (val === 0 || val < prevMax) {
+      const ok = await NISUI.pregunta('This leaves students without part of, or all of, this level.', { titulo: 'Apply?', si: 'Apply', no: 'Cancel', tono: 'ojo' });
+      if (!ok) { el.value = prevMax; return; }
+    }
+    el.disabled = true;
+    const { error } = await sb.from('yle_access').upsert({
+      grade_id: gradeId, level, unlocked: val > 0, max_test: val,
+      updated_at: new Date().toISOString(), updated_by: (state.session && state.session.user && state.session.user.id) || null,
+    }, { onConflict: 'grade_id,level' });
+    el.disabled = false;
+    if (error) await NISUI.avisa('Could not save: ' + error.message, { titulo: 'Error', tono: 'mal' });
+    else NISUI.aviso('Saved ✓', 'bien', 1800);
+    await recargarYPinta();
+  };
 
   async function cargar(gradeIds) {
     const [na, pa, ma, fun, yle, ra, rea, profs, sa, sp] = await Promise.all([
@@ -264,7 +372,7 @@
       const key = 'english.classes.' + gradeKey + '.units.u' + u.n;
       const piloto = UNIT_PILOT.has(key);
       const on = resuelveNodo(D.naMap, gradeId, key, () => defaultOpenAcademicUnit(gradeKey, u.n));
-      const icono = piloto && !on ? '🧪' : (on ? '✅' : '🔒');
+      const icono = EDIT ? toggleHTML(gradeId, 'node_access', key, on) : (piloto && !on ? '🧪' : (on ? '✅' : '🔒'));
       const nota = piloto ? ' <span class="muted">(2027 pilot)</span>' : (u.pilot ? ' <span class="muted">(pilot)</span>' : '');
       return fila('Unit ' + (u.label || u.n) + ' · ' + u.title, icono, on ? 'open' : 'locked', nota);
     }).join('');
@@ -287,15 +395,15 @@
       if (!uOn) bloqueadas.push(u.label);
       else if (semCerradas.length) bloqueadas.push(u.label + ' (' + semCerradas.join(', ') + ' locked)');
     });
-    const filaActividades = esEarly ? '' : fila('Activities', actOn ? '✅' : '🔒',
+    const filaActividades = esEarly ? '' : fila('Activities', EDIT ? toggleHTML(gradeId, 'node_access', actKey, actOn) : (actOn ? '✅' : '🔒'),
       actOn ? 'open' : 'locked', unidadesAct.length
         ? ` <span class="muted">(${semanasAbiertas}/${semanasTotal} weeks unlocked${bloqueadas.length ? ' · ' + bloqueadas.join('; ') : ''})</span>`
         : '');
 
     // Grammar (solo secundaria: en primaria y francés vive dentro de las actividades)
     const gramKey = 'english.classes.' + gradeKey + '.grammar';
-    const filaGramatica = esSecundaria ? fila('Grammar', resuelveNodo(D.naMap, gradeId, gramKey, () => defaultOpenGeneral(gramKey)) ? '✅' : '🔒',
-      resuelveNodo(D.naMap, gradeId, gramKey, () => defaultOpenGeneral(gramKey)) ? 'open' : 'locked') : '';
+    const gramOn = resuelveNodo(D.naMap, gradeId, gramKey, () => defaultOpenGeneral(gramKey));
+    const filaGramatica = esSecundaria ? fila('Grammar', EDIT ? toggleHTML(gradeId, 'node_access', gramKey, gramOn) : (gramOn ? '✅' : '🔒'), gramOn ? 'open' : 'locked') : '';
 
     // Readers: nodo + libro asignado este año + ventana de examen si la hay
     let filaReaders = '';
@@ -334,7 +442,7 @@
           if (abiertas.length) ventanaTxt = ' · 🕒 exam window OPEN now (ch. ' + abiertas.join(', ') + ')';
           else if (programadas.length) ventanaTxt = ' · 🕒 scheduled (ch. ' + programadas.map(p => p.ch).join(', ') + ')';
         }
-        filaReaders = fila('Readers', rdrOn ? '✅' : '🔒', (rdrOn ? 'open' : 'locked') + ' · ' + libroTxt, ventanaTxt);
+        filaReaders = fila('Readers', EDIT ? toggleHTML(gradeId, 'node_access', rdrKey, rdrOn) : (rdrOn ? '✅' : '🔒'), (rdrOn ? 'open' : 'locked') + ' · ' + libroTxt, ventanaTxt);
       }
     }
 
@@ -353,6 +461,22 @@
     // Fun for Nordic (por idioma)
     let filasFun = '';
     if (D.fun === null) { filasFun = filaNoLeible('Fun for Nordic'); }
+    else if (EDIT) {
+      ['en', 'fr'].forEach(lang => {
+        const etiqLang = lang === 'en' ? '🇬🇧 English' : '🇫🇷 Français';
+        const filaActual = D.fun.find(r => r.grade_id === gradeId && r.lang === lang);
+        const opciones = ['starters', 'movers', 'flyers'].map(lv =>
+          `<option value="${lv}" ${filaActual && filaActual.level === lv ? 'selected' : ''}>${esc((FUN_NOMBRE[lang] || {})[lv] || lv)}</option>`).join('');
+        filasFun += `<tr><td colspan="3"><b>Fun for Nordic · ${esc(etiqLang)}</b>
+          <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <select class="ap-fun-nivel">${filaActual ? '' : '<option value="">— choose a level —</option>'}${opciones}</select>
+            units <input class="ap-fun-desde" type="number" min="1" value="${filaActual ? filaActual.desde : 1}" style="width:64px">
+            – <input class="ap-fun-hasta" type="number" min="1" value="${filaActual ? filaActual.hasta : 10}" style="width:64px">
+            <button class="btn sm" onclick="window._apFunGuardar(${gradeId},'${lang}',this)">Apply</button>
+            <button class="btn sm ghost" onclick="window._apFunQuitar(${gradeId},'${lang}',this)">Remove rule</button>
+          </div></td></tr>`;
+      });
+    }
     else {
       ['en', 'fr'].forEach(lang => {
         const est = funEstadoDeGrado(D.fun, gradeId, lang);
@@ -372,8 +496,15 @@
     else {
       Object.keys(YLE_NIV).forEach(level => {
         const row = yleFilaDe(D.yle, gradeId, level);
-        const est = yleEstado(row);
-        filasYle += fila('YLE · ' + YLE_NIV[level], est.icon, est.texto);
+        if (EDIT) {
+          const actual = row ? (row.unlocked ? (row.max_test == null ? 99 : row.max_test) : 0) : 99;
+          filasYle += `<tr><td>${esc('YLE · ' + YLE_NIV[level])}</td><td colspan="2">` +
+            `<input type="number" min="0" value="${actual}" style="width:64px" onchange="window._apYleGuardar(${gradeId},'${level}',this)"> ` +
+            `<span class="muted" style="font-size:.8rem">tests unlocked (0 = closed, 99 = all)</span></td></tr>`;
+        } else {
+          const est = yleEstado(row);
+          filasYle += fila('YLE · ' + YLE_NIV[level], est.icon, est.texto);
+        }
       });
     }
 
@@ -381,17 +512,26 @@
     let filasMain = '';
     if (D.na === null) { filasMain = filaNoLeible('Main Suite'); }
     else {
-      const ramaOn = resuelveNodo(D.naMap, gradeId, 'english.cambridge.main', () => defaultOpenGeneral('english.cambridge.main'));
+      const mainKey = 'english.cambridge.main';
+      const ramaOn = resuelveNodo(D.naMap, gradeId, mainKey, () => defaultOpenGeneral(mainKey));
       const abiertos = MAIN_SUITE_LEVELS.filter(l => resuelveNodo(D.naMap, gradeId, 'english.cambridge.main.' + l.key, () => defaultOpenGeneral('english.cambridge.main.' + l.key)));
-      filasMain = fila('Main Suite', ramaOn ? '✅' : '🔒',
-        ramaOn ? (abiertos.length ? abiertos.map(l => l.short).join(', ') : 'branch open, no level unlocked') : 'closed');
+      filasMain = fila('Main Suite', EDIT ? toggleHTML(gradeId, 'node_access', mainKey, ramaOn) : (ramaOn ? '✅' : '🔒'),
+        ramaOn ? (abiertos.length ? abiertos.map(l => l.short).join(', ') : 'branch open, no level unlocked') : 'closed',
+        EDIT ? ' <span class="muted" style="font-size:.8rem">(edit individual levels in 🔐 Access by grade)</span>' : '');
     }
 
     // Practice tests / Mocks
-    const filaPractice = D.pa === null ? filaNoLeible('Practice tests') :
-      fila('Practice tests', practiceOpen(D.paMap, gradeId) ? '✅' : '🔒', practiceOpen(D.paMap, gradeId) ? 'open' : 'locked');
-    const filaMocks = D.ma === null ? filaNoLeible('Mocks') :
-      fila('Mocks', mockOpen(D.maMap, gradeId) ? '✅' : '🔒', mockOpen(D.maMap, gradeId) ? 'open' : 'locked');
+    let filaPractice, filaMocks;
+    if (D.pa === null) { filaPractice = filaNoLeible('Practice tests'); }
+    else {
+      const practiceOn = practiceOpen(D.paMap, gradeId);
+      filaPractice = fila('Practice tests', EDIT ? toggleHTML(gradeId, 'practice_access', '', practiceOn) : (practiceOn ? '✅' : '🔒'), practiceOn ? 'open' : 'locked');
+    }
+    if (D.ma === null) { filaMocks = filaNoLeible('Mocks'); }
+    else {
+      const mockOn = mockOpen(D.maMap, gradeId);
+      filaMocks = fila('Mocks', (EDIT && admin) ? toggleHTML(gradeId, 'mock_access', '', mockOn) : (mockOn ? '✅' : '🔒'), mockOn ? 'open' : 'locked');
+    }
 
     // Nota del plan de estudio
     const nota = D.notaPorGrado === null ? SIN_ACCESO : (D.notaPorGrado['g:' + gradeId] || '(no note for this grade)');
@@ -409,7 +549,7 @@
     if (D.na === null) return `<div class="card"><h2>🧰 Practice tools &amp; General</h2><p class="muted">${SIN_ACCESO}</p></div>`;
     const filas = MISC_NODES.map(n => {
       const on = resuelveNodo(D.naMap, gradeId, n.key, () => defaultOpenGeneral(n.key));
-      return fila(n.label, on ? '✅' : '🔒', on ? 'open' : 'locked');
+      return fila(n.label, EDIT ? toggleHTML(gradeId, 'node_access', n.key, on) : (on ? '✅' : '🔒'), on ? 'open' : 'locked');
     }).join('');
     return `<div class="card">
       <h2 style="margin:0 0 4px">🧰 Practice tools &amp; General</h2>
@@ -509,9 +649,13 @@
     return CSS + `
       <div class="row ap-noprint" style="justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
         <h1 style="margin:0">🔍 Access panel — what each class sees</h1>
-        <button class="btn sm ghost" onclick="window.print()">🖨️ Print</button>
+        <div style="display:flex;gap:8px">
+          <button class="btn sm ${EDIT ? '' : 'ghost'}" onclick="window._apEditar()">${EDIT ? '✅ Done' : '✏️ Edit'}</button>
+          <button class="btn sm ghost" onclick="window.print()">🖨️ Print</button>
+        </div>
       </div>
       <div class="ap-noprint"><div class="ap-pills">${pillsGrado}</div>${pillsSeccion}</div>
+      ${EDIT ? `<div class="note ap-noprint" style="margin:8px 0 0">✏️ <b>Editing ${esc(gradeObj.name)}${sec ? ' · ' + esc(sec) : ''}</b>${sec ? ' — changes apply to the whole grade (these tables have no per-section lock).' : ''}</div>` : ''}
       <p class="ap-summary">${esc(resumen(gradeObj.id, gradeKey, gradeObj.name, D))}</p>
       <div class="grid cols-2" style="align-items:start;gap:14px">
         ${bloqueClasses(admin, gradeObj.id, gradeKey, D)}
@@ -533,6 +677,7 @@
     const ids = (opts && Array.isArray(opts.grades) && opts.grades.length) ? opts.grades.slice() : [];
     const grades = ids.map(id => ({ id: Number(id), name: 'G' + id })).sort((a, b) => a.id - b.id);
     V = { admin, grades, grade: grades.length ? grades[0].id : null, section: '' };
+    EDIT = false; // cada apertura del panel empieza en solo lectura
     $('#main').innerHTML = '<div class="card"><p class="muted">Reading the access tables…</p></div>';
     if (!grades.length) { $('#main').innerHTML = '<div class="note">No grades to show.</div>'; return; }
     DATA = await cargar(grades.map(g => g.id));

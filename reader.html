@@ -484,7 +484,7 @@ window.NISACT = (function () {
        tienen nota y llenarían la hoja del profesor de filas vacías. */
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,
-      level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration});
+      level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration,detail:r.detail||null});
       if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     if(r.sheet===false) return {sent:true};
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
@@ -501,7 +501,7 @@ window.NISACT = (function () {
 
 /* ---------- progreso local + envío de resultados ---------- */
 let _actT0=Date.now();
-function saveResult(actId,score,total,label){
+function saveResult(actId,score,total,label,items){
   const c = view.chap!=null ? CHAPTERS[view.chap] : null;
   const pct = total? Math.round(score/total*100) : 0;
   const key = 'rdr:'+RDR_ID+':'+LVL+':best:'+(c?c.n:'x')+':'+actId;
@@ -509,7 +509,9 @@ function saveResult(actId,score,total,label){
   if(window.NISACT) NISACT.submit({
     activity:RDR_ID+'-'+LVLL+'-'+(c?('ch'+c.n):'extra')+'-'+actId,
     title:RDR_ID.toUpperCase()+' '+LVL+' '+(c?('Ch.'+c.n+' '+c.title):'')+' — '+(label||actId),
-    level:LVL, score, total, duration:Math.max(1,Math.round((Date.now()-_actT0)/1000))});
+    level:LVL, score, total, duration:Math.max(1,Math.round((Date.now()-_actT0)/1000)),
+    detail:{items:Array.isArray(items)?items.slice(0,200):undefined,
+      meta:{grade:null, unit:null, week:null, slug:RDR_ID+'-'+LVLL+'-'+(c?('ch'+c.n):'extra')+'-'+actId}}});
   _actT0=Date.now();
   return pct;
 }
@@ -629,7 +631,8 @@ function _readFlush(){
   if(secs<20) return;                                               // pasar de largo no es leer
   if(window.NISACT) NISACT.submit({activity:RDR_BOOK_ID+'-'+LVLL+'-ch'+c.n+'-read',
     title:RDR_BOOK_ID.toUpperCase()+' '+LVL+' Ch.'+c.n+' '+c.title+' — Read along',
-    level:LVL, score:null, total:null, duration:secs, sheet:false});
+    level:LVL, score:null, total:null, duration:secs, sheet:false,
+    detail:{meta:{grade:null, unit:null, week:null, slug:RDR_BOOK_ID+'-'+LVLL+'-ch'+c.n+'-read'}}});
 }
 function _readStart(c){ _readFlush(); _readT0=Date.now(); _readCh=c; }
 document.addEventListener('visibilitychange',()=>{
@@ -835,7 +838,7 @@ function renderActs(){
 function runQuiz(questions, opts){
   const speed=opts.speed, label=opts.label, replay=opts.replay;
   const qs=shuffle(questions);
-  let i=0, score=0, timer=null; const PER=12;
+  let i=0, score=0, timer=null; const PER=12; const log=[];
   _actT0=Date.now();
   function show(){
     if(i>=qs.length) return finish();
@@ -858,6 +861,7 @@ function runQuiz(questions, opts){
     let correct=false;
     if(k>=0){ correct=q.opts[k].correct; if(!correct)btns[k].classList.add("wrong"); }
     if(correct) score++;
+    log.push({n:i+1, given:k>=0?(q.opts[k].t||''):'—', correct:((q.opts.find(o=>o.correct)||{}).t||''), ok:correct});
     if(!speed){ $("#fb").innerHTML=`<div class="explain">${correct?"✅ Correct! ":"❌ "}${q.explain||""}</div>
       <button class="btn sm" style="margin-top:12px" onclick="qzNext()">${i+1<qs.length?"Next →":"See results"}</button>`; }
     else{ setTimeout(()=>{ i++; show(); }, 650); }
@@ -865,7 +869,7 @@ function runQuiz(questions, opts){
   window.qzNext=()=>{ i++; show(); };
   function finish(){
     const pct=Math.round(score/qs.length*100);
-    if(opts.saveId!==null) saveResult(opts.saveId||view.act||'quiz',score,qs.length,opts.saveName||label);
+    if(opts.saveId!==null) saveResult(opts.saveId||view.act||'quiz',score,qs.length,opts.saveName||label,log);
     const msg=pct>=80?"Excellent! 🌟":pct>=50?"Good job! 👍":"Keep practising! 💪";
     stage.innerHTML=`<div class="panel center">
       <p class="muted qnum">${label} · RESULT</p>
@@ -901,7 +905,7 @@ function actMultipleChoice(c){
    TRUE / FALSE
    ============================================================ */
 function actTrueFalse(c){
-  const items=shuffle(c.tf); let answered=0, score=0;
+  const items=shuffle(c.tf); let answered=0, score=0; const log=[];
   stage.innerHTML=`<div class="panel">
     <p class="muted" style="margin-bottom:12px">Read each statement and choose <b>True</b> or <b>False</b>. <span id="tfScore"></span></p>
     <div id="tfList">${items.map((it,idx)=>`
@@ -921,6 +925,7 @@ function actTrueFalse(c){
     const btns=box.querySelectorAll(".tf-btn"); btns.forEach(b=>b.disabled=true);
     const correct = (val===it[1]);
     if(correct) score++;
+    log.push({n:idx+1, given:val?'True':'False', correct:it[1]?'True':'False', ok:correct});
     const picked = val ? btns[0] : btns[1];
     picked.classList.add(correct?"pick-correct":"pick-wrong");
     if(!correct){ (it[1]?btns[0]:btns[1]).classList.add("pick-correct"); }
@@ -930,7 +935,7 @@ function actTrueFalse(c){
     answered++;
     $("#tfScore").textContent=`(${answered}/${items.length})`;
     if(answered===items.length){
-      const pct=saveResult('truefalse',score,items.length,'True / False');
+      const pct=saveResult('truefalse',score,items.length,'True / False',log);
       $("#tfDone").style.display="block";
       $("#tfDone").innerHTML=`<div class="score">${score}/${items.length}</div>
         <p style="font-weight:700;color:var(--blue-d)">${pct}%</p>
@@ -1869,15 +1874,17 @@ function actListen(c){
   }
   window.gapCheck=()=>{
     const norm=s=>String(s||'').toLowerCase().replace(/[^a-z]/g,'');
-    let ok=0;
+    let ok=0; const log=[];
     items.forEach((it,i)=>{
       const inp=stage.querySelector(`input[data-i="${i}"]`);
+      const given=inp.value;
       const good=norm(inp.value)===norm(it.answer);
       inp.classList.toggle('ok',good); inp.classList.toggle('no',!good);
+      log.push({n:i+1, given:String(given||'').slice(0,300), correct:String(it.answer||''), ok:good});
       if(!good) inp.value=it.answer;
       if(good) ok++;
     });
-    const pct=saveResult('listen',ok,items.length,'Listening');
+    const pct=saveResult('listen',ok,items.length,'Listening',log);
     $('#gapOut').innerHTML=`<b style="color:var(--blue-d)">${ok}/${items.length} · ${pct}%</b>`;
   };
 }
@@ -1907,11 +1914,13 @@ function actSummary(c){
   window.ordPick=(i)=>{ const p=picked.indexOf(i); if(p>=0) picked.splice(p,1); else picked.push(i); draw(); };
   window.ordReset=()=>{ picked=[]; draw(); };
   window.ordCheck=()=>{
-    let ok=0;
+    let ok=0; const log=[];
     const boxes=stage.querySelectorAll('.ord-item');
     picked.forEach((itemIdx,pos)=>{ const good=items[itemIdx].ord===pos; if(good) ok++;
+      const correctItem=items.find(x=>x.ord===pos);
+      log.push({n:pos+1, given:items[itemIdx].t, correct:correctItem?correctItem.t:'', ok:good});
       boxes[itemIdx].classList.add(good?'good':'bad'); });
-    const pct=saveResult('summary',ok,items.length,'Summarize · order');
+    const pct=saveResult('summary',ok,items.length,'Summarize · order',log);
     $('#ordOut').innerHTML=`<b style="color:var(--blue-d)">${ok}/${items.length} · ${pct}%</b>`;
     $('#sumWrite').innerHTML=`
       <h2 style="color:var(--blue-d);margin:22px 0 8px">✍️ Step 2 — Now write your own summary</h2>
@@ -2338,17 +2347,19 @@ function actGapFill(c){
     <div id="gfRes"></div>
   </div>`;
   window._gfCheck=()=>{
-    let ok=0;
+    let ok=0; const log=[];
     g.items.forEach((it,i)=>{
       const el=$('#gf'+i), mark=$('#gm'+i);
+      const given=el.value;
       const good=(el.value||'').trim().toLowerCase()===String(it[1]).toLowerCase();
       if(good){ ok++; mark.innerHTML=' ✅'; el.style.borderColor='#16a34a'; }
       else { mark.innerHTML=` ❌ <span class="muted">(${it[1]})</span>`; el.style.borderColor='#dc2626'; }
+      log.push({n:i+1, given:String(given||'').slice(0,300), correct:String(it[1]||''), ok:good});
       el.disabled=true;
     });
     const pct=Math.round(ok/g.items.length*100);
     $('#gfRes').innerHTML=`<div class="explain" style="margin-top:14px"><b>${ok} / ${g.items.length}</b> — ${pct}%</div>`;
-    saveResult('gapfill', ok, g.items.length, g.title||'Gap fill');
+    saveResult('gapfill', ok, g.items.length, g.title||'Gap fill', log);
   };
   window.scrollTo(0,0);
 }
@@ -2381,7 +2392,9 @@ function actThink(c){
     if(t.answer==null) btns[k].classList.add('correct');
     $('#thFb').innerHTML=`<div class="explain" style="margin-top:12px">${
       t.answer==null ? '💬 There is no single right answer here. ' : ''}${t.note||''}</div>`;
-    saveResult('think', (t.answer==null||k===t.answer)?1:0, 1, 'Values & Feelings');
+    const _thOk=(t.answer==null||k===t.answer);
+    saveResult('think', _thOk?1:0, 1, 'Values & Feelings',
+      [{n:1, given:(t.options||[])[k]||'', correct:t.answer!=null?((t.options||[])[t.answer]||''):null, ok:t.answer==null?null:_thOk}]);
   };
   window.scrollTo(0,0);
 }
@@ -2409,8 +2422,12 @@ function actReadingPics(c){
     </div>
   </div>`;
   window._rpShow=()=>{
-    P.qs.forEach((q,i)=>{ const m=$('#rpm'+i); m.style.display='block'; m.innerHTML='💡 '+q[1]; });
-    saveResult('readingpics', 1, 1, 'Reading pictures');
+    const log=[];
+    P.qs.forEach((q,i)=>{ const m=$('#rpm'+i); m.style.display='block'; m.innerHTML='💡 '+q[1];
+      const ta=$('#rp'+i);
+      log.push({n:i+1, given:String((ta&&ta.value)||'').slice(0,300), correct:String(q[1]||''), ok:null});
+    });
+    saveResult('readingpics', 1, 1, 'Reading pictures', log);
   };
   window.scrollTo(0,0);
 }
@@ -2452,7 +2469,8 @@ function actPicSummary(c){
     const pct=Math.round(ok/order.length*100);
     $('#psRes').innerHTML=`<div class="explain" style="margin-top:12px">
       <b>${ok} / ${order.length}</b> in the right place — ${pct}%${ok===order.length?' 🏆':''}</div>`;
-    saveResult('picsummary', ok, order.length, 'Picture summary');
+    const log=order.map((v,i)=>({n:i+1, given:(L[v]&&L[v].cap)||'', correct:(L[i]&&L[i].cap)||'', ok:v===i}));
+    saveResult('picsummary', ok, order.length, 'Picture summary', log);
   };
   draw();
   window.scrollTo(0,0);
@@ -2579,16 +2597,18 @@ function keyPart(id){
       <div id="kpRes"></div>
     </div>`;
     window._kpCheck=()=>{
-      let ok=0;
+      let ok=0; const log=[];
       rows.forEach((r,i)=>{
         const el=$('#kp'+i), mark=$('#kpm'+i);
+        const given=el.value;
         const good=(el.value||'').trim().toLowerCase()===String(r[1]).toLowerCase();
         if(good){ ok++; mark.innerHTML=' ✅'; el.style.borderColor='#16a34a'; }
         else { mark.innerHTML=` ❌ <span class="muted">(${r[1]})</span>`; el.style.borderColor='#dc2626'; }
+        log.push({n:i+1, given:String(given||'').slice(0,300), correct:String(r[1]||''), ok:good});
         el.disabled=true;
       });
       $('#kpRes').innerHTML=`<div class="explain" style="margin-top:14px"><b>${ok} / ${rows.length}</b> — ${Math.round(ok/rows.length*100)}%</div>`;
-      saveResult('key-'+id, ok, rows.length, P.title);
+      saveResult('key-'+id, ok, rows.length, P.title, log);
     };
     window.scrollTo(0,0);
   }

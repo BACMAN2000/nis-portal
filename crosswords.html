@@ -116,7 +116,7 @@ window.NISACT=(function(){
   api.submit=async function(r){
     if(!api._user){ avisaGuardado(null); return {skipped:true}; }
     let ok=true, motivo='';
-    try{ const q=await client().from('activity_attempts').insert({student_id:api._user.uid,activity:r.activity,title:r.title,level:r.level,score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
+    try{ const q=await client().from('activity_attempts').insert({student_id:api._user.uid,activity:r.activity,title:r.title,level:r.level,score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration,detail:r.detail||null});
       if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     try{ const m=Math.floor(r.duration/60),sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
@@ -220,7 +220,7 @@ function onComplete(){
   const b=document.getElementById('banner');
   if(staff()){ b.textContent='✅ Solved view (teacher/admin).'; b.classList.add('show'); return; }
   b.textContent=`🎉 Completed in ${fmtT(elapsed)}! Saved to My Results and emailed to you.`; b.classList.add('show');
-  if(window.NISACT) NISACT.submit({activity:'crossword',title:`Crossword ${pidx+1} — ${DATA[level][pidx].theme}`,level:level,score:entries.length,total:entries.length,hints:hintsUsed,lives:lives,duration:elapsed});
+  if(window.NISACT) NISACT.submit({activity:'crossword',title:`Crossword ${pidx+1} — ${DATA[level][pidx].theme}`,level:level,score:entries.length,total:entries.length,hints:hintsUsed,lives:lives,duration:elapsed,detail:{items:entries.map(w=>({id:w.num+(w.dir==='across'?'A':'D'),answer:entryCells(w).map(k=>(cells[k].querySelector('input').value||'')).join(''),correct:w.word,ok:wordSolved(w)})),meta:(function(){try{var f=(window.NIS_WORK&&NIS_WORK.ficha)?NIS_WORK.ficha():{};return{grade:f.grade||null,unit:(f.unit==null?null:f.unit),week:(f.week==null?null:f.week),slug:f.slug||null,lang:/-fr(-|\.html)/.test(location.pathname)?'fr':'en'};}catch(e){return null;}})()}});
 }
 function updateScore(solved){ if(solved===undefined)solved=entries.filter(wordSolved).length;
   document.getElementById('score').textContent=`Words: ${solved} / ${entries.length}`+(hintsUsed?` · Hints: ${hintsUsed}`:''); }

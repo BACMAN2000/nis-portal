@@ -150,7 +150,7 @@ window.NISACT=(function(){
     const s=await student(); if(!s){ avisaGuardado(null); return {skipped:true}; }
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
-      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration,detail:r.detail||null});
       if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
@@ -332,7 +332,7 @@ function liveCheck(){
       const b=document.getElementById('banner');
       b.textContent='🎉 Excellent! Level complete in '+fmtT(elapsed)+'! Saving your result…';
       if(window.NISACT) NISACT.submit({activity:'crossword',title:'Mots croisés — FR 8e Semaine 3',level:level,
-        score:entries.length,total:entries.length,hints:hintsUsed,lives:lives,duration:elapsed});
+        score:entries.length,total:entries.length,hints:hintsUsed,lives:lives,duration:elapsed,detail:{items:entries.map(w=>({id:w.num+(w.dir==='across'?'A':'D'),answer:entryCells(w).map(k=>(cells[k].querySelector('input').value||'')).join(''),correct:w.word,ok:wordSolved(w)})),meta:(function(){try{var f=(window.NIS_WORK&&NIS_WORK.ficha)?NIS_WORK.ficha():{};return{grade:f.grade||null,unit:(f.unit==null?null:f.unit),week:(f.week==null?null:f.week),slug:f.slug||null,lang:/-fr(-|\.html)/.test(location.pathname)?'fr':'en'};}catch(e){return null;}})()}});
     }
     document.getElementById('banner').classList.add('show');
     Object.keys(cells).forEach(k=>{cells[k].classList.add('ok'); cells[k].classList.remove('ko');});
