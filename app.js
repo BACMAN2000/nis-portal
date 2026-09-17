@@ -495,6 +495,29 @@ const FUN_CURSOS = {
   movers:  {em:'🐺',curso:'Fun for Nordic 2',examen:'A1 Movers',      unidades:50,color:'#2f9268',grados:'G3 · G4',cast:'The Fjord Club'},
   flyers:  {em:'🦅',curso:'Fun for Nordic 3',examen:'A2 Flyers',      unidades:55,color:'#3b6fb5',grados:'G5',     cast:'The Aurora Expedition'},
 };
+/* La serie de secundaria (17-sep-2026): NORDIC ASCENT — la subida por la
+   escalera Cambridge de A1 a C1. Mismo motor (nis-fun/engine, ?level=) y
+   mismas puertas que Fun for Nordic, pero en SU tarjeta: Paolo pidio que
+   primaria (Fun for Nordic) y secundaria fueran tarjetas distintas y que los
+   cinco cursos se encontraran desde el menu, cosa que no pasaba. El nombre
+   vive solo aqui: cambiarlo es una linea. Datos de nis-fun/content/levels.json
+   (unidades = content/<id>/index.json; temas = content/<id>/grammar). */
+const SEC_SERIE = {em:'🧗', nombre:'Nordic Ascent', sub:'Cambridge for Schools · A1 → C1', color:'#6d5bd0'};
+const SEC_CURSOS = {
+  a1: {em:'🌱',curso:'A1 Foundations', examen:'the grammar before A2 Key',   unidades:'12 grammar topics',            color:'#db2777',grados:'G6 – G11'},
+  ket:{em:'🔑',curso:'A2 Key',         examen:'A2 Key for Schools',          unidades:'6 units + 24 grammar topics',  color:'#6d5bd0',grados:'G6 – G11'},
+  pet:{em:'🧭',curso:'B1 Preliminary', examen:'B1 Preliminary for Schools',  unidades:'12 units + 24 grammar topics', color:'#0e7490',grados:'G6 – G11'},
+  b2f:{em:'🥇',curso:'B2 First',       examen:'B2 First for Schools',        unidades:'6 units + 24 grammar topics',  color:'#a3324e',grados:'G8 – G11'},
+  c1a:{em:'🏔️',curso:'C1 Advanced',    examen:'C1 Advanced for Schools',     unidades:'6 units + 24 grammar topics',  color:'#334155',grados:'G9 – G11'},
+};
+const SEC_ORDEN = ['a1','ket','pet','b2f','c1a'];
+/* Las pestanas por curso (funstarters, funket…) ya no van en el menu: se
+   entra por la tarjeta de su serie, y el menu resalta la serie. */
+function _serieNavKey(t){
+  if(/^fun(starters|movers|flyers)$/.test(t)) return 'funyle';
+  if(/^fun(a1|ket|pet|b2f|c1a)$/.test(t)) return 'funsec';
+  return t;
+}
 /* ===== 🔐 Que unidades de Fun for Nordic ve cada grado ====================
  *
  * Una fila por grado: que nivel le toca y desde que unidad hasta cual. El
@@ -705,17 +728,43 @@ function funLibros(nivel, lang, conClave){
 }
 
 function funCursoBody(nivel){
-  const c = FUN_CURSOS[nivel] || FUN_CURSOS.starters;
+  const sec = !!SEC_CURSOS[nivel];
+  const c = FUN_CURSOS[nivel] || SEC_CURSOS[nivel] || FUN_CURSOS.starters;
   const url = `nis-fun/engine/?level=${nivel}`;
+  // Secundaria no tiene libros PDF: la fila «To print» solo es de primaria.
+  const resumen = sec
+    ? `<b>${SEC_SERIE.em} ${SEC_SERIE.nombre} · ${c.curso}</b> — ${c.unidades} with audio, dialogues and exam tasks to prepare for <b>${c.examen}</b> (${c.grados}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 Fun for Nordic</b>.`
+    : `<b>${c.curso}</b> — ${c.unidades} units with audio, games and exam tasks to prepare for <b>${c.examen}</b> (${c.grados} · ${c.cast}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 Fun for Nordic</b>.`;
   return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> — ${c.unidades} units with audio, games and exam tasks to prepare for <b>${c.examen}</b> (${c.grados} · ${c.cast}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 Fun for Nordic</b>.</div>
+    <div class="muted" style="flex:1;min-width:220px">${resumen}</div>
     <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Open in full screen ↗</a>
   </div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+  ${sec ? '' : `<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
     <span class="muted" style="font-size:.85rem">To print:</span>${funLibros(nivel, 'en', true)}
-  </div>
+  </div>`}
   <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
+}
+/* 🧗 Nordic Ascent para profesor y admin: la tarjeta de cada curso de
+   secundaria, gemela de funYleBody. Cada tarjeta abre el curso embebido
+   (funCursoBody), igual que Starters/Movers/Flyers. */
+function funSecBody(render){
+  const tarjeta = lv => {
+    const c = SEC_CURSOS[lv];
+    return _hubCard(c.em, c.curso, `${c.examen}<br>${c.unidades} · ${c.grados}`, `${render}('fun${lv}')`);
+  };
+  return `<h1>${SEC_SERIE.em} ${SEC_SERIE.nombre} — Cambridge for Schools (Secondary)</h1>
+    <p class="muted" style="margin-top:-6px">The climb up the Cambridge ladder for 6.º–11.º: A1 Foundations
+      (the grammar before the first exam), then A2 Key, B1 Preliminary, B2 First and C1 Advanced. Units with
+      dialogues, audio and exam tasks, and a Grammar Lab of 24 topics per level. The format of each exam is in
+      <b>📘 Cambridge info</b>. Primary has its own series: <b>🧸 Fun for Nordic</b>.</p>
+    <div class="grid cols-3">${SEC_ORDEN.map(tarjeta).join('')}</div>
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">✅ Mark what they submit</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">What students write and record in the
+        five levels, to give them a grade and feedback. It is the same tab found in <b>✅ Marking</b>.</div>
+      <button class="btn" onclick="${render}('funnordic')">🧸 View submissions</button>
+    </div>`;
 }
 /* 🧸 Fun for Nordic dentro de Cambridge: es la rama YLE del examen (los tres
    primeros peldanos de la escalera). El curso se da en Ensenanza y las entregas
@@ -729,10 +778,11 @@ function funYleBody(render){
     return _hubCard(c.em, c.curso, `${c.examen} · ${c.grados}<br>${c.unidades} unidades`,
       `${render}('${tab}')`);
   };
-  return `<h1>🧸 Fun for Nordic — Cambridge Young Learners</h1>
-    <p class="muted" style="margin-top:-6px">The first three steps of the Cambridge ladder:
+  return `<h1>🧸 Fun for Nordic — Cambridge Young Learners (Primary)</h1>
+    <p class="muted" style="margin-top:-6px">The first three steps of the Cambridge ladder for 1.º–5.º:
       Pre A1 Starters, A1 Movers and A2 Flyers. 150 units with audio, games and exam tasks.
-      The format of each exam is in <b>📘 Cambridge info</b>.</p>
+      The format of each exam is in <b>📘 Cambridge info</b>. Secondary has its own series:
+      <b>${SEC_SERIE.em} ${SEC_SERIE.nombre}</b>.</p>
     <div class="grid cols-3">
       ${tarjeta('starters','funstarters')}${tarjeta('movers','funmovers')}${tarjeta('flyers','funflyers')}
     </div>
@@ -918,24 +968,24 @@ function dictPanel(){
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=a23fa254&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=adda0b52&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=51841ee6&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=468b9881&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=59daae37&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=382d20c4&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=60929b33&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=3b7babd5&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -1229,9 +1279,8 @@ async function renderAdmin(tab='users'){
        que no se confundan con la app. Las entregas de Fun for Nordic se
        corrigen en Correccion. */
     {group:'Cambridge', icon:'🎓', items:[
-      {key:'funstarters',label:'🐧 Starters course'},
-      {key:'funmovers',label:'🐺 Movers course'},
-      {key:'funflyers',label:'🦅 Flyers course'},
+      {key:'funyle',label:'🧸 Fun for Nordic · Primary'},
+      {key:'funsec',label:'🧗 Nordic Ascent · Secondary'},
       {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
       {key:'yle',label:'🛡️ YLE panel'},
       {key:'studyplan',label:'📋 Study plan'},
@@ -1287,7 +1336,7 @@ async function renderAdmin(tab='users'){
       {key:'funaccess',label:'🔐 Units by grade'},
     ]},
     {key:'help',label:'❓ Help'},
-  ], tab, `<div class="center muted">Loading…</div>`, true);
+  ], _serieNavKey(tab), `<div class="center muted">Loading…</div>`, true);
   bindNav(renderAdmin);
   if(tab==='help') return $('#main').innerHTML = ayudaBody();
   if(tab==='mun') return $('#main').innerHTML = munBody();
@@ -1323,9 +1372,8 @@ async function renderAdmin(tab='users'){
   if(tab==='frmovers') return $('#main').innerHTML = funFrCursoBody('movers');
   if(tab==='frflyers') return $('#main').innerHTML = funFrCursoBody('flyers');
   if(tab==='frmetricas') return funFrMetricas();
-  if(tab==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
-  if(tab==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
-  if(tab==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
+  if(tab==='funsec') return $('#main').innerHTML = funSecBody('renderAdmin');
+  if(/^fun(starters|movers|flyers|a1|ket|pet|b2f|c1a)$/.test(tab)) return $('#main').innerHTML = funCursoBody(tab.slice(3));
   if(tab==='rhymes') return $('#main').innerHTML = rhymesBody();
   if(tab==='scope') return scopePanel();
   if(tab==='littlereaders') return littleReadersPanel();
@@ -3497,7 +3545,9 @@ async function funNordicPanel(){
   const main = $('#main');
   main.innerHTML = '<div class="card"><p class="muted">Loading submissions…</p></div>';
 
-  const NIVELES = ['starters','movers','flyers'];
+  // Las dos series: Fun for Nordic (primaria) y Nordic Ascent (secundaria).
+  const NIVELES = ['starters','movers','flyers', ...SEC_ORDEN];
+  const CURSO = n => FUN_CURSOS[n] || SEC_CURSOS[n];
   const COLS = 'id,student_id,level,unit,activity_code,kind,payload,audio_path,duration_sec,score,feedback,reviewed_at,created_at';
   // Solo lo que se corrige: las filas 'progress' (tiempo de uso) y 'grammar_lab'
   // (Grammar Lab de secundaria) tambien viven en fun_submissions y no van aqui.
@@ -3518,19 +3568,20 @@ async function funNordicPanel(){
       onclick="window._funFiltro('${val}')">${label} <b>${n}</b></button>`;
   const chips = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
       ${pastilla('','🧸 All',total)}
-      ${NIVELES.map(n=>pastilla(n, FUN_CURSOS[n].em+' '+n[0].toUpperCase()+n.slice(1), nPorNivel[n])).join('')}
+      ${NIVELES.map(n=>pastilla(n, CURSO(n).em+' '+(FUN_CURSOS[n] ? n[0].toUpperCase()+n.slice(1) : CURSO(n).curso), nPorNivel[n])).join('')}
     </div>`;
 
   const marco = cuerpo => `<div class="card">
-    <h2>🧸 Fun for Nordic — student submissions</h2>
-    <p class="muted">What students write and record in Starters, Movers and Flyers, most
+    <h2>🧸 Fun for Nordic · 🧗 Nordic Ascent — student submissions</h2>
+    <p class="muted">What students write and record in Starters, Movers and Flyers (primary) and in
+      A1 Foundations, A2 Key, B1 Preliminary, B2 First and C1 Advanced (secondary), most
       recent first. Give a score from 0 to 10 and a comment; it saves automatically.</p>
     ${chips}${cuerpo}</div>`;
 
   if (error){ main.innerHTML = marco(`<p class="err">Could not load the submissions: ${esc(error.message)}</p>`); return; }
   if (!data || !data.length){
     main.innerHTML = marco(`<p class="muted">${funFiltro
-      ? 'There are no submissions yet for <b>'+esc(FUN_CURSOS[funFiltro].curso)+'</b>.'
+      ? 'There are no submissions yet for <b>'+esc((CURSO(funFiltro)||{curso:funFiltro}).curso)+'</b>.'
       : 'There are no submissions yet. They will appear here as soon as students write or record in the course.'}</p>`);
     return;
   }
@@ -3541,7 +3592,7 @@ async function funNordicPanel(){
   const quien = Object.fromEntries((gente||[]).map(p => [p.id, p]));
 
   const ICONO = { writing:'✍️', speaking:'🎙️', selfcheck:'✅' };
-  const NIVEL = { starters:'Starters', movers:'Movers', flyers:'Flyers' };
+  const NIVEL = { starters:'Starters', movers:'Movers', flyers:'Flyers', a1:'A1', ket:'KET', pet:'PET', b2f:'B2 First', c1a:'C1' };
 
   const fila = r => {
     const p = quien[r.student_id] || {};
@@ -3631,9 +3682,8 @@ async function renderTeacher(tab){
      de primaria (van sin candado, como Little Readers: son material de
      consulta, no datos de alumnos; sus entregas se corrigen en Correccion >
      Fun for Nordic), luego el hub, los simulacros, las apps y los candados. */
-  cambridge.push({key:'funstarters',label:'🐧 Starters course'});
-  cambridge.push({key:'funmovers',label:'🐺 Movers course'});
-  cambridge.push({key:'funflyers',label:'🦅 Flyers course'});
+  cambridge.push({key:'funyle',label:'🧸 Fun for Nordic · Primary'});
+  cambridge.push({key:'funsec',label:'🧗 Nordic Ascent · Secondary'});
   cambridge.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
   if(teacherAllowedGrades().length) cambridge.push({key:'yle',label:'🛡️ YLE panel'});
   cambridge.push({key:'exams',label:'🎧 Mock exams and Practice'});
@@ -3671,8 +3721,10 @@ async function renderTeacher(tab){
   grupo('Permissions','🔐',permisos);
   nav.push({key:'help',label:'❓ Help'});
   const claves = navKeys(nav);
-  const active = (tab && claves.indexOf(tab)>=0) ? tab : claves[0];
-  document.body.innerHTML = shell(nav, active, `<div class="center muted">Loading…</div>`, true);
+  // Las pestanas por curso (funstarters, funket…) no estan en el menu: se
+  // aceptan si su serie (funyle / funsec) esta, y el menu resalta la serie.
+  const active = (tab && (claves.indexOf(tab)>=0 || (tab!==_serieNavKey(tab) && claves.indexOf(_serieNavKey(tab))>=0))) ? tab : claves[0];
+  document.body.innerHTML = shell(nav, _serieNavKey(active), `<div class="center muted">Loading…</div>`, true);
   bindNav(renderTeacher);
   if(active==='overview') return window.overviewPanel({admin:false});
   if(active==='help') return $('#main').innerHTML = ayudaBody();
@@ -3715,9 +3767,8 @@ async function renderTeacher(tab){
   if(active==='funaccess') return funAccessPanel(teacherAllowedGrades());
   if(active==='yle') return window.ylePanel(teacherAllowedGrades(), {admin:false});
   if(active==='funyle') return $('#main').innerHTML = funYleBody('renderTeacher');
-  if(active==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
-  if(active==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
-  if(active==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
+  if(active==='funsec') return $('#main').innerHTML = funSecBody('renderTeacher');
+  if(/^fun(starters|movers|flyers|a1|ket|pet|b2f|c1a)$/.test(active)) return $('#main').innerHTML = funCursoBody(active.slice(3));
   if(active==='rhymes') return $('#main').innerHTML = rhymesBody();
   if(active==='cambridgehub') return studentCambridgePortal();
   if(active==='uoe') return $('#main').innerHTML = useOfEnglishBody();
@@ -4426,6 +4477,7 @@ function studentHub(){
       ${_trackCard('🏫','My classes',gLabel+': units, activities, readers and unit exams',classesGo,['🎯 Units','🎲 Activities','📚 Readers'])}
       ${_trackCard('🎓','Cambridge',camDesc,"window._nav('cambridge')",['📘 Course','🎯 Practice tests','🎓 Mocks'])}
     </div>
+    <div id="serie-card"></div>
     <h2 style="margin:22px 0 8px">More</h2>
     <div class="grid cols-3">
       ${_hubCard('🧰','Practice tools','Sounds, grammar and vocabulary games to train on your own.',"window._nav('tools')")}
@@ -4434,6 +4486,9 @@ function studentHub(){
       ${_hubCard('📊','My progress','Your results in mocks, practice tests and activities.',"window._nav('results')")}
       ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes and more.',"window._nav('french')") : ''}
     </div>`;
+  // La tarjeta del curso de su etapa (Fun for Nordic / Nordic Ascent), a un
+  // clic desde la portada: Paolo pidio que se encontrara sin buscarla.
+  _pintaSerie('serie-card', 'home');
 }
 
 /* ---------- Jerarquía de contenido: Materia → Área → Grado → Actividad ----------
@@ -4887,25 +4942,11 @@ function _camDoorsHTML(route){
       ? _hubCard('🎯','Practice tests',testMeta.desc,"location.href='"+_withBack(testMeta.href,route)+"'")
       : _lockedCard('🎯','Practice tests','Practice tests for your level.');
   } else {
-    const key = info.key;
-    if(key==='g9'){
-      // Mismo candado que studentGradeCambridge, que es adonde lleva esta puerta.
-      courseDoor = (nodeVisible('english.classes.g9') && nodeVisible('english.classes.g9.cambridge'))
-        ? _hubCard('🎓','Course','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')")
-        : _lockedCard('🎓','Course','Cambridge B2 First practice.');
-    } else {
-      // 6.º-8.º/10.º-11.º preparan mas de un examen a la vez (SEC_COURSES):
-      // la puerta trae un boton por curso, igual que antes en la tarjeta de
-      // My classes — sin candado propio, como ya era (el motor nis-fun gatea
-      // por su cuenta con fun_access).
-      const botones = info.cursos.map(lv=>`<a class="btn sm" style="text-decoration:none" href="javascript:void(0)" onclick="window.open('nis-fun/engine/?level=${lv}','_blank','noopener')">${esc(SEC_COURSE_NAMES[lv])}</a>`).join('');
-      courseDoor = `<div class="card center" style="padding:28px 16px;margin-bottom:0">
-        <div style="font-size:3rem;line-height:1">📘</div>
-        <h2 style="margin:10px 0 4px;color:var(--blue-d)">Course</h2>
-        <div class="muted" style="font-size:.85rem;margin-bottom:12px">The full course for your grade, unit by unit.</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">${botones}</div>
-      </div>`;
-    }
+    // Secundaria: la puerta es la tarjeta de Nordic Ascent, con un boton por
+    // curso del grado (A1 Foundations incluido) y, en 9.º, la practica B2
+    // First por destreza que antes ocupaba la puerta entera.
+    courseDoor = _secSerieCardHTML(route, true)
+      || _lockedCard(SEC_SERIE.em,'Course','Your Cambridge course.');
     testsDoor = nodeVisible(CAMBRIDGE_PRACTICE_NODE)
       ? _hubCard('🎯','Practice tests','Reading, Listening and Writing in Cambridge format, always available.',"location.href='"+_withBack(QUIZ_URL+'quizzes.html',route)+"'")
       : _lockedCard('🎯','Practice tests','Cambridge practice tests.');
@@ -6055,8 +6096,8 @@ const _YLE_BOT = {
   movers:   {c:'#2f9268', t:'🐺 A1 · Movers'},
   flyers:   {c:'#3b6fb5', t:'🦅 A2 · Flyers'},
 };
-async function _pintaYle(){
-  const caja = document.getElementById('yle-card');
+async function _pintaYle(cajaId='yle-card', route='classes_primary'){
+  const caja = document.getElementById(cajaId);
   if (!caja) return;
   const grado = (state.profile && state.profile.grade_id) || 0;
   const permiso = await funAccessDeGrado(grado, 'en');
@@ -6067,11 +6108,11 @@ async function _pintaYle(){
     const f = permiso && permiso.find(x => x.level === n);
     return f ? `<small class="muted" style="display:block">Units ${f.desde}–${f.hasta}</small>` : '';
   };
-  const botones = niveles.map(n => `<a href="${_withBack('nis-fun/engine/?level='+n,'classes_primary')}"
+  const botones = niveles.map(n => `<a href="${_withBack('nis-fun/engine/?level='+n,route)}"
       target="_blank" rel="noopener" class="btn"
       style="background:${_YLE_BOT[n].c};color:#fff;text-decoration:none">${_YLE_BOT[n].t}</a>`).join('');
   caja.innerHTML = `<div class="card" style="margin-top:16px;border-top:5px solid #3b6fb5">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">🧭 Fun for Nordic — Cambridge YLE</h2>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">🧸 Fun for Nordic — Cambridge YLE</h2>
       <div class="muted" style="font-size:.9rem;margin-bottom:12px">Interactive course to get ready for the Cambridge Young Learners exams: units with audio, crosswords and exam tasks — with Pip, Luna and Kili!</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}</div>
       ${niveles.map(rango).join('')}
@@ -6080,6 +6121,42 @@ async function _pintaYle(){
         niveles.map(n => funLibros(n, 'en', false)).join('')
       }</div>
     </div>`;
+}
+
+/* La tarjeta de Nordic Ascent: los cursos de secundaria que le tocan al
+   grado (SEC_COURSES, con A1 Foundations delante — desde WP-B no habia por
+   donde abrirlo). Sin candado propio, como siempre: el motor gatea con
+   fun_access y levels.json. 9.º suma la practica B2 First por destreza, que
+   antes ocupaba la puerta entera y dejaba los cursos fuera. */
+function _secSerieCardHTML(route, compact){
+  const p = state.profile || {}, g = Number(p.grade_id);
+  const key = 'g'+g, cursos = secCoursesFor(key);
+  if(!cursos.length) return '';
+  const botones = cursos.map(lv => { const c = SEC_CURSOS[lv]; return `<a href="${_withBack('nis-fun/engine/?level='+lv, route)}"
+      target="_blank" rel="noopener" class="btn${compact?' sm':''}"
+      style="background:${c.color};color:#fff;text-decoration:none">${c.em} ${esc(c.curso)}</a>`; }).join('');
+  const skills = (key==='g9' && nodeVisible('english.classes.g9') && nodeVisible('english.classes.g9.cambridge'))
+    ? `<a href="javascript:void(0)" class="btn${compact?' sm':''} ghost" onclick="window._nav('classes_g9_cambridge')">🎯 B2 First by skill</a>` : '';
+  if(compact) return `<div class="card center" style="padding:28px 16px;margin-bottom:0">
+      <div style="font-size:3rem;line-height:1">${SEC_SERIE.em}</div>
+      <h2 style="margin:10px 0 4px;color:var(--blue-d)">Course</h2>
+      <div class="muted" style="font-size:.85rem;margin-bottom:12px">${esc(SEC_SERIE.nombre)}: your Cambridge course, unit by unit.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">${botones}${skills}</div>
+    </div>`;
+  return `<div class="card" style="margin-top:16px;border-top:5px solid ${SEC_SERIE.color}">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">${SEC_SERIE.em} ${esc(SEC_SERIE.nombre)} — ${esc(SEC_SERIE.sub)}</h2>
+      <div class="muted" style="font-size:.9rem;margin-bottom:12px">Your Cambridge course, unit by unit: dialogues, audio, exam tasks and a Grammar Lab for each level. A1 Foundations is the grammar to start with if you are not ready for A2 Key yet.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}${skills}</div>
+    </div>`;
+}
+/* La tarjeta de la serie del alumno en Home: Fun for Nordic si es de
+   primaria, Nordic Ascent si es de secundaria — nunca las dos. */
+function _pintaSerie(cajaId, route){
+  const caja = document.getElementById(cajaId);
+  const p = state.profile || {}, g = Number(p.grade_id);
+  if(!caja || !p.grade_id) return;
+  if(g <= 5) return _pintaYle(cajaId, route);
+  caja.innerHTML = _secSerieCardHTML(route, false);
 }
 
 /* ---------- My Progress: historial completo del alumno (mocks, practice y actividades) ---------- */

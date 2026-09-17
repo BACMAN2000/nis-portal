@@ -294,7 +294,29 @@
   "up to test": "hasta el test",
   "🐧 Starters course": "🐧 Curso Starters",
   "🐺 Movers course": "🐺 Curso Movers",
-  "🦅 Flyers course": "🦅 Curso Flyers"
+  "🦅 Flyers course": "🦅 Curso Flyers",
+  "🧸 Fun for Nordic · Primary": "🧸 Fun for Nordic · Primaria",
+  "🧗 Nordic Ascent · Secondary": "🧗 Nordic Ascent · Secundaria",
+  "🧸 Fun for Nordic — Cambridge Young Learners (Primary)": "🧸 Fun for Nordic — Cambridge Young Learners (Primaria)",
+  "🧗 Nordic Ascent — Cambridge for Schools (Secondary)": "🧗 Nordic Ascent — Cambridge for Schools (Secundaria)",
+  "The first three steps of the Cambridge ladder for 1.º–5.º: Pre A1 Starters, A1 Movers and A2 Flyers. 150 units with audio, games and exam tasks. The format of each exam is in": "Los tres primeros peldaños de la escalera Cambridge para 1.º–5.º: Pre A1 Starters, A1 Movers y A2 Flyers. 150 unidades con audio, juegos y tareas de examen. El formato de cada examen está en",
+  ". Secondary has its own series:": ". Secundaria tiene su propia serie:",
+  ". Primary has its own series:": ". Primaria tiene su propia serie:",
+  "The climb up the Cambridge ladder for 6.º–11.º: A1 Foundations (the grammar before the first exam), then A2 Key, B1 Preliminary, B2 First and C1 Advanced. Units with dialogues, audio and exam tasks, and a Grammar Lab of 24 topics per level. The format of each exam is in": "La subida por la escalera Cambridge para 6.º–11.º: A1 Foundations (la gramática previa al primer examen), después A2 Key, B1 Preliminary, B2 First y C1 Advanced. Unidades con diálogos, audio y tareas de examen, y un Grammar Lab de 24 temas por nivel. El formato de cada examen está en",
+  "What students write and record in the five levels, to give them a grade and feedback. It is the same tab found in": "Lo que los alumnos escriben y graban en los cinco niveles, para ponerles nota y comentarios. Es la misma pestaña que se encuentra en",
+  "the grammar before A2 Key": "la gramática previa al A2 Key",
+  "🧸 Fun for Nordic · 🧗 Nordic Ascent — student submissions": "🧸 Fun for Nordic · 🧗 Nordic Ascent — entregas de los alumnos",
+  "What students write and record in Starters, Movers and Flyers (primary) and in A1 Foundations, A2 Key, B1 Preliminary, B2 First and C1 Advanced (secondary), most recent first. Give a score from 0 to 10 and a comment; it saves automatically.": "Lo que escriben y graban en Starters, Movers y Flyers (primaria) y en A1 Foundations, A2 Key, B1 Preliminary, B2 First y C1 Advanced (secundaria), lo más reciente primero. Pon una nota de 0 a 10 y un comentario; se guarda solo.",
+  "🧸 Fun for Nordic — Cambridge YLE": "🧸 Fun for Nordic — Cambridge YLE",
+  "🧗 Nordic Ascent — Cambridge for Schools · A1 → C1": "🧗 Nordic Ascent — Cambridge for Schools · A1 → C1",
+  "Your Cambridge course, unit by unit: dialogues, audio, exam tasks and a Grammar Lab for each level. A1 Foundations is the grammar to start with if you are not ready for A2 Key yet.": "Tu curso Cambridge, unidad por unidad: diálogos, audio, tareas de examen y un Grammar Lab por nivel. A1 Foundations es la gramática para empezar si todavía no estás listo para el A2 Key.",
+  "Nordic Ascent: your Cambridge course, unit by unit.": "Nordic Ascent: tu curso Cambridge, unidad por unidad.",
+  "🎯 B2 First by skill": "🎯 B2 First por destreza",
+  "🌱 A1 Foundations": "🌱 A1 Foundations",
+  "🔑 A2 Key": "🔑 A2 Key",
+  "🧭 B1 Preliminary": "🧭 B1 Preliminary",
+  "🥇 B2 First": "🥇 B2 First",
+  "🏔️ C1 Advanced": "🏔️ C1 Advanced"
  },
  "patterns": [
   [
@@ -576,6 +598,26 @@
   [
    "^(G\\d+) sees:$",
    "$1 ve:"
+  ],
+  [
+   "^(\\d+) units \\+ 24 grammar topics · (G\\d+ – G\\d+)$",
+   "$1 unidades + 24 temas de gramática · $2"
+  ],
+  [
+   "^12 grammar topics · (G\\d+ – G\\d+)$",
+   "12 temas de gramática · $1"
+  ],
+  [
+   "^— (.+) with audio, dialogues and exam tasks to prepare for$",
+   "— $1 con audio, diálogos y tareas de examen para preparar el"
+  ],
+  [
+   "^\\((G\\d+ – G\\d+)\\)\\. It is the same course the student opens; what they write and record appears in$",
+   "($1). Es el mismo curso que abre el alumno; lo que escribe y graba aparece en"
+  ],
+  [
+   "^(\\d+) units \\+ 24 grammar topics$",
+   "$1 unidades + 24 temas de gramática"
   ]
  ]
 }
