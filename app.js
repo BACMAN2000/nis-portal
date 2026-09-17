@@ -1319,6 +1319,7 @@ async function renderAdmin(tab='users'){
     {group:'Tracking', icon:'📈', items:[
       {key:'stats',label:'📈 Statistics'},
       {key:'results',label:'📝 Results'},
+      {key:'activities',label:'🎲 Activities'},
       {key:'final',label:'🎓 Final result'},
       {key:'tiempo',label:'⏱️ Screen time'},
       {key:'honesty',label:'🛡️ Honesty'},
@@ -1357,6 +1358,7 @@ async function renderAdmin(tab='users'){
   if(tab==='materiales') return materialesPanel();
   if(tab==='corregir') return corregirPanel();
   if(tab==='tiempo') return tiempoPantallaPanel();
+  if(tab==='activities') return window.activitiesPanel({admin:true, grades:GRADES});
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
@@ -3663,6 +3665,7 @@ async function renderTeacher(tab){
     correccion.push({key:'readers',label:'📖 Reading checks'});
     correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
     seguimiento.push({key:'results',label:'📝 Results'});
+    seguimiento.push({key:'activities',label:'🎲 Activities'});
     seguimiento.push({key:'final',label:'🎓 Final result'});
     seguimiento.push({key:'tiempo',label:'⏱️ Screen time'});
   }
@@ -3741,6 +3744,7 @@ async function renderTeacher(tab){
   if(active==='materiales') return materialesPanel();
   if(active==='corregir') return corregirPanel();
   if(active==='tiempo') return tiempoPantallaPanel();
+  if(active==='activities') return window.activitiesPanel({admin:false, grades:teacherAllowedGrades()});
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='unitaccess') return unitAccessPanel(teacherAllowedGrades());
@@ -6190,8 +6194,11 @@ async function studentResults(){
   const mocks=all.filter(isMockAttempt), practice=all.filter(a=>!isMockAttempt(a));
   const { data:acts } = await sb.from('activity_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const fmtT=(s)=>{ s=s||0; return Math.floor(s/60)+'m '+String(s%60).padStart(2,'0')+'s'; };
-  const actTable=(list)=> list.length ? `<table><thead><tr><th>Activity</th><th>Level</th><th>Result</th><th>⏱ Time</th><th>💡 Hints</th><th>Date</th></tr></thead><tbody>${
-      list.map(a=>`<tr><td>${a.activity==='crossword'?'🔎':'🔍'} ${esc(a.title||(a.activity==='crossword'?'Crossword':'Word Search'))}</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
+  // Sus respuestas, ítem a ítem (activities-panel.js pinta el detalle; el
+  // mismo que ve el profesor en Seguimiento › Actividades).
+  const detalle=(a)=>{ const f=window.activitiesPanel&&window.activitiesPanel.detailHTML; return f?f(a):''; };
+  const actTable=(list)=> list.length ? `<table><thead><tr><th>Activity</th><th>Level</th><th>Result</th><th>⏱ Time</th><th>💡 Hints</th><th>Date</th><th></th></tr></thead><tbody>${
+      list.map(a=>{ const d=detalle(a); return `<tr><td>${a.activity==='crossword'?'🔎':'🔍'} ${esc(a.title||(a.activity==='crossword'?'Crossword':'Word Search'))}</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td><td>${d?`<button class="btn sm ghost" onclick="const r=this.closest('tr').nextElementSibling; r.hidden=!r.hidden; this.textContent=r.hidden?'▾ My answers':'▴ Hide'">▾ My answers</button>`:''}</td></tr>${d?`<tr hidden><td colspan="7" style="background:#f8fafc;padding:10px 14px">${d}</td></tr>`:''}`; }).join('')
     }</tbody></table>` : `<p class="muted">You haven’t completed any activities yet. Go to <b>Classes → Activities</b>.</p>`;
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not assigned')}</p>

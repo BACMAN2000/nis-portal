@@ -316,7 +316,36 @@
   "🔑 A2 Key": "🔑 A2 Key",
   "🧭 B1 Preliminary": "🧭 B1 Preliminary",
   "🥇 B2 First": "🥇 B2 First",
-  "🏔️ C1 Advanced": "🏔️ C1 Advanced"
+  "🏔️ C1 Advanced": "🏔️ C1 Advanced",
+  "Every game, unit exam, Grammar Lab topic and reader activity your students finish, with what they answered item by item. Worksheets and unit products are marked in": "Cada juego, examen de unidad, tema del Grammar Lab y actividad de lectura que terminan tus alumnos, con lo que contestaron ítem a ítem. Las fichas y los productos de unidad se corrigen en",
+  "Could not load the activities:": "No se pudieron cargar las actividades:",
+  "All grades": "Todos los grados",
+  "GRADE": "GRADO",
+  "SECTION": "SECCIÓN",
+  "PERIOD": "PERIODO",
+  "STUDENT OR ACTIVITY": "ALUMNO O ACTIVIDAD",
+  "Name or activity…": "Nombre o actividad…",
+  "🗂️ All": "🗂️ Todo",
+  "🎲 Games": "🎲 Juegos",
+  "📋 Unit exams": "📋 Exámenes de unidad",
+  "🧪 Grammar Lab": "🧪 Grammar Lab",
+  "📝 Reader exams": "📝 Exámenes de lectura",
+  "🧩 Other": "🧩 Otros",
+  "No activities for this filter. Students’ games, unit exams, Grammar Lab and reader activities appear here as soon as they finish one.": "No hay actividades con este filtro. Los juegos, exámenes de unidad, Grammar Lab y actividades de lectura aparecen aquí en cuanto un alumno termina una.",
+  "Activity": "Actividad",
+  "Result": "Resultado",
+  "⏱ Time": "⏱ Tiempo",
+  "💡 Hints": "💡 Pistas",
+  "When": "Cuándo",
+  "▾ Answers": "▾ Respuestas",
+  "▴ Hide": "▴ Ocultar",
+  "▾ My answers": "▾ Mis respuestas",
+  "Student’s answer": "Respuesta del alumno",
+  "Item": "Ítem",
+  "Word:": "Palabra:",
+  "· hints used:": "· pistas usadas:",
+  "Reading & Use of English": "Reading & Use of English",
+  "This attempt was recorded before answers were saved (17 Sep 2026): only the score is available": "Este intento se registró antes de que se guardaran las respuestas (17-sep-2026): solo está la nota"
  },
  "patterns": [
   [
@@ -618,6 +647,30 @@
   [
    "^(\\d+) units \\+ 24 grammar topics$",
    "$1 unidades + 24 temas de gramática"
+  ],
+  [
+   "^Last (\\d+) days$",
+   "Últimos $1 días"
+  ],
+  [
+   "^(\\d+) items · $",
+   "$1 ítems · "
+  ],
+  [
+   "^(\\d+) wrong$",
+   "$1 mal"
+  ],
+  [
+   "^(\\d+) words · $",
+   "$1 palabras · "
+  ],
+  [
+   "^(\\d+) missed$",
+   "$1 falladas"
+  ],
+  [
+   "^(\\d+) attempt\\(s\\) · showing the latest 600: narrow the filter to see older ones$",
+   "$1 intento(s) · se muestran los últimos 600: acota el filtro para ver los anteriores"
   ]
  ]
 }
