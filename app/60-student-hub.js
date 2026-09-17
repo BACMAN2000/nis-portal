@@ -499,8 +499,11 @@ async function _previewEnter(meta, profile){
   _previewClearHash();
   await renderStudent('home');
 }
-window._previewExit = ()=>{
-  const tab=(state.preview&&state.preview.backTab)||'users';
+window._previewExit = (tabPedida)=>{
+  const tab=tabPedida||(state.preview&&state.preview.backTab)||'users';
+  // 👁 View as (95-view-as.js): la vista de profesor cambia teacher_access;
+  // al salir se devuelve el real.
+  if('_teacherAccessReal' in state){ state.teacherAccess = state._teacherAccessReal; state.teacherNodes = state._teacherNodesReal; delete state._teacherAccessReal; delete state._teacherNodesReal; }
   if(state.realProfile) state.profile = state.realProfile;
   state.realProfile=null; state.preview=null; state.access=null;
   _previewClearHash();
@@ -516,6 +519,8 @@ function _previewBar(){
   const m=state.preview;
   const note = m.kind==='grade'
     ? 'Sample student: only what the grade opens, with no per-student exceptions.'
+    : m.kind==='teacher' ? 'Teacher panel with every grade. Anything you mark here is saved under your own account.'
+    : m.kind==='parent' ? 'What the family receives about this student.'
     : 'With their per-student exceptions.';
   return `<div class="preview-bar">
     <span>👁️ You are viewing the portal as <b>${esc(m.label)}</b></span>

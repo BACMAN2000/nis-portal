@@ -350,7 +350,39 @@
   "Can’t sign in? Ask your English teacher or write to": "¿No puedes entrar? Pregunta a tu profesor de inglés o escribe a",
   "Show password": "Mostrar contraseña",
   "Hide password": "Ocultar contraseña",
-  "Create your student account": "Crea tu cuenta de alumno"
+  "Create your student account": "Crea tu cuenta de alumno",
+  "Admin": "Admin",
+  "Parent": "Familia",
+  "View as": "Ver como",
+  "See the portal as another role": "Ver el portal como otro rol",
+  "👁 View as a family": "👁 Ver como familia",
+  "👁 View as a student": "👁 Ver como alumno",
+  "What the family of a student receives: the final-result report, the Cambridge guide for families and how to contact the teacher.": "Lo que recibe la familia de un alumno: el informe de resultado final, la guía Cambridge para familias y cómo contactar al profesor.",
+  "The portal exactly as a student sees it: only what their grade has open, with their own history.": "El portal tal como lo ve un alumno: solo lo que su grado tiene abierto, con su propio historial.",
+  "Sample student by grade": "Alumno de muestra por grado",
+  "Only what the grade opens, with no per-student exceptions and no personal history.": "Solo lo que abre el grado, sin excepciones por alumno y sin historial personal.",
+  "View as a sample student": "Ver como alumno de muestra",
+  "A specific student": "Un alumno concreto",
+  "Choose the student": "Elige al alumno",
+  "Name, grade (G7) or section…": "Nombre, grado (G7) o sección…",
+  "Loading students…": "Cargando alumnos…",
+  "No student matches.": "Ningún alumno coincide.",
+  "Showing 60: narrow the search.": "Se muestran 60: acota la búsqueda.",
+  "👁️ View as their family": "👁️ Ver como su familia",
+  "👁️ View as": "👁️ Ver como",
+  "📄 Family report": "📄 Informe para la familia",
+  "📘 Family guide": "📘 Guía para la familia",
+  "✉️ Contact the teacher": "✉️ Contactar al profesor",
+  "Teacher panel with every grade. Anything you mark here is saved under your own account.": "Panel del profesor con todos los grados. Lo que corrijas aquí se guarda con tu propia cuenta.",
+  "What the family receives about this student.": "Lo que recibe la familia de este alumno.",
+  "a teacher (all grades)": "un profesor (todos los grados)",
+  "Questions about": "Las dudas sobre",
+  "’s progress go to the English coordination:": ", su avance, van a la coordinación de inglés:",
+  "Families also receive the school’s communications through Toddle.": "Las familias reciben además las comunicaciones del colegio por Toddle.",
+  "Cambridge Young Learners": "Cambridge Young Learners",
+  "Starters, Movers and Flyers: what each exam is, the shields and what they mean.": "Starters, Movers y Flyers: qué es cada examen, los escudos y qué significan.",
+  "Every exam from A2 Key to C1 Advanced: parts, timing and scoring.": "Cada examen de A2 Key a C1 Advanced: partes, duración y puntuación.",
+  "📄 Download PDF": "📄 Descargar PDF"
  },
  "patterns": [
   [
@@ -676,6 +708,18 @@
   [
    "^(\\d+) attempt\\(s\\) · showing the latest 600: narrow the filter to see older ones$",
    "$1 intento(s) · se muestran los últimos 600: acota el filtro para ver los anteriores"
+  ],
+  [
+   "^What the Cambridge exams are, how they are scored and how the school prepares (.+) for them\\.$",
+   "Qué son los exámenes Cambridge, cómo se puntúan y cómo prepara el colegio a $1."
+  ],
+  [
+   "^This is the document the family receives: (.+)’s final level, skill by skill, with the teacher’s comments\\.$",
+   "Este es el documento que recibe la familia: el nivel final de $1, destreza por destreza, con los comentarios del profesor."
+  ],
+  [
+   "^the family of (.+)$",
+   "la familia de $1"
   ]
  ]
 }

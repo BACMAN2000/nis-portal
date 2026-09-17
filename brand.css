@@ -29,6 +29,9 @@ button{font-family:inherit;cursor:pointer}
 .app-header .role-chip{background:rgba(255,255,255,.18);padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
 .app-header button.logout{background:rgba(255,255,255,.16);color:#fff;border:none;padding:8px 14px;border-radius:var(--r-sm);font-weight:500}
 .app-header button.logout:hover{background:rgba(255,255,255,.28)}
+.app-header .view-as{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);border-radius:var(--r-sm);padding:4px 8px;font-size:.85rem}
+.app-header .view-as select{background:transparent;color:#fff;border:none;font:inherit;font-weight:600;cursor:pointer;padding:2px 0}
+.app-header .view-as select option{color:#0f172a}
 
 /* 👁️ Vista como alumno (admin): franja sticky imposible de confundir con el
    portal real, para que nadie crea que está viendo su propia cuenta. */

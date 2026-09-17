@@ -308,6 +308,7 @@ function header(){
     <button class="nav-toggle" type="button" onclick="window._navToggle(true)" aria-label="Menu" title="Menu">☰</button>
     <img src="assets/logo-white-h.svg" alt="Nordic International School">
     <div class="spacer"></div>
+    ${_viewAsSelect()}
     <span class="role-chip">${esc(p.role||'')}</span>
     <span class="who">${esc(name)}</span>
     ${real ? `<span class="who" style="opacity:.75">· session: ${esc(real.full_name||real.email||'admin')}</span>` : ''}
