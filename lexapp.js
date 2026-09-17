@@ -843,7 +843,11 @@ if(window.NIS_WORK) NIS_WORK.attach({
   }
 });
 
-fetch('data.json?v=' + (APP.datav || 1)).then(function(r){ return r.json(); }).then(function(d){
+/* La página declara APP.data ('data.json?v=…') junto al archivo: el sellador de
+   ?v= (tools/sella_versiones.py) resuelve cada ruta desde la carpeta de quien la
+   pide, y desde ../lexapp.js no existe ningún data.json, así que un número aquí
+   no se sellaría nunca. datav queda por si alguna página aún lo usa. */
+fetch(APP.data || 'data.json?v=' + (APP.datav || 1)).then(function(r){ return r.json(); }).then(function(d){
   DATA = d;
   LEVEL = DATA.niveles.indexOf('A1') >= 0 ? 'A1' : DATA.niveles[0];
   BLOQUES = armaBloques(items(LEVEL));
