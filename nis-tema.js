@@ -99,6 +99,11 @@
     btnLang.type = 'button';
     btnLang.className = 'nis-tema-btn nis-lang-btn';
     btnLang.addEventListener('click', function () { if (window.NISi18n) { window.NISi18n.toggle(); pintarBoton(); } });
+    // El diccionario (1,1 MB) se pide al acercarse al botón, no al pulsarlo:
+    // así el cambio de idioma es inmediato (auditoría externa, 17-sep-2026).
+    ['mouseenter', 'focus', 'touchstart'].forEach(function (ev) {
+      btnLang.addEventListener(ev, function () { if (window.NISi18n && window.NISi18n.ready) window.NISi18n.ready(); }, { passive: true });
+    });
     btnTema = document.createElement('button');
     btnTema.type = 'button';
     btnTema.className = 'nis-tema-btn';

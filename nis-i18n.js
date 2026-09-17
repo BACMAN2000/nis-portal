@@ -217,6 +217,16 @@
     marcarHTML();
     vigilar();
     if (lang === 'es') cargar().then(function () { aplicar(document.body); });
+    /* Auditoría externa (17-sep-2026): «activar el español no produjo una
+       traducción visible inmediata». El diccionario pesa 1,1 MB y hasta hoy se
+       pedía en el primer clic. Si el navegador está en español se descarga en
+       segundo plano nada más cargar (el navegador lo cachea, con revalidación);
+       en cualquier otro caso lo pide nis-tema.js al posar el ratón o el foco en
+       el botón 🌐, antes del clic. */
+    else if (/^es/i.test(navigator.language || '')) {
+      var idle = window.requestIdleCallback || function (f) { setTimeout(f, 1500); };
+      idle(function () { cargar(); });
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', arrancar);
   else arrancar();

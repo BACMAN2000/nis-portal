@@ -6,6 +6,7 @@ function renderAuth(mode='login'){
     <img class="logo" src="assets/logo-h.svg" alt="Nordic">
     <h1>NIS Portal</h1>
     <p class="sub">${mode==='login'?'Sign in to your account':'Create your student account'}</p>
+    <p class="muted" style="margin:-6px 0 12px;font-size:.85rem">Nordic International School of Lima · students, teachers and staff</p>
     <div id="msg"></div>
     <!-- Un <form> de verdad: es lo que hace que el gestor de contrasenas del
          navegador ofrezca guardar y rellenar, y que el Enter envie solo. -->
@@ -13,6 +14,7 @@ function renderAuth(mode='login'){
     <div class="auth-switch">${mode==='login'
         ? `Don’t have an account? <a id="toSignup">Sign up</a>`
         : `Already have an account? <a id="toLogin">Sign in</a>`}</div>
+    <p class="muted" style="margin:14px 0 0;font-size:.82rem">Can’t sign in? Ask your English teacher or write to <a href="mailto:pbaca@nordic-school.edu.pe">pbaca@nordic-school.edu.pe</a>.</p>
   </div></div>`;
   $('#form').innerHTML = mode==='login' ? loginForm() : signupForm();
   if(mode==='login'){
@@ -33,7 +35,7 @@ function loginForm(){
     <label for="li_pw">Password</label>
     <div style="position:relative">
       <input id="li_pw" name="password" type="password" autocomplete="current-password" placeholder="••••••••" style="width:100%;padding-right:42px">
-      <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Show / hide password"
+      <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Show password" aria-label="Show password" aria-pressed="false"
         style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.15rem;line-height:1;padding:0;color:var(--muted)">👁</button>
     </div>
     <div style="text-align:right;margin-top:8px"><a id="forgotPw" href="#" style="font-size:.9rem">Forgot your password?</a></div>
@@ -46,7 +48,8 @@ window._toggleLoginPw=()=>{
   const inp=$('#li_pw'), btn=$('#li_eye'); if(!inp) return;
   const hidden = inp.type==='password';
   inp.type = hidden ? 'text' : 'password';
-  if(btn) btn.textContent = hidden ? '🙈' : '👁';   // 🙈 = visible (clic para ocultar)
+  if(btn){ btn.textContent = hidden ? '🙈' : '👁';   // 🙈 = visible (clic para ocultar)
+    btn.title = hidden ? 'Hide password' : 'Show password'; btn.setAttribute('aria-label', btn.title); btn.setAttribute('aria-pressed', hidden ? 'true' : 'false'); }
   inp.focus();
 };
 function renderForgotPassword(){
