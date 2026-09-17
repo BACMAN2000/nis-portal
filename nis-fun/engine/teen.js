@@ -746,7 +746,7 @@ window.TEEN = (function () {
     // izquierda; en las demas mira a la derecha. Quien aun no tiene arte 3D
     // (p.ej. Sofia hasta bajar su lamina) cae al retrato SVG o a la inicial.
     const AV = { mateo: 'mateo', sofia: 'sofia', liam: 'liam', nadia: 'nadia', vega: 'vega', nova: 'nova' };
-    const CAST3D = new Set(['mateo', 'liam', 'nadia', 'vega', 'nova']);
+    const CAST3D = new Set(['mateo', 'sofia', 'liam', 'nadia', 'vega', 'nova']);
     const TRATO = new Set(['miss', 'mr', 'mrs', 'ms', 'cousin', 'uncle', 'aunt', 'grandma', 'grandpa']);
     const slugDe = who => {
       const p = String(who || '').toLowerCase().split(/\s+/).filter(Boolean);
