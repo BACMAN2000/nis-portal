@@ -443,6 +443,9 @@ function memory(ws){
   if(!game || game.mode !== 'memory'){
     var chosen = withPic.slice(0, Math.min(6, withPic.length)), cards = [];
     chosen.forEach(function(w, i){ cards.push({id: i, kind: 'pic', w: w}); cards.push({id: i, kind: 'word', w: w}); });
+    /* precargar las imagenes: el backend tarda ~1s la 1a vez y en un memory game
+       la carta debe revelarse al instante; asi quedan en cache antes de voltear. */
+    chosen.forEach(function(w){ if(hasIll(w)){ try { var pi = new Image(); pi.src = YM(WORD_IMG + wslug(w.k) + '.jpg'); } catch(e){} } });
     game = {mode: 'memory', cards: shuffle(cards), open: [], done: {}, moves: 0, pairs: chosen.length, lock: false};
     t0 = Date.now();
   }
@@ -481,6 +484,6 @@ init();
 })();
 </script>
 <script src="nis-i18n.js?v=5563c16b" defer></script>
-<script src="nis-tema.js?v=1bb44b4c" defer></script>
+<script src="nis-tema.js?v=94b8b97b" defer></script>
 </body>
 </html>
