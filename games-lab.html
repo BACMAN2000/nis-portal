@@ -234,8 +234,80 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="coh-games-core.js?v=8124db8f"></script>
 <script src="games-lab-data.js?v=8d268bcc"></script>
 <script src="games-lab-engine.js?v=f07cfab4"></script>
+<script>
+/* Guardado en la cuenta del alumno (WP-E). games-lab-engine.js es compartido
+   con cohasset.pe (comentario al inicio del archivo: "byte-identical") y no
+   está en la lista de páginas a tocar, así que en vez de editarlo se observa
+   su localStorage (GAMES_LAB_CONFIG.progKey = 'nisGamesLab', un mapa
+   "topicId:juego" -> estrellas que ya escribe saveStars() en cada partida)
+   para saber cuándo termina un juego. report:false de arriba apaga su propio
+   aviso al backend de Cohasset, que no aplica aquí. */
+(function(){
+  'use strict';
+  var KEY = (window.GAMES_LAB_CONFIG && window.GAMES_LAB_CONFIG.progKey) || 'nisGamesLab';
+  function leeProg(){ try{ return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ return {}; } }
+  function tema(id){
+    var lista = window.GAMES_DATA || [], i;
+    for(i = 0; i < lista.length; i++) if(lista[i].id === id) return lista[i];
+    return {};
+  }
+
+  if(!window.NISACT) window.NISACT = (function(){
+    var CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4';
+    var sb = null;
+    function cargaSDK(){
+      return new Promise(function(res){
+        if(window.supabase && window.supabase.createClient) return res();
+        var s = document.createElement('script');
+        s.src = CDN; s.onload = function(){ res(); }; s.onerror = function(){ res(); };
+        document.head.appendChild(s);
+      });
+    }
+    function cliente(){
+      if(sb) return sb;
+      if(!window.supabase || !window.supabase.createClient || !window.NIS_CONFIG) return null;
+      sb = window.supabase.createClient(window.NIS_CONFIG.SUPABASE_URL, window.NIS_CONFIG.SUPABASE_KEY);
+      return sb;
+    }
+    function submit(r){
+      return cargaSDK().then(function(){
+        var c = cliente();
+        if(!c) return {skipped:true};
+        return c.auth.getSession().then(function(s){
+          var u = s && s.data && s.data.session && s.data.session.user;
+          if(!u) return {skipped:true};
+          return c.from('activity_attempts').insert({
+            student_id:u.id, activity:r.activity, title:r.title, level:r.level || null,
+            score:(r.score == null ? null : r.score), total:(r.total == null ? null : r.total),
+            duration_sec:(r.duration == null ? null : r.duration)
+          }).then(function(q){ return (q && q.error) ? {sent:false, motivo:q.error.message} : {sent:true}; });
+        });
+      }).catch(function(e){ return {sent:false, motivo:(e && e.message) || 'no connection'}; });
+    }
+    return {submit:submit};
+  })();
+
+  var visto = leeProg();
+  function comprueba(){
+    var actual = leeProg(), k;
+    for(k in actual){
+      if(visto[k] === actual[k]) continue;
+      var partes = k.split(':'), topicId = partes[0], juego = partes.slice(1).join(':');
+      var t = tema(topicId);
+      if(window.NISACT) NISACT.submit({
+        activity:'games-lab', title:(t.title || topicId) + ' · ' + juego,
+        level:t.level || null, score:actual[k], total:3, duration:null
+      });
+    }
+    visto = actual;
+  }
+  setInterval(comprueba, 1500);
+  window.addEventListener('pagehide', comprueba);
+})();
+</script>
 <script src="nis-nav.js?v=c6e39903"></script>
-<script src="nis-i18n.js?v=dd504eb2" defer></script>
+<script src="nis-presence.js?v=684f7b00" defer></script>
+<script src="nis-i18n.js?v=503537a8" defer></script>
 <script src="nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

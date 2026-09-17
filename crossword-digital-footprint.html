@@ -25,7 +25,7 @@
   .tab.done::after{content:" ✓"; color:var(--good);}
   .tab.on.done::after{color:var(--good-bright);}
   .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
-  .board{max-width:100%; background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:0 0 auto;}
+  .board{max-width:100%; background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:0 0 auto; overflow-x:auto;}
   .gridbox{display:grid; gap:2px;}
   .cell{position:relative; width:var(--cs); height:var(--cs); background:var(--accent-soft); border-radius:4px;}
   .cell.block{background:transparent;}
@@ -48,7 +48,7 @@
   .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
   button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s;}
   .b-check{background:var(--accent); color:var(--card);}
-  .b-hint{background:var(--gold); color:var(--card);}
+  .b-hint{background:var(--gold); color:#1e2433;}
   .b-clear{background:var(--line); color:var(--ink);}
   button.act:hover{filter:brightness(1.08);}
   .score{font-size:.92rem; margin-top:10px; color:var(--muted); font-weight:600;}
@@ -492,7 +492,8 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 load();
 </script>
-<script src="nis-i18n.js?v=dd504eb2" defer></script>
+<script src="nis-presence.js?v=684f7b00" defer></script>
+<script src="nis-i18n.js?v=503537a8" defer></script>
 <script src="nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

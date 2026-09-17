@@ -40,10 +40,18 @@
   ::-webkit-scrollbar{height:8px;width:8px}::-webkit-scrollbar-thumb{background:#B4BCDF;border-radius:8px}
   @media print{.no-print{display:none!important}body{background:var(--card)}}
   .voiced-dot{box-shadow:0 0 0 4px rgba(74,123,200,.18)}
+  /* La cabecera (logo + titulo + nav de pestanas) no envolvia en movil: el
+     nav con sus botones se salia de la pantalla. Aqui se deja que la fila
+     completa haga wrap y el nav pase a su propia fila cuando no cabe. */
+  @media (max-width:480px){
+    header>div.flex{flex-wrap:wrap;row-gap:6px}
+    header nav.ml-auto{flex-basis:100%;justify-content:flex-end;margin-left:0;max-width:100%}
+  }
 </style>
   <meta name="google" content="notranslate">
   <script src="../config.js?v=720edc7d"></script>
   <script src="../anticheat.js?v=e8b83646" data-activity="phonics"></script>
+  <script src="../activity-save.js?v=a082b30c"></script>
 </head>
 <body>
 <div id="root"></div>
@@ -57,6 +65,53 @@ const {
 /* Embedded inside the NIS portal? Then hide our own top bar so it nests under
    the portal header/sidebar. ?embed=1 or being inside an iframe both trigger it. */
 const EMBED = new URLSearchParams(location.search).get('embed') === '1' || window.self !== window.top;
+
+/* ---- Guardado en la cuenta del alumno (WP-E) ----
+   No hay puntuación en esta app (son manipulativos, no ejercicios con
+   respuesta): se cuenta lo PRACTICADO — una palabra deletreada entera en la
+   Blending Machine, un mismo bloque segmentado del todo en Sound Boxes. */
+const PHONICS_HECHO = {};
+if(!window.NISACT) window.NISACT = (function(){
+  const CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4';
+  let sb = null;
+  function cargaSDK(){
+    return new Promise(res => {
+      if(window.supabase && window.supabase.createClient) return res();
+      const s = document.createElement('script');
+      s.src = CDN; s.onload = () => res(); s.onerror = () => res();
+      document.head.appendChild(s);
+    });
+  }
+  function cliente(){
+    if(sb) return sb;
+    if(!window.supabase || !window.supabase.createClient || !window.NIS_CONFIG) return null;
+    sb = window.supabase.createClient(window.NIS_CONFIG.SUPABASE_URL, window.NIS_CONFIG.SUPABASE_KEY);
+    return sb;
+  }
+  function submit(r){
+    return cargaSDK().then(() => {
+      const c = cliente();
+      if(!c) return {skipped:true};
+      return c.auth.getSession().then(s => {
+        const u = s && s.data && s.data.session && s.data.session.user;
+        if(!u) return {skipped:true};
+        return c.from('activity_attempts').insert({
+          student_id:u.id, activity:r.activity, title:r.title, level:r.level || null,
+          score:(r.score == null ? null : r.score), total:(r.total == null ? null : r.total),
+          duration_sec:(r.duration == null ? null : r.duration)
+        }).then(q => (q && q.error) ? {sent:false, motivo:q.error.message} : {sent:true});
+      });
+    }).catch(e => ({sent:false, motivo:(e && e.message) || 'no connection'}));
+  }
+  return {submit};
+})();
+function phonicsPractica(id, titulo){
+  if(!PHONICS_HECHO[id]){
+    PHONICS_HECHO[id] = true;
+    if(window.NISACT) NISACT.submit({activity:'phonics', title:titulo, level:null, score:null, total:null, duration:null});
+  }
+  if(window.NIS_WORK) NIS_WORK.touch();
+}
 
 /* ============================================================
    1) SCOPE & SEQUENCE — verbatim from the NIS Teacher Dashboard
@@ -1760,7 +1815,9 @@ function BlendingMachine() {
       speakGrapheme(parts[revealed], {
         rate: 0.5
       });
-      setRevealed(r => r + 1);
+      const r2 = revealed + 1;
+      setRevealed(r2);
+      if (r2 >= parts.length) phonicsPractica('blend:' + bank + ':' + word, 'Phonics · Blending Machine · ' + word);
     }
   };
   const blend = () => {
@@ -1768,6 +1825,7 @@ function BlendingMachine() {
     speak(word, {
       rate: 0.7
     });
+    phonicsPractica('blend:' + bank + ':' + word, 'Phonics · Blending Machine · ' + word);
   };
   return /*#__PURE__*/React.createElement("div", {
     className: "bg-white rounded-2xl p-5 card-shadow border border-nordic-100"
@@ -1801,7 +1859,9 @@ function BlendingMachine() {
         speakGrapheme(s, {
           rate: 0.5
         });
-        setRevealed(Math.max(revealed, i + 1));
+        const r2 = Math.max(revealed, i + 1);
+        setRevealed(r2);
+        if (r2 >= parts.length) phonicsPractica('blend:' + bank + ':' + word, 'Phonics · Blending Machine · ' + word);
       }
     },
     className: "cursor-pointer select-none w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl font-bold transition-all " + (i < revealed ? "bg-nordic-600 text-white animate-pop" : "bg-nordic-100 text-nordic-300")
@@ -1849,6 +1909,9 @@ function SoundBoxes() {
       speakGrapheme(s, {
         rate: 0.5
       });
+      if (f.length === parts.length && f.every(Boolean)) {
+        phonicsPractica('boxes:' + word, 'Phonics · Sound Boxes · ' + word);
+      }
     },
     className: "w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 border-dashed border-nordic-300 flex items-center justify-center cursor-pointer relative"
   }, filled[i] && /*#__PURE__*/React.createElement("div", {
@@ -1856,7 +1919,10 @@ function SoundBoxes() {
   }, s.replace("_e", ""))))), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-2"
   }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => setFilled(parts.map(() => true)),
+    onClick: () => {
+      setFilled(parts.map(() => true));
+      phonicsPractica('boxes:' + word, 'Phonics · Sound Boxes · ' + word);
+    },
     className: "flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5"
   }, "Show all sounds"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setFilled([]),
@@ -2056,8 +2122,26 @@ function App() {
 }
 if (EMBED) document.body.classList.add('embed');
 ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
+
+/* Guardado en la cuenta del alumno (WP-E): practica libre, no cuelga de
+   ninguna unidad. No hay nada que repintar al restaurar — PHONICS_HECHO no
+   se muestra en pantalla, solo alimenta la barra Save/Submit. */
+if (window.NIS_WORK) NIS_WORK.attach({
+  slug: 'phonics', grade: 'g9', unit: 0, week: null, auto: true,
+  title: document.title,
+  vacio: 'Practise a sound first — then you can hand it in.',
+  read: () => ({ store: PHONICS_HECHO }),
+  write: (d) => { Object.assign(PHONICS_HECHO, (d && d.store) || {}); },
+  count: (d) => Object.keys((d && d.store) || {}).length,
+  answers: (d) => {
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach((k) => { out[k] = 'practised'; });
+    return out;
+  }
+});
 </script>
-<script src="../nis-i18n.js?v=dd504eb2" defer></script>
+<script src="../nis-presence.js?v=684f7b00" defer></script>
+<script src="../nis-i18n.js?v=503537a8" defer></script>
 <script src="../nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

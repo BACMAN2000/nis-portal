@@ -266,3 +266,17 @@ button:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
 :root[data-theme="dark"] select,
 :root[data-theme="dark"] textarea,
 :root[data-theme="dark"] .auth-card{ background:var(--white); color:var(--ink); border-color:var(--line); }
+
+/* ===== Fase 2 WP-B: tarjetas de pista en Home del alumno (My classes /
+   Cambridge) — cada programa con su propia "casa", una tarjeta grande cada
+   una en vez de la parrilla plana de "Subjects" de antes. Reutilizan .card
+   (fondo, borde, radio, sombra y su override de tema oscuro) y solo suman
+   tamaño, icono grande y las pastillas de contenido. */
+.track-grid{grid-template-columns:1fr 1fr}
+@media(max-width:700px){.track-grid{grid-template-columns:1fr}}
+.track-card{min-height:150px;cursor:pointer;transition:.16s;display:flex;flex-direction:column;justify-content:center}
+.track-card:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 14px 28px -18px rgba(36,76,119,.45)}
+.track-card .ico{font-size:2.6rem;line-height:1;margin-bottom:6px}
+.track-card h2{margin:0 0 4px;color:var(--blue-d);font-size:1.15rem}
+.track-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.track-chips .chip{background:var(--lila);color:var(--blue-dd);font-size:.76rem;font-weight:600;padding:4px 10px;border-radius:999px}

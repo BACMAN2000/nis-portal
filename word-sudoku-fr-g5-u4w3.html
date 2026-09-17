@@ -38,8 +38,8 @@
   .theme b{color:var(--accent); letter-spacing:2px; font-size:1.1rem;}
   .hud{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:12px;}
   .chip{font-weight:800; font-size:.9rem; background:var(--bg); padding:7px 12px; border-radius:12px;}
-  .chip.tm{color:var(--gold);}
-  .gridwrap{display:flex; justify-content:center;}
+  .chip.tm{color:var(--sand-txt);}
+  .gridwrap{display:flex; justify-content:center; overflow-x:auto;}
   .grid{display:grid; gap:0; background:var(--deep,#0f172a); border:3px solid var(--ink); border-radius:8px; overflow:hidden;}
   .cell{display:flex; align-items:center; justify-content:center; background:var(--card); font-weight:800; cursor:pointer;
     user-select:none; border:1px solid var(--line); transition:background .1s;}
@@ -55,7 +55,7 @@
   .key.erase{background:var(--line); color:var(--ink);}
   .btns{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
   button.act{border:none; border-radius:10px; padding:11px 16px; font-weight:700; font-size:.88rem; cursor:pointer;}
-  .b-go{background:var(--accent); color:var(--card);} .b-alt{background:var(--line); color:var(--ink);} .b-hint{background:var(--gold); color:var(--card);}
+  .b-go{background:var(--accent); color:var(--card);} .b-alt{background:var(--line); color:var(--ink);} .b-hint{background:var(--gold); color:#1e2433;}
   .banner{display:none; margin-top:14px; padding:14px; border-radius:12px; background:var(--good-soft); color:var(--good); font-weight:800; text-align:center; font-size:1.05rem;}
   .banner.show{display:block; animation:pop .4s;}
   @keyframes pop{0%{transform:scale(.85); opacity:0;}100%{transform:scale(1); opacity:1;}}
@@ -409,7 +409,8 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 newPuzzle();
 </script>
-<script src="nis-i18n.js?v=dd504eb2" defer></script>
+<script src="nis-presence.js?v=684f7b00" defer></script>
+<script src="nis-i18n.js?v=503537a8" defer></script>
 <script src="nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

@@ -45,7 +45,7 @@
     } catch (_) { return 'en'; }
   }
   var lang = leer();
-  var dicc = null, htmlDicc = null, patrones = [], cargando = null;
+  var dicc = null, htmlDicc = null, patrones = [], cargando = null, trozosRe = null;
   /* Dónde NO se traduce: código, cajas del alumno y CONTENIDO. Un banco de
      palabras, una pista, una opción de examen o una ficha de vocabulario
      pueden contener palabras que también son rótulos («Open», «Level»,
@@ -69,6 +69,16 @@
       var s = d.strings || {};
       for (var k in s) { if (k.indexOf('<') >= 0) htmlDicc.set(norm(k), s[k]); else dicc.set(norm(k), s[k]); }
       (d.patterns || []).forEach(function (p) { try { patrones.push([new RegExp(p[0]), p[1]]); } catch (_) {} });
+      /* Trozos: los paneles del profesor componen frases con datos dentro
+         («80 marked and not yet sent in your grades»). El diccionario trae el
+         trozo fijo (viene de las plantillas de app.js); si un nodo no casa
+         entero, se traducen los trozos de ≥3 palabras que contenga. */
+      var trozos = [];
+      dicc.forEach(function (v, k) { if (k.length >= 12 && k.split(' ').length >= 3 && !/[<>]/.test(k)) trozos.push(k); });
+      trozos.sort(function (a, b) { return b.length - a.length; });
+      var escapa = function (k) { return k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
+      try { trozosRe = trozos.length ? new RegExp('(?<![A-Za-z0-9])(?:' + trozos.map(escapa).join('|') + ')(?![A-Za-z0-9])', 'g') : null; }
+      catch (_) { trozosRe = null; }   // sin lookbehind (Safari viejo): solo casa entera
     }).catch(function () { dicc = new Map(); htmlDicc = new Map(); });
     return cargando;
   }
@@ -79,6 +89,11 @@
     var v = dicc.get(n);
     if (v != null) return v;
     for (var i = 0; i < patrones.length; i++) { if (patrones[i][0].test(n)) return n.replace(patrones[i][0], patrones[i][1]); }
+    if (trozosRe && n.length <= 400) {
+      var hubo = false;
+      var r = n.replace(trozosRe, function (m) { var t = dicc.get(m); if (t == null) return m; hubo = true; return t; });
+      if (hubo) return r;
+    }
     return null;
   }
   /* Conserva los espacios de los bordes del nodo original (a menudo son el

@@ -54,6 +54,57 @@ function avisaAlto(){
 }
 function plural(n, uno, muchos){ return n + ' ' + (n === 1 ? uno : muchos); }
 
+/* ---------- guardado en la cuenta del alumno (WP-E) ----------
+   Cada actividad suelta del portal define su propio NISACT (no hay un modulo
+   compartido — ver activity-save.js); aqui se define UNA vez para las tres
+   apps que comparten este motor, con guardia por si ya existe. */
+if(!window.NISACT) window.NISACT = (function(){
+  var CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4';
+  var sb = null;
+  function cargaSDK(){
+    return new Promise(function(res){
+      if(window.supabase && window.supabase.createClient) return res();
+      var s = document.createElement('script');
+      s.src = CDN; s.onload = function(){ res(); }; s.onerror = function(){ res(); };
+      document.head.appendChild(s);
+    });
+  }
+  function cliente(){
+    if(sb) return sb;
+    if(!window.supabase || !window.supabase.createClient || !window.NIS_CONFIG) return null;
+    sb = window.supabase.createClient(window.NIS_CONFIG.SUPABASE_URL, window.NIS_CONFIG.SUPABASE_KEY);
+    return sb;
+  }
+  function submit(r){
+    return cargaSDK().then(function(){
+      var c = cliente();
+      if(!c) return {skipped:true};
+      return c.auth.getSession().then(function(s){
+        var u = s && s.data && s.data.session && s.data.session.user;
+        if(!u) return {skipped:true};
+        return c.from('activity_attempts').insert({
+          student_id:u.id, activity:r.activity, title:r.title, level:r.level || null,
+          score:(r.score == null ? null : r.score), total:(r.total == null ? null : r.total),
+          duration_sec:(r.duration == null ? null : r.duration)
+        }).then(function(q){ return (q && q.error) ? {sent:false, motivo:q.error.message} : {sent:true}; });
+      });
+    }).catch(function(e){ return {sent:false, motivo:(e && e.message) || 'no connection'}; });
+  }
+  return {submit:submit};
+})();
+/* Al terminar un bloque de diez (rellenar huecos, emparejar o repaso mixto),
+   se manda el resultado a activity_attempts — igual que el resto de
+   actividades sueltas del portal. */
+function reportaBloque(tit, ok, total, t0){
+  if(!window.NISACT) return;
+  var titulo = (document.title.split(' · ')[0] || APP.varios) + ' · ' + LEVEL +
+    ' · Block ' + (IB + 1) + ' · ' + tit;
+  NISACT.submit({
+    activity:'lex-' + APP.id, title:titulo, level:LEVEL, score:ok, total:total,
+    duration:Math.round((Date.now() - (t0 || Date.now())) / 1000)
+  });
+}
+
 /* ---------- progreso y récords (solo en este navegador) ---------- */
 function guardaProgreso(){ try { localStorage.setItem(APP.store, JSON.stringify(HECHOS)); } catch(e){} }
 function leeProgreso(){ try { HECHOS = JSON.parse(localStorage.getItem(APP.store) || '{}') || {}; } catch(e){ HECHOS = {}; } }
@@ -64,6 +115,7 @@ function marca(d, bien){
   if(!HECHOS[k]) HECHOS[k] = {ok:0, no:0};
   HECHOS[k][bien ? 'ok' : 'no']++;
   guardaProgreso();
+  if(window.NIS_WORK) NIS_WORK.touch();
 }
 function dominado(d){
   var h = HECHOS[LEVEL + '|' + term(d)];
@@ -331,7 +383,8 @@ function resumenAct(tit, ok, total, a){
 /* ---------- rellenar huecos con el banco de diez ---------- */
 function iniciaRelleno(){
   var b = BLOQUES[IB] || [];
-  ST = {orden:mezcla(b), banco:mezcla(b), i:0, ok:0, hechos:{}, resuelto:false, fallo:false, pista:false};
+  ST = {orden:mezcla(b), banco:mezcla(b), i:0, ok:0, hechos:{}, resuelto:false, fallo:false, pista:false,
+        t0:Date.now(), reportado:false};
   ACT = 'gap'; render(); arriba();
 }
 function fraseHueco(d, resuelto){
@@ -392,7 +445,14 @@ function eligeBanco(btn){
     setTimeout(function(){ btn.classList.remove('bad'); }, 900);
   }
 }
-function sigRelleno(){ ST.i++; ST.resuelto = false; ST.fallo = false; render(); arriba(); }
+function sigRelleno(){
+  ST.i++; ST.resuelto = false; ST.fallo = false;
+  if(ST.i >= ST.orden.length && !ST.reportado){
+    ST.reportado = true;
+    reportaBloque('Fill in the gaps', ST.ok, ST.orden.length, ST.t0);
+  }
+  render(); arriba();
+}
 
 /* ---------- emparejar significados, en rondas de cinco ---------- */
 function iniciaEmparejar(){
@@ -402,7 +462,7 @@ function iniciaEmparejar(){
     var u = rondas.pop();
     rondas[rondas.length - 1] = rondas[rondas.length - 1].concat(u);
   }
-  ST = {rondas:rondas, r:0, ok:0, err:0, der:[], hechos:0, selEl:null};
+  ST = {rondas:rondas, r:0, ok:0, err:0, der:[], hechos:0, selEl:null, t0:Date.now(), reportado:false};
   ACT = 'par'; iniciaRonda(); render(); arriba();
 }
 function iniciaRonda(){
@@ -451,7 +511,14 @@ function pick(b){
   }
   ST.selEl = null;
 }
-function sigRonda(){ ST.r++; iniciaRonda(); render(); arriba(); }
+function sigRonda(){
+  ST.r++;
+  if(ST.r >= ST.rondas.length && !ST.reportado){
+    ST.reportado = true;
+    reportaBloque('Match meanings', ST.ok, ST.ok + ST.err, ST.t0);
+  }
+  iniciaRonda(); render(); arriba();
+}
 
 /* ---------- repaso mixto: las preguntas ya generadas, filtradas al bloque ---------- */
 function iniciaMixto(){
@@ -460,7 +527,7 @@ function iniciaMixto(){
   var pool = ((DATA.exercises || {})[LEVEL] || []).filter(function(e){
     return e.t !== 'match' && e[APP.id] && dentro[e[APP.id]];
   });
-  ST = {q:mezcla(pool).slice(0, 20), i:0, ok:0, dentro:dentro};
+  ST = {q:mezcla(pool).slice(0, 20), i:0, ok:0, dentro:dentro, t0:Date.now(), reportado:false};
   ACT = 'mix'; render(); arriba();
 }
 function vistaMixto(){
@@ -491,7 +558,14 @@ function responde(i){
     (e.why ? ' — ' + esc(e.why) : '') +
     '<button class="btn sm" style="margin-left:12px" onclick="sigMixto()">Next</button></div>';
 }
-function sigMixto(){ ST.i++; render(); arriba(); }
+function sigMixto(){
+  ST.i++;
+  if(ST.i >= ST.q.length && !ST.reportado){
+    ST.reportado = true;
+    reportaBloque('Mixed review', ST.ok, ST.q.length, ST.t0);
+  }
+  render(); arriba();
+}
 
 /* ---------- juegos ---------- */
 function vistaJuegos(){
@@ -741,6 +815,34 @@ window.addEventListener('resize', function(){
 if(EMBED) setInterval(avisaAlto, 500);
 
 leeProgreso(); leeRecs();
+
+/* Guardado en la cuenta del alumno (WP-E): practica libre por nivel, no
+   cuelga de ninguna unidad — como los crucigramas/wordsearches sueltos
+   (ver NIS_WORK.ficha()). NIS_WORK.ficha() no vale aqui: las cuatro apps
+   de lexico comparten nombre de archivo (index.html) y chocarian en la
+   misma fila; el slug usa APP.id, que es distinto en cada una. */
+if(window.NIS_WORK) NIS_WORK.attach({
+  slug:'lex-' + APP.id, grade:'g9', unit:0, week:null, auto:true,
+  title:document.title,
+  vacio:'Practise something first — then you can hand it in.',
+  read: function(){ return { store:HECHOS }; },
+  write: function(d){
+    var p = (d && d.store) || {};
+    Object.keys(p).forEach(function(k){ HECHOS[k] = p[k]; });
+    guardaProgreso();
+  },
+  after: function(){ if(DATA) render(); },
+  count: function(d){ return Object.keys((d && d.store) || {}).length; },
+  answers: function(d){
+    var p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(function(k){
+      var h = p[k] || {}, tot = (h.ok || 0) + (h.no || 0);
+      out[k] = (h.ok || 0) + '/' + tot;
+    });
+    return out;
+  }
+});
+
 fetch('data.json?v=' + (APP.datav || 1)).then(function(r){ return r.json(); }).then(function(d){
   DATA = d;
   LEVEL = DATA.niveles.indexOf('A1') >= 0 ? 'A1' : DATA.niveles[0];

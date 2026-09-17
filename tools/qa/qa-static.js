@@ -18,6 +18,8 @@ for(const f of html){ const src=fs.readFileSync(f,'utf8'); let m; let n=0; inlin
     catch(e){ const line=src.slice(0,m.index).split('\n').length+e.loc.line-1; add('JS syntax (inline)',f,`script #${n} línea ${line}: ${e.message.replace(/\(\d+:\d+\)/,'')}`);} }
   const tail=src.split(/<\/html>/i)[1]; if(tail&&/\S/.test(tail.replace(/<!--[\s\S]*?-->/g,''))) add('Texto tras </html>',f,tail.trim().slice(0,80));
 }
+// 1b. JSON que no parsea (un reemplazo de texto sobre data.json dejó la app de word formation caída 6 h el 16-sep)
+for(const f of json){ try{ JSON.parse(fs.readFileSync(f,'utf8')); }catch(e){ add('JSON inválido',f,e.message.slice(0,80)); } }
 // 2. Artefactos de escape / basura en texto visible
 const artRe=[[/\\\\u00[0-9a-f]{2}/i,'\\\\u00xx (escape doble)'],[/&amp;(amp|lt|gt|quot|#39);/,'&amp;amp; (entidad doble)'],[/\[object Object\]/,'[object Object]'],[/\$\{[a-zA-Z_][\w.]*\}/,'${…} sin interpolar']];
 for(const f of [...html,...json]){ const src=fs.readFileSync(f,'utf8'); const isHtml=/\.html?$/i.test(f);

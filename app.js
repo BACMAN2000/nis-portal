@@ -418,15 +418,15 @@ function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" s
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Host a live Kahoot-style game. Project this screen; students join with the PIN or the QR code from their phone.</div>
-    <a class="btn" href="live-quiz.html?v=a9f47f70" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="live-quiz.html?v=e1afdde7" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="live-quiz.html?v=a9f47f70" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=e1afdde7" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, matching, crossword, word search, word invaders and time attack.</div>
-    <a class="btn" href="games-lab.html?v=a228fdf9" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="games-lab.html?v=be904e03" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="games-lab.html?v=a228fdf9" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
+  <iframe src="games-lab.html?v=be904e03" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
 /* 📝 Pizarra — hoja de cuaderno proyectable (triple renglón, doble raya,
    rayado, cuadriculado o en blanco) donde el profesor escribe la muestra que
    los alumnos copian. Vive en pizarra.html, sin sesión: lo que se escribe se
@@ -434,9 +434,9 @@ function gamesLabBody(){ return `
 function pizarraBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Write like in the student’s notebook and project it: triple-line paper, double line, ruled, squared or blank; several school fonts, size, colours, images and freehand drawing. What is written stays saved in this browser.</div>
-    <a class="btn" href="pizarra.html?v=9c8ac5ff" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="pizarra.html?v=fa11109c" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="pizarra.html?v=9c8ac5ff" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+  <iframe src="pizarra.html?v=fa11109c" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
    mezcla de inglés británico y americano, y los calcos del hispanohablante
    ("explain me", "discuss about", "I have 12 years") que ningún corrector
@@ -446,9 +446,9 @@ function pizarraBody(){ return `
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Paste a worksheet, an exam or a worksheet and check it before publishing it. It is reviewed in your browser: the text never leaves this screen.</div>
-    <a class="btn" href="corrector.html?v=14ac9492" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="corrector.html?v=f21b7a3b" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="corrector.html?v=14ac9492" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=f21b7a3b" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -463,9 +463,9 @@ function useOfEnglishBody(){ return `
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">What each Cambridge exam is, how many parts it has, how long it lasts, how it is scored on the Cambridge Scale, and which NIS grade is aiming for which.</div>
-    <a class="btn" href="cambridge-info.html?v=9ddf1353" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="cambridge-info.html?v=400b8190" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=9ddf1353" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=400b8190" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* 🎶 Rhymes & chants — rimas tradicionales de patio (dominio publico), las
    primeras 100 palabras y frases de uso diario, para los profesores de
    primaria. Datos en nis-fun/songs/tradicionales.json, etiquetados con la
@@ -473,9 +473,9 @@ function cambridgeInfoBody(){ return `
 function rhymesBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Traditional playground rhymes, counting-out and clapping chants, the first 100 words and everyday phrases for G1–G5, tagged with the YLE wordlist. Filter, search and print.</div>
-    <a class="btn" href="rhymes.html?v=d5e3183d" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="rhymes.html?v=23b73cb1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="rhymes.html?v=d5e3183d" title="Rhymes & chants" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="rhymes.html?v=23b73cb1" title="Rhymes & chants" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -886,9 +886,9 @@ function nishootJoinBody(){ return `
     <a class="btn" href="live-quiz.html?join=1&v=13" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="live-quiz.html?join=1&v=13" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
-function studentNishoot(){ _setNav('nishoot'); $('#main').innerHTML = `${_backBtn("window._nav('english')",'English')}<h1>🎮 NIShoot Live</h1>${nishootJoinBody()}`; }
+function studentNishoot(){ _setNav('tools'); $('#main').innerHTML = `${_backBtn("window._nav('tools')",'Practice tools')}<h1>🎮 NIShoot Live</h1>${nishootJoinBody()}`; }
 /* Student view: English Games Lab (self-contained practice games). */
-function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("window._nav('english')",'English')}<h1>🎲 Games Lab</h1>${gamesLabBody()}`; }
+function studentGames(){ _setNav('tools'); $('#main').innerHTML = `${_backBtn("window._nav('tools')",'Practice tools')}<h1>🎲 Games Lab</h1>${gamesLabBody()}`; }
 
 /* Phonics Studio embedded as an iframe (same-origin app in /phonics).
    ?embed=1 tells it to hide its own top bar so it nests under the portal. */
@@ -902,29 +902,29 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=1a6c62cf&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=4e01185e&embed=1" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=f7ee80f4&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=a23fa254&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=886c9ebd&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=51841ee6&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=f5f6fa6a&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=59daae37&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=c8ad4d81&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=60929b33&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -1266,6 +1266,9 @@ async function renderAdmin(tab='users'){
        clave en dos grupos deja dos items del menu resaltados a la vez. Ahora
        vive solo en Correccion, que es donde ademas se califica. */
     {group:'Permissions', icon:'🔐', items:[
+      // Fase 2: la foto completa (9 tablas) por grado, de solo lectura, con
+      // enlace al panel que edita cada cosa. Vive en access-panel.js.
+      {key:'whatsees',label:'👁️ What each class sees'},
       {key:'access',label:'🔐 Access'},
       {key:'unitaccess',label:'📚 Activate units'},
       {key:'funaccess',label:'🔐 Units by grade'},
@@ -1324,6 +1327,7 @@ async function renderAdmin(tab='users'){
   if(tab==='mocks') return adminMocks();
   if(tab==='practice') return practicePanel(GRADES);
   if(tab==='unitaccess') return unitAccessPanel(GRADES);
+  if(tab==='whatsees') return window.accessPanel({admin:true, grades:GRADES.map(g=>g.id)});
   if(tab==='access') return adminAccess();
   return adminUsers();
 }
@@ -3623,6 +3627,7 @@ async function renderTeacher(tab){
   cambridge.push({key:'cambridgeinfo',label:'📘 Cambridge info'});
   if(teacherAllowedGrades().length) cambridge.push({key:'practice',label:'🔓 Open Practice Tests'});
   if(teacherAllowedGrades().length){
+    permisos.push({key:'whatsees',label:'👁️ What each class sees'});
     permisos.push({key:'unitaccess',label:'📚 Activate units'});
     permisos.push({key:'funaccess',label:'🔐 Units by grade'});
   }
@@ -3672,6 +3677,7 @@ async function renderTeacher(tab){
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='unitaccess') return unitAccessPanel(teacherAllowedGrades());
+  if(active==='whatsees') return window.accessPanel({admin:false, grades:teacherAllowedGrades().map(g=>g.id)});
   if(active==='classes') return studentClasses();
   if(active==='french') return studentSubject('french');
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
@@ -4164,23 +4170,25 @@ const SEC_COURSE_DESC = {a1:'The grammar every beginner needs before A2 Key: twe
 function secCoursesFor(key){ return SEC_COURSES[key]||[]; }
 
 async function renderStudent(initial){
-  const gkey = 'g'+((state.profile&&state.profile.grade_id)||0);
+  // Fase 2 WP-B: el acceso se carga ANTES de pintar la barra (y no despues,
+  // como antes) para que 🇫🇷 French salga bien a la primera si el grado lo
+  // tiene abierto — nodeVisible('french') sin state.access cargado siempre
+  // da cerrado, y la barra de un alumno con Frances habilitado nacia sin su
+  // pestaña hasta la siguiente navegacion.
+  window.__nisPaso='alumno:acceso';
+  state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
+  window.__nisPaso='alumno:acceso-ok';
+  // Barra nueva (Fase 2 WP-B): Home / My classes / (French si toca) /
+  // Cambridge / Practice tools / My progress / Help / My account. El grupo
+  // «Cambridge» de antes (con el curso del grado y los simulacros) sale de
+  // aqui: sus tres puertas viven ahora dentro de la propia pista Cambridge
+  // (studentCambridgePortal), que ya sabe que grado la mira.
   document.body.innerHTML = shell([
     {key:'home',label:'🏠 Home'},
-    {key:'english',label:'🇬🇧 English'},
-    {key:'french',label:'🇫🇷 French'},
-    // Cambridge en la barra, con sus dos puertas a los simulacros. Hasta ahora
-    // el alumno llegaba a Practice Tests y a Mocks solo desde las tarjetas de
-    // English: tres clics para lo que hace cada semana. Las claves son las
-    // mismas rutas de siempre (practice, mocks), asi que la tarjeta y el menu
-    // llevan al mismo sitio y solo uno queda resaltado.
-    {group:'Cambridge', icon:'🎓', items:[
-      // El curso del grado (o los dos de 9.º) va primero: es lo que se estudia;
-      // los simulacros lo miden. Un alumno de primaria no tiene curso aqui.
-      ...secCoursesFor(gkey).map(lv=>({href:'nis-fun/engine/?level='+lv, label:'📘 '+SEC_COURSE_NAMES[lv]+' course'})),
-      {key:'practice',label:'🎯 Practice Tests'},
-      {key:'mocks',label:'🎓 Mocks'},
-    ]},
+    {key:'myclasses',label:'🏫 My classes'},
+    ...(nodeVisible('french') ? [{key:'french',label:'🇫🇷 French'}] : []),
+    {key:'cambridge',label:'🎓 Cambridge'},
+    {key:'tools',label:'🧰 Practice tools'},
     // 'General' salio de la barra: sus dos unicas tarjetas (Library y MUN) ya
     // estaban identicas en Home, asi que era una pestaña que no llevaba a
     // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
@@ -4192,9 +4200,6 @@ async function renderStudent(initial){
   // Toda la navegación pasa por window._nav para que la ruta quede en el hash
   // (deep links desde las páginas de actividades + "atrás" del navegador).
   bindNav(k=>window._nav(k||'home'));
-  window.__nisPaso='alumno:acceso';
-  state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
-  window.__nisPaso='alumno:acceso-ok';
   // Anti-trampa en todo el portal: mismo criterio que las actividades, pero
   // solo para alumnos logueados (docentes/admin quedan exentos en el motor).
   // En la vista de alumno no se arma el anti-trampa: quien está dentro es el
@@ -4216,8 +4221,32 @@ function _setNav(k){
     h.classList.toggle('aqui', !!g.querySelector(`.nav-sub [data-nav="${k}"]`));
   });
 }
-function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
-function studentCoach(){ _setNav('coach'); $('#main').innerHTML = coachPanel(); }
+function studentPhonics(){ _setNav('tools'); $('#main').innerHTML = phonicsPanel(); }
+function studentCoach(){ _setNav('tools'); $('#main').innerHTML = coachPanel(); }
+/* Fase 2 WP-B: las cinco apps de léxico (phrasal/collocations/idioms/
+   wordform/dict) tenian panel para profesor/admin pero NINGUNA ruta en el
+   router del alumno (window._nav las mandaba, sin match, de vuelta al hub) —
+   se quedan cableadas aqui, con el mismo estilo sin cabecera que Phonics y
+   Pronunciation, sus vecinas de siempre en el bloque «Practice». */
+function studentPhrasal(){ _setNav('tools'); $('#main').innerHTML = phrasalPanel(); }
+function studentCollocations(){ _setNav('tools'); $('#main').innerHTML = collocationsPanel(); }
+function studentIdioms(){ _setNav('tools'); $('#main').innerHTML = idiomsPanel(); }
+function studentWordform(){ _setNav('tools'); $('#main').innerHTML = wordformPanel(); }
+function studentDict(){ _setNav('tools'); $('#main').innerHTML = dictPanel(); }
+/* 🧰 Practice tools (Fase 2 WP-B): el bloque «Practice» de ENGLISH_AREAS,
+   suelto de la parrilla de English — mismos handlers y candados de siempre. */
+function studentTools(){
+  _setNav('tools');
+  const areas = ENGLISH_AREAS.filter(a=>a.block==='practice' && (!a.when || a.when()));
+  const cards = areas.map(a=>{
+    const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;
+    if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
+    return _hubCard(em,a.title,a.desc,`window._nav('${a.nav}')`);
+  }).join('');
+  $('#main').innerHTML = `<h1>🧰 Practice tools</h1>
+    <p class="muted" style="margin-top:-6px">Train on your own: sounds, grammar and vocabulary games.</p>
+    <div class="grid cols-3">${cards}</div>`;
+}
 
 /* ---------- Student account / password ----------
    Uses the authenticated user's own Supabase session. No password is stored
@@ -4300,6 +4329,38 @@ function _hubCard(emoji,title,desc,onclick,extra){
     <div class="muted" style="font-size:.85rem">${desc}</div>${extra||''}
   </div>`;
 }
+/* Fase 2 WP-B: las dos tarjetas grandes de Home — «My classes» y «Cambridge»,
+   una pista cada una. chips = 2-4 pastillas con lo que hay dentro. */
+function _trackCard(emoji,title,desc,onclick,chips){
+  const pastillas = (chips||[]).map(c=>`<span class="chip">${c}</span>`).join('');
+  return `<div class="card track-card" onclick="${onclick}" tabindex="0" role="button"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}">
+    <div class="ico">${emoji}</div>
+    <h2>${title}</h2>
+    <div class="muted" style="font-size:.88rem">${desc}</div>
+    <div class="track-chips">${pastillas}</div>
+  </div>`;
+}
+/* «Tu ruta»: el nivel Cambridge que le toca al alumno por su grado — mismo
+   texto para la tarjeta de Home y la cabecera de la pista Cambridge.
+   Primaria por YLE (FUN_REPARTO); secundaria por los cursos que ya reparte
+   secCoursesFor, sin A1 Foundations (no prepara examen, es la gramatica de
+   base — ver su nota junto a SEC_COURSE_DESC). null si el alumno no tiene
+   grado o su grado no tiene reparto (profesor/admin sin perfil de alumno). */
+const _YLE_ROUTE_LABEL = {starters:'Pre A1 Starters', movers:'A1 Movers', flyers:'A2 Flyers'};
+function _camGradeInfo(){
+  const p = state.profile, g = p && p.grade_id;
+  if(g==null) return null;
+  const gn = Number(g), key = 'g'+gn;
+  if(gn<=5){
+    const lvl = FUN_REPARTO[gn];
+    if(!lvl) return null;
+    return {primary:true, level:lvl, key, label:_YLE_ROUTE_LABEL[lvl]||lvl};
+  }
+  const cursos = secCoursesFor(key).filter(lv=>lv!=='a1');
+  if(!cursos.length) return null;
+  return {primary:false, cursos, key, label:cursos.map(lv=>SEC_COURSE_NAMES[lv]).join(' · ')};
+}
 /* La unidad en curso, en la portada.
    Un menu que la nombre ya es mejor que nada, pero lo que hace que la
    plataforma se LEA como un curso por proyectos es que al entrar veas en que
@@ -4335,18 +4396,28 @@ function _bandaMiUnidad(){
 function studentHub(){
   _setNav('home');
   const p=state.profile;
+  // Fase 2 WP-B: dos tarjetas grandes de pista (My classes / Cambridge) en
+  // vez de la parrilla de "Subjects" — direccion pidio separar Clases de la
+  // preparacion Cambridge y que cada programa tenga UNA sola casa.
+  const gkey = p.grade_id!=null ? 'g'+p.grade_id : null;
+  const gLabel = (gkey && GRADE_META[gkey]) ? GRADE_META[gkey][1] : 'Classes';
+  const classesGo = gkey ? "window._nav('classes_"+gkey+"')" : "window._nav('classes')";
+  const camInfo = _camGradeInfo();
+  const camDesc = camInfo ? 'Your route: '+camInfo.label+' · course · practice tests · mocks' : 'Course · practice tests · mocks';
   $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not set')} — What would you like to do today?</p>
     ${_bandaMiUnidad()}
-    <h2 style="margin:18px 0 8px">Subjects</h2>
-    <div class="grid cols-3">
-      ${_hubCard('🇬🇧','English','Pronunciation, Mocks, Classes and more.',"window._nav('english')")}
-      ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes and more.',"window._nav('french')") : _lockedCard('🇫🇷','French','Coming soon — French will be enabled soon.')}
+    <div class="grid cols-2 track-grid" style="margin-top:16px">
+      ${_trackCard('🏫','My classes',gLabel+': units, activities, readers and unit exams',classesGo,['🎯 Units','🎲 Activities','📚 Readers'])}
+      ${_trackCard('🎓','Cambridge',camDesc,"window._nav('cambridge')",['📘 Course','🎯 Practice tests','🎓 Mocks'])}
     </div>
-    <h2 style="margin:22px 0 8px">General</h2>
+    <h2 style="margin:22px 0 8px">More</h2>
     <div class="grid cols-3">
-      ${nodeVisible('general.library') ? _hubCard('📚','Library','NIS Library: search and explore the school library.',"window._nav('library')") : _lockedCard('📚','Library','NIS Library.')}
-      ${nodeVisible('general.mun') ? _hubCard('🌐','MUN Academy','Model United Nations: debate, public speaking and diplomacy.',"window._nav('mun')") : _lockedCard('🌐','MUN Academy','Model United Nations.')}
+      ${_hubCard('🧰','Practice tools','Sounds, grammar and vocabulary games to train on your own.',"window._nav('tools')")}
+      ${nodeVisible('general.library') ? _hubCard('📚','Library','NIS Library: search and explore the school library.',"window._nav('library')") : ''}
+      ${nodeVisible('general.mun') ? _hubCard('🌐','MUN Academy','Model United Nations: debate, public speaking and diplomacy.',"window._nav('mun')") : ''}
+      ${_hubCard('📊','My progress','Your results in mocks, practice tests and activities.',"window._nav('results')")}
+      ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes and more.',"window._nav('french')") : ''}
     </div>`;
 }
 
@@ -4771,9 +4842,70 @@ async function cambridgePlanNotes(){
   }catch(e){ return []; }
 }
 
+/* Fase 2 WP-B: las tres puertas de la pista Cambridge (Course / Practice
+   tests / Mocks), ya sabiendo el grado del alumno. Solo se pintan para un
+   alumno con grado (o una vista-como-alumno con grado sintetico) — el
+   profesor/admin en su propio perfil siguen viendo la pista de siempre, sin
+   este bloque, porque no hay UN grado del que deducir "su" ruta. Cada
+   puerta respeta el mismo nodeVisible que ya gateaba su vista de siempre:
+   no abre nada que hoy este cerrado. */
+const _YLE_TEST_KEY = {starters:'starterstests', movers:'moverstests', flyers:'flyerstests'};
+function _camDoorsHTML(route){
+  const info = _camGradeInfo();
+  if(!_isStudent() || !info) return '';
+  let courseDoor, testsDoor;
+  if(info.primary){
+    const lvl = info.level, key = info.key;
+    const lvlMeta = CAMBRIDGE_TRACKS.yle.levels.find(l=>l.key===lvl);
+    const testMeta = CAMBRIDGE_TRACKS.yle.levels.find(l=>l.key===_YLE_TEST_KEY[lvl]);
+    if(key==='g5'){
+      // Mismo candado que studentGradeFlyers, que es adonde lleva esta puerta.
+      courseDoor = nodeVisible('english.classes.g5')
+        ? _hubCard('🦅','Course','The A2 Flyers course, sorted by the unit you are working on.',"window._nav('classes_g5_flyers')")
+        : _lockedCard('🦅','Course','The A2 Flyers course by unit.');
+    } else {
+      courseDoor = (lvlMeta && nodeVisible(lvlMeta.node))
+        ? _hubCard('📘','Course',lvlMeta.desc,"location.href='"+_withBack(lvlMeta.href,route)+"'")
+        : _lockedCard('📘','Course','Your Cambridge course.');
+    }
+    testsDoor = (testMeta && nodeVisible(testMeta.node))
+      ? _hubCard('🎯','Practice tests',testMeta.desc,"location.href='"+_withBack(testMeta.href,route)+"'")
+      : _lockedCard('🎯','Practice tests','Practice tests for your level.');
+  } else {
+    const key = info.key;
+    if(key==='g9'){
+      // Mismo candado que studentGradeCambridge, que es adonde lleva esta puerta.
+      courseDoor = (nodeVisible('english.classes.g9') && nodeVisible('english.classes.g9.cambridge'))
+        ? _hubCard('🎓','Course','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')")
+        : _lockedCard('🎓','Course','Cambridge B2 First practice.');
+    } else {
+      // 6.º-8.º/10.º-11.º preparan mas de un examen a la vez (SEC_COURSES):
+      // la puerta trae un boton por curso, igual que antes en la tarjeta de
+      // My classes — sin candado propio, como ya era (el motor nis-fun gatea
+      // por su cuenta con fun_access).
+      const botones = info.cursos.map(lv=>`<a class="btn sm" style="text-decoration:none" href="javascript:void(0)" onclick="window.open('nis-fun/engine/?level=${lv}','_blank','noopener')">${esc(SEC_COURSE_NAMES[lv])}</a>`).join('');
+      courseDoor = `<div class="card center" style="padding:28px 16px;margin-bottom:0">
+        <div style="font-size:3rem;line-height:1">📘</div>
+        <h2 style="margin:10px 0 4px;color:var(--blue-d)">Course</h2>
+        <div class="muted" style="font-size:.85rem;margin-bottom:12px">The full course for your grade, unit by unit.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">${botones}</div>
+      </div>`;
+    }
+    testsDoor = nodeVisible(CAMBRIDGE_PRACTICE_NODE)
+      ? _hubCard('🎯','Practice tests','Reading, Listening and Writing in Cambridge format, always available.',"location.href='"+_withBack(QUIZ_URL+'quizzes.html',route)+"'")
+      : _lockedCard('🎯','Practice tests','Cambridge practice tests.');
+  }
+  // Mocks no tiene candado propio hoy (igual que en la tarjeta de siempre):
+  // ninguna puerta nueva abre algo que antes estuviera cerrado.
+  const mocksDoor = _hubCard('🎓','Mocks','MOCK 1 and MOCK 2 in official Cambridge format.',"window._nav('mocks')");
+  return `<h2 style="margin:4px 0 8px">Your route: ${esc(info.label)}</h2>
+    <div class="grid cols-3" style="margin-bottom:18px">${courseDoor}${testsDoor}${mocksDoor}</div>`;
+}
 async function studentCambridgePortal(){
-  _setNav(_isStudent() ? 'english' : 'cambridgehub');
-  const back = _isStudent() ? _backBtn("window._nav('english')", 'English') : '';
+  // Cambridge es ahora una pestaña de primer nivel (peer de Home): sin
+  // «atrás», igual que Mocks o Practice Tests ya no lo tenian.
+  _setNav(_isStudent() ? 'cambridge' : 'cambridgehub');
+  const back = '';
   if(!nodeVisible('english.cambridge')){ _lockedView(back, '🎓 Cambridge English'); return; }
   const route = 'cambridge';
   const branch = (bk) => {
@@ -4820,6 +4952,7 @@ async function studentCambridgePortal(){
     </a>` : '';
   $('#main').innerHTML = `${back}<h1>🎓 Cambridge English</h1>
     <p class="muted" style="margin-top:-6px">Choose your route: <b>Young Learners</b> for children (Pre-A1 to A2) or <b>Main Suite</b> for the general exam (A2 to C2). Click a card to see its levels.</p>
+    ${_camDoorsHTML(route)}
     <div id="cam-exam-date"></div>
     <div id="cam-plan-notes"></div>
     <div class="cam-branches">${branch('yle')}${branch('main')}</div>
@@ -5178,9 +5311,11 @@ function studentGeneral(){
 /* Resultado final del alumno = reporte CEFR que se entrega a los padres + PDF.
    El alumno ve el suyo; Profesor/Admin lo generan desde su panel (cefrFinalPanel). */
 async function studentFinal(){
-  _setNav('final');
+  // Fase 2 WP-B: ya no cuelga de la vieja English — vive dentro de My
+  // Progress (results), que es donde ahora tiene su enlace de entrada.
+  _setNav('results');
   const p=state.profile;
-  const back=_isStudent()?_backBtn("window._nav('english')",'English'):'';
+  const back=_isStudent()?_backBtn("window._nav('results')",'My Progress'):'';
   if(!p.id) return _previewNeedsStudent('🏅 Final result · CEFR', back);
   $('#main').innerHTML=`${back}<h1>🏅 Final result · CEFR</h1><p class="muted">Loading…</p>`;
   const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',p.id);
@@ -5254,25 +5389,25 @@ const FR_GRADE_LEVEL = { g5:'A1.1', g6:'A1.2', g7:'A2.1', g8:'A2.2', g9:'A2.2', 
    El "atrás" vuelve a la ETAPA del grado (Primary/Secondary). En primaria no
    hay tarjeta de Grammar: la gramática va dentro de las actividades. */
 function studentGrade(key){
-  _setNav('classes');
+  // Fase 2 WP-B: para el alumno esta pagina ES «My classes» (se llega
+  // directo desde la barra, sin pasar por etapa); para profesor/admin sigue
+  // siendo el visor de siempre, con su «atrás» a la etapa.
+  _setNav(_isStudent() ? 'myclasses' : 'classes');
   const [emoji,label]=GRADE_META[key]||['🏫',key];
   const base='english.classes.'+key;
   const route='classes_'+key;
   const stage=_isEarlyGrade(key)?'early':(_isPrimaryGrade(key)?'primary':'secondary');
-  const back = _backBtn("window._nav('classes_"+stage+"')",STAGE_META[stage].title);
+  const back = _isStudent() ? '' : _backBtn("window._nav('classes_"+stage+"')",STAGE_META[stage].title);
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
-    <p class="muted" style="margin-top:-6px">${label} material.</p>
+    <p class="muted" style="margin-top:-6px">Class material — for exam preparation go to <a href="javascript:void(0)" onclick="window._nav('cambridge')">🎓 Cambridge</a>.</p>
     <div class="grid cols-2" style="margin-top:12px">
       ${arcsFor(key).length ? _hubCard('🧩','Project','The interdisciplinary project of the term: the essential question, the eleven-week map and what every subject contributes.',"location.href='"+_withBack('project.html?arc='+(arcoActual(key)||arcsFor(key)[0][0]),route)+"'")
         : (_isPrimaryGrade(key) ? '' : _hubCard('📚','English sequence','The six units of the year with their vocabulary, grammar and reading plan, the Cambridge exam the grade is preparing for and what every subject has in the planner.',"location.href='"+_withBack('project.html?grade='+key,route)+"'"))}
       ${unitPlansFor(key).length ? (nodeVisible(unitsNode(key)) ? _hubCard('🎯','Units','Your units this year: the final product, the rubric from day one, and the week-by-week practice that feeds it.',"window._nav('classes_"+key+"_units')") : _lockedCard('🎯','Units','Your units and their final products.')) : ''}
       ${_isPrimaryGrade(key)||_isEarlyGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${_isEarlyGrade(key) ? '' : nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
-      ${secCoursesFor(key).map(lv=>{const nm=SEC_COURSE_NAMES[lv];return _hubCard('🎓',nm+' course',SEC_COURSE_DESC[lv]||('The full '+nm+' course: units with audio, vocabulary and grammar, and real exam tasks — Reading &amp; Use of English, Listening, Writing and Speaking.'),"window.open('nis-fun/engine/?level="+lv+"','_blank','noopener')");}).join('')}
-      ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=37fcbaf7',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=6dc39cce',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -5295,9 +5430,11 @@ const FLYERS_TIPO = {
 };
 
 async function studentGradeFlyers(key){
-  _setNav('classes');
+  // Fase 2 WP-B: se llega desde la pista Cambridge (Course de 5.º), no ya
+  // desde la tarjeta de My classes — el «atrás» del alumno vuelve ahi.
+  _setNav(_isStudent() ? 'cambridge' : 'classes');
   const route='classes_'+key+'_flyers';
-  const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
+  const back = _isStudent() ? _backBtn("window._nav('cambridge')",'Cambridge') : _backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
   if(!nodeVisible('english.classes.'+key)){ _lockedView(back,'🦅 Cambridge Flyers'); return; }
   $('#main').innerHTML=`${back}<h1>🦅 Cambridge Flyers</h1><p class="muted">Loading…</p>`;
 
@@ -5354,9 +5491,11 @@ async function studentGradeFlyers(key){
     ${secciones}`;
 }
 function studentGradeCambridge(key){
-  _setNav('classes');
+  // Fase 2 WP-B: se llega desde la pista Cambridge (Course de 9.º), no ya
+  // desde la tarjeta de My classes — el «atrás» del alumno vuelve ahi.
+  _setNav(_isStudent() ? 'cambridge' : 'classes');
   const route='classes_'+key+'_cambridge';
-  const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
+  const back = _isStudent() ? _backBtn("window._nav('cambridge')",'Cambridge') : _backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
   const base='english.classes.'+key+'.cambridge';
   if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'🎓 Cambridge B2 First'); return; }
   $('#main').innerHTML=`${back}<h1>🎓 Cambridge B2 First</h1>
@@ -5409,7 +5548,7 @@ function readerBooksFor(key,section){
 }
 /* La misma cuenta que ve el profesor, pero solo con lo del propio alumno. */
 async function studentReaderReport(key){
-  _setNav('classes');
+  _setNav(_isStudent() ? 'myclasses' : 'classes');
   const back=_backBtn("window._nav('classes_"+key+"_readers')",'Readers');
   const p=state.profile;
   if(!p.id) return _previewNeedsStudent('📊 My reading report', back);
@@ -5443,7 +5582,7 @@ async function studentReaderReport(key){
     ${cards}`;
 }
 function studentGradeReaders(key){
-  _setNav('classes');
+  _setNav(_isStudent() ? 'myclasses' : 'classes');
   const route='classes_'+key+'_readers';
   const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
   const base='english.classes.'+key+'.reader';
@@ -5478,7 +5617,7 @@ function _lockedView(back,title){
    misma fuente (activities-data.js). `focusUnit` sólo desplaza la vista a
    esa unidad: se usa al volver desde un juego. */
 function studentGradeActivities(key,focusUnit,subject){
-  _setNav(subject==='french'?'french':'classes');
+  _setNav(subject==='french'?'french':(_isStudent()?'myclasses':'classes'));
   const isFr=subject==='french';
   const [emoji,label]= (isFr?FR_GRADE_META[key]:GRADE_META[key]) || ['🏫',key];
   const lv=GRADE_LEVELS[key]||'A1,A2,B1,B2,C1';
@@ -5658,9 +5797,14 @@ function _navRender(k){
   if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
   if(k==='help'){ _setNav('help'); $('#main').innerHTML = ayudaBody(); return true; }
-  const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
+  // 'english' pinta ahora exactamente Home (alias): los ?back=./#english
+  // viejos de las paginas de actividades siguen cayendo en un sitio con
+  // sentido. 'myclasses' y 'tools' son las dos claves nuevas de la barra.
+  const fn={english:studentHub,french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,cambridge:studentCambridgePortal,library:studentLibrary,mun:studentMun,classes:studentClasses,
+    myclasses:studentMyClasses,tools:studentTools,
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
+    phrasal:studentPhrasal,collocations:studentCollocations,idioms:studentIdioms,wordform:studentWordform,dict:studentDict,
     final:studentFinal,account:studentAccount,home:studentHub}[k];
   if(fn){ fn(); return true; }
   return false;
@@ -5745,7 +5889,7 @@ async function studentLibrary(){
     ? _skillCard('📚','Open the Library','Search books, check availability and your loans.',LIBRARY_URL)
     : _soonCard('📚','Library','Online catalogue (OPAC): soon you\'ll be able to search books and see your loans.');
   const staff = state.profile && (state.profile.role==='teacher'||state.profile.role==='admin');
-  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  const back = _isStudent() ? _backBtn("window._nav('home')",'Home') : '';
   $('#main').innerHTML=`${back}<h1>📚 Library</h1><p class="muted">Loading…</p>`;
   await loadReaderAssignments();
   const cat=_RDR_IDS.map(id=>{ const m=READER_META[id], c=READER_CARDS[id];
@@ -5813,13 +5957,24 @@ window._assignTerm=async(gid,sec,term,bookId)=>{
   }catch(e){ alert('Could not save the assignment: '+(e.message||e)); }
 };
 
+/* Fase 2 WP-B: «My classes» de la barra nueva. Al alumno se le lleva DIRECTO
+   a su grado — no tiene por que elegir etapa para encontrar su propio salon.
+   Sin grado (o para profesor/admin, que trabajan con varios) se deja el
+   selector de siempre (studentClasses → studentStage → studentGrade). */
+function studentMyClasses(){
+  const p = state.profile || {};
+  if(_isStudent() && p.grade_id!=null) return studentGrade('g'+p.grade_id);
+  return studentClasses();
+}
 /* ---------- Classes: DOS etapas (Primary 2.º–5.º · Secondary 6.º–11.º) ----------
    El alumno entra por su etapa y dentro están las tarjetas por grado. Las
    tarjetas de etapa no llevan nodo propio: el candado sigue siendo por grado
    (y english.classes gatea la sección entera, como siempre). */
 function studentClasses(){
-  _setNav('classes');
-  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  // Al alumno solo se llega aqui sin grado asignado (myclasses cae directo en
+  // su studentGrade); si llega, el «atrás» es Home, no la vieja English.
+  _setNav(_isStudent() ? 'myclasses' : 'classes');
+  const back = _isStudent() ? _backBtn("window._nav('home')",'Home') : '';
   const cards = ['early','primary','secondary'].map(st=>{
     const m=STAGE_META[st];
     return _hubCard(m.emoji,m.title,m.desc,"window._nav('classes_"+st+"')");
@@ -5830,7 +5985,7 @@ function studentClasses(){
 }
 /* Una etapa: sus tarjetas por grado. */
 function studentStage(stage){
-  _setNav('classes');
+  _setNav(_isStudent() ? 'myclasses' : 'classes');
   const m=STAGE_META[stage]||STAGE_META.secondary;
   const back = _backBtn("window._nav('classes')",'Classes');
   const cards = m.grades.map(k=>{
@@ -5914,9 +6069,11 @@ async function _pintaYle(){
 
 /* ---------- My Progress: historial completo del alumno (mocks, practice y actividades) ---------- */
 async function studentResults(){
+  // Fase 2 WP-B: My Progress es ahora de primer nivel (peer de Home), sin
+  // «atrás» — igual que Cambridge, Mocks o Practice Tests.
   _setNav('results');
   const p=state.profile;
-  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  const back = '';
   if(!p.id) return _previewNeedsStudent('📊 My Progress', back);
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Loading…</p>`;
   const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
@@ -5946,6 +6103,11 @@ async function studentResults(){
     }</tbody></table>` : `<p class="muted">You haven’t completed any activities yet. Go to <b>Classes → Activities</b>.</p>`;
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not assigned')}</p>
+    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div><h2 style="margin:0 0 2px">🏅 Final result · CEFR</h2>
+        <div class="muted" style="font-size:.85rem">Your final level, combining your best result per skill — the report your family receives, plus its PDF.</div></div>
+      <button class="btn sm" onclick="window._nav('final')">View</button>
+    </div>
     <div class="grid cols-3">
       ${bySkill.map(s=>`<div class="stat"><div class="l">${s.sk}</div>
         <div class="n">${s.best!=null?s.best+'%':'—'}</div>
@@ -7154,7 +7316,7 @@ function _unitPlanCard(u,route,grade,open){
     </a>`;
 }
 function studentGradeUnits(key){
-  _setNav('classes');
+  _setNav(_isStudent() ? 'myclasses' : 'classes');
   const route = 'classes_'+key+'_units';
   const back  = _backBtn("window._nav('classes_"+key+"')", GRADE_META[key][1]);
   const base  = 'english.classes.'+key;
@@ -8975,7 +9137,9 @@ function tpPinta(){
   <div class="card">
     <h2>⏱️ Screen time</h2>
     <p class="muted">Minutes per student and week. It helps to agree on a cap with school leadership
-      and check whether it is respected, instead of debating impressions.</p>
+      and check whether it is respected, instead of debating impressions. Since 17 September it counts
+      real presence — the tab open and the student active — on every page of the portal; before that
+      date, only the time each activity reported when it was saved or finished.</p>
 
     <div class="row" style="gap:10px;margin:12px 0">
       <select id="tpGrado"><option value="">All grades</option>${grados}</select>

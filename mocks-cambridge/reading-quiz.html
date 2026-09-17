@@ -148,7 +148,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .stim-email .body{padding:14px;line-height:1.55}
   /* Welcome / hero screen */
   .hero{background:var(--card);border-radius:18px;padding:36px 28px;text-align:center;margin-bottom:18px;box-shadow:0 6px 24px rgba(0,0,0,.3)}
-  .hero .hero-logo{display:block;margin:0 auto 10px;height:72px;width:auto}
+  .hero .hero-logo{display:block;margin:0 auto 10px;max-height:72px;width:auto;max-width:100%}
   .hero .logo{font-size:3.4rem;line-height:1;margin-bottom:8px}
   .hero h1{font-size:2rem;margin-bottom:6px}
   .hero .qr{display:inline-block;background:var(--card);padding:10px;border-radius:14px;margin:14px 0}
@@ -455,7 +455,8 @@ document.addEventListener('click', function(ev){
 <div class="wrap" id="app"></div>
 
 <script src="reading-quiz.app-data.js?v=815a2d66"></script>
-<script src="../nis-i18n.js?v=dd504eb2" defer></script>
+<script src="../nis-presence.js?v=684f7b00" defer></script>
+<script src="../nis-i18n.js?v=503537a8" defer></script>
 <script src="../nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

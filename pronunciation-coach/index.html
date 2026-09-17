@@ -29,6 +29,12 @@ tailwind.config = { theme: { extend: { colors: {
   @keyframes vibe{from{opacity:.4}to{opacity:1}}
   .tts-on .vibe{animation-play-state:running}
   .anim-loop .airflow{animation-play-state:running!important;opacity:1}
+  /* text-nordic-400 (#6B91D6) sobre tarjetas claras baja de 3:1; se oscurece
+     solo el texto, el mismo tono se deja para bordes u otros usos. En oscuro
+     --card es una tarjeta oscura y ese mismo tono oscurecido bajaria de 3:1
+     otra vez, asi que ahi se aclara en vez de oscurecer. */
+  .text-nordic-400{color:#4C6C99!important}
+  :root[data-theme="dark"] .text-nordic-400{color:#8FA3D5!important}
   .anim-loop .vibe{animation-play-state:running!important;opacity:1}
   svg .part{cursor:help}
   svg .part:hover{filter:brightness(.9) saturate(1.25)}
@@ -39,6 +45,7 @@ tailwind.config = { theme: { extend: { colors: {
   <meta name="google" content="notranslate">
   <script src="../config.js?v=720edc7d"></script>
   <script src="../anticheat.js?v=e8b83646" data-activity="pronunciation-coach"></script>
+  <script src="../activity-save.js?v=a082b30c"></script>
 </head>
 <body class="text-nordic-900">
 <div id="app" class="max-w-6xl mx-auto px-4 py-5"></div>
@@ -325,6 +332,54 @@ let state = { view:'sounds', filter:'All', open:null, recording:false, lastScore
 const $ = sel => document.querySelector(sel);
 function setState(p){ Object.assign(state,p); render(); }
 
+/* ---- Guardado en la cuenta del alumno (WP-E) ----
+   Cada frase grabada y evaluada — sonido suelto o par mínimo — se cuenta
+   como una actividad terminada: no hay "bloques" aquí, el intento ES la
+   unidad. PRACT guarda cuántas veces salió bien/mal cada sonido, para
+   "Mi progreso"; NISACT.submit manda cada intento a activity_attempts,
+   como el resto de actividades sueltas del portal. */
+const PRACT = {};
+if(!window.NISACT) window.NISACT = (function(){
+  const CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4';
+  let sb = null;
+  function cargaSDK(){
+    return new Promise(res => {
+      if(window.supabase && window.supabase.createClient) return res();
+      const s = document.createElement('script');
+      s.src = CDN; s.onload = () => res(); s.onerror = () => res();
+      document.head.appendChild(s);
+    });
+  }
+  function cliente(){
+    if(sb) return sb;
+    if(!window.supabase || !window.supabase.createClient || !window.NIS_CONFIG) return null;
+    sb = window.supabase.createClient(window.NIS_CONFIG.SUPABASE_URL, window.NIS_CONFIG.SUPABASE_KEY);
+    return sb;
+  }
+  function submit(r){
+    return cargaSDK().then(() => {
+      const c = cliente();
+      if(!c) return {skipped:true};
+      return c.auth.getSession().then(s => {
+        const u = s && s.data && s.data.session && s.data.session.user;
+        if(!u) return {skipped:true};
+        return c.from('activity_attempts').insert({
+          student_id:u.id, activity:r.activity, title:r.title, level:r.level || null,
+          score:(r.score == null ? null : r.score), total:(r.total == null ? null : r.total),
+          duration_sec:(r.duration == null ? null : r.duration)
+        }).then(q => (q && q.error) ? {sent:false, motivo:q.error.message} : {sent:true});
+      });
+    }).catch(e => ({sent:false, motivo:(e && e.message) || 'no connection'}));
+  }
+  return {submit};
+})();
+function practica(id, titulo, bien, score, total){
+  if(!PRACT[id]) PRACT[id] = {ok:0, no:0};
+  PRACT[id][bien ? 'ok' : 'no']++;
+  if(window.NIS_WORK) NIS_WORK.touch();
+  if(window.NISACT) NISACT.submit({activity:'pronunciation-coach', title:titulo, level:null, score, total, duration:null});
+}
+
 function header(){
   const tabs=[['sounds','Sounds'],['pairs','Minimal Pairs'],['guide','How to use']];
   return `<header class="flex flex-wrap items-center gap-3 justify-between mb-5">
@@ -491,7 +546,9 @@ function toggleRecord(){
   activeRec=listenOnce({
     onResult:alts=>{
       const best=alts.map(a=>({a,s:similarity(a,p.word)})).sort((x,y)=>y.s-x.s)[0];
-      setState({recording:false,lastScore:{pct:Math.round(best.s*100),heard:best.a,kind:'word'}});
+      const pct=Math.round(best.s*100);
+      setState({recording:false,lastScore:{pct,heard:best.a,kind:'word'}});
+      practica(p.arp, 'Pronunciation Coach · '+p.ipa+' · "'+p.word+'"', pct>=75, pct, 100);
       activeRec=null;
     },
     onError:err=>{ setState({recording:false,lastScore:{pct:0,heard:(err==='not-allowed'?'(mic blocked)':err==='no-speech'?'(no speech heard)':'(error)'),kind:'word'}}); activeRec=null; },
@@ -509,6 +566,7 @@ function testPair(pr){
       const said = s0>=s1?pr[0]:pr[1];
       const correct = Math.max(s0,s1)>=0.6;
       setState({recording:false,lastScore:{kind:'pair',heard,target:said,correct}});
+      practica('pair:'+state.pairIdx+':'+pr[0]+'-'+pr[1], 'Pronunciation Coach · Minimal pairs · '+pr[0]+' vs '+pr[1], correct, correct?1:0, 1);
       activeRec=null;
     },
     onError:err=>{ setState({recording:false,lastScore:{kind:'pair',heard:(err==='not-allowed'?'(mic blocked)':'(no speech)'),target:'',correct:false}}); activeRec=null; },
@@ -519,8 +577,25 @@ function testPair(pr){
 /* warm up voices then render */
 if(window.speechSynthesis) speechSynthesis.getVoices();
 render();
+
+/* Guardado en la cuenta del alumno (WP-E): practica libre, no cuelga de
+   ninguna unidad. */
+if(window.NIS_WORK) NIS_WORK.attach({
+  slug:'pronunciation-coach', grade:'g9', unit:0, week:null, auto:true,
+  title:document.title,
+  vacio:'Record a sound first — then you can hand it in.',
+  read: () => ({ store: PRACT }),
+  write: (d) => { Object.assign(PRACT, (d && d.store) || {}); },
+  count: (d) => Object.keys((d && d.store) || {}).length,
+  answers: (d) => {
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach((k) => { const h = p[k] || {}; out[k] = (h.ok||0) + '/' + ((h.ok||0)+(h.no||0)); });
+    return out;
+  }
+});
 </script>
-<script src="../nis-i18n.js?v=dd504eb2" defer></script>
+<script src="../nis-presence.js?v=684f7b00" defer></script>
+<script src="../nis-i18n.js?v=503537a8" defer></script>
 <script src="../nis-tema.js?v=78420634" defer></script>
 </body>
 </html>
