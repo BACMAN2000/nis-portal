@@ -84,8 +84,22 @@
   "ejemplo": "app.js"
  },
  {
+  "en": "grade_id,node_key",
+  "n": 6,
+  "pages": 2,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
   "en": "MUN Academy",
   "n": 6,
+  "pages": 2,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Error",
+  "n": 5,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
@@ -107,6 +121,13 @@
  {
   "en": "Treasure Island",
   "n": 4,
+  "pages": 2,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "grade_id,lang,level",
+  "n": 3,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
@@ -238,6 +259,13 @@
   "ejemplo": "app.js"
  },
  {
+  "en": "grade_id,level",
+  "n": 2,
+  "pages": 2,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
   "en": "window._nav('classes_",
   "n": 13,
   "pages": 1,
@@ -259,13 +287,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Course",
-  "n": 7,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Mock 2",
   "n": 6,
   "pages": 1,
@@ -275,13 +296,6 @@
  {
   "en": "node_key,unlocked",
   "n": 6,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "grade_id,node_key",
-  "n": 5,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
@@ -371,14 +385,14 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "window._nav('tools')",
-  "n": 3,
+  "en": "Fun for Nordic ·",
+  "n": 4,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "Practice tools",
+  "en": "window._nav('tools')",
   "n": 3,
   "pages": 1,
   "sel": "js",
@@ -448,13 +462,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Fun for Nordic ·",
-  "n": 3,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
   "en": "Test",
   "n": 3,
   "pages": 1,
@@ -498,13 +505,6 @@
  },
  {
   "en": "NO_SESSION",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "grade_id,lang,level",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -582,13 +582,6 @@
  },
  {
   "en": "🧩 Word formation",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "👁️ What each class sees",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -700,21 +693,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "🧰 Practice tools",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "window._nav('classes')",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Your route:",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -875,14 +854,7 @@
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "🧩 Exceptions",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "No grades to show.",
+  "en": "YLE ·",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -1470,13 +1442,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Error",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "AbortError",
   "n": 1,
   "pages": 1,
@@ -1512,13 +1477,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "🏫 My classes",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "alumno:shell",
   "n": 1,
   "pages": 1,
@@ -1548,69 +1506,6 @@
  },
  {
   "en": "_units')\">Open my unit",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "· course · practice tests · mocks",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Course · practice tests · mocks",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "My classes",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ": units, activities, readers and unit exams",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎯 Practice tests",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎓 Mocks",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Sounds, grammar and vocabulary games to train on your own.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Your results in mocks, practice tests and activities.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "More",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1813,13 +1708,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "The A2 Flyers course, sorted by the unit you are working on.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "window._nav('classes_g5_flyers')",
   "n": 1,
   "pages": 1,
@@ -1827,56 +1715,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "The A2 Flyers course by unit.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Your Cambridge course.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Practice tests for your level.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "window._nav('classes_g9_cambridge')",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The full course for your grade, unit by unit.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Reading, Listening and Writing in Cambridge format, always available.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Cambridge practice tests.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "MOCK 1 and MOCK 2 in official Cambridge format.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1968,13 +1807,6 @@
  },
  {
   "en": "','en')\">📄 PDF (English)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Class material — for exam preparation go to",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2199,13 +2031,6 @@
  },
  {
   "en": "🧭 Fun for Nordic — Cambridge YLE",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Your final level, combining your best result per skill — the report your family receives, plus its PDF.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2751,34 +2576,6 @@
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "open · all tests (no rule)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "open · all tests",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "open level, 0 tests released",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "open · up to test",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
   "en": "A2 Key (KET)",
   "n": 1,
   "pages": 1,
@@ -2814,21 +2611,70 @@
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "weeks unlocked",
+  "en": "Closing it leaves students in this grade without it.",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "no book assigned this year",
+  "en": "Close this?",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "exam windows:",
+  "en": "Choose a level, or use \"Remove rule\" to leave the grade without one.",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "Missing level",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "The range does not add up: \"to\" must be greater than or equal to \"from\".",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "Invalid range",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "This narrows what the grade can see: units outside the new range become unavailable.",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "Apply the shorter range?",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "This leaves students without part of, or all of, this level.",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "Apply?",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2849,98 +2695,14 @@
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "No units in the planner for this grade.",
+  "en": "— choose a level —",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "open · whole course (no rule saved yet)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "sees nothing (no rule for this grade)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "YLE practice tests",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "YLE ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "branch open, no level unlocked",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "(no note for this grade)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "Study plan note:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "Per-student overrides",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "No per-student exceptions in this grade.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "Individual plan (EPI):",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "No student with an individual plan in this grade.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "Edit in 👥 Students →",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "📋 Study plan (EPI)",
+  "en": "(edit individual levels in 🔐 Access by grade)",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2954,49 +2716,28 @@
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "all units locked",
+  "en": "✅ Done",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "Readers:",
+  "en": "✏️ Edit",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "sees:",
+  "en": "— changes apply to the whole grade (these tables have no per-section lock).",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "access-panel.js"
  },
  {
-  "en": "nothing configured yet",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "🔍 Access panel",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "🔍 Access panel — what each class sees",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "access-panel.js"
- },
- {
-  "en": "Reading the access tables…",
+  "en": "Editing",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3102,13 +2843,6 @@
  },
  {
   "en": "px\">",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "grade_id,level",
   "n": 1,
   "pages": 1,
   "sel": "js",
