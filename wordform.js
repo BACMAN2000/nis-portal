@@ -948,7 +948,7 @@ window.addEventListener('resize', function(){
 });
 
 leeProgreso(); leeRecs();
-fetch('data.json?v=1').then(function(r){ return r.json(); }).then(function(d){
+fetch(window.WORDFORM_DATA || 'data.json?v=1').then(function(r){ return r.json(); }).then(function(d){
   DATA = d;
   if(DATA.niveles.indexOf(LEVEL) < 0) LEVEL = DATA.niveles[0];
   recarga(); pintaNiveles(); render();
