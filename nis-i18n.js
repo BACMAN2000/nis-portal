@@ -30,7 +30,11 @@
   var IDIOMAS = ['en', 'es'];
   var script = document.currentScript;
   var BASE = script && script.src ? script.src : location.href;
-  var DICC_URL = new URL('i18n/es.json?v=49931d20', BASE).href;
+  /* Sin ?v= a propósito: el diccionario cambia a menudo y sellarlo por hash
+     obligaría a resellar este archivo y, con él, las 345 páginas que lo cargan.
+     Se pide con no-cache: el navegador revalida con el ETag del servidor (un
+     304 barato) y solo lo baja entero cuando ha cambiado. */
+  var DICC_URL = new URL('i18n/es.json', BASE).href;
 
   function leer() {
     try {
@@ -56,7 +60,7 @@
 
   function cargar() {
     if (cargando) return cargando;
-    cargando = fetch(DICC_URL, { cache: 'force-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    cargando = fetch(DICC_URL, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       dicc = new Map(); htmlDicc = new Map(); patrones = [];
       if (!d) return;
       var s = d.strings || {};
