@@ -88,7 +88,7 @@ var SPECS = null, D = null, LEVEL = null, TEACHER = false, STUDENT = qs.get('stu
    La pagina nace ENTERA en ingles y el boton #lang la pasa a castellano.
    nis.yle.lang es la misma clave que usa yle-guia-familia.html. */
 var LANG = 'en';
-try{ var _g = localStorage.getItem('nis.yle.lang'); if(_g === 'es' || _g === 'en') LANG = _g; }catch(e){}
+try{ var _g = localStorage.getItem('nis.lang') || localStorage.getItem('nis.yle.lang'); if(_g === 'es' || _g === 'en') LANG = _g; }catch(e){}
 /* Acepta una cadena (igual en los dos idiomas) o un par {en, es}. */
 function tt(v){
   if(v == null) return '';
@@ -337,7 +337,7 @@ function refreshLang(){
   var hT = $('#hTitle'); if(hT) hT.textContent = tt(UI.hTitle);
   var bP = $('#btnPrint'); if(bP) bP.textContent = tt(UI.btnPrint);
   var bG = $('#btnGuide'); if(bG) bG.textContent = tt(UI.btnGuide);
-  var langBtn = $('#lang'); if(langBtn) langBtn.textContent = (LANG === 'en') ? '🌐 Español' : '🌐 English';
+  var langBtn = $('#lang'); if(langBtn) langBtn.style.display = 'none';   // el botón global lo sustituye
   if(VIEW_STATE === 'rendered'){ render(); }
   else {
     var hS = $('#hSub'); if(hS) hS.textContent = tt(UI.hSubDefault);
@@ -347,17 +347,22 @@ function refreshLang(){
   }
 }
 function toggleLang(){
-  LANG = (LANG === 'en') ? 'es' : 'en';
+  if(window.NISi18n){ window.NISi18n.toggle(); return; }
+  sigueLang((LANG === 'en') ? 'es' : 'en');
+}
+function sigueLang(l){
+  if(l !== 'en' && l !== 'es') return;
+  LANG = l;
   try{ localStorage.setItem('nis.yle.lang', LANG); }catch(e){}
   refreshLang();
 }
-var langBtn0 = $('#lang');
-if(langBtn0) langBtn0.addEventListener('click', toggleLang);
+document.addEventListener('nis-lang', function(e){ sigueLang(e.detail && e.detail.lang); });
 refreshLang();
 load();
 })();
 </script>
 <style>.hidden{display:none!important}</style>
-<script src="nis-tema.js?v=f3778b4d" defer></script>
+<script src="nis-i18n.js?v=82359df4" defer></script>
+<script src="nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

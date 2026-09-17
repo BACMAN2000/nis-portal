@@ -107,3 +107,7 @@ yle-img/*
 # Las laminas grandes (flyers/movers/starters) siguen fuera del repo.
 !yle-img/words/
 _test-admin.html
+static-report.json
+browser-report.json
+browser-local-*.txt
+live-report.json

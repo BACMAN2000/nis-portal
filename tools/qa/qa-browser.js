@@ -23,6 +23,7 @@ const CONTRAST_JS=`(()=>{
   const results=[]; let i=0; const N=4; const t0=Date.now();
   await Promise.all(Array.from({length:N},async()=>{
     const ctx=await browser.newContext({viewport:{width:1280,height:800},locale:'en-GB'});
+    if(process.env.QA_LANG) await ctx.addInitScript(l=>{ try{ localStorage.setItem('nis.lang', l); }catch(e){} }, process.env.QA_LANG);
     while(i<pages.length){ const p=pages[i++]; const url=BASE+p+(Q[p]||''); const page=await ctx.newPage(); const R={page:p,console:[],errors:[],failed:[],contrast:[],mobileOverflow:null,title:''};
       page.on('console',m=>{ if(m.type()==='error'||m.type()==='warning'){ const tx=m.text(); if(/favicon|net::ERR_ABORTED|Failed to load resource: the server responded with a status of 401|Third-party cookie/i.test(tx)) return; if(R.console.length<8) R.console.push(m.type()+': '+tx.slice(0,220)); } });
       page.on('pageerror',e=>{ if(R.errors.length<6) R.errors.push(String(e.message||e).slice(0,220)); });

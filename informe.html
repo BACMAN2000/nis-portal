@@ -86,7 +86,7 @@ td.k{font-weight:700;white-space:nowrap;background:var(--card)}
 <script>
 const $ = s => document.querySelector(s);
 let LANG = 'en';
-try{ const g = localStorage.getItem('nis.project.lang'); if(g==='es'||g==='en') LANG = g; }catch(_){}
+try{ const g = localStorage.getItem('nis.lang') || localStorage.getItem('nis.project.lang'); if(g==='es'||g==='en') LANG = g; }catch(_){}
 const FUSION = window.PROJECT_ARCS_FUSION || {};
 const ARCS   = window.PROJECT_ARCS || {};
 let SEC = null;
@@ -281,12 +281,13 @@ function pinta(){
   $('#app').innerHTML = h;
   document.documentElement.lang = LANG;
   document.title = u('titulo') + ' · NIS';
-  $('#lang').innerHTML = u('otro');
+  $('#lang').style.display = 'none';   // el botón global (nis-tema.js) lo sustituye
   $('#back').innerHTML = u('volver');
 }
 
-$('#lang').addEventListener('click', () => {
-  LANG = (LANG === 'en') ? 'es' : 'en';
+document.addEventListener('nis-lang', e => {
+  const l = e.detail && e.detail.lang; if(l !== 'en' && l !== 'es') return;
+  LANG = l;
   try{ localStorage.setItem('nis.project.lang', LANG); }catch(_){}
   pinta();
 });
@@ -298,6 +299,7 @@ $('#lang').addEventListener('click', () => {
   pinta();
 })();
 </script>
-<script src="nis-tema.js?v=f3778b4d" defer></script>
+<script src="nis-i18n.js?v=82359df4" defer></script>
+<script src="nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

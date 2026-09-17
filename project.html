@@ -236,7 +236,9 @@ const P = new URLSearchParams(location.search);
    proyectos estan dados de alta en Toddle y los nombres de producto que el
    colegio usa tal cual. Traducirlos seria falsear la fuente. */
 let LANG = 'en';
-try{ const g = localStorage.getItem('nis.project.lang'); if(g === 'es' || g === 'en') LANG = g; }catch(_){}
+/* La preferencia es la global del portal (nis.lang, botón 🌐 de nis-tema.js);
+   nis.project.lang queda solo como respaldo de quien la fijó antes. */
+try{ const g = localStorage.getItem('nis.lang') || localStorage.getItem('nis.project.lang'); if(g === 'es' || g === 'en') LANG = g; }catch(_){}
 
 /* Acepta una cadena (igual en los dos idiomas) o un par {en, es}. */
 function t(v){
@@ -450,14 +452,20 @@ function u(k, ...args){
 }
 /* El boton dice el idioma AL QUE se va, no en el que estas. */
 function cambiaIdioma(){
-  LANG = (LANG === 'en') ? 'es' : 'en';
+  if(window.NISi18n){ window.NISi18n.toggle(); return; }   // dispara nis-lang → sigueIdioma
+  sigueIdioma((LANG === 'en') ? 'es' : 'en');
+}
+function sigueIdioma(l){
+  if(l !== 'en' && l !== 'es') return;
+  LANG = l;
   try{ localStorage.setItem('nis.project.lang', LANG); }catch(_){}
   aplicaIdioma();
   pinta();
 }
+document.addEventListener('nis-lang', e => sigueIdioma(e.detail && e.detail.lang));
 function aplicaIdioma(){
   document.documentElement.lang = LANG;
-  const b = $('#lang'); if(b) b.innerHTML = u('otroIdioma');
+  const b = $('#lang'); if(b) b.style.display = 'none';   // el botón global lo sustituye
   const v = $('#back'); if(v && !P.get('back')) v.innerHTML = u('volver');
   else if(v) v.innerHTML = u('volver');
 }
@@ -1705,6 +1713,7 @@ function pinta(){
   if(esProfe) pinta();          // ahora si, con la parte del profesor
 })();
 </script>
-<script src="nis-tema.js?v=f3778b4d" defer></script>
+<script src="nis-i18n.js?v=82359df4" defer></script>
+<script src="nis-tema.js?v=78420634" defer></script>
 </body>
 </html>

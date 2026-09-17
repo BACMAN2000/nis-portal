@@ -258,8 +258,27 @@ async function loadProfile(){
   // row is ready. Preserve the existing 'Casi listo' flow for that case.
   if(!data){ state.profile=null; return; }
   state.profile = data;
+  sincronizaIdioma(data);
   try{ await withTimeout(loadReaderAssignments(), 8000, 'READER_ASSIGNMENTS_TIMEOUT'); }
   catch(e){ console.warn('Reader assignments unavailable during startup', e); }
+}
+/* El idioma de la interfaz (botón 🌐, nis-i18n.js) se guarda en
+   profiles.ui_lang para que siga al alumno de un equipo a otro. Al entrar,
+   si este navegador no tiene preferencia propia, manda la del perfil; y cada
+   cambio con el botón se escribe en el perfil. Un fallo aquí no rompe nada:
+   el idioma sigue viviendo en localStorage. */
+let _langSync = false;
+function sincronizaIdioma(p){
+  const i = window.NISi18n; if(!i || !p) return;
+  try{
+    if(!localStorage.getItem('nis.lang') && (p.ui_lang==='es' || p.ui_lang==='en')) i.set(p.ui_lang);
+  }catch(_){}
+  if(_langSync) return; _langSync = true;
+  document.addEventListener('nis-lang', async e=>{
+    const l = e.detail && e.detail.lang; if(l!=='es' && l!=='en') return;
+    if(!state.session || !state.session.user) return;
+    try{ await sb.from('profiles').update({ ui_lang:l }).eq('id', state.session.user.id); }catch(_){}
+  });
 }
 function route(){
   if(!state.session){ return renderAuth(); }
@@ -399,15 +418,15 @@ function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" s
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Host a live Kahoot-style game. Project this screen; students join with the PIN or the QR code from their phone.</div>
-    <a class="btn" href="live-quiz.html?v=044f68e6" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="live-quiz.html?v=b3345498" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="live-quiz.html?v=044f68e6" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=b3345498" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, matching, crossword, word search, word invaders and time attack.</div>
-    <a class="btn" href="games-lab.html?v=45029f51" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="games-lab.html?v=dff6902b" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="games-lab.html?v=45029f51" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
+  <iframe src="games-lab.html?v=dff6902b" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
 /* 📝 Pizarra — hoja de cuaderno proyectable (triple renglón, doble raya,
    rayado, cuadriculado o en blanco) donde el profesor escribe la muestra que
    los alumnos copian. Vive en pizarra.html, sin sesión: lo que se escribe se
@@ -415,9 +434,9 @@ function gamesLabBody(){ return `
 function pizarraBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Write like in the student’s notebook and project it: triple-line paper, double line, ruled, squared or blank; several school fonts, size, colours, images and freehand drawing. What is written stays saved in this browser.</div>
-    <a class="btn" href="pizarra.html?v=de45c923" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="pizarra.html?v=955dafb5" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="pizarra.html?v=de45c923" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+  <iframe src="pizarra.html?v=955dafb5" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
    mezcla de inglés británico y americano, y los calcos del hispanohablante
    ("explain me", "discuss about", "I have 12 years") que ningún corrector
@@ -427,9 +446,9 @@ function pizarraBody(){ return `
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Paste a worksheet, an exam or a worksheet and check it before publishing it. It is reviewed in your browser: the text never leaves this screen.</div>
-    <a class="btn" href="corrector.html?v=8a82ae9c" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="corrector.html?v=7e55891a" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="corrector.html?v=8a82ae9c" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=7e55891a" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -444,9 +463,9 @@ function useOfEnglishBody(){ return `
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">What each Cambridge exam is, how many parts it has, how long it lasts, how it is scored on the Cambridge Scale, and which NIS grade is aiming for which.</div>
-    <a class="btn" href="cambridge-info.html?v=bfe8d1d7" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="cambridge-info.html?v=23a51b65" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=bfe8d1d7" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=23a51b65" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* 🎶 Rhymes & chants — rimas tradicionales de patio (dominio publico), las
    primeras 100 palabras y frases de uso diario, para los profesores de
    primaria. Datos en nis-fun/songs/tradicionales.json, etiquetados con la
@@ -454,9 +473,9 @@ function cambridgeInfoBody(){ return `
 function rhymesBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Traditional playground rhymes, counting-out and clapping chants, the first 100 words and everyday phrases for G1–G5, tagged with the YLE wordlist. Filter, search and print.</div>
-    <a class="btn" href="rhymes.html?v=3f769a16" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="rhymes.html?v=2287815b" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="rhymes.html?v=3f769a16" title="Rhymes & chants" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="rhymes.html?v=2287815b" title="Rhymes & chants" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -883,29 +902,29 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=f0c78d89&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=ed178ba0&embed=1" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=3ddfc524&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=4eff18df&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=5db2d2e6&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=24e39b5b&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=b64d8677&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=a0ef2eda&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=f1e728ca&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=c157e048&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -1488,7 +1507,7 @@ async function _acInsertGrant(studentId, activity, qty){
   return sb.from('anticheat_grants').insert({ student_id:studentId, activity, extra_lives:n, granted_by:uid });
 }
 window._acGrant=async(studentId, activity, name, btn)=>{
-  const ans=prompt(`How many extra lives to give ${name} for “${acActLabel(activity)}”?`, '1');
+  const ans=await NISUI.pide(`How many extra lives to give ${name} for “${acActLabel(activity)}”?`, {titulo:'Extra lives', valor:'1', tipo:'number', min:1, max:20, si:'Give'});
   if(ans===null) return;
   const n=Math.max(1, Math.min(20, parseInt(ans,10)||0));
   if(!n){ alert('Invalid number.'); return; }
@@ -5251,7 +5270,7 @@ function studentGrade(key){
       ${secCoursesFor(key).map(lv=>{const nm=SEC_COURSE_NAMES[lv];return _hubCard('🎓',nm+' course',SEC_COURSE_DESC[lv]||('The full '+nm+' course: units with audio, vocabulary and grammar, and real exam tasks — Reading &amp; Use of English, Listening, Writing and Speaking.'),"window.open('nis-fun/engine/?level="+lv+"','_blank','noopener')");}).join('')}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=27b10657',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=1e9b328c',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -6211,7 +6230,7 @@ async function cefrFinalPanel(){
       ? `<span class="badge lvl" style="font-size:.92rem">${esc(fin.finalCefr)} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Missing: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
       : '<span class="muted">—</span>';
     return `<tr data-sname="${esc((s.full_name||'').toLowerCase())}">
-      <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','en')" title="View full report and print" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
+      <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}')" title="View full report and print" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
       <td><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${s.section?esc(s.section):''}</td>
       <td><span class="badge lvl" style="opacity:.8">${tgt||'—'}</span></td>
       <td style="white-space:nowrap">${mockCell}</td>
@@ -6519,7 +6538,9 @@ function _ensurePrintCss(){
 /* Vista detallada en pantalla (profesor/admin al hacer clic en el nombre del alumno):
    notas por destreza + detalle del Writing/Speaking evaluado + impresión + descarga PDF. */
 window.studentDetailReport = async (studentId, lang)=>{
-  lang=(lang==='es')?'es':'en'; const EN=lang==='en';
+  // sin idioma explícito, el del portal (botón 🌐); los dos botones del informe siguen forzándolo
+  if(lang!=='es'&&lang!=='en') lang=(window.NISi18n&&window.NISi18n.lang()==='es')?'es':'en';
+  const EN=lang==='en';
   _setNav('final');
   if($('#main')) $('#main').innerHTML='<div class="center muted">Loading…</div>';
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();

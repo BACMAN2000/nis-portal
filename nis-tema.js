@@ -30,19 +30,33 @@
   /* En la barra cabe la palabra y así se ve que es un botón; suelto en una
      esquina va solo el símbolo. El idioma lo dice el <html lang>: el portal
      está en inglés y Fun for Nordic en francés tiene sus seis páginas. */
-  var LANG = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
-  var PALABRA = { en: ['Dark', 'Light'], fr: ['Sombre', 'Clair'], es: ['Oscuro', 'Claro'] }[LANG] || ['Dark', 'Light'];
-  var TITULO = { en: ['Switch to dark mode', 'Switch to light mode'],
-                 fr: ['Passer en mode sombre', 'Passer en mode clair'],
-                 es: ['Ver en oscuro', 'Ver en claro'] }[LANG] || ['Switch to dark mode', 'Switch to light mode'];
-  var boton = null, enBarra = false;
+  var PALABRAS = { en: ['Dark', 'Light'], fr: ['Sombre', 'Clair'], es: ['Oscuro', 'Claro'] };
+  var TITULOS = { en: ['Switch to dark mode', 'Switch to light mode'],
+                  fr: ['Passer en mode sombre', 'Passer en mode clair'],
+                  es: ['Ver en oscuro', 'Ver en claro'] };
+  // se lee cada vez: el botón de idioma cambia <html lang> en caliente
+  function idioma() { return (document.documentElement.lang || 'en').slice(0, 2).toLowerCase(); }
+  /* `boton` es el GRUPO de controles (idioma + tema): un <span> que se coloca
+     entero en la barra o en una esquina; nis-i18n.js pone el botón de idioma
+     y este archivo el de tema. Si nis-i18n no está cargado solo hay tema. */
+  var boton = null, btnTema = null, btnLang = null, enBarra = false;
   function pintarBoton() {
     if (!boton) return;
     var oscuro = actual() === 'dark';
     var simbolo = oscuro ? '☀' : '☾';
-    boton.textContent = enBarra ? simbolo + ' ' + PALABRA[oscuro ? 1 : 0] : simbolo;
-    boton.title = TITULO[oscuro ? 1 : 0];
-    boton.setAttribute('aria-label', boton.title);
+    var PALABRA = PALABRAS[idioma()] || PALABRAS.en, TITULO = TITULOS[idioma()] || TITULOS.en;
+    btnTema.textContent = enBarra ? simbolo + ' ' + PALABRA[oscuro ? 1 : 0] : simbolo;
+    btnTema.title = TITULO[oscuro ? 1 : 0];
+    btnTema.setAttribute('aria-label', btnTema.title);
+    if (btnLang) {
+      var i = window.NISi18n;
+      btnLang.style.display = i ? '' : 'none';
+      if (i) {
+        btnLang.textContent = enBarra ? i.etiqueta() : '🌐';
+        btnLang.title = i.titulo();
+        btnLang.setAttribute('aria-label', btnLang.title);
+      }
+    }
   }
 
   /* Donde cabe el boton, por orden de preferencia. La primera es la barra de
@@ -60,31 +74,41 @@
     return null;
   }
 
-  var ESTILO_EN_BARRA = 'margin-left:8px;border:1px solid var(--line,#e9ecf3);' +
+  var ESTILO_BTN = 'border:1px solid var(--line,#e9ecf3);' +
     'background:var(--card,#fff);color:var(--ink,#1e2433);border-radius:9px;' +
     'height:34px;padding:0 12px;line-height:1;cursor:pointer;font-size:.85rem;' +
     'font-weight:600;font-family:inherit;white-space:nowrap;flex:0 0 auto';
+  var ESTILO_EN_BARRA = 'display:inline-flex;gap:6px;align-items:center;margin-left:8px;flex:0 0 auto';
 
   /* Sin barra donde meterlo -los readers, la pizarra, los juegos- va suelto en
      una esquina. Discreto y por encima de la pagina, pero por debajo de los
      modales; y fuera de la hoja al imprimir. */
-  var ESTILO_SUELTO = 'position:fixed;z-index:400;' +
-    'border:1px solid var(--line,#e9ecf3);background:var(--card,#fff);' +
-    'color:var(--ink,#1e2433);border-radius:9px;width:34px;height:34px;' +
-    'line-height:1;cursor:pointer;font-size:1rem;padding:0;opacity:.85;' +
+  var ESTILO_SUELTO = 'position:fixed;z-index:400;display:inline-flex;gap:6px;opacity:.85';
+  var ESTILO_BTN_SUELTO = 'border:1px solid var(--line,#e9ecf3);background:var(--card,#fff);' +
+    'color:var(--ink,#1e2433);border-radius:9px;min-width:34px;height:34px;' +
+    'line-height:1;cursor:pointer;font-size:1rem;padding:0 6px;font-family:inherit;' +
     'box-shadow:0 2px 8px rgba(0,0,0,.18)';
 
   function crearBoton() {
     if (window.top !== window.self) return;          // dentro de un iframe, no
     if (boton) return;
-    boton = document.createElement('button');
-    boton.type = 'button';
-    boton.className = 'nis-tema-btn';
-    boton.addEventListener('click', alternar);
+    boton = document.createElement('span');
+    boton.className = 'nis-ctl';
+    boton.setAttribute('data-i18n', 'off');   // sus rótulos los pinta este archivo, no el diccionario
+    btnLang = document.createElement('button');
+    btnLang.type = 'button';
+    btnLang.className = 'nis-tema-btn nis-lang-btn';
+    btnLang.addEventListener('click', function () { if (window.NISi18n) { window.NISi18n.toggle(); pintarBoton(); } });
+    btnTema = document.createElement('button');
+    btnTema.type = 'button';
+    btnTema.className = 'nis-tema-btn';
+    btnTema.addEventListener('click', alternar);
+    boton.appendChild(btnLang); boton.appendChild(btnTema);
+    document.addEventListener('nis-lang', pintarBoton);
     if (!document.getElementById('nis-tema-estilo')) {
       var st = document.createElement('style');
       st.id = 'nis-tema-estilo';
-      st.textContent = '@media print{.nis-tema-btn{display:none!important}}' +
+      st.textContent = '@media print{.nis-ctl{display:none!important}}' +
                        '.nis-tema-btn:hover{opacity:1}' +
                        '.nis-tema-btn:focus-visible{outline:3px solid var(--accent,#3b5bdb);outline-offset:2px}';
       document.head.appendChild(st);
@@ -100,7 +124,8 @@
   function libre() {
     var r = boton.getBoundingClientRect();
     var x = Math.round(r.left + r.width / 2), y = Math.round(r.top + r.height / 2);
-    return document.elementFromPoint(x, y) === boton;
+    var e = document.elementFromPoint(x, y);
+    return !!e && (e === boton || boton.contains(e));
   }
 
   /* La barra en la que ya se probo. Si el boton no cabe en ella (tapado o
@@ -113,20 +138,35 @@
      cabecera con cada pantalla). */
   var barraIntentada = null;
 
+  /* Si nis-nav.js no encontró barra y dejó su «◀ Back» flotando en una
+     esquina, se lo trae al grupo: un solo racimo [Back][🌐][☾] en vez de dos
+     botones sueltos que se pisan con el logo (word-wheel, games-lab). */
+  function adoptaBack(estilo) {
+    var a = document.querySelector('a[data-nis-back]');
+    if (!a) return;
+    if (a.parentElement !== document.body && !boton.contains(a)) return;   // ya está en una barra propia
+    a.style.cssText = estilo + ';display:inline-flex;align-items:center;text-decoration:none;font-size:.85rem;font-weight:600';
+    if (!boton.contains(a)) boton.insertBefore(a, boton.firstChild);
+  }
+
   function colocar() {
     var barra = buscaBarra();
     barraIntentada = barra;
     if (barra) {
       enBarra = true;
       boton.style.cssText = ESTILO_EN_BARRA;
+      btnTema.style.cssText = ESTILO_BTN; btnLang.style.cssText = ESTILO_BTN;
       pintarBoton();
+      adoptaBack(ESTILO_BTN);
       barra.appendChild(boton);
       // Un <header> puede ser un hero con la foto encima, y una .bar un
       // contenedor cualquiera: si ahi el boton queda tapado, no vale.
       if (libre()) return;
     }
     enBarra = false;
+    btnTema.style.cssText = ESTILO_BTN_SUELTO; btnLang.style.cssText = ESTILO_BTN_SUELTO;
     pintarBoton();
+    adoptaBack(ESTILO_BTN_SUELTO);
     document.body.appendChild(boton);
     for (var i = 0; i < ESQUINAS.length; i++) {
       boton.style.cssText = ESTILO_SUELTO + ';' + ESQUINAS[i];
@@ -140,6 +180,9 @@
      ha tenido tiempo: si para entonces hay barra, el boton se muda a ella. */
   function recolocar() {
     if (!boton || !document.body.contains(boton)) return;
+    // nis-nav.js monta su Back en DOMContentLoaded, después de este primer
+    // colocar(): si quedó flotando, se adopta en cuanto se ve
+    adoptaBack(enBarra ? ESTILO_BTN : ESTILO_BTN_SUELTO);
     var barra = buscaBarra();
     if (barra && barra !== barraIntentada && boton.parentElement !== barra) colocar();
   }
