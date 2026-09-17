@@ -356,7 +356,7 @@
 <script src="ui-mensajes.js?v=5a4010ca"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=720edc7d"></script>
-<script src="readers-levels.js?v=2d067055"></script>
+<script src="readers-levels.js?v=6ca6c393"></script>
 <script>
 /* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
    Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
@@ -1217,7 +1217,7 @@ function actRead(c){
       </div>
       <div class="rp-hint" id="rpHint">🎧 Follow the yellow word as it reads. Drag the blue dot to go back or forward. ⏸ Pause and <b>tap any word you don’t understand</b> to see its meaning.</div>
     </div>
-    <div id="bkFlow" class="bk-flow">${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`).join('')}</div>
+    <div id="bkFlow" class="bk-flow" data-i18n="off">${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`).join('')}</div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
       ${prev?`<button class="btn ghost sm" onclick="openReadChapter(${idx-1})">← Ch. ${prev.n}</button>`:''}
       <button class="btn sm" onclick="openAct('comprehension')">Do the activities →</button>

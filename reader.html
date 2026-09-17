@@ -1262,7 +1262,7 @@ function actRead(c){
       </div>
       <div class="rp-hint" id="rpHint">🎧 Follow the yellow word as it reads. Drag the blue dot to go back or forward. ⏸ Pause and <b>tap any word you don’t understand</b> to see its meaning.</div>
     </div>
-    <div id="bkFlow" class="bk-flow">${paras.map((p,i)=> (/^§\s/.test(p)
+    <div id="bkFlow" class="bk-flow" data-i18n="off">${paras.map((p,i)=> (/^§\s/.test(p)
           ? `<h3 class="rp-chap">${p.replace(/^§\s*/,'')}</h3>`
           : /^«/.test(p)
           ? `<p class="rp rp-bridge">${p}</p>`
