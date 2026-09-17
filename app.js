@@ -4684,6 +4684,8 @@ const CAMBRIDGE_TRACKS = {
        desc:'The A2 Flyers course — Fun for Nordic 3, unit by unit.', href:'nis-fun/engine/?level=flyers'},
       {key:'flyerstests', icon:'practice', name:'Flyers Practice Tests', cefr:'A2 · 10 tests', short:'Flyers Tests',
        desc:'Full A2 Flyers practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with the eight-answer dialogue, the open cloze and the picture story.', href:'yle-practice.html?level=flyers'},
+      {key:'words', icon:'reading', name:'Word Trainer', cefr:'All levels · vocabulary', short:'Word Trainer',
+       desc:'The official YLE word list by topic, with pictures and audio: learn cards, flip & recall and a memory game. Switch level inside (Starters · Movers · Flyers).', href:'yle-vocab.html?level=starters'},
     ]},
   main: {
     node:'english.cambridge.main', icon:'main', color:'#7C3AED',
