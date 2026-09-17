@@ -49,8 +49,18 @@ for(const f of [...html,...js]){ const r=rel(f); if(/-fr[-.]|fr-g\d|french|franc
   const m=esRe.exec(src.replace(/<!--[\s\S]*?-->/g,'').replace(/\/\*[\s\S]*?\*\//g,'').replace(/^\s*\/\/.*$/gm,'')); if(m){ add('Español residual',f,m[0]); } }
 // 7. Higiene básica
 for(const f of html){ const src=fs.readFileSync(f,'utf8'); if(!/<html[^>]*lang=/i.test(src)) add('Sin lang',f,''); if(!/name=["']viewport["']/i.test(src)) add('Sin viewport',f,''); if(!/<title>[^<]+<\/title>/i.test(src)) add('Sin title',f,''); }
+// Las webfonts .ttf de fontawesome son el fallback de sus .woff2: no es un fallo
+if(F['Referencia local rota']) F['Referencia local rota']=F['Referencia local rota'].filter(x=>!/^vendor\/fontawesome/.test(x));
 // Informe
 const order=Object.keys(F).sort((a,b)=>F[b].length-F[a].length);
 console.log(`Archivos analizados: ${html.length} HTML · ${js.length} JS · ${css.length} CSS · ${json.length} JSON\n`);
 for(const k of order){ console.log(`== ${k} (${F[k].length})`); const show=F[k].slice(0,30); show.forEach(x=>console.log('   '+x)); if(F[k].length>30) console.log(`   … y ${F[k].length-30} más`); }
 fs.writeFileSync(path.join(__dirname,'static-report.json'),JSON.stringify(F,null,1));
+/* --gate (hook pre-push): solo lo que rompe de verdad una página tumba el push:
+   sintaxis JS, JSON que no parsea y referencias locales rotas. Lo demás (contraste,
+   español residual, tokens) es informe, no barrera. */
+if(process.argv.includes('--gate')){
+  const graves=['JS syntax','JS syntax (inline)','JSON inválido','Referencia local rota'].filter(k=>(F[k]||[]).length);
+  if(graves.length){ console.error('\n✗ QA: '+graves.map(k=>k+' ('+F[k].length+')').join(' · ')+' — el push se detiene. Detalle arriba.'); process.exit(1); }
+  console.log('\n✓ QA estático: sin sintaxis rota, JSON inválido ni referencias rotas.');
+}

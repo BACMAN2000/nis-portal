@@ -38,6 +38,12 @@ def main():
                     '    No se pisa: miralo y decide tu si se combinan.')
 
     shutil.copyfile(ORIGEN, destino)
+    # Desde el 17-sep-2026 tambien el pre-push: el QA estatico antes de publicar.
+    pp_origen = os.path.join(RAIZ, 'tools', 'hooks', 'pre-push')
+    pp_destino = os.path.join(hooks, 'pre-push')
+    if os.path.exists(pp_origen) and not (os.path.exists(pp_destino) and filecmp.cmp(pp_origen, pp_destino, shallow=False)):
+        shutil.copyfile(pp_origen, pp_destino)
+        print('pre-push instalado (QA estatico antes de publicar)')
     os.chmod(destino, 0o755)
     print(f'instalado en {destino}')
     print('a partir de ahora cada commit sella las versiones solo')

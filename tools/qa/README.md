@@ -9,6 +9,9 @@ de dar por buena una publicación:
     npm run qa:browser    # 347 páginas en Chrome headless: excepciones, consola, contraste, móvil (≈10 min)
     py -3.12 transcribe_listening.py pares.json salida.jsonl   # audio↔guion con Whisper (≈40 min, ver val_listening.js para generar los pares)
 
+- **Hook `pre-push`** (`tools/hooks/pre-push`, se instala con `python tools/instala_hook.py`): corre
+  `qa-static.js --gate` antes de cada push y lo detiene solo si hay sintaxis JS rota, JSON que no
+  parsea o referencias locales rotas (~40 s). `git push --no-verify` lo salta si el aviso es falso.
 - `qa-static.js` — sintaxis de todo JS (archivos e inline, con acorn), `\u00xx`,
   entidades dobles, `${}` sin interpolar, referencias locales rotas, IDs duplicados,
   `:root` locales que pisan los tokens de tema (`--bg` oscuro en página clara),

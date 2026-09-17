@@ -1,0 +1,17 @@
+#!/bin/sh
+# Antes de publicar: el QA estático del portal (tools/qa/qa-static.js --gate).
+# Solo tumba el push lo que rompe una página de verdad — sintaxis JS (archivos e
+# inline), JSON que no parsea y referencias locales rotas. Tarda ~40 s.
+# Se instala con:  python tools/instala_hook.py   (copia también este archivo)
+# Si tools/qa no tiene node_modules (npm install), avisa y deja pasar: un clon
+# sin el banco instalado no debe quedar bloqueado, pero sí enterarse.
+if [ ! -d tools/qa/node_modules ]; then
+  echo "[pre-push] tools/qa sin node_modules: no se corre el QA (cd tools/qa && npm install)."
+  exit 0
+fi
+if ! node tools/qa/qa-static.js --gate; then
+  echo ""
+  echo "Arregla lo de arriba y repite el push. Si el aviso es falso: git push --no-verify"
+  exit 1
+fi
+exit 0
