@@ -6,8 +6,9 @@ B2 · C1), C2, las 22 actividades del motor por capítulo, los bloques extra
 examen por capítulo y el audio del read-along. Nada a medias: un nivel sin
 audio ni siquiera aparece en el selector (`readers-levels.js` lo decide).
 
-Validar siempre con `node tools/valida_reader.js <id> <capítulos>` antes de
-registrar nada. Cero errores o no se publica.
+Validar siempre con `node tools/valida_reader.js <id> <capítulos>` (añadir
+`"" pd` al final si la obra es de dominio público: rangos de adaptación, `§`
+permitido) antes de registrar nada. Cero errores o no se publica.
 
 ## 0. Derechos: dos recetas según la obra
 
@@ -27,6 +28,23 @@ en orden, con lo que sienten y quieren los personajes, pero como la contaría
 un profesor, no como la escribió el autor: es más corta que una adaptación
 con licencia y no la sustituye. El alumno lee **su ejemplar** (comprado o de
 la biblioteca del colegio), y cada capítulo dice qué tramo cubre (`span`).
+
+### 0.1 Dominio público: el original en C1/C2 sale de Gutenberg
+
+```
+python tools/readers/gutenberg_original.py <plan.json>
+```
+
+El `plan.json` (ver la docstring del script) lleva el número de Gutenberg, la
+regex de capítulos y, por unidad, los capítulos que abarca y cuáles van
+íntegros en C1. Escribe `<id>-original.js` (C2, todo el libro) y el
+esqueleto `<id>-data-c1.js` con los capítulos elegidos, `«BRIDGE: …»` donde
+se salta algo y `/*CHAPTERS*/` `/*EVENTS*/` vacíos; un agente Sonnet escribe
+los puentes y las actividades **sin releer el archivo entero** (grep + Edit).
+Objetivo: ~60–70k palabras en C1 (≈8 h de audio). Alinear después los
+`orig:` de cada unidad con las unidades del plan (el agente los deduce de los
+puentes y se desvía). Great Expectations (#1400) y Moby-Dick (#2701) se
+montaron así el 17-sep-2026.
 
 ## 1. Archivos que se crean
 
@@ -169,6 +187,11 @@ lanza el resto y valida. Un archivo de 12 capítulos no cabe en una sola
 escritura (límite de 64k tokens de salida por llamada): el agente lo escribe
 por partes (capítulos de 4 en 4, READINGS en dos mitades, EVENTS al final).
 Al terminar, buscar frases célebres de la obra en los archivos (`grep -i`):
-los agentes las evitan, pero el plan de Opus puede colarlas sin querer. Los prompts van con: id, título, autor, el plan de
+los agentes las evitan, pero el plan de Opus puede colarlas sin querer (pasó
+tres veces: «a pleasure to burn», «the end of innocence», «it is a sin to
+kill a mockingbird»). Si el texto cambia con el audio ya hecho, borrar los
+`chN-*` de ese capítulo y relanzar el generador. Un agente puede quedarse
+colgado sin escribir nada (watchdog a los 600 s): relanzarlo con partes más
+pequeñas. Máximo 20 subagentes a la vez. Los prompts van con: id, título, autor, el plan de
 unidades (n, title, span, qué pasa), el nivel, la receta de derechos y la
 orden de ejecutar el validador antes de terminar.

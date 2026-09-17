@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 /* Valida los archivos de un reader antes de publicarlo.
  *
- *   node tools/valida_reader.js <id> [capitulos] [a2|b1|b2|c1|extras]
+ *   node tools/valida_reader.js <id> [capitulos] [a2|b1|b2|c1|extras] [pd]
  *
  * El tercer argumento limita la comprobacion a un solo archivo (para revisar
- * un nivel mientras los demas todavia no existen).
+ * un nivel mientras los demas todavia no existen). "pd" = obra de dominio
+ * publico: los rangos de palabras son los de una adaptacion (mas larga) y el
+ * C1 puede llevar "§" (capitulos del original) y puentes «…».
  *
  * Comprueba <id>-data-{a2,b1,b2,c1}.js y <id>-extras.js contra lo que el
  * motor (reader.html) y el examen (attwn-exam.html) esperan de verdad:
@@ -22,6 +24,7 @@ const ROOT = path.join(__dirname, '..');
 const id = process.argv[2];
 const NCAP = +process.argv[3] || 0;
 const SOLO = (process.argv[4] || '').toLowerCase();
+const PD = (process.argv[5] || '').toLowerCase() === 'pd';
 if (!id) { console.error('Uso: node tools/valida_reader.js <id> [capitulos] [a2|b1|b2|c1|extras]'); process.exit(2); }
 
 const errs = [], warns = [];
@@ -39,7 +42,8 @@ const arr = (x, n) => Array.isArray(x) && (n == null || x.length === n);
 
 /* Rango orientativo de palabras del read-along por capitulo en una obra con
    derechos (narracion propia, no adaptacion). Solo avisa. */
-const WORDS = { A2: [220, 400], B1: [350, 550], B2: [500, 750], C1: [650, 1000] };
+const WORDS = PD ? { A2: [350, 500], B1: [480, 650], B2: [800, 1100], C1: [0, 1e9] }
+                 : { A2: [220, 400], B1: [350, 550], B2: [500, 750], C1: [650, 1000] };
 
 function validaData(level) {
   const f = `${id}-data-${level}.js`;
@@ -118,7 +122,8 @@ function validaData(level) {
       // el listening saca 6 huecos de las palabras del vocabulario que aparecen en el texto
       const hits = (c.vocab || []).filter(v => new RegExp('\\b' + v[0] + 's?\\b', 'i').test(text)).length;
       if (hits < 6) err(p, `solo ${hits} palabras del vocab aparecen en READINGS (el Listening necesita 6)`);
-      if (/^§/m.test(text)) warn(p, 'READINGS usa "§" (se narra en el audio)');
+      if (!PD && /^§/m.test(text)) warn(p, 'READINGS usa "§" (solo para el original abreviado de dominio publico)');
+      if (/«BRIDGE/.test(text)) err(p, 'READINGS tiene un «BRIDGE…» sin escribir');
     }
     // EVENTS
     const ev = (E || {})[c.n];

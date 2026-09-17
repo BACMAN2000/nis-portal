@@ -48,7 +48,12 @@ var RDR_BOOKS={
   treasureisland:{title:'Treasure Island', by:'Robert Louis Stevenson'},
   fahrenheit:{title:'Fahrenheit 451', by:'Ray Bradbury'},
   lordoftheflies:{title:'Lord of the Flies', by:'William Golding'},
-  giver:{title:'The Giver', by:'Lois Lowry'}
+  giver:{title:'The Giver', by:'Lois Lowry'},
+  greatexpectations:{title:'Great Expectations', by:'Charles Dickens'},
+  mobydick:{title:'Moby-Dick', by:'Herman Melville'},
+  animalfarm:{title:'Animal Farm', by:'George Orwell'},
+  mockingbird:{title:'To Kill a Mockingbird', by:'Harper Lee'},
+  catcher:{title:'The Catcher in the Rye', by:'J. D. Salinger'}
 };
 var RDR_ID=(_q.get('book')||'earnest').toLowerCase();
 if(!RDR_BOOKS[RDR_ID]) RDR_ID='earnest';

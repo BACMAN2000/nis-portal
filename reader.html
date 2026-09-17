@@ -379,7 +379,14 @@ var RDR_BOOKS={
      su ejemplar (extras.OWN_COPY); no llevan -original.js. */
   fahrenheit:{title:'Fahrenheit 451', by:'Ray Bradbury'},
   lordoftheflies:{title:'Lord of the Flies', by:'William Golding'},
-  giver:{title:'The Giver', by:'Lois Lowry'}
+  giver:{title:'The Giver', by:'Lois Lowry'},
+  /* 18-sep-2026: dos de dominio publico (Dickens, Melville: original en C1/C2)
+     y tres con derechos (narracion propia, OWN_COPY). */
+  greatexpectations:{title:'Great Expectations', by:'Charles Dickens'},
+  mobydick:{title:'Moby-Dick', by:'Herman Melville'},
+  animalfarm:{title:'Animal Farm', by:'George Orwell'},
+  mockingbird:{title:'To Kill a Mockingbird', by:'Harper Lee'},
+  catcher:{title:'The Catcher in the Rye', by:'J. D. Salinger'}
 };
 var RDR_ID=(_q.get('book')||'earnest').toLowerCase();
 if(!RDR_BOOKS[RDR_ID]) RDR_ID='earnest';
@@ -2727,7 +2734,7 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 
 </script>
 <script src="nis-presence.js?v=684f7b00" defer></script>
-<script src="nis-i18n.js?v=503537a8" defer></script>
-<script src="nis-tema.js?v=78420634" defer></script>
+<script src="nis-i18n.js?v=90aa61ff" defer></script>
+<script src="nis-tema.js?v=0ae7c164" defer></script>
 </body>
 </html>

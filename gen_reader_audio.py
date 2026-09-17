@@ -22,7 +22,10 @@ ROOT   = Path(__file__).parent
 VOICES = {"earnest": "en-GB-ThomasNeural", "tomsawyer": "en-US-ChristopherNeural",
           "princepauper": "en-GB-RyanNeural", "treasureisland": "en-GB-ThomasNeural",
           "fahrenheit": "en-US-GuyNeural", "lordoftheflies": "en-GB-ThomasNeural",
-          "giver": "en-US-AndrewNeural"}
+          "giver": "en-US-AndrewNeural",
+          "greatexpectations": "en-GB-RyanNeural", "mobydick": "en-US-GuyNeural",
+          "animalfarm": "en-GB-ThomasNeural", "mockingbird": "en-US-AndrewNeural",
+          "catcher": "en-US-AndrewNeural"}
 RATES  = {"a2": "-15%", "b1": "-8%", "b2": "-6%", "c1": "-4%"}
 
 def load_readings(book, level):
@@ -32,9 +35,15 @@ def load_readings(book, level):
         sys.exit(f"No encuentro READINGS en {book}-data-{level}.js")
     return ast.literal_eval(m.group(1))
 
+def narrable(text):
+    # Los encabezados "§ I. Titulo" y los puentes «...» del C1 se narran sin la
+    # marca: edge-tts leia "section" antes de cada capitulo de Prince & Pauper.
+    return re.sub(r"^§\s*", "", text).strip("«»").strip()
+
 async def tts_words(text, mp3, jsn, voice, rate):
     if mp3.exists() and mp3.stat().st_size > 1000 and jsn.exists():
         return False
+    text = narrable(text)
     words = []
     comm = edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary")
     with open(mp3, "wb") as f:
@@ -68,7 +77,7 @@ async def main():
             new = await tts_words(p, out / f"ch{n}-p{i}.mp3", out / f"ch{n}-p{i}.json", voice, rate)
             made += new; kept += (not new)
             print(("OK  " if new else "skip") + f" {book} {level} ch{n}-p{i}", flush=True)
-        new = await tts_plain("\n\n".join(paras), out / f"ch{n}.mp3", voice, rate)
+        new = await tts_plain("\n\n".join(narrable(p) for p in paras), out / f"ch{n}.mp3", voice, rate)
         made += new; kept += (not new)
         print(("OK  " if new else "skip") + f" {book} {level} ch{n} (full)", flush=True)
     print(f"Listo {book} {level}: {made} nuevos, {kept} existentes -> {out}")

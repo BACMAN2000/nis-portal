@@ -37,7 +37,12 @@ const READER_META={
   treasureisland:{icon:'🏴‍☠️', title:'Treasure Island',           short:'Treasure Island', chapters:11},
   fahrenheit:{icon:'🔥', title:'Fahrenheit 451',                 short:'Fahrenheit 451', chapters:8},
   lordoftheflies:{icon:'🐚', title:'Lord of the Flies',          short:'Lord of the Flies', chapters:12},
-  giver:{icon:'🛷', title:'The Giver',                           short:'The Giver', chapters:8}
+  giver:{icon:'🛷', title:'The Giver',                           short:'The Giver', chapters:8},
+  greatexpectations:{icon:'🧣', title:'Great Expectations', short:'Great Expectations', chapters:12},
+  mobydick:{icon:'🐋', title:'Moby-Dick', short:'Moby-Dick', chapters:12},
+  animalfarm:{icon:'🐖', title:'Animal Farm', short:'Animal Farm', chapters:10},
+  mockingbird:{icon:'⚖️', title:'To Kill a Mockingbird', short:'Mockingbird', chapters:10},
+  catcher:{icon:'🧢', title:'The Catcher in the Rye', short:'The Catcher', chapters:8}
 };
 const _RDR_IDS=Object.keys(READER_META);
 const _RDR_EXAM_RX=/^([a-z]+)-exam-([a-z][0-9])-ch(\d+)$/;

@@ -21,7 +21,8 @@ import ast, io, os, re, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 LIBROS = ["attwn", "earnest", "tomsawyer", "princepauper", "treasureisland",
-          "fahrenheit", "lordoftheflies", "giver"]
+          "fahrenheit", "lordoftheflies", "giver",
+          "greatexpectations", "mobydick", "animalfarm", "mockingbird", "catcher"]
 NIVELES = ["a2", "b1", "b2", "c1"]
 
 
