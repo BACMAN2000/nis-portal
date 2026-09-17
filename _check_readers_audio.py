@@ -20,7 +20,8 @@ existe, sin tener que acordarse de mantener una lista a mano.
 import ast, io, os, re, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-LIBROS = ["attwn", "earnest", "tomsawyer", "princepauper", "treasureisland"]
+LIBROS = ["attwn", "earnest", "tomsawyer", "princepauper", "treasureisland",
+          "fahrenheit", "lordoftheflies", "giver"]
 NIVELES = ["a2", "b1", "b2", "c1"]
 
 

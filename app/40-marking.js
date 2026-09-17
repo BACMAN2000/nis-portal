@@ -34,7 +34,10 @@ const READER_META={
   earnest:  {icon:'🎩', title:'The Importance of Being Earnest', short:'Earnest',    chapters:9},
   tomsawyer:{icon:'🚣', title:'The Adventures of Tom Sawyer',    short:'Tom Sawyer', chapters:8},
   princepauper:{icon:'👑', title:'The Prince and the Pauper',   short:'Prince & Pauper', chapters:8},
-  treasureisland:{icon:'🏴‍☠️', title:'Treasure Island',           short:'Treasure Island', chapters:11}
+  treasureisland:{icon:'🏴‍☠️', title:'Treasure Island',           short:'Treasure Island', chapters:11},
+  fahrenheit:{icon:'🔥', title:'Fahrenheit 451',                 short:'Fahrenheit 451', chapters:8},
+  lordoftheflies:{icon:'🐚', title:'Lord of the Flies',          short:'Lord of the Flies', chapters:12},
+  giver:{icon:'🛷', title:'The Giver',                           short:'The Giver', chapters:8}
 };
 const _RDR_IDS=Object.keys(READER_META);
 const _RDR_EXAM_RX=/^([a-z]+)-exam-([a-z][0-9])-ch(\d+)$/;

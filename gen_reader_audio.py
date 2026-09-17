@@ -20,7 +20,9 @@ import edge_tts
 
 ROOT   = Path(__file__).parent
 VOICES = {"earnest": "en-GB-ThomasNeural", "tomsawyer": "en-US-ChristopherNeural",
-          "princepauper": "en-GB-RyanNeural", "treasureisland": "en-GB-ThomasNeural"}
+          "princepauper": "en-GB-RyanNeural", "treasureisland": "en-GB-ThomasNeural",
+          "fahrenheit": "en-US-GuyNeural", "lordoftheflies": "en-GB-ThomasNeural",
+          "giver": "en-US-AndrewNeural"}
 RATES  = {"a2": "-15%", "b1": "-8%", "b2": "-6%", "c1": "-4%"}
 
 def load_readings(book, level):
@@ -54,7 +56,7 @@ async def tts_plain(text, path, voice, rate):
 
 async def main():
     if len(sys.argv) < 3 or sys.argv[1] not in VOICES or sys.argv[2].lower() not in RATES:
-        sys.exit("Uso: python gen_reader_audio.py <earnest|tomsawyer|princepauper|treasureisland> <a2|b1|b2|c1>")
+        sys.exit("Uso: python gen_reader_audio.py <" + "|".join(VOICES) + "> <a2|b1|b2|c1>")
     book, level = sys.argv[1], sys.argv[2].lower()
     voice, rate = VOICES[book], RATES[level]
     out = ROOT / f"{book}-audio" / level

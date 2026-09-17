@@ -10,6 +10,9 @@
 window.READER_LEVELS = {
   attwn: ['a2', 'b1', 'b2', 'c1', 'c2'],
   earnest: ['a2', 'b1', 'b2', 'c1', 'c2'],
+  fahrenheit: ['a2', 'b1', 'b2', 'c1', 'c2'],
+  giver: ['a2', 'b1', 'b2', 'c1', 'c2'],
+  lordoftheflies: ['a2', 'b1', 'b2', 'c1', 'c2'],
   princepauper: ['a2', 'b1', 'b2', 'c1', 'c2'],
   tomsawyer: ['a2', 'b1', 'b2', 'c1', 'c2'],
   treasureisland: ['a2', 'b1', 'b2', 'c1', 'c2']

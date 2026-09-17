@@ -298,6 +298,12 @@ const READER_CARDS = {
   tomsawyer:['🚣','The Adventures of Tom Sawyer','Mark Twain at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=tomsawyer','Tom Sawyer (A2–C2)'],
   princepauper:['👑','The Prince and the Pauper','Mark Twain at five levels — A2 · B1 · B2 · C1 · C2. Read along with the original 1881 engravings, plus Cambridge A2 Key practice, Trinity speaking topics, 20 activities per chapter and chapter exams.','reader.html?book=princepauper','The Prince and the Pauper (A2–C2)'],
   treasureisland:['🏴‍☠️','Treasure Island','Robert Louis Stevenson at five levels — A2 · B1 · B2 · C1 · C2. Eleven parts with the 1915 engravings, Cambridge PET practice, Trinity speaking topics and chapter exams.','reader.html?book=treasureisland','Treasure Island (A2–C2)'],
+  /* Obras con derechos: la app cuenta la historia al nivel y el alumno lee su
+     ejemplar (biblioteca del colegio o comprado); el C2 es el plan de lectura
+     del original. Ver tools/readers-nuevo-titulo.md. */
+  fahrenheit:['🔥','Fahrenheit 451','Ray Bradbury at five levels — A2 · B1 · B2 · C1 · C2. Read along with the book in your hands: eight units, audio, 20 activities per unit, Cambridge practice, Trinity speaking topics and chapter exams.','reader.html?book=fahrenheit','Fahrenheit 451 (A2–C2)'],
+  lordoftheflies:['🐚','Lord of the Flies','William Golding at five levels — A2 · B1 · B2 · C1 · C2. Read along with the book in your hands: twelve chapters, audio, 20 activities per chapter, Cambridge practice, Trinity speaking topics and chapter exams.','reader.html?book=lordoftheflies','Lord of the Flies (A2–C2)'],
+  giver:['🛷','The Giver','Lois Lowry at five levels — A2 · B1 · B2 · C1 · C2. Read along with the book in your hands: eight units, audio, 20 activities per unit, Cambridge practice, Trinity speaking topics and chapter exams.','reader.html?book=giver','The Giver (A2–C2)'],
 };
 /* Qué reader lee cada salón lo decide el profesor en Library y vive en
    reader_assignments, por AÑO ESCOLAR y TRIMESTRE — una obra por trimestre:

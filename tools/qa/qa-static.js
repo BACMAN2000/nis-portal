@@ -7,7 +7,7 @@ const files=walk(ROOT); const rel=p=>path.relative(ROOT,p).replace(/\\/g,'/');
 const html=files.filter(f=>/\.html?$/i.test(f)), js=files.filter(f=>/\.js$/i.test(f)&&!/\.min\.js$/.test(f)), css=files.filter(f=>/\.css$/i.test(f)), json=files.filter(f=>/\.json$/i.test(f));
 const F={}; const add=(cat,file,msg)=>{(F[cat]=F[cat]||[]).push(rel(file)+': '+msg);};
 const exists=new Set(files.map(f=>rel(f).toLowerCase()));
-const gitignoredMedia=/^(mocks-cambridge\/mp3\/|attwn-audio\/|yle-audio\/|yle-img\/|audio\/|cambridge-audio\/|exam-audio\/|earnest-audio\/|princepauper-audio\/|treasureisland-audio\/|tomsawyer-audio\/|g2u4-audio\/|voice-battle-audio\/|reader-pron\/|nis-fun\/audio\/|nis-fun\/content\/.*\.(mp3|png|jpg|webp|mp4)|flyers-audio\/)/i;
+const gitignoredMedia=/^(mocks-cambridge\/mp3\/|attwn-audio\/|yle-audio\/|yle-img\/|audio\/|cambridge-audio\/|exam-audio\/|earnest-audio\/|princepauper-audio\/|treasureisland-audio\/|tomsawyer-audio\/|fahrenheit-audio\/|lordoftheflies-audio\/|giver-audio\/|g2u4-audio\/|voice-battle-audio\/|reader-pron\/|nis-fun\/audio\/|nis-fun\/content\/.*\.(mp3|png|jpg|webp|mp4)|flyers-audio\/)/i;
 
 // 1. Sintaxis JS (archivos .js y scripts inline)
 for(const f of js){ const src=fs.readFileSync(f,'utf8'); try{ acorn.parse(src,{ecmaVersion:'latest',sourceType:'script',allowHashBang:true}); }catch(e){ try{ acorn.parse(src,{ecmaVersion:'latest',sourceType:'module'}); }catch(e2){ add('JS syntax',f,e.message); } } }

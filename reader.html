@@ -363,7 +363,7 @@
 <script src="ui-mensajes.js?v=5a4010ca"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=720edc7d"></script>
-<script src="readers-levels.js?v=2d067055"></script>
+<script src="readers-levels.js?v=6ca6c393"></script>
 <script>
 /* Motor GENÉRICO de readers: reader.html?book=<id>&level=a2|b1|b2|c1|c2.
    Textos y ejercicios en <book>-data-<lvl>.js; secciones propias del libro
@@ -374,7 +374,12 @@ var RDR_BOOKS={
   earnest:{title:'The Importance of Being Earnest', by:'Oscar Wilde'},
   tomsawyer:{title:'The Adventures of Tom Sawyer', by:'Mark Twain'},
   princepauper:{title:'The Prince and the Pauper', by:'Mark Twain'},
-  treasureisland:{title:'Treasure Island', by:'Robert Louis Stevenson'}
+  treasureisland:{title:'Treasure Island', by:'Robert Louis Stevenson'},
+  /* Obras con derechos: el texto es narración propia por nivel y el alumno lee
+     su ejemplar (extras.OWN_COPY); no llevan -original.js. */
+  fahrenheit:{title:'Fahrenheit 451', by:'Ray Bradbury'},
+  lordoftheflies:{title:'Lord of the Flies', by:'William Golding'},
+  giver:{title:'The Giver', by:'Lois Lowry'}
 };
 var RDR_ID=(_q.get('book')||'earnest').toLowerCase();
 if(!RDR_BOOKS[RDR_ID]) RDR_ID='earnest';
@@ -763,7 +768,7 @@ function renderChapters(){
       </div>`:''}
       <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center;border-top:4px solid #1e3a5f" onclick="extraC2()">
         <div class="ico" style="font-size:2.2rem">🏆</div>
-        <div><h2 style="margin:0">C2 · Read the original</h2><div class="desc">The final challenge: the unabridged original — reading plan, analysis questions and advanced writing.</div></div>
+        <div><h2 style="margin:0">C2 · Read the original</h2><div class="desc">The final challenge: ${EXTRAS.OWN_COPY?"the real book, in your own copy or the school library’s":"the unabridged original"} — reading plan, analysis questions and advanced writing.</div></div>
       </div>
     </div>
     ${examLockBanner()}
@@ -817,10 +822,17 @@ function renderInfo(){
   }
   window.scrollTo(0,0);
 }
+/* Obras con derechos (extras.OWN_COPY): el read-along es narración nuestra y
+   el alumno lee el capítulo en su ejemplar; la banda dice qué tramo cubre. */
+function ownCopyBand(c){
+  const o=EXTRAS.OWN_COPY; if(!o) return '';
+  return `<div class="explain" style="margin:0 0 12px;border-left:4px solid #b8934a">${o.label||'📕 Your copy'} — ${o.note||''}${c&&c.span?` <b>This unit: ${c.span}.</b>`:''}</div>`;
+}
 function renderActs(){
   const c=CHAPTERS[view.chap];
   stage.innerHTML=`
     <h1>Chapter ${c.n} · ${c.title}</h1>
+    ${ownCopyBand(c)}
     <p class="lead">${c.sum}</p>
     <div class="grid cols-3">
       ${ACTS.filter(a=>!a.need||a.need(c)).map(a=>`
@@ -1236,7 +1248,8 @@ function actRead(c){
   stage.innerHTML = `<div class="panel reading rp-paused">
     <div class="qnum">CHAPTER ${c.n} · READ ALONG</div>
     <h2 style="color:var(--blue-d);margin:2px 0 2px">${c.title}</h2>
-    <p class="muted" style="margin:0 0 10px;font-size:.85rem">Simplified version · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
+    <p class="muted" style="margin:0 0 10px;font-size:.85rem">${EXTRAS.OWN_COPY?'The story at your level':'Simplified version'} · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
+    ${ownCopyBand(c)}
     <button class="btn ghost sm" id="bkBtn" style="margin:0 0 12px" onclick="BK.toggle()">📖 Read it like a book</button>
     <div class="rp-player">
       <div class="rp-ctl">
@@ -2120,7 +2133,7 @@ const CHOOSER_LEVELS=[
   ['b1','🏝️','B1','Intermediate','The standard 9th-grade version: clear narrative English with full audio.'],
   ['b2','🚀','B2','Upper-intermediate','Richer prose, trickier questions and FCE-style writing tasks.'],
   ['c1','🎓','C1','Advanced','A literary retelling: complex sentences, inference questions, CAE-style writing.'],
-  ['c2','🏆','C2','Proficiency','The final challenge: read the original by '+RDR_BOOKS[RDR_ID].by+' — free, with a reading plan and analysis work.']
+  ['c2','🏆','C2','Proficiency','The final challenge: read the original by '+RDR_BOOKS[RDR_ID].by+(EXTRAS.OWN_COPY?' — your own copy or the school library\'s, with a reading plan and analysis work.':' — free, with a reading plan and analysis work.')]
 ];
 /* Los niveles que este libro ofrece de verdad.
  *
