@@ -140,7 +140,7 @@ function loadData(cb){
   // El sello cambia el dia que se tocan los datasets. Subio el 10-sep-2026 al
   // sacarles las respuestas: sin cambiarlo, el navegador que ya tuviera el
   // archivo viejo seguiria trayendo la clave dentro.
-  s.src='cambridge-data/cambridge-'+LEVEL+'.js?v=20260910';
+  s.src='cambridge-data/cambridge-'+LEVEL+'.js?v=20260917';
   s.onload=()=>{ CAM=window['CAM_'+LEVEL.toUpperCase()]; CAM?cb():fail('Dataset not found.'); };
   s.onerror=()=>fail('Could not load cambridge-'+LEVEL+'.js');
   document.head.appendChild(s);
