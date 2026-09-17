@@ -51,9 +51,12 @@
      pueden contener palabras que también son rótulos («Open», «Level»,
      «because»); ahí el inglés es la lección y se queda. */
   var SALTAR = 'script,style,textarea,input,select,code,pre,kbd,svg,[contenteditable],[data-i18n="off"],' +
-    '.passage,.passage-text,.wt-box,.clues,.clue,.bank,.options,.opt,.choice,.choices,.qopts,.stem,.question,.q,.item,' +
-    '.story,.script,.reading,.text,.body,.word,.words,.chip,.token,.grid,.cell,.answer,.answers,.sentence,.example,' +
-    '.def,.definition,.gloss,.lexapp-item,.card p,article,.transcript,.lyrics,.rhyme,.vocab,.wordbank,.tiles,.tile';
+    '.passage,.passage-text,.wt-box,.clues,.clue,.bank,.options,.opt,.choice,.choices,.qopts,.stem,.question,' +
+    '.word,.words,.chip,.token,.sentence,.example,.def,.definition,.gloss,.lexapp-item,.transcript,.lyrics,.rhyme,' +
+    '.vocab,.wordbank,.tiles,.tile,.xw-grid,.ws-grid,.puzzle,.letters';
+  /* Ojo: nada de clases genéricas aquí (.grid, .item, .text, .body, .card p):
+     la SPA las usa para maquetar y la primera versión dejó sin traducir todas
+     las tarjetas del alumno por culpa de .grid. */
   var ATRIBUTOS = ['placeholder', 'title', 'aria-label', 'alt', 'data-tip'];
 
   function norm(s) { return String(s).replace(/\s+/g, ' ').trim(); }
@@ -154,7 +157,9 @@
   function programar() {
     if (pendiente) return;
     pendiente = true;
-    (window.requestAnimationFrame || setTimeout)(function () { pendiente = false; aplicar(document.body); });
+    // setTimeout y no requestAnimationFrame: en una pestaña en segundo plano
+    // Chrome no dispara rAF y la traducción se quedaba esperando
+    setTimeout(function () { pendiente = false; aplicar(document.body); }, 16);
   }
   function vigilar() {
     if (!window.MutationObserver || !document.body) return;
