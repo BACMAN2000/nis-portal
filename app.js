@@ -4495,6 +4495,61 @@ function studentHub(){
   _pintaSerie('serie-card', 'home');
 }
 
+/* Helpers de unidades y arcos de proyecto (unitsNode, unitPlansFor,
+   _verProyectos…): viven aquí, ANTES de ENGLISH_AREAS y de los nodos de
+   acceso que los llaman al cargar — con app.js partido en módulos (app/)
+   el hoisting ya no cruza archivos. Movidos desde Unidades el 17-sep-2026. */
+/* La clave del nodo de Units: 9.º conserva la suya (english.classes.g9.unit5),
+   que ya esta dada a los profesores; los grados nuevos usan .units. */
+function unitsNode(grade){
+  return 'english.classes.'+grade+(grade==='g9' ? '.unit5' : '.units');
+}
+/* ---------- Arcos de proyecto (project-arcs.js) ----------
+   Un arco es el proyecto interdisciplinario del trimestre: once o doce
+   semanas sobre dos periodos seguidos del calendario. El colegio ya llama
+   "Project" a cada periodo; el arco declara que dos de ellos son uno solo.
+   La pagina es project.html y el contenido por area lo lee del volcado del
+   Annual Plan, no de aqui. */
+function arcsFor(grade){
+  const A = window.PROJECT_ARCS || {};
+  return Object.keys(A).filter(k=>A[k].grade===grade)
+    .sort((x,y)=>A[x].periodos[0]-A[y].periodos[0]).map(k=>[k,A[k]]);
+}
+/* El arco que esta corriendo hoy. Entre trimestres no hay ninguno vigente, y
+   entonces vale el que VIENE, no el primero de la lista: en septiembre, entre
+   el fin de un trimestre y el arranque del siguiente, la tarjeta llevaba al
+   arco de marzo. Si ya no queda ninguno por venir, el ultimo del ano. */
+function arcoActual(grade){
+  const hoy = new Date().toISOString().slice(0,10);
+  const todos = arcsFor(grade);
+  const vigente = todos.filter(([,a])=>a.inicio<=hoy && hoy<=a.fin);
+  if(vigente.length) return vigente[0][0];
+  const proximo = todos.filter(([,a])=>a.inicio>hoy);
+  if(proximo.length) return proximo[0][0];
+  return todos.length ? todos[todos.length-1][0] : null;
+}
+function _miGradoKey(){ const p=state.profile||{}; return p.grade_id ? 'g'+p.grade_id : null; }
+/* La tarjeta solo aparece si hay algo detras: alumno de un grado con arco, o
+   profesor y admin, que ven el indice completo. */
+function _verProyectos(){
+  if(!_isStudent()) return Object.keys(window.PROJECT_ARCS||{}).length>0;
+  const k=_miGradoKey(); return !!(k && arcsFor(k).length);
+}
+function irAMisProyectos(){
+  const key=_miGradoKey();
+  if(_isStudent() && key){
+    const hoy = arcoActual(key);
+    location.href = _withBack(hoy ? 'project.html?arc='+hoy : 'project.html?grade='+key, 'projects');
+    return;
+  }
+  location.href = _withBack(key && arcsFor(key).length ? 'project.html?grade='+key : 'project.html', 'projects');
+}
+
+function unitPlansFor(grade){
+  const p = (window.UNIT_PLANS||{})[grade];
+  return (p && p.units) ? p.units : [];
+}
+
 /* ---------- Jerarquía de contenido: Materia → Área → Grado → Actividad ----------
    Las áreas de English se reflejan en French (placeholder hasta alimentarlas). */
 /* Los bloques en que se reparten las areas. English era una parrilla de doce
@@ -7343,56 +7398,6 @@ window.unitCalificar = async function(id, nota, comentario){
    unidad (unit.html). Los datos salen de unit-plans.js, que es copia
    del planner de Toddle: si una unidad no está ahí, no se ofrece.
 ---------------------------------------------------------------- */
-/* La clave del nodo de Units: 9.º conserva la suya (english.classes.g9.unit5),
-   que ya esta dada a los profesores; los grados nuevos usan .units. */
-function unitsNode(grade){
-  return 'english.classes.'+grade+(grade==='g9' ? '.unit5' : '.units');
-}
-/* ---------- Arcos de proyecto (project-arcs.js) ----------
-   Un arco es el proyecto interdisciplinario del trimestre: once o doce
-   semanas sobre dos periodos seguidos del calendario. El colegio ya llama
-   "Project" a cada periodo; el arco declara que dos de ellos son uno solo.
-   La pagina es project.html y el contenido por area lo lee del volcado del
-   Annual Plan, no de aqui. */
-function arcsFor(grade){
-  const A = window.PROJECT_ARCS || {};
-  return Object.keys(A).filter(k=>A[k].grade===grade)
-    .sort((x,y)=>A[x].periodos[0]-A[y].periodos[0]).map(k=>[k,A[k]]);
-}
-/* El arco que esta corriendo hoy. Entre trimestres no hay ninguno vigente, y
-   entonces vale el que VIENE, no el primero de la lista: en septiembre, entre
-   el fin de un trimestre y el arranque del siguiente, la tarjeta llevaba al
-   arco de marzo. Si ya no queda ninguno por venir, el ultimo del ano. */
-function arcoActual(grade){
-  const hoy = new Date().toISOString().slice(0,10);
-  const todos = arcsFor(grade);
-  const vigente = todos.filter(([,a])=>a.inicio<=hoy && hoy<=a.fin);
-  if(vigente.length) return vigente[0][0];
-  const proximo = todos.filter(([,a])=>a.inicio>hoy);
-  if(proximo.length) return proximo[0][0];
-  return todos.length ? todos[todos.length-1][0] : null;
-}
-function _miGradoKey(){ const p=state.profile||{}; return p.grade_id ? 'g'+p.grade_id : null; }
-/* La tarjeta solo aparece si hay algo detras: alumno de un grado con arco, o
-   profesor y admin, que ven el indice completo. */
-function _verProyectos(){
-  if(!_isStudent()) return Object.keys(window.PROJECT_ARCS||{}).length>0;
-  const k=_miGradoKey(); return !!(k && arcsFor(k).length);
-}
-function irAMisProyectos(){
-  const key=_miGradoKey();
-  if(_isStudent() && key){
-    const hoy = arcoActual(key);
-    location.href = _withBack(hoy ? 'project.html?arc='+hoy : 'project.html?grade='+key, 'projects');
-    return;
-  }
-  location.href = _withBack(key && arcsFor(key).length ? 'project.html?grade='+key : 'project.html', 'projects');
-}
-
-function unitPlansFor(grade){
-  const p = (window.UNIT_PLANS||{})[grade];
-  return (p && p.units) ? p.units : [];
-}
 function _unitPlanCard(u,route,grade,open){
   const href=_withBack('unit.html?grade='+grade+'&unit='+u.n,route);
   const image=u.cover&&u.cover.image;
