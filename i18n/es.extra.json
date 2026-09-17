@@ -98,31 +98,241 @@
   "All quizzes ↗": "Todos los tests ↗",
   "← Back to all quizzes": "← Volver a todos los tests",
   "My progress": "Mi progreso",
-  "🏫 NIS Portal": "🏫 NIS Portal"
+  "🏫 NIS Portal": "🏫 NIS Portal",
+  "🇬🇧 English": "🇬🇧 Inglés",
+  "🇫🇷 French": "🇫🇷 Francés",
+  "student": "alumno",
+  "teacher": "profesor",
+  "admin": "admin",
+  "← Home": "← Inicio",
+  "← English": "← Inglés",
+  "← French": "← Francés",
+  "← Classes": "← Clases",
+  "← Early Years": "← Inicial",
+  "← Primary": "← Primaria",
+  "← Secondary": "← Secundaria",
+  "← Cambridge": "← Cambridge",
+  "← Activities": "← Actividades",
+  "← Units": "← Unidades",
+  "← Readers": "← Lecturas",
+  "Don’t have an account?": "¿No tienes cuenta?",
+  "Don't have an account?": "¿No tienes cuenta?",
+  "Sign up": "Regístrate",
+  "Class material by stage and grade.": "Material de clase por etapa y grado.",
+  "🌱 Early Years": "🌱 Inicial",
+  "🧒 Primary": "🧒 Primaria",
+  "🎓 Secondary": "🎓 Secundaria",
+  "Grammar and activities for Grade 1.": "Gramática y actividades de 1.º grado.",
+  "Grade 1 material.": "Material de 1.º grado.",
+  "Everything you have in English, in the order you use it.": "Todo lo que tienes en inglés, en el orden en que lo usas.",
+  "🎓 Cambridge English": "🎓 Cambridge English",
+  "Choose your route:": "Elige tu ruta:",
+  "Young Learners": "Young Learners",
+  "for children (Pre-A1 to A2) or": "para niños (Pre-A1 a A2) o",
+  "for the general exam (A2 to C2). Click a card to see its levels.": "para el examen general (A2 a C2). Pulsa una tarjeta para ver sus niveles.",
+  "📌 This term:": "📌 Este bimestre:",
+  "Practice exams this term:": "Exámenes de práctica este bimestre:",
+  "Young Learners English": "Young Learners English",
+  "Cambridge General English": "Cambridge General English",
+  "Word Trainer": "Entrenador de vocabulario",
+  "The school readers.": "Las lecturas del colegio.",
+  "📖 Readers": "📖 Lecturas",
+  "Not assigned to your class this year.": "No asignado a tu clase este año.",
+  "🎓 Cambridge Mocks": "🎓 Simulacros Cambridge",
+  "🎯 Practice Tests": "🎯 Tests de práctica",
+  "🗂️ General": "🗂️ General",
+  "General portal resources.": "Recursos generales del portal.",
+  "🎲 Games Lab": "🎲 Games Lab",
+  "🎮 NIShoot Live": "🎮 NIShoot Live",
+  "Your teacher is projecting a live game. Type the": "Tu profesor está proyectando un juego en vivo. Escribe el",
+  "shown on the screen (or scan the QR) and your name to join.": "que ves en la pantalla (o escanea el QR) y tu nombre para entrar.",
+  "🔒 Your teacher will unlock this": "🔒 Tu profesor lo desbloqueará",
+  "Still": "Todavía",
+  "below": "por debajo de",
+  "A2. More practice is recommended before the official exam.": "A2. Conviene practicar más antes del examen oficial.",
+  "📅 Your next step is to take": "📅 Tu siguiente paso es rendir",
+  "▼ Below your target (A2)": "▼ Por debajo de tu meta (A2)",
+  "⚠ Provisional. Missing: Writing, Speaking.": "⚠ Provisional. Faltan: Writing, Speaking.",
+  "📄 PDF (English)": "📄 PDF (inglés)",
+  "📄 PDF (Spanish)": "📄 PDF (español)",
+  "Where everything is and how to do it. You can switch guides with the pills above, and search for what you want.": "Dónde está cada cosa y cómo se hace. Puedes cambiar de guía con las pastillas de arriba y buscar lo que necesites.",
+  "MOCK 1 and MOCK 2 in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.": "MOCK 1 y MOCK 2 en formato oficial Cambridge (A2 · B1 · B2 · C1). Entras directo con tu sesión, sin volver a escribir tus datos. Tu resultado se guarda solo en Mi progreso.",
+  "Practice tests 1, 2 and 3 in authentic Cambridge format — always available. You go straight in with your session — no need to enter your details again.": "Tests de práctica 1, 2 y 3 en formato Cambridge auténtico, siempre disponibles. Entras directo con tu sesión, sin volver a escribir tus datos.",
+  "Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, word search and time attack.": "Fichas y juegos de gramática, vocabulario, phrasal verbs e idioms (A1–C1). Abre un tema y juega: quiz, huecos, sopa de letras y contrarreloj.",
+  "first check (Listening and Reading & Writing).": "primer control (Listening y Reading & Writing).",
+  "full practice test, with Speaking.": "test de práctica completo, con Speaking.",
+  "practice test in exam mode, with the official timing.": "test de práctica en modo examen, con el tiempo oficial.",
+  "dress rehearsal, same format as the real day.": "ensayo general, mismo formato que el día real.",
+  "reports for families and the guide for the exam day.": "informes para las familias y la guía del día del examen."
  },
  "patterns": [
-  ["^Unit (\\d+)$", "Unidad $1"],
-  ["^Week (\\d+)$", "Semana $1"],
-  ["^Grade (\\d+)$", "Grado $1"],
-  ["^Part (\\d+)$", "Parte $1"],
-  ["^Question (\\d+)$", "Pregunta $1"],
-  ["^Questions (\\d+)[–-](\\d+)$", "Preguntas $1–$2"],
-  ["^Part (\\d+) · Questions (\\d+)[–-](\\d+)$", "Parte $1 · Preguntas $2–$3"],
-  ["^(\\d+) of (\\d+)$", "$1 de $2"],
-  ["^(\\d+) words?$", "$1 palabras"],
-  ["^(\\d+)[–-](\\d+) words$", "$1–$2 palabras"],
-  ["^Around (\\d+) words$", "Unas $1 palabras"],
-  ["^(\\d+) minutes?$", "$1 minutos"],
-  ["^(\\d+) min$", "$1 min"],
-  ["^Level ([A-C][12])$", "Nivel $1"],
-  ["^Mark: (\\d+)/20 · (AD|A|B|C) — Excellent$", "Nota: $1/20 · $2 — Excelente"],
-  ["^Mark: (\\d+)/20 · (AD|A|B|C) — Expected$", "Nota: $1/20 · $2 — Esperado"],
-  ["^Mark: (\\d+)/20 · (AD|A|B|C) — In progress$", "Nota: $1/20 · $2 — En proceso"],
-  ["^Mark: (\\d+)/20 · (AD|A|B|C) — Beginning$", "Nota: $1/20 · $2 — En inicio"],
-  ["^(\\d+) students?$", "$1 alumnos"],
-  ["^(\\d+) submissions?$", "$1 entregas"],
-  ["^(\\d+) attempts?$", "$1 intentos"],
-  ["^(\\d+) pending$", "$1 pendientes"],
-  ["^Term (\\d+)$", "Bimestre $1"]
+  [
+   "^Unit (\\d+)$",
+   "Unidad $1"
+  ],
+  [
+   "^Week (\\d+)$",
+   "Semana $1"
+  ],
+  [
+   "^Grade (\\d+)$",
+   "Grado $1"
+  ],
+  [
+   "^Part (\\d+)$",
+   "Parte $1"
+  ],
+  [
+   "^Question (\\d+)$",
+   "Pregunta $1"
+  ],
+  [
+   "^Questions (\\d+)[–-](\\d+)$",
+   "Preguntas $1–$2"
+  ],
+  [
+   "^Part (\\d+) · Questions (\\d+)[–-](\\d+)$",
+   "Parte $1 · Preguntas $2–$3"
+  ],
+  [
+   "^(\\d+) of (\\d+)$",
+   "$1 de $2"
+  ],
+  [
+   "^(\\d+) words?$",
+   "$1 palabras"
+  ],
+  [
+   "^(\\d+)[–-](\\d+) words$",
+   "$1–$2 palabras"
+  ],
+  [
+   "^Around (\\d+) words$",
+   "Unas $1 palabras"
+  ],
+  [
+   "^(\\d+) minutes?$",
+   "$1 minutos"
+  ],
+  [
+   "^(\\d+) min$",
+   "$1 min"
+  ],
+  [
+   "^Level ([A-C][12])$",
+   "Nivel $1"
+  ],
+  [
+   "^Mark: (\\d+)/20 · (AD|A|B|C) — Excellent$",
+   "Nota: $1/20 · $2 — Excelente"
+  ],
+  [
+   "^Mark: (\\d+)/20 · (AD|A|B|C) — Expected$",
+   "Nota: $1/20 · $2 — Esperado"
+  ],
+  [
+   "^Mark: (\\d+)/20 · (AD|A|B|C) — In progress$",
+   "Nota: $1/20 · $2 — En proceso"
+  ],
+  [
+   "^Mark: (\\d+)/20 · (AD|A|B|C) — Beginning$",
+   "Nota: $1/20 · $2 — En inicio"
+  ],
+  [
+   "^(\\d+) students?$",
+   "$1 alumnos"
+  ],
+  [
+   "^(\\d+) submissions?$",
+   "$1 entregas"
+  ],
+  [
+   "^(\\d+) attempts?$",
+   "$1 intentos"
+  ],
+  [
+   "^(\\d+) pending$",
+   "$1 pendientes"
+  ],
+  [
+   "^Term (\\d+)$",
+   "Bimestre $1"
+  ],
+  [
+   "^Hi, (.+) 👋$",
+   "Hola, $1 👋"
+  ],
+  [
+   "^(G\\d+) · Level ([A-C][12]) — What would you like to do today\\?$",
+   "$1 · Nivel $2 — ¿Qué quieres hacer hoy?"
+  ],
+  [
+   "^(G\\d+) · Level ([A-C][12])$",
+   "$1 · Nivel $2"
+  ],
+  [
+   "^(\\d+) attempt\\(s\\) · avg (\\d+)%$",
+   "$1 intento(s) · media $2 %"
+  ],
+  [
+   "^(\\d+) attempt\\(s\\)$",
+   "$1 intento(s)"
+  ],
+  [
+   "^📝 Mocks \\((\\d+)\\)$",
+   "📝 Simulacros ($1)"
+  ],
+  [
+   "^🎯 Practice Tests \\((\\d+)\\)$",
+   "🎯 Tests de práctica ($1)"
+  ],
+  [
+   "^🎲 Activities \\((\\d+)\\)$",
+   "🎲 Actividades ($1)"
+  ],
+  [
+   "^(.+) at five levels · (\\d+) chapters · A2–C2$",
+   "$1 en cinco niveles · $2 capítulos · A2–C2"
+  ],
+  [
+   "^Cambridge exam: (.+) — (.+)$",
+   "Examen Cambridge: $1 — $2"
+  ],
+  [
+   "^(\\d+) December (\\d{4})$",
+   "$1 de diciembre de $2"
+  ],
+  [
+   "^(\\d+) October (\\d{4})$",
+   "$1 de octubre de $2"
+  ],
+  [
+   "^(\\d+) November (\\d{4})$",
+   "$1 de noviembre de $2"
+  ],
+  [
+   "^· (\\d+)–(\\d+) Sep: (.+)$",
+   "· $1–$2 sep: $3"
+  ],
+  [
+   "^· (\\d+)–(\\d+) Oct: (.+)$",
+   "· $1–$2 oct: $3"
+  ],
+  [
+   "^· (\\d+)–(\\d+) Nov: (.+)$",
+   "· $1–$2 nov: $3"
+  ],
+  [
+   "^(\\d+) days? ago$",
+   "hace $1 días"
+  ],
+  [
+   "^(\\d+) hours? ago$",
+   "hace $1 horas"
+  ],
+  [
+   "^(\\d+) minutes? ago$",
+   "hace $1 minutos"
+  ]
  ]
 }
