@@ -29,6 +29,7 @@ window.TEEN = (function () {
   'use strict';
 
   const TEEN_V = '2026-09-16e';   // sube al cambiar fotos o audio del lab
+  const CAST_V = '2026-09-17';    // arte 3D del elenco (assets/characters/cast)
 
   const NIV = {
     a1: { name: 'A1 Foundations', full: 'A1 Foundations · the grammar before A2 Key', cefr: 'A1', icon: 'course',
@@ -740,22 +741,29 @@ window.TEEN = (function () {
     const cab = (kicker, titulo, ik) => `<div class="t-task"><div class="ico">${ico(ik, 56)}</div><div><span class="t-kicker">${esc(kicker)}</span><h2>${inl(titulo)}</h2></div></div>`;
     const dg = d.diagrams || [];
 
-    // el dialogo: avatares del elenco (retratos SVG del nivel) o la inicial.
-    // Miss Vega es la profe recurrente; se salta el tratamiento (Miss/Mr/Cousin)
-    // y se busca por el nombre, para que salga su retrato y no una letra suelta.
+    // el dialogo: avatares 3D del elenco (Nordic Ascent). Cada personaje MIRA
+    // hacia su bocadillo: en una linea .r el avatar va a la derecha y mira a la
+    // izquierda; en las demas mira a la derecha. Quien aun no tiene arte 3D
+    // (p.ej. Sofia hasta bajar su lamina) cae al retrato SVG o a la inicial.
     const AV = { mateo: 'mateo', sofia: 'sofia', liam: 'liam', nadia: 'nadia', vega: 'vega', nova: 'nova' };
+    const CAST3D = new Set(['mateo', 'liam', 'nadia', 'vega', 'nova']);
     const TRATO = new Set(['miss', 'mr', 'mrs', 'ms', 'cousin', 'uncle', 'aunt', 'grandma', 'grandpa']);
-    const avatar = who => {
+    const slugDe = who => {
       const p = String(who || '').toLowerCase().split(/\s+/).filter(Boolean);
-      const s = AV[(p[0] && TRATO.has(p[0]) ? p[1] : p[0]) || ''];
-      return s ? `<span class="av"><img src="../assets/characters/${LEVEL}/${s}/pose-01.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('${esc(String(who || '?')[0])}'))"></span>`
-               : `<span class="av">${esc(String(who || '?')[0])}</span>`;
+      return AV[(p[0] && TRATO.has(p[0]) ? p[1] : p[0]) || ''] || null;
+    };
+    const avatar = (who, derecha) => {
+      const s = slugDe(who), ini = esc(String(who || '?')[0]);
+      if (s && CAST3D.has(s))
+        return `<span class="av"><img src="../assets/characters/cast/${s}/${derecha ? 'left' : 'right'}-bust.jpg?v=${CAST_V}" alt="" onerror="this.replaceWith(document.createTextNode('${ini}'))"></span>`;
+      return s ? `<span class="av"><img src="../assets/characters/${LEVEL}/${s}/pose-01.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('${ini}'))"></span>`
+               : `<span class="av">${ini}</span>`;
     };
     const hablantes = [...new Set((d.dialogue.lines || []).map(l => l.speaker))];
     const dlg = `<div class="t-dlg"><div class="ctx">${ico('talk', 34)}<span><b>${inl(d.dialogue.title)}</b> — ${inl(d.dialogue.context)}</span>
         <button class="t-btn sm dlg-play" type="button">▶ ${T('Play the conversation', 'Écouter')}</button></div>
       <audio class="dlg-audio" preload="none" src="${ADIR}/grammar/${LEVEL}/${id}.mp3?v=${TEEN_V}"></audio>
-      ${(d.dialogue.lines || []).map((l, i) => `<div class="ln ${hablantes.indexOf(l.speaker) % 2 ? 'r' : ''}" data-i="${i}">${avatar(l.speaker)}
+      ${(d.dialogue.lines || []).map((l, i) => `<div class="ln ${hablantes.indexOf(l.speaker) % 2 ? 'r' : ''}" data-i="${i}">${avatar(l.speaker, hablantes.indexOf(l.speaker) % 2)}
         <div class="bb"><span class="who">${esc(l.speaker)}</span>${inl(l.text)}<button class="say" type="button" data-i="${i}" aria-label="${T('Listen', 'Écoute')}">🔊</button></div></div>`).join('')}</div>`;
 
     const bloques = (d.practice || []).filter(b => PRACTICA[b.type] && b.items && b.items.length);
@@ -764,7 +772,7 @@ window.TEEN = (function () {
 
     // los niveles inferiores traen ademas: la escena inicial (hook), el truco
     // de memoria (remember), las trampas del español (l1) y el semaforo (can_do)
-    const hook = d.hook ? `<div class="t-hook"><div class="nova"><img src="../assets/characters/${LEVEL}/nova/pose-03.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('★'))"></div>
+    const hook = d.hook ? `<div class="t-hook"><div class="nova"><img src="../assets/characters/cast/nova/center-full.jpg?v=${CAST_V}" alt="" onerror="this.replaceWith(document.createTextNode('★'))"></div>
         <div class="bb"><span class="t-kicker">${T('Look first', 'Observe d’abord')}</span><p class="story">${inl(d.hook.text)} <button class="ex-say" type="button" data-t="${esc(String(d.hook.text).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p>
           <p class="ask">${ico('search', 22)} <span>${inl(d.hook.ask)}</span></p></div></div>` : '';
     const recuerda = d.remember ? `<div class="t-remember"><span class="pin">📌</span><span class="t-kicker">${T('Remember', 'Retiens')}</span>
