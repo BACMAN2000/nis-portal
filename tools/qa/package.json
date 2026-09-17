@@ -1,0 +1,13 @@
+{
+  "name": "nis-portal-qa",
+  "private": true,
+  "description": "Banco de pruebas del portal: npm install && npm run qa (estático + datos + vivo); npm run qa:browser abre Chrome headless.",
+  "scripts": {
+    "qa": "node qa-static.js && node val_reading.js && node val_listening.js && node qa-live.js",
+    "qa:static": "node qa-static.js",
+    "qa:data": "node val_reading.js && node val_listening.js",
+    "qa:live": "node qa-live.js",
+    "qa:browser": "node qa-browser.js"
+  },
+  "dependencies": { "acorn": "^8", "playwright-core": "^1" }
+}

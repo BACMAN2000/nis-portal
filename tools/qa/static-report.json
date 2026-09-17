@@ -1,0 +1,38 @@
+{
+ "Referencia local rota": [
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-brands-400.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-regular-400.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-solid-900.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-brands-400.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-solid-900.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-regular-400.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-solid-900.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-brands-400.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-regular-400.ttf)",
+  "vendor/fontawesome/css/all.min.css: url(../webfonts/fa-v4compatibility.ttf)"
+ ],
+ "Token de fondo oscuro en página clara": [
+  "pizarra.html: --bg:#2b2f3a (1 usos)"
+ ],
+ "Token de texto claro en página clara": [
+  "pizarra.html: --ink:#e6e9f2 (4 usos)"
+ ],
+ "Español residual": [
+  "app.js: Puntaje"
+ ],
+ "Sin viewport": [
+  "being-earnest.html: ",
+  "nis-fun/character-sheet.html: ",
+  "nis-fun/index.html: ",
+  "prince-and-the-pauper.html: ",
+  "tom-sawyer.html: ",
+  "treasure-island.html: ",
+  "unit-g9-u5.html: "
+ ],
+ "Sin lang": [
+  "nis-fun/index.html: "
+ ],
+ "Sin title": [
+  "yle-guia-familia.html: "
+ ]
+}
