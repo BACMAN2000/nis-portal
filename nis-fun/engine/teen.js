@@ -29,7 +29,7 @@ window.TEEN = (function () {
   'use strict';
 
   const TEEN_V = '2026-09-16e';   // sube al cambiar fotos o audio del lab
-  const CAST_V = '2026-09-17';    // arte 3D del elenco (assets/characters/cast)
+  const CAST_V = '2026-09-17b';   // arte 3D del elenco (assets/characters/cast)
 
   const NIV = {
     a1: { name: 'A1 Foundations', full: 'A1 Foundations · the grammar before A2 Key', cefr: 'A1', icon: 'course',
