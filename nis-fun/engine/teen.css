@@ -437,3 +437,45 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
   .teen .t-cando .cd{flex-direction:column;align-items:flex-start;gap:.4rem}
   .teen .t-brick{font-size:.92rem;padding:.4rem .55rem}
 }
+
+/* ---- vida: la gramatica entra con movimiento (17-sep-2026) ----
+   La explicacion antes aparecia estatica de golpe. Ahora los bloques, pasos,
+   la formula, la linea de tiempo y la frase transformada se revelan con un
+   movimiento breve y escalonado, para que se lea como una secuencia y no como
+   un muro. TODO vive dentro de `prefers-reduced-motion: no-preference`: quien
+   pide menos movimiento ve el estado final visible, sin animar y sin quedar en
+   opacidad 0. Es CSS puro sobre clases que ya existen — no toca el motor ni los
+   datos. Ver [[nis-secundaria-teen-grammar-lab]] y [[nis-grammar-lab-inferiores-a1-a2-b1]]. */
+@media (prefers-reduced-motion: no-preference){
+  @keyframes t-rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  @keyframes t-pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+  @keyframes t-draw{to{stroke-dashoffset:0}}
+  @keyframes t-nowpulse{0%,100%{opacity:.45}50%{opacity:1}}
+  @keyframes t-markpop{0%{transform:scale(0)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+  /* bloques de la explicacion: entran de abajo, escalonados */
+  .teen .t-formula .t-fchip,
+  .teen .t-bl-row>.t-brick,
+  .teen .t-st>.t-step,
+  .teen .t-tr>.sent,
+  .teen .t-why>.box,
+  .teen .t-uses>.t-use,
+  .teen .t-wo>.it,
+  .teen .t-sp>.t-sp-rule,
+  .teen .t-sum li{animation:t-rise .42s cubic-bezier(.2,.7,.3,1) both}
+  .teen .t-formula .t-fchip:nth-child(n+2),.teen .t-bl-row>.t-brick:nth-child(n+2),
+  .teen .t-st>.t-step:nth-child(n+2),.teen .t-tr>.sent:nth-child(n+2),
+  .teen .t-why>.box:nth-child(n+2),.teen .t-uses>.t-use:nth-child(n+2),
+  .teen .t-wo>.it:nth-child(n+2),.teen .t-sum li:nth-child(n+2){animation-delay:.07s}
+  .teen .t-st>.t-step:nth-child(n+3),.teen .t-uses>.t-use:nth-child(n+3),
+  .teen .t-wo>.it:nth-child(n+3),.teen .t-sum li:nth-child(n+3){animation-delay:.14s}
+  .teen .t-st>.t-step:nth-child(n+4),.teen .t-wo>.it:nth-child(n+4),.teen .t-sum li:nth-child(n+4){animation-delay:.21s}
+  .teen .t-sum li:nth-child(n+5),.teen .t-wo>.it:nth-child(n+5){animation-delay:.28s}
+  /* linea de tiempo: la flecha se dibuja, la marca aparece, el "ahora" late */
+  .teen .t-timeline .arr{stroke-dasharray:360;stroke-dashoffset:360;animation:t-draw .9s ease .25s forwards}
+  .teen .t-timeline .mark{transform-box:fill-box;transform-origin:center;animation:t-markpop .5s cubic-bezier(.2,.9,.3,1.3) .15s both}
+  .teen .t-timeline .now{animation:t-nowpulse 2.6s ease-in-out 1.2s infinite}
+  /* transform: la frase resultante y Nova entran despues */
+  .teen .t-tr>.sent.after{animation:t-rise .5s cubic-bezier(.2,.7,.3,1) .16s both}
+  .teen .t-hook{animation:t-rise .45s cubic-bezier(.2,.7,.3,1) both}
+  .teen .t-hook .nova{animation:t-pop .5s cubic-bezier(.2,.9,.3,1.3) .1s both}
+}

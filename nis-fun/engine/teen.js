@@ -740,10 +740,14 @@ window.TEEN = (function () {
     const cab = (kicker, titulo, ik) => `<div class="t-task"><div class="ico">${ico(ik, 56)}</div><div><span class="t-kicker">${esc(kicker)}</span><h2>${inl(titulo)}</h2></div></div>`;
     const dg = d.diagrams || [];
 
-    // el dialogo: avatares del elenco (retratos SVG del nivel) o la inicial
-    const AV = { mateo: 'mateo', sofia: 'sofia', liam: 'liam', nadia: 'nadia' };
+    // el dialogo: avatares del elenco (retratos SVG del nivel) o la inicial.
+    // Miss Vega es la profe recurrente; se salta el tratamiento (Miss/Mr/Cousin)
+    // y se busca por el nombre, para que salga su retrato y no una letra suelta.
+    const AV = { mateo: 'mateo', sofia: 'sofia', liam: 'liam', nadia: 'nadia', vega: 'vega', nova: 'nova' };
+    const TRATO = new Set(['miss', 'mr', 'mrs', 'ms', 'cousin', 'uncle', 'aunt', 'grandma', 'grandpa']);
     const avatar = who => {
-      const s = AV[String(who || '').toLowerCase().split(' ')[0]];
+      const p = String(who || '').toLowerCase().split(/\s+/).filter(Boolean);
+      const s = AV[(p[0] && TRATO.has(p[0]) ? p[1] : p[0]) || ''];
       return s ? `<span class="av"><img src="../assets/characters/${LEVEL}/${s}/pose-01.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('${esc(String(who || '?')[0])}'))"></span>`
                : `<span class="av">${esc(String(who || '?')[0])}</span>`;
     };
@@ -760,7 +764,7 @@ window.TEEN = (function () {
 
     // los niveles inferiores traen ademas: la escena inicial (hook), el truco
     // de memoria (remember), las trampas del español (l1) y el semaforo (can_do)
-    const hook = d.hook ? `<div class="t-hook"><div class="nova"><img src="../assets/characters/ket/nova/pose-03.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('★'))"></div>
+    const hook = d.hook ? `<div class="t-hook"><div class="nova"><img src="../assets/characters/${LEVEL}/nova/pose-03.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('★'))"></div>
         <div class="bb"><span class="t-kicker">${T('Look first', 'Observe d’abord')}</span><p class="story">${inl(d.hook.text)} <button class="ex-say" type="button" data-t="${esc(String(d.hook.text).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p>
           <p class="ask">${ico('search', 22)} <span>${inl(d.hook.ask)}</span></p></div></div>` : '';
     const recuerda = d.remember ? `<div class="t-remember"><span class="pin">📌</span><span class="t-kicker">${T('Remember', 'Retiens')}</span>
