@@ -1,10 +1,10 @@
 [
  {
   "en": "use strict",
-  "n": 5,
-  "pages": 5,
+  "n": 6,
+  "pages": 6,
   "sel": "js",
-  "ejemplo": "overview-panel.js"
+  "ejemplo": "access-panel.js"
  },
  {
   "en": "Listening",
@@ -21,6 +21,55 @@
   "ejemplo": "app.js"
  },
  {
+  "en": "🎓 Cambridge",
+  "n": 7,
+  "pages": 3,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Pre A1 Starters",
+  "n": 4,
+  "pages": 3,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "A1 Movers",
+  "n": 4,
+  "pages": 3,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "A2 Flyers",
+  "n": 4,
+  "pages": 3,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Phonics",
+  "n": 4,
+  "pages": 3,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "grade_id,unlocked",
+  "n": 4,
+  "pages": 3,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Fun for Nordic",
+  "n": 4,
+  "pages": 3,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
   "en": "DOMContentLoaded",
   "n": 3,
   "pages": 3,
@@ -35,6 +84,13 @@
   "ejemplo": "app.js"
  },
  {
+  "en": "MUN Academy",
+  "n": 6,
+  "pages": 2,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
   "en": "🎓 YLE + Main Suite",
   "n": 4,
   "pages": 2,
@@ -42,14 +98,14 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "🎓 Cambridge",
+  "en": "And Then There Were None",
   "n": 4,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "chars)",
+  "en": "Treasure Island",
   "n": 4,
   "pages": 2,
   "sel": "js",
@@ -70,7 +126,21 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "to mark",
+  "en": "The Importance of Being Earnest",
+  "n": 3,
+  "pages": 2,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "The Adventures of Tom Sawyer",
+  "n": 3,
+  "pages": 2,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "The Prince and the Pauper",
   "n": 3,
   "pages": 2,
   "sel": "js",
@@ -91,7 +161,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Phonics",
+  "en": "Main Suite",
   "n": 3,
   "pages": 2,
   "sel": "js",
@@ -105,21 +175,21 @@
   "ejemplo": "overview-panel.js"
  },
  {
-  "en": "Pre A1 Starters",
+  "en": "Cap sur le français 1",
   "n": 2,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "A1 Movers",
+  "en": "Cap sur le français 2",
   "n": 2,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "A2 Flyers",
+  "en": "Cap sur le français 3",
   "n": 2,
   "pages": 2,
   "sel": "js",
@@ -140,71 +210,43 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "grade_id,unlocked",
+  "en": "B2 First · Listening",
   "n": 2,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "outstanding achievement",
+  "en": "B2 First · Use of English",
   "n": 2,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "expected achievement",
+  "en": "B2 First · Writing",
   "n": 2,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "in progress",
+  "en": "ref,note",
   "n": 2,
   "pages": 2,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "characters typed",
-  "n": 2,
-  "pages": 2,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "no pastes",
-  "n": 2,
-  "pages": 2,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Word",
-  "n": 2,
-  "pages": 2,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Fun for Nordic",
-  "n": 2,
-  "pages": 2,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "state err",
+  "en": "window._nav('classes_",
   "n": 13,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "window._nav('classes_",
-  "n": 12,
+  "en": "state err",
+  "n": 13,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
@@ -217,15 +259,8 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "window._nav('english')",
-  "n": 8,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "MUN Academy",
-  "n": 6,
+  "en": "Course",
+  "n": 7,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
@@ -322,7 +357,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "writing —",
+  "en": "window._nav('home')",
   "n": 4,
   "pages": 1,
   "sel": "js",
@@ -336,11 +371,18 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "✓ (admin only)",
-  "n": 4,
+  "en": "window._nav('tools')",
+  "n": 3,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "overview-panel.js"
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Practice tools",
+  "n": 3,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
  },
  {
   "en": "🎮 NIShoot Live",
@@ -357,13 +399,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "result(s)",
-  "n": 3,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Mock",
   "n": 3,
   "pages": 1,
@@ -371,28 +406,21 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "And Then There Were None",
-  "n": 3,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Treasure Island",
-  "n": 3,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "attempt(s)",
-  "n": 3,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "A2 Key",
+  "n": 3,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "window._nav('",
+  "n": 3,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "window._nav('cambridge')",
   "n": 3,
   "pages": 1,
   "sel": "js",
@@ -418,6 +446,13 @@
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
+ },
+ {
+  "en": "Fun for Nordic ·",
+  "n": 3,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
  },
  {
   "en": "Test",
@@ -476,21 +511,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Open in full screen ↗",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "📊 Cap sur le français · metrics",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Last time",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -519,13 +540,6 @@
  },
  {
   "en": "🦅 Flyers",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎶 Rhymes & chants",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -574,6 +588,13 @@
   "ejemplo": "app.js"
  },
  {
+  "en": "👁️ What each class sees",
+  "n": 2,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
   "en": "Word Sudoku",
   "n": 2,
   "pages": 1,
@@ -595,13 +616,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "this user",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "')\">View analysis →",
   "n": 2,
   "pages": 1,
@@ -616,42 +630,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "The Importance of Being Earnest",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The Adventures of Tom Sawyer",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The Prince and the Pauper",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "worked on",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "grade_id,section, grades(name)",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📣 Send grades and comments",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -672,21 +651,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "listening script",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "id,full_name,grade_id,section, grades(name)",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— chapter by chapter",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -701,13 +666,6 @@
  },
  {
   "en": "15rem",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "student(s)",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -742,6 +700,27 @@
   "ejemplo": "app.js"
  },
  {
+  "en": "🧰 Practice tools",
+  "n": 2,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "window._nav('classes')",
+  "n": 2,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Your route:",
+  "n": 2,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
   "en": "window._nav('library')",
   "n": 2,
   "pages": 1,
@@ -756,7 +735,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "student from",
+  "en": "window._nav('results')",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -784,13 +763,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "window._nav('home')",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "window._nav('fr_classes')",
   "n": 2,
   "pages": 1,
@@ -799,20 +771,6 @@
  },
  {
   "en": "CEFR",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "window._nav('",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "of the",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -882,13 +840,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "— English Department · Nordic International School of Lima",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "image/jpeg",
   "n": 2,
   "pages": 1,
@@ -917,49 +868,28 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "marked · not sent",
+  "en": "locked)",
   "n": 2,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "not marked",
+  "en": "🧩 Exceptions",
   "n": 2,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "word bank",
+  "en": "No grades to show.",
   "n": 2,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "words,",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "a title",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
   "en": "yle-audio/",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Automatic part:",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -980,49 +910,7 @@
   "ejemplo": "yle-panel.js"
  },
  {
-  "en": "Tap",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Your teacher",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "block of units",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
   "en": "Starters · Movers · Flyers · Cap sur le français",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the alerts from the anti-cheating system.",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "🎧 Mocks and Practice",
-  "n": 2,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— which part of the Fun for Nordic courses each grade sees.",
   "n": 2,
   "pages": 1,
   "sel": "js",
@@ -1043,41 +931,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "%). Ready to start practising the next level.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "%). Strengthen the lowest parts before sitting the exam.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "%). More practice at this level is recommended before the official exam.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Average per part over the filtered results (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "exam(s)). Weakest first.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "TIMEOUT",
   "n": 1,
   "pages": 1,
@@ -1086,13 +939,6 @@
  },
  {
   "en": "STARTUP_ERROR",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Code:",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1155,34 +1001,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Where everything is and how to do it. You can switch guides with the pills above, and search for what you want to do.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, matching, crossword, word search, word invaders and time attack.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "does not",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Traditional playground rhymes, counting-out and clapping chants, the first 100 words and everyday phrases for G1–G5, tagged with the YLE wordlist. Filter, search and print.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Fun for Nordic 1",
   "n": 1,
   "pages": 1,
@@ -1219,83 +1037,6 @@
  },
  {
   "en": "The Aurora Expedition",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— no rule —",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "No rules yet:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". As soon as you save a row, only what is written here will be shown.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Only what is written here is shown. A grade with no row",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "sees nothing",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "of this language.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "still appear",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "to the student, with a lock: this way they see how far they will get, but cannot get ahead. It is the same as what",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", Grade 5",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". The 45 Starters units are split between Grade 1 and Grade 2, and the 50 Movers units between Grade 3 and Grade 4.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "until it is decided whether it joins Flyers. This does not apply itself: check the ranges and click the button.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1351,13 +1092,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "units with audio, games and exam tasks to prepare for",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "🧸 Fun for Nordic — Cambridge Young Learners",
   "n": 1,
   "pages": 1,
@@ -1365,35 +1099,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "The first three steps of the Cambridge ladder: Pre A1 Starters, A1 Movers and A2 Flyers. 150 units with audio, games and exam tasks. The format of each exam is in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The student’s book, the homework workbook and the answer key for each level. They come from the same content as the on-screen course, so they say exactly the same thing.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "What students write and record in the three levels, to give them a grade and feedback. It is the same tab found in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "('funnordic')\">🧸 View submissions",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Cap sur le français 1",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1414,21 +1120,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Cap sur le français 2",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Le Club du Fjord",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Cap sur le français 3",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1449,13 +1141,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "). Same course, same artwork and same slides as the English version, with the text and voices in French. What the student writes and records appears in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "🇫🇷 Cap sur le français → Metrics",
   "n": 1,
   "pages": 1,
@@ -1463,112 +1148,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "unit ready",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "units ready",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The Primary course in French: the same engine, the same characters and the same artwork, with the text adapted and the voices recorded in French. Today there are",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "of 150 units",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The same three books for each level as in English, with the same layout and the same artwork. They come from the same content as the on-screen course, so they say exactly the same thing.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📊 How it is being used",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Students, units, activities and minutes of the French course, separate from English. It is what answers «is this really being used?».",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "('frmetricas')\">📊 View metrics",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "activities done",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "time spent",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "written productions",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "voice recordings",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Marked · grade",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "There is no activity in the French course yet. It will appear here as soon as a student opens a unit.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "No data by unit yet.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Only the French course. Submissions carry the language inside them, so English does not enter into these numbers.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1603,13 +1183,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Already have an account?",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "de verdad: es lo que hace que el gestor de contrasenas del navegador ofrezca guardar y rellenar, y que el Enter envie solo. -->",
   "n": 1,
   "pages": 1,
@@ -1625,20 +1198,6 @@
  },
  {
   "en": "10px",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Opens the portal through the eyes of a student in that grade — with their locks — to check what you just set. For a specific student (with their exceptions), use",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "keep appearing",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1673,20 +1232,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "for “",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". The student receives them when reloading the activity.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "id, full_name, email, active, grades(name)",
   "n": 1,
   "pages": 1,
@@ -1708,28 +1253,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "> 📝 View results",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "> 👥 View students",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "', this)\">Save access",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "all grades",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1743,70 +1267,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "(MOCK 1 · 2 and the level are chosen inside)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(the level and practice 1 · 2 · 3 are chosen inside)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "👁️ View the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Open them as the student sees them",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Teachers and administrators can",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "PRACTICE TESTS are unlocked by default",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(free practice). Lock them by grade when you want to reserve them for classroom use, then unlock them when done.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(official exams) are managed separately, admin only.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Demos",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Click to switch it off now.\">📋 Paste on ·",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1820,56 +1281,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "user(s)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Nis-",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Edit:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Saved.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(Writing is not marked by part)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "This attempt did not save a breakdown by part",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Focus reinforcement on",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "teacher review",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -1925,273 +1337,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "+5 minutes only for this student",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Outside the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". They are assigned in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": ",true)\">open for all",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(each student takes it at their own level). While the control is open, that chapter",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "No rubric for level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "This student has",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "no level set",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📐 Expected at",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "rubric for this level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— no level —",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "without level in your grades",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "· all set",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🗺️ How we mark from September 2026 — the roadmap",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Every student has a working level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(A2 · B1 · B2 · C1), set by their teacher — not by the grade they are in.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Each student is marked individually at their level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", with the rubric of the skill (Writing · Speaking · Reading · Listening) for that level — never with one rubric for the whole class. The unit rubric says",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "how much",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "to expect. In every marking panel the level sits next to the name and the level rubric is one click away (📐 Expected at…).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Unit exams are taken at the student’s level.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Results flag anyone who took another level (⚠ took A2 · level B1).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Nothing reaches the student until you send the whole class.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "publishes, after you have reviewed it.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "marked and not yet sent in your grades",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Set levels below. A student with no level is marked at the level you know, and shows a red “no level” badge until you set it.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Working level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "No students in this grade.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎚️ Working level of each student",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "with level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Everyone shown without level →",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Apply",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The rubrics file (level-rubrics.js) is not loaded.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📐 Rubrics by skill and level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "saving…",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(opens ready to print or save as PDF)\">",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "This grade has no units in the planner, so there are no blocks to test. Units are copied from the Toddle planner into",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "all closed",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "· all marked",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2212,42 +1358,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "It will appear here as soon as it is uploaded with",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "id,full_name,grade_id,section,cefr_level, grades(name)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "practice exam",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "and the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "There is no exam published yet for",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". They are uploaded with",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2261,125 +1372,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": ". Each student takes it",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ": opening the row above opens all four at once, and the rows below are for opening just one. A class overrides its grade, and the grade overrides «All». Year",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ": the database denies it, it is not only that the screen does not show it. You and the administrators can always go in to review it, and inside you will also see the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "adds minutes for whoever is taking it: the timer grows on its own in under 20 seconds, without taking them out of the exam, and it even arrives once the clock has reached zero. The results and the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "are marked in the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "tab above.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "on paper",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "student sheet",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "answer key",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". They open in A4, ready to print or to save as PDF (Ctrl+P → Save as PDF). The answer key and script",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". You play the listening audio yourself from the on-screen exam.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "no writing",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "the students",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Total (39 q.)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Have not taken the official exam (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📊 Results ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "One mark per paper:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Reading and Use of English",
   "n": 1,
   "pages": 1,
@@ -2387,133 +1379,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "(parts 1-5, 33 questions) and",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "here (out of 20), with the text in front of you. Scale:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "below (Writing: AD 18-20 · A 14-17 · B 11-13 · C 0-10).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "students have read",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "chapter(s) opened in total",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "No one in the filter has used",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "📖 Read along",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", reading with audio. Exercises and the control are not counted (that is solving, not reading), nor are visits under 20 seconds, and a forgotten tab cuts off at 45 minutes. Recording started on",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ": there is no data for anyone before that date.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Each class reads",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "in the filter",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "in exercises",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "not taken",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "final grade",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "chapter(s) covered",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "out of the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "in the book: those not yet taken do not count.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "in controls.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Only for",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2548,63 +1414,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": ", the book assigned for that term",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Reading time with audio and exercise time are shown alongside as evidence of work: they do not change the grade. This shows the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "student(s) ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "nis-fun/readers/data/index.json",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Pre-A1 and A1 stories for primary, with the characters from Fun for Nordic. Each one has eight pages with illustrations and audio, and an activity at the end. The readers in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📖 Library",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(Tom Sawyer, Treasure Island…) start at A2 and are for the grades above.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Could not load the submissions:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "There are no submissions yet for",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2632,20 +1442,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "— no access —",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "for you.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "tr[data-sname]",
   "n": 1,
   "pages": 1,
@@ -2653,112 +1449,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "practice test",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "attempts for this filter.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "()\">← Back to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Access —",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "! Excellent work on your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "%. Your ideas are clear, well organised, and your language is strong and varied. Keep writing like this! 🌟",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "! Good job on your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "%. You communicate your ideas well and cover the task. To reach the top band, add a little more range and accuracy in your language. 👍",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "! Nice effort on your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "%. You're developing well. Focus on covering every part of the task and linking your ideas more clearly with connectors. 💪",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "! Thanks for your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "%. Let's work on answering every point in the task, organising your paragraphs, and writing a bit more. You'll improve quickly with practice! ✍️",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "! Thanks for handing in your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "%. Don't worry: with regular practice on task content, organisation and basic grammar you'll make fast progress. Your teacher is here to help! ✍️",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Click the matching descriptor for each criterion (Cambridge rubric, 0–",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "). The score for each part is calculated automatically.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2807,20 +1498,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "🎓 Mocks",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "alumno:shell",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "alumno:acceso",
   "n": 1,
   "pages": 1,
@@ -2829,6 +1506,20 @@
  },
  {
   "en": "alumno:acceso-ok",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "🏫 My classes",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "alumno:shell",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2856,20 +1547,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "What you will produce:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Your unit right now · Unit",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "_units')\">Open my unit",
   "n": 1,
   "pages": 1,
@@ -2877,70 +1554,63 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "not set",
+  "en": "· course · practice tests · mocks",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "Hi,",
+  "en": "Course · practice tests · mocks",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "— What would you like to do today?",
+  "en": "My classes",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "General",
+  "en": ": units, activities, readers and unit exams",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "no data",
+  "en": "🎯 Practice tests",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "Read only.",
+  "en": "🎓 Mocks",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "This view is a student’s personal history, so there is no data to show in the",
+  "en": "Sounds, grammar and vocabulary games to train on your own.",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "by-grade view",
+  "en": "Your results in mocks, practice tests and activities.",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": ". Exit the view and enter from",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🇫🇷 Classes ·",
+  "en": "More",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -2990,20 +1660,6 @@
  },
  {
   "en": "A2 · 10 tests",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "All levels · vocabulary",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The official YLE word list by topic, with pictures and audio: learn cards, flip & recall and a memory game. Switch level inside (Starters · Movers · Flyers).",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3108,13 +1764,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "B2 First · Listening",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "B2 Listening",
   "n": 1,
   "pages": 1,
@@ -3122,21 +1771,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "B2 First · Use of English",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "B2 UoE",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "B2 First · Writing",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3178,42 +1813,77 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Available",
+  "en": "The A2 Flyers course, sorted by the unit you are working on.",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "⚡ Practice Test",
+  "en": "window._nav('classes_g5_flyers')",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "Cambridge mock exams · Practice Test",
+  "en": "The A2 Flyers course by unit.",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "Exam-style",
+  "en": "Your Cambridge course.",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "practice in the official Cambridge format, with a timer, real parts and automatic marking.",
+  "en": "Practice tests for your level.",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "app.js"
  },
  {
-  "en": "Open Practice Test →",
+  "en": "window._nav('classes_g9_cambridge')",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "The full course for your grade, unit by unit.",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Reading, Listening and Writing in Cambridge format, always available.",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "Cambridge practice tests.",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "MOCK 1 and MOCK 2 in official Cambridge format.",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "app.js"
+ },
+ {
+  "en": "window._nav('mocks')",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3221,55 +1891,6 @@
  },
  {
   "en": "Young Learners",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Main Suite",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "ℹ️ Each Main Suite level opens its",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "exam guide and practice tests",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". For timed Reading, Listening and Writing mocks, use",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Practice Test",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📌 Your plan:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "ref,note",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3297,20 +1918,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "grade ✓",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "grade ✕",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "Rama",
   "n": 1,
   "pages": 1,
@@ -3319,13 +1926,6 @@
  },
  {
   "en": "')\">↺ Back to the grade’s plan",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🇫🇷 Classes (all)",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3360,34 +1960,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "▼ Below your target (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "▲ Above your target (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "✓ Meets your target (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "⚠ Provisional. Missing:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "','es')\">📄 PDF (Spanish)",
   "n": 1,
   "pages": 1,
@@ -3402,28 +1974,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": ": explanations and games by unit.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "window._nav('classes_g9_cambridge')",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Cambridge Flyers",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "window._nav('classes_g5_flyers')",
+  "en": "Class material — for exam preparation go to",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3431,62 +1982,6 @@
  },
  {
   "en": "nis-fun/content/flyers/exam-map.json",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The unit map is not available right now. You can still open the course from Classes → Primary.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "no picture tasks in this unit",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The Flyers units your class works on during this unit.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "A2 Flyers exam tasks, sorted by the unit of your year — not as a separate exam course.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The picture tasks use",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "our own characters and our own places",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ": Ingrid, Diego, Maya, Oliver and Kili, plus your classmates, around the school. The task",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Authentic Cambridge exam practice by skill.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3522,62 +2017,6 @@
  },
  {
   "en": "Treasure Island (A2–C2)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Your mark for each chapter is your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "chapter control",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— your best attempt counts. Reading time and exercises don't change the mark: they show your teacher how much work you put in.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Overall mark",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "time spent in “Read along”",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "the 12 activities of each chapter",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Graded readers with activities for every chapter.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🔒 This section isn't available for you yet. Ask your teacher to unlock it.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3627,27 +2066,6 @@
  },
  {
   "en": "Word Wheel",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "), each with a vocabulary card.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Games for each unit, plus extra practice by level (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎯 Extra practice by level",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3738,77 +2156,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Practice tests 1, 2 and 3 in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "\">Open the reader →",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "chapters · A2–C2",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— and what each class is reading this year",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The school readers",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🗂️ What each class is reading —",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "school year",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ": choosing another one replaces the current choice. It is chosen again every year —",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", because each grade will have different students. The student only sees, under",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Classes → Readers",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "window._nav('classes')",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -3857,210 +2205,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "Interactive course to get ready for the Cambridge Young Learners exams: units with audio, crosswords and exam tasks — with Pip, Luna and Kili!",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📚 Your books to print:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Classes → Activities",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "not assigned",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Cambridge Mocks",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "📝 Mocks (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎯 Practice Tests (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎲 Activities (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "your level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Take at least one exam to see your projection toward",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "You are on track for a",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "high pass",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Ready to take on the next level.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "You are at",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "pass level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "(≈60% is the Cambridge standard). Keep consolidating.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "You are",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Focus on the lowest skills above.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". More practice is recommended before the official exam.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Your next step is to take",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Take your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "to confirm your progress before the official exam in December.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "You are on track for the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Keep practising to secure your result!",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Strengthen your lowest skills before the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "no exam",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "passed ≥50%",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Final CEFR",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Choose the descriptor that matches each criterion (Cambridge Speaking analytical scales, 0–",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "). The grade is calculated automatically. The level defines the criteria.",
+  "en": "Your final level, combining your best result per skill — the report your family receives, plus its PDF.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -4096,27 +2241,6 @@
  },
  {
   "en": "C1 Adv.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "▼ Below the target (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "✓ Meets the target (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "▲ Above the target (",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -4347,90 +2471,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": ", this first mock is a starting point. Let's keep practising together so you arrive well prepared and improve your results in the second mock in October. We are with you!",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", you did good work in this first practice mock, especially in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Keep in mind this is practice, not the real exam yet: the next step is to keep training, particularly",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", so you reach the second mock in October with even stronger results. Let's keep practising!",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", you are doing well in this first practice mock and you stand out in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". There is still room to grow, so let's keep practising",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", you are on the right track in this first practice mock, with good moments in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". If you keep practising, especially",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", you will arrive much better prepared for the second mock in October. We are here to support you!",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", this first practice mock is a starting point and you already show progress in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ". Let's keep practising together, especially",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", so you see clear progress in the second mock in October. Keep up the effort — we are with you!",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": ", este primer simulacro es un punto de partida. Sigamos practicando juntos para que llegues bien preparado y mejores tus resultados en el segundo simulacro de octubre. ¡Te acompañamos!",
   "n": 1,
   "pages": 1,
@@ -4592,98 +2632,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "no level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— no writing trace (before 11 Sep, or typed in an unmonitored box)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Could not read the submissions:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "There are no submissions yet. They will appear here once students write or upload their product in the unit hub.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "with submissions ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "· sent to the student",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "hidden from the student",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "until you send the class",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "marked ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "· the student self-assessed as",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "suggested:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "')\">✔ Accept suggested levels",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "criteria set. Levels are saved as soon as you click them. The student sees nothing until you press",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "at the top, for the whole class.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -4697,84 +2646,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "',this.checked)\"> 🖼️ Show in the unit gallery — classmates will be able to see this work as an example (by default only you and the student can see it).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "products submitted",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": ")\">📣 Send grades and comments to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "students see nothing until you send",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🔒 Your teacher will unlock this unit",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— each unit ends in something you make, not in a test.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The file name decides where it goes",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": ", without downloading anything. Drop your worksheets here in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "and the portal converts them: it shows you what it understood from each one and you decide whether to publish it.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "file(s)…",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "not uploaded",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Worksheets appear in the unit hub as soon as they are uploaded, with nothing else to do. Slides need to be converted to images separately (",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -4788,126 +2660,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "— is it really a .docx?",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "name:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— the name does not follow the pattern uNwNsN-worksheet-level.docx",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "word/document.xml",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "— found nothing for the student to fill in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Could not digitize any of them.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Could not process",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Publish",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "worksheet(s) in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "✍️ writing field ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "line(s)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "published,",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "imported,",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "The whole text on the left and the rubric on the right, with an automatic grade suggestion drawn from what the rubric itself asks for. Nothing reaches the student until you press",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "to the student",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "No rubric yet. Add criteria and save them: they will appear when marking each student.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "🎯 Unit products → 📄 Submitted worksheets",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "Save as marked",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -4921,63 +2674,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "due to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "thanks to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "owing to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "lead to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "leads to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "led to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "even though",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "on the other hand",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "in contrast",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -4998,34 +2695,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "for example",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "for instance",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "such as",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "to illustrate",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "words, within",
   "n": 1,
   "pages": 1,
@@ -5040,91 +2709,7 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "fields (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "). Confirm it yourself.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "paragraphs and",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "paragraph(s),",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "connector(s).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "words in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "sentence(s).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "word range.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "words, so",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "\" — try a synonym at least once.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "according to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "shows that",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "found that",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -5138,111 +2723,6 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "report says",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "a report",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "had better",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "have to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "need to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "ought to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "should not",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "make sure",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "remember to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "shouldn’t",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "why not",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "you can",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "after that",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "to begin",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
-  "en": "it seems",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "app.js"
- },
- {
   "en": "tends to",
   "n": 1,
   "pages": 1,
@@ -5250,242 +2730,277 @@
   "ejemplo": "app.js"
  },
  {
-  "en": "a question",
+  "en": "Fun for Nordic 1 · Pre A1 Starters",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "a fact",
+  "en": "Fun for Nordic 2 · A1 Movers",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "). For AD it would need to weigh it, not just cite it — you assess that.",
+  "en": "Fun for Nordic 3 · A2 Flyers",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": ") and uses modals of speculation (“",
+  "en": "open · all tests (no rule)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "”). If it separates what is certain from what is probable, it is AD.",
+  "en": "open · all tests",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "paragraphs (",
+  "en": "open level, 0 tests released",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "expected)",
+  "en": "open · up to test",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "…”. Whether it keeps that up until the end is for you to assess.",
+  "en": "A2 Key (KET)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": ") but none has a unit.",
+  "en": "B1 Preliminary (PET)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "production(s) ·",
+  "en": "B2 First (FCE)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "not sent yet",
+  "en": "C1 Advanced (CAE)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": ". The long texts of the unit are listed here, whether they come from the session worksheet or from a stand-alone activity.",
+  "en": "C2 Proficiency (CPE)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "Outside this marking:",
+  "en": "weeks unlocked",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": ". It is the one the student has had in front of them since day one.",
+  "en": "no book assigned this year",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "words ·",
+  "en": "exam windows:",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "sentences (",
+  "en": "· 🕒 exam window OPEN now (ch.",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "paragraph(s) ·",
+  "en": "· 🕒 scheduled (ch.",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "% distinct words ·",
+  "en": "No units in the planner for this grade.",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "connector(s)",
+  "en": "open · whole course (no rule saved yet)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "The student sees nothing until you send the class from",
+  "en": "sees nothing (no rule for this grade)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "💾 Save as marked",
+  "en": "YLE practice tests",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "Showing the 60 with the most use, out of",
+  "en": "YLE ·",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "Minutes per student and week. It helps to agree on a cap with school leadership and check whether it is respected, instead of debating impressions.",
+  "en": "branch open, no level unlocked",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "students with",
+  "en": "(no note for this grade)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "recorded activity",
+  "en": "Study plan note:",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "What each student has opened, finished and submitted since activities started saving on their own — and the time spent on them, including the ones left half-done.",
+  "en": "Per-student overrides",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "with work",
+  "en": "No per-student exceptions in this grade.",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "in activities, exams, recordings and submissions. For activities that save on their own, the time is counted while the tab is",
+  "en": "Individual plan (EPI):",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "in view",
+  "en": "No student with an individual plan in this grade.",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "Each session is capped at 120 minutes because some are left open and return impossible durations (there is one exam recorded at 4114 minutes). In this period",
+  "en": "Edit in 👥 Students →",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "app.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "days ago",
+  "en": "📋 Study plan (EPI)",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "overview-panel.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "Reading the week…",
+  "en": ": access data",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "overview-panel.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "nothing waiting",
+  "en": "all units locked",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "overview-panel.js"
+  "ejemplo": "access-panel.js"
  },
  {
-  "en": "🎶 Rhymes",
+  "en": "Readers:",
   "n": 1,
   "pages": 1,
   "sel": "js",
-  "ejemplo": "overview-panel.js"
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "sees:",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "nothing configured yet",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "🔍 Access panel",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "🔍 Access panel — what each class sees",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
+ },
+ {
+  "en": "Reading the access tables…",
+  "n": 1,
+  "pages": 1,
+  "sel": "js",
+  "ejemplo": "access-panel.js"
  },
  {
   "en": "📚 Scope",
@@ -5495,161 +3010,7 @@
   "ejemplo": "overview-panel.js"
  },
  {
-  "en": "nothing to mark",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "weeks)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "No unit in the planner yet.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "Last work",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "🎓 Cambridge calendar",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "by grade (🔓 Mocks tab to change them).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "teacher(s) with access configured (👨‍🏫 Teachers tab).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "· your grades:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "with access set",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "No students in your grades yet.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "Without students:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "✓ (their grades)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
   "en": "🛡️ Admin",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "grade(s) with students",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "products, worksheets, exam writing, Fun",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "Active students",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "did something this week",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "this week · +",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "activity saves",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "Exam attempts",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "latest week recorded",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "✏️ To mark",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "overview-panel.js"
- },
- {
-  "en": "Handed in and not yet marked. Click a line to open it.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -5677,13 +3038,6 @@
   "ejemplo": "yle-panel.js"
  },
  {
-  "en": "Official descriptors",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
   "en": "number, theme",
   "n": 1,
   "pages": 1,
@@ -5691,63 +3045,7 @@
   "ejemplo": "yle-panel.js"
  },
  {
-  "en": "🛡️ YLE Panel",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "The Cambridge Young Learners practice tests for each grade: who has done them, how they did part by part, what is left to mark and which tests each grade can open. The shields are the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "school’s estimate",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": ", not a Cambridge result.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
   "en": "\">📄 Printable exam",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Here is what is heard in each part of the Listening, in case you run a mock exam or prefer to read it yourself in class.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "What is heard in each part of the Listening for",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": ", split by voice and with the pauses from the exam. It is the same text used to record the mp3. In the real exam each part is heard",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": ": the audio already includes the repeat.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -5762,83 +3060,6 @@
  },
  {
   "en": "id, student_id, test, paper, mode, score, total, parts, shields_est, criteria, audio_path, drawings, reviewed_at, created_at",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Where the class is weakest (correct answers by part, all attempts)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "students ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Average",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Nothing to mark.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Here you will find the Speaking recordings, the Movers and Flyers writing and the coloured pictures for your grades.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": ". Each one saves your grade and your comment to the student’s account.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "No recording (pointing and placing cards only).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Recorded part:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Model:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Coloured pictures:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Colour and write (0–5)",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -5887,140 +3108,7 @@
   "ejemplo": "yle-panel.js"
  },
  {
-  "en": "% of those who practise)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "No grade has active students.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "⬇️ Export CSV (Excel)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "· all grades",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "With tests",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Tests per student",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Listening shields (1→5)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Official exam date ·",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "It appears in each family’s report. If left empty, the report says «to be confirmed by the school».",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "not yet in the YLE engine",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "no rule",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Which YLE practice tests each grade can open.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "With no rule, a grade sees all the tests for the levels assigned to it",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
   "en": "grade_id,level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "straight into exam mode",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": ", with no audio player (you play it here yourself, just once, as in the real exam), and their results appear below as they finish. Close it when you are done.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "This level does not have published tests yet.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Open a mock exam",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Open session",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Audio for the projector (once per part)",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -6034,35 +3122,7 @@
   "ejemplo": "yle-panel.js"
  },
  {
-  "en": "Opened",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Live results",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
   "en": "student_id, score, total, shields_est, created_at, profiles!inner(full_name, first_name, last_name)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "Shields",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "yle-panel.js"
- },
- {
-  "en": "No one has finished yet.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -6076,56 +3136,7 @@
   "ejemplo": "scope/panel.js"
  },
  {
-  "en": "Grammar for the year:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "How the platform covers this today",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
   "en": "Material:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "units)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "This grade does not have unit-by-unit detail yet.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "The units taught in class are",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "Cambridge calendar 2026",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "Month",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -6139,137 +3150,11 @@
   "ejemplo": "scope/panel.js"
  },
  {
-  "en": "> Show the blocks of each unit (phonics, vocabulary, reading, writing…)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "What applies to each grade: level, exam, the six themes for the year and how the platform covers it today. It comes from coordination’s master document (",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "Loading the sequence…",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
-  "en": "Could not read the sequence.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "scope/panel.js"
- },
- {
   "en": "python scope/extrae_scope.py",
   "n": 1,
   "pages": 1,
   "sel": "js",
   "ejemplo": "scope/panel.js"
- },
- {
-  "en": "Your teacher:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "activity-save.js"
- },
- {
-  "en": "no session",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "activity-save.js"
- },
- {
-  "en": "Your work stays in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "activity-save.js"
- },
- {
-  "en": "this browser only",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "activity-save.js"
- },
- {
-  "en": ". Open the activity from the portal",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "activity-save.js"
- },
- {
-  "en": "Your teacher has allowed you to paste",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": ". Whatever you paste is recorded (when and how many characters) and your teacher will see it next to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": "Type your text in the box.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": "Pasting and dropping text",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": "Pasting is off.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": "Type it here in your own words.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": "characters,",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": "Pasted",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
- },
- {
-  "en": "— no writing trace (before 11 Sep 2026, or typed in an unmonitored box)",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-trace.js"
  },
  {
   "en": "TEXTAREA",
@@ -6307,244 +3192,6 @@
   "ejemplo": "nis-nav.js"
  },
  {
-  "en": "in your browser (Chrome works best).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Enter your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "school email",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "and your password.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". You will see your name at the top right.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "On the sign-in screen, tap",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "If you go in through an address starting with",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", the portal takes you straight to nis.cohasset.pe. It is the same platform, but sign-in only works on nis.cohasset.pe: update your bookmark.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Everything for English",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", spread across four blocks. It is the screen where you will spend most of your time.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— your unit for this term: the big question, what you need to produce, and the criteria you will be graded on.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The rubric is visible from day one",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", before you start.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the term’s interdisciplinary project: eleven weeks and what each subject contributes.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— your grade’s material: grammar, activities, readers, unit exams and the worksheets for each session.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— every sound, with the tongue and the airflow, to listen to and repeat.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— sounds and word patterns: CVC, blends, magic-e.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— 7 games per topic: grammar, vocabulary, phrasal verbs and idioms (A1–C1).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— your class’s live game. Join with the PIN your teacher gives you.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the full map: the Young Learners track (Pre-A1 to A2) and the Main Suite (A2 to C2), with the guide for each exam.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the official MOCK 1 and MOCK 2 mock exams, by skill.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— practice in Cambridge format, always available.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— your final CEFR level and the report your family receives, with a PDF.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "day-to-day progress",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "is not here: it is under",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", on the left-hand bar, so you can reach it from any screen.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "English → My unit",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "(or from Home, in the band at the top).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "At the top is the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "final product",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": what you need to submit at the end of the unit.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Below it, the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": the criteria you are graded on, on the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
   "en": "AD · A · B · C",
   "n": 1,
   "pages": 1,
@@ -6552,378 +3199,7 @@
   "ejemplo": "ayuda-datos.js"
  },
  {
-  "en": "scale (AD is the highest level).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "After that comes the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "week-by-week path",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", with each week’s activities attached where they belong.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "At the end is the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": you upload your file or paste your Google Doc link, and tap submit.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Inside each week you will find the worksheet in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
   "en": "PDF",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "(to read), in",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "(to edit it on your computer or in Google Docs), and the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "class viewer",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "with the slides your teacher used.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Open the right session from",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Classes → your grade → the unit → the week",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "as you type, a second and a half after your last keystroke. You will see the save notice at the top.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "When you finish, tap",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". That is the moment your teacher receives it.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Saving is not submitting.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Classes → your grade → Readers",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". Each book is read",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "at your level",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": when you open it you choose A2, B1, B2 or C1, and the text changes in difficulty, not just in length.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "You get to it from the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "📝 EXAMS",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "card in the book’s level selector.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "opens and closes it",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". If it is not open, you cannot take it.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "While a chapter’s check is open,",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "that chapter is closed in the reading",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", and in every level of the book. When the check closes, the reading reopens on its own.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "In Readers you have your report: the grade for each chapter, your reading time, and your overall grade. The chapter grade is from your",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "best attempt",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "You get to it from",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Classes → your grade → 📋 Unit Exams",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". The first thing you see is a card for each",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "(1 and 2, 3 and 4, 5 and 6). Blocks that do not have an exam yet appear greyed out.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— to train. You can take it once your teacher opens it.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Official",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the one that counts. It only opens on the day it is scheduled.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Writing is not marked automatically",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". The change is immediate.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Choose a short phrase you will remember, with letters and numbers.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Do not share your password with anyone",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", not even a classmate: whatever is done with your account is recorded under your name.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "When a card shows a",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", it exists but is not yet open for your grade or for you. It stays locked for three different reasons:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "has not activated it yet",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "(this is the most common reason: material opens once the class gets there).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The activity belongs to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "another grade",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "or another level.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "It is an",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", and exams only open during their window.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Press",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -6938,734 +3214,6 @@
  },
  {
   "en": "Shift",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ") so the browser fetches the new version.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Write to your teacher or to",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "telling them which screen you were on.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "You only see the groups you have access to.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "A group with no tabs does not appear. If something you need is missing, ask coordination: access is granted by the administrator.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "open the headers",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": they start collapsed.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The final product for each unit. At the top is",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "progress by criterion",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "and below it the grade. This is also where you mark a piece of work to appear in the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "unit gallery",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", with a checkbox.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "When you open a student, their answers are on the left and the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "rubric on the right",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", with a button for each score.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The grade adds up on its own.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Save and next",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "moves from one student to the next without going back to the list.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The rubric is set",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "once per session",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "and applies to all four levels: the criterion is the same, what changes is how demanding it is.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "You get to it through a card for each",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "(1 and 2, 3 and 4, 5 and 6). Inside, a row per exam and another per level, with the 🔓/🔒 button to open and close. You can open it for everyone, for a grade, for a homeroom, or for one specific student:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "the most specific scope always wins",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "You grade the writing",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": it appears in the written work queue.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Each level has the",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "🖨️ Paper · 🔑 Key · 🎧 Script",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "buttons for giving the exam on paper. The key and the script are never served to a student account.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "You open and close the check for each chapter of each reader.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "While the check is open, that chapter is closed in the reading",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", and in every level of the book, so no one can answer it while reading. When you close it, the reading reopens on its own.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "It has three tabs: grades by chapter, detail by student, and",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "reading time",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "by week. Students who have not read anything still show up, in grey: they are half the picture.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— all your students’ attempts: mocks, practice and activities, with the breakdown by part.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— each student’s final CEFR level and the report for the family.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— minutes per student and week.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Screen time measures",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "time: it is a floor, it does not count a page left open with no activity. Each session is capped at 120 minutes because some are left open. Both notes are written on the screen itself.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Classes → Class materials",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Drag the files in.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The path comes from the file name",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "goes straight to Grade 9 / unit 4 / week 1.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "You can upload, but",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "only the administrator can delete",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". If you uploaded something by mistake, tell coordination.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the map your students see: both tracks and their levels.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the tracking of the Young Learners exams for your grades.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— opens the exams in Cambridge format (leaves the portal, to the mocks section).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the Part 1 app for B2 First.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— what each exam is, how many parts it has, how long it takes and how it is scored. For answering families.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the lock: which grade can take the practice tests.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Entries starting with",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "are not the activity itself: they are the permission. They open or close access for a grade.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— which units each grade sees.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "(under Marking) — open and close each exam.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "All of that is requested from coordination:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The criterion behind the layout:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Monitoring",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "is what gets opened and closed by grade.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Everyone",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "is here: students, teachers, administrators and demo accounts. The filters are a row of buttons with the count for each type (All · Students · Teachers · Admins · Demos) plus grade, section and academic year.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Opens the portal",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "exactly as that student sees it",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", with their locks. A bar at the top reminds you who is really signed in.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Opens or closes activities",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "for that specific student",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", on top of whatever their grade has.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Name, grade, section, CEFR level and the 🧪",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "“Demo” is not a role.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "View as",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "you cannot change the student’s password: that is deliberate. That is what 🔑 Reset is for.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "This is where you decide what each teacher sees:",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", and the grades assigned to them. A teacher with nothing assigned signs in to the portal and only reads “The administrator has not assigned you any access yet.”",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "When you create a new tab or a new grade,",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "teachers already set up do not receive it automatically",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": you have to assign it to them.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "for exams. If no one opened it, no one can take it.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Whatever already existed starts out",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "until it is enabled.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— which units each grade offers.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the school’s progress with its chart and the projection to December.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— every attempt, filterable by grade, section and year.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the final CEFR level and the reports for families.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the data-backed answer to how much time students spend on the tablet.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "The counts on the Overview",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "include demo accounts",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ". To count real students, filter in Users.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the map students and teachers see.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the Young Learners tracking for all grades.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the official exam date and the instructions that appear on the student’s Cambridge screen, by grade or by student.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the mocks section (leaves the portal).",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "— the two locks.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Use a",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "demo account",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", never the first student row you find: whatever you do stays on their record.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Or go through",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ", which does not write anything.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "If the screen looks like it did before, press",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": ": the browser has saved the previous version.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "Mark test accounts with the 🧪",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "checkbox in Edit. That way they stand out from real ones in any listing.",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "ayuda-datos.js"
- },
- {
-  "en": "on that page.",
   "n": 1,
   "pages": 1,
   "sel": "js",
@@ -7733,13 +3281,6 @@
   "pages": 1,
   "sel": "js",
   "ejemplo": "level-rubrics.js"
- },
- {
-  "en": "starting out",
-  "n": 1,
-  "pages": 1,
-  "sel": "js",
-  "ejemplo": "writing-rubrics.js"
  },
  {
   "en": "Criterios 6, 5 y 1 del planner.",

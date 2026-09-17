@@ -191,7 +191,86 @@
   "LAST WORK": "ÚLTIMO TRABAJO",
   "EXAM": "EXAMEN",
   "LEVEL": "NIVEL",
-  "AGE": "EDAD"
+  "AGE": "EDAD",
+  "Course": "Curso",
+  "Practice tools": "Herramientas de práctica",
+  "🧰 Practice tools": "🧰 Herramientas de práctica",
+  "🏫 My classes": "🏫 Mis clases",
+  "My classes": "Mis clases",
+  "Your route:": "Tu ruta:",
+  "· course · practice tests · mocks": "· curso · tests de práctica · simulacros",
+  "Course · practice tests · mocks": "Curso · tests de práctica · simulacros",
+  ": units, activities, readers and unit exams": ": unidades, actividades, lecturas y exámenes de unidad",
+  "🎯 Practice tests": "🎯 Tests de práctica",
+  "🎯 Units": "🎯 Unidades",
+  "📚 Readers": "📚 Lecturas",
+  "📘 Course": "📘 Curso",
+  "🎓 Mocks": "🎓 Simulacros",
+  "Sounds, grammar and vocabulary games to train on your own.": "Sonidos, gramática y juegos de vocabulario para entrenar por tu cuenta.",
+  "Your results in mocks, practice tests and activities.": "Tus resultados en simulacros, tests de práctica y actividades.",
+  "More": "Más",
+  "The A2 Flyers course, sorted by the unit you are working on.": "El curso A2 Flyers, ordenado por la unidad en la que estás.",
+  "The A2 Flyers course by unit.": "El curso A2 Flyers por unidad.",
+  "Your Cambridge course.": "Tu curso Cambridge.",
+  "Practice tests for your level.": "Tests de práctica de tu nivel.",
+  "The full course for your grade, unit by unit.": "El curso completo de tu grado, unidad por unidad.",
+  "Reading, Listening and Writing in Cambridge format, always available.": "Reading, Listening y Writing en formato Cambridge, siempre disponibles.",
+  "Cambridge practice tests.": "Tests de práctica Cambridge.",
+  "MOCK 1 and MOCK 2 in official Cambridge format.": "MOCK 1 y MOCK 2 en formato oficial Cambridge.",
+  "Class material — for exam preparation go to": "Material de clase — para la preparación del examen ve a",
+  "Train on your own: sounds, grammar and vocabulary games.": "Entrena por tu cuenta: sonidos, gramática y juegos de vocabulario.",
+  "Your final level, combining your best result per skill — the report your family receives, plus its PDF.": "Tu nivel final, combinando tu mejor resultado por destreza — el informe que recibe tu familia, con su PDF.",
+  "🏅 Final result · CEFR": "🏅 Resultado final · MCER",
+  "View": "Ver",
+  "👁️ What each class sees": "👁️ Qué ve cada clase",
+  "🔍 Access panel — what each class sees": "🔍 Panel de acceso — qué ve cada clase",
+  "🔍 Access panel": "🔍 Panel de acceso",
+  "Reading the access tables…": "Leyendo las tablas de acceso…",
+  "All sections": "Todas las secciones",
+  "sees:": "ve:",
+  "🏫 Classes": "🏫 Clases",
+  "🎓 Cambridge": "🎓 Cambridge",
+  "🧩 Exceptions": "🧩 Excepciones",
+  "🧰 Practice tools & General": "🧰 Herramientas de práctica y General",
+  "No grades to show.": "No hay grados que mostrar.",
+  "No units in the planner for this grade.": "No hay unidades en el planificador para este grado.",
+  "open": "abierto",
+  "locked": "cerrado",
+  "closed": "cerrado",
+  "pilot": "piloto",
+  "locked (2027 pilot)": "cerrado (piloto 2027)",
+  "weeks unlocked": "semanas abiertas",
+  "no book assigned this year": "sin libro asignado este año",
+  "exam windows:": "ventanas de examen:",
+  "all units locked": "todas las unidades cerradas",
+  "Readers:": "Lecturas:",
+  "open · all tests (no rule)": "abierto · todos los tests (sin regla)",
+  "open · all tests": "abierto · todos los tests",
+  "open level, 0 tests released": "nivel abierto, 0 tests publicados",
+  "open · up to test": "abierto · hasta el test",
+  "open · whole course (no rule saved yet)": "abierto · curso entero (aún sin regla)",
+  "sees nothing (no rule for this grade)": "no ve nada (sin regla para este grado)",
+  "YLE practice tests": "Tests de práctica YLE",
+  "branch open, no level unlocked": "rama abierta, ningún nivel desbloqueado",
+  "(no note for this grade)": "(sin nota para este grado)",
+  "Study plan note:": "Nota del plan de estudio:",
+  "Per-student overrides": "Excepciones por alumno",
+  "No per-student exceptions in this grade.": "No hay excepciones por alumno en este grado.",
+  "Individual plan (EPI):": "Plan individual (EPI):",
+  "No student with an individual plan in this grade.": "Ningún alumno con plan individual en este grado.",
+  "Edit in 👥 Students →": "Editar en 👥 Alumnos →",
+  "📋 Study plan (EPI)": "📋 Plan de estudio (EPI)",
+  "nothing configured yet": "nada configurado todavía",
+  "Practice tests open": "Tests de práctica abiertos",
+  "Mocks closed": "Simulacros cerrados",
+  "Mocks open": "Simulacros abiertos",
+  "Practice tests": "Tests de práctica",
+  "Main Suite": "Main Suite",
+  "Fun for Nordic ·": "Fun for Nordic ·",
+  "YLE ·": "YLE ·",
+  "not readable with your access": "no legible con tu acceso",
+  "🖨️ Print": "🖨️ Imprimir",
+  "Edit in": "Editar en"
  },
  "patterns": [
   [
@@ -441,6 +520,38 @@
   [
    "^Wednesday (\\d+) September · last 7 days · your grades: (.+)$",
    "Miércoles $1 de septiembre · últimos 7 días · tus grados: $2"
+  ],
+  [
+   "^Grade (\\d+): units, activities, readers and unit exams$",
+   "Grado $1: unidades, actividades, lecturas y exámenes de unidad"
+  ],
+  [
+   "^Your route: (.+) · course · practice tests · mocks$",
+   "Tu ruta: $1 · curso · tests de práctica · simulacros"
+  ],
+  [
+   "^Your route: (.+)$",
+   "Tu ruta: $1"
+  ],
+  [
+   "^Units (\\d+)–(\\d+) open \\((\\d+) · pilot locked\\)$",
+   "Unidades $1–$2 abiertas ($3 · piloto cerrada)"
+  ],
+  [
+   "^Units (\\d+)–(\\d+) open$",
+   "Unidades $1–$2 abiertas"
+  ],
+  [
+   "^(\\d+)/(\\d+) weeks unlocked$",
+   "$1/$2 semanas abiertas"
+  ],
+  [
+   "^Edit in (.+) →$",
+   "Editar en $1 →"
+  ],
+  [
+   "^(G\\d+) sees:$",
+   "$1 ve:"
   ]
  ]
 }
