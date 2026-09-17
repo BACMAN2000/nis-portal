@@ -305,6 +305,7 @@ function header(){
   // la barra de aviso es lo único que recuerda quién está realmente dentro.
   const real = _isPreview() ? (state.realProfile||{}) : null;
   return `<div class="app-header">
+    <button class="nav-toggle" type="button" onclick="window._navToggle(true)" aria-label="Menu" title="Menu">☰</button>
     <img src="assets/logo-white-h.svg" alt="Nordic International School">
     <div class="spacer"></div>
     <span class="role-chip">${esc(p.role||'')}</span>
@@ -369,11 +370,21 @@ function shell(navItems, activeKey, body, wide){
   /* wide = paneles de gestion (admin y profesor). Son tablas con muchas
      columnas y botones; con el ancho de lectura del alumno no caben. */
   return header()+`<div class="shell">
-    <nav class="sidebar">${navHTML(navItems, activeKey)}</nav>
+    <div class="nav-backdrop" onclick="window._navToggle(false)"></div>
+    <nav class="sidebar">
+      <div class="nav-drawer-head"><b>☰ Menu</b><button type="button" onclick="window._navToggle(false)" aria-label="Close menu">✕ Close</button></div>
+      ${navHTML(navItems, activeKey)}</nav>
     <main class="main${wide?' wide':''}" id="main">${body}</main>
   </div>`;
 }
+/* Cajon del menu en movil (brand.css ≤760 px): la clase va en <body>, que
+   sobrevive a los repintados de la SPA, asi que bindNav la quita en cada
+   render para que un cambio de pestaña no deje el cajon abierto encima. */
+window._navToggle = function(abrir){
+  document.body.classList.toggle('nav-open', !!abrir);
+};
 function bindNav(handler){
+  document.body.classList.remove('nav-open');
   document.querySelectorAll('[data-nav]').forEach(e=>{
     e.onclick=()=>handler(e.dataset.nav);
     e.onkeydown=(ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); handler(e.dataset.nav); } };
@@ -446,9 +457,9 @@ function pizarraBody(){ return `
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Paste a worksheet, an exam or a worksheet and check it before publishing it. It is reviewed in your browser: the text never leaves this screen.</div>
-    <a class="btn" href="corrector.html?v=f21b7a3b" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="corrector.html?v=430c3731" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="corrector.html?v=f21b7a3b" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=430c3731" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
