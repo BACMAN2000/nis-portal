@@ -1,3 +1,12 @@
+/* Marca y datos del sitio (17-sep-2026): cada web define window.MOCKS_SITE
+   ANTES de cargar este archivo (nis: config.js · cohasset: coh-bridge.js).
+   Así este archivo es idéntico en las tres copias del motor y se sincroniza
+   copiándolo, sin transformaciones. Ver tools/mocks/sincroniza.py. */
+var MSITE = Object.assign({
+  teacherEmail: '', schoolName: '', classLabel: 'English 2026', portalName: 'the Portal',
+  logo: '', logoAlt: '', emailExample: 'name.surname@school.edu',
+  accent: '#4987c6', accent2: '#2d5a8d', webhookUrl: ''
+}, window.MOCKS_SITE || {});
 /* ============================================================
    ENGINE — Cambridge-format part-based engine.
    Part types: mc, match, clozeMC, clozeOpen, wordform, transform, writing
@@ -13,9 +22,9 @@
    email the student + teacher and append a row to the Google Sheet.
 ============================================================ */
 const CONFIG = {
-  webhookUrl: 'https://script.google.com/macros/s/AKfycbzwn09Be0ZfKxGpwgkjLdp7nIs7awq8h7SVKkMlWN4EjekkOFqpLmnChzGHN_bB6kN-/exec',
-  teacherEmail: 'pbaca@nordic-school.edu.pe',
-  schoolName: 'Nordic International School of Lima',
+  webhookUrl: MSITE.webhookUrl || 'https://script.google.com/macros/s/AKfycbzwn09Be0ZfKxGpwgkjLdp7nIs7awq8h7SVKkMlWN4EjekkOFqpLmnChzGHN_bB6kN-/exec',
+  teacherEmail: MSITE.teacherEmail,
+  schoolName: MSITE.schoolName,
   mock01Locked: false, // ← flip to true to hide MOCK 1 from students
   mock02Locked: false  // ← flip to true to hide MOCK 2 from students
 };
@@ -43157,7 +43166,7 @@ const render = {
     stopTimer();
     app.innerHTML = `
       <div class="hero">
-        <img class="hero-logo" src="nordic-logo-h.svg" alt="Nordic International School of Lima">
+        <img class="hero-logo" src="${MSITE.logo}" alt="${MSITE.schoolName}">
         <h1>MOCKS CAMBRIDGE — Reading &amp; Use of English</h1>
         <p class="sub">Two full mock exams (MOCK 1 &amp; MOCK 2), Cambridge format — A2 · B1 · B2 · C1</p>
         <div class="qr">
@@ -43194,7 +43203,7 @@ const render = {
         <label for="gr">Your grade / class</label>
         <input id="gr" placeholder="e.g. Grade 9 / 3rd ESO" value="${state.grade}">
         <label for="em">Your school email</label>
-        <input id="em" type="email" placeholder="e.g. maria.garcia@nordic-school.edu.pe" value="${state.email||''}">
+        <input id="em" type="email" placeholder="e.g. ${MSITE.emailExample}" value="${state.email||''}">
         <div class="row" style="margin-top:18px">
           <button id="loginBtn">Continue &rarr;</button>
           <button class="ghost" onclick="go('welcome')">&larr; Back</button>
@@ -43275,12 +43284,12 @@ const render = {
     const pBtn=document.getElementById('catPractice');
     if(pBtn && hasPractice){
       if(pUnlocked) pBtn.onclick=()=>go('practicePick');
-      else pBtn.onclick=()=>{ alert('🔒 Practice tests are locked right now.\n\nYour teacher has kept them for class and will unlock them from the NIS Portal.'); };
+      else pBtn.onclick=()=>{ NISUI.avisa('🔒 Practice tests are locked right now.\n\nYour teacher has kept them for class and will unlock them from '+MSITE.portalName+'.', {titulo:'Locked'}); };
     }
     const mBtn=document.getElementById('catMocks');
     if(mBtn){
       if(unlocked) mBtn.onclick=()=>go('examPick');
-      else mBtn.onclick=()=>{ alert('🔒 The mocks are locked.\n\nYour teacher will open them from the NIS Portal when you are ready to sit them.'); };
+      else mBtn.onclick=()=>{ NISUI.avisa('🔒 The mocks are locked.\n\nYour teacher will open them from '+MSITE.portalName+' when you are ready to sit them.', {titulo:'Locked'}); };
     }
   },
 
@@ -43412,7 +43421,7 @@ const render = {
     let html = `
       <div class="inspera-shell">
         <header class="inspera-header">
-          <a class="brand" href="quizzes.html" title="Nordic International School of Lima"><img src="nordic-logo-h.svg" alt="Nordic"></a>
+          <a class="brand" href="quizzes.html" title="${MSITE.schoolName}"><img src="${MSITE.logo}" alt="${MSITE.logoAlt}"></a>
           <div class="candidate">Candidate: <strong>${state.name}</strong> · ${state.grade}</div>
           <div class="tools">
             <div class="fs-group" title="Adjust text size">
@@ -43750,8 +43759,8 @@ const render = {
       <div class="send-status" id="sendStatus" style="display:none"></div>
 
       <div id="pdfTarget">
-        <div class="pdf-brand" style="text-align:center;padding:8px 0 14px;border-bottom:2px solid #4987c6;margin-bottom:14px">
-          <img src="nordic-logo-h.svg" alt="Nordic" style="height:50px;width:auto">
+        <div class="pdf-brand" style="text-align:center;padding:8px 0 14px;border-bottom:2px solid ${MSITE.accent};margin-bottom:14px">
+          <img src="${MSITE.logo}" alt="${MSITE.logoAlt}" style="height:50px;width:auto">
           <div style="color:#636465;font-size:.82rem;margin-top:4px;letter-spacing:1px;font-weight:600">CAMBRIDGE-FORMAT READING REPORT</div>
         </div>
         <div class="result-header">

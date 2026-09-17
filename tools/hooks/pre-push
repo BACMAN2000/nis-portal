@@ -14,4 +14,15 @@ if ! node tools/qa/qa-static.js --gate; then
   echo "Arregla lo de arriba y repite el push. Si el aviso es falso: git push --no-verify"
   exit 1
 fi
+# Y los espejos del motor de mocks (cohasset.pe y el repo standalone) tienen que
+# ir a la par con mocks-cambridge/: si se desviaron, se sincronizan con
+# `python tools/mocks/sincroniza.py --publicar` y se repite el push. Un clon que
+# no está en esta máquina no bloquea (el script lo dice y sigue).
+if command -v python >/dev/null 2>&1; then
+  if ! python tools/mocks/sincroniza.py --check; then
+    echo ""
+    echo "Los espejos de los mocks se han desviado: python tools/mocks/sincroniza.py --publicar"
+    exit 1
+  fi
+fi
 exit 0

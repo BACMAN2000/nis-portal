@@ -1,3 +1,12 @@
+/* Marca y datos del sitio (17-sep-2026): cada web define window.MOCKS_SITE
+   ANTES de cargar este archivo (nis: config.js · cohasset: coh-bridge.js).
+   Así este archivo es idéntico en las tres copias del motor y se sincroniza
+   copiándolo, sin transformaciones. Ver tools/mocks/sincroniza.py. */
+var MSITE = Object.assign({
+  teacherEmail: '', schoolName: '', classLabel: 'English 2026', portalName: 'the Portal',
+  logo: '', logoAlt: '', emailExample: 'name.surname@school.edu',
+  accent: '#4987c6', accent2: '#2d5a8d', webhookUrl: ''
+}, window.MOCKS_SITE || {});
 /* ========================================================================
    CONFIG
    ======================================================================== */
@@ -5,8 +14,8 @@ const CONFIG = {
   AUDIO_BASE: "./mp3/",                // for B2 / C1 mp3 files
   AUDIO_V: "m3fix",                    // cache-buster appended to every mp3 URL — bump when any mp3 is REgenerated (CDN caches audio for 7 days)
   APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzwn09Be0ZfKxGpwgkjLdp7nIs7awq8h7SVKkMlWN4EjekkOFqpLmnChzGHN_bB6kN-/exec",
-  TEACHER_EMAIL: "pbaca@nordic-school.edu.pe",
-  CLASS_LABEL: "NIS English 2026"
+  TEACHER_EMAIL: MSITE.teacherEmail,
+  CLASS_LABEL: MSITE.classLabel
 };
 
 /* ========================================================================
@@ -31436,7 +31445,7 @@ function _acShowWarn(kind){
       (isT ? '⚠ Translation attempts: ' + _AC_trans : '⚠ Exits recorded this session: ' + _AC_n) +
     '</div>' +
     '<button onclick="document.getElementById(\'acOverlay\').remove()" ' +
-      'style="background:#4987c6;color:#fff;border:none;padding:14px 36px;border-radius:10px;' +
+      'style="background:'+MSITE.accent+';color:#fff;border:none;padding:14px 36px;border-radius:10px;' +
              'font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit">' +
       'Return to Exam' +
     '</button>';
@@ -31481,7 +31490,7 @@ function viewWelcome(){
         <label for="iClass">Your grade / class</label>
         <input id="iClass" placeholder="e.g. Grade 9 / 3rd ESO" value="${state.klass||''}">
         <label for="iEmail">Your school email</label>
-        <input id="iEmail" type="email" placeholder="e.g. maria.garcia@nordic-school.edu.pe" value="${state.email||''}">
+        <input id="iEmail" type="email" placeholder="e.g. ${MSITE.emailExample}" value="${state.email||''}">
         <div class="signin-actions">
           <button class="primary" id="iContinue">Continue &rarr;</button>
           <a class="secondary2" href="quizzes.html">&larr; Back</a>
@@ -31552,19 +31561,19 @@ async function viewCategory(){
       <p class="sub">${examName}. Choose what you want to take today.</p>
 
       <div style="${cardCss}${pUnlocked?';cursor:pointer':';opacity:.65'}" id="catPractice">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">${pUnlocked?'📘':'🔒'} PRACTICE TESTS</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">${pUnlocked?'📘':'🔒'} PRACTICE TESTS</h2>
         <p style="color:#475569;margin:0;line-height:1.55">${pUnlocked?'A warm-up listening test with real audio, in the authentic Cambridge format — auto-scored with timer and CEFR feedback.':'<b>🔒 Locked.</b> Your teacher has reserved the practice tests for class.'}</p>
       </div>
 
       <div style="${cardCss}${unlocked?';cursor:pointer':';opacity:.65'}" id="catMocks">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">${unlocked?'📝':'🔒'} MOCKS</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">${unlocked?'📝':'🔒'} MOCKS</h2>
         <p style="color:#475569;margin:0;line-height:1.55">${unlocked?'Full listening mocks — harder, official Cambridge structure with real audio.':'<b>🔒 Locked.</b> Your teacher will unlock the mocks from the NIS Portal.'}</p>
       </div>
 
       <div class="signin-actions" style="margin-top:8px"><a class="secondary2" id="catBack">&larr; Back to levels</a></div>
     </div>`;
-  $("#catPractice").onclick = ()=>{ if(pUnlocked){ viewPracticePick(); } else { alert('🔒 Practice tests are locked right now.\n\nYour teacher has kept them for class and will unlock them from the NIS Portal.'); } };
-  $("#catMocks").onclick = ()=>{ if(unlocked){ viewExamPick(); } else { alert('🔒 The mocks are locked.\n\nYour teacher will open them from the NIS Portal when you are ready to sit them.'); } };
+  $("#catPractice").onclick = ()=>{ if(pUnlocked){ viewPracticePick(); } else { NISUI.avisa('🔒 Practice tests are locked right now.\n\nYour teacher has kept them for class and will unlock them from '+MSITE.portalName+'.', {titulo:'Locked'}); } };
+  $("#catMocks").onclick = ()=>{ if(unlocked){ viewExamPick(); } else { NISUI.avisa('🔒 The mocks are locked.\n\nYour teacher will open them from '+MSITE.portalName+' when you are ready to sit them.', {titulo:'Locked'}); } };
   $("#catBack").onclick = ()=> viewLevelSelect();
 }
 
@@ -31575,7 +31584,7 @@ function viewExamPick(){
   document.body.classList.add('signin-mode');
   const lev = currentQuiz()[state.level];
   const examName = {A2:'A2 Key',B1:'B1 Preliminary',B2:'B2 First',C1:'C1 Advanced'}[state.level] || state.level;
-  const cardBtn = "background:#4987c6;color:#fff;border:none;padding:13px 24px;border-radius:10px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:6px";
+  const cardBtn = "background:"+MSITE.accent+";color:#fff;border:none;padding:13px 24px;border-radius:10px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:6px";
   const cardCss = "background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,.10);padding:28px 30px;margin-bottom:18px";
   app.innerHTML = `
     <div class="signin-wrap">
@@ -31584,25 +31593,25 @@ function viewExamPick(){
       <p class="sub">${examName}. Two full listening mocks — same authentic Cambridge (Inspera-style) format with real audio. Auto-scored with timer and CEFR analysis.</p>
 
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📝 MOCK 1</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📝 MOCK 1</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">A complete ${examName}-format listening mock, written to mirror the official paper and pitched at the harder end of the level. Real audio, authentic Cambridge parts and task types.</p>
         <button id="m1" style="${cardBtn}">Start MOCK 1 &rarr;</button>
       </div>
 
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📝 MOCK 2</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📝 MOCK 2</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">A second complete ${examName}-format listening mock — fresh recordings and tasks, same authentic Cambridge structure and difficulty.</p>
         <button id="m2" style="${cardBtn}">Start MOCK 2 &rarr;</button>
       </div>
       ${(QUIZ6 && QUIZ6[state.level])?`
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📝 MOCK 3</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📝 MOCK 3</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">A third complete ${examName}-format listening mock — brand-new recordings and tasks, same authentic Cambridge structure and difficulty.</p>
         <button id="m3" style="${cardBtn}">Start MOCK 3 &rarr;</button>
       </div>`:''}
       ${moreWithAudio('mocks').map(o=>`
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📝 MOCK ${o.n}</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📝 MOCK ${o.n}</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">A complete ${examName}-format listening mock — fresh recordings and tasks, same authentic Cambridge structure and difficulty.</p>
         <button id="mMore${o.n}" style="${cardBtn}">Start MOCK ${o.n} &rarr;</button>
       </div>`).join('')}
@@ -31625,7 +31634,7 @@ function viewPracticePick(){
   document.body.classList.remove('exam-mode','result-mode');
   document.body.classList.add('signin-mode');
   const examName = {A2:'A2 Key',B1:'B1 Preliminary',B2:'B2 First',C1:'C1 Advanced'}[state.level] || state.level;
-  const cardBtn = "background:#4987c6;color:#fff;border:none;padding:13px 24px;border-radius:10px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:6px";
+  const cardBtn = "background:"+MSITE.accent+";color:#fff;border:none;padding:13px 24px;border-radius:10px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:6px";
   const cardCss = "background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,.10);padding:28px 30px;margin-bottom:18px";
   const has2 = !!(QUIZ4 && QUIZ4[state.level]);
   const has3 = !!(QUIZ5 && QUIZ5[state.level]);
@@ -31636,25 +31645,25 @@ function viewPracticePick(){
       <p class="sub">${examName}. Warm-up listening tests with real audio, in the authentic Cambridge format. Auto-scored with timer and CEFR feedback.</p>
 
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📘 Práctica 1</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📘 Práctica 1</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">The original practice listening test, in the authentic Cambridge format.</p>
         <button id="p1" style="${cardBtn}">Start Práctica 1 &rarr;</button>
       </div>
       ${has2?`
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📘 Práctica 2</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📘 Práctica 2</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">A second practice — fresh recordings and tasks, same format and difficulty.</p>
         <button id="p2" style="${cardBtn}">Start Práctica 2 &rarr;</button>
       </div>`:''}
       ${has3?`
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📘 Práctica 3</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📘 Práctica 3</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">A third practice — new recordings and tasks, same format and difficulty.</p>
         <button id="p3" style="${cardBtn}">Start Práctica 3 &rarr;</button>
       </div>`:''}
       ${moreWithAudio('practice').map(o=>`
       <div style="${cardCss}">
-        <h2 style="margin:0 0 8px;font-size:1.4rem;color:#2d5a8d">📘 Práctica ${o.n}</h2>
+        <h2 style="margin:0 0 8px;font-size:1.4rem;color:${MSITE.accent2}">📘 Práctica ${o.n}</h2>
         <p style="color:#475569;margin:0 0 4px;line-height:1.55">A practice listening test — fresh recordings and tasks, same authentic Cambridge format and difficulty.</p>
         <button id="pMore${o.n}" style="${cardBtn}">Start Práctica ${o.n} &rarr;</button>
       </div>`).join('')}
@@ -31705,7 +31714,7 @@ function viewQuiz(){
   app.innerHTML = `
     <div class="ins-shell">
       <header class="ins-hdr">
-        <div class="ins-brand"><img src="nordic-logo-h.svg" alt="Nordic"></div>
+        <div class="ins-brand"><img src="${MSITE.logo}" alt="${MSITE.logoAlt}"></div>
         <div class="ins-cand">Candidate: <strong>${state.name}</strong> · ${state.klass}</div>
         <div class="ins-right">
           <span class="ins-audio">🔊 Listening</span>
@@ -31916,7 +31925,7 @@ function renderQuestions(audio, container){
       const bank = q.bank || audio.bank || [];
       el.innerHTML = `
         <div class="meta"><span class="pill">Matching</span> <span>Question ${qi+1}</span></div>
-        ${q.taskLabel?`<div class="stem" style="color:#4987c6">${q.taskLabel}</div>`:''}
+        ${q.taskLabel?`<div class="stem" style="color:${MSITE.accent}">${q.taskLabel}</div>`:''}
         <div class="stem">${q.person}</div>
         <select class="matchsel" data-key="${key}"><option value="">— elige —</option>${bank.map(b=>`<option value="${b}">${b}</option>`).join("")}</select>`;
     }
@@ -32191,7 +32200,7 @@ function viewResult(payload){
       </div>
       <div class="send-status" id="lSendStatus" style="display:none"></div>
       <div id="pdfTarget">
-        <div class="pdf-brand"><img src="nordic-logo-h.svg" alt="Nordic"><div class="rep">CAMBRIDGE-FORMAT LISTENING REPORT</div></div>
+        <div class="pdf-brand"><img src="${MSITE.logo}" alt="${MSITE.logoAlt}"><div class="rep">CAMBRIDGE-FORMAT LISTENING REPORT</div></div>
         <div class="res-grid">
           <div><label>Student</label>${payload.name||''}</div>
           <div><label>Email</label>${payload.email||'—'}</div>

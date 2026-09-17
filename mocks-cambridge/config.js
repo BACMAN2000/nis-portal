@@ -1,3 +1,20 @@
+/* Marca del sitio para el motor de mocks (17-sep-2026). Los archivos
+   compartidos (reading/listening/writing-quiz.app-data.js) son idénticos en
+   nis.cohasset.pe, cohasset.pe y el repo standalone, y leen de aquí el logo,
+   los colores y los textos que cambian de una web a otra. Cohasset define el
+   suyo en coh-bridge.js. */
+window.MOCKS_SITE = {
+  teacherEmail: 'pbaca@nordic-school.edu.pe',
+  schoolName: 'Nordic International School of Lima',
+  classLabel: 'NIS English 2026',
+  portalName: 'the NIS Portal',
+  logo: 'nordic-logo-h.svg',
+  logoAlt: 'Nordic',
+  emailExample: 'maria.garcia@nordic-school.edu.pe',
+  accent: '#4987c6',
+  accent2: '#2d5a8d'
+};
+
 /* ---- una sola puerta de entrada -------------------------------------------
    El sitio se publica tambien en bacman2000.github.io/nis-portal/, y por ahi
    entraban alumnos: 10 personas distintas solo el 7-sep-2026. Al ser otro
