@@ -772,8 +772,12 @@ window.TEEN = (function () {
 
     // los niveles inferiores traen ademas: la escena inicial (hook), el truco
     // de memoria (remember), las trampas del español (l1) y el semaforo (can_do)
-    const hook = d.hook ? `<div class="t-hook"><div class="nova"><img src="../assets/characters/cast/nova/center-full.jpg?v=${CAST_V}" alt="" onerror="this.replaceWith(document.createTextNode('★'))"></div>
-        <div class="bb"><span class="t-kicker">${T('Look first', 'Observe d’abord')}</span><p class="story">${inl(d.hook.text)} <button class="ex-say" type="button" data-t="${esc(String(d.hook.text).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p>
+    // La escena la cuenta Miss Vega, la profesora del elenco: quien explica la
+    // gramatica es un personaje ya creado, no una mascota inventada (la
+    // estrella «Nova» duro un dia, 17-sep-2026). Va a la izquierda del
+    // bocadillo, asi que lleva la vista que mira a la derecha.
+    const hook = d.hook ? `<div class="t-hook"><div class="guia"><img src="../assets/characters/cast/vega/right-bust.jpg?v=${CAST_V}" alt="Miss Vega" onerror="this.replaceWith(document.createTextNode('V'))"></div>
+        <div class="bb"><span class="t-kicker">Miss Vega · ${T('Look first', 'Observe d’abord')}</span><p class="story">${inl(d.hook.text)} <button class="ex-say" type="button" data-t="${esc(String(d.hook.text).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p>
           <p class="ask">${ico('search', 22)} <span>${inl(d.hook.ask)}</span></p></div></div>` : '';
     const recuerda = d.remember ? `<div class="t-remember"><span class="pin">📌</span><span class="t-kicker">${T('Remember', 'Retiens')}</span>
         <p class="trick">${inl(d.remember.trick)} <button class="ex-say" type="button" data-t="${esc(String(d.remember.trick).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p><p class="tip">${inl(d.remember.tip)}</p></div>` : '';

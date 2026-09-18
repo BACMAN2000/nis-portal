@@ -12,7 +12,7 @@ The A2 course reuses the Fun for Nordic engine but needs an **older, teen cast**
 - **nadia** — girl, 12. Medium-brown skin, curly dark hair, **round glasses**. Wears a **teal/green shirt** with a paint-splash or art-club badge, holds a **pencil/sketchbook**. Personality: artistic, designs the project posters.
 
 ## The guide
-- **nova** — a friendly older-student/mentor guide (not a childish mascot). Neutral, warm, encouraging. Currently a simple purple placeholder avatar (graduation cap) at `assets/characters/ket/nova/pose-01|03|10.svg`. Redesign as a teen-appropriate guide (a slightly older student or a small modern robot/star companion — "Nova"), in the course accent colour **#6d5bd0 (indigo/violet)**.
+- **Miss Vega** — the cast's teacher (3D art in `assets/characters/cast/vega/`) is who explains grammar: she narrates the "Look first" scene of every Grammar Lab topic and speaks in the dialogues. **Rule (18-sep-2026):** whoever explains or presents must be an existing character of this cast — no new guides, mascots or abstract companions. The star "Nova" (`cast/nova/`, 17-sep) was rejected for that reason and is no longer used; `nova` only survives as the `mascot` key in `levels.json` and the placeholder SVGs.
 
 ## Where the art goes (engine)
 `assets/characters/ket/<slug>/pose-NN.png` — the engine's `CHAR(slug,pose)` builds this path (falls back .png → .svg). Minimum useful set for the coursebook: **pose-01** (neutral standing, used in scene + as byline avatar in the `reading` card), optionally pose-03 (talking, for the guide bubble) and pose-10 (celebration). A clean **portrait/half-body per student** is the priority (for reading bylines and the unit scene). Keep the same face/outfit across all poses of the same character.
