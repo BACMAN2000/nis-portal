@@ -453,7 +453,14 @@ if(/\.github\.io$/i.test(location.hostname)){
   .campus-banner img{width:100%;max-height:260px;object-fit:cover;display:block}
   /* picture words */
   .pwrow{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.2rem 0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem}
-  .pwrow .pw{position:relative;width:11rem;text-align:center;background:var(--surface2);
+  /* Las tarjetas se reparten el ancho de la fila y el dibujo crece con la
+     tarjeta. Con 7rem fijos, en un iPad o un monitor los animales de Starters
+     salian pequenos con media fila vacia (18-sep-2026): ahora el dibujo llega a
+     14rem, con tres o cuatro tarjetas por fila segun quepan y dos en el
+     telefono. La pantalla de Picture words puede ser mas ancha que las de
+     lectura, que si quieren una columna estrecha. */
+  .scr-centro:has(.pwrow){max-width:clamp(52rem,100vw - 24rem,64rem)}
+  .pwrow .pw{position:relative;flex:1 1 12rem;max-width:17rem;text-align:center;background:var(--surface2);
     border:2px solid transparent;border-radius:12px;padding:.5rem .2rem .4rem;cursor:pointer;
     font-family:"Source Sans 3",system-ui,sans-serif;color:var(--ink);
     transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
@@ -461,10 +468,11 @@ if(/\.github\.io$/i.test(location.hostname)){
     box-shadow:0 4px 12px rgba(59,111,181,.16)}
   .pwrow .pw:active{transform:translateY(0) scale(.97)}
   .pwrow .pw.saying{border-color:var(--ok);background:var(--line)}
-  .pwrow .pw .ico{line-height:1.2;display:flex;align-items:center;justify-content:center;height:7rem}
-  .pwrow .pw .ico svg{width:7rem;height:7rem;display:block}
-  .pwrow .pw .ico img.art3d{width:7rem;height:7rem;object-fit:contain;display:block}
-  .pwrow .pw .ico .emo{font-size:5.2rem}
+  .pwrow .pw .ico{line-height:1.2;display:flex;align-items:center;justify-content:center;width:min(100%,14rem);aspect-ratio:1;margin:0 auto}
+  .pwrow .pw .ico svg{width:100%;height:100%;display:block}
+  .pwrow .pw .ico img.art3d{width:100%;height:100%;object-fit:contain;display:block}
+  .pwrow .pw .ico .emo{font-size:clamp(4rem,12vw,8rem);line-height:1}
+  @media (max-width:560px){.pwrow{padding:.7rem .6rem;gap:.5rem}.pwrow .pw{flex-basis:8rem}}
   .pwrow .pw .spk{position:absolute;top:.25rem;right:.35rem;font-size:.72rem;opacity:0;transition:opacity .12s}
   .pwrow .pw:hover .spk,.pwrow .pw.saying .spk{opacity:.75}
   @media (prefers-reduced-motion:reduce){.pwrow .pw{transition:none}.pwrow .pw:hover{transform:none}}
