@@ -129,4 +129,6 @@ async def main():
             print("ERR", os.path.relpath(out, AUDIO), str(e)[:120])
     print(f"DONE generated {ok}/{len(todo)}")
 
-asyncio.run(main())
+# tools/grammar-lab/gen_audio_frases.py importa genera(): sin la guarda, importar era ejecutar
+if __name__ == "__main__":
+    asyncio.run(main())
