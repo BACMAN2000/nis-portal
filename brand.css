@@ -1,8 +1,8 @@
 /* ===== Nordic International School — brand system ===== */
-@font-face{font-family:'Gotham';src:url('fonts/GothamBook.woff2') format('woff2'),url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.woff2') format('woff2'),url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamBold.woff2') format('woff2'),url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamLight.woff2') format('woff2'),url('fonts/GothamLight.ttf') format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBook.woff2?v=6e4a7bd8') format('woff2'),url('fonts/GothamBook.ttf?v=0cdd374f') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.woff2?v=e939ebc0') format('woff2'),url('fonts/GothamMedium.ttf?v=d9b22a9f') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBold.woff2?v=70f744e5') format('woff2'),url('fonts/GothamBold.ttf?v=ba90beb3') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamLight.woff2?v=63f19c6d') format('woff2'),url('fonts/GothamLight.ttf?v=5f8edada') format('truetype');font-weight:300;font-display:swap}
 
 :root{
   --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
@@ -155,9 +155,16 @@ td.col-name{white-space:nowrap}
 .eye:hover{background:var(--bg)}
 
 /* auth screen */
-.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+/* La tarjeta se centra con margin:auto, no con align-items:center: en un
+   iPad apaisado (Safari con sus barras) la tarjeta es mas alta que la
+   pantalla y el centrado flex la recortaba por ARRIBA (logo y titulo
+   ilegibles) y por ABAJO (Remember my email a medias y el boton Sign in
+   fuera), sin que se pudiera desplazar hasta ellos (19-sep-2026). 100dvh
+   es la altura visible real en iOS; el 100vh queda de respaldo. */
+.auth-wrap{min-height:100vh;min-height:100dvh;display:flex;justify-content:center;padding:24px;box-sizing:border-box;
+  padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));
   background:linear-gradient(160deg,#4987c6 0%,#76cbe5 100%)}
-.auth-card{background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(36,76,119,.30);padding:34px;width:100%;max-width:460px}
+.auth-card{background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(36,76,119,.30);padding:34px;width:100%;max-width:460px;margin:auto}
 .auth-card .logo{display:block;height:46px;margin:0 auto 14px}
 .auth-card h1{text-align:center;font-size:1.5rem}
 .auth-card .sub{text-align:center;color:var(--grey);margin:0 0 18px;font-size:.95rem}
