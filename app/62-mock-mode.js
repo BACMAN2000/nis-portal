@@ -60,13 +60,19 @@ async function loadMockMode(){
     else if(off.data && off.data.mock && acc.data && acc.data.unlocked){ mode='official'; mock=off.data.mock; }
     if(!mode) return null;
     const levels = fijo ? [fijo] : _mockLevelsFor(p);
-    let level = levels.length===1 ? levels[0] : null;
-    if(!level){ try{ const s=sessionStorage.getItem('nis-mock-level'); if(levels.includes(s)) level=s; }catch(_){} }
     let atts = [];
     if(p.id){
       const r = await sb.from('exam_attempts').select('skill,level').eq('student_id',p.id).eq('mock','mock'+mock).gte('submitted_at', _mockHoyISO());
       atts = r.data || [];
     }
+    // El nivel: el fijado por el profesor (perfil o mock individual); si no, el
+    // del paper que YA entrego hoy (no se cambia de nivel a mitad de mock); si
+    // no, el que eligio en esta sesion — guardado POR ALUMNO. El 19-sep-2026 la
+    // eleccion se guardaba sin el id y en un iPad compartido Aitana Tagle (7.º,
+    // sin nivel) entro directa al B2 que otro habia elegido antes.
+    let level = levels.length===1 ? levels[0] : null;
+    if(!level){ const hecho = atts.find(a=>levels.includes(a.level)); if(hecho) level = hecho.level; }
+    if(!level){ try{ const s=sessionStorage.getItem('nis-mock-level:'+p.id); if(levels.includes(s)) level=s; }catch(_){} }
     return { mode, mock, level, levels, atts };
   }catch(e){ console.warn('[mock mode]', e); return null; }
 }
@@ -152,7 +158,7 @@ function mockModeHub(){
                : 'Today is mock day. Sit the papers in order: when you finish one you come back here for the next. Nothing else is open until tomorrow.');
     cuerpo = `<p class="sub">${texto}</p><div class="papers">${papers}</div>
       <div class="mock-steps">${skills.map((s,i)=>`<span><b>${i+1}</b> ${esc(MOCK_SKILL_LABEL[s])}${i<skills.length-1?' →':''}</span>`).join('')}<span>· The timer runs as in the real exam and your result is saved by itself.</span></div>
-      ${M.levels.length>1 ? `<div style="margin-top:12px;font-size:.8rem;opacity:.85"><a style="color:#fff;cursor:pointer;text-decoration:underline" onclick="window._mockPickLevel('')">Change level</a></div>` : ''}`;
+      ${(M.levels.length>1 && !(M.atts||[]).some(a=>a.level===M.level)) ? `<div style="margin-top:12px;font-size:.8rem;opacity:.85"><a style="color:#fff;cursor:pointer;text-decoration:underline" onclick="window._mockPickLevel('')">Change level</a></div>` : ''}`;
   }
   $('#main').innerHTML = `<h1>Hi, ${first} 👋</h1>
     <p class="muted" style="margin-top:-6px">${indiv ? 'You have an <b>individual mock</b> assigned for today.' : 'Today the portal is in <b>MOCK MODE</b>.'} Only the exam is open.</p>
@@ -166,7 +172,8 @@ window._mockPickLevel = (l)=>{
   if(!state.mockMode) return;
   const ok = l && state.mockMode.levels.includes(l);
   state.mockMode.level = ok ? l : null;
-  try{ if(ok) sessionStorage.setItem('nis-mock-level', l); else sessionStorage.removeItem('nis-mock-level'); }catch(_){}
+  const k = 'nis-mock-level:' + ((state.profile&&state.profile.id)||'');
+  try{ if(ok) sessionStorage.setItem(k, l); else sessionStorage.removeItem(k); }catch(_){}
   mockModeHub();
 };
 /* Abre el paper en el motor. level/mock van solo como pista: nis-bridge.js
