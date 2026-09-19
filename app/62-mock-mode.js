@@ -90,25 +90,28 @@ function _mockCss(){
 .mock-card h2{font-size:1.9rem;margin:12px 0 4px;color:#fff}
 .mock-card .sub{color:rgba(255,255,255,.9);font-size:.95rem;max-width:64ch}
 .mock-card .papers{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:20px}
-.mock-paper{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-align:left;background:#fff;color:#1a2b40;border:none;border-radius:14px;
-  padding:15px 16px 15px 50px;cursor:pointer;font-family:inherit;box-shadow:0 10px 24px -14px rgba(15,23,42,.6);transition:transform .15s}
-.mock-paper .num{position:absolute;left:13px;top:13px;width:27px;height:27px;border-radius:50%;background:#2f5f93;color:#fff;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+.mock-paper{position:relative;display:block;text-align:left;background:#fff;color:#1a2b40;-webkit-text-fill-color:#1a2b40;border:none;border-radius:14px;
+  padding:15px 16px 15px 50px;cursor:pointer;font-family:inherit;box-shadow:0 10px 24px -14px rgba(15,23,42,.6);transition:transform .15s;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.mock-paper > *{display:block}
+.mock-paper .ic{margin-bottom:4px}
+.mock-paper b{margin-bottom:4px}
+.mock-paper .num{position:absolute;left:13px;top:13px;width:27px;height:27px;border-radius:50%;background:#2f5f93;color:#fff;-webkit-text-fill-color:#fff;font-weight:800;font-size:.85rem;line-height:27px;text-align:center}
 .mock-paper:hover{transform:translateY(-2px)}
 .mock-paper .ic{font-size:1.25rem}
 .mock-paper b{font-size:1rem}
-.mock-paper small{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2f5f93}
+.mock-paper small{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2f5f93;-webkit-text-fill-color:#2f5f93}
 .mock-paper.next{outline:3px solid #f6c344;outline-offset:2px}
 .mock-paper.next small{color:#9a6200}
-.mock-paper.done{background:rgba(255,255,255,.18);color:#fff;cursor:default;box-shadow:none;border:1px solid rgba(255,255,255,.35)}
+.mock-paper.done{background:rgba(255,255,255,.18);color:#fff;-webkit-text-fill-color:#fff;cursor:default;box-shadow:none;border:1px solid rgba(255,255,255,.35)}
 .mock-paper.done:hover{transform:none}
 .mock-paper.done .num{background:#2e9c6a}
-.mock-paper.done small{color:#bdf3d4}
+.mock-paper.done small{color:#bdf3d4;-webkit-text-fill-color:#bdf3d4}
 .mock-steps{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px;font-size:.8rem;color:rgba(255,255,255,.85)}
 .mock-steps b{color:#fff}
 .mock-lv{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.mock-lv button{background:#fff;color:#244c77;border:none;border-radius:12px;padding:12px 18px;font-weight:800;font-size:1rem;cursor:pointer;font-family:inherit}
-.mock-lv button small{display:block;font-weight:600;font-size:.72rem;color:#2f5f93;text-transform:none;letter-spacing:0}
-.mock-lv button:hover{transform:translateY(-2px)}
+.mock-lv .lvb{display:block;background:#fff;color:#244c77;-webkit-text-fill-color:#244c77;border:none;border-radius:12px;padding:12px 18px;font-weight:800;font-size:1rem;line-height:1.3;cursor:pointer;font-family:inherit;text-align:center;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.mock-lv .lvb small{display:block;font-weight:600;font-size:.72rem;color:#2f5f93;-webkit-text-fill-color:#2f5f93;text-transform:none;letter-spacing:0}
+.mock-lv .lvb:hover{transform:translateY(-2px)}
 .mm-mode{display:flex;align-items:center;gap:12px;border-radius:14px;padding:12px 16px;margin:0 0 14px;font-weight:600;color:#fff;background:linear-gradient(135deg,#244c77,#6d4fc2)}
 .mm-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;align-items:end}
 .mm-form label{display:flex;flex-direction:column;gap:5px;font-size:.78rem;font-weight:700;color:var(--muted)}
@@ -131,16 +134,18 @@ function mockModeHub(){
   if(!M.level){
     // Sin nivel en el perfil: el alumno elige el suyo (los de su ruta).
     cuerpo = `<p class="sub">Choose the level your teacher told you to sit. Ask before choosing if you are not sure.</p>
-      <div class="mock-lv">${M.levels.map(l=>`<button type="button" onclick="window._mockPickLevel('${l}')">${l}<small>${esc(MOCK_LEVEL_NAMES[l])}</small></button>`).join('')}</div>`;
+      <div class="mock-lv">${M.levels.map(l=>`<div class="lvb" role="button" tabindex="0" onclick="window._mockPickLevel('${l}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window._mockPickLevel('${l}')}"><span>${l}</span><small>${esc(MOCK_LEVEL_NAMES[l])}</small></div>`).join('')}</div>`;
   } else {
     const skills = MOCK_SKILLS[M.level];
     const done = {}; (M.atts||[]).forEach(a=>{ if(a.level===M.level) done[a.skill]=true; });
     const pend = skills.filter(s=>!done[s]); const sig = pend[0]||null;
     const papers = skills.map((sk,i)=>{
       const h = !!done[sk], n = sk===sig;
-      return `<button type="button" class="mock-paper${h?' done':(n?' next':'')}" ${h?'disabled':`onclick="window._mockGo('${sk}')"`}>
+      // <div role=button>, no <button>: Safari en iPad recorta el contenido en
+      // bloque dentro de <button> y dejaba los rectangulos en blanco (19-sep-2026).
+      return `<div class="mock-paper${h?' done':(n?' next':'')}" role="button" tabindex="${h?'-1':'0'}" ${h?'aria-disabled="true"':`onclick="window._mockGo('${sk}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window._mockGo('${sk}')}"`}>
         <span class="num">${h?'✓':(i+1)}</span><span class="ic">${MOCK_SKILL_ICON[sk]}</span><b>${esc(MOCK_SKILL_LABEL[sk])}</b>
-        <small>${h?'Submitted':(n?'Next · start':'Pending')}</small></button>`;
+        <small>${h?'Submitted':(n?'Next · start':'Pending')}</small></div>`;
     }).join('');
     const texto = !pend.length ? `Done! You have submitted all ${skills.length} papers. Tomorrow the portal is back to normal.`
       : (indiv ? 'Your teacher assigned you this mock for today. Sit the papers in order: when you finish one you come back here for the next. Nothing else is open until tomorrow.'
