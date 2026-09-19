@@ -28,7 +28,7 @@
 window.TEEN = (function () {
   'use strict';
 
-  const TEEN_V = '2026-09-16e';   // sube al cambiar fotos o audio del lab
+  const TEEN_V = '2026-09-19';    // sube al cambiar fotos o audio del lab (19-sep: Nadia cambia de voz)
   const CAST_V = '2026-09-17b';   // arte 3D del elenco (assets/characters/cast)
 
   const NIV = {
@@ -760,11 +760,15 @@ window.TEEN = (function () {
                : `<span class="av">${ini}</span>`;
     };
     const hablantes = [...new Set((d.dialogue.lines || []).map(l => l.speaker))];
-    const dlg = `<div class="t-dlg"><div class="ctx">${ico('talk', 34)}<span><b>${inl(d.dialogue.title)}</b> — ${inl(d.dialogue.context)}</span>
-        <button class="t-btn sm dlg-play" type="button">▶ ${T('Play the conversation', 'Écouter')}</button></div>
-      <audio class="dlg-audio" preload="none" src="${ADIR}/grammar/${LEVEL}/${id}.mp3?v=${TEEN_V}"></audio>
+    /* El reproductor es el de la casa (coh-player.js: play, pausa, stop,
+       barra arrastrable y velocidad) — Paolo, 19-sep-2026: «unificar el
+       reproductor… y poder repetir desde donde el usuario quiera». Se monta
+       en alMostrar; el 🔊 de cada linea va delante del texto, como en el
+       gancho. */
+    const dlg = `<div class="t-dlg"><div class="ctx">${ico('talk', 34)}<span><b>${inl(d.dialogue.title)}</b> — ${inl(d.dialogue.context)}</span></div>
+      <div class="dlg-player" data-src="${ADIR}/grammar/${LEVEL}/${id}.mp3?v=${TEEN_V}"></div>
       ${(d.dialogue.lines || []).map((l, i) => `<div class="ln ${hablantes.indexOf(l.speaker) % 2 ? 'r' : ''}" data-i="${i}">${avatar(l.speaker, hablantes.indexOf(l.speaker) % 2)}
-        <div class="bb"><span class="who">${esc(l.speaker)}</span>${inl(l.text)}<button class="say" type="button" data-i="${i}" aria-label="${T('Listen', 'Écoute')}">🔊</button></div></div>`).join('')}</div>`;
+        <div class="bb"><span class="who">${esc(l.speaker)}</span><button class="say" type="button" data-i="${i}" aria-label="${T('Listen', 'Écoute')}">🔊</button> ${inl(l.text)}</div></div>`).join('')}</div>`;
 
     const bloques = (d.practice || []).filter(b => PRACTICA[b.type] && b.items && b.items.length);
     const puntuacion = () => `<div class="t-scores">${bloques.map(b => `<span class="t-chip ${prog[b.type] ? 'acc' : ''}">${prog[b.type] ? '✓' : '·'} ${T(...PRACTICA[b.type].nombre)} ${prog[b.type + '_score'] ? prog[b.type + '_score'] : ''}</span>`).join('')}</div>`;
@@ -910,16 +914,16 @@ window.TEEN = (function () {
       { titulo: T('In conversation', 'En conversation'), etiquetaSiguiente: `${T('Practice', 'Exercice')} 1`,
         html: `<div class="scr-centro">${cab(T('Listen', 'Écoute'), d.dialogue.title, 'mic')}${dlg}</div>`,
         alMostrar(el) {
-          const au = el.querySelector('.dlg-audio'), btn = el.querySelector('.dlg-play');
+          const host = el.querySelector('.dlg-player');
           const lineas = d.dialogue.lines || [];
-          let cola = null;
+          const quita = () => el.querySelectorAll('.ln').forEach(x => x.classList.remove('playing'));
           // el mp3 del dialogo (edge-tts, varias voces); si no esta, la voz
           // del navegador lee linea a linea con la misma pausa que tendria
           const leerTodo = () => {
             if (!window.speechSynthesis) return;
             speechSynthesis.cancel(); let i = 0;
             const paso = () => {
-              if (i >= lineas.length) { btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; return; }
+              if (i >= lineas.length) { quita(); return; }
               el.querySelectorAll('.ln').forEach(x => x.classList.toggle('playing', +x.dataset.i === i));
               const u = new SpeechSynthesisUtterance(String(lineas[i].text).replace(/<[^>]+>/g, ''));
               u.lang = 'en-GB'; u.rate = 0.95;
@@ -929,16 +933,21 @@ window.TEEN = (function () {
               u.onend = () => { i++; setTimeout(paso, 350); };
               speechSynthesis.speak(u);
             };
-            cola = paso; paso();
+            paso();
           };
-          btn.onclick = () => {
-            if (!au.paused) { au.pause(); btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; return; }
-            if (window.speechSynthesis && speechSynthesis.speaking) { speechSynthesis.cancel(); el.querySelectorAll('.ln').forEach(x => x.classList.remove('playing')); btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; return; }
-            btn.textContent = `⏸ ${T('Pause', 'Pause')}`;
-            au.play().catch(() => leerTodo());
-          };
-          au.onended = () => { btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; };
-          au.onerror = () => { if (btn.textContent.startsWith('⏸')) leerTodo(); };
+          if (host && window.CohPlayer) {
+            const api = CohPlayer.attach(host, { src: host.dataset.src, label: T('Play the conversation', 'Écouter'), accent: 'var(--accent)',
+              onPlay: () => { if (window.speechSynthesis && speechSynthesis.speaking) { speechSynthesis.cancel(); quita(); } } });
+            api.audio.onerror = () => { api.stop(); leerTodo(); };   // sin mp3: la voz del navegador
+          } else if (host) {
+            // sin coh-player.js (no cargo): un boton simple
+            const au = new Audio(host.dataset.src); au.preload = 'none';
+            host.innerHTML = `<button class="t-btn sm" type="button">▶ ${T('Play the conversation', 'Écouter')}</button>`;
+            const btn = host.firstElementChild;
+            btn.onclick = () => { if (!au.paused) { au.pause(); btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; return; } btn.textContent = `⏸ ${T('Pause', 'Pause')}`; au.play().catch(() => leerTodo()); };
+            au.onended = () => { btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; };
+            au.onerror = () => leerTodo();
+          }
           el.querySelectorAll('.bb .say').forEach(b => b.onclick = () => {
             const l = lineas[+b.dataset.i]; SAY.frase(String(l.text).replace(/<[^>]+>/g, ''), b, 'grammar'); });
         } },

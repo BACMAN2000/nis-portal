@@ -58,6 +58,12 @@ def slug(t):
     t = t.replace("'", ''); t = re.sub(r'[^a-z0-9]+', '-', t).strip('-')
     return t[:60]
 def limpia(t): return re.sub(r'<[^>]+>', '', str(t)).replace('&amp;', '&')
+# Lo que se manda a la voz: la raya larga («found them — they're in the bag»)
+# edge-tts la lee como una pausa larga y la frase siguiente arranca cortada
+# (Paolo, 19-sep-2026: «después de la coma que no se detenga mucho… no suena
+# natural»). Como coma la ilación es la de hablar. El slug NO cambia: sale del
+# texto original, igual que en el navegador.
+def para_voz(t): return re.sub(r'\s*—\s*', ', ', limpia(t)).replace(', ,', ',')
 
 def es_conversacion(t):
     return bool(re.search(r'[“"]', limpia(t))) and bool(re.search(NOMBRE, limpia(t)))
@@ -190,16 +196,19 @@ async def main():
                 if sb in vistos and vistos[sb] != (who, txt): print(f"  ! choque de slug {sb}: {vistos[sb][0]} / {who}")
                 vistos[sb] = (who, txt)
                 if os.path.exists(db) and not force: continue
-                await edge_tts.Communicate(limpia(txt), ELENCO.get(who or NARRADOR, EXTRA['m']), rate=RATE).save(db); hechos += 1
+                await edge_tts.Communicate(para_voz(txt), ELENCO.get(who or NARRADOR, EXTRA['m']), rate=RATE).save(db); hechos += 1
         if os.path.exists(dest) and not force: saltados += 1; continue
         if conv:
             g = guion(t, lv + "/" + fn)
-            script = "\n".join(f"{who or NARRADOR}: {txt}" for who, txt, _ in g)
+            # por bocadillos fundidos, no por trozos: «"Twice a week," says
+            # Nadia, "on Tuesdays…"» es UNA frase y se graba de una vez
+            bocs = bocadillos(g)
+            script = "\n".join(f"{who or NARRADOR}: {para_voz(txt)}" for who, txt in bocs)
             await gsa.genera(dest, script, ELENCO); hechos += 1
-            print(f"  conv    {s}.mp3  ({len(g)} trozos, {len(set(w for w, _, _ in g if w))} voces)")
+            print(f"  conv    {s}.mp3  ({len(bocs)} bocadillos, {len(set(w for w, _ in bocs if w))} voces)")
         else:
             v = voz_de(s, es_gancho)
-            await edge_tts.Communicate(t, v, rate=RATE).save(dest); hechos += 1
+            await edge_tts.Communicate(para_voz(t), v, rate=RATE).save(dest); hechos += 1
             print(f"  {v[6:-6]:7} {s}.mp3")
     print(f"{hechos} grabadas, {saltados} ya estaban")
 

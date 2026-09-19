@@ -271,8 +271,10 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
 .teen .t-dlg .bb{max-width:78%;padding:.6rem .9rem;border-radius:16px;background:var(--surface);border:1px solid var(--line);line-height:1.5;position:relative}
 .teen .t-dlg .ln.r .bb{background:color-mix(in srgb,var(--accent) 10%,var(--surface));border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
 .teen .t-dlg .bb .who{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.15rem}
-.teen .t-dlg .bb .say{position:absolute;right:.35rem;bottom:.25rem;border:0;background:none;cursor:pointer;font-size:.85rem;opacity:.55}
-.teen .t-dlg .bb .say:hover{opacity:1}
+.teen .t-dlg .bb .say{display:inline-flex;align-items:center;justify-content:center;width:1.8rem;height:1.8rem;border-radius:50%;border:0;background:var(--surface2);cursor:pointer;font-size:.85rem;padding:0;margin:0 .15rem 0 0;vertical-align:-.35rem;-webkit-appearance:none;appearance:none}
+.teen .t-dlg .dlg-player{margin:0 0 .8rem;color:var(--ink)}
+.teen .t-dlg .dlg-player.cohp{background:var(--surface);border-color:var(--line);border-radius:14px}
+.teen .t-dlg .bb .say:hover{background:var(--accent);color:#fff}
 .teen .t-dlg .ln.playing .bb{outline:2px solid var(--accent)}
 .teen .t-dlg audio{width:100%;margin-top:.6rem}
 /* practica */

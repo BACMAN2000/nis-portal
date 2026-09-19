@@ -20,7 +20,9 @@ VOCES = {
     "Mateo": "en-GB-RyanNeural",
     "Liam": "en-GB-ThomasNeural",
 }
-limpia = lambda t: re.sub(r"<[^>]+>", "", t).replace("&amp;", "&")
+# la raya larga se lee como coma: como pausa larga la frase siguiente arranca
+# cortada y no suena natural (Paolo, 19-sep-2026)
+limpia = lambda t: re.sub(r"\s*—\s*", ", ", re.sub(r"<[^>]+>", "", t).replace("&amp;", "&")).replace(", ,", ",")
 
 
 async def main():
