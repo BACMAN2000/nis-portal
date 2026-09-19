@@ -254,13 +254,15 @@ function studentHub(){
   const gLabel = (gkey && GRADE_META[gkey]) ? GRADE_META[gkey][1] : 'Classes';
   const classesGo = gkey ? "window._nav('classes_"+gkey+"')" : "window._nav('classes')";
   const camInfo = _camGradeInfo();
-  const camDesc = camInfo ? 'Your route: '+camInfo.label+' · course · practice tests · mocks' : 'Course · practice tests · mocks';
+  // Sin «mocks» para el alumno: el dia del mock su portada ES el mock (mock
+  // mode) y los demas dias no hay tarjeta de mocks que mostrarle.
+  const camDesc = camInfo ? 'Your route: '+camInfo.label+' · course · practice tests' : 'Course · practice tests';
   $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not set')} — What would you like to do today?</p>
     ${_bandaMiUnidad()}
     <div class="grid cols-2 track-grid" style="margin-top:16px">
       ${_trackCard('🏫','My classes',gLabel+': units, activities, readers and unit exams',classesGo,['🎯 Units','🎲 Activities','📚 Readers'])}
-      ${_trackCard('🎓','Cambridge',camDesc,"window._nav('cambridge')",['📘 Course','🎯 Practice tests','🎓 Mocks'])}
+      ${_trackCard('🎓','Cambridge',camDesc,"window._nav('cambridge')",['📘 Course','🎯 Practice tests'])}
     </div>
     <div id="serie-card"></div>
     <h2 style="margin:22px 0 8px">More</h2>

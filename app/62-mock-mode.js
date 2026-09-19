@@ -184,7 +184,9 @@ async function mockModePanel(op){
     const [off, acc, ind] = await Promise.all([
       sb.from('mock_official').select('mock,updated_at').eq('id',1).maybeSingle(),
       sb.from('mock_access').select('grade_id,unlocked,updated_at').order('grade_id'),
-      sb.from('mock_individual').select('student_id,mock,level,updated_at, profiles(full_name,grade_id,section,cefr_level,grades(name))').order('updated_at',{ascending:false}),
+      // profiles va por su FK: la tabla tiene dos (student_id y updated_by) y sin
+      // nombrarla PostgREST no sabe cual embeber.
+      sb.from('mock_individual').select('student_id,mock,level,updated_at, profiles!mock_individual_student_id_fkey(full_name,grade_id,section,cefr_level,grades(name))').order('updated_at',{ascending:false}),
     ]);
     if(off.error||acc.error||ind.error) throw (off.error||acc.error||ind.error);
     _mm.official = off.data || {mock:null};
