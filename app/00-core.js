@@ -7,7 +7,12 @@ const sb = (window.supabase && window.supabase.createClient) ? window.supabase.c
 const $ = (s, r=document) => r.querySelector(s);
 const app = $('#app');
 const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const GRADES = Array.from({length:11},(_,i)=>({id:i+1,name:'G'+(i+1)}));
+const GRADES = Array.from({length:11},(_,i)=>({id:i+1,name:'G'+(i+1)}))
+  // Aula de profesores (19-sep-2026): dos grupos de examen para los docentes,
+  // en `grades` como 12 y 13. staff:true los distingue donde haga falta;
+  // el resto del portal los trata como un grado mas (candados, mocks,
+  // resultados, View as). Ver app/63-teachers-room.js.
+  .concat([{id:12,name:'Teachers · Primary',staff:true},{id:13,name:'Teachers · Secondary',staff:true}]);
 const LEVELS = ['A2','B1','B2','C1'];
 const SKILLS = ['Reading','Listening','Writing'];
 /* Motor de simulacros (repo mocks-cambridge), servido SIEMPRE desde este mismo

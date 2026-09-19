@@ -264,7 +264,7 @@
   "Practice tests open": "Tests de práctica abiertos",
   "Mocks closed": "Simulacros cerrados",
   "Mocks open": "Simulacros abiertos",
-  "Practice tests": "Tests de práctica",
+  "Practice tests": "Practice tests",
   "Main Suite": "Main Suite",
   "Fun for Nordic ·": "Fun for Nordic ·",
   "YLE ·": "YLE ·",
@@ -434,7 +434,23 @@
   "Stay on this page until you submit: leaving it is recorded for your teacher.": "Quédate en esta página hasta entregar: salir queda registrado para tu profesor.",
   "You left full screen — the exam is paused": "Saliste de pantalla completa — el examen está en pausa",
   "⛶ Return to full screen and continue": "⛶ Volver a pantalla completa y continuar",
-  "Stay in the exam until you submit: leaving the app is recorded for your teacher. For full screen on iPad, open the Portal from its Home Screen icon.": "Quédate en el examen hasta entregar: salir de la app queda registrado para tu profesor. Para pantalla completa en iPad, abre el Portal desde su icono de la pantalla de inicio."
+  "Stay in the exam until you submit: leaving the app is recorded for your teacher. For full screen on iPad, open the Portal from its Home Screen icon.": "Quédate en el examen hasta entregar: salir de la app queda registrado para tu profesor. Para pantalla completa en iPad, abre el Portal desde su icono de la pantalla de inicio.",
+  "🧑‍🏫 Teachers' Room": "🧑‍🏫 Aula de profesores",
+  "Teachers' Room": "Aula de profesores",
+  "Primary teachers": "Profesores de primaria",
+  "Secondary teachers": "Profesores de secundaria",
+  "Teachers of Grades 1-5": "Profesores de 1.º a 5.º",
+  "Teachers of Grades 6-11": "Profesores de 6.º a 11.º",
+  "➕ New account": "➕ Nueva cuenta",
+  "🔓 Open Mocks": "🔓 Abrir mocks",
+  "🔒 Mocks locked": "🔒 Mocks bloqueados",
+  "No accounts yet. Create one per teacher with ➕ New account.": "Todavía no hay cuentas. Crea una por profesor con ➕ Nueva cuenta.",
+  "Reading, Listening and Writing in Cambridge format, at any level.": "Reading, Listening y Writing en formato Cambridge, en cualquier nivel.",
+  "Your results in mocks and practice tests.": "Tus resultados en mocks y practice tests.",
+  "Where everything is.": "Dónde está cada cosa.",
+  "On the mock day, the admin opens the mock for your group and this page shows only your mock card: choose your level (or sit the one set on your profile) and take the papers in order.": "El día del mock, el admin lo abre para tu grupo y esta página muestra solo tu tarjeta del mock: elige tu nivel (o rinde el que tenga tu perfil) y haz los papers en orden.",
+  "← Back to Teachers' Room": "← Volver al Aula de profesores",
+  "Two exam groups for the teachers, separate from the students: Primary and Secondary. Each teacher gets an exam account here (different from the account they teach with); with it they sit the practice tests any day and the mock on the day you open it for the group in 🔓 Open Mocks — same mock number as the school, each teacher at their own level (set it on the account, or let them choose). Results appear in 📝 Results and 🎓 Final result under the group.": "Dos grupos de examen para los profesores, aparte de los alumnos: Primaria y Secundaria. Cada profesor recibe aquí una cuenta de examen (distinta de la cuenta con la que da clase); con ella rinde los practice tests cualquier día y el mock el día que lo abras para el grupo en 🔓 Abrir mocks — el mismo número de mock que el colegio, cada profesor en su nivel (ponlo en la cuenta o deja que elija). Los resultados salen en 📝 Resultados y 🎓 Resultado final bajo el grupo."
  },
  "patterns": [
   [

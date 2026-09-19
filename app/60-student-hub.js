@@ -33,7 +33,15 @@ async function renderStudent(initial){
   // «Cambridge» de antes (con el curso del grado y los simulacros) sale de
   // aqui: sus tres puertas viven ahora dentro de la propia pista Cambridge
   // (studentCambridgePortal), que ya sabe que grado la mira.
-  document.body.innerHTML = shell(mockModeActive() ? [{key:'home',label:'🏠 Home'}] : [
+  // Aula de profesores: barra corta (sin clases, cursos ni herramientas de un grado).
+  const _staffRoom = !mockModeActive() && typeof isStaffGrade==='function' && isStaffGrade(state.profile && state.profile.grade_id);
+  document.body.innerHTML = shell(mockModeActive() ? [{key:'home',label:'🏠 Home'}] : _staffRoom ? [
+    {key:'home',label:'🏠 Home'},
+    {key:'practice',label:'🎯 Practice tests'},
+    {key:'results',label:'📊 My Progress'},
+    {key:'help',label:'❓ Help'},
+    {key:'account',label:'👤 My account'},
+  ] : [
     {key:'home',label:'🏠 Home'},
     {key:'myclasses',label:'🏫 My classes'},
     ...(nodeVisible('french') ? [{key:'french',label:'🇫🇷 French'}] : []),
@@ -245,6 +253,7 @@ function _bandaMiUnidad(){
 
 function studentHub(){
   if(mockModeActive()) return mockModeHub();   // dia de mock: solo la tarjeta del mock
+  if(typeof isStaffGrade==='function' && isStaffGrade(state.profile && state.profile.grade_id)) return teacherRoomHub();   // aula de profesores
   _setNav('home');
   const p=state.profile;
   // Fase 2 WP-B: dos tarjetas grandes de pista (My classes / Cambridge) en

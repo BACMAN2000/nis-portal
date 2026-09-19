@@ -18,6 +18,7 @@ async function renderAdmin(tab='users'){
     {group:'People', icon:'👥', items:[
       {key:'users',label:'👥 Users'},
       {key:'teachers',label:'👨‍🏫 Teachers'},
+      {key:'teachersroom',label:"🧑‍🏫 Teachers' Room"},
     ]},
     /* Clases = dar clase: la materia, la secuencia, el material y las dos
        herramientas del profesor. Antes esto se llamaba Ensenanza y tenia doce
@@ -151,6 +152,7 @@ async function renderAdmin(tab='users'){
   if(tab==='scope') return scopePanel();
   if(tab==='littlereaders') return littleReadersPanel();
   if(tab==='teachers') return adminTeachers();
+  if(tab==='teachersroom') return teachersRoomPanel();
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(tab==='pizarra') return $('#main').innerHTML = pizarraBody();
