@@ -428,7 +428,12 @@
   "🏫 Back to the Portal": "🏫 Volver al Portal",
   "Not published yet: the coordination team uploads it and it appears here on its own. Until then there is nothing to open or print.": "Todavía no está publicado: el equipo de coordinación lo sube y aparece aquí solo. Hasta entonces no hay nada que abrir ni imprimir.",
   "The coordination team publishes it; until then there is nothing to open.": "Lo publica el equipo de coordinación; hasta entonces no hay nada que abrir.",
-  "Your teacher has not assigned a book to your class yet. Meanwhile, all the readers are in the Library.": "Tu profesor aún no ha asignado un libro a tu salón. Mientras tanto, todos los readers están en la Biblioteca."
+  "Your teacher has not assigned a book to your class yet. Meanwhile, all the readers are in the Library.": "Tu profesor aún no ha asignado un libro a tu salón. Mientras tanto, todos los readers están en la Biblioteca.",
+  "Start in full screen": "Empezar en pantalla completa",
+  "The exam opens in full screen. Stay in it until you submit: leaving it pauses the exam and is recorded for your teacher.": "El examen se abre en pantalla completa. Quédate en ella hasta entregar: salir pausa el examen y queda registrado para tu profesor.",
+  "Stay on this page until you submit: leaving it is recorded for your teacher.": "Quédate en esta página hasta entregar: salir queda registrado para tu profesor.",
+  "You left full screen — the exam is paused": "Saliste de pantalla completa — el examen está en pausa",
+  "⛶ Return to full screen and continue": "⛶ Volver a pantalla completa y continuar"
  },
  "patterns": [
   [
