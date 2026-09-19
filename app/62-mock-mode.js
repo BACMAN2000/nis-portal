@@ -150,7 +150,7 @@ function mockModeHub(){
       // <div role=button>, no <button>: Safari en iPad recorta el contenido en
       // bloque dentro de <button> y dejaba los rectangulos en blanco (19-sep-2026).
       return `<div class="mock-paper${h?' done':(n?' next':'')}" role="button" tabindex="${h?'-1':'0'}" ${h?'aria-disabled="true"':`onclick="window._mockGo('${sk}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window._mockGo('${sk}')}"`}>
-        <span class="num">${h?'✓':(i+1)}</span><span class="ic">${MOCK_SKILL_ICON[sk]}</span><b>${esc(MOCK_SKILL_LABEL[sk])}</b>
+        <span class="num">${h?'✓':(i+1)}</span><span class="ic">${cardIcon(MOCK_SKILL_ICON[sk],sk,40)}</span><b>${esc(MOCK_SKILL_LABEL[sk])}</b>
         <small>${h?'Submitted':(n?'Next · start':'Pending')}</small></div>`;
     }).join('');
     const texto = !pend.length ? `Done! You have submitted all ${skills.length} papers. Tomorrow the portal is back to normal.`

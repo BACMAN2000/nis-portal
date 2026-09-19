@@ -182,7 +182,7 @@ window.saveMyPassword=async function(){
 function _hubCard(emoji,title,desc,onclick,extra){
   return `<div class="card center" ${onclick?`onclick="${onclick}" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}"`:''} style="cursor:${onclick?'pointer':'default'};padding:28px 16px;margin-bottom:0;transition:.15s"
     onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-    <div style="font-size:3rem;line-height:1">${emoji}</div>
+    <div class="card-ico" style="font-size:3rem;line-height:1">${cardIcon(emoji,title,76)}</div>
     <h2 style="margin:10px 0 4px;color:var(--blue-d)">${title}</h2>
     <div class="muted" style="font-size:.85rem">${desc}</div>${extra||''}
   </div>`;
@@ -193,7 +193,7 @@ function _trackCard(emoji,title,desc,onclick,chips){
   const pastillas = (chips||[]).map(c=>`<span class="chip">${c}</span>`).join('');
   return `<div class="card track-card" onclick="${onclick}" tabindex="0" role="button"
       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}">
-    <div class="ico">${emoji}</div>
+    <div class="ico">${cardIcon(emoji,title,68)}</div>
     <h2>${title}</h2>
     <div class="muted" style="font-size:.88rem">${desc}</div>
     <div class="track-chips">${pastillas}</div>
@@ -473,7 +473,7 @@ function nodeVisible(key){
 }
 function _lockedCard(emoji,title,desc){
   return `<div class="card center" style="padding:28px 16px;margin-bottom:0;opacity:.7">
-    <div style="font-size:3rem;line-height:1">${emoji}</div>
+    <div class="card-ico" style="font-size:3rem;line-height:1">${cardIcon(emoji,title,76)}</div>
     <h2 style="margin:10px 0 4px;color:var(--blue-d)">${title}</h2>
     <div class="muted" style="font-size:.85rem">${desc||''}</div>
     <div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Your teacher will unlock this</div>

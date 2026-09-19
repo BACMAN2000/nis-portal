@@ -631,14 +631,14 @@ function _withBack(href,route){
 function _skillCard(emoji,title,desc,href){
   return `<a class="card center" href="${href}" style="text-decoration:none;color:inherit;display:block;padding:30px 18px;margin-bottom:0;transition:.15s"
       onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-      <div style="font-size:3.4rem;line-height:1">${emoji}</div>
+      <div class="card-ico" style="font-size:3.4rem;line-height:1">${cardIcon(emoji,title,84)}</div>
       <h2 style="margin:10px 0 2px;color:var(--blue-d)">${title}</h2>
       <div class="muted" style="font-size:.85rem">${desc}</div>
     </a>`;
 }
 function _soonCard(emoji,title,desc){
   return `<div class="card center" style="padding:30px 18px;margin-bottom:0;opacity:.75">
-      <div style="font-size:3.4rem;line-height:1">${emoji}</div>
+      <div class="card-ico" style="font-size:3.4rem;line-height:1">${cardIcon(emoji,title,84)}</div>
       <h2 style="margin:10px 0 2px;color:var(--blue-d)">${title}</h2>
       <div class="muted" style="font-size:.85rem">${desc}</div>
       <div class="badge" style="background:var(--lila);color:var(--blue-dd);margin-top:10px">Coming soon</div>

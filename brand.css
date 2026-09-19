@@ -307,6 +307,10 @@ button:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
 .track-card{min-height:150px;cursor:pointer;transition:.16s;display:flex;flex-direction:column;justify-content:center}
 .track-card:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 14px 28px -18px rgba(36,76,119,.45)}
 .track-card .ico{font-size:2.6rem;line-height:1;margin-bottom:6px}
+/* Iconos 3D de las tarjetas (app/05-icons3d.js): la sombra los apoya en la tarjeta. */
+.ico3d{display:inline-block;vertical-align:middle;object-fit:contain;filter:drop-shadow(0 8px 12px rgba(36,76,119,.22));transition:transform .16s}
+.card:hover .ico3d{transform:translateY(-2px) scale(1.04)}
+.mock-paper .ic .ico3d{filter:drop-shadow(0 3px 5px rgba(36,76,119,.25))}
 .track-card h2{margin:0 0 4px;color:var(--blue-d);font-size:1.15rem}
 .track-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .track-chips .chip{background:var(--lila);color:var(--blue-dd);font-size:.76rem;font-weight:600;padding:4px 10px;border-radius:999px}
