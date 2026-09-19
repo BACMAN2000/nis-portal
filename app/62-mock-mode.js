@@ -37,14 +37,12 @@ function _mockHoyISO(){
   return lima + 'T05:00:00.000Z';
 }
 /* Niveles entre los que puede rendir el alumno: el de su perfil si lo tiene;
-   si no, los de la ruta de su grado (A1 Foundations no es examen); si no, los
-   cuatro. */
+   si no, LOS CUATRO. (El 19-sep-2026 se limitaba a la ruta del grado y en
+   8.º no salia C1: el mock es «independientemente del nivel», asi que el
+   alumno elige el que le diga su profesor, sea cual sea su grado.) */
 function _mockLevelsFor(p){
   const fijo = String(p.cefr_level||'').toUpperCase();
-  if(MOCK_LEVELS.includes(fijo)) return [fijo];
-  const map = { ket:'A2', pet:'B1', b2f:'B2', c1a:'C1' };
-  const ruta = (p.grade_id!=null && typeof secCoursesFor==='function') ? secCoursesFor('g'+p.grade_id).map(c=>map[c]).filter(Boolean) : [];
-  return ruta.length ? ruta : MOCK_LEVELS.slice();
+  return MOCK_LEVELS.includes(fijo) ? [fijo] : MOCK_LEVELS.slice();
 }
 
 /* ---------- el alumno: ¿esta hoy en mock mode? ---------- */
