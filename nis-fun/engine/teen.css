@@ -248,7 +248,8 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
 .teen .t-use h4 .n{width:1.6rem;height:1.6rem;border-radius:50%;background:var(--accent);color:#fff;font-size:.8rem;display:grid;place-items:center;flex:none}
 .teen .t-use ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
 .teen .t-use li{display:flex;gap:.6rem;align-items:flex-start;padding:.55rem .7rem;border-radius:10px;background:var(--surface2);line-height:1.5}
-.teen .t-use li button{flex:none;width:1.9rem;height:1.9rem;border-radius:50%;border:0;background:var(--surface);color:var(--accent);cursor:pointer;box-shadow:var(--t-sh)}
+.teen .t-use li button{flex:none;width:1.9rem;height:1.9rem;min-width:1.9rem;padding:0;margin-top:.1rem;box-sizing:border-box;border-radius:50%;border:0;background:var(--surface);color:var(--accent);cursor:pointer;box-shadow:var(--t-sh);
+  display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:.85rem;-webkit-appearance:none;appearance:none}
 .teen .t-use li button:hover{background:var(--accent);color:#fff}
 .teen .t-use li .note{display:block;font-size:.8rem;color:var(--soft);font-style:italic;margin-top:.1rem}
 .teen .t-wo{max-width:52rem;margin:0 auto;text-align:left;display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(22rem,1fr))}
@@ -279,7 +280,8 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
 .teen .t-pr .instr{color:var(--soft);font-style:italic;margin:0 0 .8rem}
 .teen .t-pr .item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;margin-bottom:.6rem;box-shadow:var(--t-sh)}
 .teen .t-pr .stem{font-size:1.02rem;line-height:1.5;margin-bottom:.5rem}
-.teen .t-pr .stem b{border-bottom:2px solid var(--accent);padding:0 .3rem}
+/* El hueco: una sola raya. Antes el <b> traia guiones bajos Y borde inferior, y se veia doble (19-sep-2026). */
+.teen .t-pr .stem b.blank{display:inline-block;min-width:3.2rem;height:1em;vertical-align:-.1em;border-bottom:2px solid var(--accent);margin:0 .15rem}
 /* Reading Part 1 (A2 Key / B1 Preliminary): el aviso, cartel o mensaje corto se pinta como un cartel
    antes de la pregunta. Lo escribe el contenido como <div class="notice">…</div> dentro de sentence. */
 .teen .exam .stem .notice{display:block;max-width:26rem;margin:.25rem 0 .6rem;padding:.7rem 1rem;border:2px solid var(--ink,#1e293b);border-radius:10px;background:var(--surface);font-weight:700;letter-spacing:.01em;line-height:1.35;box-shadow:var(--t-sh)}
@@ -358,7 +360,10 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
 .teen .t-hook .story b{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:5px;padding:0 .2em}
 .teen .t-hook .ask{margin:0;display:flex;gap:.5rem;align-items:flex-start;padding:.6rem .8rem;border-radius:12px;background:color-mix(in srgb,var(--t-kw) 14%,var(--surface));line-height:1.5;font-weight:600}
 .teen .t-hook .ask img{flex:none;margin-top:.1rem}
-.teen .ex-say{border:0;background:var(--surface2);border-radius:50%;width:1.8rem;height:1.8rem;cursor:pointer;font-size:.85rem;vertical-align:middle;box-shadow:var(--t-sh)}
+/* Boton de voz: circulo de verdad con el altavoz en el centro. Sin flex, padding 0 y
+   line-height 1, Safari en iPad lo pintaba como un ovalo con el altavoz descuadrado (19-sep-2026). */
+.teen .ex-say{border:0;background:var(--surface2);border-radius:50%;width:1.8rem;height:1.8rem;min-width:1.8rem;flex:none;padding:0;margin:0 0 0 .2rem;box-sizing:border-box;
+  display:inline-flex;align-items:center;justify-content:center;line-height:1;cursor:pointer;font-size:.85rem;vertical-align:middle;box-shadow:var(--t-sh);-webkit-appearance:none;appearance:none}
 .teen .ex-say:hover{background:var(--accent);color:#fff}
 /* bloques de colores: la frase como Lego */
 .teen .t-bl{display:grid;gap:.6rem}

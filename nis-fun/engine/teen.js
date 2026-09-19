@@ -553,7 +553,7 @@ window.TEEN = (function () {
       ${(d.rules || []).length ? `<ol class="gb-rules">${d.rules.map(r => `<li>${inl(r)}</li>`).join('')}</ol>` : ''}
     </div>
     ${pr.length ? `<div class="gb-practice t-pr"><p class="gb-ph"><b>${T('Your turn', 'À toi')}</b>${d.practice.instructions ? ` · ${inl(d.practice.instructions)}` : ''}</p>
-      ${pr.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence).replace('___', '<b>____</b>')}</div>
+      ${pr.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence).replace('___', '<b class="blank"></b>')}</div>
         <div class="opts">${it.options.map((o, k) => `<button class="obtn" type="button" data-k="${k}">${inl(o)}</button>`).join('')}</div>${it.why ? `<p class="why">${inl(it.why)}</p>` : ''}</div>`).join('')}
       <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>` : ''}`;
     el.querySelectorAll('.gb-ex .clue-say').forEach(b => b.onclick = () => {
@@ -596,7 +596,7 @@ window.TEEN = (function () {
   }
   function practicaMC(bl) {
     return `<div class="t-pr"><p class="instr">${inl(bl.instructions || '')}</p>
-      ${bl.items.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence).replace('___', '<b>____</b>')}</div>
+      ${bl.items.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence).replace('___', '<b class="blank"></b>')}</div>
         <div class="opts">${it.options.map((o, k) => `<button class="obtn" type="button" data-k="${k}">${inl(o)}</button>`).join('')}</div>${it.why ? `<p class="why">${inl(it.why)}</p>` : ''}</div>`).join('')}
       <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
   }

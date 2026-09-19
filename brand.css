@@ -1,8 +1,8 @@
 /* ===== Nordic International School — brand system ===== */
-@font-face{font-family:'Gotham';src:url('fonts/GothamBook.woff2?v=6e4a7bd8') format('woff2'),url('fonts/GothamBook.ttf?v=0cdd374f') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.woff2?v=e939ebc0') format('woff2'),url('fonts/GothamMedium.ttf?v=d9b22a9f') format('truetype');font-weight:500;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamBold.woff2?v=70f744e5') format('woff2'),url('fonts/GothamBold.ttf?v=ba90beb3') format('truetype');font-weight:700;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamLight.woff2?v=63f19c6d') format('woff2'),url('fonts/GothamLight.ttf?v=5f8edada') format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBook.woff2?v=a8d93b82') format('woff2'),url('fonts/GothamBook.ttf?v=08b726d4') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.woff2?v=8c46569d') format('woff2'),url('fonts/GothamMedium.ttf?v=d8cfe8f9') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBold.woff2?v=afa343cc') format('woff2'),url('fonts/GothamBold.ttf?v=042744e4') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamLight.woff2?v=c71ad694') format('woff2'),url('fonts/GothamLight.ttf?v=4db5a96b') format('truetype');font-weight:300;font-display:swap}
 
 :root{
   --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
