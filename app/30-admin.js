@@ -522,35 +522,10 @@ function _examPreviewCard(branch){
       </div>
     </div>`;
 }
-async function adminMocks(){
-  const { data, error } = await sb.from('mock_access').select('grade_id, unlocked, updated_at').order('grade_id');
-  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
-  const map={}; (data||[]).forEach(r=>map[r.grade_id]=r);
-  const rows = GRADES.map(g=>{
-    const r=map[g.id]; const on=!!(r&&r.unlocked);
-    const when = (r&&r.updated_at)?new Date(r.updated_at).toLocaleString():'';
-    return `<tr>
-      <td><b>${g.name}</b></td>
-      <td><span class="badge ${on?'on':'off'}">${on?'🔓 Unlocked':'🔒 Locked'}</span></td>
-      <td class="muted" style="font-size:.82rem">${when}</td>
-      <td><button class="btn sm ${on?'ghost':''}" onclick="window._toggleMock(${g.id}, ${on?'false':'true'}, this)">${on?'Lock':'Unlock'}</button></td>
-    </tr>`;
-  }).join('');
-  $('#main').innerHTML = `<h1>Mocks — access control</h1>
-    <div class="note">By default <b>MOCKS are locked</b> for students: they are official exams and only the admin enables them by grade when scheduled. <b>Practice Tests</b> are managed in their own 🎯 tab (admin and teachers). Teachers and administrators always see the mocks.</div>
-    ${_examPreviewCard('mocks')}
-    <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Grade</th><th>Mocks status</th><th>Last updated</th><th></th></tr></thead>
-      <tbody>${rows}</tbody></table></div>`;
-}
-window._toggleMock = async (gradeId, to, btn)=>{
-  if(btn){ btn.disabled=true; btn.textContent='…'; }
-  const { error } = await sb.from('mock_access').upsert(
-    { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
-    { onConflict:'grade_id' });
-  if(error){ alert('Could not update: '+error.message); }
-  adminMocks();
-};
+/* 🔓 Open Mocks: desde el 18-sep-2026 es el panel de mock mode
+   (app/62-mock-mode.js): el numero de mock que rinde todo el colegio, el
+   candado por grado de siempre y el mock individual por alumno. */
+async function adminMocks(){ return mockModePanel({admin:true}); }
 /* 🎯 Practice Tests — control por grado. A diferencia de los Mocks (admin-only),
    aquí también escriben los profesores cuyo teacher_access cubre el grado (RLS
    practice_access). Sin fila en la tabla ⇒ DESBLOQUEADO (default abierto). */

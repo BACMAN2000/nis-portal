@@ -23,13 +23,17 @@ async function renderStudent(initial){
   // pestaña hasta la siguiente navegacion.
   window.__nisPaso='alumno:acceso';
   state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
+  // Mock mode (18-sep-2026): si hoy le toca mock (oficial de su grado o
+  // individual), la barra es solo Home y la portada es solo la tarjeta del
+  // mock. Se decide aqui, antes de pintar, igual que el acceso.
+  state.mockMode = await loadMockMode();
   window.__nisPaso='alumno:acceso-ok';
   // Barra nueva (Fase 2 WP-B): Home / My classes / (French si toca) /
   // Cambridge / Practice tools / My progress / Help / My account. El grupo
   // «Cambridge» de antes (con el curso del grado y los simulacros) sale de
   // aqui: sus tres puertas viven ahora dentro de la propia pista Cambridge
   // (studentCambridgePortal), que ya sabe que grado la mira.
-  document.body.innerHTML = shell([
+  document.body.innerHTML = shell(mockModeActive() ? [{key:'home',label:'🏠 Home'}] : [
     {key:'home',label:'🏠 Home'},
     {key:'myclasses',label:'🏫 My classes'},
     ...(nodeVisible('french') ? [{key:'french',label:'🇫🇷 French'}] : []),
@@ -240,6 +244,7 @@ function _bandaMiUnidad(){
 }
 
 function studentHub(){
+  if(mockModeActive()) return mockModeHub();   // dia de mock: solo la tarjeta del mock
   _setNav('home');
   const p=state.profile;
   // Fase 2 WP-B: dos tarjetas grandes de pista (My classes / Cambridge) en
@@ -366,7 +371,7 @@ const ENGLISH_AREAS = [
   // y sus niveles); Mocks y Practice Tests son los atajos a los simulacros que
   // el alumno ya conoce por su nombre, y por eso no se retiran.
   {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge', block:'exam'},
-  {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks', block:'exam'},
+  {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks', block:'exam', when:()=>!_isStudent()},
   {emoji:'🎯', title:'Practice Tests',desc:'Practice tests 1, 2 and 3 in Cambridge format, always available.', nav:'practice', node:'english.practice', block:'exam'},
   // 'My Progress' NO esta aqui: vive en la barra lateral, que es donde el
   // alumno lo busca desde cualquier pantalla. Tenerlo en los dos sitios era
@@ -791,9 +796,10 @@ function _camDoorsHTML(route){
       ? _hubCard('🎯','Practice tests','Reading, Listening and Writing in Cambridge format, always available.',"location.href='"+_withBack(QUIZ_URL+'quizzes.html',route)+"'")
       : _lockedCard('🎯','Practice tests','Cambridge practice tests.');
   }
-  // Mocks no tiene candado propio hoy (igual que en la tarjeta de siempre):
-  // ninguna puerta nueva abre algo que antes estuviera cerrado.
-  const mocksDoor = _hubCard('🎓','Mocks','MOCK 1 and MOCK 2 in official Cambridge format.',"window._nav('mocks')");
+  // La puerta «Mocks» es solo del staff (vista previa): el alumno ya no ve
+  // una tarjeta de mocks bloqueada — el dia del mock su portada ES el mock
+  // (mock mode, app/62-mock-mode.js).
+  const mocksDoor = _isStudent() ? '' : _hubCard('🎓','Mocks','MOCK 1 and MOCK 2 in official Cambridge format.',"window._nav('mocks')");
   return `<h2 style="margin:4px 0 8px">Your route: ${esc(info.label)}</h2>
     <div class="grid cols-3" style="margin-bottom:18px">${courseDoor}${testsDoor}${mocksDoor}</div>`;
 }

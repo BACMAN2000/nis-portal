@@ -50,6 +50,7 @@ async function renderTeacher(tab){
   cambridge.push({key:'uoe',label:'🧩 Use of English'});
   cambridge.push({key:'cambridgeinfo',label:'📘 Cambridge info'});
   if(teacherAllowedGrades().length) cambridge.push({key:'practice',label:'🔓 Open Practice Tests'});
+  if(teacherAllowedGrades().length) cambridge.push({key:'mockindiv',label:'🎯 Mock individual'});
   if(teacherAllowedGrades().length){
     permisos.push({key:'whatsees',label:'👁️ What each class sees'});
     permisos.push({key:'unitaccess',label:'📚 Activate units'});
@@ -104,6 +105,7 @@ async function renderTeacher(tab){
   if(active==='activities') return window.activitiesPanel({admin:false, grades:teacherAllowedGrades()});
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
+  if(active==='mockindiv') return mockModePanel({admin:false});
   if(active==='unitaccess') return unitAccessPanel(teacherAllowedGrades());
   if(active==='whatsees') return window.accessPanel({admin:false, grades:teacherAllowedGrades().map(g=>g.id)});
   if(active==='classes') return studentClasses();

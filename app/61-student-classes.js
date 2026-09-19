@@ -565,6 +565,8 @@ function irAMiUnidad(){
 /* Pinta una vista. Devuelve true si la clave era una ruta conocida. */
 function _navRender(k){
   let m;
+  // Dia de mock (app/62-mock-mode.js): ninguna ruta salvo Home responde.
+  if(mockModeActive() && k!=='home'){ mockModeBlock(); mockModeHub(); return true; }
   // Francés primero: sus rutas llevan el prefijo fr_ y si no, `classes_(g\d+)`
   // se las tragaría y pintaría la vista de inglés.
   if(m=/^fr_classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeActivities(m[1],m[2],'french'); return true; }
@@ -642,6 +644,9 @@ function _soonCard(emoji,title,desc){
     </div>`;
 }
 function studentMocks(){
+  // El alumno ya no tiene vista de mocks: el dia del mock su portada es el
+  // mock (mock mode); los demas dias no hay nada que enseñarle aqui.
+  if(_isStudent()){ studentHub(); return; }
   _setNav('mocks');
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
     <p class="muted" style="margin-top:-6px">MOCK 1 and MOCK 2 in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.</p>
