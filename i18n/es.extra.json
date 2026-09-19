@@ -425,7 +425,10 @@
   "You have no mock active today.": "Hoy no tienes ningún mock activo.",
   "Choose your level on the Portal first.": "Elige primero tu nivel en el Portal.",
   "Could not check your mock. Go back to the Portal and try again.": "No se pudo comprobar tu mock. Vuelve al Portal e inténtalo de nuevo.",
-  "🏫 Back to the Portal": "🏫 Volver al Portal"
+  "🏫 Back to the Portal": "🏫 Volver al Portal",
+  "Not published yet: the coordination team uploads it and it appears here on its own. Until then there is nothing to open or print.": "Todavía no está publicado: el equipo de coordinación lo sube y aparece aquí solo. Hasta entonces no hay nada que abrir ni imprimir.",
+  "The coordination team publishes it; until then there is nothing to open.": "Lo publica el equipo de coordinación; hasta entonces no hay nada que abrir.",
+  "Your teacher has not assigned a book to your class yet. Meanwhile, all the readers are in the Library.": "Tu profesor aún no ha asignado un libro a tu salón. Mientras tanto, todos los readers están en la Biblioteca."
  },
  "patterns": [
   [

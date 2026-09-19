@@ -572,8 +572,7 @@ function _uexTarjetas(grade, porBloque, abiertosPorBloque, notas){
       <h2 style="margin:6px 0 2px;font-size:1.05rem">${_uexRotulo(b)}</h2>
       <p class="muted" style="margin:0 0 6px;font-size:.85rem">${titulos}</p>
       ${chip}${resumen}${botones}
-      ${n?'':`<p class="muted" style="margin:8px 0 0;font-size:.78rem">It will appear here as soon as it is uploaded
-         with <code>exams/sube_examen.py</code>. Until then there is nothing to open or print.</p>`}
+      ${n?'':`<p class="muted" style="margin:8px 0 0;font-size:.78rem">Not published yet: the coordination team uploads it and it appears here on its own. Until then there is nothing to open or print.</p>`}
     </div>`; }).join('')}</div>`;
 }
 window._uexAbreBloque=(units,vista)=>{ uexCtl.units=units; uexCtl.vista=vista||'abrir'; unitExamPanel(); };
@@ -649,7 +648,7 @@ async function unitExamPanel(){
   if(!publicados.size){
     $('#main').innerHTML=`<h1>📋 Unit exams</h1>${volver}
       <div class="note info">There is no exam published yet for ${uexCtl.grade.toUpperCase()} · units ${uexCtl.units}.
-      They are uploaded with <code>exams/sube_examen.py</code>; until then there is nothing to open.</div>`;
+      The coordination team publishes it; until then there is nothing to open.</div>`;
     return;
   }
   if(enNotas){

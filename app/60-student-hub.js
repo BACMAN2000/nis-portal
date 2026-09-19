@@ -257,11 +257,14 @@ function studentHub(){
   // Sin «mocks» para el alumno: el dia del mock su portada ES el mock (mock
   // mode) y los demas dias no hay tarjeta de mocks que mostrarle.
   const camDesc = camInfo ? 'Your route: '+camInfo.label+' · course · practice tests' : 'Course · practice tests';
+  // El chip «Readers» prometía lecturas a grados que no tienen readers configurados
+  // (y a los que sí, pero sin libro asignado aún, la tarjeta del grado no salía).
+  const _hasReaders = !!(gkey && typeof READER_BOOKS !== 'undefined' && (READER_BOOKS[gkey]||[]).length);
   $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
-    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not set')} — What would you like to do today?</p>
+    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''}${p.cefr_level?' · Level '+esc(p.cefr_level):''} — What would you like to do today?</p>
     ${_bandaMiUnidad()}
     <div class="grid cols-2 track-grid" style="margin-top:16px">
-      ${_trackCard('🏫','My classes',gLabel+': units, activities, readers and unit exams',classesGo,['🎯 Units','🎲 Activities','📚 Readers'])}
+      ${_trackCard('🏫','My classes',gLabel+': units'+(_hasReaders?', activities, readers':', activities')+' and unit exams',classesGo,['🎯 Units','🎲 Activities'].concat(_hasReaders?['📚 Readers']:[]))}
       ${_trackCard('🎓','Cambridge',camDesc,"window._nav('cambridge')",['📘 Course','🎯 Practice tests'])}
     </div>
     <div id="serie-card"></div>
