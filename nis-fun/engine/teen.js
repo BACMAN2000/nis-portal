@@ -776,11 +776,103 @@ window.TEEN = (function () {
     // gramatica es un personaje ya creado, no una mascota inventada (la
     // estrella «Nova» duro un dia, 17-sep-2026). Va a la izquierda del
     // bocadillo, asi que lleva la vista que mira a la derecha.
-    const hook = d.hook ? `<div class="t-hook"><div class="guia"><img src="../assets/characters/cast/vega/right-bust.jpg?v=${CAST_V}" alt="Miss Vega" onerror="this.replaceWith(document.createTextNode('V'))"></div>
-        <div class="bb"><span class="t-kicker">Miss Vega · ${T('Look first', 'Observe d’abord')}</span><p class="story">${inl(d.hook.text)} <button class="ex-say" type="button" data-t="${esc(String(d.hook.text).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p>
-          <p class="ask">${ico('search', 22)} <span>${inl(d.hook.ask)}</span></p></div></div>` : '';
+    /* La escena puede ser una CONVERSACION («Liam: "…"», «"…," says Nadia.»,
+       «Mateo shakes his head. "…"»). Paolo (19-sep-2026): «son dos personas
+       hablando; cada parte en su bocadillo, con su foto al lado, y el altavoz
+       al principio». Las atribuciones («says Nadia», «he asks», «Sofia
+       whispers:») deciden quien habla y NO se muestran ni se leen; la
+       narracion de escena («It's Monday morning.») va en cursiva y la lee
+       Miss Vega. Son las mismas reglas que tools/grammar-lab/gen_audio_frases.py
+       (guion + bocadillos), que graba un mp3 por bocadillo con la voz de su
+       personaje: si cambias una regla aqui, cambiala alli. */
+    const H_CAST = ['Miss Vega', 'Sofia', 'Nadia', 'Mateo', 'Liam'];
+    const H_GEN = { 'Miss Vega': 'f', Sofia: 'f', Nadia: 'f', Mateo: 'm', Liam: 'm' };
+    const H_NOM = '(?:Miss Vega|Sofia|Nadia|Mateo|Liam)';
+    const H_HABLA = '(?:says|asks|adds|replies|answers|whispers|shouts|laughs|smiles|texts|writes|thinks|explains|continues|sighs|groans|mutters|jokes|insists|agrees|admits|announces|suggests|wonders|begins|repeats|interrupts|calls|tells the class)';
+    const H_POST = new RegExp('^,?\\s*(?:(' + H_HABLA + ')\\s+(' + H_NOM + '|he|she|(?:the|his|her|my|their|a) [a-z]+)|(he|she)\\s+(' + H_HABLA + '))\\s*([.,:!;]?)\\s*');
+    const H_PRE = new RegExp('(^|[.!?:,] )(' + H_NOM + ')(?:\\s+' + H_HABLA + '(?:\\s+(?:' + H_NOM + '|his head|her head))?)?\\s*[.:,]?\\s*$');
+    const H_VOC = new RegExp('(?:^|, )(' + H_NOM + ')(?=[?!.,;:]|$)');
+    const H_OVER = { 'ket/word-building-a2': { 2: 'Mateo', 3: 'Miss Vega' }, 'ket/countable-uncountable': { 2: 'Miss Vega' } };
+    const nombresDe = t => t.match(new RegExp(H_NOM, 'g')) || [];
+    const esConversacion = t => /["“]/.test(t) && new RegExp(H_NOM).test(t);
+    const guionHook = (html, clave) => {
+      const t = String(html).replace(/[“”]/g, '"').replace(/’/g, "'");
+      const trozos = t.split(/("[^"]*")/).map(x => x.trim()).filter(Boolean);
+      const citas = [], salida = [], narr = [];
+      let meta = null;
+      trozos.forEach(tr => {
+        if (tr.length > 1 && tr.startsWith('"') && tr.endsWith('"')) {
+          const c = { txt: tr.slice(1, -1).trim(), pre: null, post: null, coma: false, cand: null, narrAntes: !!(salida.length && salida[salida.length - 1].n != null), narrTexto: narr.join(' ') };
+          if (meta) { c.pre = meta.pre; c.cand = meta.cand; if (meta.vacio && !meta.pre) c.narrAntes = false; }
+          meta = null; citas.push(c); salida.push({ q: citas.length - 1 }); return;
+        }
+        narr.push(tr); let resto = tr;
+        const m2 = H_POST.exec(resto);
+        if (m2 && citas.length) { const u = citas[citas.length - 1]; u.post = m2[2] || m2[3]; u.coma = m2[5] === ','; resto = resto.slice(m2[0].length).trim(); }
+        const m = H_PRE.exec(resto);
+        const pre = m ? m[2] : null;
+        if (m) resto = resto.slice(0, m.index + m[1].length).trim();
+        if (resto) salida.push({ n: resto });
+        let cand = null;
+        if (resto) { const frases = resto.split(/(?<=[.!?:])\s+/); for (let i = frases.length - 1; i >= 0; i--) { const ns = nombresDe(frases[i]); if (ns.length) { cand = ns[0]; break; } } }
+        meta = { pre, cand, vacio: !resto };
+      });
+      const quien = [];
+      const generoDe = (pron, nt) => { const g = pron === 'he' ? 'm' : 'f'; const ns = nombresDe(nt); for (let i = ns.length - 1; i >= 0; i--) if (H_GEN[ns[i]] === g) return ns[i]; for (let i = quien.length - 1; i >= 0; i--) if (H_GEN[quien[i]] === g) return quien[i]; return g === 'm' ? 'Liam' : 'Sofia'; };
+      const otro = (S, prevTxt, i) => {
+        const v = H_VOC.exec(prevTxt); if (v && v[1] !== S) return v[1];
+        for (let k = i - 1; k >= 0; k--) if (quien[k] !== S && H_GEN[quien[k]]) return quien[k];
+        const ns = nombresDe(citas[i].narrTexto); for (let k = ns.length - 1; k >= 0; k--) if (ns[k] !== S) return ns[k];
+        for (let k = 0; k <= i; k++) for (const n of nombresDe(citas[k].txt)) if (n !== S) return n;
+        return S !== 'Sofia' ? 'Sofia' : 'Liam';
+      };
+      const ov = H_OVER[clave] || {};
+      citas.forEach((c, i) => {
+        const p = i ? citas[i - 1] : null, S = i ? quien[i - 1] : null;
+        let w, f;
+        if (ov[i]) { w = ov[i]; f = 'ov'; }
+        else if (c.post) { const x = c.post; f = 'post'; w = (x === 'he' || x === 'she') ? generoDe(x, c.narrTexto) : (H_GEN[x] ? x : x[0].toUpperCase() + x.slice(1)); }
+        else if (c.pre) { w = c.pre; f = 'pre'; }
+        else if (p && p.coma) { w = S; f = 'coma'; }
+        else if (c.cand) { w = c.cand; f = 'cand'; }
+        else if (!p) { w = 'Sofia'; f = 'def'; }
+        else if (c.narrAntes) { w = S; f = 'sigue'; }
+        else if (/\?$/.test(p.txt.replace(/<[^>]+>/g, '').trim())) { w = otro(S, p.txt, i); f = 'resp'; }
+        else if (['post', 'pre', 'cand', 'ov', 'coma'].includes(p.f)) { w = S; f = 'cont'; }
+        else { w = otro(S, p.txt, i); f = 'alt'; }
+        c.f = f; quien.push(w);
+      });
+      return salida.map(it => it.n != null ? { who: null, txt: it.n, coma: false } : { who: quien[it.q], txt: citas[it.q].txt, coma: citas[it.q].coma });
+    };
+    // trozos seguidos del mismo hablante = un bocadillo; la coma que deja una
+    // atribucion en punto («"I'm tired," he says.») pasa a punto
+    const bocadillosHook = lineas => {
+      const out = [];
+      lineas.forEach(l => {
+        const u = out[out.length - 1];
+        if (u && u.who === l.who) { if (!u.coma && u.txt.endsWith(',')) u.txt = u.txt.slice(0, -1) + '.'; u.txt += ' ' + l.txt; u.coma = l.coma; }
+        else out.push({ who: l.who, txt: l.txt, coma: l.coma });
+      });
+      return out.map(b => ({ who: b.who, txt: b.txt.endsWith(',') ? b.txt.slice(0, -1) + '.' : b.txt }));
+    };
+    const botonDecir = t => `<button class="ex-say" type="button" data-t="${esc(String(t).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button>`;
+    const hookConv = () => {
+      const bocs = bocadillosHook(guionHook(d.hook.text, LEVEL + '/' + id));
+      const quienes = [...new Set(bocs.filter(b => b.who).map(b => b.who))];
+      const av = (who, der) => slugDe(who) ? avatar(who, der) : `<span class="av">${esc((who.split(' ').pop() || '?')[0].toUpperCase())}</span>`;
+      return bocs.map(b => b.who
+        ? `<div class="ln ${quienes.indexOf(b.who) % 2 ? 'r' : ''}">${av(b.who, quienes.indexOf(b.who) % 2)}<div class="bb"><span class="who">${esc(b.who)}</span>${botonDecir(b.txt)} ${inl(b.txt)}</div></div>`
+        : `<p class="narr">${botonDecir(b.txt)} ${inl(b.txt)}</p>`).join('');
+    };
+    const hook = !d.hook ? '' : esConversacion(String(d.hook.text))
+      ? `<div class="t-hook conv"><span class="t-kicker">${T('Look first', 'Observe d’abord')}</span>
+          <div class="t-dlg">${hookConv()}</div>
+          <p class="ask">${ico('search', 22)} <span>${inl(d.hook.ask)}</span></p></div>`
+      : `<div class="t-hook"><div class="guia"><img src="../assets/characters/cast/vega/right-bust.jpg?v=${CAST_V}" alt="Miss Vega" onerror="this.replaceWith(document.createTextNode('V'))"></div>
+        <div class="bb"><span class="t-kicker">Miss Vega · ${T('Look first', 'Observe d’abord')}</span><p class="story">${botonDecir(d.hook.text)} ${inl(d.hook.text)}</p>
+          <p class="ask">${ico('search', 22)} <span>${inl(d.hook.ask)}</span></p></div></div>`;
     const recuerda = d.remember ? `<div class="t-remember"><span class="pin">📌</span><span class="t-kicker">${T('Remember', 'Retiens')}</span>
-        <p class="trick">${inl(d.remember.trick)} <button class="ex-say" type="button" data-t="${esc(String(d.remember.trick).replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button></p><p class="tip">${inl(d.remember.tip)}</p></div>` : '';
+        <p class="trick">${botonDecir(d.remember.trick)} ${inl(d.remember.trick)}</p><p class="tip">${inl(d.remember.tip)}</p></div>` : '';
     const trampas = (d.l1 || []).length ? `${cab(T('Don’t translate!', 'Ne traduis pas !'), T('Traps for Spanish speakers', 'Pièges pour hispanophones'), 'brain')}
       <div class="t-l1">${d.l1.map(x => `<div class="it"><div class="es"><span class="tag">ES</span>${inl(x.es)}</div><div class="w"><span>${inl(x.wrong)}</span></div><div class="r"><span>${inl(x.right)}</span></div><p class="why">${inl(x.why)}</p></div>`).join('')}</div>` : '';
     const semaforo = (d.can_do || []).length ? `<div class="t-cando"><h4>${ico('selfcheck', 30)} ${T('Can you do it now?', 'Tu sais le faire ?')}</h4>

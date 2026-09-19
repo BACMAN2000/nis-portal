@@ -16,7 +16,7 @@ gsa = importlib.util.module_from_spec(spec); spec.loader.exec_module(gsa)
 VOCES = {
     "Miss Vega": "en-GB-SoniaNeural",
     "Sofia": "en-GB-LibbyNeural",
-    "Nadia": "en-GB-MaisieNeural",
+    "Nadia": "en-IE-EmilyNeural",    # no Maisie: voz de niña, «no va con el resto» (Paolo, 19-sep-2026)
     "Mateo": "en-GB-RyanNeural",
     "Liam": "en-GB-ThomasNeural",
 }
@@ -28,6 +28,7 @@ async def main():
     force = "--force" in args
     nivel = args[args.index("--level") + 1] if "--level" in args else None
     only = args[args.index("--only") + 1] if "--only" in args else None
+    con = args[args.index("--con") + 1] if "--con" in args else None   # solo los dialogos donde habla ese personaje (al cambiarle la voz)
     jobs = []
     for lv in ([nivel] if nivel else ["a1", "ket", "pet", "b2f", "c1a"]):
         for p in sorted(glob.glob(os.path.join(ROOT, "content", lv, "grammar", "*.json"))):
@@ -36,7 +37,7 @@ async def main():
                 continue
             d = json.load(open(p, encoding="utf-8"))
             lines = (d.get("dialogue") or {}).get("lines") or []
-            if not lines:
+            if not lines or (con and not any(l.get("speaker") == con for l in lines)):
                 continue
             script = "\n".join(f"{l['speaker']}: {limpia(l['text'])}" for l in lines)
             out = os.path.join(ROOT, "audio", "grammar", lv, tid + ".mp3")

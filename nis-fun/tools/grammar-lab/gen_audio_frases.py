@@ -24,15 +24,17 @@ gsa = importlib.util.module_from_spec(spec); spec.loader.exec_module(gsa)
 
 RATE = "-6%"
 # Varias voces, no una para toda la pagina (Paolo, 19-sep-2026: «se torna
-# aburrido»). El mismo elenco britanico de los dialogos; a cada frase le toca
-# una voz fija (por su slug), asi al repetirla suena igual.
-VOCES = ["en-GB-SoniaNeural", "en-GB-RyanNeural", "en-GB-LibbyNeural", "en-GB-ThomasNeural", "en-GB-MaisieNeural"]
-ELENCO = {"Miss Vega": "en-GB-SoniaNeural", "Sofia": "en-GB-LibbyNeural", "Nadia": "en-GB-MaisieNeural",
+# aburrido»). El mismo elenco de los dialogos (tools/grammar-lab/gen_audio.py);
+# a cada frase le toca una voz fija (por su slug), asi al repetirla suena igual.
+# Nadia NO es Maisie (voz de niña): Paolo, 19-sep, «demasiado niña, no va con
+# el resto». Es Emily (en-IE): la unica joven que queda con acento de las islas.
+VOCES = ["en-GB-SoniaNeural", "en-GB-RyanNeural", "en-GB-LibbyNeural", "en-GB-ThomasNeural", "en-IE-EmilyNeural"]
+ELENCO = {"Miss Vega": "en-GB-SoniaNeural", "Sofia": "en-GB-LibbyNeural", "Nadia": "en-IE-EmilyNeural",
           "Mateo": "en-GB-RyanNeural", "Liam": "en-GB-ThomasNeural", "Narrator": "en-GB-SoniaNeural"}
 CAST = ["Miss Vega", "Sofia", "Nadia", "Mateo", "Liam"]
 GENERO = {"Miss Vega": "f", "Sofia": "f", "Nadia": "f", "Mateo": "m", "Liam": "m"}
 # Voces para quien habla sin ser del elenco («says the seller», «says his aunt»).
-EXTRA = {"m": "en-IE-ConnorNeural", "f": "en-IE-EmilyNeural"}
+EXTRA = {"m": "en-IE-ConnorNeural", "f": "en-AU-NatashaNeural"}
 NARRADOR = "Narrator"   # la narracion la lee Miss Vega (como en los dialogos de secundaria)
 NOMBRE = r'(?:Miss Vega|Sofia|Nadia|Mateo|Liam)'
 # verbos de decir: «says Nadia», «he asks», «Liam laughs:», «Nadia texts Sofia:» son atribucion y no se leen
@@ -143,9 +145,23 @@ def guion(t, clave=None):
         c["fuente"] = fuente; quien.append(w)
     lineas = []
     for it in salida:
-        if it[0] == 'n': lineas.append((None, it[1]))
-        else: lineas.append((quien[it[1]], citas[it[1]]["txt"]))
+        if it[0] == 'n': lineas.append((None, it[1], False))
+        else: lineas.append((quien[it[1]], citas[it[1]]["txt"], citas[it[1]]["coma"]))
     return lineas
+
+def bocadillos(lineas):
+    """Los trozos seguidos del mismo hablante son UN bocadillo (la pantalla y el
+    audio por bocadillo): «"No," says Mateo, "I haven't…"» -> «No, I haven't…».
+    Si la atribucion acabo en punto, la coma que dejo la cita pasa a punto.
+    Misma regla en engine/teen.js (bocadillosHook): si cambias una, cambia las dos."""
+    out = []
+    for who, txt, coma in lineas:
+        if out and out[-1][0] == who:
+            w, prev, pcoma = out[-1]
+            if not pcoma and prev.endswith(','): prev = prev[:-1] + '.'
+            out[-1] = (w, prev + ' ' + txt, coma)
+        else: out.append((who, txt, coma))
+    return [(w, (t[:-1] + '.') if t.endswith(',') else t) for w, t, _ in out]
 
 def recoge(nivel=None):
     frases = {}
@@ -163,17 +179,24 @@ async def main():
     solo_conv = "--solo-conversaciones" in args
     nivel = args[args.index("--level") + 1] if "--level" in args else None
     out = os.path.join(ROOT, "audio", "grammar"); os.makedirs(out, exist_ok=True)
-    hechos = saltados = 0
+    hechos = saltados = 0; vistos = {}
     for s, (t, es_gancho, lv, fn) in recoge(nivel).items():
         conv = es_gancho and es_conversacion(t)
         if solo_conv and not conv: continue
         dest = os.path.join(out, s + ".mp3")
+        if conv:
+            for who, txt in bocadillos(guion(t, lv + "/" + fn)):
+                sb = slug(txt); db = os.path.join(out, sb + ".mp3")
+                if sb in vistos and vistos[sb] != (who, txt): print(f"  ! choque de slug {sb}: {vistos[sb][0]} / {who}")
+                vistos[sb] = (who, txt)
+                if os.path.exists(db) and not force: continue
+                await edge_tts.Communicate(limpia(txt), ELENCO.get(who or NARRADOR, EXTRA['m']), rate=RATE).save(db); hechos += 1
         if os.path.exists(dest) and not force: saltados += 1; continue
         if conv:
-            g = guion(t)
-            script = "\n".join((f"{who}: {txt}" if who else txt) for who, txt in g)
+            g = guion(t, lv + "/" + fn)
+            script = "\n".join(f"{who or NARRADOR}: {txt}" for who, txt, _ in g)
             await gsa.genera(dest, script, ELENCO); hechos += 1
-            print(f"  conv    {s}.mp3  ({len(g)} trozos, {len(set(w for w, _ in g if w))} voces)")
+            print(f"  conv    {s}.mp3  ({len(g)} trozos, {len(set(w for w, _, _ in g if w))} voces)")
         else:
             v = voz_de(s, es_gancho)
             await edge_tts.Communicate(t, v, rate=RATE).save(dest); hechos += 1
@@ -185,6 +208,6 @@ if __name__ == "__main__":
         for s, (t, es_gancho, lv, fn) in recoge().items():
             if not (es_gancho and es_conversacion(t)): continue
             print("---", lv, fn)
-            for who, q in guion(t, lv + "/" + fn): print(f"   {who or '(narra)':10} | {q[:76]}")
+            for who, q in bocadillos(guion(t, lv + "/" + fn)): print(f"   {who or '(narra)':10} | {q[:76]}")
     else:
         asyncio.run(main())

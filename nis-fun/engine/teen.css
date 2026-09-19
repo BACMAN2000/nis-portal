@@ -357,7 +357,17 @@ body.teen .scr .scr-dot:hover{background:color-mix(in srgb,var(--accent) 70%,var
 .teen .t-hook .bb::before{content:'';position:absolute;left:-9px;top:1.3rem;width:16px;height:16px;background:var(--surface);border-left:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
 .teen .t-hook .bb .t-kicker{color:var(--accent)}
 .teen .t-hook .story{margin:.3rem 0 .5rem;font-size:1.08rem;line-height:1.6}
-.teen .t-hook .story b{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:5px;padding:0 .2em}
+.teen .t-hook .story b,.teen .t-hook .bb b,.teen .t-hook .narr b{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:5px;padding:0 .2em}
+/* la escena como conversacion: bocadillos del dialogo (t-dlg) dentro del gancho */
+.teen .t-hook.conv{flex-direction:column;gap:.35rem;align-items:stretch}
+.teen .t-hook.conv>.t-kicker{color:var(--accent)}
+.teen .t-hook.conv .t-dlg{max-width:none;width:100%}
+.teen .t-hook.conv .bb::before{display:none}
+.teen .t-hook.conv .narr{margin:.35rem 0;color:var(--soft);font-style:italic;line-height:1.55;display:flex;gap:.45rem;align-items:flex-start}
+.teen .t-hook.conv .narr .ex-say{margin:.05rem 0 0}
+.teen .t-hook.conv .bb{font-size:1.02rem;line-height:1.55;padding:.55rem .85rem .6rem}
+.teen .t-hook.conv .bb .ex-say{margin:0 .15rem 0 0;vertical-align:-.35rem}
+.teen .t-hook.conv .ask{margin-top:.5rem}
 .teen .t-hook .ask{margin:0;display:flex;gap:.5rem;align-items:flex-start;padding:.6rem .8rem;border-radius:12px;background:color-mix(in srgb,var(--t-kw) 14%,var(--surface));line-height:1.5;font-weight:600}
 .teen .t-hook .ask img{flex:none;margin-top:.1rem}
 /* Boton de voz: circulo de verdad con el altavoz en el centro. Sin flex, padding 0 y
