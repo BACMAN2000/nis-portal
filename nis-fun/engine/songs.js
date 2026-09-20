@@ -106,6 +106,11 @@ window.SONGS = (function () {
     border-radius:.5rem;padding:.55rem .8rem}
   .sg-et{display:block;font-family:"Baloo 2",sans-serif;font-weight:800;
     color:var(--soft);font-size:.85rem;text-transform:uppercase;letter-spacing:.03em}
+  /* el video de una pieza: mismo ancho que la letra, solo se ve si la pieza
+     lo trae — la clase canta mirándolo o cantando con el audio, no a la vez */
+  .sg-video{display:none;width:100%;aspect-ratio:16/9;background:#000;
+    border-radius:.75rem;border:1px solid var(--line);margin:.8rem 0 .2rem}
+  .sg-video.on{display:block}
   @media (max-width:560px){ .sg-b{flex:1 1 auto;justify-content:center}
     .sg-letra{font-size:1.05rem} }`;
 
@@ -137,7 +142,10 @@ window.SONGS = (function () {
         <button class="sg-b main sg-play" type="button">&#9654; ${T('Play', 'Lire')}</button>
         <button class="sg-b sg-stop" type="button">&#9209; ${T('Start again', 'Recommencer')}</button>
         <button class="sg-b sg-slow" type="button" aria-pressed="false">&#128034; ${T('Slow', 'Lent')}</button>
+        ${piezas.some(x => x.d.video) ? `<button class="sg-b sg-video-btn" type="button"
+           aria-pressed="false">&#127909; ${T('Watch the video', 'Voir la vidéo')}</button>` : ''}
       </div>
+      <video class="sg-video" controls playsinline preload="none"></video>
       <div class="sg-bar"><div class="sg-fill"></div></div>
       <span class="sg-reloj">0:00</span>
       <div class="sg-letra"></div>
@@ -152,6 +160,8 @@ window.SONGS = (function () {
       const bar = el.querySelector('.sg-bar');
       const rel = el.querySelector('.sg-reloj');
       const slow = el.querySelector('.sg-slow');
+      const v = el.querySelector('.sg-video');
+      const videoBtn = el.querySelector('.sg-video-btn');
       let i = 0;
 
       function carga(k) {
@@ -164,6 +174,18 @@ window.SONGS = (function () {
         fill.style.width = '0';
         rel.textContent = '0:00';
         play.innerHTML = '&#9654; ' + T('Play', 'Lire');
+        if (videoBtn) {
+          videoBtn.hidden = !x.d.video;
+          videoBtn.setAttribute('aria-pressed', 'false');
+        }
+        v.classList.remove('on');
+        if (x.d.video) {
+          const base = x.d.video.replace(/\.mp4$/, '');
+          v.poster = `../assets/videos/posters/${base}.jpg?v=${window.ART_V || ''}`;
+          v.src = `../assets/videos/${x.d.video}?v=${window.VIDEO_V || window.ART_V || ''}`;
+        } else {
+          v.removeAttribute('poster'); v.removeAttribute('src');
+        }
         el.querySelectorAll('.sg-tab').forEach((b, j) => {
           b.classList.toggle('on', j === k);
           b.setAttribute('aria-selected', j === k ? 'true' : 'false');
@@ -197,6 +219,16 @@ window.SONGS = (function () {
         slow.classList.toggle('on', on);
         a.playbackRate = on ? 0.75 : 1;
       });
+      // el video de la pieza, si la tiene: se muestra aquí mismo y nunca suena
+      // junto al audio — uno se pausa al arrancar el otro
+      if (videoBtn) videoBtn.addEventListener('click', () => {
+        const on = v.classList.toggle('on');
+        videoBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (!on) v.pause();
+        else a.pause();
+      });
+      a.addEventListener('play', () => v.pause());
+      v.addEventListener('play', () => a.pause());
       bar.addEventListener('click', e => {
         if (!a.duration) return;
         const r = bar.getBoundingClientRect();
