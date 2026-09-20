@@ -160,11 +160,12 @@ function recorre(banco, obj, ruta, visita) {
   }
 }
 
-const rd = fs.readFileSync(path.join(BASE, 'reading-quiz.html'), 'utf8');
+// Los bancos viven en los .app-data.js desde el 17-sep-2026 (el HTML es solo motor).
+const rd = fs.readFileSync(path.join(BASE, 'reading-quiz.app-data.js'), 'utf8');
 for (const b of ['EXAMS', 'PRACTICE2', 'PRACTICE3', 'MOCK01', 'MOCK02', 'MOCK03', 'MOCKS_MORE', 'PRACTICE_MORE']) {
   const o = saca(rd, b); if (o) recorre(b, o, '', revisaTest);
 }
-const ls = fs.readFileSync(path.join(BASE, 'listening-quiz.html'), 'utf8');
+const ls = fs.readFileSync(path.join(BASE, 'listening-quiz.app-data.js'), 'utf8');
 for (const b of ['QUIZ', 'QUIZ2', 'QUIZ3', 'QUIZ4', 'QUIZ5', 'QUIZ6', 'LISTEN_MORE']) {
   const o = saca(ls, b); if (o) recorre(b, o, '', revisaListening);
 }
@@ -228,5 +229,5 @@ if (totalClaves) {
     .map(l => `${l} ${repartoGlobal[l]} (${Math.round(100 * repartoGlobal[l] / totalClaves)}%)`).join('   ');
   const pico = Math.max(...Object.values(repartoGlobal)) / totalClaves;
   console.log(`\n--- donde cae la respuesta correcta (${totalClaves} preguntas)\n   ${linea}`);
-  if (pico >= 0.38) console.log(`   ✗ una sola letra se lleva el ${Math.round(pico * 100)}%: reparte con  node tools/rebalance_keys.js --escribe reading-quiz.html listening-quiz.html`);
+  if (pico >= 0.38) console.log(`   ✗ una sola letra se lleva el ${Math.round(pico * 100)}%: reparte con  node tools/rebalance_keys.js --escribe reading-quiz.app-data.js listening-quiz.app-data.js`);
 }
