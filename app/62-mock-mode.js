@@ -1,6 +1,6 @@
 /* ===================== MOCK MODE (18-sep-2026) =====================
    El dia del simulacro el alumno solo ve su mock: la portada es UNA tarjeta
-   con los papers en orden (Reading → Listening → Writing) y ninguna otra ruta
+   con los papers en orden (Listening → Reading → Writing) y ninguna otra ruta
    del portal responde. Dos formas de entrar en mock mode:
 
    MOCK OFICIAL   el admin elige el NUMERO de mock (1-7) que rinde todo el
@@ -24,8 +24,11 @@
 
 const MOCK_LEVELS = ['A2','B1','B2','C1'];
 const MOCK_LEVEL_NAMES = { A2:'A2 Key', B1:'B1 Preliminary', B2:'B2 First', C1:'C1 Advanced' };
-const MOCK_SKILLS = { A2:['Reading','Listening'], B1:['Reading','Listening','Writing'],
-                      B2:['Reading','Listening','Writing'], C1:['Reading','Listening','Writing'] };
+/* Orden del dia de examen (Paolo, 21-sep-2026): Listening primero, luego
+   Reading & Use of English y al final Writing. La tarjeta resalta el siguiente
+   pendiente en este orden. */
+const MOCK_SKILLS = { A2:['Listening','Reading'], B1:['Listening','Reading','Writing'],
+                      B2:['Listening','Reading','Writing'], C1:['Listening','Reading','Writing'] };
 const MOCK_PAGE = { Reading:'reading-quiz.html', Listening:'listening-quiz.html', Writing:'writing-quiz.html' };
 const MOCK_SKILL_LABEL = { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing' };
 const MOCK_SKILL_ICON = { Reading:'📖', Listening:'🎧', Writing:'✍️' };
@@ -294,7 +297,7 @@ function _mockPaint(){
       <thead><tr><th>Student</th><th>Grade</th><th>Mock</th><th>Papers today</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>`
       : `<p class="muted" style="font-size:.85rem">No student has an individual mock.</p>`}`;
   $('#main').innerHTML = `<h1>${admin ? 'Mocks — access control' : '🎯 Individual mock'}</h1>
-    <div class="note">A student in mock mode sees <b>only the mock card</b> on their home page, with the papers in order (Reading → Listening → Writing); when a paper is submitted the engine brings them back to that card. On other days students see no mock card at all.</div>
+    <div class="note">A student in mock mode sees <b>only the mock card</b> on their home page, with the papers in order (Listening → Reading → Writing); when a paper is submitted the engine brings them back to that card. On other days students see no mock card at all.</div>
     ${admin ? _examPreviewCard('mocks') : ''}
     ${oficial}
     ${individual}`;
