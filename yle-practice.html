@@ -795,6 +795,11 @@ function qnavKey(d){ var a = QNAVS.filter(function(q){ var s = q.box.closest('[d
 /* al corregir se enseñan todas: el niño tiene que ver dónde falló */
 function qnavTodo(){ QNAVS.forEach(function(q){ q.todo(); }); QNAVS = []; }
 
+/* al cambiar de parte se para la grabación de la anterior: oculta, seguía sonando
+   encima de la siguiente. Y si el niño da play a otra, la que sonaba se pausa. */
+function paraAudio(menos){ $$('#content audio').forEach(function(a){ if(a !== menos && !a.paused) a.pause(); }); }
+document.addEventListener('play', function(e){ if(e.target && e.target.tagName === 'AUDIO') paraAudio(e.target); }, true);
+
 /* pantallas: una parte cada vez, con flechas */
 function screens(){
   var parts = $$('#content [data-screen]'); if(parts.length < 2) return;
@@ -802,7 +807,7 @@ function screens(){
   var bar = document.createElement('div'); bar.className = 'navbar';
   bar.innerHTML = '<button class="btn sec" id="bPrev"' + (screen === 0 ? ' disabled' : '') + '>‹ Back</button><div class="mid">' + (screen + 1) + ' / ' + parts.length + ' · ' + esc($('h3', parts[screen]).textContent) + '<div class="dots">' + parts.map(function(x, i){ return '<i class="' + (i === screen ? 'on' : '') + '"></i>'; }).join('') + '</div></div>' + (screen === parts.length - 1 ? '<button class="btn" id="bFinish">' + (tab === 'speaking' ? 'Done ✓' : 'Finish ' + (tab === 'rw' ? 'Reading & Writing' : 'Listening')) + '</button>' : '<button class="btn" id="bNext">Next ›</button>');
   $('#content').appendChild(bar);
-  var go = function(d){ readDOM(); screen = Math.max(0, Math.min(parts.length - 1, screen + d)); parts.forEach(function(p, i){ p.classList.toggle('hidden', i !== screen); }); bar.remove(); screens(); window.scrollTo({top: 0, behavior: 'smooth'}); };
+  var go = function(d){ readDOM(); paraAudio(); screen = Math.max(0, Math.min(parts.length - 1, screen + d)); parts.forEach(function(p, i){ p.classList.toggle('hidden', i !== screen); }); bar.remove(); screens(); window.scrollTo({top: 0, behavior: 'smooth'}); };
   if($('#bPrev')) $('#bPrev').onclick = function(){ go(-1); };
   if($('#bNext')) $('#bNext').onclick = function(){ go(1); };
   if($('#bFinish')) $('#bFinish').onclick = function(){ if(tab === 'speaking'){ tab = 'overview'; render(); return; } finishPaper(); };
