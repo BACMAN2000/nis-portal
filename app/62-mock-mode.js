@@ -52,12 +52,12 @@ async function loadMockMode(){
   try{
     const [ind, off, acc] = await Promise.all([
       p.id ? sb.from('mock_individual').select('mock,level').eq('student_id',p.id).maybeSingle() : Promise.resolve({data:null}),
-      sb.from('mock_official').select('mock').eq('id',1).maybeSingle(),
+      sb.from('mock_official').select('mock,shown_as').eq('id',1).maybeSingle(),
       p.grade_id!=null ? sb.from('mock_access').select('unlocked').eq('grade_id',p.grade_id).maybeSingle() : Promise.resolve({data:null}),
     ]);
-    let mode=null, mock=null, fijo=null;
-    if(ind.data && ind.data.mock){ mode='individual'; mock=ind.data.mock; fijo=ind.data.level||null; }
-    else if(off.data && off.data.mock && acc.data && acc.data.unlocked){ mode='official'; mock=off.data.mock; }
+    let mode=null, mock=null, fijo=null, shown=null;
+    if(ind.data && ind.data.mock){ mode='individual'; mock=ind.data.mock; shown=mock; fijo=ind.data.level||null; }
+    else if(off.data && off.data.mock && acc.data && acc.data.unlocked){ mode='official'; mock=off.data.mock; shown=off.data.shown_as||mock; }
     if(!mode) return null;
     const levels = fijo ? [fijo] : _mockLevelsFor(p);
     let atts = [];
@@ -73,14 +73,19 @@ async function loadMockMode(){
     let level = levels.length===1 ? levels[0] : null;
     if(!level){ const hecho = atts.find(a=>levels.includes(a.level)); if(hecho) level = hecho.level; }
     if(!level){ try{ const s=sessionStorage.getItem('nis-mock-level:'+p.id); if(levels.includes(s)) level=s; }catch(_){} }
-    return { mode, mock, level, levels, atts };
+    return { mode, mock, shown, level, levels, atts };
   }catch(e){ console.warn('[mock mode]', e); return null; }
 }
 function mockModeActive(){ return !!(state.mockMode && _isStudent()); }
+/* Lo que el alumno lee: OFFICIAL MOCK n, con n = mock_official.shown_as (el
+   ordinal que lleva el colegio) y no el numero del banco. 21-sep-2026: se
+   rinde el MOCK 3 del banco y para el alumno es su segundo mock. El motor y
+   exam_attempts siguen con el numero del banco. */
+function _mockLabel(M){ M=M||{}; return (M.mode==='individual' ? 'INDIVIDUAL MOCK ' : 'OFFICIAL MOCK ') + (M.shown||M.mock||''); }
 function mockModeBlock(){
   const M = state.mockMode || {};
   const t = M.mode==='individual' ? 'Today you only have your individual mock' : 'Today the portal is in MOCK MODE';
-  const msg = t + (M.mock ? ' (MOCK '+M.mock+(M.level?' · '+MOCK_LEVEL_NAMES[M.level]:'')+')' : '') + '. Nothing else is open until tomorrow.';
+  const msg = t + (M.mock ? ' ('+_mockLabel(M)+(M.level?' · '+MOCK_LEVEL_NAMES[M.level]:'')+')' : '') + '. Nothing else is open until tomorrow.';
   if(window.NISUI && NISUI.avisa) NISUI.avisa(msg, {titulo:'Mock mode'}); else alert(msg);
 }
 function _mockCss(){
@@ -126,6 +131,9 @@ function _mockCss(){
 .mm-num button{border:1.5px solid var(--blue);background:var(--card,#fff);color:var(--blue-d);border-radius:10px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;font-size:.95rem}
 .mm-num button.on{background:var(--blue-d);color:#fff}
 .mm-num button:disabled{opacity:.45;cursor:default}
+.mm-shown{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:800;margin:6px 0 4px}
+.mm-shown input{width:64px;padding:8px 6px;border:1.5px solid var(--blue);border-radius:10px;font-family:inherit;font-size:1rem;font-weight:800;text-align:center;background:var(--card,#fff);color:inherit}
+.mm-shown .muted{font-weight:500;font-size:.82rem;flex-basis:100%}
 `;
   document.head.appendChild(s);
 }
@@ -163,8 +171,8 @@ function mockModeHub(){
   $('#main').innerHTML = `<h1>Hi, ${first} 👋</h1>
     <p class="muted" style="margin-top:-6px">${indiv ? 'You have an <b>individual mock</b> assigned for today.' : 'Today the portal is in <b>MOCK MODE</b>.'} Only the exam is open.</p>
     <div class="mock-card${indiv?' indiv':''}">
-      <span class="mk">🎓 ${indiv?'Mock individual':'Mock oficial'}</span>
-      <h2>${M.level ? esc(MOCK_LEVEL_NAMES[M.level])+' · ' : ''}MOCK ${M.mock}</h2>
+      <span class="mk">🎓 ${indiv?'Individual mock':'Official mock'}</span>
+      <h2>${M.level ? esc(MOCK_LEVEL_NAMES[M.level])+' · ' : ''}${_mockLabel(M)}</h2>
       ${cuerpo}
     </div>`;
 }
@@ -192,7 +200,7 @@ async function mockModePanel(op){
   const grades = admin ? GRADES : teacherAllowedGrades();
   try{
     const [off, acc, ind] = await Promise.all([
-      sb.from('mock_official').select('mock,updated_at').eq('id',1).maybeSingle(),
+      sb.from('mock_official').select('mock,shown_as,updated_at').eq('id',1).maybeSingle(),
       sb.from('mock_access').select('grade_id,unlocked,updated_at').order('grade_id'),
       // profiles va por su FK: la tabla tiene dos (student_id y updated_by) y sin
       // nombrarla PostgREST no sabe cual embeber.
@@ -219,6 +227,7 @@ async function mockModePanel(op){
 }
 function _mockPaint(){
   const admin = _mm.admin, grades = _mm.grades, N = _mm.official.mock || null;
+  const S = N ? (_mm.official.shown_as || N) : null;   // lo que lee el alumno
   const abiertos = grades.filter(g=>_mm.access[g.id]&&_mm.access[g.id].unlocked);
   const modeOn = !!(N && abiertos.length);
   // ---- MOCK OFICIAL ----
@@ -230,7 +239,7 @@ function _mockPaint(){
     const sat = _mm.sat[g.id] ? _mm.sat[g.id].size : 0;
     return `<tr>
       <td><b>${g.name}</b></td>
-      <td><span class="badge ${on?'on':'off'}">${on?(N?'🎓 MOCK MODE · MOCK '+N:'🔓 Unlocked'):'🔒 Locked'}</span></td>
+      <td><span class="badge ${on?'on':'off'}">${on?(N?'🎓 MOCK MODE · MOCK '+N+(S!==N?' (OFFICIAL MOCK '+S+')':''):'🔓 Unlocked'):'🔒 Locked'}</span></td>
       <td class="muted" style="font-size:.82rem">${on&&N ? sat+' sat today' : ''}</td>
       <td class="muted" style="font-size:.82rem">${when}</td>
       <td>${admin?`<button class="btn sm ${on?'ghost':''}" onclick="window._mockToggleGrade(${g.id}, ${on?'false':'true'}, this)">${on?'Lock':'Unlock'}</button>`:''}</td>
@@ -238,11 +247,14 @@ function _mockPaint(){
   }).join('');
   const oficial = `
     <div class="card">
-      <h2 style="margin:0 0 4px">🎓 MOCK OFICIAL — the whole school</h2>
+      <h2 style="margin:0 0 4px">🎓 OFFICIAL MOCK — the whole school</h2>
       <div class="muted" style="font-size:.86rem;margin-bottom:10px">Choose the <b>mock number everyone sits</b>, whatever their level (each student sits it at their own level), then <b>unlock the grades</b> that sit it today. An unlocked grade with a number set is in <b>MOCK MODE</b>: its students see only the mock card on their home page and nothing else opens until you lock the grade again.${admin?'':' <b>Only the admin changes this.</b>'}</div>
-      ${modeOn ? `<div class="mm-mode">🔒 <div>MOCK MODE is ON — <b>MOCK ${N}</b> for ${abiertos.map(g=>g.name).join(', ')}. Those students only see their mock.</div></div>` : (N ? `<div class="note" style="margin:0 0 10px">MOCK ${N} is set but <b>no grade is unlocked</b>: nobody is in mock mode yet.</div>` : '')}
+      ${modeOn ? `<div class="mm-mode">🔒 <div>MOCK MODE is ON — <b>MOCK ${N}</b>, shown to students as <b>OFFICIAL MOCK ${S}</b>, for ${abiertos.map(g=>g.name).join(', ')}. Those students only see their mock.</div></div>` : (N ? `<div class="note" style="margin:0 0 10px">MOCK ${N} is set but <b>no grade is unlocked</b>: nobody is in mock mode yet.</div>` : '')}
       <div style="font-weight:700;font-size:.85rem;color:var(--muted)">Mock number for everyone</div>
       <div class="mm-num">${nums}</div>
+      <div style="font-weight:700;font-size:.85rem;color:var(--muted);margin-top:12px">Shown to students as</div>
+      <div class="mm-shown">OFFICIAL MOCK <input id="mmShown" type="number" min="1" max="20" inputmode="numeric" value="${S||''}" ${admin&&N?'':'disabled'}>${admin?` <button class="btn sm" ${N?'':'disabled'} onclick="window._mockSetShown()">Save</button>`:''}
+        <span class="muted">The bank number (MOCK ${N||'—'}) is what the engine and the results use; this is only the name the students read on their card and on the exam screen — e.g. the school sits MOCK 3 of the bank but for the students it is their second mock, OFFICIAL MOCK 2. Empty = the bank number.</span></div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Grade</th><th>Mocks status</th><th>Today</th><th>Last updated</th><th></th></tr></thead>
@@ -264,7 +276,7 @@ function _mockPaint(){
   }).join('');
   const individual = `
     <div class="card">
-      <h2 style="margin:0 0 4px">🎯 MOCK INDIVIDUAL — one student</h2>
+      <h2 style="margin:0 0 4px">🎯 INDIVIDUAL MOCK — one student</h2>
       <div class="muted" style="font-size:.86rem;margin-bottom:12px">Only that student enters mock mode; the rest of the class keeps working. Choose the grade, the section and the student, then the mock. If the student is also in a mock-mode grade today, the individual mock wins. Remove it when done.</div>
       <div class="mm-form">
         <label>Grade<select onchange="window._mockIndField('grade',this.value)">${optG}</select></label>
@@ -278,7 +290,7 @@ function _mockPaint(){
     ${filas ? `<div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Student</th><th>Grade</th><th>Mock</th><th>Papers today</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>`
       : `<p class="muted" style="font-size:.85rem">No student has an individual mock.</p>`}`;
-  $('#main').innerHTML = `<h1>${admin ? 'Mocks — access control' : '🎯 Mock individual'}</h1>
+  $('#main').innerHTML = `<h1>${admin ? 'Mocks — access control' : '🎯 Individual mock'}</h1>
     <div class="note">A student in mock mode sees <b>only the mock card</b> on their home page, with the papers in order (Reading → Listening → Writing); when a paper is submitted the engine brings them back to that card. On other days students see no mock card at all.</div>
     ${admin ? _examPreviewCard('mocks') : ''}
     ${oficial}
@@ -287,15 +299,27 @@ function _mockPaint(){
 window._mockSetOfficial = async (n)=>{
   if(!_mm.admin) return;
   const abiertos = _mm.grades.filter(g=>_mm.access[g.id]&&_mm.access[g.id].unlocked).map(g=>g.name);
-  if(n && abiertos.length && !(await NISUI.pregunta(`Set MOCK ${n} for everyone? ${abiertos.join(', ')} ${abiertos.length>1?'are':'is'} unlocked, so their students enter MOCK MODE right now: they will only see the mock card.`, {titulo:'Mock oficial', si:'Yes, set MOCK '+n, no:'Cancel'}))) return;
-  const { error } = await sb.from('mock_official').update({ mock:n, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null }).eq('id',1);
+  if(n && abiertos.length && !(await NISUI.pregunta(`Set MOCK ${n} for everyone? ${abiertos.join(', ')} ${abiertos.length>1?'are':'is'} unlocked, so their students enter MOCK MODE right now: they will only see the mock card.`, {titulo:'Official mock', si:'Yes, set MOCK '+n, no:'Cancel'}))) return;
+  const shown = (n && n===_mm.official.mock) ? (_mm.official.shown_as||null) : null;   // otro numero de banco = otro nombre: se vuelve a escribir
+  const { error } = await sb.from('mock_official').update({ mock:n, shown_as:shown, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null }).eq('id',1);
   if(error){ NISUI.avisa('Could not update: '+error.message, {titulo:'Error'}); return; }
+  mockModePanel({admin:true});
+};
+/* El nombre que lee el alumno (mock_official.shown_as). */
+window._mockSetShown = async ()=>{
+  if(!_mm.admin) return;
+  const el = $('#mmShown'); const raw = el ? el.value.trim() : '';
+  const v = raw ? parseInt(raw,10) : null;
+  if(v!==null && !(v>=1 && v<=20)){ NISUI.avisa('The number must be between 1 and 20, or empty.', {titulo:'Official mock'}); return; }
+  const { error } = await sb.from('mock_official').update({ shown_as:v, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null }).eq('id',1);
+  if(error){ NISUI.avisa('Could not update: '+error.message, {titulo:'Error'}); return; }
+  NISUI.avisa(v ? `Students now read it as OFFICIAL MOCK ${v}.` : 'Students now read the bank number.', {titulo:'Official mock'});
   mockModePanel({admin:true});
 };
 window._mockToggleGrade = async (gradeId, to, btn)=>{
   if(btn){ btn.disabled=true; btn.textContent='…'; }
   const N = _mm.official && _mm.official.mock;
-  if(to && N){ const g=(GRADES.find(x=>x.id===gradeId)||{}).name; if(!(await NISUI.pregunta(`Unlock ${g}? With MOCK ${N} set, its students enter MOCK MODE right now: they will only see the mock card until you lock the grade again.`, {titulo:'Mock oficial', si:'Unlock', no:'Cancel'}))){ mockModePanel({admin:true}); return; } }
+  if(to && N){ const g=(GRADES.find(x=>x.id===gradeId)||{}).name; if(!(await NISUI.pregunta(`Unlock ${g}? With MOCK ${N} set, its students enter MOCK MODE right now: they will only see the mock card until you lock the grade again.`, {titulo:'Official mock', si:'Unlock', no:'Cancel'}))){ mockModePanel({admin:true}); return; } }
   const { error } = await sb.from('mock_access').upsert(
     { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
     { onConflict:'grade_id' });
@@ -322,11 +346,11 @@ window._mockAssignIndiv = async ()=>{
     { onConflict:'student_id' });
   if(error){ NISUI.avisa('Could not assign: '+error.message, {titulo:'Error'}); return; }
   const s=(_mm.students||[]).find(x=>x.id===sid);
-  NISUI.avisa(`${s?s.full_name:'The student'} is now in mock mode: MOCK ${mock}${level?' · '+level:''}.`, {titulo:'Mock individual'});
+  NISUI.avisa(`${s?s.full_name:'The student'} is now in mock mode: MOCK ${mock}${level?' · '+level:''}.`, {titulo:'Individual mock'});
   _mm.student=''; mockModePanel({admin:_mm.admin});
 };
 window._mockClearIndiv = async (sid, nombre)=>{
-  if(!(await NISUI.pregunta(`Remove the individual mock of ${nombre||'this student'}? They get the portal back at once.`, {titulo:'Mock individual', si:'Remove', no:'Cancel'}))) return;
+  if(!(await NISUI.pregunta(`Remove the individual mock of ${nombre||'this student'}? They get the portal back at once.`, {titulo:'Individual mock', si:'Remove', no:'Cancel'}))) return;
   const { error } = await sb.from('mock_individual').delete().eq('student_id',sid);
   if(error){ NISUI.avisa('Could not remove: '+error.message, {titulo:'Error'}); return; }
   mockModePanel({admin:_mm.admin});

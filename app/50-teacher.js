@@ -50,7 +50,7 @@ async function renderTeacher(tab){
   cambridge.push({key:'uoe',label:'🧩 Use of English'});
   cambridge.push({key:'cambridgeinfo',label:'📘 Cambridge info'});
   if(teacherAllowedGrades().length) cambridge.push({key:'practice',label:'🔓 Open Practice Tests'});
-  if(teacherAllowedGrades().length) cambridge.push({key:'mockindiv',label:'🎯 Mock individual'});
+  if(teacherAllowedGrades().length) cambridge.push({key:'mockindiv',label:'🎯 Individual mock'});
   if(teacherAllowedGrades().length){
     permisos.push({key:'whatsees',label:'👁️ What each class sees'});
     permisos.push({key:'unitaccess',label:'📚 Activate units'});
