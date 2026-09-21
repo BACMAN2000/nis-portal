@@ -168,13 +168,16 @@ function mockModeHub(){
       <div class="mock-steps">${skills.map((s,i)=>`<span><b>${i+1}</b> ${esc(MOCK_SKILL_LABEL[s])}${i<skills.length-1?' →':''}</span>`).join('')}<span>· The timer runs as in the real exam and your result is saved by itself.</span></div>
       ${(M.levels.length>1 && !(M.atts||[]).some(a=>a.level===M.level)) ? `<div style="margin-top:12px;font-size:.8rem;opacity:.85"><a style="color:#fff;cursor:pointer;text-decoration:underline" onclick="window._mockPickLevel('')">Change level</a></div>` : ''}`;
   }
-  $('#main').innerHTML = `<h1>Hi, ${first} 👋</h1>
+  // data-i18n="off": el dia del mock las instrucciones van en ingles aunque el
+  // alumno tenga el portal en espanol (21-sep-2026: Paolo vio la tarjeta y el
+  // velo traducidos por nis-i18n en la cuenta de Aitana).
+  $('#main').innerHTML = `<div data-i18n="off"><h1>Hi, ${first} 👋</h1>
     <p class="muted" style="margin-top:-6px">${indiv ? 'You have an <b>individual mock</b> assigned for today.' : 'Today the portal is in <b>MOCK MODE</b>.'} Only the exam is open.</p>
     <div class="mock-card${indiv?' indiv':''}">
       <span class="mk">🎓 ${indiv?'Individual mock':'Official mock'}</span>
       <h2>${M.level ? esc(MOCK_LEVEL_NAMES[M.level])+' · ' : ''}${_mockLabel(M)}</h2>
       ${cuerpo}
-    </div>`;
+    </div></div>`;
 }
 window._mockPickLevel = (l)=>{
   if(!state.mockMode) return;
