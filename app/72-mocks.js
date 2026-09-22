@@ -152,14 +152,14 @@ function _mockReportExtras(p, fin, prev, EN){
   const up = prev && prev.finalScale!=null && fin.finalScale!=null ? fin.finalScale-prev.finalScale : null;
   let msg;
   if(EN){
-    const trend = up==null ? '' : up>0 ? ' You have gone up '+up+' points on the Cambridge Scale since June.' : up<0 ? ' Your overall scale is '+(-up)+' points below June: exam-day nerves count too, and we will look at it together.' : ' Your overall result is the same as in June.';
+    const trend = up==null ? '' : up>0 ? ' You have gone up '+up+' point'+(up===1?'':'s')+' on the Cambridge Scale since June.' : up<0 ? ' Your overall scale is '+(-up)+' point'+(up===-1?'':'s')+' below June: exam-day nerves count too, and we will look at it together.' : ' Your overall result is the same as in June.';
     if(!pres.length) msg=first+', we do not have your Official Mock 2 results yet. Your teacher will let you know how to complete the missing papers.';
     else if(!rd) msg=first+', here are your Official Mock 2 results. You stand out in '+strong+'; let\'s keep working on '+weak+'.'+trend;
     else if(rd.k==='ready') msg=first+', congratulations: your Official Mock 2 result shows you are ready to sit '+ex+'. You stand out in '+strong+'.'+trend+' Keep practising '+weak+' until the exam so you arrive in top form.';
     else if(rd.k==='borderline') msg=first+', you are very close to the pass mark for '+ex+' ('+rd.scale+' on the Cambridge Scale; '+rd.boundary+' is needed).'+trend+' With focused practice in '+weak+' over the coming weeks you can make it; your teacher will confirm your readiness before registration.';
     else msg=first+', your Official Mock 2 result shows you are not yet ready to sit '+ex+' ('+rd.scale+' on the Cambridge Scale; '+rd.boundary+' is needed).'+trend+' We recommend consolidating '+weak+' before registering, and your teacher will advise on the best level and date. Your effort in '+strong+' shows what you can do.';
   } else {
-    const trend = up==null ? '' : up>0 ? ' Has subido '+up+' puntos en la Escala Cambridge desde junio.' : up<0 ? ' Tu escala global está '+(-up)+' puntos por debajo de junio: los nervios del día también cuentan, y lo revisaremos juntos.' : ' Tu resultado global es el mismo que en junio.';
+    const trend = up==null ? '' : up>0 ? ' Has subido '+up+' punto'+(up===1?'':'s')+' en la Escala Cambridge desde junio.' : up<0 ? ' Tu escala global está '+(-up)+' punto'+(up===-1?'':'s')+' por debajo de junio: los nervios del día también cuentan, y lo revisaremos juntos.' : ' Tu resultado global es el mismo que en junio.';
     if(!pres.length) msg=first+', todavía no tenemos tus resultados del Official Mock 2. Tu profesor te indicará cómo completar los papers que faltan.';
     else if(!rd) msg=first+', estos son tus resultados del Official Mock 2. Destacas en '+strong+'; sigamos trabajando '+weak+'.'+trend;
     else if(rd.k==='ready') msg=first+', ¡felicitaciones! Tu resultado en el Official Mock 2 muestra que estás apto para rendir '+ex+'. Destacas en '+strong+'.'+trend+' Sigue practicando '+weak+' hasta el examen para llegar en tu mejor momento.';
