@@ -52,6 +52,16 @@ var SIZES = {S:.6, M:1, L:1.8};
 var MAXW = 1600;            // el lienzo interno no pasa de aquí: memoria en tablets
 var CSS_ID = 'pl-css';
 
+/* un solo velo oscuro para toda la página: aunque haya varias láminas, a lo
+   sumo una está agrandada a la vez */
+var _fondo = null;
+function fondo(){
+  if(_fondo) return _fondo;
+  _fondo = document.createElement('div'); _fondo.className = 'pl-backdrop';
+  document.body.appendChild(_fondo);
+  return _fondo;
+}
+
 /* Tipografía de marca de Nordic (Brandbook): Gotham en la barra y TT Rounds
    Neue, redonda y amable, para las palabras que el niño escribe en la lámina.
    Los .ttf viven en una carpeta fonts/ junto a este archivo (en el portal es
@@ -94,6 +104,12 @@ function css(){
   '.pl-bar .pl-sz{font-size:.8rem;font-weight:700;min-width:32px}',
   '.pl-bar .pl-hint{font-size:.78rem;color:#64748b;margin-left:auto}',
   '.pl-textbox{position:absolute;z-index:5;border:2px dashed #1e3a8a;background:rgba(255,255,255,.9);border-radius:6px;padding:2px 6px;font-weight:700;outline:none;min-width:60px}',
+  '.pl-backdrop{position:fixed;inset:0;z-index:99997;background:rgba(15,23,42,.72);display:none}',
+  '.pl-backdrop.on{display:block}',
+  '.pl-wrap.pl-full{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;max-width:96vw;max-height:calc(100vh - 130px);z-index:99998;margin:0;box-shadow:0 20px 60px rgba(0,0,0,.4)}',
+  '.pl-wrap.pl-full img{width:auto;height:auto;max-width:96vw;max-height:calc(100vh - 130px)}',
+  '.pl-bar.pl-full{position:fixed;left:0;right:0;bottom:0;z-index:99999;border-radius:0;margin:0;justify-content:center;box-shadow:0 -6px 24px rgba(0,0,0,.22)}',
+  'body.pl-full-lock{overflow:hidden}',
   '@media (max-width:600px){.pl-bar button{min-width:34px;height:34px;font-size:1rem}.pl-bar .pl-sw{width:24px;height:24px}}'
   ]).join('\n');
   document.head.appendChild(s);
@@ -116,6 +132,9 @@ function attach(img, opts){
   var ctx = cv.getContext('2d');
   var bar = document.createElement('div'); bar.className = 'pl-bar';
   wrap.parentNode.insertBefore(bar, wrap.nextSibling);
+  // sitio de origen de los dos, para devolverlos ahi al salir de pantalla completa
+  var wrapHome = wrap.parentNode, wrapHomeNext = wrap.nextSibling;
+  var barHome = bar.parentNode, barHomeNext = bar.nextSibling;
 
   /* ---- estado ---- */
   var ops = [];           // trazos y textos, en orden
@@ -243,6 +262,48 @@ function attach(img, opts){
     redo = []; repinta(); cambio();
   }
 
+  /* ---- agrandar: la lámina a pantalla completa para pintar con más sitio.
+     Se pidió para la Parte 5 (colorear); vive en el módulo, así que también
+     agranda la Parte 1 (unir con líneas) sin tocarla aparte. ---- */
+  var isFull = false;
+  function onEscFull(e){ if(e.key === 'Escape') toggleFull(false); }
+  var vigilaId = null;
+  function vigilaHome(){
+    // si el papel cambio de pantalla mientras estaba agrandada, la tarjeta de
+    // origen ya no esta en el arbol: cerrar sola en vez de dejar la lamina
+    // flotando encima de un ejercicio distinto
+    if(!wrapHome.isConnected){ toggleFull(false); return; }
+    vigilaId = requestAnimationFrame(vigilaHome);
+  }
+  function toggleFull(v){
+    var next = v == null ? !isFull : v;
+    if(next === isFull) return;
+    isFull = next;
+    if(isFull){
+      // un antepasado (la columna de la foto, position:sticky) crea su propio
+      // contexto de apilamiento: por dentro de el, ningun z-index compite con
+      // el velo. Sacar wrap y barra a document.body los pone al mismo nivel.
+      document.body.appendChild(wrap); document.body.appendChild(bar);
+      vigilaId = requestAnimationFrame(vigilaHome);
+    } else {
+      if(vigilaId) cancelAnimationFrame(vigilaId);
+      // la barra vuelve primero: wrap se reinserta justo delante de ella
+      // (wrapHomeNext es "bar"), y hasta que bar no esta de vuelta en su sitio
+      // no es un hijo valido de wrapHome para usar como referencia
+      if(barHome.isConnected) barHome.insertBefore(bar, barHomeNext); else bar.remove();
+      if(wrapHome.isConnected) wrapHome.insertBefore(wrap, wrapHomeNext); else wrap.remove();
+    }
+    wrap.classList.toggle('pl-full', isFull);
+    bar.classList.toggle('pl-full', isFull);
+    fondo().classList.toggle('on', isFull);
+    document.body.classList.toggle('pl-full-lock', isFull);
+    bFull.innerHTML = isFull ? '✕' : '🔍';
+    bFull.title = isFull ? (lang === 'es' ? 'Cerrar' : 'Close') : (lang === 'es' ? 'Agrandar el dibujo' : 'Enlarge the picture');
+    bFull.classList.toggle('on', isFull);
+    if(isFull){ document.addEventListener('keydown', onEscFull); fondo().onclick = function(){ toggleFull(false); }; }
+    else document.removeEventListener('keydown', onEscFull);
+  }
+
   /* ---- barra ---- */
   var btns = {};
   function b(html, title, fn, cls){
@@ -250,6 +311,9 @@ function attach(img, opts){
     if(cls) e.className = cls; e.onclick = fn; return e;
   }
   function grp(){ var g = document.createElement('div'); g.className = 'pl-grp'; bar.appendChild(g); return g; }
+  var gZ = grp();
+  var bFull = b('🔍', lang === 'es' ? 'Agrandar el dibujo' : 'Enlarge the picture', function(){ toggleFull(); });
+  gZ.appendChild(bFull);
   var gT = grp();
   tools.forEach(function(k){
     var T = TOOLS[k]; if(!T) return;
@@ -319,7 +383,7 @@ function attach(img, opts){
     },
     setTool: function(k){ if(TOOLS[k]){ tool = k; botones(); } },
     setColour: function(c){ colour = c; botones(); },
-    destroy: function(){ bar.remove(); cv.remove(); wrap.parentNode.insertBefore(img, wrap); wrap.remove(); delete img.__pl; },
+    destroy: function(){ if(isFull) toggleFull(false); bar.remove(); cv.remove(); wrap.parentNode.insertBefore(img, wrap); wrap.remove(); delete img.__pl; },
     el: wrap, bar: bar
   };
   if(opts.initial){
