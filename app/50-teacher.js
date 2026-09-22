@@ -21,9 +21,10 @@ async function renderTeacher(tab){
     correccion.push({key:'unitexams',label:'📋 Unit exams'});
     correccion.push({key:'readers',label:'📖 Reading checks'});
     correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
+    correccion.push({key:'mock2',label:'📝 MOCK 2'});
     seguimiento.push({key:'results',label:'📝 Results'});
     seguimiento.push({key:'activities',label:'🎲 Activities'});
-    seguimiento.push({key:'final',label:'🎓 Final result'});
+    seguimiento.push({key:'final',label:'🎓 MOCK 1'});
     seguimiento.push({key:'tiempo',label:'⏱️ Screen time'});
   }
   if(acc.can_results||acc.can_students) seguimiento.push({key:'honesty',label:'🛡️ Honesty'});
@@ -94,6 +95,7 @@ async function renderTeacher(tab){
   if(active==='games') return $('#main').innerHTML = gamesLabBody();
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
+  if(active==='mock2') return mock2Panel();
   if(active==='readers') return readerStatsPanel();
   if(active==='unitexams') return unitExamPanel();
   if(active==='levels') return levelsPanel();
@@ -389,7 +391,11 @@ function writingMessage(name, level, pct){
   if(pct>=30) return `Hi ${f}! Thanks for your ${level} writing — ${pct}%. Let's work on answering every point in the task, organising your paragraphs, and writing a bit more. You'll improve quickly with practice! ✍️`;
   return `Hi ${f}! Thanks for handing in your ${level} writing — ${pct}%. Don't worry: with regular practice on task content, organisation and basic grammar you'll make fast progress. Your teacher is here to help! ✍️`;
 }
-window.gradeWriting = async (id)=>{
+/* opts (21-sep-2026): { back:'mock2', quiet:true } desde ✅ Marking → 📝 MOCK 2.
+   quiet = se guarda la nota SIN mandar correo al alumno (el Apps Script): en el
+   Official Mock 2 los resultados salen todos juntos en el informe único. */
+window.gradeWriting = async (id, opts)=>{
+  opts = opts||{};
   const { data:a, error } = await sb.from('exam_attempts').select('*, profiles(full_name,email,grade_id,grades(name))').eq('id',id).single();
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
   const rubric = EXAM_WRITING_RUBRICS[a.level] || EXAM_WRITING_RUBRICS.B1;
@@ -403,9 +409,11 @@ window.gradeWriting = async (id)=>{
     else if(m2) sel_t2[m2[1]] = p.correct!=null ? p.correct : null;
     else if(p.part) sel_t1[p.part] = p.correct!=null ? p.correct : null; // backwards compat
   });
-  gradeState = { id, attempt:a, rubric, sel_t1, sel_t2, msg:(a.breakdown&&a.breakdown.teacherMessage)||'', touched: !!(a.breakdown&&a.breakdown.teacherMessage) };
+  const quiet = !!opts.quiet || (typeof mockCycleOf==='function' && mockCycleOf(a)===2);   // un writing del Official Mock 2 nunca manda correo
+  gradeState = { id, attempt:a, rubric, sel_t1, sel_t2, msg:(a.breakdown&&a.breakdown.teacherMessage)||'', touched: !!(a.breakdown&&a.breakdown.teacherMessage), back:(opts.back==='mock2'?'mock2':'results'), quiet };
   renderGradeWriting();
 };
+function _gradeWritingBack(){ return gradeState && gradeState.back==='mock2' ? mock2Panel() : teacherResults(); }
 
 /* Builds the rubric card grid for one task (taskIdx = 0 or 1). */
 function _taskRubricHtml(taskLabel, taskIdx){
@@ -449,9 +457,9 @@ function renderGradeWriting(){
   const t2Label = (answers[1] && answers[1].label) || 'Task 2 — Part 2';
 
   $('#main').innerHTML = `
-    <button class="btn sm ghost" onclick="teacherResults()">← Back to results</button>
-    <h1 style="margin:.4rem 0 0">✍️ Grade Writing</h1>
-    <div class="muted" style="margin-bottom:10px">${esc(a.profiles?.full_name||'Student')} · ${esc(a.profiles?.grades?.name||'')} · ${esc(a.level)} · ${mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
+    <button class="btn sm ghost" onclick="_gradeWritingBack()">← Back to ${gradeState.back==='mock2'?'MOCK 2':'results'}</button>
+    <h1 style="margin:.4rem 0 0">✍️ Grade Writing${gradeState.quiet?' · OFFICIAL MOCK 2':''}</h1>
+    <div class="muted" style="margin-bottom:10px">${esc(a.profiles?.full_name||'Student')} · ${esc(a.profiles?.grades?.name||'')} · ${esc(a.level)} · ${gradeState.quiet?'Official Mock 2 (bank '+mockLabel(a)+')':mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
     <div class="grid cols-2" style="align-items:start">
       <div>
         <div class="card"><h2 style="margin-top:0">Student text</h2>${textsHtml}</div>
@@ -468,11 +476,12 @@ function renderGradeWriting(){
               <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span id="gw-total">0</span> / ${totalMax} · <span id="gw-pct">0</span>% · <span id="gw-cefr" style="background:#d1d2ea;color:#244c77;border-radius:8px;padding:2px 10px;font-size:1.05rem">—</span></div>
             </div>
           </div>
-          <label style="margin-top:10px;display:block">Message for the student (editable)</label>
+          <label style="margin-top:10px;display:block">${gradeState.quiet?'Teacher\'s feedback (goes into the Mock 2 report)':'Message for the student (editable)'}</label>
           <textarea id="gw-msg" rows="5" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="gradeState.touched=true;gradeState.msg=this.value">${esc(gradeState.msg||'')}</textarea>
           <div id="gw-status" style="margin-top:6px;font-size:.88rem"></div>
-          <div class="row" style="margin-top:10px;gap:10px">
-            <button class="btn" id="gw-send" onclick="window._sendWritingResult()">📧 Send result to student</button>
+          <div class="row" style="margin-top:10px;gap:10px;align-items:center">
+            <button class="btn" id="gw-send" onclick="window._sendWritingResult()">${gradeState.quiet?'💾 Save grade':'📧 Send result to student'}</button>
+            ${gradeState.quiet?'<span class="muted" style="font-size:.82rem">No email is sent: the student sees it only in the single Mock 2 report, once released.</span>':''}
           </div>
         </div>
       </div>
@@ -566,6 +575,11 @@ window._sendWritingResult = async ()=>{
       : e;
   }
   if(rpcErr){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">Could not save: ${esc(rpcErr.message||String(rpcErr))}</span>`; return; }
+  if(gradeState.quiet){
+    st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Grade saved.':'Comment saved.'} It goes into the Mock 2 report — no email sent.</span>`;
+    setTimeout(_gradeWritingBack, 900);
+    return;
+  }
   // Fire-and-forget webhook (Apps Script emails the student + archives to Drive).
   // We also send the student's own texts so the archived copy is complete.
   try{
@@ -580,5 +594,5 @@ window._sendWritingResult = async ()=>{
         message:msg, teacherEmail:'pbaca@nordic-school.edu.pe', teacherName:breakdown.gradedBy, schoolName:'Nordic International School of Lima' }) });
   }catch(e){}
   st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Result saved and sent to the student.':'Comment saved and sent to the student.'}</span>`;
-  setTimeout(teacherResults, 1200);
+  setTimeout(_gradeWritingBack, 1200);
 };

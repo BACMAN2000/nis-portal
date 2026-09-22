@@ -96,9 +96,13 @@ async function studentFinal(){
   const back=_isStudent()?_backBtn("window._nav('results')",'My Progress'):'';
   if(!p.id) return _previewNeedsStudent('🏅 Final result · CEFR', back);
   $('#main').innerHTML=`${back}<h1>🏅 Final result · CEFR</h1><p class="muted">Loading…</p>`;
-  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',p.id);
-  let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',p.id).maybeSingle(); sp=r&&r.data; }catch(e){}
-  const fin=_finalFromData(p, at||[], sp);
+  // El alumno ve el ÚLTIMO ciclo liberado por el admin (mock_cycles.released_at):
+  // del Official Mock 2 no ve nada hasta que salga el informe único (21-sep-2026).
+  const cycle = await mockLatestReleased();
+  const { data:atAll } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at,breakdown').eq('student_id',p.id);
+  const at = mockCycleAttempts(atAll||[], cycle);
+  let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',p.id); sp=mockSpeakingOf((r&&r.data)||[], cycle); }catch(e){}
+  const fin=mockCycleFinal(p, at, sp, cycle);
   const tgt=targetLevel(p), stt=targetStatus(fin.finalCefr,tgt);
   const sttTxt = stt==='below'?`▼ Below your target (${tgt})`:stt==='above'?`▲ Above your target (${tgt})`:stt==='meets'?`✓ Meets your target (${tgt})`:'';
   const ch='padding:8px;border:1px solid var(--line)';
@@ -110,7 +114,7 @@ async function studentFinal(){
   const wRow = fin.a2NoWriting
     ? `<tr><td style="${ch}"><b>Writing</b></td><td colspan="4" style="${ch};color:var(--grey)">Included in Reading &amp; Use of English (A2 Key)</td></tr>`
     : row('Writing', fin.skills.Writing);
-  $('#main').innerHTML=`${back}<h1>🏅 Final result · CEFR</h1>
+  $('#main').innerHTML=`${back}<h1>🏅 Final result · CEFR · ${cycle===2?'MOCK 2':'MOCK 1'}</h1>
     <p class="muted" style="margin-top:-6px">This is the report given to parents: your final level, combining your best results per skill on the Cambridge Scale.</p>
     <div class="card" style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">
       <thead><tr><th style="${ch};text-align:left">Skill</th><th style="${ch}">Level</th><th style="${ch}">Result</th><th style="${ch}">CEFR</th><th style="${ch}">Scale</th></tr></thead>
@@ -128,7 +132,7 @@ async function studentFinal(){
         ${fin.complete?'':`<div style="font-size:.74rem;opacity:.9;margin-top:4px">⚠ Provisional. Missing: ${esc(fin.missing.join(', '))}.</div>`}
       </div>
     </div>
-    <button class="btn" onclick="window.studentReportPDF('${p.id}','es')">📄 PDF (Spanish)</button> <button class="btn ghost" onclick="window.studentReportPDF('${p.id}','en')">📄 PDF (English)</button>`;
+    <button class="btn" onclick="window.studentReportPDF('${p.id}','es',${cycle})">📄 PDF (Spanish)</button> <button class="btn ghost" onclick="window.studentReportPDF('${p.id}','en',${cycle})">📄 PDF (English)</button>`;
 }
 
 /* Metadatos de grados dentro de Classes y niveles de actividades por grado.
@@ -907,7 +911,8 @@ async function studentResults(){
   const back = '';
   if(!p.id) return _previewNeedsStudent('📊 My Progress', back);
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Loading…</p>`;
-  const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
+  const { data:attsRaw } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
+  const atts = await mockVisibleAttempts(attsRaw||[]);   // nada del Official Mock 2 hasta que el admin libere el informe
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
     const scored=a.filter(x=>x.percent!=null);              // Writing is not auto-scored

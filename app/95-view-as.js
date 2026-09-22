@@ -124,16 +124,18 @@ async function renderParent(tab='report'){
   const lang = (window.NISi18n && window.NISi18n.lang()==='es') ? 'es' : 'en', EN = lang==='en';
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',sid).single();
   if(error){ $('#main').innerHTML='<div class="note err">'+esc(error.message)+'</div>'; return; }
-  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',sid);
-  let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',sid).maybeSingle(); sp=r&&r.data; }catch(e){}
-  const fin=_finalFromData(p, at||[], sp);
+  const cycle = await mockLatestReleased();   // la familia recibe el último informe liberado
+  const { data:atAll } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',sid);
+  const at = mockCycleAttempts(atAll||[], cycle);
+  let sp=null, prev=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',sid); sp=mockSpeakingOf((r&&r.data)||[], cycle); if(cycle===2) prev=mockCycleFinal(p, mockCycleAttempts(atAll||[],1), mockSpeakingOf((r&&r.data)||[],1), 1); }catch(e){}
+  const fin=mockCycleFinal(p, at, sp, cycle);
   _ensurePrintCss();
   $('#main').innerHTML = `<h1>📄 Family report</h1>
     <p class="muted" style="margin-top:-6px">This is the document the family receives: ${esc(p.full_name||'')}’s final level, skill by skill, with the teacher’s comments.${fin.complete?'':' <span class="badge off" style="font-size:.7rem">Provisional</span>'}</p>
     <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
       <button class="btn sm" onclick="window.print()">🖨️ Print</button>
-      <button class="btn sm ghost" onclick="studentReportPDF('${sid}','${lang}')">📄 Download PDF</button>
+      <button class="btn sm ghost" onclick="studentReportPDF('${sid}','${lang}',${cycle})">📄 Download PDF</button>
     </div>
-    <div id="print-report" style="max-width:820px;margin:0 auto;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.08)">${_reportInner(p, at||[], sp, fin, EN, {detail:true})}</div>`;
+    <div id="print-report" style="max-width:820px;margin:0 auto;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.08)">${_reportInner(p, at, sp, fin, EN, {detail:true, cycle, prev})}</div>`;
   window.scrollTo(0,0);
 }

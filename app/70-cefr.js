@@ -188,6 +188,10 @@ const SPEAKING_RUBRICS = {
   C1:{ bandMax:5, subs:['Grammar and Vocabulary','Discourse Management','Pronunciation','Interactive Communication','Global Achievement'] }
 };
 
+/* 🎓 MOCK 1 (antes «Final result»): desde el 21-sep-2026 esta pestaña muestra el
+   ciclo 1 congelado —los intentos anteriores al 22-sep y el Speaking de junio—,
+   que es exactamente lo que se mandó a las familias. El Official Mock 2 se
+   corrige y se compara en ✅ Marking → 📝 MOCK 2 (app/72-mocks.js). */
 async function cefrFinalPanel(){
   if($('#main')) $('#main').innerHTML = `<div class="center muted">Loading…</div>`;
   const isTeacher = state.profile && state.profile.role==='teacher';
@@ -206,9 +210,10 @@ async function cefrFinalPanel(){
 
   const ids = students.map(s=>s.id);
   const safeIds = ids.length?ids:['00000000-0000-0000-0000-000000000000'];
-  const { data:atts } = await sb.from('exam_attempts')
+  const { data:attsAll } = await sb.from('exam_attempts')
     .select('id,student_id,skill,level,percent,mock,submitted_at').in('student_id', safeIds).limit(8000);
-  const { data:spks } = await sb.from('speaking_results').select('*').in('student_id', safeIds);
+  const atts = mockCycleAttempts(attsAll, 1);   // ciclo 1: lo anterior al 22-sep-2026 (sin breakdown: por fecha basta)
+  const { data:spks } = await sb.from('speaking_results').select('*').in('student_id', safeIds).eq('cycle',1);
   const aBy={}; (atts||[]).forEach(a=>{(aBy[a.student_id]=aBy[a.student_id]||[]).push(a);});
   const sBy={}; (spks||[]).forEach(s=>{ sBy[s.student_id]=s; });
 
@@ -257,8 +262,8 @@ async function cefrFinalPanel(){
   }).join('');
 
   $('#main').innerHTML = `
-    <h1 style="margin:0 0 4px">🎓 Final result · CEFR</h1>
-    <p class="muted" style="margin-top:0;font-size:.88rem">Best result per skill converted to the <b>Cambridge Scale</b> (a pass ≈60% lands at the level boundary; below that drops a band). The <b>final</b> is the average of the assessed skills (the best attempt <b>passed ≥50%</b> is taken; if none passed, the highest %). <b>Writing</b> and <b>Speaking</b> are graded with the Cambridge rubric (0–5 per descriptor). In <b>A2</b>, Writing is included within Reading &amp; Use of English (A2 Key exam), so it does not count as a separate skill. <b>Mock</b> = exam taken (level · mock number); “—” = has not taken a mock yet. <b>Target</b> = level the grade aims for; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = below the target, <span class="badge on" style="font-size:.66rem">✓</span> = meets it. <span class="badge off" style="font-size:.66rem">prov.</span> = skills still missing.</p>
+    <h1 style="margin:0 0 4px">🎓 MOCK 1 · Final result (June 2026)</h1>
+    <p class="muted" style="margin-top:0;font-size:.88rem"><b>Frozen:</b> the results and the family reports (📄 ES / EN, the letters sent through Toddle) of the first mock — attempts up to 21 September 2026. The Official Mock 2 lives in ✅ Marking → 📝 MOCK 2, with the comparison. Best result per skill converted to the <b>Cambridge Scale</b> (a pass ≈60% lands at the level boundary; below that drops a band). The <b>final</b> is the average of the assessed skills (the best attempt <b>passed ≥50%</b> is taken; if none passed, the highest %). <b>Writing</b> and <b>Speaking</b> are graded with the Cambridge rubric (0–5 per descriptor). In <b>A2</b>, Writing is included within Reading &amp; Use of English (A2 Key exam), so it does not count as a separate skill. <b>Mock</b> = exam taken (level · mock number); “—” = has not taken a mock yet. <b>Target</b> = level the grade aims for; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = below the target, <span class="badge on" style="font-size:.66rem">✓</span> = meets it. <span class="badge off" style="font-size:.66rem">prov.</span> = skills still missing.</p>
     ${resultsFilterBar(gradeList,'window._setFinalFilter')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Student</th><th>Grade</th><th>Target</th><th>Mock</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
@@ -275,16 +280,19 @@ window._setFinalFilter = (k,v)=>{
 /* ---- Speaking grader (rubric, mirrors writing grader) ---- */
 let speakingState=null;
 function speakingRubric(){ return SPEAKING_RUBRICS[speakingState.level] || SPEAKING_RUBRICS.B1; }
-window.speakingGrader = async (studentId, level)=>{
+/* opts: { cycle:1|2, back:'final'|'mock2' } — el Speaking va por ciclo de mock (21-sep-2026). */
+window.speakingGrader = async (studentId, level, opts)=>{
+  opts = opts||{}; const cycle = opts.cycle===2 ? 2 : 1;
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,grade_id,cefr_level,grades(name)').eq('id',studentId).single();
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
-  const { data:prev } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
+  const { data:prev } = await sb.from('speaking_results').select('*').eq('student_id',studentId).eq('cycle',cycle).maybeSingle();
   const lvl = level || (prev&&prev.level) || targetLevel(p) || 'B1';
   const sel = {};
   if(prev && prev.breakdown && Array.isArray(prev.breakdown.parts)) prev.breakdown.parts.forEach(pp=>{ sel[pp.part]=pp.correct; });
-  speakingState = { studentId, profile:p, level:lvl, sel, msg:(prev&&prev.comment)||'' };
+  speakingState = { studentId, profile:p, level:lvl, sel, msg:(prev&&prev.comment)||'', cycle, back:(opts.back==='mock2'?'mock2':'final') };
   renderSpeakingGrader();
 };
+function _speakingBack(){ return speakingState && speakingState.back==='mock2' ? mock2Panel() : cefrFinalPanel(); }
 function renderSpeakingGrader(){
   const r=speakingRubric(), sel=speakingState.sel, p=speakingState.profile;
   const max=r.subs.length*r.bandMax;
@@ -303,8 +311,8 @@ function renderSpeakingGrader(){
   }).join('');
   const lvlSel=LEVELS.map(l=>`<option ${speakingState.level===l?'selected':''}>${l}</option>`).join('');
   $('#main').innerHTML=`
-    <button class="btn sm ghost" onclick="cefrFinalPanel()">← Back to final result</button>
-    <h1 style="margin:.4rem 0 0">🗣️ Mark Speaking</h1>
+    <button class="btn sm ghost" onclick="_speakingBack()">← Back to ${speakingState.back==='mock2'?'MOCK 2':'MOCK 1'}</button>
+    <h1 style="margin:.4rem 0 0">🗣️ Mark Speaking · ${speakingState.cycle===2?'MOCK 2':'MOCK 1'}</h1>
     <div class="muted" style="margin-bottom:10px">${esc(p.full_name||'Student')} · ${esc(p.grades?.name||'')}</div>
     <div class="note">Choose the descriptor that matches each criterion (Cambridge Speaking analytical scales, 0–${r.bandMax}). The grade is calculated automatically. The level defines the criteria.</div>
     <div class="row" style="gap:10px;align-items:center;margin:10px 0">
@@ -336,9 +344,9 @@ window._saveSpeaking = async ()=>{
   st.textContent='Saving…';
   const { error } = await sb.rpc('upsert_speaking', {
     p_student:speakingState.studentId, p_level:speakingState.level, p_score:total, p_total:max,
-    p_percent:pct, p_breakdown:breakdown, p_comment:(speakingState.msg||'').trim()||null });
+    p_percent:pct, p_breakdown:breakdown, p_comment:(speakingState.msg||'').trim()||null, p_cycle:speakingState.cycle||1 });
   if(error){ st.innerHTML=`<span style="color:var(--bad)">Could not save: ${esc(error.message)}</span>`; return; }
-  cefrFinalPanel();
+  _speakingBack();
 };
 
 /* ---- PDF report (lazy-load html2pdf, mirrors ensureChart) ---- */
@@ -399,6 +407,8 @@ function cefrScaleSVG(scale, cefr){
    vista en pantalla). opts.detail=true añade el detalle de la evaluación de Writing y Speaking. */
 function _reportInner(p, at, sp, fin, EN, opts){
   at = at||[]; opts = opts||{};
+  // Ciclo 2 (Official Mock 2): subtítulo propio, comparativa con el Mock 1 y aptitud (app/72-mocks.js).
+  const M2 = (opts.cycle===2 && window._mockReportExtras) ? _mockReportExtras(p, fin, opts.prev||null, EN) : null;
   const tgt=targetLevel(p)||'B1'; const stt=targetStatus(fin.finalCefr, tgt);
   const T = EN ? {
     sub:'Nordic International School of Lima · Cambridge English · Results report',
@@ -489,6 +499,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     else if(fs>=130) msg=first+', vas por buen camino en este primer simulacro de práctica, con buenos momentos en '+strong+'. Si sigues practicando, sobre todo '+weak+', llegarás mucho mejor preparado al segundo simulacro de octubre. ¡Cuentas con nosotros!';
     else msg=first+', este primer simulacro de práctica es un punto de partida y ya muestras avances en '+strong+'. Vamos a seguir practicando juntos, especialmente '+weak+', para que en el segundo simulacro de octubre veas un progreso claro. ¡Sigue esforzándote, te acompañamos!';
   }
+  if(M2){ msg=M2.msg; T.sub=M2.sub; }
   const commentBox='<div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-top:4px">'+
     '<div style="font-size:12px;font-weight:800;color:#166534;margin-bottom:5px">'+T.commentTitle+'</div>'+
     '<div style="font-size:13px;color:#0f172a;line-height:1.5">'+msg+'</div>'+
@@ -526,7 +537,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     partsTbl+
     detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
-    globalBox+ commentBox+
+    globalBox+ (M2?M2.html:'')+ commentBox+
     '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 74</div>';
 }
 
@@ -550,48 +561,58 @@ function _ensurePrintCss(){
 
 /* Vista detallada en pantalla (profesor/admin al hacer clic en el nombre del alumno):
    notas por destreza + detalle del Writing/Speaking evaluado + impresión + descarga PDF. */
-window.studentDetailReport = async (studentId, lang)=>{
+/* Los datos de un informe: perfil, intentos DEL CICLO, su Speaking y, en el
+   ciclo 2, el resultado del ciclo 1 para la comparativa. */
+async function _mockReportData(studentId, cycle){
+  cycle = cycle===2 ? 2 : 1;
+  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
+  if(error) return { error };
+  const { data:atAll } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
+  let spks=[]; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',studentId); spks=(r&&r.data)||[]; }catch(e){}
+  const at=mockCycleAttempts(atAll||[], cycle), sp=mockSpeakingOf(spks, cycle);
+  const fin=mockCycleFinal(p, at, sp, cycle);
+  const prev = cycle===2 ? mockCycleFinal(p, mockCycleAttempts(atAll||[],1), mockSpeakingOf(spks,1), 1) : null;
+  return { p, at, sp, fin, prev, cycle };
+}
+window.studentDetailReport = async (studentId, lang, cycle)=>{
   // sin idioma explícito, el del portal (botón 🌐); los dos botones del informe siguen forzándolo
   if(lang!=='es'&&lang!=='en') lang=(window.NISi18n&&window.NISi18n.lang()==='es')?'es':'en';
-  const EN=lang==='en';
-  _setNav('final');
+  const EN=lang==='en'; cycle = cycle===2 ? 2 : 1;
+  _setNav(cycle===2?'mock2':'final');
   if($('#main')) $('#main').innerHTML='<div class="center muted">Loading…</div>';
-  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
-  if(error){ $('#main').innerHTML='<div class="note err">'+esc(error.message)+'</div>'; return; }
-  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
-  let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle(); sp=r&&r.data; }catch(e){}
-  const fin=_finalFromData(p, at||[], sp);
+  const D = await _mockReportData(studentId, cycle);
+  if(D.error){ $('#main').innerHTML='<div class="note err">'+esc(D.error.message)+'</div>'; return; }
+  const { p, at, sp, fin, prev } = D;
   _ensurePrintCss();
-  const inner=_reportInner(p, at||[], sp, fin, EN, {detail:true});
+  const inner=_reportInner(p, at, sp, fin, EN, {detail:true, cycle, prev});
+  const backFn = cycle===2 ? 'mock2Panel()' : 'cefrFinalPanel()';
   $('#main').innerHTML=
     '<div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">'+
-      '<button class="btn sm ghost" onclick="cefrFinalPanel()">← Back to final result</button>'+
+      '<button class="btn sm ghost" onclick="'+backFn+'">← Back to '+(cycle===2?'MOCK 2':'MOCK 1')+'</button>'+
       '<span style="width:1px;height:22px;background:var(--line)"></span>'+
-      '<button class="btn sm '+(EN?'ghost':'')+'" onclick="studentDetailReport(\''+studentId+'\',\'es\')">🇪🇸 Español</button>'+
-      '<button class="btn sm '+(EN?'':'ghost')+'" onclick="studentDetailReport(\''+studentId+'\',\'en\')">🇬🇧 English</button>'+
+      '<button class="btn sm '+(EN?'ghost':'')+'" onclick="studentDetailReport(\''+studentId+'\',\'es\','+cycle+')">🇪🇸 Español</button>'+
+      '<button class="btn sm '+(EN?'':'ghost')+'" onclick="studentDetailReport(\''+studentId+'\',\'en\','+cycle+')">🇬🇧 English</button>'+
       '<span style="flex:1"></span>'+
       (fin.complete?'':'<span class="badge off" style="font-size:.7rem" title="Missing: '+esc(fin.missing.join(', '))+'">Provisional</span> ')+
       '<button class="btn sm" onclick="window.print()">🖨️ Print</button>'+
-      '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\')">📄 Download PDF</button>'+
+      '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\','+cycle+')">📄 Download PDF</button>'+
     '</div>'+
     '<div id="print-report" style="max-width:820px;margin:0 auto;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.08)">'+inner+'</div>';
   window.scrollTo(0,0);
 };
 
-window.studentReportPDF = async (studentId, lang)=>{
-  lang = (lang==='en') ? 'en' : 'es';
+window.studentReportPDF = async (studentId, lang, cycle)=>{
+  lang = (lang==='en') ? 'en' : 'es'; cycle = cycle===2 ? 2 : 1;
   try{ await ensurePdfLibs(); }catch(e){ alert(e.message); return; }
-  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
-  if(error){ alert('Could not load the student: '+error.message); return; }
-  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
-  const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
-  const fin=_finalFromData(p, at||[], sp);
+  const D = await _mockReportData(studentId, cycle);
+  if(D.error){ alert('Could not load the student: '+D.error.message); return; }
+  const { p, at, sp, fin, prev } = D;
   const EN = lang==='en';
-  const fname=(p.full_name||'student').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
+  const fname=(p.full_name||'student').replace(/\s+/g,'_')+(cycle===2?'-MOCK2':'')+'-'+(EN?'EN':'ES')+'.pdf';
   // Nodo del reporte (ancho fijo 760px) en el origen del documento.
   const node=document.createElement('div');
   node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
-  node.innerHTML=_reportInner(p, at||[], sp, fin, EN, {});
+  node.innerHTML=_reportInner(p, at, sp, fin, EN, {cycle, prev});
   const host=document.createElement('div');
   host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
   host.appendChild(node); document.body.appendChild(host);
