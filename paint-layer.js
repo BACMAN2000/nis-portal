@@ -105,10 +105,10 @@ function css(){
   '.pl-bar .pl-hint{font-size:.78rem;color:#64748b;margin-left:auto}',
   '.pl-textbox{position:absolute;z-index:5;border:2px dashed #1e3a8a;background:rgba(255,255,255,.9);border-radius:6px;padding:2px 6px;font-weight:700;outline:none;min-width:60px}',
   '.pl-backdrop{position:fixed;inset:0;z-index:99997;background:rgba(15,23,42,.72);display:none}',
-  '.pl-backdrop.on{display:block}',
-  '.pl-wrap.pl-full{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;max-width:96vw;max-height:calc(100vh - 130px);z-index:99998;margin:0;box-shadow:0 20px 60px rgba(0,0,0,.4)}',
-  '.pl-wrap.pl-full img{width:auto;height:auto;max-width:96vw;max-height:calc(100vh - 130px)}',
-  '.pl-bar.pl-full{position:fixed;left:0;right:0;bottom:0;z-index:99999;border-radius:0;margin:0;justify-content:center;box-shadow:0 -6px 24px rgba(0,0,0,.22)}',
+  '.pl-backdrop.on{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;box-sizing:border-box;overflow:auto}',
+  '.pl-wrap.pl-full{width:auto;max-width:min(96vw,900px);max-height:calc(100vh - 120px);margin:0;flex:0 0 auto;box-shadow:0 20px 60px rgba(0,0,0,.4)}',
+  '.pl-wrap.pl-full img{width:auto;height:auto;max-width:min(96vw,900px);max-height:calc(100vh - 120px)}',
+  '.pl-bar.pl-full{width:auto;max-width:96vw;margin:0;flex:0 0 auto;box-shadow:0 10px 26px rgba(0,0,0,.3)}',
   'body.pl-full-lock{overflow:hidden}',
   '@media (max-width:600px){.pl-bar button{min-width:34px;height:34px;font-size:1rem}.pl-bar .pl-sw{width:24px;height:24px}}'
   ]).join('\n');
@@ -283,7 +283,7 @@ function attach(img, opts){
       // un antepasado (la columna de la foto, position:sticky) crea su propio
       // contexto de apilamiento: por dentro de el, ningun z-index compite con
       // el velo. Sacar wrap y barra a document.body los pone al mismo nivel.
-      document.body.appendChild(wrap); document.body.appendChild(bar);
+      fondo().appendChild(wrap); fondo().appendChild(bar);
       vigilaId = requestAnimationFrame(vigilaHome);
     } else {
       if(vigilaId) cancelAnimationFrame(vigilaId);
@@ -300,7 +300,7 @@ function attach(img, opts){
     bFull.innerHTML = isFull ? '✕' : '🔍';
     bFull.title = isFull ? (lang === 'es' ? 'Cerrar' : 'Close') : (lang === 'es' ? 'Agrandar el dibujo' : 'Enlarge the picture');
     bFull.classList.toggle('on', isFull);
-    if(isFull){ document.addEventListener('keydown', onEscFull); fondo().onclick = function(){ toggleFull(false); }; }
+    if(isFull){ document.addEventListener('keydown', onEscFull); fondo().onclick = function(e){ if(e.target === this) toggleFull(false); }; }
     else document.removeEventListener('keydown', onEscFull);
   }
 
