@@ -126,21 +126,21 @@ function _mockReportExtras(p, fin, prev, EN){
                : { sub:'Nordic International School of Lima · Cambridge English · Official Mock 2 · Reporte de resultados',
                    cmp:'4) Comparación con el Mock 1 (junio de 2026)', skill:'Destreza', m1:'Mock 1', m2:'Mock 2', delta:'Cambio', none:'—',
                    rdy:'5) Aptitud para rendir el examen', rdyNote:'Escala Cambridge de aprobación para '+ex+': '+(SCALE_BOUNDARY[level]||'—')+'. Resultado: ', prov:' (provisional: aún hay papers por corregir)' };
-  const cs='padding:6px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
-  const th='padding:7px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
+  const cs='padding:4px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';   // compacto: informe en una hoja
+  const th='padding:5px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
   const cell=(b)=> b ? '<b>'+esc(b.cefr)+'</b> · '+b.scale+' <span style="color:#6b7280">('+b.level+' · '+b.pct+'%)</span>' : T.none;
   const dcell=(a,b)=>{ if(!a||!b) return T.none; const d=b.scale-a.scale; const c=d>0?'#16a34a':d<0?'#dc2626':'#6b7280'; return '<b style="color:'+c+'">'+(d>0?'▲ +':d<0?'▼ ':'= ')+d+'</b>'; };
   let html='';
   if(prev && prev.finalScale!=null){
     const keys=['Reading','Listening','Writing','Speaking'].filter(k=>(prev.skills&&prev.skills[k])||(fin.skills&&fin.skills[k]));
-    html+='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:10px 0 4px">'+T.cmp+'</div>'+
+    html+='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 3px">'+T.cmp+'</div>'+
       '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.skill+'</th><th style="'+th+'">'+T.m1+'</th><th style="'+th+'">'+T.m2+'</th><th style="'+th+'">'+T.delta+'</th></tr>'+
       keys.map(k=>'<tr><td style="'+cs+';text-align:left">'+SK[k]+'</td><td style="'+cs+'">'+cell(prev.skills[k])+'</td><td style="'+cs+'">'+cell(fin.skills[k])+'</td><td style="'+cs+'">'+dcell(prev.skills[k],fin.skills[k])+'</td></tr>').join('')+
       '<tr style="background:#f7faff"><td style="'+cs+';text-align:left"><b>'+(EN?'Overall':'Global')+'</b></td><td style="'+cs+'"><b>'+esc(prev.finalCefr)+'</b> · '+prev.finalScale+'</td><td style="'+cs+'"><b>'+esc(fin.finalCefr)+'</b> · '+(fin.finalScale!=null?fin.finalScale:'—')+'</td><td style="'+cs+'">'+dcell({scale:prev.finalScale},fin.finalScale!=null?{scale:fin.finalScale}:null)+'</td></tr></table>';
   }
   if(rd){
-    html+='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:10px 0 4px">'+T.rdy+'</div>'+
-      '<div style="background:#fff;border:1.5px solid '+readinessColor(rd)+';border-radius:12px;padding:10px 14px;margin:2px 0 8px">'+
+    html+='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 3px">'+T.rdy+'</div>'+
+      '<div style="background:#fff;border:1.5px solid '+readinessColor(rd)+';border-radius:12px;padding:8px 14px;margin:2px 0 6px">'+
       '<div style="font-size:14px;font-weight:800;color:'+readinessColor(rd)+'">'+esc(readinessLabel(rd,EN))+'</div>'+
       '<div style="font-size:11px;color:#6b7280;margin-top:4px">'+T.rdyNote+'<b>'+rd.scale+'</b> ('+(rd.gap>=0?'+':'')+rd.gap+')'+(rd.provisional?T.prov:'')+'</div></div>';
   }

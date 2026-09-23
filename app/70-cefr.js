@@ -451,8 +451,9 @@ function _reportInner(p, at, sp, fin, EN, opts){
     if(rows.length){ const ps=rows.filter(x=>x.pct>=50); ba[sk]=(ps.length?ps.reduce((b,x)=>x.scale>b.scale?x:b):rows.reduce((b,x)=>x.pct>b.pct?x:b)).a; }
   });
   const wAttAny=(at||[]).some(a=>a.skill==='Writing');
-  const cs='padding:6px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
-  const th='padding:7px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
+  // Compacto a propósito: el informe (con comparativa y aptitud del Mock 2) debe caber en UNA hoja A4.
+  const cs='padding:4px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
+  const th='padding:5px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
   const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">CEFR</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
   const skRow=(label,b,att,opt)=>{
     if(!b){ const m=(opt&&opt.pending)?T.pending:(opt&&opt.oral)?T.oral:T.notTaken;
@@ -470,14 +471,14 @@ function _reportInner(p, at, sp, fin, EN, opts){
   const rParts = ba['Reading'] ? partsOf(ba['Reading'].breakdown) : [];
   let partsTbl='';
   if(rParts.length){
-    partsTbl='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:10px 0 4px">'+T.s2+'</div>'+
+    partsTbl='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 3px">'+T.s2+'</div>'+
       '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#76cbe5"><th style="'+cs+';text-align:left;color:#0f172a">'+T.part+'</th><th style="'+cs+';color:#0f172a">'+T.hQ+'</th><th style="'+cs+';color:#0f172a">'+T.hOk+'</th><th style="'+cs+'">%</th><th style="'+cs+';width:170px">'+T.hProg+'</th></tr>'+
       // Pedido de Paolo (22-sep-2026): preguntas de la parte, aciertos y después el porcentaje.
       rParts.map((pt,i)=>'<tr><td style="'+cs+';text-align:left">'+T.part+' '+(i+1)+'</td><td style="'+cs+'">'+(pt.total!=null?pt.total:'—')+'</td><td style="'+cs+'"><b>'+(pt.correct!=null?pt.correct:'—')+'</b></td><td style="'+cs+'"><b>'+pt.pct+'%</b></td><td style="'+cs+'">'+bar(pt.pct)+'</td></tr>').join('')+'</table>';
   }
   const stColor = stt==='below'?'#f59e0b':'#16a34a';
   const stBadge = stt==='below'?T.below:stt==='above'?T.above:stt==='meets'?T.meets:'';
-  const globalBox='<div style="background:#f7faff;border:1.5px solid '+stColor+';border-radius:12px;padding:12px 16px;margin:2px 0 12px">'+
+  const globalBox='<div style="background:#f7faff;border:1.5px solid '+stColor+';border-radius:12px;padding:9px 14px;margin:2px 0 8px">'+
     '<div style="font-size:13px"><b>'+T.targetGrade+':</b> '+tgt+' &nbsp;•&nbsp; <b>'+T.finalLbl+':</b> <span style="color:#2f5f93;font-weight:800">'+esc(fin.finalCefr)+'</span> &nbsp;•&nbsp; <b>'+T.scaleLbl+':</b> '+(fin.finalScale!=null?fin.finalScale:'—')+' &nbsp;•&nbsp; <span style="color:'+stColor+';font-weight:800">'+stBadge+'</span></div>'+
     '<div style="font-size:11px;color:#6b7280;margin-top:5px">'+T.gnote+(fin.complete?'':' '+T.prov+'.')+'</div></div>';
   const SKL={Reading:T.reading,Listening:T.listening,Writing:T.writing,Speaking:T.speaking};
@@ -501,10 +502,10 @@ function _reportInner(p, at, sp, fin, EN, opts){
     else msg=first+', este primer simulacro de práctica es un punto de partida y ya muestras avances en '+strong+'. Vamos a seguir practicando juntos, especialmente '+weak+', para que en el segundo simulacro de octubre veas un progreso claro. ¡Sigue esforzándote, te acompañamos!';
   }
   if(M2){ msg=M2.msg; T.sub=M2.sub; }
-  const commentBox='<div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-top:4px">'+
-    '<div style="font-size:12px;font-weight:800;color:#166534;margin-bottom:5px">'+T.commentTitle+'</div>'+
-    '<div style="font-size:13px;color:#0f172a;line-height:1.5">'+msg+'</div>'+
-    '<div style="font-size:12px;font-weight:800;color:#0f172a;margin-top:8px">'+T.sign+'</div></div>';
+  const commentBox='<div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:10px 14px;margin-top:4px">'+
+    '<div style="font-size:12px;font-weight:800;color:#166534;margin-bottom:4px">'+T.commentTitle+'</div>'+
+    '<div style="font-size:12px;color:#0f172a;line-height:1.45">'+msg+'</div>'+
+    '<div style="font-size:11px;font-weight:800;color:#0f172a;margin-top:6px">'+T.sign+'</div></div>';
 
   // Detalle de la evaluación de Writing y Speaking (solo en la vista detallada en pantalla)
   let detail='';
@@ -528,18 +529,18 @@ function _reportInner(p, at, sp, fin, EN, opts){
 
   return ''+
     '<img src="assets/logo-h.svg" width="150" height="28" style="width:150px;height:28px;display:block">'+
-    '<div style="font-size:11px;color:#6b7280;margin:3px 0 10px">'+T.sub+'</div>'+
-    '<div style="background:#2f5f93;color:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px">'+
-      '<div style="font-size:20px;font-weight:800">'+esc(p.full_name||'')+'</div>'+
+    '<div style="font-size:11px;color:#6b7280;margin:3px 0 6px">'+T.sub+'</div>'+
+    '<div style="background:#2f5f93;color:#fff;border-radius:10px;padding:8px 14px;margin-bottom:8px">'+
+      '<div style="font-size:18px;font-weight:800">'+esc(p.full_name||'')+'</div>'+
       '<div style="font-size:12px">'+esc(p.grades&&p.grades.name||'')+(p.section?' · '+T.sectionW+' '+esc(p.section):'')+' &nbsp;•&nbsp; '+T.objective+': <b>'+tgt+'</b> ('+T.cefr+') &nbsp;•&nbsp; '+T.scaleName+'</div>'+
     '</div>'+
-    '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 4px">'+T.s1+'</div>'+
+    '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:4px 0 3px">'+T.s1+'</div>'+
     '<table style="width:100%;border-collapse:collapse;margin-bottom:4px">'+skHead+rRow+lRow+wRow+spRow+'</table>'+
     partsTbl+
     detail+
-    '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
+    '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 3px">'+T.s3+'</div>'+
     globalBox+ (M2?M2.html:'')+ commentBox+
-    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 74</div>';
+    '<div style="font-size:9px;color:#94a3b8;margin-top:6px">'+T.foot+' · build 75</div>';
 }
 
 /* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
@@ -555,7 +556,7 @@ function _ensurePrintCss(){
     '#print-report,#print-report *{visibility:visible!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}'+
     '#print-report{position:absolute!important;left:0!important;top:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}'+
     '.no-print{display:none!important}'+
-    '@page{size:A4;margin:12mm}'+
+    '@page{size:A4;margin:9mm}'+
   '}';
   document.head.appendChild(st);
 }
@@ -598,7 +599,7 @@ window.studentDetailReport = async (studentId, lang, cycle)=>{
       '<button class="btn sm" onclick="window.print()">🖨️ Print</button>'+
       '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\','+cycle+')">📄 Download PDF</button>'+
     '</div>'+
-    '<div id="print-report" style="max-width:820px;margin:0 auto;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.08)">'+inner+'</div>';
+    '<div id="print-report" data-i18n="off" style="max-width:820px;margin:0 auto;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.08)">'+inner+'</div>';
   window.scrollTo(0,0);
 };
 
@@ -612,7 +613,8 @@ window.studentReportPDF = async (studentId, lang, cycle)=>{
   const fname=(p.full_name||'student').replace(/\s+/g,'_')+(cycle===2?'-MOCK2':'')+'-'+(EN?'EN':'ES')+'.pdf';
   // Nodo del reporte (ancho fijo 760px) en el origen del documento.
   const node=document.createElement('div');
-  node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
+  node.style.cssText='width:760px;padding:18px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
+  node.setAttribute('data-i18n','off');   // el 📄 EN no debe salir traducido al español por nis-i18n
   node.innerHTML=_reportInner(p, at, sp, fin, EN, {cycle, prev});
   const host=document.createElement('div');
   host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
@@ -642,22 +644,16 @@ window.studentReportPDF = async (studentId, lang, cycle)=>{
     const canvas=await window.html2canvas(node,{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0,windowWidth:Math.max(760,document.documentElement.scrollWidth),windowHeight:document.documentElement.scrollHeight});
     const { jsPDF }=window.jspdf;
     const pdf=new jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
-    const margin=8, pw=210, ph=297, iw=pw-2*margin, pageContentH=ph-2*margin;
+    const margin=6, pw=210, ph=297, iw=pw-2*margin, pageContentH=ph-2*margin;
     const pxPerMM=canvas.width/iw;                       // px de lienzo por mm
     const fullImgH=canvas.height/pxPerMM;                // alto total en mm
+    // SIEMPRE una sola hoja (pedido de Paolo, 22-sep-2026): si el informe es más alto que la
+    // hoja, se reduce proporcionalmente y se centra; antes se cortaba en dos páginas.
     if(fullImgH<=pageContentH+0.5){
       pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,iw,fullImgH);
     } else {
-      const pageHpx=Math.floor(pageContentH*pxPerMM);    // px de lienzo por hoja
-      let y=0, first=true;
-      while(y<canvas.height){
-        const sliceH=Math.min(pageHpx, canvas.height-y);
-        const sc=document.createElement('canvas'); sc.width=canvas.width; sc.height=sliceH;
-        sc.getContext('2d').drawImage(canvas,0,y,canvas.width,sliceH,0,0,canvas.width,sliceH);
-        if(!first) pdf.addPage();
-        pdf.addImage(sc.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,iw,sliceH/pxPerMM);
-        y+=sliceH; first=false;
-      }
+      const k=pageContentH/fullImgH, w=iw*k;
+      pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin+(iw-w)/2,margin,w,pageContentH);
     }
     pdf.save(fname);
   }catch(e){ alert('Could not generate the PDF: '+(e&&e.message||e)); }
