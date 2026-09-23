@@ -11,6 +11,10 @@
    cada banda 5·4·3·2·1·0; y las láminas del libro (Parte 2 el dibujo con
    ideas, Parte 3 una foto por candidato) se ven dentro del guion y a pantalla
    completa con «Show to…», en vez de mandar al Student's Book.
+   Desde esa misma tarde cada nivel tiene sus propios guiones (A2 Key, B1
+   Preliminary 2018 + los 4 del PET, B2 First / for Schools, C1 Advanced /
+   Ready for C1): el desplegable SCRIPT lista solo los del nivel elegido, y
+   «About the … Speaking test» resume partes, tiempos y consejos del nivel.
    Guarda en speaking_tests (una fila por candidato y sesión) y, si el
    examinador lo pide, vuelca además la nota al Speaking del MOCK 1 / MOCK 2
    (upsert_speaking, la misma forma que usa el corrector del mock). */
@@ -20,6 +24,12 @@ const _SK_SEATS = ['A','B','C'];
 function _skIsAdmin(){ return !!(state.profile && state.profile.role==='admin'); }
 function _skGrades(){ return (_skIsAdmin() ? GRADES : teacherAllowedGrades()).filter(g=>!g.staff); }
 function _skData(){ return window.SPEAKING_TEST; }
+/* Tests del nivel elegido (cada test lleva level y name; n es único y es el
+   test_no que se guarda). Si el test actual no es del nivel, pasa al primero. */
+function _skTestsOfLevel(){ return _skData().tests.filter(t=>t.level===_sk.level); }
+function _skTest(){ return _skData().tests.find(t=>t.n===_sk.test) || _skTestsOfLevel()[0] || _skData().tests[0]; }
+function _skFixTest(){ const list=_skTestsOfLevel(); if(!list.some(t=>t.n===_sk.test)) _sk.test = list.length ? list[0].n : _skData().tests[0].n; }
+function _skTestName(n){ const t=_skData().tests.find(x=>x.n===n); return t ? t.name : 'Test '+n; }
 function _skUUID(){
   if(window.crypto && crypto.randomUUID) return crypto.randomUUID();
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c=>{ const r=Math.random()*16|0; return (c==='x'?r:(r&3|8)).toString(16); });
@@ -31,7 +41,7 @@ async function speakingTestPanel(){
   const grades = _skGrades();
   if(!_sk){
     _sk = { view:'setup', grade:'', section:'', students:[], picked:[], level:'B1', test:1,
-            marks:{}, comments:{}, sessionId:null, saveCycle:'', part:1, showDesc:false, openDesc:{},
+            marks:{}, comments:{}, sessionId:null, saveCycle:'', part:1, showDesc:false, openDesc:{}, showInfo:false,
             history:[], timer:{t0:null, acc:0, id:null} };
     const first = grades[0];
     if(first){ _sk.grade = String(first.id); await _skLoadStudents(); }
@@ -51,6 +61,7 @@ async function _skLoadStudents(){
   _sk.history = hist||[];
   const tl = (typeof targetLevel==='function') ? targetLevel({grade_id:gid}) : null;
   if(tl && LEVELS.includes(tl)) _sk.level = tl;
+  _skFixTest();
   const secs = _skSections();
   if(_sk.section && !secs.includes(_sk.section)) _sk.section='';
 }
@@ -70,7 +81,8 @@ function _skSetupHTML(){
   const secs = _skSections();
   const secOpts = `<option value="">All sections</option>` + secs.map(s=>`<option value="${s}" ${_sk.section===s?'selected':''}>${s}</option>`).join('');
   const lvlOpts = LEVELS.map(l=>`<option value="${l}" ${_sk.level===l?'selected':''}>${l} · ${esc(_skData().rubrics[l].exam)}</option>`).join('');
-  const testOpts = _skData().tests.map(t=>`<option value="${t.n}" ${_sk.test===t.n?'selected':''}>Test ${t.n}${t.trio?' · pairs or groups of three':''}</option>`).join('');
+  _skFixTest();
+  const testOpts = _skTestsOfLevel().map(t=>`<option value="${t.n}" ${_sk.test===t.n?'selected':''}>${esc(t.name)}${t.trio?' · pairs or groups of three':''}</option>`).join('');
   const list = _sk.students.filter(s=>!_sk.section || String(s.section||'').toUpperCase()===_sk.section);
   const rows = list.map(s=>{
     const on = _sk.picked.includes(s.id);
@@ -85,8 +97,8 @@ function _skSetupHTML(){
   }).join('') || `<p class="muted">No students in this grade${_sk.section?' / section':''}.</p>`;
   const n = _sk.picked.length;
   const ready = n>=2 && n<=3;
-  const trioWarn = n===3 && !(_skData().tests.find(t=>t.n===_sk.test)||{}).trio
-    ? `<div class="note info">Test ${_sk.test} is written for pairs. With three candidates, Test 4 has the frame for groups of three (Candidate C); you can still use this test and repeat Part 3 for Candidate C.</div>` : '';
+  const trioWarn = n===3 && !_skTest().trio
+    ? `<div class="note info">This script is written for pairs. With three candidates, choose a script marked “pairs or groups of three”, or use this one and repeat the long turn for Candidate C.</div>` : '';
 
   return `
     <h1 style="margin:0 0 4px">🗣️ Speaking test</h1>
@@ -98,9 +110,10 @@ function _skSetupHTML(){
         <select style="min-width:120px" onchange="window._skField('section',this.value)">${secOpts}</select></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px">LEVEL · RUBRIC</label>
         <select style="min-width:190px" onchange="window._skField('level',this.value)">${lvlOpts}</select></div>
-      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px">SCRIPT</label>
-        <select style="min-width:190px" onchange="window._skField('test',this.value)">${testOpts}</select></div>
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px">SCRIPT · ${_skTestsOfLevel().length} for ${esc(_sk.level)}</label>
+        <select style="min-width:260px;max-width:100%" onchange="window._skField('test',this.value)">${testOpts}</select></div>
     </div>
+    ${_skInfoHTML()}
     <div class="grid cols-2" style="align-items:start">
       <div class="card">
         <h2 style="margin:0 0 4px">Candidates <span class="muted" style="font-weight:400;font-size:.9rem">· pick 2 or 3</span></h2>
@@ -130,7 +143,7 @@ function _skHistoryHTML(){
     const cands = rows.map(r=>`<span style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.85rem"><b>${esc(r.seat||'')}</b> ${esc(byName[r.student_id]||'Student')} <span class="badge lvl">${esc(r.band||'—')}</span> <span class="muted">${r.score}/${r.total}</span></span>`).join(' ');
     return `<div style="border:1px solid var(--line);border-radius:8px;padding:8px 10px">
       <div class="row" style="justify-content:space-between">
-        <span class="muted" style="font-size:.82rem">${when} · ${esc(rows[0].level)} · Test ${rows[0].test_no}${rows[0].section?' · Sec. '+esc(rows[0].section):''}</span>
+        <span class="muted" style="font-size:.82rem">${when} · ${esc(rows[0].level)} · ${esc(_skTestName(rows[0].test_no))}${rows[0].section?' · Sec. '+esc(rows[0].section):''}</span>
         <button class="btn sm ghost" style="padding:3px 10px" onclick="window._skOpen('${sid}')">Open</button>
       </div>
       <div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px">${cands}</div>
@@ -140,7 +153,7 @@ function _skHistoryHTML(){
 window._skField = async (k,v)=>{
   if(k==='grade'){ _sk.grade=v; _sk.picked=[]; _sk.section=''; await _skLoadStudents(); }
   else if(k==='section'){ _sk.section=v; _sk.picked=_sk.picked.filter(id=>{ const s=_sk.students.find(x=>x.id===id); return s && (!v || String(s.section||'').toUpperCase()===v); }); }
-  else if(k==='level'){ _sk.level=v; }
+  else if(k==='level'){ _sk.level=v; _skFixTest(); }
   else if(k==='test'){ _sk.test=parseInt(v,10)||1; }
   _skPaint();
 };
@@ -182,7 +195,7 @@ function _skResult(id){
   return { crits, sum, total, pct, mean, all, letter: all?_skData().letter(mean):null, weighted, weightedMax:(crits.length-1)*5+10 };
 }
 function _skExamHTML(){
-  const D=_skData(); const test=D.tests.find(t=>t.n===_sk.test)||D.tests[0]; const r=D.rubrics[_sk.level];
+  const D=_skData(); const test=_skTest(); const r=D.rubrics[_sk.level];
   const cands=_skCands();
   const gname=(GRADES.find(g=>String(g.id)===String(_sk.grade))||{}).name||'';
   const partTabs = test.parts.map(p=>`<button class="btn sm ${_sk.part===p.n?'':'ghost'}" style="padding:6px 12px" onclick="window._skPart(${p.n})">Part ${p.n}${p.title?' · '+esc(p.title):''}</button>`).join('');
@@ -193,7 +206,7 @@ function _skExamHTML(){
     <div class="sk-wrap" id="skTop">
     <div style="margin-bottom:8px">
       <button class="btn sm ghost" onclick="window._skBack()">← Back</button>
-      <h1 style="margin:.3rem 0 0">🗣️ Speaking test · Test ${test.n} · <span class="badge lvl" style="font-size:1rem">${esc(_sk.level)} · ${esc(r.exam)}</span></h1>
+      <h1 style="margin:.3rem 0 0">🗣️ ${esc(test.name)} · <span class="badge lvl" style="font-size:1rem">${esc(_sk.level)} · ${esc(r.exam)}</span></h1>
       <div class="muted" style="margin:4px 0 0">${esc(gname)}${_sk.section?' · Section '+esc(_sk.section):''} · ${chips}</div>
     </div>
     <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px;align-items:start">
@@ -203,6 +216,7 @@ function _skExamHTML(){
       </div>
       <div>
         ${cands.map(c=>_skCandHTML(c)).join('')}
+        ${_skInfoHTML()}
         <div class="card" data-i18n="off" style="padding:14px 16px">
           <div class="row" style="justify-content:space-between">
             <button class="btn sm ghost" onclick="window._skToggleDesc()">${_sk.showDesc?'▾ Hide':'▸ Show'} the ${esc(r.exam)} descriptors (Bands 1 · 3 · 5)</button>
@@ -223,6 +237,21 @@ function _skExamHTML(){
     </div>
     ${_skRailHTML(test, cands)}`;
 }
+/* Información del examen del nivel (partes, tiempos, consejos y lenguaje
+   útil): plegable, en la pantalla de elección y en la del examen. */
+function _skInfoHTML(){
+  const D=_skData(); const info=(D.info||{})[_sk.level]; const r=D.rubrics[_sk.level]; if(!info) return '';
+  const body = !_sk.showInfo ? '' : `<div data-i18n="off" style="margin-top:10px;font-size:.88rem;line-height:1.45">
+      <p style="margin:0 0 8px">${esc(info.about)}</p>
+      ${(info.parts||[]).map(p=>`<div style="margin:6px 0;padding:8px 10px;border:1px solid var(--line);border-radius:8px"><b>${esc(p.name)}</b> <span class="muted">· ${esc(p.time)}</span><div style="margin-top:3px">${esc(p.what)}</div>${p.tips?`<ul style="margin:4px 0 0;padding-left:20px">${p.tips.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`:''}</div>`).join('')}
+      ${info.language?`<div style="margin-top:8px"><b>Useful language for the candidates</b><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px;margin-top:4px">${info.language.map(g=>`<div style="padding:6px 8px;background:var(--bg);border-radius:8px"><div style="font-weight:700;font-size:.82rem">${esc(g.title)}</div>${g.items.map(i=>`<div class="muted" style="font-size:.82rem">${esc(i)}</div>`).join('')}</div>`).join('')}</div></div>`:''}
+      ${info.tips?`<div style="margin-top:8px"><b>For the examiner</b><ul style="margin:4px 0 0;padding-left:20px">${info.tips.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:''}
+    </div>`;
+  return `<div class="card" data-i18n="off" style="padding:12px 16px">
+    <button class="btn sm ghost" onclick="window._skToggleInfo()">${_sk.showInfo?'▾ Hide':'ℹ About'} the ${esc(r.exam)} Speaking test · parts, timing and tips</button>
+    ${body}</div>`;
+}
+window._skToggleInfo = ()=>{ _sk.showInfo=!_sk.showInfo; const y=window.scrollY; _skPaint(); window.scrollTo(0,y); };
 /* Estilos del examen (se pintan con el panel): raíl fijo con el reloj y la
    navegación, láminas dentro del guion y lámina a pantalla completa. */
 function _skStyleHTML(){
@@ -344,6 +373,7 @@ function _skPartHTML(p){
     if(b.t==='h') out.push(`<div style="font-weight:700;margin-top:${b.text==='Examiner'?'0':'12px'}">${esc(b.text)}</div>`);
     else if(b.t==='it') out.push(`<div style="font-style:italic;margin:8px 0">${esc(b.text)}</div>`);
     else if(b.t==='p') out.push(`<div style="margin:6px 0">${B(b.text)}</div>`);
+    else if(b.t==='ul') out.push(`<ul style="margin:6px 0 8px;padding-left:22px">${b.lines.map(l=>`<li style="margin:3px 0">${B(l)}</li>`).join('')}</ul>`);
     else if(b.t==='sp') out.push(who(b.who, b.lines, b.italic));
     else if(b.t==='box') out.push(box(b.lines, b.small));
     else if(b.t==='bk') out.push(`<div style="border:1.5px solid var(--ink);border-radius:3px;padding:8px 14px;margin:8px 0;display:inline-block"><div style="font-weight:700;text-align:center">${esc(b.title)}</div>${b.lines.map((l,i)=>`<div>${b.numbered?(i+1)+'. ':''}${B(l)}</div>`).join('')}</div>`);
