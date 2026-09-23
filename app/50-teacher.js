@@ -22,6 +22,7 @@ async function renderTeacher(tab){
     correccion.push({key:'readers',label:'📖 Reading checks'});
     correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
     correccion.push({key:'mock2',label:'📝 MOCK 2'});
+    correccion.push({key:'speaktest',label:'🗣️ Speaking test'});
     seguimiento.push({key:'results',label:'📝 Results'});
     seguimiento.push({key:'activities',label:'🎲 Activities'});
     seguimiento.push({key:'final',label:'🎓 MOCK 1'});
@@ -96,6 +97,7 @@ async function renderTeacher(tab){
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
   if(active==='mock2') return mock2Panel();
+  if(active==='speaktest') return speakingTestPanel();
   if(active==='readers') return readerStatsPanel();
   if(active==='unitexams') return unitExamPanel();
   if(active==='levels') return levelsPanel();

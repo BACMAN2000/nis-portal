@@ -87,6 +87,7 @@ async function renderAdmin(tab='users'){
       {key:'readers',label:'📖 Reading checks'},
       {key:'funnordic',label:'🧸 Fun for Nordic'},
       {key:'mock2',label:'📝 MOCK 2'},
+      {key:'speaktest',label:'🗣️ Speaking test'},
     ]},
     /* Seguimiento = solo se mira, no se toca nada. */
     {group:'Tracking', icon:'📈', items:[
@@ -136,6 +137,7 @@ async function renderAdmin(tab='users'){
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
   if(tab==='mock2') return mock2Panel();
+  if(tab==='speaktest') return speakingTestPanel();
   if(tab==='readers') return readerStatsPanel();
   if(tab==='unitexams') return unitExamPanel();
   if(tab==='levels') return levelsPanel();
