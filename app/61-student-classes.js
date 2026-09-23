@@ -970,8 +970,8 @@ function projection(p,bySkill,atts){
   else {verdict=`Still <b>below</b> ${lvl}. More practice is recommended before the official exam.`;cls='err';}
   const weak=[...done].sort((a,b)=>a.avg-b.avg)[0];
   // December official-test roadmap: Mock 1 → Mock 2 → Examen oficial
-  const hasM1=(atts||[]).some(a=>a.mock==='mock1');
-  const hasM2=(atts||[]).some(a=>a.mock==='mock2');
+  const hasM1=(atts||[]).some(a=>isMockAttempt(a)&&mockCycleOf(a)===1);   // ciclos del colegio, no bancos del motor
+  const hasM2=(atts||[]).some(a=>mockCycleOf(a)===2);
   const steps=[
     {k:'m1',label:'Mock 1',done:hasM1},
     {k:'m2',label:'Mock 2',done:hasM2},

@@ -936,11 +936,15 @@ function statsFiltered(){
   if(s.grade) l=l.filter(a=>String(a.profiles?.grade_id)===String(s.grade));
   if(s.section) l=l.filter(a=>(a.profiles?.section||'')===s.section);
   if(s.skill) l=l.filter(a=>a.skill===s.skill);
-  if(s.exam==='mock1') l=l.filter(a=>a.mock==='mock1');
-  else if(s.exam==='mock2') l=l.filter(a=>a.mock==='mock2');
+  if(s.exam==='mock1') l=l.filter(statsIsMock1);
+  else if(s.exam==='mock2') l=l.filter(statsIsMock2);
   else if(s.exam==='practice') l=l.filter(a=>!isMockAttempt(a));
   return l;
 }
+/* Mock 1 / Mock 2 son CICLOS del colegio (72-mocks.js), no el número de banco
+   del motor: el Official Mock 2 del 22-sep se rindió en el banco mock3. */
+function statsIsMock1(a){ return isMockAttempt(a) && mockCycleOf(a)===1; }
+function statsIsMock2(a){ return mockCycleOf(a)===2; }
 /* readiness bucket for a percent */
 function readyTier(pct){ for(const t of READY_TIERS){ if(pct>=t.min) return t; } return READY_TIERS[READY_TIERS.length-1]; }
 
@@ -1048,8 +1052,8 @@ function statSeries(){
   }
   if(v==='mockprog'){
     const labels=GRADES.map(g=>g.name);
-    const m1=GRADES.map(g=>_avg(sc.filter(a=>a.mock==='mock1'&&String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)));
-    const m2=GRADES.map(g=>_avg(sc.filter(a=>a.mock==='mock2'&&String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)));
+    const m1=GRADES.map(g=>_avg(sc.filter(a=>statsIsMock1(a)&&String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)));
+    const m2=GRADES.map(g=>_avg(sc.filter(a=>statsIsMock2(a)&&String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)));
     const keep=labels.map((_,i)=>m1[i]!=null||m2[i]!=null);
     return {labels:labels.filter((_,i)=>keep[i]), multi:[
       {label:'Mock 1', data:labels.map((_,i)=>m1[i]).filter((_,i)=>keep[i]), color:'#76cbe5'},
@@ -1088,8 +1092,8 @@ function drawStatChart(){
 function decemberProjection(){
   const students=(_statsStudents||[]).map(st=>{
     const mine=(_statsAll||[]).filter(a=>a.student_id===st.id && a.percent!=null && isMockAttempt(a));
-    const m1=_avg(mine.filter(a=>a.mock==='mock1').map(a=>a.percent));
-    const m2=_avg(mine.filter(a=>a.mock==='mock2').map(a=>a.percent));
+    const m1=_avg(mine.filter(statsIsMock1).map(a=>a.percent));
+    const m2=_avg(mine.filter(statsIsMock2).map(a=>a.percent));
     const proj = m2!=null?m2:m1;
     return {id:st.id, grade_id:st.grade_id, section:st.section, m1, m2, proj, hasM1:m1!=null, hasM2:m2!=null};
   });
