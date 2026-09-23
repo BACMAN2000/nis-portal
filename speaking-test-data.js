@@ -265,7 +265,7 @@ window.SPEAKING_TEST = (function(){
          ['A, who do you like to go shopping with?','Do you like to go shopping with your friends?'],['What can you buy near your house?','Can you buy food near your house?'],
          ['',''],['**Extended response** · Now, B, please tell me something about presents you buy for your friends.','Back-up: Where do you buy presents? · Do you like giving presents? · Have you bought a present recently?']]),
       a2part2('a2t2-p2', 'different holidays', 'Do you like these different holidays?',
-        ['beach holidays are fun?','city holidays are interesting?','camping holidays are exciting?','walking holidays are expensive?','holidays in the mountains are boring?'],
+        ['beach holidays are fun?','city holidays are interesting?','camping holidays are exciting?','walking holidays are expensive?','holidays in the mountain are boring?'],
         'which of these holidays do you like best',
         ['Now, do you prefer to go on holidays with your friends or with your family, B? (Why?)','And what about you, A? (Do you prefer to go on holidays with your friends or with your family?) (Why?)','Which country would you like to visit in the future, A? (Why?)','And you, B? (Which country would you like to visit in the future?) (Why?)'])
     ]}
