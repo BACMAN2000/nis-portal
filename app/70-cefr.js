@@ -257,7 +257,7 @@ async function cefrFinalPanel(){
       <td>${wCell}</td>
       <td style="white-space:nowrap">${sCell}</td>
       <td>${finBadge}</td>
-      <td class="acts"><div class="acts-wrap"><button class="btn sm" onclick="studentReportPDF('${s.id}','es')">📄 ES</button><button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en')">📄 EN</button></div></td>
+      <td class="acts"><div class="acts-wrap"><button class="btn sm ghost" onclick="_reportPreviewToggle(this,'${s.id}',1)" title="View the report on screen, exactly as the PDF">👁</button><button class="btn sm" onclick="studentReportPDF('${s.id}','es')">📄 ES</button><button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en')">📄 EN</button></div></td>
     </tr>`;
   }).join('');
 
@@ -576,6 +576,40 @@ async function _mockReportData(studentId, cycle){
   const prev = cycle===2 ? mockCycleFinal(p, mockCycleAttempts(atAll||[],1), mockSpeakingOf(spks,1), 1) : null;
   return { p, at, sp, fin, prev, cycle };
 }
+/* 👁 Vista digital del informe, alumno por alumno, junto a 📄 ES / 📄 EN (pedido de Paolo,
+   22-sep-2026): un desplegable bajo la fila con EXACTAMENTE lo que sale en el PDF (mismo
+   _reportInner, sin el detalle de Writing/Speaking), con ES/EN y el botón del PDF. */
+const _reportPreviewCache = {};
+window._reportPreviewToggle = async (btn, studentId, cycle, lang)=>{
+  cycle = cycle===2 ? 2 : 1;
+  const tr = btn && btn.closest ? btn.closest('tr') : null; if(!tr) return;
+  const open = tr.nextElementSibling && tr.nextElementSibling.classList.contains('rep-preview') ? tr.nextElementSibling : null;
+  const eye = tr.querySelector('button[onclick*="_reportPreviewToggle"]');
+  if(open && !lang){ open.remove(); if(eye) eye.classList.add('ghost'); return; }
+  if(lang!=='es' && lang!=='en') lang=(window.NISi18n&&window.NISi18n.lang()==='es')?'es':'en';
+  const EN = lang==='en';
+  let row = open;
+  if(!row){
+    row=document.createElement('tr'); row.className='rep-preview'; row.setAttribute('data-sname', tr.getAttribute('data-sname')||'');
+    row.innerHTML='<td colspan="99" style="background:var(--soft,#f4f7fb);padding:10px 14px"><div class="rep-preview-bar row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px"></div><div class="rep-preview-body" data-i18n="off" style="width:760px;max-width:100%;box-sizing:border-box;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a"><span class="muted">Loading…</span></div></td>';
+    tr.parentNode.insertBefore(row, tr.nextSibling);
+    if(eye) eye.classList.remove('ghost');
+  }
+  const bar=row.querySelector('.rep-preview-bar'), body=row.querySelector('.rep-preview-body');
+  bar.innerHTML='<b style="font-size:.85rem">'+(EN?'Report preview':'Vista previa del informe')+' · '+(cycle===2?'MOCK 2':'MOCK 1')+'</b>'+
+    '<span style="width:1px;height:20px;background:var(--line)"></span>'+
+    '<button class="btn sm '+(EN?'ghost':'')+'" onclick="_reportPreviewToggle(this,\''+studentId+'\','+cycle+',\'es\')">🇪🇸 Español</button>'+
+    '<button class="btn sm '+(EN?'':'ghost')+'" onclick="_reportPreviewToggle(this,\''+studentId+'\','+cycle+',\'en\')">🇬🇧 English</button>'+
+    '<span style="flex:1"></span>'+
+    '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\','+cycle+')">📄 '+(EN?'Download this PDF':'Descargar este PDF')+'</button>'+
+    '<button class="btn sm ghost" onclick="var r=this.closest(\'tr\');var e=r.previousElementSibling.querySelector(\'button[onclick*=_reportPreviewToggle]\');if(e)e.classList.add(\'ghost\');r.remove()">✕</button>';
+  const key=studentId+':'+cycle;
+  try{
+    const D = _reportPreviewCache[key] || (_reportPreviewCache[key] = await _mockReportData(studentId, cycle));
+    if(D.error){ body.innerHTML='<div class="note err">'+esc(D.error.message)+'</div>'; return; }
+    body.innerHTML=_reportInner(D.p, D.at, D.sp, D.fin, EN, {cycle, prev:D.prev});
+  }catch(e){ body.innerHTML='<div class="note err">'+esc(e&&e.message||String(e))+'</div>'; }
+};
 window.studentDetailReport = async (studentId, lang, cycle)=>{
   // sin idioma explícito, el del portal (botón 🌐); los dos botones del informe siguen forzándolo
   if(lang!=='es'&&lang!=='en') lang=(window.NISi18n&&window.NISi18n.lang()==='es')?'es':'en';

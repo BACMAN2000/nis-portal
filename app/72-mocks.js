@@ -235,7 +235,7 @@ async function mock2Panel(){
       <td>${fin1Badge}</td>
       <td>${dCell}</td>
       <td>${sat ? readinessChip(rd,EN) : '<span class="muted">—</span>'}</td>
-      <td class="acts"><div class="acts-wrap"><button class="btn sm" onclick="studentReportPDF('${s.id}','es',2)">📄 ES</button><button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en',2)">📄 EN</button></div></td>
+      <td class="acts"><div class="acts-wrap"><button class="btn sm ghost" onclick="_reportPreviewToggle(this,'${s.id}',2)" title="View the report on screen, exactly as the PDF">👁</button><button class="btn sm" onclick="studentReportPDF('${s.id}','es',2)">📄 ES</button><button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en',2)">📄 EN</button></div></td>
     </tr>`;
   }).join('');
 
