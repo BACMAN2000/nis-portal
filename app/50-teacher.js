@@ -449,7 +449,8 @@ function renderGradeWriting(){
   const textsHtml = answers.length
     ? answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px">
         <div class="row" style="justify-content:space-between"><b>${esc(t.label||'Task')}</b><span class="muted" style="font-size:.82rem">${t.wordCount!=null?t.wordCount+' words':''}</span></div>
-        <div style="white-space:pre-wrap;margin-top:6px;font-size:.93rem;line-height:1.6">${esc(t.text||'(no answer)')}</div></div>`).join('')
+        ${t.prompt?`<div class="muted" style="white-space:pre-wrap;margin-top:6px;font-size:.82rem;line-height:1.45;border-left:3px solid var(--line);padding-left:8px">${esc(t.prompt)}</div>`:''}
+        <div style="white-space:pre-wrap;margin-top:6px;font-size:.93rem;line-height:1.6">${esc((t.text||'').trim()||'(no answer)')}</div></div>`).join('')
     : `<p class="muted">This attempt did not save the text submitted by the student.</p>`;
 
   // Right column: Task 1 rubrics + Task 2 rubrics
@@ -460,6 +461,7 @@ function renderGradeWriting(){
     <button class="btn sm ghost" onclick="_gradeWritingBack()">← Back to ${gradeState.back==='mock2'?'MOCK 2':'results'}</button>
     <h1 style="margin:.4rem 0 0">✍️ Grade Writing${gradeState.quiet?' · OFFICIAL MOCK 2':''}</h1>
     <div class="muted" style="margin-bottom:10px">${esc(a.profiles?.full_name||'Student')} · ${esc(a.profiles?.grades?.name||'')} · ${esc(a.level)} · ${gradeState.quiet?'Official Mock 2 (bank '+mockLabel(a)+')':mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
+    ${a.breakdown&&a.breakdown.from_reading?`<div class="note" style="margin-bottom:10px"><b>A2 Key:</b> these are Parts 6 and 7 of the Reading &amp; Writing paper, written inside the Reading exam. Mark them here with the A2 rubric (Content · Organisation · Language, 0–5 each); the Reading score (Parts 1–5) stays as it is.</div>`:''}
     <div class="grid cols-2" style="align-items:start">
       <div>
         <div class="card"><h2 style="margin-top:0">Student text</h2>${textsHtml}</div>

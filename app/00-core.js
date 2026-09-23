@@ -44,7 +44,13 @@ function isMockAttempt(a){ return /^mock\d+$/.test(a.mock||''); }
 function mockLabel(a){ const m=/^mock(\d+)$/.exec(a.mock||''); return m?('MOCK '+m[1]):(a.mock||'Practice'); }
 function partsOf(breakdown){
   if(!breakdown) return [];
-  const arr = Array.isArray(breakdown) ? breakdown : (breakdown.parts || []);
+  let arr = Array.isArray(breakdown) ? breakdown : (breakdown.parts || []);
+  // Listening en mock mode: el bridge añade breakdown.mock_mode al array de preguntas y
+  // al serializarse queda como objeto con claves numéricas ({0:{…},1:{…},mock_mode:{…}}).
+  if(!Array.isArray(breakdown) && !arr.length){
+    const ks=Object.keys(breakdown).filter(k=>/^\d+$/.test(k)).sort((a,b)=>a-b);
+    if(ks.length) arr=ks.map(k=>breakdown[k]);
+  }
   if(!arr.length) return [];
 
   // ── Listening format: flat array of questions with {audio, ok, q, type} ──

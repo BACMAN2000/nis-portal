@@ -209,7 +209,7 @@ async function mock2Panel(){
     if(sat && !fin2.complete) missing++;
     const rd=mockReadiness(fin2, level);
     if(rd && fin2.complete){ if(rd.k==='ready') ready++; else if(rd.k==='borderline') border++; else notyet++; }
-    const wCell = fin2.a2NoWriting ? '<span class="muted" style="font-size:.78rem" title="A2 Key: Writing is inside Reading &amp; Use of English">— in Reading</span>'
+    const wCell = fin2.a2NoWriting ? '<span class="muted" style="font-size:.78rem" title="A2 Key: Parts 6–7 were not saved with this Reading paper">— in Reading</span>'
       : fin2.skills.Writing ? `${cell(fin2.skills.Writing)} <button class="btn sm ghost" style="padding:2px 7px" onclick="gradeWriting('${wAtt.id}',{back:'mock2',quiet:true})" title="Edit grade">✎</button>`
       : wAtt ? `<button class="btn sm" onclick="gradeWriting('${wAtt.id}',{back:'mock2',quiet:true})">✍️ Mark</button>`
       : (sat ? '<span class="badge off" style="font-size:.7rem">no paper</span>' : '<span class="muted">—</span>');
@@ -259,8 +259,11 @@ async function mock2Panel(){
       ${(f.grade||f.section||f.name)?`<button class="btn sm ghost" onclick="window._setMock2Filter('_clear','')">✕ Clear</button>`:''}
     </div>`;
   $('#main').innerHTML=`
-    <h1 style="margin:0 0 4px">📝 MOCK 2 · Official Mock 2 — 22 September 2026</h1>
-    <p class="muted" style="margin-top:0;font-size:.88rem">Every paper sat in mock mode (bank MOCK 3), by student. <b>Reading</b> and <b>Listening</b> are auto-scored; <b>Writing</b> is marked here with the Cambridge rubric (0–5 per criterion, two tasks) — no email goes out, the grade goes into the single report; <b>Speaking</b> is optional (oral session). <b>Mock 2</b> = average of the scales of the assessed skills; <b>Mock 1</b> = the June result (🎓 MOCK 1 tab); <b>Δ</b> = change on the Cambridge Scale; <b>Ready?</b> = scale vs. the pass mark of the level sat (A2 120 · B1 140 · B2 160 · C1 180; within 10 points below = borderline). The teacher has the final word.</p>
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <h1 style="margin:0 0 4px">📝 MOCK 2 · Official Mock 2 — 22 September 2026</h1>
+      <button class="btn sm ghost" onclick="mock2Stats()">📊 Papers by exercise &amp; time</button>
+    </div>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Every paper sat in mock mode (bank MOCK 3), by student. <b>Reading</b> and <b>Listening</b> are auto-scored; <b>Writing</b> is marked here with the Cambridge rubric (0–5 per criterion, two tasks) — no email goes out, the grade goes into the single report. In <b>A2 Key</b> the two writing tasks (Parts 6–7 of the Reading &amp; Writing paper) appear in the Writing column, ready to mark. <b>Speaking</b> is optional (oral session). <b>Mock 2</b> = average of the scales of the assessed skills; <b>Mock 1</b> = the June result (🎓 MOCK 1 tab); <b>Δ</b> = change on the Cambridge Scale; <b>Ready?</b> = scale vs. the pass mark of the level sat (A2 120 · B1 140 · B2 160 · C1 180; within 10 points below = borderline). The teacher has the final word.</p>
     ${relBox}${chips}${filter}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Student</th><th>Grade</th><th>Level</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Mock 2</th><th>Mock 1</th><th>Δ</th><th>Ready?</th><th></th></tr></thead>
@@ -276,4 +279,146 @@ window._mockRelease=async (cycle,on)=>{
   const { error } = await sb.from('mock_cycles').update({ released_at: on ? new Date().toISOString() : null, released_by: on ? (state.profile&&state.profile.id)||null : null }).eq('cycle',cycle);
   if(error){ alert('Could not save: '+error.message); return; }
   await mockCyclesInfo(true); mock2Panel();
+};
+
+/* ===================== 📊 MOCK 2 · PAPERS BY EXERCISE & TIME (22-sep-2026) =====================
+   Pedido de Paolo la tarde del Official Mock 2: el detalle de cada paper por ejercicio
+   (parte) y el tiempo que tomó, y después la estadística global por nivel. El motor solo
+   guarda el tiempo por paper (duration_min), no por parte; el Writing no guarda tiempo. */
+let mock2StatsFilter = { level:'', skill:'' };
+let _mock2StatsCsv = [];
+function _avg1(arr){ return arr.length ? Math.round(arr.reduce((s,x)=>s+x,0)/arr.length*10)/10 : null; }
+function _median(arr){ if(!arr.length) return null; const s=[...arr].sort((a,b)=>a-b), m=Math.floor(s.length/2); return s.length%2 ? s[m] : Math.round((s[m-1]+s[m])/2); }
+function _pctColor(p){ return p==null ? 'var(--muted)' : p>=70 ? 'var(--good)' : p>=50 ? 'var(--warn)' : 'var(--bad)'; }
+async function mock2Stats(){
+  state._tab='mock2';
+  if($('#main')) $('#main').innerHTML='<div class="center muted">Loading…</div>';
+  const isTeacher = state.profile && state.profile.role==='teacher';
+  const gradeList = (isTeacher ? teacherAllowedGrades() : GRADES).filter(g=>g.id>=6);
+  const allowed = gradeList.map(g=>g.id);
+  const { data:studentsRaw, error } = await sb.from('profiles')
+    .select('id,full_name,section,cefr_level,grade_id,active,is_demo,grades(name)').eq('role','student');
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const f=mock2Filter, sf=mock2StatsFilter;
+  let students=(studentsRaw||[]).filter(s=>allowed.includes(s.grade_id) && s.active!==false && !s.is_demo);
+  if(f.grade)   students=students.filter(s=>String(s.grade_id)===String(f.grade));
+  if(f.section) students=students.filter(s=>(s.section||'').toUpperCase()===f.section.toUpperCase());
+  if(f.name)    students=students.filter(s=>(s.full_name||'').toLowerCase().includes(f.name.toLowerCase()));
+  students.sort((a,b)=>(a.grade_id-b.grade_id)||(a.section||'').localeCompare(b.section||'')||(a.full_name||'').localeCompare(b.full_name||''));
+  const byId={}; students.forEach(s=>{ byId[s.id]=s; });
+  const ids=students.map(s=>s.id); const safeIds=ids.length?ids:['00000000-0000-0000-0000-000000000000'];
+  const { data:atts } = await sb.from('exam_attempts').select('id,student_id,skill,level,percent,score,total,mock,submitted_at,duration_min,breakdown').in('student_id',safeIds).limit(8000);
+  const { data:spks } = await sb.from('speaking_results').select('*').in('student_id',safeIds);
+  const c2=(atts||[]).filter(a=>byId[a.student_id] && mockCycleOf(a)===2);
+  const aBy={}; c2.forEach(a=>{(aBy[a.student_id]=aBy[a.student_id]||[]).push(a);});
+  const sBy={}; (spks||[]).forEach(s=>{(sBy[s.student_id]=sBy[s.student_id]||[]).push(s);});
+  const LEVELS=['A2','B1','B2','C1'], SKILLS=['Reading','Listening','Writing'];
+  const SKILL_NAME={ Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing' };
+  const cmpParts=(x,y)=>x.localeCompare(y,undefined,{numeric:true});
+
+  /* ---- 1) Global by level ---- */
+  const levelRows = LEVELS.map(L=>{
+    const stu = students.filter(s=>{ const at=aBy[s.id]||[]; return at.length && mockLevelSat(at)===L; });
+    if(!stu.length) return '';
+    const atL = c2.filter(a=>a.level===L);
+    let ready=0, border=0, notyet=0, complete=0;
+    stu.forEach(s=>{
+      const fin=mockCycleFinal(s, aBy[s.id]||[], mockSpeakingOf(sBy[s.id],2), 2);
+      if(!fin.complete) return; complete++;
+      const rd=mockReadiness(fin, L); if(!rd) return;
+      if(rd.k==='ready') ready++; else if(rd.k==='borderline') border++; else notyet++;
+    });
+    const sk = SKILLS.map(S=>{
+      const A=atL.filter(a=>a.skill===S), g=A.filter(a=>a.percent!=null);
+      if(!A.length) return '<td style="text-align:center"><span class="muted">—</span></td>';
+      const pct=_avg1(g.map(a=>Number(a.percent))), dur=_avg1(A.map(a=>a.duration_min).filter(x=>x!=null));
+      return `<td style="text-align:center;white-space:nowrap"><b>${A.length}</b> papers${pct!=null?` · <b style="color:${_pctColor(pct)}">${pct}%</b>`:''}${dur!=null?` · ${dur} min`:''}${A.length-g.length?` <span class="badge off" style="font-size:.66rem">${A.length-g.length} to mark</span>`:''}</td>`;
+    }).join('');
+    return `<tr><td><span class="badge lvl">${L}</span> <span class="muted">${esc(LEVEL_EXAM[L]||'')}</span></td><td style="text-align:center"><b>${stu.length}</b></td>${sk}
+      <td style="text-align:center;white-space:nowrap"><span class="badge" style="background:#16a34a;color:#fff;font-size:.72rem">✓ ${ready}</span> <span class="badge" style="background:#f59e0b;color:#fff;font-size:.72rem">≈ ${border}</span> <span class="badge" style="background:#dc2626;color:#fff;font-size:.72rem">✗ ${notyet}</span> <span class="muted" style="font-size:.74rem">(${complete}/${stu.length} complete)</span></td></tr>`;
+  }).join('');
+  const globalCard = `<div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Level sat</th><th>Students</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Ready? (complete reports)</th></tr></thead>
+      <tbody>${levelRows||'<tr><td colspan="6" class="center muted">No Mock 2 papers for this filter.</td></tr>'}</tbody></table>
+      <div class="muted" style="padding:8px 14px;font-size:.8rem">Per skill: papers sat · mean score · mean time per paper. Writing does not record time. <b>Ready?</b> counts only students whose report is complete (Reading, Listening and Writing marked).</div></div>`;
+
+  /* ---- 2) One card per paper (level · skill): parts, time and the detail by student ---- */
+  _mock2StatsCsv=[['Level','Paper','Student','Grade','Section','Part','Correct','Total','Part %','Paper %','Time (min)','Submitted']];
+  const paperCards=[];
+  LEVELS.forEach(L=>SKILLS.forEach(S=>{
+    if(sf.level && sf.level!==L) return; if(sf.skill && sf.skill!==S) return;
+    const A=c2.filter(a=>a.level===L && a.skill===S);
+    if(!A.length) return;
+    const last={}; [...A].sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||'')).forEach(a=>{ if(!last[a.student_id]) last[a.student_id]=a; });
+    const list=Object.values(last).sort((x,y)=>{ const a=byId[x.student_id], b=byId[y.student_id]; return (a.grade_id-b.grade_id)||(a.section||'').localeCompare(b.section||'')||(a.full_name||'').localeCompare(b.full_name||''); });
+    const partNames=[]; const rows=list.map(a=>{ const ps=attemptParts(a); ps.forEach(p=>{ if(!partNames.includes(p.name)) partNames.push(p.name); }); return { a, s:byId[a.student_id], ps }; });
+    partNames.sort(cmpParts);
+    const graded=list.filter(a=>a.percent!=null), pcts=graded.map(a=>Number(a.percent));
+    const durs=list.map(a=>a.duration_min).filter(x=>x!=null);
+    const pass=pcts.filter(p=>p>=60).length;
+    const partAvg=partNames.map(n=>{ const xs=rows.map(r=>r.ps.find(p=>p.name===n)).filter(Boolean); const c=xs.map(p=>p.correct).filter(x=>x!=null), t=xs.map(p=>p.total).filter(x=>x!=null); return { name:n, n:xs.length, avg:Math.round(xs.reduce((s,p)=>s+p.pct,0)/xs.length), c:_avg1(c), t:t.length?t[0]:null }; });
+    const stat=(l,v,sub)=>`<div class="stat"><div class="l">${l}</div><div class="n" style="font-size:1.35rem">${v}</div>${sub?`<div class="muted" style="font-size:.78rem">${sub}</div>`:''}</div>`;
+    const summary=`<div class="grid cols-4" style="margin:8px 0 12px">
+        ${stat('Papers', list.length, S==='Writing'&&list.length-graded.length?`${list.length-graded.length} still to mark`:'latest paper per student')}
+        ${stat('Mean score', pcts.length?`<span style="color:${_pctColor(_avg1(pcts))}">${_avg1(pcts)}%</span>`:'—', pcts.length?`median ${_median(pcts)}% · ≥60%: ${pass} of ${pcts.length}`:'')}
+        ${stat('Mean time', durs.length?`${_avg1(durs)} <span style="font-size:.95rem">min</span>`:'—', durs.length?`median ${_median(durs)} · ${Math.min(...durs)}–${Math.max(...durs)} min`:(S==='Writing'?'the Writing paper does not record time':''))}
+        ${stat('Exercises', partNames.length||'—', partNames.length?`${partAvg.filter(p=>p.avg<50).length} below 50%`:(S==='Writing'?'appear once marked':''))}
+      </div>`;
+    const partsHtml = partAvg.length ? `<div class="grid cols-2" style="gap:0 24px">${partAvg.map(p=>barRow(`${p.name}${p.t?` (avg ${p.c}/${p.t})`:''} · ${p.n}`, p.avg)).join('')}</div>` : `<p class="muted" style="margin:4px 0 10px">No breakdown by exercise yet${S==='Writing'?' — it appears as the papers are marked (two tasks × criteria)':''}.</p>`;
+    const th=partNames.map(n=>`<th style="text-align:center;font-size:.74rem;white-space:nowrap" title="${esc(n)}">${esc(n.replace(/ · Questions.*$/,'').replace(/^Task (\d) — /,'T$1 '))}</th>`).join('');
+    const trs=rows.map(({a,s,ps})=>{
+      const cells=partNames.map(n=>{ const p=ps.find(x=>x.name===n); if(!p) return '<td style="text-align:center"><span class="muted">—</span></td>'; return `<td style="text-align:center;white-space:nowrap;color:${_pctColor(p.pct)}"><b>${p.correct!=null?p.correct:'—'}</b><span class="muted">/${p.total!=null?p.total:'—'}</span></td>`; }).join('');
+      const when=a.submitted_at?new Date(a.submitted_at):null;
+      const sec=s.section||'';
+      if(ps.length) ps.forEach(p=>_mock2StatsCsv.push([L,SKILL_NAME[S],s.full_name||'',s.grades?.name||'',sec,p.name,p.correct,p.total,p.pct,a.percent!=null?Number(a.percent):'',a.duration_min!=null?a.duration_min:'',when?when.toLocaleString('en-GB'):'']));
+      else _mock2StatsCsv.push([L,SKILL_NAME[S],s.full_name||'',s.grades?.name||'',sec,'','','','',a.percent!=null?Number(a.percent):'',a.duration_min!=null?a.duration_min:'',when?when.toLocaleString('en-GB'):'']);
+      const total = a.percent!=null ? `<b style="color:${_pctColor(Number(a.percent))}">${Math.round(Number(a.percent))}%</b> <span class="muted" style="font-size:.78rem">${a.score!=null?a.score+'/'+a.total:''}</span>` : (S==='Writing'?`<button class="btn sm" onclick="gradeWriting('${a.id}',{back:'mock2',quiet:true})">✍️ Mark</button>`:'<span class="muted">—</span>');
+      return `<tr data-sname="${esc((s.full_name||'').toLowerCase())}"><td style="white-space:nowrap">${S==='Writing'?esc(s.full_name||''):`<a href="#" onclick="event.preventDefault();openAttempt('${a.id}')" title="Full analysis" style="color:#2d5a8d;font-weight:700;text-decoration:none">${esc(s.full_name||'')}</a>`}</td>
+        <td style="white-space:nowrap"><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${esc(sec)}</td>${cells}
+        <td style="text-align:center;white-space:nowrap">${total}</td>
+        <td style="text-align:center">${a.duration_min!=null?a.duration_min+' min':'<span class="muted">—</span>'}</td>
+        <td class="muted" style="white-space:nowrap;font-size:.8rem">${when?when.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):''}</td></tr>`;
+    }).join('');
+    paperCards.push(`<div class="card" id="m2s-${L}-${S}">
+      <h2 style="margin:0 0 2px"><span class="badge lvl">${L}</span> ${esc(LEVEL_EXAM[L]||L)} · ${SKILL_NAME[S]}</h2>
+      ${summary}
+      <h3 style="margin:6px 0 2px">By exercise (mean % correct)</h3>${partsHtml}
+      <h3 style="margin:10px 0 6px">Detail by student</h3>
+      <div style="overflow-x:auto"><table><thead><tr><th>Student</th><th>Grade</th>${th}<th style="text-align:center">Total</th><th style="text-align:center">Time</th><th>Submitted</th></tr></thead><tbody>${trs}</tbody></table></div>
+    </div>`);
+  }));
+
+  const gradeOpts=`<option value="">All grades</option>`+gradeList.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  const filter=`<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:12px 16px;margin-bottom:10px">
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">LEVEL</label><select onchange="window._setMock2StatsFilter('level',this.value)" style="min-width:110px"><option value="">All</option>${LEVELS.map(L=>`<option ${sf.level===L?'selected':''}>${L}</option>`).join('')}</select></div>
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">PAPER</label><select onchange="window._setMock2StatsFilter('skill',this.value)" style="min-width:170px"><option value="">All</option>${SKILLS.map(S=>`<option value="${S}" ${sf.skill===S?'selected':''}>${SKILL_NAME[S]}</option>`).join('')}</select></div>
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADE</label><select onchange="window._setMock2StatsFilter('grade',this.value)" style="min-width:130px">${gradeOpts}</select></div>
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECTION</label><select onchange="window._setMock2StatsFilter('section',this.value)" style="min-width:90px"><option value="">All</option>${['A','B'].map(s=>`<option ${f.section===s?'selected':''}>${s}</option>`).join('')}</select></div>
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NAME</label><input type="text" placeholder="Search student…" value="${esc(f.name)}" oninput="window._liveNameFilter(this.value)" style="min-width:180px"></div>
+      ${(f.grade||f.section||f.name||sf.level||sf.skill)?`<button class="btn sm ghost" onclick="window._setMock2StatsFilter('_clear','')">✕ Clear</button>`:''}
+      <span style="flex:1"></span>
+      <button class="btn sm ghost" onclick="window._mock2StatsCSV()">📥 Export CSV</button>
+    </div>`;
+  $('#main').innerHTML=`
+    <button class="btn sm ghost" onclick="mock2Panel()">← Back to MOCK 2</button>
+    <h1 style="margin:.4rem 0 4px">📊 MOCK 2 · Papers by exercise &amp; time</h1>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Official Mock 2 (22 September 2026). First the <b>global picture by level</b>; then <b>one card per paper</b> (level · skill) with the mean per exercise, the time taken and the detail by student — each exercise as <b>correct/total</b>, coloured by %. Time is recorded per paper, not per exercise. Click a student's name for the full analysis of that paper.</p>
+    ${filter}
+    <h2 style="margin:4px 0 6px">1) Global by level</h2>${globalCard}
+    <h2 style="margin:14px 0 6px">2) Each paper, by exercise</h2>
+    ${paperCards.join('')||'<div class="card muted">No Mock 2 papers for this filter.</div>'}`;
+}
+window.mock2Stats=mock2Stats;
+window._setMock2StatsFilter=(k,v)=>{
+  if(k==='_clear'){ mock2Filter={grade:'',section:'',name:''}; mock2StatsFilter={level:'',skill:''}; }
+  else if(k==='level'||k==='skill') mock2StatsFilter[k]=v;
+  else mock2Filter[k]=v;
+  mock2Stats();
+};
+window._mock2StatsCSV=()=>{
+  const csv=_mock2StatsCsv.map(r=>r.map(c=>`"${String(c==null?'':c).replace(/"/g,'""')}"`).join(',')).join('\r\n');
+  const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=url; a.download=`MOCK2_by_exercise_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
 };
