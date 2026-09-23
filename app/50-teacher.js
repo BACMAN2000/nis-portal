@@ -396,9 +396,33 @@ function writingMessage(name, level, pct){
    Official Mock 2 los resultados salen todos juntos en el informe único. */
 window.gradeWriting = async (id, opts)=>{
   opts = opts||{};
-  const { data:a, error } = await sb.from('exam_attempts').select('*, profiles(full_name,email,grade_id,grades(name))').eq('id',id).single();
+  const { data:a, error } = await sb.from('exam_attempts').select('*, profiles(full_name,email,grade_id,section,grades(name))').eq('id',id).single();
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
   const rubric = EXAM_WRITING_RUBRICS[a.level] || EXAM_WRITING_RUBRICS.B1;
+  // Cola de corrección (22-sep-2026, pedido de Paolo): los Writings de la misma
+  // sección (p. ej. 9A) y del mismo ciclo, por nombre, para pasar al siguiente
+  // alumno con una flecha sin volver a la lista. Al guardar salta al siguiente pendiente.
+  let queue=[], qi=-1;
+  try{
+    const gid=a.profiles&&a.profiles.grade_id, sec=((a.profiles&&a.profiles.section)||'').toUpperCase();
+    if(gid){
+      const { data:mates } = await sb.from('profiles').select('id,full_name,section,is_demo').eq('role','student').eq('grade_id',gid);
+      const same=(mates||[]).filter(m=>m.id===a.student_id || (!m.is_demo && (m.section||'').toUpperCase()===sec));
+      const ids=same.map(m=>m.id);
+      if(ids.length){
+        const { data:ws } = await sb.from('exam_attempts').select('id,student_id,percent,submitted_at,mock,breakdown').eq('skill','Writing').in('student_id',ids).limit(2000);
+        const cyc = (typeof mockCycleOf==='function') ? mockCycleOf(a) : null;
+        const byS={};
+        (ws||[]).filter(w=>(typeof mockCycleOf!=='function') || mockCycleOf(w)===cyc)
+          .sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||''))
+          .forEach(w=>{ if(!byS[w.student_id]) byS[w.student_id]=w; });
+        byS[a.student_id]=a;   // el que se abrió manda, aunque no sea el más reciente
+        queue=same.filter(m=>byS[m.id]).map(m=>({ id:byS[m.id].id, name:m.full_name||'', pending:byS[m.id].percent==null }))
+          .sort((x,y)=>x.name.localeCompare(y.name));
+        qi=queue.findIndex(q=>q.id===a.id);
+      }
+    }
+  }catch(e){ queue=[]; qi=-1; }
   // restore previous per-task selections if re-grading
   const sel_t1 = {}, sel_t2 = {};
   const pb = (a.breakdown && a.breakdown.parts) || [];
@@ -410,10 +434,40 @@ window.gradeWriting = async (id, opts)=>{
     else if(p.part) sel_t1[p.part] = p.correct!=null ? p.correct : null; // backwards compat
   });
   const quiet = !!opts.quiet || (typeof mockCycleOf==='function' && mockCycleOf(a)===2);   // un writing del Official Mock 2 nunca manda correo
-  gradeState = { id, attempt:a, rubric, sel_t1, sel_t2, msg:(a.breakdown&&a.breakdown.teacherMessage)||'', touched: !!(a.breakdown&&a.breakdown.teacherMessage), back:(opts.back==='mock2'?'mock2':'results'), quiet };
+  gradeState = { id, attempt:a, rubric, sel_t1, sel_t2, msg:(a.breakdown&&a.breakdown.teacherMessage)||'', touched: !!(a.breakdown&&a.breakdown.teacherMessage), back:(opts.back==='mock2'?'mock2':'results'), quiet, queue, qi, dirty:false };
   renderGradeWriting();
+  window.scrollTo(0,0);
 };
 function _gradeWritingBack(){ return gradeState && gradeState.back==='mock2' ? mock2Panel() : teacherResults(); }
+/* Flechas ← anterior / siguiente → dentro de la sección; el siguiente pendiente lleva ✍️. */
+function _gradeNavHtml(pos){
+  const q=(gradeState&&gradeState.queue)||[], i=gradeState.qi;
+  if(q.length<2 || i<0) return '';
+  const prev=q[i-1], next=q[i+1], pend=q.filter(x=>x.pending).length, a=gradeState.attempt;
+  const short=(n)=>esc((n||'').split(' ').slice(0,2).join(' '));
+  const where=`${esc(a.profiles?.grades?.name||'')}${a.profiles?.section?' '+esc(a.profiles.section):''}`;
+  return `<div class="row" style="justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:${pos==='top'?'0 0 10px':'12px 0 0'}">
+    <button class="btn sm ghost" ${prev?'':'disabled'} onclick="_gradeWritingStep(-1)" title="${prev?esc(prev.name):''}">← ${prev?short(prev.name):'Previous'}</button>
+    <span class="muted" style="font-size:.85rem">Student <b>${i+1}</b> of ${q.length} · ${where} · <b>${pend}</b> still to mark</span>
+    <button class="btn sm" ${next?'':'disabled'} onclick="_gradeWritingStep(1)" title="${next?esc(next.name):''}">${next?short(next.name):'Next'}${next&&next.pending?' ✍️':''} →</button>
+  </div>`;
+}
+window._gradeWritingStep = async (d)=>{
+  const q=(gradeState&&gradeState.queue)||[], t=q[gradeState.qi+d]; if(!t) return;
+  if(gradeState.dirty){
+    const m='You have unsaved marks for this student. Move on without saving?';
+    const ok = window.NISUI && NISUI.pregunta ? await NISUI.pregunta(m) : confirm(m);
+    if(!ok) return;
+  }
+  gradeWriting(t.id, { back:gradeState.back, quiet:gradeState.quiet });
+};
+/* Tras guardar: al siguiente alumno pendiente de la sección; si no queda ninguno, a la lista. */
+function _gradeNextPending(){ const q=(gradeState&&gradeState.queue)||[]; return q.slice(gradeState.qi+1).find(x=>x.pending) || null; }
+function _gradeWritingAfterSave(){
+  const next=_gradeNextPending();
+  if(next) return gradeWriting(next.id, { back:gradeState.back, quiet:gradeState.quiet });
+  return _gradeWritingBack();
+}
 
 /* Builds the rubric card grid for one task (taskIdx = 0 or 1). */
 function _taskRubricHtml(taskLabel, taskIdx){
@@ -462,6 +516,7 @@ function renderGradeWriting(){
     <h1 style="margin:.4rem 0 0">✍️ Grade Writing${gradeState.quiet?' · OFFICIAL MOCK 2':''}</h1>
     <div class="muted" style="margin-bottom:10px">${esc(a.profiles?.full_name||'Student')} · ${esc(a.profiles?.grades?.name||'')} · ${esc(a.level)} · ${gradeState.quiet?'Official Mock 2 (bank '+mockLabel(a)+')':mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
     ${a.breakdown&&a.breakdown.from_reading?`<div class="note" style="margin-bottom:10px"><b>A2 Key:</b> these are Parts 6 and 7 of the Reading &amp; Writing paper, written inside the Reading exam. Mark them here with the A2 rubric (Content · Organisation · Language, 0–5 each); the Reading score (Parts 1–5) stays as it is.</div>`:''}
+    ${_gradeNavHtml('top')}
     <div class="grid cols-2" style="align-items:start">
       <div>
         <div class="card"><h2 style="margin-top:0">Student text</h2>${textsHtml}</div>
@@ -479,12 +534,13 @@ function renderGradeWriting(){
             </div>
           </div>
           <label style="margin-top:10px;display:block">${gradeState.quiet?'Teacher\'s feedback (goes into the Mock 2 report)':'Message for the student (editable)'}</label>
-          <textarea id="gw-msg" rows="5" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="gradeState.touched=true;gradeState.msg=this.value">${esc(gradeState.msg||'')}</textarea>
+          <textarea id="gw-msg" rows="5" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="gradeState.touched=true;gradeState.dirty=true;gradeState.msg=this.value">${esc(gradeState.msg||'')}</textarea>
           <div id="gw-status" style="margin-top:6px;font-size:.88rem"></div>
           <div class="row" style="margin-top:10px;gap:10px;align-items:center">
             <button class="btn" id="gw-send" onclick="window._sendWritingResult()">${gradeState.quiet?'💾 Save grade':'📧 Send result to student'}</button>
             ${gradeState.quiet?'<span class="muted" style="font-size:.82rem">No email is sent: the student sees it only in the single Mock 2 report, once released.</span>':''}
           </div>
+          ${_gradeNavHtml('bottom')}
         </div>
       </div>
     </div>`;
@@ -517,6 +573,7 @@ function _recalcGrade(){
 window._pickBand = (taskIdx, si, band)=>{
   const s=gradeState.rubric.subs[si];
   if(taskIdx===0) gradeState.sel_t1[s]=band; else gradeState.sel_t2[s]=band;
+  gradeState.dirty=true;
   // Preserve scroll position: re-rendering used to jump back to the top on
   // every click, which made it almost impossible to finish all the criteria.
   const y = window.scrollY;
@@ -577,9 +634,12 @@ window._sendWritingResult = async ()=>{
       : e;
   }
   if(rpcErr){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">Could not save: ${esc(rpcErr.message||String(rpcErr))}</span>`; return; }
+  gradeState.dirty=false;
+  const nxt=_gradeNextPending();
+  const nxtTxt = nxt ? ` Next: <b>${esc(nxt.name)}</b>…` : '';
   if(gradeState.quiet){
-    st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Grade saved.':'Comment saved.'} It goes into the Mock 2 report — no email sent.</span>`;
-    setTimeout(_gradeWritingBack, 900);
+    st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Grade saved.':'Comment saved.'} It goes into the Mock 2 report — no email sent.${nxtTxt}</span>`;
+    setTimeout(_gradeWritingAfterSave, 900);
     return;
   }
   // Fire-and-forget webhook (Apps Script emails the student + archives to Drive).
@@ -595,6 +655,6 @@ window._sendWritingResult = async ()=>{
         texts,
         message:msg, teacherEmail:'pbaca@nordic-school.edu.pe', teacherName:breakdown.gradedBy, schoolName:'Nordic International School of Lima' }) });
   }catch(e){}
-  st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Result saved and sent to the student.':'Comment saved and sent to the student.'}</span>`;
-  setTimeout(_gradeWritingBack, 1200);
+  st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Result saved and sent to the student.':'Comment saved and sent to the student.'}${nxtTxt}</span>`;
+  setTimeout(_gradeWritingAfterSave, 1200);
 };
