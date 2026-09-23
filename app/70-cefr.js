@@ -416,7 +416,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     s1:'1) Skills summary (best result)', s2:'2) Reading & Use of English detail (by part)', s3:'3) Overall result on the CEFR',
     hSkill:'Skill', hLevel:'Level', hScore:'Score', hPct:'%', hScale:'Scale', hProg:'Progress', hStatus:'Status',
     reading:'Reading & Use of English', listening:'Listening', writing:'Writing', speaking:'Speaking',
-    part:'Part', oral:'Oral session', notHere:'Not in this cycle', pending:'Pending (teacher)', notTaken:'Not taken',
+    part:'Part', hQ:'Questions', hOk:'Correct', oral:'Oral session', notHere:'Not in this cycle', pending:'Pending (teacher)', notTaken:'Not taken',
     incl:' (includes Writing)', inReading:'Included in Reading & Use of English (A2 Key)',
     finalLbl:'Final result', targetGrade:'Target level for the grade', scaleLbl:'Cambridge Scale',
     below:'▼ Below the target ('+tgt+')', meets:'✓ Meets the target ('+tgt+')', above:'▲ Above the target ('+tgt+')',
@@ -429,7 +429,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     s1:'1) Resumen por destreza (mejor resultado)', s2:'2) Detalle de Reading & Use of English (por parte)', s3:'3) Resultado global según el Marco Común Europeo (CEFR)',
     hSkill:'Destreza', hLevel:'Nivel', hScore:'Puntaje', hPct:'%', hScale:'Esc.', hProg:'Progreso', hStatus:'Estado',
     reading:'Reading & Use of English', listening:'Listening', writing:'Writing', speaking:'Speaking',
-    part:'Parte', oral:'Sesión oral', notHere:'No en este ciclo', pending:'Pendiente', notTaken:'No rindió',
+    part:'Parte', hQ:'Preguntas', hOk:'Aciertos', oral:'Sesión oral', notHere:'No en este ciclo', pending:'Pendiente', notTaken:'No rindió',
     incl:' (incluye Writing)', inReading:'Incluido en Reading & Use of English (examen A2 Key)',
     finalLbl:'Resultado final', targetGrade:'Nivel objetivo del grado', scaleLbl:'Escala Cambridge',
     below:'▼ Por debajo del objetivo ('+tgt+')', meets:'✓ Cumple el objetivo ('+tgt+')', above:'▲ Por encima del objetivo ('+tgt+')',
@@ -471,8 +471,9 @@ function _reportInner(p, at, sp, fin, EN, opts){
   let partsTbl='';
   if(rParts.length){
     partsTbl='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:10px 0 4px">'+T.s2+'</div>'+
-      '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#76cbe5"><th style="'+cs+';text-align:left;color:#0f172a">'+T.part+'</th><th style="'+cs+'">%</th><th style="'+cs+';width:170px">'+T.hProg+'</th></tr>'+
-      rParts.map((pt,i)=>'<tr><td style="'+cs+';text-align:left">'+T.part+' '+(i+1)+'</td><td style="'+cs+'"><b>'+pt.pct+'%</b></td><td style="'+cs+'">'+bar(pt.pct)+'</td></tr>').join('')+'</table>';
+      '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#76cbe5"><th style="'+cs+';text-align:left;color:#0f172a">'+T.part+'</th><th style="'+cs+';color:#0f172a">'+T.hQ+'</th><th style="'+cs+';color:#0f172a">'+T.hOk+'</th><th style="'+cs+'">%</th><th style="'+cs+';width:170px">'+T.hProg+'</th></tr>'+
+      // Pedido de Paolo (22-sep-2026): preguntas de la parte, aciertos y después el porcentaje.
+      rParts.map((pt,i)=>'<tr><td style="'+cs+';text-align:left">'+T.part+' '+(i+1)+'</td><td style="'+cs+'">'+(pt.total!=null?pt.total:'—')+'</td><td style="'+cs+'"><b>'+(pt.correct!=null?pt.correct:'—')+'</b></td><td style="'+cs+'"><b>'+pt.pct+'%</b></td><td style="'+cs+'">'+bar(pt.pct)+'</td></tr>').join('')+'</table>';
   }
   const stColor = stt==='below'?'#f59e0b':'#16a34a';
   const stBadge = stt==='below'?T.below:stt==='above'?T.above:stt==='meets'?T.meets:'';
