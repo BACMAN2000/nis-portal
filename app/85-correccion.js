@@ -538,7 +538,8 @@ function escGancho(texto){
                  .filter(function(x){ return x; });
   if(lineas.length > 1 && lineas[0].length <= 80 && !/[.]$/.test(lineas[0])) lineas = lineas.slice(1);
   const cuerpo = lineas.slice(0, 3).join(' ');
-  const primera = (cuerpo.split(/(?<=[.!?])\s/)[0] || cuerpo).slice(0, 220);
+  // Sin lookbehind: Safari < 16.4 (iPads viejos, macOS High Sierra) no lo parsea y tumbaba TODO este archivo (22-sep-2026).
+  const primera = ((cuerpo.match(/^[\s\S]*?[.!?](?=\s|$)/) || [])[0] || cuerpo).slice(0, 220);
   if(/\?/.test(primera)) return { hay:true, como:'a question', frase:primera };
   if(/\b(imagine|picture this|what if|have you ever|did you know|stop|remember)\b/i.test(primera))
     return { hay:true, como:'a call to the reader', frase:primera };
