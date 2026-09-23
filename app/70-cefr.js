@@ -582,16 +582,23 @@ async function _mockReportData(studentId, cycle){
 const _reportPreviewCache = {};
 window._reportPreviewToggle = async (btn, studentId, cycle, lang)=>{
   cycle = cycle===2 ? 2 : 1;
-  const tr = btn && btn.closest ? btn.closest('tr') : null; if(!tr) return;
+  let tr = btn && btn.closest ? btn.closest('tr') : null; if(!tr) return;
+  // Los botones ES/EN viven DENTRO del desplegable: la fila del alumno es la anterior.
+  if(tr.classList.contains('rep-preview')) tr = tr.previousElementSibling;
+  if(!tr) return;
   const open = tr.nextElementSibling && tr.nextElementSibling.classList.contains('rep-preview') ? tr.nextElementSibling : null;
   const eye = tr.querySelector('button[onclick*="_reportPreviewToggle"]');
-  if(open && !lang){ open.remove(); if(eye) eye.classList.add('ghost'); return; }
+  if(open && !lang){
+    // cerrar: quitar el desplegable (y cualquier duplicado consecutivo)
+    let n=tr.nextElementSibling; while(n && n.classList.contains('rep-preview')){ const x=n; n=n.nextElementSibling; x.remove(); }
+    if(eye) eye.classList.add('ghost'); return;
+  }
   if(lang!=='es' && lang!=='en') lang=(window.NISi18n&&window.NISi18n.lang()==='es')?'es':'en';
   const EN = lang==='en';
   let row = open;
   if(!row){
     row=document.createElement('tr'); row.className='rep-preview'; row.setAttribute('data-sname', tr.getAttribute('data-sname')||'');
-    row.innerHTML='<td colspan="99" style="background:var(--soft,#f4f7fb);padding:10px 14px"><div class="rep-preview-bar row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px"></div><div class="rep-preview-body" data-i18n="off" style="width:760px;max-width:100%;box-sizing:border-box;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a"><span class="muted">Loading…</span></div></td>';
+    row.innerHTML='<td colspan="99" data-i18n="off" style="background:var(--soft,#f4f7fb);padding:10px 14px"><div class="rep-preview-bar row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px"></div><div class="rep-preview-body" data-i18n="off" style="width:760px;max-width:100%;box-sizing:border-box;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a"><span class="muted">Loading…</span></div></td>';
     tr.parentNode.insertBefore(row, tr.nextSibling);
     if(eye) eye.classList.remove('ghost');
   }
