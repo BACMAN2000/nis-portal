@@ -614,7 +614,8 @@ window._reportPreviewToggle = async (btn, studentId, cycle, lang)=>{
   try{
     const D = _reportPreviewCache[key] || (_reportPreviewCache[key] = await _mockReportData(studentId, cycle));
     if(D.error){ body.innerHTML='<div class="note err">'+esc(D.error.message)+'</div>'; return; }
-    body.innerHTML=_reportInner(D.p, D.at, D.sp, D.fin, EN, {cycle, prev:D.prev});
+    const p1=_reportPage1Html(D.p, D.sp, D.fin, cycle);
+    body.innerHTML=(p1?'<div style="padding-bottom:18px;margin-bottom:18px;border-bottom:2px dashed #cbd5e1">'+p1+'</div><div class="muted" style="font-size:.75rem;margin:-10px 0 10px">— page 2 —</div>':'')+_reportInner(D.p, D.at, D.sp, D.fin, EN, {cycle, prev:D.prev});
   }catch(e){ body.innerHTML='<div class="note err">'+esc(e&&e.message||String(e))+'</div>'; }
 };
 window.studentDetailReport = async (studentId, lang, cycle)=>{
@@ -627,7 +628,8 @@ window.studentDetailReport = async (studentId, lang, cycle)=>{
   if(D.error){ $('#main').innerHTML='<div class="note err">'+esc(D.error.message)+'</div>'; return; }
   const { p, at, sp, fin, prev } = D;
   _ensurePrintCss();
-  const inner=_reportInner(p, at, sp, fin, EN, {detail:true, cycle, prev});
+  const p1=_reportPage1Html(p, sp, fin, cycle);
+  const inner=(p1?'<div style="page-break-after:always;padding-bottom:18px;margin-bottom:18px;border-bottom:2px dashed #cbd5e1">'+p1+'</div>':'')+_reportInner(p, at, sp, fin, EN, {detail:true, cycle, prev});
   const backFn = cycle===2 ? 'mock2Panel()' : 'cefrFinalPanel()';
   $('#main').innerHTML=
     '<div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">'+
@@ -644,6 +646,43 @@ window.studentDetailReport = async (studentId, lang, cycle)=>{
   window.scrollTo(0,0);
 };
 
+/* Un nodo del informe (760 px) rasterizado con html2canvas. El logo es un SVG sin
+   width/height (solo viewBox 569x107): html2canvas lo pintaba a su tamaño intrínseco,
+   así que se rasteriza a PNG del tamaño exacto del <img> antes de capturar. */
+async function _renderReportNode(html){
+  const node=document.createElement('div');
+  node.style.cssText='width:760px;padding:18px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff;box-sizing:border-box';
+  node.setAttribute('data-i18n','off');   // el 📄 EN no debe salir traducido al español por nis-i18n
+  node.innerHTML=html;
+  const host=document.createElement('div');
+  host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
+  host.appendChild(node); document.body.appendChild(host);
+  try{
+    let svgText=null;
+    for(const logo of node.querySelectorAll('img[src*="logo"]')){
+      try{
+        if(svgText==null){ const r=await fetch('assets/logo-h.svg'); svgText=await r.text(); }
+        const w=parseInt(logo.getAttribute('width'),10)||150, h=parseInt(logo.getAttribute('height'),10)||28;
+        const svg=svgText.replace(/<svg /i,'<svg width="'+w+'" height="'+h+'" ');
+        const im=new Image();
+        await new Promise((res,rej)=>{ im.onload=res; im.onerror=rej; setTimeout(rej,1500); im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); });
+        const c=document.createElement('canvas'); c.width=w; c.height=h;
+        c.getContext('2d').drawImage(im,0,0,w,h);
+        logo.src=c.toDataURL('image/png');
+      }catch(_){}
+    }
+    await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;setTimeout(r,1500);})));
+    try{ if(document.fonts&&document.fonts.ready) await Promise.race([document.fonts.ready, new Promise(r=>setTimeout(r,1200))]); }catch(_){}
+    // CLAVE: capturar el nodo DIRECTAMENTE con html2canvas (no via html2pdf, que
+    // envolvía el nodo en un contenedor del ancho de la ventana → el reporte salía
+    // encogido a la izquierda y cortado en ventanas reales).
+    return await window.html2canvas(node,{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0,windowWidth:Math.max(760,document.documentElement.scrollWidth),windowHeight:document.documentElement.scrollHeight});
+  } finally { host.remove(); }
+}
+/* Hoja 1 del informe del Mock 2: el Statement of Results (app/72-mocks.js). */
+function _reportPage1Html(p, sp, fin, cycle){
+  return (cycle===2 && window._statementInner) ? _statementInner(p, fin, sp, {cycle}) : '';
+}
 window.studentReportPDF = async (studentId, lang, cycle)=>{
   lang = (lang==='en') ? 'en' : 'es'; cycle = cycle===2 ? 2 : 1;
   try{ await ensurePdfLibs(); }catch(e){ alert(e.message); return; }
@@ -652,51 +691,27 @@ window.studentReportPDF = async (studentId, lang, cycle)=>{
   const { p, at, sp, fin, prev } = D;
   const EN = lang==='en';
   const fname=(p.full_name||'student').replace(/\s+/g,'_')+(cycle===2?'-MOCK2':'')+'-'+(EN?'EN':'ES')+'.pdf';
-  // Nodo del reporte (ancho fijo 760px) en el origen del documento.
-  const node=document.createElement('div');
-  node.style.cssText='width:760px;padding:18px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
-  node.setAttribute('data-i18n','off');   // el 📄 EN no debe salir traducido al español por nis-i18n
-  node.innerHTML=_reportInner(p, at, sp, fin, EN, {cycle, prev});
-  const host=document.createElement('div');
-  host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
-  host.appendChild(node); document.body.appendChild(host);
+  // Hojas: 1) Statement of Results (solo Mock 2, en inglés) · 2) el informe ES/EN de siempre.
+  const pages=[]; const p1=_reportPage1Html(p, sp, fin, cycle); if(p1) pages.push(p1);
+  pages.push(_reportInner(p, at, sp, fin, EN, {cycle, prev}));
   try{
-    // El logo es un SVG SIN width/height (solo viewBox 569x107): html2canvas lo
-    // renderiza a su tamaño intrínseco (~569px) y salía gigante. Lo rasterizamos a
-    // un PNG del tamaño exacto antes de capturar.
-    try{
-      const logo=node.querySelector('img[src*="logo"]');
-      if(logo){
-        const r=await fetch('assets/logo-h.svg'); let svg=await r.text();
-        svg=svg.replace(/<svg /i,'<svg width="300" height="57" ');
-        const im=new Image();
-        await new Promise((res,rej)=>{ im.onload=res; im.onerror=rej; setTimeout(rej,1500); im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); });
-        const c=document.createElement('canvas'); c.width=300; c.height=57;
-        c.getContext('2d').drawImage(im,0,0,300,57);
-        logo.src=c.toDataURL('image/png');
-      }
-    }catch(_){}
-    await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;setTimeout(r,1500);})));
-    try{ if(document.fonts&&document.fonts.ready) await Promise.race([document.fonts.ready, new Promise(r=>setTimeout(r,1200))]); }catch(_){}
-    // CLAVE: capturar el nodo DIRECTAMENTE con html2canvas (no via html2pdf, que
-    // envolvía el nodo en un contenedor del ancho de la ventana → el reporte salía
-    // encogido a la izquierda y cortado en ventanas reales). Así el lienzo siempre
-    // es del ancho del nodo (760), sin importar el ancho ni el scroll de la página.
-    const canvas=await window.html2canvas(node,{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0,windowWidth:Math.max(760,document.documentElement.scrollWidth),windowHeight:document.documentElement.scrollHeight});
     const { jsPDF }=window.jspdf;
     const pdf=new jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
     const margin=6, pw=210, ph=297, iw=pw-2*margin, pageContentH=ph-2*margin;
-    const pxPerMM=canvas.width/iw;                       // px de lienzo por mm
-    const fullImgH=canvas.height/pxPerMM;                // alto total en mm
-    // SIEMPRE una sola hoja (pedido de Paolo, 22-sep-2026): si el informe es más alto que la
-    // hoja, se reduce proporcionalmente y se centra; antes se cortaba en dos páginas.
-    if(fullImgH<=pageContentH+0.5){
-      pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,iw,fullImgH);
-    } else {
-      const k=pageContentH/fullImgH, w=iw*k;
-      pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin+(iw-w)/2,margin,w,pageContentH);
+    for(let i=0;i<pages.length;i++){
+      const canvas=await _renderReportNode(pages[i]);
+      const pxPerMM=canvas.width/iw;                       // px de lienzo por mm
+      const fullImgH=canvas.height/pxPerMM;                // alto total en mm
+      if(i>0) pdf.addPage();
+      // Cada hoja cabe SIEMPRE en una página A4 (pedido de Paolo, 22-sep-2026): si el
+      // lienzo es más alto que la hoja, se reduce proporcionalmente y se centra.
+      if(fullImgH<=pageContentH+0.5){
+        pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,iw,fullImgH);
+      } else {
+        const k=pageContentH/fullImgH, w=iw*k;
+        pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin+(iw-w)/2,margin,w,pageContentH);
+      }
     }
     pdf.save(fname);
   }catch(e){ alert('Could not generate the PDF: '+(e&&e.message||e)); }
-  finally{ host.remove(); }
 };

@@ -422,3 +422,143 @@ window._mock2StatsCSV=()=>{
   a.href=url; a.download=`MOCK2_by_exercise_${new Date().toISOString().slice(0,10)}.csv`;
   document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
 };
+
+/* ===================== PÁGINA 1 · STATEMENT OF RESULTS (23-sep-2026) =====================
+   Pedido de Paolo: la primera hoja de cada informe del Mock 2 imita el «Statement of
+   Results» de Cambridge English (logo del colegio en vez del de Cambridge): candidato,
+   sesión, Result · Overall Score · CEFR Level, el gráfico con la Cambridge English Scale,
+   la columna «Certificated Results» y una columna por destreza con la puntuación, y los
+   textos oficiales del examen (umbrales de grado, qué certifica cada tramo). Solo en
+   inglés; el examen es el nivel que rindió el alumno (A2 Key · B1 Preliminary · B2 First
+   · C1 Advanced). Los umbrales son los reales de Cambridge; la escala del mock sale de
+   skillScale (aprobar ≈ 60 % cae en el límite del nivel). En C1 Advanced el Grade A
+   (200–210) certifica C2, como en el examen real. */
+const STATEMENT_EXAMS = {
+  A2:{ name:'A2 Key', full:'Key English Test', target:'A2', reports:'A1 to B1', min:100, max:150, notReported:82, noGrade:[82,99],
+       grades:[['Pass with Distinction',140,150,'B1'],['Pass with Merit',133,139,'A2'],['Pass',120,132,'A2'],['Level A1',100,119,'A1']],
+       cefr:[['B1',140,150],['A2',120,139],['A1',100,119]],
+       cert:['Candidates achieving a Pass with Distinction (between 140 and 150 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level B1. Candidates achieving a Pass with Merit or a Pass (between 120 and 139 on the Cambridge English Scale) receive a certificate at Level A2.',
+             'Candidates whose performance is below Level A2 but falls within Level A1 (100–119 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level A1.'] },
+  B1:{ name:'B1 Preliminary', full:'Preliminary English Test', target:'B1', reports:'A2 to B2', min:120, max:170, notReported:102, noGrade:[102,119],
+       grades:[['Pass with Distinction',160,170,'B2'],['Pass with Merit',153,159,'B1'],['Pass',140,152,'B1'],['Level A2',120,139,'A2']],
+       cefr:[['B2',160,170],['B1',140,159],['A2',120,139]],
+       cert:['Candidates achieving a Pass with Distinction (between 160 and 170 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level B2. Candidates achieving a Pass with Merit or a Pass (between 140 and 159 on the Cambridge English Scale) receive a certificate at Level B1.',
+             'Candidates whose performance is below Level B1 but falls within Level A2 (120–139 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level A2.'] },
+  B2:{ name:'B2 First', full:'First Certificate in English', target:'B2', reports:'B1 to C1', min:130, max:190, notReported:122, noGrade:[122,139],
+       grades:[['Pass at Grade A',180,190,'C1'],['Pass at Grade B',173,179,'B2'],['Pass at Grade C',160,172,'B2'],['Level B1',140,159,'B1']],
+       cefr:[['C1',180,190],['B2',160,179],['B1',140,159]],
+       cert:['Candidates achieving Grade A (between 180 and 190 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level C1. However, B2 First is not designed to assess the full range of skills at Level C1 and it is recommended that candidates prepare for and take the C1 Advanced exam to fully develop and demonstrate their C1 ability. Candidates achieving Grade B or Grade C (between 160 and 179 on the Cambridge English Scale) receive a certificate at Level B2.',
+             'Candidates whose performance is below Level B2 but falls within Level B1 (140–159 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level B1.'] },
+  C1:{ name:'C1 Advanced', full:'Certificate in Advanced English', target:'C1', reports:'B2 to C2', min:150, max:210, notReported:142, noGrade:[142,159],
+       grades:[['Pass at Grade A',200,210,'C2'],['Pass at Grade B',193,199,'C1'],['Pass at Grade C',180,192,'C1'],['Level B2',160,179,'B2']],
+       cefr:[['C2',200,210],['C1',180,199],['B2',160,179]],
+       cert:['Candidates achieving Grade A (between 200 and 210 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level C2. However, C1 Advanced is not designed to assess the full range of skills at Level C2 and it is recommended that candidates prepare for and take the C2 Proficiency exam to fully develop and demonstrate their C2 ability. Candidates achieving Grade B or Grade C (between 180 and 199 on the Cambridge English Scale) receive a certificate at Level C1.',
+             'Candidates whose performance is below Level C1 but falls within Level B2 (160–179 on the Cambridge English Scale) receive a certificate stating that they have demonstrated ability at Level B2.'] }
+};
+/* Resultado del alumno según los umbrales del examen que rindió. */
+function statementResult(level, scale){
+  const X = STATEMENT_EXAMS[level] || STATEMENT_EXAMS.B1;
+  if(scale==null) return { result:'Pending', cefr:'—', grade:null };
+  const g = X.grades.find(g=>scale>=g[1] && scale<=g[2]) || (scale>X.max ? X.grades[0] : null);
+  if(g) return { result:g[0], cefr:g[3], grade:g };
+  if(scale>=X.noGrade[0]) return { result:'No grade', cefr:'—', grade:null };
+  return { result:'Not reported', cefr:'—', grade:null };
+}
+window._statementInner = function(p, fin, sp, opts){
+  opts = opts||{}; const cycle = opts.cycle===1 ? 1 : 2;
+  const L = fin.level || targetLevel(p) || 'B1';
+  const X = STATEMENT_EXAMS[L] || STATEMENT_EXAMS.B1;
+  const sc = fin.finalScale!=null ? Math.round(fin.finalScale) : null;
+  const R = statementResult(L, sc);
+  const RED='#e8452c', GREY='#e5e7eb', DARK='#0f172a';
+  const session = cycle===2 ? '22 SEPTEMBER 2026' : 'JUNE 2026';
+  const mockName = cycle===2 ? 'OFFICIAL MOCK 2' : 'MOCK 1';
+  const cols = (L==='B2'||L==='C1')
+    ? [['Reading','Reading &amp;<br>Use of English'],['Writing','Writing'],['Listening','Listening'],['Speaking','Speaking']]
+    : [['Reading','Reading'],['Writing','Writing'],['Listening','Listening'],['Speaking','Speaking']];
+  const lbl='font-size:11px;color:#374151;margin:0 0 3px';
+  const gbox='background:'+GREY+';padding:9px 12px;font-size:15px;font-weight:700;color:'+DARK+';min-height:18px';
+  const rbox='background:'+RED+';color:#fff;padding:9px 12px;font-size:15px;font-weight:800;min-height:18px';
+  const secW='190px';
+
+  /* ---- gráfico ---- */
+  const PPP=5, TOP=34, H=(X.max-X.min)*PPP, BOT=8;
+  const y=(v)=>TOP + (X.max - Math.max(X.min, Math.min(X.max, Number(v))))*PPP;
+  const colStyle=(w)=>'position:relative;height:'+(TOP+H+BOT)+'px;'+(w?'width:'+w+'px;flex:0 0 '+w+'px;':'flex:1 1 0;')+'font-size:10px';
+  const title=(t)=>'<div style="position:absolute;left:0;right:0;top:0;height:'+(TOP-6)+'px;font-size:10px;font-weight:700;color:'+DARK+';text-align:center;line-height:1.15;display:flex;align-items:flex-end;justify-content:center">'+t+'</div>';
+  // CEFR labels
+  let cefrCol=title('CEFR Level');
+  X.cefr.forEach((b,i)=>{ const top=y(i===0?X.max:X.cefr[i-1][1]), bottom=y(b[1]); cefrCol+='<div style="position:absolute;left:0;right:0;top:'+((top+bottom)/2-11)+'px;font-size:19px;font-weight:800;color:'+DARK+';text-align:center">'+b[0]+'</div>'; });
+  // regla
+  let ruler=title('Cambridge<br>English Scale')+'<div style="position:absolute;left:44px;top:'+TOP+'px;height:'+H+'px;width:1px;background:'+DARK+'"></div>';
+  for(let v=X.min; v<=X.max; v+=2){
+    const major=v%10===0; ruler+='<div style="position:absolute;left:'+(major?30:37)+'px;top:'+y(v)+'px;width:'+(major?14:7)+'px;height:1px;background:'+DARK+'"></div>';
+    if(major) ruler+='<div style="position:absolute;left:0;width:27px;top:'+(y(v)-6)+'px;font-size:9px;font-weight:700;color:'+DARK+';text-align:right">'+v+'</div>';
+  }
+  // certificated results
+  let cert=title('Certificated<br>Results');
+  X.grades.forEach((g,i)=>{ const top=y(i===0?X.max:X.grades[i-1][1]), bottom=y(g[1]); const dark=/Grade|Pass|Distinction|Merit/.test(g[0]) && !/^Level/.test(g[0]);
+    cert+='<div style="position:absolute;left:4px;right:4px;top:'+top+'px;height:'+(bottom-top)+'px;background:'+(dark?'#6b7280':'#9ca3af')+';color:#fff;font-size:9px;font-weight:700;text-align:center;display:flex;align-items:center;justify-content:center;line-height:1.1;border-bottom:1px solid #fff;box-sizing:border-box">'+g[0].replace('Pass at ','').replace('Pass with ','')+'</div>'; });
+  // destrezas
+  const skillCols=cols.map(([k,t])=>{
+    const b=fin.skills && fin.skills[k]; let c=title(t)+'<div style="position:absolute;left:8px;right:8px;top:'+TOP+'px;height:'+H+'px;background:#f1f3f6"></div>';
+    if(b && b.scale!=null){ const v=Math.round(b.scale), yy=y(v)-9;
+      c+='<div style="position:absolute;left:6px;top:'+yy+'px;width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-right:10px solid '+RED+'"></div>'+
+         '<div style="position:absolute;left:16px;right:10px;top:'+yy+'px;height:18px;line-height:18px;background:'+RED+';color:#fff;font-size:11px;font-weight:800;text-align:center">'+v+(v<X.min?' ▼':'')+'</div>'; }
+    else { const pend = k==='Speaking' ? 'Pending' : (k==='Writing' && fin.writingPending ? 'Pending' : '—');
+      c+='<div style="position:absolute;left:8px;right:8px;top:'+(TOP+H/2-8)+'px;text-align:center;font-size:10px;color:#6b7280;font-weight:700">'+pend+'</div>'; }
+    return '<div style="'+colStyle(0)+';margin:0 2px">'+c+'</div>';
+  }).join('');
+  // líneas discontinuas en los límites de nivel, de la columna de certificados hasta el final
+  let dashes='';
+  X.cefr.slice(1).forEach(b=>{ dashes+='<div style="position:absolute;left:130px;right:0;top:'+y(b[1])+'px;border-top:1px dashed #6b7280"></div>'; });
+  const chart='<div style="position:relative;display:flex;align-items:flex-start;margin:10px 0 6px;padding:0 4px">'+
+    '<div style="'+colStyle(64)+'">'+cefrCol+'</div>'+
+    '<div style="'+colStyle(66)+'">'+ruler+'</div>'+
+    '<div style="'+colStyle(96)+'">'+cert+'</div>'+
+    skillCols+dashes+'</div>';
+
+  /* ---- textos ---- */
+  const para=(t)=>'<p style="margin:0 0 7px;font-size:10px;line-height:1.35;color:'+DARK+'">'+t+'</p>';
+  const intro=X.full+' / '+X.name+' is an examination targeted at Level '+X.target+' on the Council of Europe’s Common European Framework of Reference but reports results for candidates demonstrating ability from Level '+X.reports+'.';
+  const mockNote='This statement reports the results of a school mock examination (' + mockName + ', Nordic International School of Lima), marked with the Cambridge English Scale. It is a practice document issued by the school and not an official Cambridge English certificate.';
+  const scoreTbl='<table style="width:100%;border-collapse:collapse;font-size:10.5px"><tr style="background:'+GREY+'"><th style="text-align:left;padding:4px 8px;font-size:11px">Results</th><th style="text-align:left;padding:4px 8px;font-size:11px">Score</th></tr>'+
+    X.grades.map(g=>'<tr><td style="padding:2px 8px;font-weight:700">'+g[0]+'</td><td style="padding:2px 8px;font-weight:700">'+g[1]+' — '+g[2]+'</td></tr>').join('')+'</table>';
+  const other='<div style="background:'+GREY+';font-size:11px;font-weight:700;padding:4px 8px;margin-top:8px">Other</div>'+
+    '<div style="font-size:9.5px;line-height:1.35;padding:4px 8px">'+
+      '<b>Pending</b> - the paper is still being marked by the teacher; the result will follow in due course<br>'+
+      '<b>—</b> - the candidate did not sit this paper<br>'+
+      '<b>Speaking</b> - assessed by the teacher in an oral session with the Cambridge rubric<br>'+
+      '<b>Reading &amp; Use of English</b> - reported as a single paper in this mock</div>';
+  const complete = fin.complete ? '' : '<div style="font-size:9.5px;color:#b45309;margin-top:4px"><b>Provisional:</b> some papers are still pending ('+esc((fin.missing||[]).join(', '))+').</div>';
+
+  return '<div style="font-family:Arial,Helvetica,sans-serif;color:'+DARK+'">'+
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start">'+
+      '<img src="assets/logo-h.svg" width="230" height="43" style="width:230px;height:43px;display:block;margin-top:4px">'+
+      '<div style="width:'+secW+'"><div style="'+lbl+';text-align:center">Centre Reference</div><div style="'+gbox+';text-align:center;font-size:13px">NIS · ENGLISH DEPARTMENT</div><div style="font-size:9px;color:#374151;text-align:center;margin-top:2px">To be quoted on all correspondence</div></div>'+
+    '</div>'+
+    '<div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px">'+
+      '<div><div style="font-size:24px;font-weight:800;line-height:1.1">'+X.full+'</div><div style="font-size:15px;font-weight:800;margin-top:4px">Statement of Results</div><div style="font-size:11px;font-weight:800;color:'+RED+';margin-top:2px">'+mockName+' · school mock examination</div></div>'+
+      '<div style="width:'+secW+'"><div style="'+lbl+';text-align:center">Verification Number</div><div style="'+gbox+';text-align:center;font-size:13px">'+esc((p.grades&&p.grades.name)||'')+(p.section?' · SECTION '+esc(p.section):'')+'</div></div>'+
+    '</div>'+
+    '<div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px;gap:16px">'+
+      '<div style="flex:1"><div style="'+lbl+'">Candidate name</div><div style="'+gbox+'">'+esc((p.full_name||'').toUpperCase())+'</div></div>'+
+      '<div style="width:'+secW+'"><div style="'+lbl+';text-align:center">Session</div><div style="'+gbox+';text-align:center">'+session+'</div></div>'+
+    '</div>'+
+    '<div style="margin-top:12px;width:calc(100% - '+secW+' - 16px)"><div style="'+lbl+'">Place of entry</div><div style="'+gbox+'">LIMA · NORDIC INTERNATIONAL SCHOOL OF LIMA</div></div>'+
+    '<div style="display:flex;gap:18px;margin-top:12px">'+
+      '<div style="flex:1"><div style="'+lbl+'">Result</div><div style="'+rbox+'">'+R.result+'</div></div>'+
+      '<div style="flex:1"><div style="'+lbl+'">Overall Score</div><div style="'+rbox+'">'+(sc!=null?sc:'—')+'</div></div>'+
+      '<div style="flex:1"><div style="'+lbl+'">CEFR Level</div><div style="'+rbox+'">'+R.cefr+'</div></div>'+
+    '</div>'+
+    chart+
+    '<div style="display:flex;gap:20px;margin-top:8px;align-items:flex-start">'+
+      '<div style="flex:1 1 0">'+para(intro)+X.cert.map(para).join('')+para(mockNote)+'</div>'+
+      '<div style="flex:1 1 0">'+scoreTbl+
+        '<p style="margin:6px 0 0;font-size:9.5px;line-height:1.35;color:'+DARK+'">Candidates who take '+X.name+' and score between '+X.noGrade[0]+' and '+X.noGrade[1]+' on the Cambridge English Scale do not receive a grade, CEFR level or certificate.</p>'+
+        '<p style="margin:4px 0 0;font-size:9.5px;line-height:1.35;color:'+DARK+'">Cambridge English Scale scores below '+X.notReported+' are not reported for this examination.</p>'+
+        other+complete+'</div>'+
+    '</div>'+
+    '<div style="background:'+GREY+';font-size:8.5px;color:#374151;padding:5px 8px;margin-top:10px">This is a Statement of Results for a school mock examination. The official Cambridge English exam and its Statement of Results are issued only by Cambridge University Press &amp; Assessment. Cambridge English Scale: pass (≈60%) lands at the level boundary.</div>'+
+  '</div>';
+};
