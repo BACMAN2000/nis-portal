@@ -591,7 +591,11 @@ window._sendWritingResult = async ()=>{
     st.innerHTML='<span style="color:var(--bad)">Write a comment for the student, or mark a Band for every criterion in both parts, before sending.</span>';
     return;
   }
+  // Se conservan las marcas del intento que no son de la corrección: mock_mode (ciclo 2) y
+  // from_reading (Writing A2 desdoblado del Reading). Sin esto, corregir borraba las dos.
+  const keep={}; ['mock_mode','from_reading'].forEach(k=>{ if(a.breakdown&&a.breakdown[k]!=null) keep[k]=a.breakdown[k]; });
   const breakdown={
+    ...keep,
     kind:'writing-graded',
     graded,                                   // false = comment-only (sin nota todavía)
     parts:[
