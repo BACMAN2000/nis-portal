@@ -552,73 +552,82 @@ window.SPEAKING_TEST = (function(){
 
   /* ---- Escalas analíticas de Cambridge (bandas 1 · 3 · 5). Las bandas 2 y 4
      «comparten rasgos» de las contiguas; 0 = por debajo de la banda 1.
-     Fuente: las escalas públicas de los handbooks de A2 Key, B1 Preliminary,
-     B2 First y C1 Advanced. ---- */
+     Fuente (verificada el 23-sep-2026): «Instructions to Speaking Examiners
+     from 2020» (Cambridge, MS_ISE_2020, en CAMBRIDGE_MAIN_SUITE/FCE): la
+     escala analítica común (pág. 2) y la Global Achievement Scale de cada
+     examen (págs. 43-55). Las escalas son UN continuo: la banda 5 de un
+     nivel es la banda 3 del siguiente y la banda 1 del anterior — por eso
+     la banda 1 de C1 dice lo mismo que la banda 3 de B2; no es un préstamo.
+     En C1 y C2 Cambridge separa Grammatical y Lexical Resource: aquí van
+     juntos en «Grammar and Vocabulary» para compartir nombres con el
+     corrector del mock (SPEAKING_RUBRICS). ---- */
   const GV='Grammar and Vocabulary', DM='Discourse Management', PR='Pronunciation', IC='Interactive Communication', GA='Global Achievement';
+
+  /* Filas de la escala común, de A1 a C2 (pág. 2 del documento). */
+  const ROW = {
+    A1: { gv:'Shows only limited control of a few grammatical forms. Uses a vocabulary of isolated words and phrases.',
+          dm:null,
+          pr:'Has very limited control of phonological features and is often unintelligible.',
+          ic:'Has considerable difficulty maintaining simple exchanges. Requires additional prompting and support.' },
+    A2: { gv:'Shows sufficient control of simple grammatical forms. Uses appropriate vocabulary to talk about everyday situations.',
+          dm:null,
+          pr:'Is mostly intelligible, despite limited control of phonological features.',
+          ic:'Maintains simple exchanges, despite some difficulty. Requires prompting and support.' },
+    B1: { gv:'Shows a good degree of control of simple grammatical forms. Uses a range of appropriate vocabulary when talking about familiar topics.',
+          dm:'Produces responses which are extended beyond short phrases, despite hesitation. Contributions are mostly relevant, but there may be some repetition. Uses basic cohesive devices.',
+          pr:'Is mostly intelligible, and has some control of phonological features at both utterance and word levels.',
+          ic:'Initiates and responds appropriately. Keeps the interaction going with very little prompting and support.' },
+    B2: { gv:'Shows a good degree of control of simple grammatical forms, and attempts some complex grammatical forms. Uses appropriate vocabulary to give and exchange views, on a range of familiar topics.',
+          dm:'Produces extended stretches of language despite some hesitation. Contributions are relevant and there is very little repetition. Uses a range of cohesive devices.',
+          pr:'Is intelligible. Intonation is generally appropriate. Sentence and word stress is generally accurately placed. Individual sounds are generally articulated clearly.',
+          ic:'Initiates and responds appropriately. Maintains and develops the interaction and negotiates towards an outcome with very little support.' },
+    C1: { gv:'Grammatical resource: shows a good degree of control of a range of simple and complex grammatical forms. Lexical resource: uses a range of appropriate vocabulary to give and exchange views on familiar and unfamiliar topics.',
+          dm:'Produces extended stretches of language with very little hesitation. Contributions are relevant and there is a clear organisation of ideas. Uses a range of cohesive devices and discourse markers.',
+          pr:'Is intelligible. Intonation is appropriate. Sentence and word stress is accurately placed. Individual sounds are articulated clearly.',
+          ic:'Initiates and responds appropriately, linking contributions to those of other speakers. Maintains and develops the interaction and negotiates towards an outcome.' },
+    C2: { gv:'Grammatical resource: maintains control of a wide range of grammatical forms. Lexical resource: uses a wide range of appropriate vocabulary to give and exchange views on unfamiliar and abstract topics.',
+          dm:'Produces extended stretches of language with ease and with very little hesitation. Contributions are relevant, coherent and varied. Uses a wide range of cohesive devices and discourse markers.',
+          pr:'Is intelligible. Phonological features are used effectively to convey and enhance meaning.',
+          ic:'Interacts with ease, linking contributions to those of other speakers. Widens the scope of the interaction and negotiates towards an outcome.' }
+  };
+  /* Banda 5 = fila del nivel superior · 3 = la del nivel · 1 = la del inferior. */
+  const scale = (hi, mid, lo, k) => ({ 5:ROW[hi][k], 3:ROW[mid][k], 1:ROW[lo][k] });
 
   const RUBRICS = {
     A2: { exam:'A2 Key', criteria:[GV,PR,IC], global:GA, d:{
-      [GV]:{5:'Shows a good degree of control of simple grammatical forms. Uses a range of appropriate vocabulary when talking about everyday situations.',
-            3:'Shows sufficient control of simple grammatical forms. Uses appropriate vocabulary to talk about everyday situations.',
-            1:'Shows only limited control of a few grammatical forms. Uses a vocabulary of isolated words and phrases.'},
-      [PR]:{5:'Is mostly intelligible, and has some control of phonological features at both utterance and word levels.',
-            3:'Is mostly intelligible, despite limited control of phonological features.',
-            1:'Has very limited control of phonological features and is often unintelligible.'},
-      [IC]:{5:'Maintains simple exchanges. Requires very little prompting and support.',
-            3:'Maintains simple exchanges, despite some difficulty. Requires prompting and support.',
-            1:'Has considerable difficulty maintaining simple exchanges. Requires additional prompting and support.'},
+      [GV]: scale('B1','A2','A1','gv'),
+      [PR]: scale('B1','A2','A1','pr'),
+      [IC]: scale('B1','A2','A1','ic'),
       [GA]:{5:'Handles communication in everyday situations, despite hesitation. Constructs longer utterances but is not able to use complex language except in well-rehearsed utterances.',
             3:'Conveys basic meaning in very familiar everyday situations. Produces utterances which tend to be very short – words or phrases – with frequent hesitation and pauses.',
             1:'Has difficulty conveying basic meaning even in very familiar everyday situations. Responses are limited to short phrases or isolated words with frequent hesitation and pauses.'}
     }},
     B1: { exam:'B1 Preliminary', criteria:[GV,DM,PR,IC], global:GA, d:{
-      [GV]:{5:'Shows a good degree of control of simple grammatical forms, and attempts some complex grammatical forms. Uses a range of appropriate vocabulary to give and exchange views on familiar topics.',
-            3:'Shows a good degree of control of simple grammatical forms. Uses a range of appropriate vocabulary when talking about familiar topics.',
-            1:'Shows sufficient control of simple grammatical forms. Uses a limited range of appropriate vocabulary to talk about familiar topics.'},
-      [DM]:{5:'Produces extended stretches of language despite some hesitation. Contributions are relevant despite some repetition. Uses a range of cohesive devices.',
-            3:'Produces responses which are extended beyond short phrases, despite hesitation. Contributions are mostly relevant, but there may be some repetition. Uses basic cohesive devices.',
+      [GV]: scale('B2','B1','A2','gv'),
+      /* La fila A2 no tiene Discourse Management: la banda 1 de B1 sale del handbook de B1 Preliminary. */
+      [DM]:{5:ROW.B2.dm, 3:ROW.B1.dm,
             1:'Produces responses which are characterised by short phrases and frequent hesitation. Repeats information or digresses from the topic.'},
-      [PR]:{5:'Is intelligible. Intonation is generally appropriate. Sentence and word stress is generally accurately placed. Individual sounds are generally articulated clearly.',
-            3:'Is mostly intelligible, and has some control of phonological features at both utterance and word levels.',
-            1:'Is mostly intelligible, despite limited control of phonological features.'},
-      [IC]:{5:'Initiates and responds appropriately. Maintains and develops the interaction and negotiates towards an outcome with very little support.',
-            3:'Initiates and responds appropriately. Keeps the interaction going with very little prompting and support.',
-            1:'Maintains simple exchanges, despite some difficulty. Requires prompting and support.'},
+      [PR]: scale('B2','B1','A2','pr'),
+      [IC]: scale('B2','B1','A2','ic'),
       [GA]:{5:'Handles communication on familiar topics, despite some hesitation. Organises extended discourse but occasionally produces utterances that lack coherence, and some inaccuracies and inappropriate usage occur.',
-            3:'Handles communication in everyday situations, despite hesitation. Constructs longer utterances but is not able to use complex language except in well-rehearsed utterances.',
-            1:'Conveys basic meaning in very familiar everyday situations. Produces utterances which tend to be very short – words or phrases – with frequent hesitation and pauses.'}
+            3:'Handles communication on familiar topics, despite hesitation. Constructs longer utterances but is not able to use complex language except in well-rehearsed utterances.',
+            1:'Conveys basic meaning on very familiar or highly predictable topics. Produces utterances which tend to be very short – words or phrases – with frequent hesitation and pauses.'}
     }},
     B2: { exam:'B2 First', criteria:[GV,DM,PR,IC], global:GA, d:{
-      [GV]:{5:'Shows a good degree of control of a range of simple and some complex grammatical forms. Uses a range of appropriate vocabulary to give and exchange views on a wide range of familiar topics.',
-            3:'Shows a good degree of control of simple grammatical forms, and attempts some complex grammatical forms. Uses a range of appropriate vocabulary to give and exchange views on a range of familiar topics.',
-            1:'Shows a good degree of control of simple grammatical forms. Uses a range of appropriate vocabulary when talking about everyday situations.'},
-      [DM]:{5:'Produces extended stretches of language with very little hesitation. Contributions are relevant and there is a clear organisation of ideas. Uses a range of cohesive devices and discourse markers.',
-            3:'Produces extended stretches of language despite some hesitation. Contributions are relevant and there is very little repetition. Uses a range of cohesive devices.',
-            1:'Produces responses which are extended beyond short phrases, despite hesitation. Contributions are mostly relevant, despite some repetition. Uses basic cohesive devices.'},
-      [PR]:{5:'Is intelligible. Intonation is appropriate. Sentence and word stress is accurately placed. Individual sounds are articulated clearly.',
-            3:'Is intelligible. Intonation is generally appropriate. Sentence and word stress is generally accurately placed. Individual sounds are generally articulated clearly.',
-            1:'Is mostly intelligible, and has some control of phonological features at both utterance and word levels.'},
-      [IC]:{5:'Initiates and responds appropriately, linking contributions to those of other speakers. Maintains and develops the interaction and negotiates towards an outcome.',
-            3:'Initiates and responds appropriately. Maintains and develops the interaction and negotiates towards an outcome with very little support.',
-            1:'Initiates and responds appropriately. Keeps the interaction going with very little prompting and support.'},
+      [GV]: scale('C1','B2','B1','gv'),
+      [DM]: scale('C1','B2','B1','dm'),
+      [PR]: scale('C1','B2','B1','pr'),
+      [IC]: scale('C1','B2','B1','ic'),
       [GA]:{5:'Handles communication on a range of familiar topics, with very little hesitation. Uses accurate and appropriate linguistic resources to express ideas and produce extended discourse that is generally coherent.',
             3:'Handles communication on familiar topics, despite some hesitation. Organises extended discourse but occasionally produces utterances that lack coherence, and some inaccuracies and inappropriate usage occur.',
-            1:'Handles communication in everyday situations, despite hesitation. Constructs longer utterances but is not able to use complex language except in well-rehearsed utterances.'}
+            1:'Handles communication on familiar topics, despite hesitation. Constructs longer utterances but is not able to use complex language except in well-rehearsed utterances.'}
     }},
     C1: { exam:'C1 Advanced', criteria:[GV,DM,PR,IC], global:GA, d:{
-      [GV]:{5:'Grammatical resource: maintains control of a wide range of grammatical forms. Lexical resource: uses a wide range of appropriate vocabulary to give and exchange views on unfamiliar and abstract topics.',
-            3:'Grammatical resource: shows a good degree of control of a range of simple and some complex grammatical forms. Lexical resource: uses a range of appropriate vocabulary to give and exchange views on a range of familiar and unfamiliar topics.',
-            1:'Grammatical resource: shows a good degree of control of simple grammatical forms, and attempts some complex grammatical forms. Lexical resource: uses a range of appropriate vocabulary to give and exchange views on a range of familiar topics.'},
-      [DM]:{5:'Produces extended stretches of language with ease and with very little hesitation. Contributions are relevant, coherent and varied. Uses a wide range of cohesive devices and discourse markers.',
-            3:'Produces extended stretches of language with very little hesitation. Contributions are relevant and there is a clear organisation of ideas. Uses a range of cohesive devices and discourse markers.',
-            1:'Produces extended stretches of language despite some hesitation. Contributions are relevant and there is very little repetition. Uses a range of cohesive devices.'},
-      [PR]:{5:'Is intelligible. Phonological features are used effectively to convey and enhance meaning.',
-            3:'Is intelligible. Intonation is appropriate. Sentence and word stress is accurately placed. Individual sounds are articulated clearly.',
-            1:'Is intelligible. Intonation is generally appropriate. Sentence and word stress is generally accurately placed. Individual sounds are generally articulated clearly.'},
-      [IC]:{5:'Interacts with ease, linking contributions to those of other speakers. Widens the scope of the interaction and negotiates towards an outcome.',
-            3:'Initiates and responds appropriately, linking contributions to those of other speakers. Maintains and develops the interaction and negotiates towards an outcome.',
-            1:'Initiates and responds appropriately. Maintains and develops the interaction and negotiates towards an outcome with very little support.'},
-      [GA]:{5:'Handles communication on a wide range of familiar and unfamiliar topics, with very little hesitation. Uses accurate and appropriate linguistic resources with ease to express complex ideas and concepts and produce extended and coherent discourse.',
+      [GV]: scale('C2','C1','B2','gv'),
+      [DM]: scale('C2','C1','B2','dm'),
+      [PR]: scale('C2','C1','B2','pr'),
+      [IC]: scale('C2','C1','B2','ic'),
+      [GA]:{5:'Handles communication on a wide range of topics, including unfamiliar and abstract ones, with very little hesitation. Uses accurate and appropriate linguistic resources to express complex ideas and concepts and produce extended discourse that is coherent and easy to follow.',
             3:'Handles communication on a range of familiar and unfamiliar topics, with very little hesitation. Uses accurate and appropriate linguistic resources to express ideas and produce extended discourse that is generally coherent.',
             1:'Handles communication on familiar topics, despite some hesitation. Organises extended discourse but occasionally produces utterances that lack coherence, and some inaccuracies and inappropriate usage occur.'}
     }}
