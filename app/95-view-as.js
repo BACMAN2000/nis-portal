@@ -124,7 +124,7 @@ async function renderParent(tab='report'){
   const lang = (window.NISi18n && window.NISi18n.lang()==='es') ? 'es' : 'en', EN = lang==='en';
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',sid).single();
   if(error){ $('#main').innerHTML='<div class="note err">'+esc(error.message)+'</div>'; return; }
-  const cycle = await mockLatestReleased();   // la familia recibe el último informe liberado
+  const cycle = await mockLatestReleased(sid);   // la familia recibe el último informe liberado o enviado a este alumno
   const { data:atAll } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',sid);
   const at = mockCycleAttempts(atAll||[], cycle);
   let sp=null, prev=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',sid); sp=mockSpeakingOf((r&&r.data)||[], cycle); if(cycle===2) prev=mockCycleFinal(p, mockCycleAttempts(atAll||[],1), mockSpeakingOf((r&&r.data)||[],1), 1); }catch(e){}

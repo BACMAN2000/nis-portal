@@ -98,7 +98,7 @@ async function studentFinal(){
   $('#main').innerHTML=`${back}<h1>🏅 Final result · CEFR</h1><p class="muted">Loading…</p>`;
   // El alumno ve el ÚLTIMO ciclo liberado por el admin (mock_cycles.released_at):
   // del Official Mock 2 no ve nada hasta que salga el informe único (21-sep-2026).
-  const cycle = await mockLatestReleased();
+  const cycle = await mockLatestReleased(p.id);   // liberado para todos o enviado a este alumno (mock_reports)
   const { data:atAll } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at,breakdown').eq('student_id',p.id);
   const at = mockCycleAttempts(atAll||[], cycle);
   let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',p.id); sp=mockSpeakingOf((r&&r.data)||[], cycle); }catch(e){}
@@ -912,7 +912,7 @@ async function studentResults(){
   if(!p.id) return _previewNeedsStudent('📊 My Progress', back);
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Loading…</p>`;
   const { data:attsRaw } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
-  const atts = await mockVisibleAttempts(attsRaw||[]);   // nada del Official Mock 2 hasta que el admin libere el informe
+  const atts = await mockVisibleAttempts(attsRaw||[], p.id);   // nada del Official Mock 2 hasta que se libere o se le envíe su informe
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
     const scored=a.filter(x=>x.percent!=null);              // Writing is not auto-scored

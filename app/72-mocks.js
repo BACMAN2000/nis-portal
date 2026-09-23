@@ -67,8 +67,10 @@ function mockCycleFinal(profile, atts, spk, cycle){
     if(ceil!=null && finalScale>ceil) finalScale = ceil;
   }
   const labels = { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
-  // Speaking no se rinde el día del mock: cuenta si se evaluó, pero no hace falta para cerrar el informe.
-  const requiredKeys = a2NoWriting ? ['Reading','Listening'] : ['Reading','Listening','Writing'];
+  // Speaking se rinde después, en sesión oral, pero desde el 23-sep-2026 el informe del
+  // ciclo 2 NO se cierra sin él (pedido de Paolo): completo = las cuatro destrezas con nota.
+  // La misma regla vive en la base (mock_report_refresh): ahí es donde el motor la aplica.
+  const requiredKeys = a2NoWriting ? ['Reading','Listening','Speaking'] : ['Reading','Listening','Writing','Speaking'];
   const wPending = !a2NoWriting && (atts||[]).some(a=>a.skill==='Writing' && a.percent==null);
   return { profile, skills, isA2, a2NoWriting, level, finalScale, finalCefr:scaleToCefr(finalScale), cycle:2,
            complete: requiredKeys.every(k=>skills[k]), missing: requiredKeys.filter(k=>!skills[k]).map(k=>labels[k]), writingPending:wPending };
@@ -105,11 +107,23 @@ async function mockCyclesInfo(force){
   return _mockCyclesCache;
 }
 async function mockReleased(cycle){ const rows=await mockCyclesInfo(); const r=rows.find(x=>Number(x.cycle)===cycle); return !!(r && r.released_at); }
-/* El último ciclo liberado (lo que ve el alumno y la familia). */
-async function mockLatestReleased(){ const rows=await mockCyclesInfo(); const rel=rows.filter(x=>x.released_at).map(x=>Number(x.cycle)); return rel.length?Math.max(...rel):1; }
-/* Lo que el alumno puede ver de sus intentos: nada de un ciclo no liberado. */
-async function mockVisibleAttempts(atts){
-  const rows=await mockCyclesInfo(); const hidden=new Set(rows.filter(x=>!x.released_at).map(x=>Number(x.cycle)));
+/* Ciclos ENVIADOS a un alumno concreto (mock_reports.status='sent', 23-sep-2026): el
+   informe sale por alumno en cuanto está completo, sin esperar a liberar todo el ciclo. */
+async function mockSentCycles(studentId){
+  if(!studentId) return new Set();
+  try{ const { data } = await sb.from('mock_reports').select('cycle').eq('student_id',studentId).eq('status','sent'); return new Set((data||[]).map(r=>Number(r.cycle))); }
+  catch(e){ return new Set(); }
+}
+/* El último ciclo que ve el alumno y la familia: liberado para todos o enviado a él. */
+async function mockLatestReleased(studentId){
+  const rows=await mockCyclesInfo(); const rel=rows.filter(x=>x.released_at).map(x=>Number(x.cycle));
+  (await mockSentCycles(studentId)).forEach(c=>rel.push(c));
+  return rel.length?Math.max(...rel):1;
+}
+/* Lo que el alumno puede ver de sus intentos: nada de un ciclo no liberado ni enviado a él. */
+async function mockVisibleAttempts(atts, studentId){
+  const rows=await mockCyclesInfo(); const sent=await mockSentCycles(studentId);
+  const hidden=new Set(rows.filter(x=>!x.released_at && !sent.has(Number(x.cycle))).map(x=>Number(x.cycle)));
   return (atts||[]).filter(a=>!hidden.has(mockCycleOf(a)));
 }
 
@@ -171,7 +185,7 @@ function _mockReportExtras(p, fin, prev, EN){
 window._mockReportExtras=_mockReportExtras;
 
 /* ===================== PESTAÑA ✅ MARKING → 📝 MOCK 2 ===================== */
-let mock2Filter = { grade:'', section:'', name:'' };
+let mock2Filter = { grade:'', section:'', name:'', status:'' };
 async function mock2Panel(){
   state._tab='mock2';
   if($('#main')) $('#main').innerHTML='<div class="center muted">Loading…</div>';
@@ -192,11 +206,19 @@ async function mock2Panel(){
   const ids=students.map(s=>s.id); const safeIds=ids.length?ids:['00000000-0000-0000-0000-000000000000'];
   const { data:atts } = await sb.from('exam_attempts').select('id,student_id,skill,level,percent,score,total,mock,submitted_at,breakdown').in('student_id',safeIds).limit(8000);
   const { data:spks } = await sb.from('speaking_results').select('*').in('student_id',safeIds);
+  // Estado del informe por alumno (mock_reports): lo mantiene la base sola (triggers) cada
+  // vez que entra una nota; el panel solo lo muestra y ofrece «Send to family».
+  const { data:reps } = await sb.from('mock_reports').select('*').in('student_id',safeIds).eq('cycle',2);
   const aBy={}; (atts||[]).forEach(a=>{(aBy[a.student_id]=aBy[a.student_id]||[]).push(a);});
   const sBy={}; (spks||[]).forEach(s=>{(sBy[s.student_id]=sBy[s.student_id]||[]).push(s);});
+  const rBy={}; (reps||[]).forEach(r=>{ rBy[r.student_id]=r; });
   const lang=(window.NISi18n&&window.NISi18n.lang()==='es')?'es':'en', EN=lang==='en';
+  const canSend = isAdmin || (isTeacher && !(state.teacherAccess && state.teacherAccess.can_results===false));
+  const dShort=(iso)=>iso?new Date(iso).toLocaleDateString('en-GB',{day:'2-digit',month:'short'}):'';
+  const pdfLinks=(rep)=> rep && rep.pdf_es ? ` <a href="#" onclick="event.preventDefault();_mockReportOpen('${rep.pdf_es}')" title="Archived PDF (Spanish)" style="font-size:.74rem">🔗ES</a> <a href="#" onclick="event.preventDefault();_mockReportOpen('${rep.pdf_en}')" title="Archived PDF (English)" style="font-size:.74rem">🔗EN</a>` : '';
+  const toArchive=[], completedIds=[];
 
-  let nSat=0, wPend=0, wDone=0, missing=0, ready=0, border=0, notyet=0;
+  let nSat=0, wPend=0, wDone=0, missing=0, ready=0, border=0, notyet=0, nDone=0, nSent=0, nPend=0;
   const cell=(b,att,pendingHtml)=> b ? `<b style="color:#2d5a8d">${esc(b.cefr)}</b> <span class="muted" style="font-size:.78rem">${b.scale} · ${b.pct}%</span>` : (pendingHtml||'<span class="muted">—</span>');
   const rows=students.map(s=>{
     const all=aBy[s.id]||[], a2=mockCycleAttempts(all,2), a1=mockCycleAttempts(all,1);
@@ -223,6 +245,20 @@ async function mock2Panel(){
     const fin1Badge = fin1.finalScale!=null ? `<span class="badge lvl" style="font-size:.85rem;opacity:.85">${esc(fin1.finalCefr)} · ${fin1.finalScale}</span>` : '<span class="muted">—</span>';
     const d = (fin1.finalScale!=null && fin2.finalScale!=null) ? fin2.finalScale-fin1.finalScale : null;
     const dCell = d==null ? '<span class="muted">—</span>' : `<b style="color:${d>0?'#16a34a':d<0?'#dc2626':'#6b7280'}">${d>0?'▲ +':d<0?'▼ ':'= '}${d}</b>`;
+    // Informe: pending (qué falta) → completed (listo para enviar) → sent (la familia ya lo ve).
+    const rep=rBy[s.id]||null;
+    const repStatus = !sat ? null : (rep ? rep.status : 'pending');
+    const repMissing = (rep && rep.missing && rep.missing.length) ? rep.missing : fin2.missing;
+    if(repStatus==='completed'){ nDone++; completedIds.push(s.id); } else if(repStatus==='sent') nSent++; else if(repStatus==='pending') nPend++;
+    if(rep && (repStatus==='completed'||repStatus==='sent')){
+      const h=_mockReportHash(fin2, fin1, mockSpeakingOf(sBy[s.id],2));
+      if(rep.pdf_hash!==h) toArchive.push({ id:s.id, hash:h });
+    }
+    const repCell = !sat ? '<span class="muted">—</span>'
+      : repStatus==='sent' ? `<span class="badge" style="background:#2d5a8d;color:#fff;font-size:.72rem">📤 Sent</span> <span class="muted" style="font-size:.74rem">${dShort(rep.sent_at)}</span>${pdfLinks(rep)}${isAdmin?` <button class="btn sm ghost" style="padding:1px 6px" onclick="_mockReportSend('${s.id}',false)" title="Undo: hide the report from the family again">↩</button>`:''}`
+      : repStatus==='completed' ? `<span class="badge" style="background:#16a34a;color:#fff;font-size:.72rem">✅ Completed</span> <span class="muted" style="font-size:.74rem">${dShort(rep.completed_at)}</span>${pdfLinks(rep)}${canSend?` <button class="btn sm" style="padding:2px 8px" onclick="_mockReportSend('${s.id}',true)">📤 Send to family</button>`:''}`
+      : `<span class="badge off" style="font-size:.72rem">⏳ Pending</span> <span class="muted" style="font-size:.74rem" title="Missing: ${esc(repMissing.join(', '))}">missing: ${esc(repMissing.map(m=>m.replace(' & Use of English','')).join(', '))}</span>`;
+    if(f.status && repStatus!==f.status) return '';
     return `<tr data-sname="${esc((s.full_name||'').toLowerCase())}">
       <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','${lang}',2)" title="Mock 2 report" style="color:#2d5a8d;font-weight:700;text-decoration:none">${esc(s.full_name||'')}</a></td>
       <td><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${s.section?esc(s.section):''}</td>
@@ -235,43 +271,118 @@ async function mock2Panel(){
       <td>${fin1Badge}</td>
       <td>${dCell}</td>
       <td>${sat ? readinessChip(rd,EN) : '<span class="muted">—</span>'}</td>
+      <td data-rep="${s.id}" style="white-space:nowrap">${repCell}</td>
       <td class="acts"><div class="acts-wrap"><button class="btn sm ghost" onclick="_reportPreviewToggle(this,'${s.id}',2)" title="View the report on screen, exactly as the PDF">👁</button><button class="btn sm" onclick="studentReportPDF('${s.id}','es',2)">📄 ES</button><button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en',2)">📄 EN</button></div></td>
     </tr>`;
   }).join('');
 
+  window._mock2Completed = completedIds;
   const rel = cyc.released_at ? new Date(cyc.released_at).toLocaleDateString() : null;
   const relBox = `<div class="card" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 14px;margin-bottom:10px;border-left:4px solid ${rel?'#16a34a':'#f59e0b'}">
-      <b>${rel ? '📣 Results released to students on '+rel : '🔒 Results NOT released to students yet'}</b>
-      <span class="muted" style="font-size:.85rem">${rel ? 'Students and families see this Mock 2 report in the portal.' : 'Students see nothing from Mock 2 (no scores, no emails) until you release the single report.'}</span>
-      ${isAdmin ? `<span style="flex:1"></span><button class="btn sm ${rel?'ghost':''}" onclick="window._mockRelease(2,${rel?'false':'true'})">${rel?'🔒 Hide again':'📣 Release results to students'}</button>` : ''}
+      <b>${rel ? '📣 Results released to everyone on '+rel : '🔒 Reports go out student by student'}</b>
+      <span class="muted" style="font-size:.85rem">${rel ? 'Every student and family sees the Mock 2 report in the portal.' : 'A report is <b>completed</b> when Reading, Listening, Writing and Speaking are all marked; then <b>📤 Send to family</b> shows it to that student and family in the portal (no email). Nothing else is visible to them.'}</span>
+      <span style="flex:1"></span>
+      ${isAdmin && nDone ? `<button class="btn sm" onclick="_mockReportSendAll()">📤 Send all completed (${nDone})</button>` : ''}
+      ${isAdmin ? `<button class="btn sm ghost" onclick="window._mockRelease(2,${rel?'false':'true'})" title="${rel?'Hide the whole cycle again (individually sent reports stay visible)':'Release the whole cycle at once, complete or not'}">${rel?'🔒 Hide cycle':'📣 Release all'}</button>` : ''}
     </div>`;
   const chips = `<div class="row" style="gap:8px;flex-wrap:wrap;margin:0 0 10px">
       <span class="badge">${nSat} / ${students.length} sat the mock</span>
       <span class="badge ${wPend?'off':'on'}">✍️ Writings: ${wDone} marked · ${wPend} pending</span>
-      <span class="badge ${missing?'off':''}">${missing} with papers missing</span>
-      <span class="badge" style="background:#16a34a;color:#fff">✓ ready ${ready}</span><span class="badge" style="background:#f59e0b;color:#fff">≈ borderline ${border}</span><span class="badge" style="background:#dc2626;color:#fff">✗ not yet ${notyet}</span>
+      <span class="badge ${nPend?'off':''}">⏳ pending ${nPend}</span>
+      <span class="badge" style="background:#16a34a;color:#fff">✅ completed · ready to send ${nDone}</span>
+      <span class="badge" style="background:#2d5a8d;color:#fff">📤 sent ${nSent}</span>
+      <span class="badge" style="background:#16a34a;color:#fff;opacity:.8">✓ ready ${ready}</span><span class="badge" style="background:#f59e0b;color:#fff;opacity:.8">≈ borderline ${border}</span><span class="badge" style="background:#dc2626;color:#fff;opacity:.8">✗ not yet ${notyet}</span>
+      <span id="repArchive" class="muted" style="font-size:.78rem"></span>
     </div>`;
   const gradeOpts=`<option value="">All grades</option>`+gradeList.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
   const filter=`<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:12px 16px;margin-bottom:10px">
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADE</label><select onchange="window._setMock2Filter('grade',this.value)" style="min-width:130px">${gradeOpts}</select></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECTION</label><select onchange="window._setMock2Filter('section',this.value)" style="min-width:90px"><option value="">All</option>${['A','B'].map(s=>`<option ${f.section===s?'selected':''}>${s}</option>`).join('')}</select></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NAME</label><input type="text" placeholder="Search student…" value="${esc(f.name)}" oninput="window._liveNameFilter(this.value)" style="min-width:180px"></div>
-      ${(f.grade||f.section||f.name)?`<button class="btn sm ghost" onclick="window._setMock2Filter('_clear','')">✕ Clear</button>`:''}
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">REPORT</label><select onchange="window._setMock2Filter('status',this.value)" style="min-width:150px">${[['','All'],['pending','⏳ Pending'],['completed','✅ Completed · to send'],['sent','📤 Sent']].map(([v,l])=>`<option value="${v}" ${f.status===v?'selected':''}>${l}</option>`).join('')}</select></div>
+      ${(f.grade||f.section||f.name||f.status)?`<button class="btn sm ghost" onclick="window._setMock2Filter('_clear','')">✕ Clear</button>`:''}
     </div>`;
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
       <h1 style="margin:0 0 4px">📝 MOCK 2 · Official Mock 2 — 22 September 2026</h1>
       <button class="btn sm ghost" onclick="mock2Stats()">📊 Papers by exercise &amp; time</button>
     </div>
-    <p class="muted" style="margin-top:0;font-size:.88rem">Every paper sat in mock mode (bank MOCK 3), by student. <b>Reading</b> and <b>Listening</b> are auto-scored; <b>Writing</b> is marked here with the Cambridge rubric (0–5 per criterion, two tasks) — no email goes out, the grade goes into the single report. In <b>A2 Key</b> the two writing tasks (Parts 6–7 of the Reading &amp; Writing paper) appear in the Writing column, ready to mark. <b>Speaking</b> is optional (oral session). <b>Mock 2</b> = average of the scales of the assessed skills; <b>Mock 1</b> = the June result (🎓 MOCK 1 tab); <b>Δ</b> = change on the Cambridge Scale; <b>Ready?</b> = scale vs. the pass mark of the level sat (A2 120 · B1 140 · B2 160 · C1 180; within 10 points below = borderline). The teacher has the final word.</p>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Every paper sat in mock mode (bank MOCK 3), by student. <b>Reading</b> and <b>Listening</b> are auto-scored; <b>Writing</b> is marked here with the Cambridge rubric (0–5 per criterion, two tasks) — no email goes out, the grade goes into the single report. In <b>A2 Key</b> the two writing tasks (Parts 6–7 of the Reading &amp; Writing paper) appear in the Writing column, ready to mark. <b>Speaking</b> is marked after the oral session (here or in 🗣️ Speaking test). <b>Report</b>: the moment the four skills are in, the report turns <b>✅ Completed</b> by itself and its PDF is archived; <b>📤 Send to family</b> shows it to that student and family in the portal. <b>Mock 2</b> = average of the scales of the assessed skills; <b>Mock 1</b> = the June result (🎓 MOCK 1 tab); <b>Δ</b> = change on the Cambridge Scale; <b>Ready?</b> = scale vs. the pass mark of the level sat (A2 120 · B1 140 · B2 160 · C1 180; within 10 points below = borderline). The teacher has the final word.</p>
     ${relBox}${chips}${filter}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Student</th><th>Grade</th><th>Level</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Mock 2</th><th>Mock 1</th><th>Δ</th><th>Ready?</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="12" class="center muted">No students for this filter.</td></tr>`}</tbody>
+      <thead><tr><th>Student</th><th>Grade</th><th>Level</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Mock 2</th><th>Mock 1</th><th>Δ</th><th>Ready?</th><th>Report</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="13" class="center muted">No students for this filter.</td></tr>`}</tbody>
     </table><div id="resCount" data-noun="student(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${students.length} student(s)</div></div>`;
+  _mockReportsArchive(toArchive);
 }
+/* Huella del contenido del informe: si cambia (una nota editada, el Speaking nuevo), el
+   PDF archivado se vuelve a generar. */
+function _mockReportHash(fin2, fin1, spk){
+  const sk=k=>{ const b=fin2.skills[k]; return b?[k,b.level,b.scale,b.pct].join(':'):k+':-'; };
+  const s=[fin2.level, fin2.finalScale, fin2.complete?1:0, ['Reading','Listening','Writing','Speaking'].map(sk).join('|'),
+           fin1&&fin1.finalScale!=null?fin1.finalScale:'-', (spk&&spk.comment)||''].join('#');
+  let h=0; for(let i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))|0; }
+  return 'v1-'+(h>>>0).toString(16)+'-'+s.length;
+}
+/* Archivo automático de los PDF (ES+EN) de los informes completos o enviados cuyo contenido
+   cambió: de uno en uno, en segundo plano, mientras el panel esté abierto; el resultado va al
+   bucket `reports` (mock2/<alumno>-ES.pdf) y a mock_reports.pdf_*. Otra pasada del panel lo
+   cancela y retoma lo que quede. */
+let _repArchiveRun=0;
+async function _mockReportsArchive(list){
+  const run=++_repArchiveRun; const chip=$('#repArchive');
+  if(!list.length){ if(chip) chip.textContent='📄 PDFs archived · up to date'; return; }
+  if(!window._buildReportPdf){ if(chip) chip.textContent=''; return; }
+  let done=0, fail=0;
+  for(const it of list){
+    if(run!==_repArchiveRun || state._tab!=='mock2') return;
+    if(chip) chip.textContent=`📄 Archiving PDFs ${done+fail+1}/${list.length}…`;
+    try{
+      const paths={};
+      for(const lg of ['es','en']){
+        const b=await window._buildReportPdf(it.id, lg, 2);
+        const path=`mock2/${it.id}-${lg.toUpperCase()}.pdf`;
+        const { error } = await sb.storage.from('reports').upload(path, b.pdf.output('blob'), { upsert:true, contentType:'application/pdf' });
+        if(error) throw error; paths[lg]=path;
+      }
+      const { error:e2 } = await sb.rpc('mock_report_pdf',{ p_student:it.id, p_cycle:2, p_es:paths.es, p_en:paths.en, p_hash:it.hash });
+      if(e2) throw e2;
+      done++;
+      const td=document.querySelector(`td[data-rep="${it.id}"]`);
+      if(td && !td.querySelector('a[onclick*="_mockReportOpen"]')){
+        const badge=td.querySelector('span.muted');
+        const html=` <a href="#" onclick="event.preventDefault();_mockReportOpen('${paths.es}')" title="Archived PDF (Spanish)" style="font-size:.74rem">🔗ES</a> <a href="#" onclick="event.preventDefault();_mockReportOpen('${paths.en}')" title="Archived PDF (English)" style="font-size:.74rem">🔗EN</a>`;
+        if(badge) badge.insertAdjacentHTML('afterend', html); else td.insertAdjacentHTML('beforeend', html);
+      }
+    }catch(e){ fail++; console.warn('Mock 2 report PDF not archived', it.id, e&&e.message||e); }
+  }
+  if(chip && run===_repArchiveRun) chip.textContent=`📄 PDFs archived: ${done}${fail?' · '+fail+' failed (see console)':''}`;
+}
+window._mockReportOpen=async (path)=>{
+  const { data, error } = await sb.storage.from('reports').createSignedUrl(path, 600);
+  if(error||!data){ alert('Could not open the archived PDF: '+(error&&error.message||'')); return; }
+  window.open(data.signedUrl,'_blank');
+};
+window._mockReportSend=async (sid,on)=>{
+  const q = on ? 'Send this Mock 2 report to the student and family now? They will see it in the portal (no email goes out).' : 'Hide this report from the student and family again?';
+  const ok = window.NISUI && NISUI.pregunta ? await NISUI.pregunta(q) : confirm(q);
+  if(!ok) return;
+  const { error } = await sb.rpc('mock_report_send',{ p_student:sid, p_cycle:2, p_on:!!on });
+  if(error){ alert('Could not save: '+error.message); return; }
+  mock2Panel();
+};
+window._mockReportSendAll=async ()=>{
+  const ids=window._mock2Completed||[]; if(!ids.length) return;
+  const q = `Send the ${ids.length} completed Mock 2 report(s) in this list to their students and families now?`;
+  const ok = window.NISUI && NISUI.pregunta ? await NISUI.pregunta(q) : confirm(q);
+  if(!ok) return;
+  const fails=[];
+  for(const id of ids){ const { error } = await sb.rpc('mock_report_send',{ p_student:id, p_cycle:2, p_on:true }); if(error) fails.push(error.message); }
+  if(fails.length) alert(fails.length+' report(s) could not be sent: '+fails[0]);
+  mock2Panel();
+};
 window.mock2Panel=mock2Panel;
-window._setMock2Filter=(k,v)=>{ if(k==='_clear') mock2Filter={grade:'',section:'',name:''}; else mock2Filter[k]=v; mock2Panel(); };
+window._setMock2Filter=(k,v)=>{ if(k==='_clear') mock2Filter={grade:'',section:'',name:'',status:''}; else mock2Filter[k]=v; mock2Panel(); };
 window._mockRelease=async (cycle,on)=>{
   const q = on ? 'Release the Mock '+cycle+' results to students and families now? They will see their report in the portal.' : 'Hide the Mock '+cycle+' results from students again?';
   const ok = window.NISUI && NISUI.pregunta ? await NISUI.pregunta(q) : confirm(q);
@@ -340,7 +451,7 @@ async function mock2Stats(){
   const globalCard = `<div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Level sat</th><th>Students</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Ready? (complete reports)</th></tr></thead>
       <tbody>${levelRows||'<tr><td colspan="6" class="center muted">No Mock 2 papers for this filter.</td></tr>'}</tbody></table>
-      <div class="muted" style="padding:8px 14px;font-size:.8rem">Per skill: papers sat · mean score · mean time per paper. Writing does not record time. <b>Ready?</b> counts only students whose report is complete (Reading, Listening and Writing marked).</div></div>`;
+      <div class="muted" style="padding:8px 14px;font-size:.8rem">Per skill: papers sat · mean score · mean time per paper. Writing does not record time. <b>Ready?</b> counts only students whose report is complete (Reading, Listening, Writing and Speaking marked).</div></div>`;
 
   /* ---- 2) One card per paper (level · skill): parts, time and the detail by student ---- */
   _mock2StatsCsv=[['Level','Paper','Student','Grade','Section','Part','Correct','Total','Part %','Paper %','Time (min)','Submitted']];

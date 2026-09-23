@@ -683,11 +683,13 @@ async function _renderReportNode(html){
 function _reportPage1Html(p, sp, fin, cycle){
   return (cycle===2 && window._statementInner) ? _statementInner(p, fin, sp, {cycle}) : '';
 }
-window.studentReportPDF = async (studentId, lang, cycle)=>{
+/* Construye el PDF del informe (jsPDF) SIN descargarlo: lo usan 📄 ES/EN y el archivo
+   automático de los informes del Mock 2 (app/72-mocks.js). Devuelve { pdf, fname, D } o lanza. */
+window._buildReportPdf = async (studentId, lang, cycle)=>{
   lang = (lang==='en') ? 'en' : 'es'; cycle = cycle===2 ? 2 : 1;
-  try{ await ensurePdfLibs(); }catch(e){ alert(e.message); return; }
+  await ensurePdfLibs();
   const D = await _mockReportData(studentId, cycle);
-  if(D.error){ alert('Could not load the student: '+D.error.message); return; }
+  if(D.error) throw new Error('Could not load the student: '+D.error.message);
   const { p, at, sp, fin, prev } = D;
   const EN = lang==='en';
   const fname=(p.full_name||'student').replace(/\s+/g,'_')+(cycle===2?'-MOCK2':'')+'-'+(EN?'EN':'ES')+'.pdf';
@@ -712,6 +714,10 @@ window.studentReportPDF = async (studentId, lang, cycle)=>{
         pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin+(iw-w)/2,margin,w,pageContentH);
       }
     }
-    pdf.save(fname);
-  }catch(e){ alert('Could not generate the PDF: '+(e&&e.message||e)); }
+    return { pdf, fname, D };
+  }catch(e){ throw new Error('Could not generate the PDF: '+(e&&e.message||e)); }
+};
+window.studentReportPDF = async (studentId, lang, cycle)=>{
+  try{ const { pdf, fname } = await window._buildReportPdf(studentId, lang, cycle); pdf.save(fname); }
+  catch(e){ alert(e&&e.message||String(e)); }
 };
