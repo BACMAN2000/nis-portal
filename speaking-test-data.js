@@ -3,6 +3,10 @@
    «speaking script.pdf» (Frames for the Speaking test, págs. 92-103), y las
    escalas analíticas de Cambridge por nivel (A2 Key · B1 Preliminary ·
    B2 First · C1 Advanced) con los descriptores de las bandas 1, 3 y 5.
+   Las láminas (Parte 2: dibujo con ideas; Parte 3: una foto por candidato)
+   son las del «Visual material for the Speaking test» del mismo libro
+   (Cambridge PET 5, págs. I–VIII), recortadas en speaking-img/pet5-*.jpg;
+   el guion las enseña en pantalla en vez de mandar al Student's Book.
    Lo lee app/74-speaking-test.js. No se traduce (data-i18n="off"). */
 window.SPEAKING_TEST = (function(){
 
@@ -45,33 +49,42 @@ window.SPEAKING_TEST = (function(){
     ]
   };
 
-  function part2(title, situation){
+  /* Bloque {t:'pic'}: la lámina, en el punto del guion donde el examinador la
+     enseña (Parte 2: una para los dos; Parte 3: la del candidato `seat`). */
+  const IMG = id => ({ id:id.toUpperCase(), src:'speaking-img/pet5-'+id+'.jpg' });
+
+  function part2(title, situation, pic){
     return {
       n:2, mins:'2–3 minutes', title:title,
       tasks:'Discussing alternatives; expressing opinions; making choices.',
+      pic:IMG(pic),
       blocks:[
         {t:'h', text:'Examiner'},
         {t:'it', text:'Say to both candidates:'},
         {t:'box', lines:['I’m going to describe a situation to you.','',situation,'','Here is a picture with some ideas to help you.']},
-        {t:'it', text:'Ask both candidates to look at the picture and repeat the frame.'},
+        {t:'pic'},
+        {t:'it', text:'Show both candidates the picture and repeat the frame.'},
         {t:'box', lines:['I’ll say that again.','',situation,'','All right? Talk together.']},
         {t:'it', text:'Allow the candidates enough time to complete the task without intervention. Prompt only if necessary.'}
       ]
     };
   }
 
-  function part3(title, intro, aText, bText){
+  function part3(title, intro, aText, bText, picA, picB){
     return {
       n:3, mins:'3 minutes', title:title,
       tasks:'Describing people and places; saying where people and things are and what different people are doing.',
+      pics:{ A:IMG(picA), B:IMG(picB) },
       blocks:[
         {t:'h', text:'Examiner'},
         {t:'it', text:'Say to both candidates:'},
         {t:'box', lines:[intro,'',aText,'','Candidate A, please tell us what you can see in your picture.']},
-        {t:'sp', who:'(Candidate A)', italic:true, lines:['Approximately one minute.','If there is a need to intervene, prompts rather than direct questions should be used.','','Ask Candidate A to close his/her book.']},
+        {t:'pic', seat:'A'},
+        {t:'sp', who:'(Candidate A)', italic:true, lines:['Approximately one minute.','If there is a need to intervene, prompts rather than direct questions should be used.','','Close Candidate A’s picture.']},
         {t:'h', text:'Examiner'},
         {t:'box', lines:[bText]},
-        {t:'sp', who:'(Candidate B)', italic:true, lines:['Approximately one minute.','','Ask the candidates to close their books before moving to Part 4.']}
+        {t:'pic', seat:'B'},
+        {t:'sp', who:'(Candidate B)', italic:true, lines:['Approximately one minute.','','Close the pictures before moving to Part 4.']}
       ]
     };
   }
@@ -95,33 +108,33 @@ window.SPEAKING_TEST = (function(){
     { n:1, parts:[
       PART1,
       part2('T-SHIRT DESIGN',
-        'The members of an English Language Club would like to have their own special T-shirt. Talk together about the different things they can put on the T-shirt and decide which one would be best.'),
+        'The members of an English Language Club would like to have their own special T-shirt. Talk together about the different things they can put on the T-shirt and decide which one would be best.', '1a'),
       part3('PEOPLE AND PHOTOS',
         'Now, I’d like each of you to talk on your own about something. I’m going to give each of you a picture of people and photographs.',
-        'Candidate A, here is your picture. (Ask Candidate A to look at photo 1B on page II of the Student’s Book.) Please show it to Candidate B, but I’d like you to talk about it. Candidate B, you just listen. I’ll give you your picture in a moment.',
-        'Now, Candidate B, here is your picture. It also shows someone with photographs. (Ask Candidate B to look at photo 1C on page IV of the Student’s Book.) Please show it to Candidate A and tell us what you can see in the picture.'),
+        'Candidate A, here is your picture. Please show it to Candidate B, but I’d like you to talk about it. Candidate B, you just listen. I’ll give you your picture in a moment.',
+        'Now, Candidate B, here is your picture. It also shows someone with photographs. Please show it to Candidate A and tell us what you can see in the picture.', '1b', '1c'),
       part4('Your pictures showed people and photographs. Now, I’d like you to talk together about the type of photographs you like to look at, and the type of photographs you like to keep.',
         ['Talk about the photographs you like to **look** at.','Talk about the photographs you like to **keep**.','Talk about the type of photographs you **dislike**.','Talk about the type of photographs you **take**.'])
     ]},
     { n:2, parts:[
       PART1,
       part2('WEDDING PRESENT',
-        'A school teacher is getting married next month. Her class would like to give her a present. Talk together about the different presents her class could give her, and say which would be best.'),
+        'A school teacher is getting married next month. Her class would like to give her a present. Talk together about the different presents her class could give her, and say which would be best.', '2a'),
       part3('WEATHER',
         'Now, I’d like each of you to talk on your own about something. I’m going to give each of you a photograph of people enjoying different kinds of weather.',
-        'Candidate A, here is your photograph. (Ask Candidate A to look at photo 2B on page IV of the Student’s Book.) Please show it to Candidate B, but I’d like you to talk about it. Candidate B, you just listen. I’ll give you your photograph in a moment.',
-        'Now, Candidate B, here is your photograph. It also shows people enjoying different kinds of weather. (Ask Candidate B to look at photo 2C on page II of the Student’s Book.) Please show it to Candidate A and tell us what you can see in the photograph.'),
+        'Candidate A, here is your photograph. Please show it to Candidate B, but I’d like you to talk about it. Candidate B, you just listen. I’ll give you your photograph in a moment.',
+        'Now, Candidate B, here is your photograph. It also shows people enjoying different kinds of weather. Please show it to Candidate A and tell us what you can see in the photograph.', '2b', '2c'),
       part4('Your photographs showed people enjoying different kinds of weather. Now, I’d like you to talk together about the type of weather you prefer and say what you enjoy doing in different types of weather.',
         ['Talk about the type of weather you **like**.','Talk about the type of weather you **don’t like**.','Talk about what you do when it is **hot / wet / cold**.','Talk about where you **go** in hot / wet / cold weather.'])
     ]},
     { n:3, parts:[
       PART1,
       part2('BEACH HOLIDAY',
-        'A friend is going on a seaside holiday, but she doesn’t like sitting on the beach all day. Talk together about the different things your friend can do at the seaside and say which would be most enjoyable.'),
+        'A friend is going on a seaside holiday, but she doesn’t like sitting on the beach all day. Talk together about the different things your friend can do at the seaside and say which would be most enjoyable.', '3a'),
       part3('AT WORK',
         'Now, I’d like each of you to talk on your own about something. I’m going to give each of you a photograph of someone at work.',
-        'Candidate A, here is your photograph. (Ask Candidate A to look at photo 3B on page VI of the Student’s Book.) Please show it to Candidate B, but I’d like you to talk about it. Candidate B, you just listen. I’ll give you your photograph in a moment.',
-        'Now, Candidate B, here is your photograph. It also shows someone at work. (Ask Candidate B to look at photo 3C on page VIII of the Student’s Book.) Please show it to Candidate A and tell us what you can see in the photograph.'),
+        'Candidate A, here is your photograph. Please show it to Candidate B, but I’d like you to talk about it. Candidate B, you just listen. I’ll give you your photograph in a moment.',
+        'Now, Candidate B, here is your photograph. It also shows someone at work. Please show it to Candidate A and tell us what you can see in the photograph.', '3b', '3c'),
       part4('Your photographs showed people at work. Now, I’d like you to talk together about the type of place where you would like to work and what would be good about it.',
         ['Talk about places where you’d **like** to work.','Talk about what would be **good / bad** about it.','Talk about places where you **wouldn’t** like to work.','Talk about places where your **friends** / members of your **family** work.'])
     ]},
@@ -129,28 +142,32 @@ window.SPEAKING_TEST = (function(){
       PART1,
       (function(){
         const p = part2('PICNIC',
-          'A group of friends has prepared a picnic but they aren’t sure where to eat it. Talk together about the different places they can go for a picnic, and then say which would be best.');
+          'A group of friends has prepared a picnic but they aren’t sure where to eat it. Talk together about the different places they can go for a picnic, and then say which would be best.', '4a');
         p.note = 'SUITABLE FOR GROUPS OF THREE AND PAIRS';
         p.blocks[1] = {t:'it', text:'Say to both / all candidates:'};
-        p.blocks[3] = {t:'it', text:'Ask both/all candidates to look at the picture and repeat the frame.'};
+        p.blocks[4] = {t:'it', text:'Show both/all candidates the picture and repeat the frame.'};
         return p;
       })(),
       { n:3, mins:'3 minutes', title:'HOMES',
         tasks:'Describing people and places; saying where people and things are and what different people are doing.',
+        pics:{ A:IMG('4b'), B:IMG('4c'), C:IMG('4d') },
         blocks:[
           {t:'h', text:'Examiner'},
           {t:'it', text:'Say to both / all candidates:'},
           {t:'box', lines:[
             'Now, I’d like each of you to talk on your own about something. I’m going to give each of you a photograph of people in their homes.','',
-            'Candidate A, here is your photograph. (Ask Candidate A to look at photo 4B on page VIII of the Student’s Book.) Please show it to Candidate(s) B (and C), but I’d like you to talk about it. Candidate(s) B (and C), you just listen. I’ll give you your photographs in a moment.','',
+            'Candidate A, here is your photograph. Please show it to Candidate(s) B (and C), but I’d like you to talk about it. Candidate(s) B (and C), you just listen. I’ll give you your photographs in a moment.','',
             'Candidate A, please tell us what you can see in your photograph.']},
-          {t:'sp', who:'(Candidate A)', italic:true, lines:['Approximately one minute.','If there is a need to intervene, prompts rather than direct questions should be used.','Ask Candidate A to close his/her book.']},
+          {t:'pic', seat:'A'},
+          {t:'sp', who:'(Candidate A)', italic:true, lines:['Approximately one minute.','If there is a need to intervene, prompts rather than direct questions should be used.','Close Candidate A’s photograph.']},
           {t:'h', text:'Examiner'},
-          {t:'box', lines:['Now, Candidate B, here is your photograph. It also shows people in their home. (Ask Candidate B to look at photo 4C on page VI of the Student’s Book.) Please show it to Candidate(s) A (and C) and tell us what you can see in the photograph.']},
-          {t:'sp', who:'(Candidate B)', italic:true, lines:['Approximately one minute.','Ask the candidates to close their books before moving to Part 4.']},
+          {t:'box', lines:['Now, Candidate B, here is your photograph. It also shows people in their home. Please show it to Candidate(s) A (and C) and tell us what you can see in the photograph.']},
+          {t:'pic', seat:'B'},
+          {t:'sp', who:'(Candidate B)', italic:true, lines:['Approximately one minute.','With two candidates, close the photographs before moving to Part 4.']},
           {t:'h', text:'Examiner'},
-          {t:'box', lines:['Now, Candidate C, here is your photograph. It also shows people in their home. (Ask Candidate C to look at photo 4D on page VIII of the Student’s Book.) Please show it to Candidates A and B and tell us what you can see in the photograph.']},
-          {t:'sp', who:'(Candidate C)', italic:true, lines:['Approximately one minute.','Ask the candidates to close their books before moving to Part 4.']}
+          {t:'box', lines:['Now, Candidate C, here is your photograph. It also shows people in their home. Please show it to Candidates A and B and tell us what you can see in the photograph.']},
+          {t:'pic', seat:'C'},
+          {t:'sp', who:'(Candidate C)', italic:true, lines:['Approximately one minute.','Close the photographs before moving to Part 4.']}
         ]},
       (function(){
         const p = part4('Your photographs showed people in their homes. Now, I’d like you to talk together about the things you like to do when you are at home, when you are alone and when you are with other people.',

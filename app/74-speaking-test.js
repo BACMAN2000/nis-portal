@@ -5,6 +5,12 @@
    speaking-test-data.js) y a la derecha marca 0-5 en cada criterio de la
    escala analítica de Cambridge de ese nivel más el Global Achievement. El
    resultado (puntos, %, media de bandas y letra AD·A·B·C) sale solo.
+   Desde el 23-sep (tarde): el reloj va en un raíl fijo a la derecha (siempre
+   a la vista, con Start/Pause y botones para subir, bajar y saltar a cada
+   parte o candidato); el nombre de cada criterio se pulsa y despliega qué es
+   cada banda 5·4·3·2·1·0; y las láminas del libro (Parte 2 el dibujo con
+   ideas, Parte 3 una foto por candidato) se ven dentro del guion y a pantalla
+   completa con «Show to…», en vez de mandar al Student's Book.
    Guarda en speaking_tests (una fila por candidato y sesión) y, si el
    examinador lo pide, vuelca además la nota al Speaking del MOCK 1 / MOCK 2
    (upsert_speaking, la misma forma que usa el corrector del mock). */
@@ -25,7 +31,7 @@ async function speakingTestPanel(){
   const grades = _skGrades();
   if(!_sk){
     _sk = { view:'setup', grade:'', section:'', students:[], picked:[], level:'B1', test:1,
-            marks:{}, comments:{}, sessionId:null, saveCycle:'', part:1, showDesc:false,
+            marks:{}, comments:{}, sessionId:null, saveCycle:'', part:1, showDesc:false, openDesc:{},
             history:[], timer:{t0:null, acc:0, id:null} };
     const first = grades[0];
     if(first){ _sk.grade = String(first.id); await _skLoadStudents(); }
@@ -161,7 +167,7 @@ window._skOpen = (sid)=>{
 window._skBack = async ()=>{
   const dirty = Object.keys(_sk.marks).some(id=>Object.keys(_sk.marks[id]||{}).length);
   if(dirty && !(await NISUI.pregunta('Leave this test? Marks that were not saved will be lost.', {titulo:'Speaking test', si:'Leave', no:'Stay'}))) return;
-  _skTimerStop(); _sk.view='setup'; await _skLoadStudents(); _skPaint();
+  _skTimerStop(); window._skHidePic(); _sk.view='setup'; await _skLoadStudents(); _skPaint();
 };
 
 /* ---------- Pantalla 2: guion + rúbrica ---------- */
@@ -183,23 +189,15 @@ function _skExamHTML(){
   const part = test.parts.find(p=>p.n===_sk.part)||test.parts[0];
   const chips = cands.map(c=>`<span class="badge lvl" style="font-size:.85rem">Candidate ${c.seat} · ${esc(c.p.full_name)}</span>`).join(' ');
   const cycleOpts = ['','1','2'].map(v=>`<option value="${v}" ${_sk.saveCycle===v?'selected':''}>${v?'MOCK '+v+' Speaking':'— only here —'}</option>`).join('');
-  return `
-    <div class="row" style="justify-content:space-between;align-items:flex-start">
-      <div>
-        <button class="btn sm ghost" onclick="window._skBack()">← Back</button>
-        <h1 style="margin:.3rem 0 0">🗣️ Speaking test · Test ${test.n} · <span class="badge lvl" style="font-size:1rem">${esc(_sk.level)} · ${esc(r.exam)}</span></h1>
-        <div class="muted" style="margin:4px 0 8px">${esc(gname)}${_sk.section?' · Section '+esc(_sk.section):''} · ${chips}</div>
-      </div>
-      <div class="card" style="padding:8px 14px;margin:0;text-align:center">
-        <div id="skClock" style="font-size:1.5rem;font-weight:800;color:var(--blue-d);font-variant-numeric:tabular-nums">${_skTimerText()}</div>
-        <div class="row" style="gap:6px;justify-content:center">
-          <button class="btn sm ghost" style="padding:3px 10px" onclick="window._skTimerToggle()">${_sk.timer.id?'⏸ Pause':'▶ Start'}</button>
-          <button class="btn sm ghost" style="padding:3px 10px" onclick="window._skTimerReset(true)">↺</button>
-        </div>
-      </div>
+  return `${_skStyleHTML()}
+    <div class="sk-wrap" id="skTop">
+    <div style="margin-bottom:8px">
+      <button class="btn sm ghost" onclick="window._skBack()">← Back</button>
+      <h1 style="margin:.3rem 0 0">🗣️ Speaking test · Test ${test.n} · <span class="badge lvl" style="font-size:1rem">${esc(_sk.level)} · ${esc(r.exam)}</span></h1>
+      <div class="muted" style="margin:4px 0 0">${esc(gname)}${_sk.section?' · Section '+esc(_sk.section):''} · ${chips}</div>
     </div>
     <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px;align-items:start">
-      <div>
+      <div id="skScript">
         <div class="row" style="gap:6px;margin-bottom:8px">${partTabs}</div>
         <div class="card sk-script" data-i18n="off" style="padding:20px 24px">${_skPartHTML(part)}</div>
       </div>
@@ -211,7 +209,7 @@ function _skExamHTML(){
           </div>
           ${_sk.showDesc?_skDescTableHTML(r):''}
         </div>
-        <div class="card" style="position:sticky;bottom:0;padding:14px 16px">
+        <div class="card sk-save" id="skSave" style="position:sticky;bottom:0;padding:14px 16px">
           <div class="row" style="gap:10px;align-items:flex-end;flex-wrap:wrap">
             <div style="flex:1;min-width:200px"><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px">ALSO RECORD AS</label>
               <select onchange="_sk.saveCycle=this.value">${cycleOpts}</select></div>
@@ -221,20 +219,88 @@ function _skExamHTML(){
           <div class="muted" style="font-size:.78rem;margin-top:6px">Result = every band added (${r.criteria.length} criteria + Global, 0–5 each). Letter from the mean band: AD ≥ 4 · A ≥ 2.5 · B ≥ 1.5 · C below. Cambridge weighting (analytical + Global ×2) is shown for reference.</div>
         </div>
       </div>
-    </div>`;
+    </div>
+    </div>
+    ${_skRailHTML(test, cands)}`;
 }
+/* Estilos del examen (se pintan con el panel): raíl fijo con el reloj y la
+   navegación, láminas dentro del guion y lámina a pantalla completa. */
+function _skStyleHTML(){
+  return `<style id="skStyle">
+    .sk-wrap{padding-right:150px}
+    .sk-rail{position:fixed;right:14px;top:50%;transform:translateY(-50%);width:128px;z-index:60;display:flex;flex-direction:column;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:0 8px 28px rgba(0,0,0,.14);max-height:calc(100vh - 24px);overflow:auto}
+    .sk-rail .btn{width:100%;padding:5px 8px;font-size:.82rem;justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .sk-rail .sk-clock{font-size:1.7rem;font-weight:800;color:var(--blue-d);font-variant-numeric:tabular-nums;text-align:center;line-height:1.1}
+    .sk-rail .sk-sep{border-top:1px solid var(--line);margin:3px 0}
+    .sk-crit{cursor:pointer;user-select:none}
+    .sk-crit:hover{color:var(--blue-d)}
+    .sk-pic{margin:10px 0;border:1.5px solid var(--ink);border-radius:3px;padding:8px 10px;background:#fff}
+    .sk-pic img{display:block;width:100%;max-height:360px;object-fit:contain;cursor:zoom-in;background:#fff}
+    .sk-full{position:fixed;inset:0;z-index:9500;background:#111;display:flex;flex-direction:column}
+    .sk-full img{flex:1;min-height:0;width:100%;object-fit:contain;padding:8px 16px 16px}
+    @media (max-width:1100px){
+      .sk-wrap{padding-right:0;padding-bottom:120px}
+      .sk-save{position:static!important}
+      .sk-rail{top:auto;bottom:10px;left:50%;right:auto;transform:translateX(-50%);width:auto;max-width:calc(100vw - 24px);flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center}
+      .sk-rail .btn{width:auto}
+      .sk-rail .sk-sep{display:none}
+    }
+  </style>`;
+}
+/* Raíl anclado: el reloj (siempre a la vista del examinador), Start/Pause,
+   y botones para subir, bajar y saltar a cada parte, candidato y al guardado. */
+function _skRailHTML(test, cands){
+  const parts = test.parts.map(p=>`<button class="btn sm ${_sk.part===p.n?'':'ghost'}" onclick="window._skPart(${p.n})">Part ${p.n}</button>`).join('');
+  const cs = cands.map(c=>`<button class="btn sm ghost" title="${esc(c.p.full_name)}" onclick="window._skGo('skCand-${c.seat}')">👤 ${c.seat} · ${esc(c.p.full_name.split(' ')[0])}</button>`).join('');
+  return `<div class="sk-rail" data-i18n="off">
+    <div class="sk-clock" id="skClock">${_skTimerText()}</div>
+    <div class="row" style="gap:4px;justify-content:center;flex-wrap:nowrap">
+      <button class="btn sm ghost" id="skTimerBtn" style="flex:1" onclick="window._skTimerToggle()">${_sk.timer.id?'⏸ Pause':'▶ Start'}</button>
+      <button class="btn sm ghost" style="width:auto;flex:0 0 auto" title="Reset" onclick="window._skTimerReset(true)">↺</button>
+    </div>
+    <div class="sk-sep"></div>
+    <button class="btn sm ghost" onclick="window._skGo('skTop')">▲ Top</button>
+    ${parts}
+    ${cs}
+    <button class="btn sm ghost" onclick="window._skGo('skSave')">💾 Save</button>
+    <button class="btn sm ghost" onclick="window._skGo('bottom')">▼ Bottom</button>
+  </div>`;
+}
+window._skGo = (id)=>{
+  if(id==='bottom'){ window.scrollTo({top:document.documentElement.scrollHeight, behavior:'smooth'}); return; }
+  const el=document.getElementById(id); if(!el) return;
+  if(id==='skTop') window.scrollTo({top:0, behavior:'smooth'}); else el.scrollIntoView({behavior:'smooth', block:'start'});
+};
+/* Lámina a pantalla completa (para girar la pantalla hacia los candidatos). */
+window._skShowPic = (src, caption)=>{
+  window._skHidePic();
+  const d=document.createElement('div'); d.className='sk-full'; d.id='skFull'; d.setAttribute('data-i18n','off');
+  d.innerHTML=`<div class="row" style="justify-content:space-between;align-items:center;padding:10px 16px;color:#fff;flex-wrap:nowrap">
+      <span style="font-weight:700">${esc(caption)}</span>
+      <span style="display:flex;gap:10px;align-items:center;flex:0 0 auto"><span id="skFullClock" style="font-weight:800;font-variant-numeric:tabular-nums;opacity:.85">${_skTimerText()}</span><button class="btn sm" onclick="window._skHidePic()">✕ Close</button></span>
+    </div><img src="${esc(src)}" alt="${esc(caption)}" onclick="window._skHidePic()">`;
+  document.body.appendChild(d);
+  document.addEventListener('keydown', _skEscKey);
+};
+function _skEscKey(e){ if(e.key==='Escape') window._skHidePic(); }
+window._skHidePic = ()=>{ const d=document.getElementById('skFull'); if(d) d.remove(); document.removeEventListener('keydown', _skEscKey); };
 function _skCandHTML(c){
   const D=_skData(); const r=D.rubrics[_sk.level]; const m=_sk.marks[c.id]||{}; const res=_skResult(c.id);
   const rows = res.crits.map(crit=>{
-    const isG = crit===r.global; const v=m[crit];
-    const btns=[0,1,2,3,4,5].map(b=>`<button onclick="window._skMark('${c.id}','${crit.replace(/'/g,"\\'")}',${b})" style="width:34px;height:32px;border-radius:8px;border:2px solid ${v===b?'var(--blue)':'var(--line)'};background:${v===b?'var(--blue)':'var(--card)'};color:${v===b?'#fff':'var(--ink)'};font-weight:700;cursor:pointer;font:inherit;font-weight:700">${b}</button>`).join('');
+    const isG = crit===r.global; const v=m[crit]; const cq=crit.replace(/'/g,"\\'");
+    const open = !!((_sk.openDesc||{})[c.id+'|'+crit]);
+    const btns=[0,1,2,3,4,5].map(b=>`<button onclick="window._skMark('${c.id}','${cq}',${b})" style="width:34px;height:32px;border-radius:8px;border:2px solid ${v===b?'var(--blue)':'var(--line)'};background:${v===b?'var(--blue)':'var(--card)'};color:${v===b?'#fff':'var(--ink)'};font-weight:700;cursor:pointer;font:inherit;font-weight:700">${b}</button>`).join('');
     const desc = v!=null ? D.describe(_sk.level, crit, v) : '';
+    /* El nombre del criterio se pulsa: despliega qué es cada banda 5·4·3·2·1·0
+       (y cada línea se pulsa para marcar esa banda). */
+    const bands = open ? `<div data-i18n="off" style="margin:6px 0 2px;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:.8rem;background:var(--card)">${[5,4,3,2,1,0].map(b=>`<div onclick="window._skMark('${c.id}','${cq}',${b})" style="display:flex;gap:8px;padding:5px 8px;cursor:pointer;border-top:${b===5?'0':'1px solid var(--line)'};background:${v===b?'var(--lila)':'transparent'}"><b style="flex:0 0 18px;color:var(--blue-d)">${b}</b><span style="line-height:1.35">${esc(D.describe(_sk.level,crit,b))}</span></div>`).join('')}</div>` : '';
     return `<div style="padding:8px 0;border-top:1px solid var(--line)${isG?';background:var(--bg);margin:0 -16px;padding:8px 16px':''}">
       <div class="row" style="justify-content:space-between;gap:8px">
-        <span style="font-weight:700;font-size:.9rem">${isG?'⭐ ':''}${esc(crit)}</span>
+        <span class="sk-crit" style="font-weight:700;font-size:.9rem" title="What does each band mean?" onclick="window._skToggleCrit('${c.id}','${cq}')">${isG?'⭐ ':''}${esc(crit)} <span class="muted" style="font-weight:500;font-size:.75rem">${open?'▾':'▸'}</span></span>
         <span style="display:flex;gap:4px">${btns}</span>
       </div>
-      ${desc?`<div data-i18n="off" class="muted" style="font-size:.8rem;margin-top:4px;line-height:1.35">${esc(desc)}</div>`:''}
+      ${bands}
+      ${!open&&desc?`<div data-i18n="off" class="muted" style="font-size:.8rem;margin-top:4px;line-height:1.35">${esc(desc)}</div>`:''}
     </div>`;
   }).join('');
   const resHTML = res.all
@@ -244,7 +310,7 @@ function _skCandHTML(c){
          <span style="background:var(--lila);color:var(--blue-dd);border-radius:8px;padding:3px 12px;font-weight:800;font-size:1.05rem">${res.letter} <span style="font-weight:500;font-size:.8rem">${esc(D.LETTERS[res.letter])}</span></span>
        </div>`
     : `<div class="muted" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:.85rem">Mark every criterion to see the result · ${res.crits.filter(k=>m[k]!=null).length}/${res.crits.length}</div>`;
-  return `<div class="card" style="padding:12px 16px">
+  return `<div class="card" id="skCand-${c.seat}" style="padding:12px 16px">
     <div class="row" style="justify-content:space-between">
       <h3 style="margin:0"><span class="badge grade">Candidate ${c.seat}</span> ${esc(c.p.full_name)}</h3>
       <span class="muted" style="font-size:.82rem">${c.p.section?'Sec. '+esc(c.p.section):''}${c.p.cefr_level?' · '+esc(c.p.cefr_level):''}</span>
@@ -281,6 +347,21 @@ function _skPartHTML(p){
     else if(b.t==='sp') out.push(who(b.who, b.lines, b.italic));
     else if(b.t==='box') out.push(box(b.lines, b.small));
     else if(b.t==='bk') out.push(`<div style="border:1.5px solid var(--ink);border-radius:3px;padding:8px 14px;margin:8px 0;display:inline-block"><div style="font-weight:700;text-align:center">${esc(b.title)}</div>${b.lines.map((l,i)=>`<div>${b.numbered?(i+1)+'. ':''}${B(l)}</div>`).join('')}</div>`);
+    else if(b.t==='pic'){
+      /* La lámina del libro en el punto del guion donde se enseña: Parte 2 la
+         misma para todos; Parte 3 la del candidato. «Show» la abre a pantalla
+         completa para girar la pantalla hacia los alumnos. */
+      const pic = b.seat ? (p.pics||{})[b.seat] : p.pic; if(!pic) return;
+      const who = b.seat ? 'Candidate '+b.seat : 'the candidates';
+      const cap = `Picture ${pic.id}${p.title?' · '+p.title:''}${b.seat?' · Candidate '+b.seat:''}`;
+      out.push(`<div class="sk-pic">
+        <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+          <span style="font-weight:700;font-size:.85rem">🖼 ${esc(cap)}</span>
+          <button class="btn sm" style="padding:4px 12px" onclick="window._skShowPic('${esc(pic.src)}','${esc(cap)}')">⛶ Show to ${who}</button>
+        </div>
+        <img src="${esc(pic.src)}" alt="${esc(cap)}" loading="lazy" onclick="window._skShowPic('${esc(pic.src)}','${esc(cap)}')">
+      </div>`);
+    }
     else if(b.t==='side'){
       const left = b.plain
         ? `<div style="padding:4px 0">${b.left.map(x=>lines(x.lines)).join('')}</div>`
@@ -293,8 +374,12 @@ function _skPartHTML(p){
   });
   return out.join('');
 }
-window._skPart = (n)=>{ _sk.part=n; const y=window.scrollY; _skPaint(); window.scrollTo(0,y); };
+window._skPart = (n)=>{ _sk.part=n; window._skHidePic(); const y=window.scrollY; _skPaint(); window.scrollTo(0,y); };
 window._skToggleDesc = ()=>{ _sk.showDesc=!_sk.showDesc; const y=window.scrollY; _skPaint(); window.scrollTo(0,y); };
+window._skToggleCrit = (id, crit)=>{
+  _sk.openDesc = _sk.openDesc||{}; const k=id+'|'+crit; _sk.openDesc[k]=!_sk.openDesc[k];
+  const y=window.scrollY; _skPaint(); window.scrollTo(0,y);
+};
 window._skMark = (id, crit, band)=>{
   (_sk.marks[id]=_sk.marks[id]||{})[crit]=band;
   const y=window.scrollY; _skPaint(); window.scrollTo(0,y);
@@ -303,13 +388,14 @@ window._skMark = (id, crit, band)=>{
 /* ---------- Cronómetro (2-3 min por parte; solo orienta) ---------- */
 function _skTimerText(){ const t=_sk.timer; const ms=t.acc+(t.t0?Date.now()-t.t0:0); const s=Math.floor(ms/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
 function _skTimerStop(){ const t=_sk.timer; if(t.id){ clearInterval(t.id); t.id=null; } if(t.t0){ t.acc+=Date.now()-t.t0; t.t0=null; } }
-function _skTimerReset(repaint){ _skTimerStop(); _sk.timer.acc=0; if(repaint){ const el=$('#skClock'); if(el) el.textContent=_skTimerText(); } }
+function _skTimerPaint(){ const txt=_skTimerText(); const el=$('#skClock'); if(el) el.textContent=txt; const f=document.getElementById('skFullClock'); if(f) f.textContent=txt; return !!el; }
+function _skTimerReset(repaint){ _skTimerStop(); _sk.timer.acc=0; if(repaint){ _skTimerPaint(); const b=$('#skTimerBtn'); if(b) b.textContent='▶ Start'; } }
 window._skTimerReset = _skTimerReset;
 window._skTimerToggle = ()=>{
   const t=_sk.timer;
   if(t.id){ _skTimerStop(); }
-  else { t.t0=Date.now(); t.id=setInterval(()=>{ const el=$('#skClock'); if(el) el.textContent=_skTimerText(); else _skTimerStop(); },500); }
-  const y=window.scrollY; _skPaint(); window.scrollTo(0,y);
+  else { t.t0=Date.now(); t.id=setInterval(()=>{ if(!_skTimerPaint()) _skTimerStop(); },500); }
+  const b=$('#skTimerBtn'); if(b) b.textContent = t.id ? '⏸ Pause' : '▶ Start';
 };
 
 /* ---------- Guardar ---------- */
