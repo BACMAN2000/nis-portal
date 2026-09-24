@@ -251,7 +251,7 @@ async function mock2Panel(){
     const repMissing = (rep && rep.missing && rep.missing.length) ? rep.missing : fin2.missing;
     if(repStatus==='completed'){ nDone++; completedIds.push(s.id); } else if(repStatus==='sent') nSent++; else if(repStatus==='pending') nPend++;
     if(rep && (repStatus==='completed'||repStatus==='sent')){
-      const h=_mockReportHash(fin2, fin1, mockSpeakingOf(sBy[s.id],2));
+      const h=_mockReportHash(fin2, fin1, mockSpeakingOf(sBy[s.id],2), rep);
       if(rep.pdf_hash!==h) toArchive.push({ id:s.id, hash:h });
     }
     const repCell = !sat ? '<span class="muted">—</span>'
@@ -317,10 +317,11 @@ async function mock2Panel(){
 }
 /* Huella del contenido del informe: si cambia (una nota editada, el Speaking nuevo), el
    PDF archivado se vuelve a generar. */
-function _mockReportHash(fin2, fin1, spk){
+function _mockReportHash(fin2, fin1, spk, rep){
   const sk=k=>{ const b=fin2.skills[k]; return b?[k,b.level,b.scale,b.pct].join(':'):k+':-'; };
   const s=[fin2.level, fin2.finalScale, fin2.complete?1:0, ['Reading','Listening','Writing','Speaking'].map(sk).join('|'),
-           fin1&&fin1.finalScale!=null?fin1.finalScale:'-', (spk&&spk.comment)||''].join('#');
+           fin1&&fin1.finalScale!=null?fin1.finalScale:'-', (spk&&spk.comment)||'',
+           (rep&&rep.comment_es)||'', (rep&&rep.comment_en)||''].join('#');   // comentario propio del profesor (24-sep-2026)
   let h=0; for(let i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))|0; }
   return 'v1-'+(h>>>0).toString(16)+'-'+s.length;
 }

@@ -502,6 +502,8 @@ function _reportInner(p, at, sp, fin, EN, opts){
     else msg=first+', este primer simulacro de práctica es un punto de partida y ya muestras avances en '+strong+'. Vamos a seguir practicando juntos, especialmente '+weak+', para que en el segundo simulacro de octubre veas un progreso claro. ¡Sigue esforzándote, te acompañamos!';
   }
   if(M2){ msg=M2.msg; T.sub=M2.sub; }
+  // Comentario propio del profesor/admin (mock_reports.comment_es/en, Mock 2): sustituye al automático.
+  if(opts.comment) msg=esc(String(opts.comment)).replace(/\n/g,'<br>');
   const commentBox='<div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:10px 14px;margin-top:4px">'+
     '<div style="font-size:12px;font-weight:800;color:#166534;margin-bottom:4px">'+T.commentTitle+'</div>'+
     '<div style="font-size:12px;color:#0f172a;line-height:1.45">'+msg+'</div>'+
@@ -574,8 +576,55 @@ async function _mockReportData(studentId, cycle){
   const at=mockCycleAttempts(atAll||[], cycle), sp=mockSpeakingOf(spks, cycle);
   const fin=mockCycleFinal(p, at, sp, cycle);
   const prev = cycle===2 ? mockCycleFinal(p, mockCycleAttempts(atAll||[],1), mockSpeakingOf(spks,1), 1) : null;
-  return { p, at, sp, fin, prev, cycle };
+  let rep=null;
+  if(cycle===2){ try{ const r=await sb.from('mock_reports').select('status,comment_es,comment_en,comment_at').eq('student_id',studentId).eq('cycle',2).maybeSingle(); rep=(r&&r.data)||null; }catch(e){} }
+  return { p, at, sp, fin, prev, cycle, rep };
 }
+/* Comentario propio del informe para el idioma pedido (null = automático). */
+function _repComment(D, EN){ const r=D&&D.rep; if(!r) return null; const t=EN?r.comment_en:r.comment_es; return (t&&String(t).trim())||null; }
+/* Botón ✏️ (solo Mock 2) y editor inline del comentario a la familia. ctx: 'preview' | 'detail'. */
+function _repCommentBtn(D, EN, studentId, lang, ctx){
+  if(!D || D.cycle!==2) return '';
+  const has=!!_repComment(D, EN);
+  return '<button class="btn sm '+(has?'':'ghost')+'" onclick="_reportCommentEdit(this,\''+studentId+'\',\''+lang+'\',\''+ctx+'\')" title="'+(EN?'Edit the message to the family in this report':'Editar el comentario a la familia de este informe')+'">✏️ '+(EN?'Edit comment':'Editar comentario')+(has?' ●':'')+'</button>';
+}
+window._reportCommentEdit = async (btn, studentId, lang, ctx)=>{
+  const EN = lang==='en';
+  const key=studentId+':2';
+  const D = _reportPreviewCache[key] || (_reportPreviewCache[key] = await _mockReportData(studentId, 2));
+  if(D.error){ alert(D.error.message); return; }
+  document.querySelectorAll('.rep-comment-editor').forEach(e=>e.remove());
+  const auto = (window._mockReportExtras ? _mockReportExtras(D.p, D.fin, D.prev, EN).msg : '') || '';
+  const custom = _repComment(D, EN);
+  const box=document.createElement('div'); box.className='rep-comment-editor card'; box.setAttribute('data-i18n','off');
+  box.style.cssText='margin:8px 0 12px;padding:12px 14px;border-left:4px solid #16a34a';
+  box.innerHTML='<div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">'+
+      '<b>✏️ '+(EN?'Message to the family · English report':'Comentario a la familia · informe en español')+'</b>'+
+      '<span class="muted" style="font-size:.8rem">'+(custom?(EN?'Custom text in use (replaces the automatic one).':'Texto propio en uso (sustituye al automático).'):(EN?'Showing the automatic text; edit it and save.':'Se muestra el texto automático; edítalo y guarda.'))+'</span></div>'+
+    '<textarea rows="6" style="width:100%;margin-top:8px;padding:10px;border:1px solid var(--line);border-radius:8px;font-size:.92rem;line-height:1.45"></textarea>'+
+    '<div class="row" style="gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap">'+
+      '<button class="btn sm" data-act="save">💾 '+(EN?'Save':'Guardar')+'</button>'+
+      '<button class="btn sm ghost" data-act="auto" '+(custom?'':'disabled')+'>↺ '+(EN?'Use automatic text':'Volver al automático')+'</button>'+
+      '<button class="btn sm ghost" data-act="cancel">✕ '+(EN?'Cancel':'Cancelar')+'</button>'+
+      '<span class="muted" style="font-size:.78rem">'+(EN?'Only this language; switch to Español to edit the Spanish report.':'Solo este idioma; cambia a English para editar el informe en inglés.')+'</span>'+
+      '<span class="rep-comment-status" style="font-size:.85rem"></span></div>';
+  const ta=box.querySelector('textarea'); ta.value=custom||auto;
+  const anchor = ctx==='preview' ? btn.closest('.rep-preview-bar') : btn.closest('.no-print');
+  (anchor||btn.parentNode).insertAdjacentElement('afterend', box);
+  ta.focus();
+  const st=box.querySelector('.rep-comment-status');
+  const refresh=()=>{ delete _reportPreviewCache[key]; if(ctx==='preview'){ const tr=box.closest('tr.rep-preview'); const prevTr=tr&&tr.previousElementSibling; box.remove(); const eye=prevTr&&prevTr.querySelector('button[onclick*="_reportPreviewToggle"]'); if(eye) _reportPreviewToggle(eye, studentId, 2, lang); } else { studentDetailReport(studentId, lang, 2); } };
+  const saveText=async (text)=>{
+    st.textContent=EN?'Saving…':'Guardando…';
+    const { error } = await sb.rpc('mock_report_comment',{ p_student:studentId, p_cycle:2, p_lang:lang, p_text:text });
+    if(error){ st.innerHTML='<span style="color:var(--bad)">'+esc(error.message)+'</span>'; return; }
+    st.innerHTML='<span style="color:var(--good)">✓ '+(EN?'Saved':'Guardado')+'</span>';
+    setTimeout(refresh, 500);
+  };
+  box.querySelector('[data-act=save]').onclick=()=>{ const v=ta.value.trim(); if(!v){ st.innerHTML='<span style="color:var(--bad)">'+(EN?'Write a comment or use the automatic text.':'Escribe un comentario o vuelve al automático.')+'</span>'; return; } if(v===auto && !custom){ box.remove(); return; } saveText(v); };
+  box.querySelector('[data-act=auto]').onclick=()=>saveText('');
+  box.querySelector('[data-act=cancel]').onclick=()=>box.remove();
+};
 /* 👁 Vista digital del informe, alumno por alumno, junto a 📄 ES / 📄 EN (pedido de Paolo,
    22-sep-2026): un desplegable bajo la fila con EXACTAMENTE lo que sale en el PDF (mismo
    _reportInner, sin el detalle de Writing/Speaking), con ES/EN y el botón del PDF. */
@@ -608,6 +657,7 @@ window._reportPreviewToggle = async (btn, studentId, cycle, lang)=>{
     '<button class="btn sm '+(EN?'ghost':'')+'" onclick="_reportPreviewToggle(this,\''+studentId+'\','+cycle+',\'es\')">🇪🇸 Español</button>'+
     '<button class="btn sm '+(EN?'':'ghost')+'" onclick="_reportPreviewToggle(this,\''+studentId+'\','+cycle+',\'en\')">🇬🇧 English</button>'+
     '<span style="flex:1"></span>'+
+    '<span class="rep-comment-btn"></span>'+
     '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\','+cycle+')">📄 '+(EN?'Download this PDF':'Descargar este PDF')+'</button>'+
     '<button class="btn sm ghost" onclick="var r=this.closest(\'tr\');var e=r.previousElementSibling.querySelector(\'button[onclick*=_reportPreviewToggle]\');if(e)e.classList.add(\'ghost\');r.remove()">✕</button>';
   const key=studentId+':'+cycle;
@@ -615,7 +665,8 @@ window._reportPreviewToggle = async (btn, studentId, cycle, lang)=>{
     const D = _reportPreviewCache[key] || (_reportPreviewCache[key] = await _mockReportData(studentId, cycle));
     if(D.error){ body.innerHTML='<div class="note err">'+esc(D.error.message)+'</div>'; return; }
     const p1=_reportPage1Html(D.p, D.sp, D.fin, cycle);
-    body.innerHTML=(p1?'<div style="padding-bottom:18px;margin-bottom:18px;border-bottom:2px dashed #cbd5e1">'+p1+'</div><div class="muted" style="font-size:.75rem;margin:-10px 0 10px">— page 2 —</div>':'')+_reportInner(D.p, D.at, D.sp, D.fin, EN, {cycle, prev:D.prev});
+    const cb=bar.querySelector('.rep-comment-btn'); if(cb) cb.innerHTML=_repCommentBtn(D, EN, studentId, lang, 'preview');
+    body.innerHTML=(p1?'<div style="padding-bottom:18px;margin-bottom:18px;border-bottom:2px dashed #cbd5e1">'+p1+'</div><div class="muted" style="font-size:.75rem;margin:-10px 0 10px">— page 2 —</div>':'')+_reportInner(D.p, D.at, D.sp, D.fin, EN, {cycle, prev:D.prev, comment:_repComment(D, EN)});
   }catch(e){ body.innerHTML='<div class="note err">'+esc(e&&e.message||String(e))+'</div>'; }
 };
 window.studentDetailReport = async (studentId, lang, cycle)=>{
@@ -629,7 +680,7 @@ window.studentDetailReport = async (studentId, lang, cycle)=>{
   const { p, at, sp, fin, prev } = D;
   _ensurePrintCss();
   const p1=_reportPage1Html(p, sp, fin, cycle);
-  const inner=(p1?'<div style="page-break-after:always;padding-bottom:18px;margin-bottom:18px;border-bottom:2px dashed #cbd5e1">'+p1+'</div>':'')+_reportInner(p, at, sp, fin, EN, {detail:true, cycle, prev});
+  const inner=(p1?'<div style="page-break-after:always;padding-bottom:18px;margin-bottom:18px;border-bottom:2px dashed #cbd5e1">'+p1+'</div>':'')+_reportInner(p, at, sp, fin, EN, {detail:true, cycle, prev, comment:_repComment(D, EN)});
   const backFn = cycle===2 ? 'mock2Panel()' : 'cefrFinalPanel()';
   $('#main').innerHTML=
     '<div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">'+
@@ -639,6 +690,7 @@ window.studentDetailReport = async (studentId, lang, cycle)=>{
       '<button class="btn sm '+(EN?'':'ghost')+'" onclick="studentDetailReport(\''+studentId+'\',\'en\','+cycle+')">🇬🇧 English</button>'+
       '<span style="flex:1"></span>'+
       (fin.complete?'':'<span class="badge off" style="font-size:.7rem" title="Missing: '+esc(fin.missing.join(', '))+'">Provisional</span> ')+
+      _repCommentBtn(D, EN, studentId, lang, 'detail')+
       '<button class="btn sm" onclick="window.print()">🖨️ Print</button>'+
       '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\','+cycle+')">📄 Download PDF</button>'+
     '</div>'+
@@ -695,7 +747,7 @@ window._buildReportPdf = async (studentId, lang, cycle)=>{
   const fname=(p.full_name||'student').replace(/\s+/g,'_')+(cycle===2?'-MOCK2':'')+'-'+(EN?'EN':'ES')+'.pdf';
   // Hojas: 1) Statement of Results (solo Mock 2, en inglés) · 2) el informe ES/EN de siempre.
   const pages=[]; const p1=_reportPage1Html(p, sp, fin, cycle); if(p1) pages.push(p1);
-  pages.push(_reportInner(p, at, sp, fin, EN, {cycle, prev}));
+  pages.push(_reportInner(p, at, sp, fin, EN, {cycle, prev, comment:_repComment(D, EN)}));
   try{
     const { jsPDF }=window.jspdf;
     const pdf=new jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
