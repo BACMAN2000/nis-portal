@@ -186,24 +186,39 @@ function pool(){ var ws = scoped(); return theme === 'all' ? ws : ws.filter(func
 function boldWord(ex, w){ var base = w.w.split(' (')[0].split(' / ')[0]; var re = new RegExp('(' + base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/s$/, '') + '\\w*)', 'i'); return esc(ex).replace(re, '<b>$1</b>'); }
 
 /* ---------- audio: mp3 propio, y si no carga, la voz del navegador ---------- */
-var cur = null;
+var cur = null, playGen = 0;
+function stopAudio(){
+  if(cur){ try { cur.onerror = null; cur.pause(); } catch(e){} cur = null; }
+  try { speechSynthesis.cancel(); } catch(e){}
+}
 function play(w, ex){
-  if(cur){ try { cur.pause(); } catch(e){} }
-  var a = new Audio(YM(AUD + w.s + (ex ? '_ex' : '') + '.mp3')); cur = a;   /* voz Libby con el ritmo por nivel (5-sep-2026); lo sirve el backend */
-  a.onerror = function(){
+  /* 23-sep-2026: la palabra se oia dos veces. Al pedir otro audio antes de que el
+     anterior empezara (el backend tarda ~1 s la 1.a vez; dos toques en 🔊, Next
+     rapido, dos cartas del memory), pause() hacia que play() rechazara con
+     AbortError y el catch leia la palabra con la voz del navegador ENCIMA del mp3
+     nuevo. Y si el mp3 fallaba, onerror y el catch disparaban los dos recursos a
+     la vez. Ahora: un solo recurso por peticion, nunca por AbortError, y solo si
+     nadie ha pedido otra palabra desde entonces. */
+  stopAudio();
+  var my = ++playGen, done = false;
+  var base = w.w.split(' (')[0].split(' / ')[0].toLowerCase().trim();
+  var f = base.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  var fallback = function(){
+    if(done || my !== playGen) return; done = true;
     /* Si falta el mp3 del entrenador se prueba el del lexico, que cubre 8.647
        palabras; la voz del navegador queda como ultimo recurso. */
-    var base = w.w.split(' (')[0].split(' / ')[0].toLowerCase().trim();
-    var f = base.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
     if(!ex && f && base === f){
       var b = new Audio('lexicon-audio/uk/' + f + '.mp3'); cur = b;
-      b.onerror = function(){ speak(base); };
-      b.play().catch(function(){ speak(base); });
+      var said = false, say = function(){ if(said || my !== playGen) return; said = true; speak(base); };
+      b.onerror = say;
+      b.play().catch(function(e){ if(!e || e.name !== 'AbortError') say(); });
       return;
     }
     speak(ex ? w.ex : base);
   };
-  a.play().catch(function(){ speak(ex ? w.ex : w.w); });
+  var a = new Audio(YM(AUD + w.s + (ex ? '_ex' : '') + '.mp3')); cur = a;   /* voz Libby con el ritmo por nivel (5-sep-2026); lo sirve el backend */
+  a.onerror = fallback;
+  a.play().catch(function(e){ if(!e || e.name !== 'AbortError') fallback(); });
 }
 function speak(t){ try { var u = new SpeechSynthesisUtterance(t); u.lang = 'en-GB'; u.rate = .85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch(e){} }
 
