@@ -328,7 +328,7 @@ window._mockToggleGrade = async (gradeId, to, btn)=>{
   if(to && N){ const g=(GRADES.find(x=>x.id===gradeId)||{}).name; if(!(await NISUI.pregunta(`Unlock ${g}? With MOCK ${N} set, its students enter MOCK MODE right now: they will only see the mock card until you lock the grade again.`, {titulo:'Official mock', si:'Unlock', no:'Cancel'}))){ mockModePanel({admin:true}); return; } }
   const { error } = await sb.from('mock_access').upsert(
     { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
-    { onConflict:'grade_id' });
+    { onConflict:'school_id,grade_id' });
   if(error){ NISUI.avisa('Could not update: '+error.message, {titulo:'Error'}); }
   mockModePanel({admin:true});
 };

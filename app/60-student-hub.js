@@ -972,7 +972,7 @@ window._planSetNode = async (gradeId, key, to, el) => {
   const { error } = await sb.from('node_access').upsert(
     { grade_id:gradeId, node_key:key, unlocked:to, updated_at:new Date().toISOString(),
       updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
-    { onConflict:'grade_id,node_key' });
+    { onConflict:'school_id,grade_id,node_key' });
   el.disabled = false;
   if(error){ alert('Could not save: ' + error.message); el.checked = !to; return; }
   el.closest('td').classList.toggle('plan-off', !to);
@@ -981,7 +981,7 @@ window._planSetPractice = async (gradeId, to, el) => {
   el.disabled = true;
   const { error } = await sb.from('practice_access').upsert(
     { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(),
-      updated_by:(state.session&&state.session.user&&state.session.user.id)||null }, { onConflict:'grade_id' });
+      updated_by:(state.session&&state.session.user&&state.session.user.id)||null }, { onConflict:'school_id,grade_id' });
   el.disabled = false;
   if(error){ alert('Could not save: ' + error.message); el.checked = !to; return; }
   el.closest('td').classList.toggle('plan-off', !to);
@@ -993,7 +993,7 @@ window._planNoteSave = async (scope, ref, gradeId, studentId, btn) => {
   const { error } = await sb.from('study_plans').upsert(
     { area:'cambridge', scope, ref, grade_id:gradeId, student_id:studentId, note:ta.value.trim(),
       updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
-    { onConflict:'area,ref' });
+    { onConflict:'school_id,area,ref' });
   btn.disabled = false;
   if(error){ if(st) st.textContent = ''; alert('Could not save: ' + error.message); return; }
   if(st){ st.textContent = '✓ Saved'; setTimeout(() => { st.textContent = ''; }, 2500); }
@@ -1021,7 +1021,7 @@ window._planReparto = async () => {
   if(!await NISUI.pregunta('This will be written for ALL grades: whatever does not appear for a grade is closed for that grade. It can be adjusted box by box afterwards.', {titulo:'Apply to all grades?', si:'Write', no:'Cancel', tono:'ojo', detalle: lineas.join('\n')})) return;
   const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
   const rows = GRADES.flatMap(g => _planFilasReparto(g.id).map(f => ({ grade_id:g.id, node_key:f.node_key, unlocked:f.unlocked, updated_at:ahora, updated_by:uid })));
-  const { error } = await sb.from('node_access').upsert(rows, { onConflict:'grade_id,node_key' });
+  const { error } = await sb.from('node_access').upsert(rows, { onConflict:'school_id,grade_id,node_key' });
   if(error){ alert('Could not apply: ' + error.message); return; }
   studyPlanPanel();
 };
@@ -1030,7 +1030,7 @@ window._planAbrirTodo = async () => {
   const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
   const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
   const rows = GRADES.flatMap(g => [...new Set(keys)].map(k => ({ grade_id:g.id, node_key:k, unlocked:true, updated_at:ahora, updated_by:uid })));
-  const { error } = await sb.from('node_access').upsert(rows, { onConflict:'grade_id,node_key' });
+  const { error } = await sb.from('node_access').upsert(rows, { onConflict:'school_id,grade_id,node_key' });
   if(error){ alert('Could not apply: ' + error.message); return; }
   studyPlanPanel();
 };

@@ -243,7 +243,7 @@ window._funAccessGuardar = async (btn) => {
     desde: f.desde, hasta: f.hasta, unlocked: true,
     updated_at: new Date().toISOString(),
     updated_by: (state.session && state.session.user && state.session.user.id) || null,
-  }, { onConflict: 'grade_id,lang,level' });
+  }, { onConflict: 'school_id,grade_id,lang,level' });
   btn.disabled = false;
   if (error) { alert('Could not save: ' + error.message); return; }
   funAccessPanel(state.profile && state.profile.role === 'admin' ? GRADES : teacherAllowedGrades());
@@ -272,7 +272,7 @@ window._funAccessReparto = async (lang) => {
     .filter(([g, n]) => (totales[n] || 0) > 0)
     .map(([g, n]) => ({ grade_id: Number(g), lang, level: n, desde: 1, hasta: totales[n],
                         unlocked: true, updated_at: ahora, updated_by: uid }));
-  const { error } = await sb.from('fun_access').upsert(filas, { onConflict: 'grade_id,lang,level' });
+  const { error } = await sb.from('fun_access').upsert(filas, { onConflict: 'school_id,grade_id,lang,level' });
   if (error) { alert('Could not apply: ' + error.message); return; }
   funAccessPanel(state.profile && state.profile.role === 'admin' ? GRADES : teacherAllowedGrades());
 };

@@ -382,7 +382,7 @@ async function vistaCoord(){
 window._yleAjustes = async function(fk, nk){
   const uid = (state.session && state.session.user && state.session.user.id) || null, now = new Date().toISOString();
   const rows = [{key: fk, value: $('#yleFecha').value.trim(), updated_at: now, updated_by: uid}, {key: nk, value: $('#yleNota').value.trim(), updated_at: now, updated_by: uid}];
-  const {error} = await sb.from('yle_settings').upsert(rows, {onConflict: 'key'});
+  const {error} = await sb.from('yle_settings').upsert(rows, {onConflict: 'school_id,key'});
   $('#yleAjMsg').textContent = error ? 'Could not save: ' + error.message : 'Saved ✓';
 };
 
@@ -403,7 +403,7 @@ window._yleAccesoGuardar = async function(btn){
   const tr = btn.closest('tr'); const g = Number(tr.dataset.g); btn.disabled = true; btn.textContent = '…';
   const uid = (state.session && state.session.user && state.session.user.id) || null;
   const filas = Object.keys(NIV).filter(l => tr.querySelector(`[data-l="${l}"][data-k="unlocked"]`)).map(l => ({grade_id: g, level: l, unlocked: tr.querySelector(`[data-l="${l}"][data-k="unlocked"]`).checked, max_test: Number(tr.querySelector(`[data-l="${l}"][data-k="max_test"]`).value), updated_at: new Date().toISOString(), updated_by: uid}));
-  const {error} = await sb.from('yle_access').upsert(filas, {onConflict: 'grade_id,level'});
+  const {error} = await sb.from('yle_access').upsert(filas, {onConflict: 'school_id,grade_id,level'});
   if(error) alert('Could not save: ' + error.message);
   window.ylePanel(V.grades);
 };

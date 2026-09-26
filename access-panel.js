@@ -243,11 +243,11 @@
     const updated_by = (state.session && state.session.user && state.session.user.id) || null;
     let error;
     if (tabla === 'node_access') {
-      ({ error } = await sb.from('node_access').upsert({ grade_id: gradeId, node_key: key, unlocked: to, updated_at, updated_by }, { onConflict: 'grade_id,node_key' }));
+      ({ error } = await sb.from('node_access').upsert({ grade_id: gradeId, node_key: key, unlocked: to, updated_at, updated_by }, { onConflict: 'school_id,grade_id,node_key' }));
     } else if (tabla === 'practice_access') {
-      ({ error } = await sb.from('practice_access').upsert({ grade_id: gradeId, unlocked: to, updated_at, updated_by }, { onConflict: 'grade_id' }));
+      ({ error } = await sb.from('practice_access').upsert({ grade_id: gradeId, unlocked: to, updated_at, updated_by }, { onConflict: 'school_id,grade_id' }));
     } else if (tabla === 'mock_access') {
-      ({ error } = await sb.from('mock_access').upsert({ grade_id: gradeId, unlocked: to, updated_at, updated_by }, { onConflict: 'grade_id' }));
+      ({ error } = await sb.from('mock_access').upsert({ grade_id: gradeId, unlocked: to, updated_at, updated_by }, { onConflict: 'school_id,grade_id' }));
     }
     el.disabled = false;
     if (error) await NISUI.avisa('Could not save: ' + error.message, { titulo: 'Error', tono: 'mal' });
@@ -278,7 +278,7 @@
     const { error } = await sb.from('fun_access').upsert({
       grade_id: gradeId, lang, level: nivel, desde, hasta, unlocked: true,
       updated_at: new Date().toISOString(), updated_by: (state.session && state.session.user && state.session.user.id) || null,
-    }, { onConflict: 'grade_id,lang,level' });
+    }, { onConflict: 'school_id,grade_id,lang,level' });
     btn.disabled = false;
     if (error) await NISUI.avisa('Could not save: ' + error.message, { titulo: 'Error', tono: 'mal' });
     else NISUI.aviso('Saved ✓', 'bien', 1800);
@@ -310,7 +310,7 @@
     const { error } = await sb.from('yle_access').upsert({
       grade_id: gradeId, level, unlocked: val > 0, max_test: val,
       updated_at: new Date().toISOString(), updated_by: (state.session && state.session.user && state.session.user.id) || null,
-    }, { onConflict: 'grade_id,level' });
+    }, { onConflict: 'school_id,grade_id,level' });
     el.disabled = false;
     if (error) await NISUI.avisa('Could not save: ' + error.message, { titulo: 'Error', tono: 'mal' });
     else NISUI.aviso('Saved ✓', 'bien', 1800);

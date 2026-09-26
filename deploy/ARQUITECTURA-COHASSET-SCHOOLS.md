@@ -1,6 +1,6 @@
 # Cohasset Schools — arquitectura de la plataforma multi-colegio
 
-*26-sep-2026. Estado: fase 1 en producción; fases 2-4 planificadas.*
+*26-sep-2026. Estado: fases 1 y 2 en producción; fases 3-5 planificadas.*
 
 ## 1. Qué es
 
@@ -122,7 +122,7 @@ hoy es symlink. Respaldos con fecha en `sites-available`.
 |---|---|---|
 | Nombres de módulo con la marca dentro: *Fun for Nordic*, *Nordic Ascent*, *NIS Dictionary*, *NIShoot Live* | `app/*.js` (≈60 «Nordic»), `nis-fun/`, activities | `schoolTerm(clave)` con nombres por defecto neutros (*Fun for English*, *Ascent*, *Dictionary*, *Shoot Live*) y `settings.terms` por colegio; NIS conserva los suyos |
 | Grados y secciones fijos (G1-G11, A/B, Teachers 12/13) | `grades`, selectores del admin, `teacher_access` | `settings.grades/sections` ya existe en `schools`; los selectores leen de ahí en vez de la tabla global |
-| Datos de alumnos sin `school_id` | `student_sessions`, `unit_submissions`, `mock_reports`, `writing_reviews`, `fun_submissions`, `speaking_tests`, `teacher_access`, `reader_exam_access`… | **Fase 2**: columna `school_id` (default por trigger desde el alumno) + `and school_id = my_school_id()` en cada política. Hasta entonces, un colegio nuevo solo con cuentas de prueba |
+| ~~Datos de alumnos sin `school_id`~~ | 31 tablas | **Hecho (fase 2, 26-sep)**: `school_id` NOT NULL, trigger `tenant_fill`, política restrictiva `<tabla>_tenant` en cada una; claves por colegio en la configuración por grado; `school_copy_config()` |
 | Textos «Nordic»/«NIS» en pantallas (login ya está; ayuda, informes a familias, PDFs) | `ayuda.html`, `85-correccion.js`, `72-mocks.js`, plantillas de informe | sustituir por `schoolName()`/`schoolShort()` |
 | Cuentas demo, claves de mock, cuenta QA | por colegio | crearlas al dar de alta desde el modelo (paso opcional del alta) |
 | Material (audio, láminas, PDF) | fuera del repo, servido por nginx | compartido entre colegios; no es del inquilino |
@@ -132,10 +132,10 @@ hoy es symlink. Respaldos con fecha en `sites-available`.
 1. **Hecho (26-sep).** Tenencia en `profiles`, marca y apps por colegio,
    hosting por comodín, demo con marca neutra y cuentas demo, consola del
    superadmin con alta desde modelo, pagos, contactos y bitácora.
-2. **Aislamiento de datos.** `school_id` en las tablas de alumnos y sus
-   políticas; prueba con rol simulado (admin NIS, admin demo, profesor,
-   alumno) antes y después: mismas filas para NIS, cero cruzadas.
-   *Requisito para meter un colegio real.*
+2. **Hecho (26-sep).** Aislamiento de datos: `school_id` en las 31 tablas con
+   datos o configuración por colegio, política restrictiva por tabla, claves
+   por colegio. Verificado con rol simulado antes y después (`_qa_visible_counts`):
+   NIS ve lo mismo; el admin demo pasa de ver todo a ver solo lo suyo.
 3. **Genérico de verdad.** `schoolTerm()`, grados/secciones desde `settings`,
    textos y PDFs con el nombre del colegio, alta desde modelo que también
    crea el admin y las cuentas demo del colegio.

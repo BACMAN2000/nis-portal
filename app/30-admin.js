@@ -232,14 +232,14 @@ async function unitAccessPanel(grades){
 }
 window._toggleAcademicUnit=async(g,key,to,el)=>{
   el.disabled=true;
-  const {error}=await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
+  const {error}=await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'school_id,grade_id,node_key'});
   el.disabled=false;
   if(error){alert('Could not save: '+error.message);el.checked=!to;return;}
   unitAccessPanel(state.profile&&state.profile.role==='admin'?GRADES:teacherAllowedGrades());
 };
 window._toggleNode=async(g,key,to,el)=>{
   el.disabled=true;
-  const { error } = await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
+  const { error } = await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'school_id,grade_id,node_key'});
   el.disabled=false;
   if(error){ alert('Could not save: '+error.message); el.checked=!to; }
 };
@@ -564,7 +564,7 @@ window._togglePractice = async (gradeId, to, btn)=>{
   if(btn){ btn.disabled=true; btn.textContent='…'; }
   const { error } = await sb.from('practice_access').upsert(
     { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
-    { onConflict:'grade_id' });
+    { onConflict:'school_id,grade_id' });
   if(error){ alert('Could not update: '+error.message); }
   practicePanel(state.profile && state.profile.role==='admin' ? GRADES : teacherAllowedGrades());
 };
