@@ -53,11 +53,12 @@ function studentSubject(key){
     return;
   }
   // Aqui abajo ya solo se pinta ingles: el francés se fue por su propia rama.
-  const areas = ENGLISH_AREAS.filter(a=>(!a.when || a.when()) && schoolAppOK(a.nav));
+  const areas = ENGLISH_AREAS.filter(a=>(!a.when || a.when()) && schoolAppOK(a.nav) && (a.block!=='practice' || schoolContentOK('tool.'+a.nav)));
   const tarjeta = (a)=>{
     // Cambridge trae su dibujo 3D (cambridge-icons.js) en lugar de emoji.
     const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;
     if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
+    if(a.href) return _hubCard(em,a.title,a.desc,`window.open('${a.href}','_blank','noopener')`);
     return _hubCard(em,a.title,a.desc,`window._nav('${a.nav}')`);
   };
   const bloques = ENGLISH_BLOCKS.map(b=>{
@@ -656,8 +657,8 @@ function studentMocks(){
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
     <p class="muted" style="margin-top:-6px">MOCK 1 and MOCK 2 in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${_skillCard('📖','Reading & Use of English','KET/PET/FCE/CAE-style texts and tasks with a timer.',_withBack(QUIZ_URL+'reading-quiz.html?branch=mocks','mocks'))}
-      ${_skillCard('🎧','Listening','Real audio in Cambridge format, with a timer.',_withBack(QUIZ_URL+'listening-quiz.html?branch=mocks','mocks'))}
+      ${schoolContentOK('mock.reading') ? _skillCard('📖','Reading & Use of English','KET/PET/FCE/CAE-style texts and tasks with a timer.',_withBack(QUIZ_URL+'reading-quiz.html?branch=mocks','mocks')) : ''}
+      ${schoolContentOK('mock.listening') ? _skillCard('🎧','Listening','Real audio in Cambridge format, with a timer.',_withBack(QUIZ_URL+'listening-quiz.html?branch=mocks','mocks')) : ''}
       ${_skillCard('✍️','Writing','Part 1 compulsory + Part 2 of your choice. Graded by your teacher. B1 · B2 · C1 only.',_withBack(QUIZ_URL+'writing-quiz.html?branch=mocks','mocks'))}
       ${_soonCard('🗣️','Speaking','Cambridge-style interview with an examiner.')}
     </div>`;
@@ -672,9 +673,9 @@ function studentPractice(){
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
     <p class="muted" style="margin-top:-6px">Practice tests 1, 2 and 3 in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.</p>
     <div class="grid cols-3" style="margin-top:12px">
-      ${_skillCard('📖','Reading & Use of English','Practice 1 · 2 · 3 with automatic marking and CEFR feedback.',_withBack(QUIZ_URL+'reading-quiz.html?branch=practice','practice'))}
-      ${_skillCard('🎧','Listening','Practice with real audio and automatic marking.',_withBack(QUIZ_URL+'listening-quiz.html?branch=practice','practice'))}
-      ${_skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',_withBack(QUIZ_URL+'writing-quiz.html?branch=practice','practice'))}
+      ${schoolContentOK('practice.reading') ? _skillCard('📖','Reading & Use of English','Practice 1 · 2 · 3 with automatic marking and CEFR feedback.',_withBack(QUIZ_URL+'reading-quiz.html?branch=practice','practice')) : ''}
+      ${schoolContentOK('practice.listening') ? _skillCard('🎧','Listening','Practice with real audio and automatic marking.',_withBack(QUIZ_URL+'listening-quiz.html?branch=practice','practice')) : ''}
+      ${schoolContentOK('practice.writing') ? _skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',_withBack(QUIZ_URL+'writing-quiz.html?branch=practice','practice')) : ''}
     </div>`;
 }
 
@@ -691,7 +692,7 @@ async function studentLibrary(){
   const back = _isStudent() ? _backBtn("window._nav('home')",'Home') : '';
   $('#main').innerHTML=`${back}<h1>📚 Library</h1><p class="muted">Loading…</p>`;
   await loadReaderAssignments();
-  const cat=_RDR_IDS.map(id=>{ const m=READER_META[id], c=READER_CARDS[id];
+  const cat=_RDR_IDS.filter(id=>schoolContentOK('reader.'+id)).map(id=>{ const m=READER_META[id], c=READER_CARDS[id];
     const mine=!_isStudent() || readerBooksFor('g'+((state.profile&&state.profile.grade_id)||0)).indexOf(id)>=0;
     return `<div class="card" style="text-align:left;padding:20px 18px;${mine?'':'opacity:.6'}">
       <div style="font-size:2.6rem;line-height:1">${m.icon}</div>
@@ -873,7 +874,7 @@ async function _pintaYle(cajaId='yle-card', route='classes_primary'){
    antes ocupaba la puerta entera y dejaba los cursos fuera. */
 function _secSerieCardHTML(route, compact){
   const p = state.profile || {}, g = Number(p.grade_id);
-  const key = 'g'+g, cursos = secCoursesFor(key);
+  const key = 'g'+g, cursos = secCoursesFor(key).filter(lv=>schoolContentOK('sec.'+lv));
   if(!cursos.length) return '';
   const botones = cursos.map(lv => { const c = SEC_CURSOS[lv]; return `<a href="${_withBack('nis-fun/engine/?level='+lv, route)}"
       target="_blank" rel="noopener" class="btn${compact?' sm':''}"

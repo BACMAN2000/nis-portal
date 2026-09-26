@@ -355,7 +355,7 @@ function funSecBody(render){
       (the grammar before the first exam), then A2 Key, B1 Preliminary, B2 First and C1 Advanced. Units with
       dialogues, audio and exam tasks, and a Grammar Lab of 24 topics per level. The format of each exam is in
       <b>📘 Cambridge info</b>. Primary has its own series: <b>🧸 ${schoolTerm('fun')}</b>.</p>
-    <div class="grid cols-3">${SEC_ORDEN.map(tarjeta).join('')}</div>
+    <div class="grid cols-3">${SEC_ORDEN.filter(lv=>schoolContentOK('sec.'+lv)).map(tarjeta).join('')}</div>
     <div class="card" style="margin-top:16px">
       <h2 style="margin:0 0 4px;color:var(--blue-d)">✅ Mark what they submit</h2>
       <div class="muted" style="font-size:.88rem;margin-bottom:12px">What students write and record in the

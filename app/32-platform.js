@@ -11,7 +11,11 @@ const PLATFORM_TABS = [
   {key:'schools',  label:'🏫 Schools'},
   {key:'payments', label:'💳 Payments'},
   {key:'contacts', label:'📇 Contacts'},
+  {key:'content',  label:'📦 Content'},
+  {key:'leads',    label:'📨 Leads'},
 ];
+const _PL_KIND_LABEL = {yle:'🧸 Young Learners (Fun 1-3 + practice tests)', sec:'🧗 Secondary courses', main:'🎓 Cambridge Main Suite', practice:'🎯 Practice tests', mock:'🎓 Official mocks', reader:'📚 Readers', tool:'🧰 Practice tools', ielts:'🎯 IELTS preparation (cohasset.pe)'};
+const _PL_LEAD_STATUS = {new:'🆕 new', contacted:'📞 contacted', converted:'✅ converted', discarded:'✖ discarded'};
 const _PL_STATUS = {trial:'🧪 trial', active:'✅ active', suspended:'⏸ suspended', churned:'✖ churned'};
 const _PL_KIND   = {call:'📞 Call', whatsapp:'💬 WhatsApp', email:'✉️ Email', meeting:'🤝 Meeting', visit:'🏫 Visit', note:'📝 Note'};
 const _plMoney = (n,c)=> (c==='USD'?'US$ ':'S/ ') + Number(n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -58,11 +62,16 @@ async function adminPlatform(tab='platform'){
     sb.from('school_payments').select('*').order('due_date',{ascending:false}),
     sb.from('school_contacts').select('*').order('is_primary',{ascending:false}).order('name'),
     sb.from('school_interactions').select('*').order('happened_at',{ascending:false}),
+    sb.from('content_items').select('*').order('sort'),
+    sb.from('school_content').select('school_id,item_key,enabled'),
+    sb.from('school_leads').select('*').order('created_at',{ascending:false}),
   ]);
   const err = q.find(r=>r.error);
   if(err){ main.innerHTML = `<h1>☁️ Cohasset Schools</h1><p class="muted">Could not load: ${esc(err.error.message)}</p>`; return; }
   const D = { schools:q[0].data||[], apps:q[1].data||[], sapps:q[2].data||[], profiles:q[3].data||[],
-              payments:q[4].data||[], contacts:q[5].data||[], inter:q[6].data||[] };
+              payments:q[4].data||[], contacts:q[5].data||[], inter:q[6].data||[],
+              items:q[7].data||[], scontent:q[8].data||[], leads:q[9].data||[] };
+  D.con = {}; D.scontent.forEach(r=>{ D.con[r.school_id+'|'+r.item_key] = !!r.enabled; });
   D.on = {}; D.sapps.forEach(r=>{ D.on[r.school_id+'|'+r.app_key] = !!r.enabled; });
   D.cnt = {}; D.profiles.forEach(p=>{ const k=p.school_id; D.cnt[k]=D.cnt[k]||{s:0,t:0,a:0,demo:0}; if(p.is_demo) D.cnt[k].demo++; D.cnt[k][p.role==='student'?'s':p.role==='teacher'?'t':'a']++; });
   D.byId = Object.fromEntries(D.schools.map(s=>[s.id,s]));
@@ -70,7 +79,8 @@ async function adminPlatform(tab='platform'){
 
   window._plTab = tab;   // el admin navega por el menú lateral (bindNav → renderAdmin), no por el hash
   const tabs = PLATFORM_TABS.map(t=>`<a class="${t.key===tab?'on':''}" onclick="renderAdmin('${t.key}')">${t.label}</a>`).join('');
-  const body = tab==='schools' ? _plSchools(D) : tab==='payments' ? _plPayments(D) : tab==='contacts' ? _plContacts(D) : _plOverview(D);
+  const body = tab==='schools' ? _plSchools(D) : tab==='payments' ? _plPayments(D) : tab==='contacts' ? _plContacts(D)
+             : tab==='content' ? _plContent(D) : tab==='leads' ? _plLeads(D) : _plOverview(D);
   main.innerHTML = `${_plCSS}<h1>☁️ Cohasset Schools</h1>
     <p class="muted" style="margin-top:-6px">Platform console · every school that runs on this portal, in one place.</p>
     <div class="pl-tabs">${tabs}</div>${body}`;
@@ -93,6 +103,7 @@ function _plOverview(D){
       ${kpi(students,'real students')}
       ${Object.keys(mrr).length ? Object.entries(mrr).map(([c,v])=>kpi(_plMoney(v,c),'monthly recurring')).join('') : kpi('—','monthly recurring')}
       ${kpi(overdue.length,'overdue payments', overdue.length?'bad':'')}
+      ${kpi(D.leads.filter(l=>l.status==='new').length,'new leads', D.leads.some(l=>l.status==='new')?'warn':'')}
     </div>
     <div class="card"><h3 style="margin-top:0">📌 Next actions</h3>
       ${actions.length ? `<table class="pl"><tr><th>When</th><th>School</th><th>Action</th><th></th></tr>${actions.map(act).join('')}</table>` : '<p class="muted">Nothing pending. Log a call or meeting in 📇 Contacts to plan the next step.</p>'}
@@ -252,6 +263,68 @@ function _plContacts(D){
   };
   return D.schools.map(block).join('');
 }
+
+/* ---------- Content: piezas por colegio ---------- */
+function _plContent(D){
+  const kinds = [...new Set(D.items.map(i=>i.kind))];
+  const block = s => {
+    const on = D.items.filter(i=>D.con[s.id+'|'+i.key]===true).length;
+    const groups = kinds.map(k=>{
+      const its = D.items.filter(i=>i.kind===k);
+      return `<div style="margin-top:10px"><b>${esc(_PL_KIND_LABEL[k]||k)}</b>
+        <div class="sch-grid">${its.map(i=>`<label class="sch-app" title="${esc(i.href||'')}">
+          <input type="checkbox" data-sid="${s.id}" data-item="${esc(i.key)}" ${D.con[s.id+'|'+i.key]?'checked':''} onchange="window._plContentToggle(this)">
+          <span>${esc(i.label)}${i.level?` <span class="muted small">· ${esc(i.level)}</span>`:''}</span></label>`).join('')}</div></div>`;
+    }).join('');
+    return `<div class="card sch-card"><div class="sch-head"><div class="sch-title"><b>${esc(s.name)} <span class="chip">${_PL_STATUS[s.status]||s.status}</span></b>
+        <span class="muted">${on} of ${D.items.length} pieces on</span></div>
+        <div class="sch-actions"><button class="btn small ghost" onclick="window._plContentAll('${s.id}',true)">All on</button>
+          <button class="btn small ghost" onclick="window._plContentAll('${s.id}',false)">All off</button></div></div>${groups}</div>`;
+  };
+  return `<p class="muted small">A piece that is off does not exist for that school: its students, teachers and admin never see it. What each grade or student sees among the pieces that are on is still decided by the school admin in 🔐 Access.</p>
+    ${D.schools.map(block).join('')}`;
+}
+window._plContentToggle = async cb => {
+  cb.disabled=true;
+  const { error } = await sb.from('school_content').upsert({ school_id:cb.dataset.sid, item_key:cb.dataset.item, enabled:cb.checked, updated_at:new Date().toISOString() },{ onConflict:'school_id,item_key' });
+  cb.disabled=false; if(error){ cb.checked=!cb.checked; alert('Could not save: '+error.message); }
+};
+window._plContentAll = async (sid, on) => {
+  const rows = (window._PL.items||[]).map(i=>({ school_id:sid, item_key:i.key, enabled:on, updated_at:new Date().toISOString() }));
+  const { error } = await sb.from('school_content').upsert(rows,{ onConflict:'school_id,item_key' });
+  if(error) alert('Could not save: '+error.message); else _plRefresh(0);
+};
+
+/* ---------- Leads: colegios que escriben desde cohasset.pe/colegios ---------- */
+function _plLeads(D){
+  const row = l => `<tr><td>${_plDate(l.created_at)}</td><td><b>${esc(l.school_name)}</b><br><span class="muted small">${esc(l.students||'')}</span></td>
+    <td>${esc(l.contact_name)}<br><span class="muted small">${esc(l.position||'')}</span></td>
+    <td><a href="mailto:${esc(l.email)}">${esc(l.email)}</a><br>${l.phone?`<a href="https://wa.me/${esc(String(l.phone).replace(/\D/g,''))}" target="_blank" rel="noopener">${esc(l.phone)}</a>`:''}</td>
+    <td class="muted small" style="max-width:260px">${esc(l.message||'')}${l.notes?`<br><i>${esc(l.notes)}</i>`:''}</td>
+    <td><span class="chip ${l.status==='new'?'warn':l.status==='converted'?'ok':''}">${_PL_LEAD_STATUS[l.status]||l.status}</span></td>
+    <td style="white-space:nowrap">${l.status==='new'?`<button class="btn small ghost" onclick="window._plLeadStatus('${l.id}','contacted')">📞 Contacted</button> `:''}
+      ${l.status!=='converted'?`<button class="btn small" onclick="window._plLeadConvert('${l.id}')">🏫 Convert to school</button> `:''}
+      ${l.status!=='discarded'&&l.status!=='converted'?`<button class="btn small ghost" onclick="window._plLeadStatus('${l.id}','discarded')">✖</button>`:''}</td></tr>`;
+  return `<div class="card"><p class="muted small" style="margin-top:0">Every form sent from <b>cohasset.pe/colegios</b> lands here. <b>Convert to school</b> creates the school from the NIS model (trial, neutral branding), its primary contact and the first entry in its log.</p>
+    ${D.leads.length ? `<table class="pl"><tr><th>When</th><th>School</th><th>Contact</th><th>Reach</th><th>Message</th><th>Status</th><th></th></tr>${D.leads.map(row).join('')}</table>` : '<p class="muted">No leads yet.</p>'}</div>`;
+}
+window._plLeadStatus = async (id, status) => {
+  const { error } = await sb.from('school_leads').update({ status }).eq('id', id);
+  if(error) alert('Could not save: '+error.message); else _plRefresh(0);
+};
+window._plLeadConvert = async id => {
+  const l = (window._PL.leads||[]).find(x=>x.id===id); if(!l) return;
+  const sug = String(l.school_name).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,32);
+  const slug = prompt('Subdomain (slug) for '+l.school_name+':', sug); if(!slug) return;
+  if(!/^[a-z0-9-]{2,32}$/.test(slug)){ alert('Slug: 2-32 lowercase letters, digits or hyphens'); return; }
+  const r = await sb.rpc('school_create_from_template',{ p_slug:slug, p_name:l.school_name, p_short:null, p_domain:null, p_template:'00000000-0000-4000-8000-000000000001' });
+  if(r.error){ alert('Could not create the school: '+r.error.message); return; }
+  const sid = r.data;
+  const c = await sb.from('school_contacts').insert({ school_id:sid, name:l.contact_name, position:l.position, email:l.email, phone:l.phone, whatsapp:l.phone, is_primary:true, notes:'From cohasset.pe/colegios' }).select('id').single();
+  await sb.from('school_interactions').insert({ school_id:sid, contact_id:c.data?c.data.id:null, kind:'note', summary:'Lead from cohasset.pe/colegios'+(l.students?' · '+l.students+' students':'')+(l.message?': '+l.message:''), next_action:'Reply and schedule a demo', next_action_at:new Date(Date.now()+2*864e5).toISOString().slice(0,10), created_by:state.profile.id });
+  await sb.from('school_leads').update({ status:'converted', school_id:sid }).eq('id', id);
+  window._plTab='schools'; _plRefresh(0);
+};
 
 /* ---------- acciones ---------- */
 function _plRead(root){

@@ -157,6 +157,14 @@
   window.schoolGrades   = function () { var S = window.NIS_SCHOOL || {}; return Array.isArray(S.grades) && S.grades.length ? S.grades : null; };
   window.schoolSections = function () { var S = window.NIS_SCHOOL || {}; return Array.isArray(S.sections) && S.sections.length ? S.sections : ['A', 'B']; };
   window.schoolAppKey = function (navKey) { return APP_OF_NAV[navKey] || null; };
+  /* Piezas de contenido (tabla content_items / school_content): true = el
+     colegio la tiene. Sin datos o pieza desconocida, se ve. */
+  window.schoolContentOK = function (key) {
+    var S = window.NIS_SCHOOL;
+    if (!S || !S.content || !key) return true;
+    if (!Object.prototype.hasOwnProperty.call(S.content, key)) return true;
+    return S.content[key] === true;
+  };
   /* true = se muestra. Sin datos del colegio (o app desconocida) todo se ve. */
   window.schoolAppOK = function (navKey) {
     var S = window.NIS_SCHOOL;

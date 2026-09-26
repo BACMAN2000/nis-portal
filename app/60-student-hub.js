@@ -95,7 +95,7 @@ function studentDict(){ _setNav('tools'); $('#main').innerHTML = dictPanel(); }
    suelto de la parrilla de English — mismos handlers y candados de siempre. */
 function studentTools(){
   _setNav('tools');
-  const areas = ENGLISH_AREAS.filter(a=>a.block==='practice' && (!a.when || a.when()) && schoolAppOK(a.nav));
+  const areas = ENGLISH_AREAS.filter(a=>a.block==='practice' && (!a.when || a.when()) && schoolAppOK(a.nav) && schoolContentOK('tool.'+a.nav));
   const cards = areas.map(a=>{
     const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;
     if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
@@ -387,6 +387,11 @@ const ENGLISH_AREAS = [
   {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge', block:'exam'},
   {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks', block:'exam', when:()=>!_isStudent()},
   {emoji:'🎯', title:'Practice Tests',desc:'Practice tests 1, 2 and 3 in Cambridge format, always available.', nav:'practice', node:'english.practice', block:'exam'},
+  // Preparación IELTS: piezas de cohasset.pe que el superadmin coloca en el
+  // colegio (content_items ielts.*). Abren en pestaña nueva con cuenta de cohasset.pe.
+  {emoji:'🧱', title:'IELTS Foundations', desc:'Writing & Grammar before the practice tests: 24 units on cohasset.pe.', nav:'ielts_foundation', href:'https://cohasset.pe/ielts/foundation.html', block:'exam', when:()=>schoolContentOK('ielts.foundation')},
+  {emoji:'✍️', title:'IELTS Writing Studio', desc:'18 lessons and the Cambridge 1-19 task bank, timed workspace, on cohasset.pe.', nav:'ielts_writing', href:'https://cohasset.pe/ielts/writing.html', block:'exam', when:()=>schoolContentOK('ielts.writing')},
+  {emoji:'🖥️', title:'IELTS on computer', desc:'Simulator of the computer-delivered IELTS, on cohasset.pe.', nav:'ielts_cbt', href:'https://cohasset.pe/ielts-cbt/ielts-on-computer.html', block:'exam', when:()=>schoolContentOK('ielts.cbt')},
   // 'My Progress' NO esta aqui: vive en la barra lateral, que es donde el
   // alumno lo busca desde cualquier pantalla. Tenerlo en los dos sitios era
   // el duplicado mas visible de esta vista.
@@ -850,7 +855,7 @@ async function studentCambridgePortal(){
     if(!nodeVisible(b.node)) return '';
     return `<div class="cam-panel" id="cam-panel-${bk}"><div class="cam-panel-inner">
       <h3><span class="cam-bar" style="background:${b.color}"></span>${b.panelTitle}</h3>
-      <div class="cam-tiles">${b.levels.map(tile).join('')}</div>
+      <div class="cam-tiles">${b.levels.filter(l=>schoolContentOK(bk+'.'+l.key)).map(tile).join('')}</div>
     </div></div>`;
   };
   const practice = nodeVisible(CAMBRIDGE_PRACTICE_NODE) ? `
