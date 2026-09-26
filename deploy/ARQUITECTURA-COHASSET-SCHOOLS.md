@@ -1,6 +1,6 @@
 # Cohasset Schools — arquitectura de la plataforma multi-colegio
 
-*26-sep-2026. Estado: fases 1, 2 y 3 en producción; fases 4-5 planificadas.*
+*26-sep-2026. Estado: las cinco fases en producción.*
 
 ## 1. Qué es
 
@@ -138,13 +138,17 @@ hoy es symlink. Respaldos con fecha en `sites-available`.
    NIS ve lo mismo; el admin demo pasa de ver todo a ver solo lo suyo.
 3. **Hecho (26-sep).** `schoolTerm()`, grados/secciones desde `settings`,
    textos y PDFs con el nombre del colegio, cuentas por colegio desde la consola.
-4. **Repositorio de contenido.** De «apps enteras» a «piezas» (practice tests,
-   mocks oficiales, IELTS de cohasset.pe, readers): tabla `school_content`
-   (colegio × pieza × orden) que el superadmin arma por colegio. Pide una
-   sola fuente para los mocks (hoy viven en dos bases) y decidir cómo se
-   sirven los cursos IELTS del backend de la academia.
-5. **Tienda.** Sección «Colegios» en cohasset.pe con la propuesta, enlace al
-   demo y formulario que crea el lead en la bitácora de la consola.
+4. **Hecho (26-sep).** Repositorio de contenido por piezas: `content_items`
+   (52: cursos y tests YLE, cursos de secundaria, guías Main Suite, practice
+   tests y mocks por destreza, 13 readers, 9 herramientas, 3 piezas IELTS de
+   cohasset.pe) y `school_content` por colegio; consola 📦 Content;
+   `schoolContentOK(clave)` filtra en el portal. Las piezas IELTS abren
+   cohasset.pe en pestaña nueva con cuenta de la academia (sin SSO todavía).
+5. **Hecho (26-sep).** cohasset.pe/colegios (menú y pie enlazan): propuesta,
+   qué incluye, cómo funciona, demo y formulario → `school_leads` (INSERT
+   anon, trampa anti-bots) → consola 📨 Leads → «Convert to school» crea el
+   colegio desde el modelo, su contacto principal y la primera nota con
+   próxima acción.
 
 ## 9. Reglas de seguridad que no se negocian
 
