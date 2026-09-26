@@ -68,7 +68,8 @@ async function adminPlatform(tab='platform'){
   D.byId = Object.fromEntries(D.schools.map(s=>[s.id,s]));
   window._PL = D;
 
-  const tabs = PLATFORM_TABS.map(t=>`<a class="${t.key===tab?'on':''}" onclick="window._nav('${t.key}')">${t.label}</a>`).join('');
+  window._plTab = tab;   // el admin navega por el menú lateral (bindNav → renderAdmin), no por el hash
+  const tabs = PLATFORM_TABS.map(t=>`<a class="${t.key===tab?'on':''}" onclick="renderAdmin('${t.key}')">${t.label}</a>`).join('');
   const body = tab==='schools' ? _plSchools(D) : tab==='payments' ? _plPayments(D) : tab==='contacts' ? _plContacts(D) : _plOverview(D);
   main.innerHTML = `${_plCSS}<h1>☁️ Cohasset Schools</h1>
     <p class="muted" style="margin-top:-6px">Platform console · every school that runs on this portal, in one place.</p>
@@ -237,7 +238,7 @@ function _plRead(root){
   return o;
 }
 function _plMsg(id, t){ const e=$('#'+id); if(e) e.textContent=t; }
-function _plRefresh(delay=600){ setTimeout(()=>{ const t=(location.hash||'').replace('#',''); adminPlatform(PLATFORM_TABS.some(x=>x.key===t)?t:'platform'); }, delay); }
+function _plRefresh(delay=600){ setTimeout(()=>adminPlatform(window._plTab||'platform'), delay); }
 window._plToggle = id => { const d=$('#'+id); if(d) d.open=!d.open; };
 window._plSaveSchool = async id => {
   _plMsg('sch-msg-'+id,'Saving…');
