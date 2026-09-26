@@ -111,7 +111,7 @@
 
   pedir.then(function (s) {
     if (s) aplicar(s);
-    else if (!esNIS) aplicar(Object.assign({}, NIS, { slug: guess, name: guess, short_name: guess, apps: {} }));
+    else if (!esNIS) aplicar({ slug: guess, name: 'Cohasset Schools', short_name: 'Cohasset', logo_url: 'assets/cohasset-school.svg?v=6', logo_dark_url: 'assets/cohasset-school-white.svg?v=6', accent: '#2563EB', apps: {} });
     else aplicar(NIS);
   });
 
