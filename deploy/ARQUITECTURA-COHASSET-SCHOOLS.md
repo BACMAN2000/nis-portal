@@ -1,6 +1,6 @@
 # Cohasset Schools — arquitectura de la plataforma multi-colegio
 
-*26-sep-2026. Estado: fases 1 y 2 en producción; fases 3-5 planificadas.*
+*26-sep-2026. Estado: fases 1, 2 y 3 en producción; fases 4-5 planificadas.*
 
 ## 1. Qué es
 
@@ -120,11 +120,11 @@ hoy es symlink. Respaldos con fecha en `sites-available`.
 
 | Qué | Dónde | Cómo se resuelve |
 |---|---|---|
-| Nombres de módulo con la marca dentro: *Fun for Nordic*, *Nordic Ascent*, *NIS Dictionary*, *NIShoot Live* | `app/*.js` (≈60 «Nordic»), `nis-fun/`, activities | `schoolTerm(clave)` con nombres por defecto neutros (*Fun for English*, *Ascent*, *Dictionary*, *Shoot Live*) y `settings.terms` por colegio; NIS conserva los suyos |
-| Grados y secciones fijos (G1-G11, A/B, Teachers 12/13) | `grades`, selectores del admin, `teacher_access` | `settings.grades/sections` ya existe en `schools`; los selectores leen de ahí en vez de la tabla global |
+| ~~Nombres de módulo con la marca dentro~~ | menús, tarjetas, paneles, ayuda, PDFs | **Hecho (fase 3, 26-sep)**: `schoolTerm(clave)` (fun, ascent, dict, shoot, readers, courses, portal); neutros *Fun for English*, *English Ascent*, *Dictionary*, *Quiz Live*, *Little Readers*; NIS los conserva por preset y `settings.terms`; la consola los edita por colegio |
+| ~~Grados y secciones fijos~~ | selectores | **Hecho (fase 3)**: `settings.grades` recorta `GRADES` en sitio (los grados de profesores 12/13 se conservan) y `schoolSections()` alimenta los selectores de sección; se editan en la consola |
 | ~~Datos de alumnos sin `school_id`~~ | 31 tablas | **Hecho (fase 2, 26-sep)**: `school_id` NOT NULL, trigger `tenant_fill`, política restrictiva `<tabla>_tenant` en cada una; claves por colegio en la configuración por grado; `school_copy_config()` |
-| Textos «Nordic»/«NIS» en pantallas (login ya está; ayuda, informes a familias, PDFs) | `ayuda.html`, `85-correccion.js`, `72-mocks.js`, plantillas de informe | sustituir por `schoolName()`/`schoolShort()` |
-| Cuentas demo, claves de mock, cuenta QA | por colegio | crearlas al dar de alta desde el modelo (paso opcional del alta) |
+| ~~Textos «Nordic»/«NIS» en pantallas~~ | login, ayuda, informes PDF | **Hecho (fase 3)**: `schoolName()`/`schoolTerm('portal')` en login, ayuda, informes CEFR y Mock 2, unit.html. Queda el contenido propio de NIS (proyectos, PDFs de Fun for Nordic en `nis-fun/book-builder`) |
+| Cuentas por colegio | consola | **Hecho (fase 3)**: «Create an account in this school» en cada tarjeta (`school_create_account`). Claves de mock y cuenta QA siguen siendo por colegio a mano |
 | Material (audio, láminas, PDF) | fuera del repo, servido por nginx | compartido entre colegios; no es del inquilino |
 
 ## 8. Fases
@@ -136,9 +136,8 @@ hoy es symlink. Respaldos con fecha en `sites-available`.
    datos o configuración por colegio, política restrictiva por tabla, claves
    por colegio. Verificado con rol simulado antes y después (`_qa_visible_counts`):
    NIS ve lo mismo; el admin demo pasa de ver todo a ver solo lo suyo.
-3. **Genérico de verdad.** `schoolTerm()`, grados/secciones desde `settings`,
-   textos y PDFs con el nombre del colegio, alta desde modelo que también
-   crea el admin y las cuentas demo del colegio.
+3. **Hecho (26-sep).** `schoolTerm()`, grados/secciones desde `settings`,
+   textos y PDFs con el nombre del colegio, cuentas por colegio desde la consola.
 4. **Repositorio de contenido.** De «apps enteras» a «piezas» (practice tests,
    mocks oficiales, IELTS de cohasset.pe, readers): tabla `school_content`
    (colegio × pieza × orden) que el superadmin arma por colegio. Pide una
