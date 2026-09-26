@@ -420,7 +420,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     incl:' (includes Writing)', inReading:'Included in Reading & Use of English (A2 Key)',
     finalLbl:'Final result', targetGrade:'Target level for the grade', scaleLbl:'Cambridge Scale',
     below:'▼ Below the target ('+tgt+')', meets:'✓ Meets the target ('+tgt+')', above:'▲ Above the target ('+tgt+')',
-    gnote:'The final result is the average of the scales of the assessed skills (Reading & Use of English, Listening and Writing). Speaking is assessed in an oral session.',
+    gnote:(fin.a2NoWriting ? 'The final result is the average of the Cambridge Scale scores of the three assessed skills (Reading & Use of English, which includes Writing, Listening and Speaking).' : 'The final result is the average of the Cambridge Scale scores of the four assessed skills (Reading & Use of English, Listening, Writing and Speaking).')+' If one skill is below 50%, the overall result is capped at 179; if two or more, at 159.',
     prov:'Provisional result', commentTitle:'A message for the family',
     sign:'— English Department · Nordic International School of Lima',
     foot:'Cambridge Scale — pass (~60%) lands at the level boundary; below that drops a band.' } : {
@@ -433,7 +433,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     incl:' (incluye Writing)', inReading:'Incluido en Reading & Use of English (examen A2 Key)',
     finalLbl:'Resultado final', targetGrade:'Nivel objetivo del grado', scaleLbl:'Escala Cambridge',
     below:'▼ Por debajo del objetivo ('+tgt+')', meets:'✓ Cumple el objetivo ('+tgt+')', above:'▲ Por encima del objetivo ('+tgt+')',
-    gnote:'El resultado final es el promedio de las escalas de las destrezas evaluadas (Reading & Use of English, Listening y Writing). Speaking se evalúa en sesión oral.',
+    gnote:(fin.a2NoWriting ? 'El resultado final es el promedio de las escalas Cambridge de las tres destrezas evaluadas (Reading & Use of English, que incluye Writing, Listening y Speaking).' : 'El resultado final es el promedio de las escalas Cambridge de las cuatro destrezas evaluadas (Reading & Use of English, Listening, Writing y Speaking).')+' Si una destreza queda por debajo del 50 %, el resultado final no supera 179; si dos o más, no supera 159.',
     prov:'Resultado provisional', commentTitle:'Comentario para la familia',
     sign:'— English Department · Nordic International School of Lima',
     foot:'Escala Cambridge — aprobar (~60%) cae en el límite del nivel; por debajo baja de banda.' };

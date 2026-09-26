@@ -323,7 +323,7 @@ function _mockReportHash(fin2, fin1, spk, rep){
            fin1&&fin1.finalScale!=null?fin1.finalScale:'-', (spk&&spk.comment)||'',
            (rep&&rep.comment_es)||'', (rep&&rep.comment_en)||''].join('#');   // comentario propio del profesor (24-sep-2026)
   let h=0; for(let i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))|0; }
-  return 'v1-'+(h>>>0).toString(16)+'-'+s.length;
+  return 'v2-'+(h>>>0).toString(16)+'-'+s.length;   // v2 (25-sep-2026): nota al pie del informe corregida → regenerar los PDF archivados
 }
 /* Archivo automático de los PDF (ES+EN) de los informes completos o enviados cuyo contenido
    cambió: de uno en uno, en segundo plano, mientras el panel esté abierto; el resultado va al
