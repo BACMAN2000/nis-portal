@@ -15,6 +15,8 @@ async function renderAdmin(tab='users'){
      desde coordinacion no habia por donde entrar. */
   document.body.innerHTML = shell([
     {key:'overview',label:'📊 Overview'},
+    // Solo el superadministrador de la plataforma: alta de colegios y sus apps.
+    ...((state.profile && state.profile.is_superadmin) ? [{key:'schools',label:'🏫 Schools'}] : []),
     {group:'People', icon:'👥', items:[
       {key:'users',label:'👥 Users'},
       {key:'teachers',label:'👨‍🏫 Teachers'},
@@ -127,6 +129,7 @@ async function renderAdmin(tab='users'){
   if(tab==='wordform') return $('#main').innerHTML = wordformPanel();
   if(tab==='dict') return $('#main').innerHTML = dictPanel();
   if(tab==='coach') return $('#main').innerHTML = coachPanel();
+  if(tab==='schools') return adminSchools();
   if(tab==='overview') return adminOverview();
   if(tab==='unitprod') return unitProductsPanel();
   if(tab==='materiales') return materialesPanel();

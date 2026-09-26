@@ -317,7 +317,7 @@ function header(){
   const real = _isPreview() ? (state.realProfile||{}) : null;
   return `<div class="app-header">
     <button class="nav-toggle" type="button" onclick="window._navToggle(true)" aria-label="Menu" title="Menu">☰</button>
-    <img src="assets/logo-white-h.svg" alt="Nordic International School">
+    <img src="${schoolLogo(true)}" alt="${esc(schoolName())}">
     <div class="spacer"></div>
     ${_viewAsSelect()}
     <span class="role-chip">${esc(p.role||'')}</span>
@@ -379,6 +379,8 @@ function navKeys(navItems){
   return navItems.reduce((a,n)=> a.concat(n.items ? n.items.map(i=>i.key) : [n.key]), []).filter(Boolean);
 }
 function shell(navItems, activeKey, body, wide){
+  // Multi-colegio: fuera las pestañas de apps apagadas para este colegio.
+  if(typeof schoolFilterNav==='function') navItems = schoolFilterNav(navItems);
   /* wide = paneles de gestion (admin y profesor). Son tablas con muchas
      columnas y botones; con el ancho de lectura del alumno no caben. */
   return header()+`<div class="shell">

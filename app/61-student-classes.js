@@ -53,7 +53,7 @@ function studentSubject(key){
     return;
   }
   // Aqui abajo ya solo se pinta ingles: el francés se fue por su propia rama.
-  const areas = ENGLISH_AREAS.filter(a=>!a.when || a.when());
+  const areas = ENGLISH_AREAS.filter(a=>(!a.when || a.when()) && schoolAppOK(a.nav));
   const tarjeta = (a)=>{
     // Cambridge trae su dibujo 3D (cambridge-icons.js) en lugar de emoji.
     const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;

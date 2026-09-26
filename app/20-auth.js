@@ -3,10 +3,10 @@
 /* ===================== AUTH ===================== */
 function renderAuth(mode='login'){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
-    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>NIS Portal</h1>
+    <img class="logo" src="${schoolLogo()}" alt="${esc(schoolName())}">
+    <h1>${esc(schoolShort())} Portal</h1>
     <p class="sub">${mode==='login'?'Sign in to your account':'Create your student account'}</p>
-    <p class="muted" style="margin:-6px 0 12px;font-size:.85rem">Nordic International School of Lima · students, teachers and staff</p>
+    <p class="muted" style="margin:-6px 0 12px;font-size:.85rem">${esc(schoolName())} · students, teachers and staff</p>
     <div id="msg"></div>
     <!-- Un <form> de verdad: es lo que hace que el gestor de contrasenas del
          navegador ofrezca guardar y rellenar, y que el Enter envie solo. -->
@@ -54,7 +54,7 @@ window._toggleLoginPw=()=>{
 };
 function renderForgotPassword(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
-    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
+    <img class="logo" src="${schoolLogo()}" alt="${esc(schoolName())}">
     <h1>Reset password</h1>
     <p class="sub">We will send you a secure link to create a new password.</p>
     <div id="msg"></div>
@@ -95,7 +95,7 @@ async function sendPasswordResetEmail(){
 
 function renderRecoveryPassword(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
-    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
+    <img class="logo" src="${schoolLogo()}" alt="${esc(schoolName())}">
     <h1>New password</h1>
     <p class="sub">Create a password you can remember.</p>
     <div id="msg"></div>
@@ -201,7 +201,7 @@ async function doSignup(){
 }
 function renderPending(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
-    <img class="logo" src="assets/logo-h.svg">
+    <img class="logo" src="${schoolLogo()}" alt="${esc(schoolName())}">
     <h1>Almost ready</h1>
     <p class="sub">Your account exists but does not have a profile/role yet. Ask the administrator to activate you.</p>
     <button class="btn ghost" onclick="logout()">Sign out</button>
@@ -209,9 +209,9 @@ function renderPending(){
 }
 function renderSuspended(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
-    <img class="logo" src="assets/logo-h.svg">
+    <img class="logo" src="${schoolLogo()}" alt="${esc(schoolName())}">
     <h1>Account suspended</h1>
-    <p class="sub">Your access to the NIS Portal is temporarily suspended. Contact the school administrator to reactivate it.</p>
+    <p class="sub">Your access to the ${esc(schoolShort())} Portal is temporarily suspended. Contact the school administrator to reactivate it.</p>
     <button class="btn ghost" onclick="logout()">Sign out</button>
   </div></div>`;
 }

@@ -95,7 +95,7 @@ function studentDict(){ _setNav('tools'); $('#main').innerHTML = dictPanel(); }
    suelto de la parrilla de English — mismos handlers y candados de siempre. */
 function studentTools(){
   _setNav('tools');
-  const areas = ENGLISH_AREAS.filter(a=>a.block==='practice' && (!a.when || a.when()));
+  const areas = ENGLISH_AREAS.filter(a=>a.block==='practice' && (!a.when || a.when()) && schoolAppOK(a.nav));
   const cards = areas.map(a=>{
     const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;
     if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);

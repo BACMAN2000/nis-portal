@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" width="420" height="100" role="img" aria-label="Demo School">
+  <rect x="6" y="10" width="80" height="80" rx="18" fill="#0f766e"/>
+  <path d="M28 70 L46 30 L64 70 Z" fill="none" stroke="#ffffff" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="46" cy="30" r="6" fill="#facc15"/>
+  <text x="104" y="52" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#0f766e">Demo School</text>
+  <text x="106" y="80" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" letter-spacing="3" fill="#475569">LANGUAGE PORTAL</text>
+</svg>
