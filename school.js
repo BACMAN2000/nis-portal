@@ -83,11 +83,17 @@
     d.style.cssText = 'position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:9998;background:#111827;color:#fff;font:600 13px/1.3 system-ui,sans-serif;padding:8px 14px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.25);display:flex;gap:12px;align-items:center';
     d.innerHTML = '<span>🏫 Previewing school: ' + String(S.name).replace(/[<>&]/g, '') + '</span>' +
       '<a href="?school=" style="color:#93c5fd;text-decoration:underline">exit preview</a>';
-    (document.body || document.documentElement).appendChild(d);
+    document.documentElement.appendChild(d);   // no del body: el portal lo repinta entero
   }
 
+  /* Se pide cuando ya corrieron todos los <script> síncronos (config.js va
+     después de este archivo): un setTimeout(0) podía dispararse antes. */
+  function listo(fn) {
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn, { once: true });
+  }
   var pedir = new Promise(function (res) {
-    setTimeout(function () {
+    listo(function () {
       var cfg = window.NIS_CONFIG;
       if (!cfg || !window.fetch) { res(null); return; }
       var ctl = ('AbortController' in window) ? new AbortController() : null;
@@ -100,7 +106,7 @@
       }).then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) { clearTimeout(t); res(j && j.slug ? j : null); })
         .catch(function () { clearTimeout(t); res(null); });
-    }, 0);
+    });
   });
 
   pedir.then(function (s) {

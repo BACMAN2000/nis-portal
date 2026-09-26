@@ -14,7 +14,7 @@ function renderAuth(mode='login'){
     <div class="auth-switch">${mode==='login'
         ? `Don’t have an account? <a id="toSignup">Sign up</a>`
         : `Already have an account? <a id="toLogin">Sign in</a>`}</div>
-    <p class="muted" style="margin:14px 0 0;font-size:.82rem">Can’t sign in? Ask your English teacher or write to <a href="mailto:pbaca@nordic-school.edu.pe">pbaca@nordic-school.edu.pe</a>.</p>
+    <p class="muted" style="margin:14px 0 0;font-size:.82rem">Can’t sign in? ${NIS_SCHOOL.slug==='nis' ? 'Ask your English teacher or write to <a href="mailto:pbaca@nordic-school.edu.pe">pbaca@nordic-school.edu.pe</a>.' : 'Ask your English teacher or your school administrator.'}</p>
   </div></div>`;
   $('#form').innerHTML = mode==='login' ? loginForm() : signupForm();
   if(mode==='login'){
@@ -31,7 +31,7 @@ function renderAuth(mode='login'){
 }
 function loginForm(){
   let savedEmail=''; try{ savedEmail=localStorage.getItem('nis_remember_email')||''; }catch(_){}
-  return `<label for="li_email">Email</label><input id="li_email" name="email" type="email" autocomplete="username" placeholder="youremail@nordic-school.edu.pe" value="${esc(savedEmail)}">
+  return `<label for="li_email">Email</label><input id="li_email" name="email" type="email" autocomplete="username" placeholder="${NIS_SCHOOL.slug==='nis' ? 'youremail@nordic-school.edu.pe' : 'your email'}" value="${esc(savedEmail)}">
     <label for="li_pw">Password</label>
     <div style="position:relative">
       <input id="li_pw" name="password" type="password" autocomplete="current-password" placeholder="••••••••" style="width:100%;padding-right:42px">
@@ -59,7 +59,7 @@ function renderForgotPassword(){
     <p class="sub">We will send you a secure link to create a new password.</p>
     <div id="msg"></div>
     <label>Email</label>
-    <input id="fp_email" type="email" autocomplete="email" placeholder="youremail@nordic-school.edu.pe">
+    <input id="fp_email" type="email" autocomplete="email" placeholder="${NIS_SCHOOL.slug==='nis' ? 'youremail@nordic-school.edu.pe' : 'your email'}">
     <div style="margin-top:16px"><button class="btn" id="fp_btn" style="width:100%">Send link</button></div>
     <div class="auth-switch"><a id="fp_back">← Back to sign in</a></div>
   </div></div>`;
