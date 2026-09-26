@@ -321,7 +321,6 @@ function tarjetas(lista){
       '<button class="say" type="button" data-say="uk" data-t="' + esc(t) + '" title="British pronunciation">UK</button>' +
       '<button class="say" type="button" data-say="us" data-t="' + esc(t) + '" title="American pronunciation">US</button>' +
       '<div class="en">' + esc(d.en) + '</div>' +
-      '<div class="es">' + esc(d.es) + '</div>' +
       '<div class="ex">' + esc(d.ex) + '</div>' +
       (d.note ? '<div class="note">' + esc(d.note) + '</div>' : '') +
       '</div>';
@@ -369,18 +368,43 @@ function inicia(a){
   else if(a === 'speed') iniciaSpeed();
   else if(a === 'mem') iniciaMem();
 }
+/* Cierre de una actividad: nota, qué bloques del nivel quedan por practicar y el
+   paso siguiente (otro bloque, o el nivel siguiente cuando ya no queda ninguno).
+   «Practicado» = se terminó alguna actividad del bloque; se guarda en <store>_rec. */
+function bloqueHecho(i){ return !!RECS['done|' + LEVEL + '|' + i]; }
+function marcaBloqueHecho(){
+  var k = 'done|' + LEVEL + '|' + IB;
+  if(RECS[k]) return;
+  RECS[k] = 1;
+  try { localStorage.setItem(APP.store + '_rec', JSON.stringify(RECS)); } catch(e){}
+}
 function resumenAct(tit, ok, total, a){
   var pct = total ? Math.round(ok / total * 100) : 0;
+  marcaBloqueHecho();
+  var faltan = [];
+  BLOQUES.forEach(function(bl, i){ if(!bloqueHecho(i)) faltan.push(i); });
+  var ni = DATA.niveles.indexOf(LEVEL), sig = DATA.niveles[ni + 1] || null;
+  var despues = faltan.filter(function(i){ return i > IB; });
+  var siguiente = faltan.length ? (despues.length ? despues[0] : faltan[0]) : null;
+  var chips = BLOQUES.map(function(bl, i){
+    var dom = domBloque(bl), hecho = bloqueHecho(i);
+    return '<button class="bk' + (hecho ? ' done' : '') + '" aria-pressed="' + (i === IB) + '" onclick="setBloque(' + i + ')"' +
+      ' title="Block ' + (i + 1) + ': ' + (hecho ? 'practised' : 'not practised yet') + ' · ' + dom + ' of ' + bl.length + ' mastered">' +
+      (hecho ? '&#10003; ' : '') + (i + 1) + '<i><b style="width:' + Math.round(dom / bl.length * 100) + '%"></b></i></button>';
+  }).join('');
   return '<div class="card" style="text-align:center">' +
     '<div class="score">' + pct + '%</div>' +
-    '<p>' + tit + ' · ' + ok + ' out of ' + total + ' in block ' + (IB + 1) + ' of ' + LEVEL + '.</p>' +
+    '<p>' + tit + ' · ' + ok + ' of ' + total + ' in block ' + (IB + 1) + ' of ' + LEVEL + '.</p>' +
+    '<div class="blockhead">' + (faltan.length ?
+      plural(faltan.length, 'block', 'blocks') + ' of ' + LEVEL + ' still to practise: ' + faltan.map(function(i){ return i + 1; }).join(', ') :
+      'All ' + BLOQUES.length + ' blocks' + ' of ' + LEVEL + ' practised' + (sig ? ' — ready for ' + sig + '.' : ' — this is the last level.')) + '</div>' +
+    '<div class="blocks" style="justify-content:center">' + chips + '</div>' +
     '<div class="row" style="justify-content:center">' +
     '<button class="btn" onclick="inicia(\'' + a + '\')">Try again</button>' +
-    (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Next block</button>' : '') +
+    (siguiente != null ? '<button class="btn sec" onclick="setBloque(' + siguiente + ')">Next block: ' + (siguiente + 1) + '</button>' :
+      (sig ? '<button class="btn sec" onclick="setLevel(\'' + sig + '\')">Next level: ' + sig + '</button>' : '')) +
     '<button class="btn sec" onclick="alMenu()">Other activities</button></div></div>';
 }
-
-/* ---------- rellenar huecos con el banco de diez ---------- */
 function iniciaRelleno(){
   var b = BLOQUES[IB] || [];
   ST = {orden:mezcla(b), banco:mezcla(b), i:0, ok:0, hechos:{}, resuelto:false, fallo:false, pista:false,
@@ -388,23 +412,36 @@ function iniciaRelleno(){
   ACT = 'gap'; render(); arriba();
 }
 function fraseHueco(d, resuelto){
-  var t = String(term(d)), ex = String(d.ex || ''), pre = null, post = '';
-  var i = ex.toLowerCase().indexOf(t.toLowerCase());
-  if(i >= 0){
-    var a = i > 0 ? ex.charAt(i - 1) : ' ', z = (i + t.length) < ex.length ? ex.charAt(i + t.length) : ' ';
-    if(!/[a-zA-Z]/.test(a) && !/[a-zA-Z]/.test(z)){ pre = ex.slice(0, i); post = ex.slice(i + t.length); }
+  var t = String(term(d)), ex = String(d.ex || ''), e = ejercicio(d, 'complete'), q = null, piezas = null;
+  if(e && e.f && e.f.length){
+    // El generador marcó qué se borró en cada hueco: «took off» junto, o «move … up»
+    // con el objeto en medio. Al acertar se repone tal cual, no el infinitivo.
+    q = String(e.q).replace(/^\s*Complete:\s*/, ''); piezas = e.f;
+  } else {
+    var i = ex.toLowerCase().indexOf(t.toLowerCase());
+    if(i >= 0){
+      var a = i > 0 ? ex.charAt(i - 1) : ' ', z = (i + t.length) < ex.length ? ex.charAt(i + t.length) : ' ';
+      if(!/[a-zA-Z]/.test(a) && !/[a-zA-Z]/.test(z)){ q = ex.slice(0, i) + '_____' + ex.slice(i + t.length); piezas = [ex.slice(i, i + t.length)]; }
+    }
+    if(q === null){
+      // El generador ya dejó hecho el hueco para los idioms con hueco variable
+      // («speaks her mind»); ahí no vale buscar el texto literal.
+      q = e ? String(e.q).replace(/^\s*Complete:\s*/, '') : '';
+      if(!/_{3,}/.test(q)) q = String(d.en || '') + ' → _____';
+      piezas = [t];
+    }
   }
-  if(pre === null){
-    // El generador ya dejó hecho el hueco para las formas conjugadas y los idioms
-    // con hueco variable («speaks her mind»); ahí no vale buscar el texto literal.
-    var e = ejercicio(d, 'complete');
-    var q = e ? String(e.q).replace(/^\s*Complete:\s*/, '') : '';
-    var m = q.match(/_{3,}(?:\s*_{3,})*/);
-    if(m){ pre = q.slice(0, m.index); post = q.slice(m.index + m[0].length); }
-    else { pre = String(d.en || '') + ' → '; post = ''; }
+  // Un hueco por tramo borrado; los guiones bajos no se pintan (el subrayado ya es el hueco).
+  var partes = q.split(/_{3,}(?:\s*_{3,})*/), html = '', k = 0;
+  for(var j = 0; j < partes.length; j++){
+    html += esc(partes[j]);
+    if(j < partes.length - 1){
+      var texto = resuelto && piezas[k] != null ? piezas[k] : '';
+      html += '<span class="hueco' + (texto ? ' ok' : '') + '">' + (texto ? esc(texto) : '&nbsp;') + '</span>';
+      k++;
+    }
   }
-  return esc(pre) + '<span class="hueco' + (resuelto ? ' ok' : '') + '">' +
-    (resuelto ? esc(t) : '_____') + '</span>' + esc(post);
+  return html;
 }
 function vistaRelleno(){
   var n = ST.orden.length;
@@ -421,7 +458,7 @@ function vistaRelleno(){
         ((hecho || ST.resuelto) ? ' disabled' : '') + '>' + esc(tt) + '</button>';
     }).join('') +
     '</div><div id="fb">' + (ST.resuelto ?
-      '<div class="fb ok"><b>' + esc(term(d)) + '</b> — ' + esc(d.es) +
+      '<div class="fb ok"><b>' + esc(term(d)) + '</b> — ' + esc(d.en) +
       '<button class="btn sm" style="margin-left:12px" onclick="sigRelleno()">Next</button></div>' : '') +
     '</div></div>';
 }
@@ -439,8 +476,8 @@ function eligeBanco(btn){
     var otro = null;
     ST.banco.forEach(function(x){ if(term(x) === sel) otro = x; });
     document.getElementById('fb').innerHTML = '<div class="fb no">' +
-      (otro ? '<b>' + esc(sel) + '</b> means «' + esc(otro.es) + '». The sentence calls for something else.' : 'That one does not fit here.') +
-      (ST.fallo ? ' Hint: you are looking for «' + esc(d.es) + '».' : '') + '</div>';
+      (otro ? '<b>' + esc(sel) + '</b> means «' + esc(otro.en) + '». The sentence calls for something else.' : 'That one does not fit here.') +
+      (ST.fallo ? ' Hint: you are looking for «' + esc(d.en) + '».' : '') + '</div>';
     ST.fallo = true;
     setTimeout(function(){ btn.classList.remove('bad'); }, 900);
   }
@@ -525,7 +562,7 @@ function iniciaMixto(){
   var dentro = {};
   (BLOQUES[IB] || []).forEach(function(d){ dentro[term(d)] = d; });
   var pool = ((DATA.exercises || {})[LEVEL] || []).filter(function(e){
-    return e.t !== 'match' && e[APP.id] && dentro[e[APP.id]];
+    return e.t !== 'match' && e.t !== 'meaning_es' && e[APP.id] && dentro[e[APP.id]];
   });
   ST = {q:mezcla(pool).slice(0, 20), i:0, ok:0, dentro:dentro, t0:Date.now(), reportado:false};
   ACT = 'mix'; render(); arriba();
@@ -604,7 +641,7 @@ function nuevaQ(){
   var op = mezcla(cand).slice(0, 3);
   op.push(t);
   op = mezcla(op);
-  var enEs = Math.random() < 0.5;
+  var enEs = false; // el portal va en inglés: la pista es siempre la definición en inglés
   ST.q = {t:t, item:d, pista:(enEs ? d.es : d.en), enEs:enEs, op:op, a:op.indexOf(t)};
 }
 function vistaSpeed(){
@@ -622,7 +659,7 @@ function vistaSpeed(){
     '<span class="racha">' + (ST.racha >= 3 ? 'Streak ' + ST.racha + ' · x' + mult() : (ST.racha ? 'Streak ' + ST.racha : '')) + '</span>' +
     '<span id="tnum">' + Math.ceil(queda / 1000) + ' s</span></div>' +
     '<div class="tbar" id="tw"><i id="tbar" style="width:' + (queda / (SEGUNDOS * 1000) * 100) + '%"></i></div>' +
-    '<div class="card"><div class="q">Which ' + APP.uno + ' means ' + (q.enEs ? '' : '(in English) ') +
+    '<div class="card"><div class="q">Which ' + APP.uno + ' means ' +
     '«<b>' + esc(q.pista) + '</b>»?</div><div class="opts" id="opts">' +
     q.op.map(function(o, i){
       return '<button class="opt" type="button" data-i="' + i + '">' + esc(o) + '</button>';
@@ -672,7 +709,7 @@ function iniciaMem(){
   var sel = mezcla(BLOQUES[IB] || []).slice(0, 6), cs = [];
   sel.forEach(function(d, i){
     cs.push({p:i, k:'t', x:term(d), d:d});
-    cs.push({p:i, k:'d', x:d.es, d:d});
+    cs.push({p:i, k:'d', x:d.en, d:d});
   });
   ST = {cartas:mezcla(cs), abiertas:[], hechas:{}, movs:0, t0:Date.now(), bloq:false,
         total:sel.length, fin:null, nuevoRecord:false};

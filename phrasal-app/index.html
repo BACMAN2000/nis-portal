@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../lexapp.css?v=bf8f5e87">
+<link rel="stylesheet" href="../lexapp.css?v=d137b7e8">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="../nis-tokens.css?v=b3bffd5c">
 <script src="../config.js?v=720edc7d"></script>
@@ -47,17 +47,17 @@
 /* Lo único propio de esta app: qué claves trae su data.json y cómo se nombra lo
    que enseña. El motor está en ../js/lexapp.js, compartido con las otras dos. */
 var APP = {
-  store:'coh_phrasal', list:'verbs', id:'pv', audio:'phrasal', data:'data.json?v=20a6ff68',
+  store:'coh_phrasal', list:'verbs', id:'pv', audio:'phrasal', data:'data.json?v=ec40fbb5',
   uno:'phrasal verb', varios:'phrasal verbs',
   elMejor:'the best', deLos:'of the',
   extra:', past-tense form and separable or not',
   badges: function(d){
     return '<span class="badge ' + (d.sep === 'separable' ? 'sep">separable' : 'insep">inseparable') + '</span>' +
-      (d.freq ? '<span class="badge">' + d.freq + ' veces en el curso</span>' : '');
+      (d.freq ? '<span class="badge">' + d.freq + ' times in the course</span>' : '');
   }
 };
 </script>
-<script src="../lexapp.js?v=4eddeca7"></script>
+<script src="../lexapp.js?v=4b290a8f"></script>
 <script src="../nis-presence.js?v=684f7b00" defer></script>
 <script src="../nis-i18n.js?v=90aa61ff" defer></script>
 <script src="../nis-tema.js?v=0ae7c164" defer></script>
