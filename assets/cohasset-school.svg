@@ -1,4 +1,5 @@
-<svg viewBox="16 16 404 148" role="img" aria-label="Cohasset School" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="19.5 22.6 481.9 144.7" role="img" aria-label="Cohasset School" xmlns="http://www.w3.org/2000/svg">
+  <title>Cohasset School</title>
   <defs>
     <!-- Strong shadow cast far to the LEFT (light from the upper-right) -->
     <filter id="sh" x="-40%" y="-30%" width="180%" height="160%">
@@ -84,6 +85,6 @@
     </g>
   </g>
 
-  <text x="175" y="104" font-family="Arial Black, Helvetica, sans-serif" font-weight="900" letter-spacing="-1" font-size="38" fill="#64748B">COHASSET</text>
-  <text x="177" y="128" font-family="Arial, Helvetica, sans-serif" font-weight="600" letter-spacing="6" font-size="13" fill="#94A3B8">SCHOOL</text>
+  <text x="169.8" y="80.4" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="55" letter-spacing="-1.43" textLength="326.1" fill="#64748B">COHASSET</text>
+  <text x="170.0" y="143.0" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="69.9" textLength="326.2" fill="#2563EB">SCHOOL</text>
 </svg>
