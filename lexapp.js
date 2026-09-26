@@ -353,7 +353,7 @@ function vistaPractica(){
     acto('par', '&#8646;', 'Match meanings',
       'Match each ' + APP.uno + ' with what it means, in rounds of five.') +
     acto('mix', '&#10022;', 'Mixed review',
-      'Varied questions from this block: meaning in English and Spanish, true or false' + (APP.extra || '') + '.') +
+      'Varied questions from this block: meaning, true or false' + (APP.extra || '') + '.') +
     '</div>';
 }
 function acto(id, ic, tit, desc, extra){
@@ -613,7 +613,7 @@ function vistaJuegos(){
   return cabecera() + '<div class="acts">' +
     acto('speed', '&#9201;', 'Time attack', SEGUNDOS + ' seconds: recognise the meaning before time runs out. Chain correct answers and each point is worth double, then triple.',
       rs != null ? 'Record ' + rs : '') +
-    acto('mem', '&#9635;', 'Memory', 'Six pairs face down: match each ' + APP.uno + ' with its translation. Fewest moves wins.',
+    acto('mem', '&#9635;', 'Memory', 'Six pairs face down: match each ' + APP.uno + ' with its meaning. Fewest moves wins.',
       rm != null ? 'Record ' + rm + ' moves' : '') +
     '</div><div class="hint">Records are for this block and are saved in this browser.</div>';
 }
@@ -737,7 +737,7 @@ function vistaMem(){
       }
       return '<button class="mc tapada" type="button" data-c="' + i + '">?</button>';
     }).join('') + '</div>' +
-    '<div class="hint">Match each ' + APP.uno + ' with its translation. The best number of moves is saved.</div>';
+    '<div class="hint">Match each ' + APP.uno + ' with its meaning. The best number of moves is saved.</div>';
 }
 function voltea(b){
   if(ACT !== 'mem' || !ST || ST.bloq || ST.fin != null) return;
