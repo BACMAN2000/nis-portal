@@ -114,6 +114,7 @@ function _plSchools(D){
         <input type="checkbox" data-sid="${s.id}" data-app="${esc(a.key)}" ${D.on[s.id+'|'+a.key]?'checked':''} onchange="window._plApp(this)">
         <span>${esc(a.label)}</span></label>`).join('');
     const tpl = s.template_of ? (D.byId[s.template_of]||{}).name : null;
+    const st = s.settings||{}, t = st.terms||{};
     return `<div class="card sch-card" id="sch-${s.id}">
       <div class="sch-head">
         <img src="${esc(s.logo_url||'assets/cohasset-school.svg')}" alt="" onerror="this.style.visibility='hidden'">
@@ -145,10 +146,31 @@ function _plSchools(D){
           <label>Trial ends <input data-f="trial_ends_at" type="date" value="${esc(s.trial_ends_at||'')}"></label>
           <label class="inline"><input data-f="is_demo" type="checkbox" ${s.is_demo?'checked':''}> Demo school</label>
           <label class="wide">Notes <textarea data-f="notes" rows="2">${esc(s.notes||'')}</textarea></label>
+          <div class="wide"><b>Module names</b> <span class="muted small">— leave empty for the neutral name</span></div>
+          <label>YLE courses <input data-t="fun" value="${esc(t.fun||'')}" placeholder="Fun for English"></label>
+          <label>Secondary series <input data-t="ascent" value="${esc(t.ascent||'')}" placeholder="English Ascent"></label>
+          <label>Dictionary <input data-t="dict" value="${esc(t.dict||'')}" placeholder="Dictionary"></label>
+          <label>Live quiz <input data-t="shoot" value="${esc(t.shoot||'')}" placeholder="Quiz Live"></label>
+          <label>Little readers <input data-t="readers" value="${esc(t.readers||'')}" placeholder="Little Readers"></label>
+          <label>Courses group <input data-t="courses" value="${esc(t.courses||'')}" placeholder="School courses"></label>
+          <label>Portal title <input data-t="portal" value="${esc(t.portal||'')}" placeholder="${esc(s.short_name||'')} Portal"></label>
+          <div class="wide"><b>Structure</b></div>
+          <label>Grades (ids 1-11) <input data-s="grades" value="${esc((st.grades||[]).join(','))}" placeholder="1,2,3,4,5,6,7,8,9,10,11"></label>
+          <label>Sections <input data-s="sections" value="${esc((st.sections||[]).join(','))}" placeholder="A,B"></label>
           <div class="wide"><button class="btn" onclick="window._plSaveSchool('${s.id}')">💾 Save</button> <span class="muted" id="sch-msg-${s.id}"></span></div>
         </div>
       </details>
       <div style="margin-top:12px"><b>Apps</b><div class="sch-grid">${appsHTML}</div></div>
+      <details style="margin-top:10px"><summary class="muted small">➕ Create an account in this school</summary><div class="pl-form" id="acc-new-${s.id}">
+        <label>Email <input data-f="email" type="email" autocomplete="off"></label>
+        <label>Full name <input data-f="full_name"></label>
+        <label>Role <select data-f="role"><option>admin</option><option>teacher</option><option>student</option></select></label>
+        <label>Grade (students) <select data-f="grade_id"><option value="">—</option>${GRADES.map(g=>`<option value="${g.id}">${esc(g.name)}</option>`).join('')}</select></label>
+        <label>Section <input data-f="section" placeholder="A"></label>
+        <label>Password (8+) <input data-f="password" type="password" autocomplete="new-password"></label>
+        <label class="inline"><input data-f="is_demo" type="checkbox"> Demo account</label>
+        <div class="wide"><button class="btn small" onclick="window._plCreateAccount('${s.id}')">Create account</button> <span class="muted" id="acc-msg-${s.id}"></span></div>
+      </div></details>
     </div>`;
   };
   const models = D.schools.filter(s=>!s.is_demo).map(s=>`<option value="${s.id}" ${s.slug==='nis'?'selected':''}>${esc(s.name)}</option>`).join('');
@@ -242,8 +264,14 @@ function _plRefresh(delay=600){ setTimeout(()=>adminPlatform(window._plTab||'pla
 window._plToggle = id => { const d=$('#'+id); if(d) d.open=!d.open; };
 window._plSaveSchool = async id => {
   _plMsg('sch-msg-'+id,'Saving…');
-  const o=_plRead($('#sch-edit-'+id));
+  const root=$('#sch-edit-'+id); const o=_plRead(root);
   ['monthly_fee','billing_day','students_cap'].forEach(k=>{ if(o[k]!=null) o[k]=Number(o[k]); });
+  // Nombres de módulo y estructura viven en settings (jsonb): se funden con lo que ya había.
+  const st = Object.assign({}, ((window._PL||{}).byId||{})[id] ? (window._PL.byId[id].settings||{}) : {});
+  const terms={}; root.querySelectorAll('[data-t]').forEach(i=>{ const v=i.value.trim(); if(v) terms[i.dataset.t]=v; }); st.terms=terms;
+  st.grades   = root.querySelector('[data-s=grades]').value.split(',').map(x=>parseInt(x,10)).filter(n=>n>0);
+  st.sections = root.querySelector('[data-s=sections]').value.split(',').map(x=>x.trim().toUpperCase()).filter(Boolean);
+  o.settings = st;
   if(o.domain) o.domain=o.domain.toLowerCase();
   const { error } = await sb.from('schools').update(o).eq('id',id);
   _plMsg('sch-msg-'+id, error?'⚠️ '+error.message:'✓ Saved'); if(!error) _plRefresh();
@@ -255,6 +283,15 @@ window._plCreate = async () => {
   _plMsg('sch-msg-new','Creating…');
   const { error } = await sb.rpc('school_create_from_template',{ p_slug:o.slug.toLowerCase(), p_name:o.name, p_short:o.short_name, p_domain:o.domain, p_template:o.template });
   _plMsg('sch-msg-new', error?'⚠️ '+error.message:'✓ Created'); if(!error) _plRefresh();
+};
+window._plCreateAccount = async sid => {
+  const o=_plRead($('#acc-new-'+sid));
+  if(!o.email||!o.full_name||!o.password){ _plMsg('acc-msg-'+sid,'⚠️ Email, name and password are required'); return; }
+  _plMsg('acc-msg-'+sid,'Creating…');
+  const { error } = await sb.rpc('school_create_account',{ p_school:sid, p_email:o.email, p_password:o.password, p_full_name:o.full_name,
+    p_role:o.role||'admin', p_is_demo:!!o.is_demo, p_grade_id:o.grade_id?Number(o.grade_id):null, p_section:o.section||null });
+  _plMsg('acc-msg-'+sid, error?'⚠️ '+error.message:'✓ Account created');
+  if(!error) $('#acc-new-'+sid).querySelectorAll('input').forEach(i=>{ if(i.type==='checkbox') i.checked=false; else i.value=''; });
 };
 window._plApp = async cb => {
   cb.disabled=true;

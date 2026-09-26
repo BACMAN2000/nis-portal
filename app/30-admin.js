@@ -54,8 +54,8 @@ async function renderAdmin(tab='users'){
        que no se confundan con la app. Las entregas de Fun for Nordic se
        corrigen en Correccion. */
     {group:'Cambridge', icon:'🎓', items:[
-      {key:'funyle',label:'🧸 Fun for Nordic · Primary'},
-      {key:'funsec',label:'🧗 Nordic Ascent · Secondary'},
+      {key:'funyle',label:`🧸 ${schoolTerm('fun')} · Primary`},
+      {key:'funsec',label:`🧗 ${schoolTerm('ascent')} · Secondary`},
       {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
       {key:'yle',label:'🛡️ YLE panel'},
       {key:'studyplan',label:'📋 Study plan'},
@@ -67,14 +67,14 @@ async function renderAdmin(tab='users'){
     ]},
     {group:'Practice tools', icon:'🧰', items:[
       {key:'games',label:'🎲 Games Lab'},
-      {key:'livequiz',label:'🎮 NIShoot Live'},
+      {key:'livequiz',label:`🎮 ${schoolTerm('shoot')}`},
       {key:'mun',label:'🌐 MUN Academy'},
       {key:'phonics',label:'🔤 Phonics'},
       {key:'phrasal',label:'🔗 Phrasal verbs'},
       {key:'collocations',label:'🪢 Collocations'},
       {key:'idioms',label:'💬 Idioms'},
       {key:'wordform',label:'🧩 Word formation'},
-      {key:'dict',label:'📖 NIS Dictionary'},
+      {key:'dict',label:`📖 ${schoolTerm('dict')}`},
       {key:'coach',label:'🎙️ Pronunciation'},
     ]},
     /* Correccion = todo lo que espera una nota o hay que abrir para que se
@@ -88,7 +88,7 @@ async function renderAdmin(tab='users'){
       {key:'corregir',label:'✅ Mark worksheets'},
       {key:'unitexams',label:'📋 Unit exams'},
       {key:'readers',label:'📖 Reading checks'},
-      {key:'funnordic',label:'🧸 Fun for Nordic'},
+      {key:'funnordic',label:`🧸 ${schoolTerm('fun')}`},
       {key:'mock2',label:'📝 MOCK 2'},
       {key:'speaktest',label:'🗣️ Speaking test'},
     ]},

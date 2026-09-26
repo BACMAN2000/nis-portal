@@ -8,7 +8,7 @@ function ayudaBody(){
   return `<h1>❓ Help</h1>
     <p class="muted" style="margin-top:-6px">Where everything is and how to do it. You can switch guides
       with the pills above, and search for what you want to do.</p>
-    <iframe src="ayuda.html?role=${encodeURIComponent(r)}" title="NIS Portal help"
+    <iframe src="ayuda.html?role=${encodeURIComponent(r)}" title="${schoolTerm('portal')} help"
       style="width:100%;height:80vh;min-height:560px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>
     <p class="muted" style="font-size:.82rem;margin-top:10px">Prefer to have it separately?
       <a href="ayuda.html" target="_blank" rel="noopener">Open help in another tab</a>.</p>`;
@@ -28,7 +28,7 @@ function liveQuizBody(){ return `
     <div class="muted" style="flex:1;min-width:220px">Host a live Kahoot-style game. Project this screen; students join with the PIN or the QR code from their phone.</div>
     <a class="btn" href="live-quiz.html?v=e1afdde7" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="live-quiz.html?v=e1afdde7" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=e1afdde7" title="${schoolTerm('shoot')}" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, matching, crossword, word search, word invaders and time attack.</div>
@@ -88,9 +88,9 @@ function rhymesBody(){ return `
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
 const FUN_CURSOS = {
-  starters:{em:'🐧',curso:'Fun for Nordic 1',examen:'Pre A1 Starters',unidades:45,color:'#d97d0d',grados:'G1 · G2',cast:'The Lighthouse Explorers'},
-  movers:  {em:'🐺',curso:'Fun for Nordic 2',examen:'A1 Movers',      unidades:50,color:'#2f9268',grados:'G3 · G4',cast:'The Fjord Club'},
-  flyers:  {em:'🦅',curso:'Fun for Nordic 3',examen:'A2 Flyers',      unidades:55,color:'#3b6fb5',grados:'G5',     cast:'The Aurora Expedition'},
+  starters:{em:'🐧',get curso(){ return schoolTerm('fun')+' 1'; },examen:'Pre A1 Starters',unidades:45,color:'#d97d0d',grados:'G1 · G2',cast:'The Lighthouse Explorers'},
+  movers:  {em:'🐺',get curso(){ return schoolTerm('fun')+' 2'; },examen:'A1 Movers',      unidades:50,color:'#2f9268',grados:'G3 · G4',cast:'The Fjord Club'},
+  flyers:  {em:'🦅',get curso(){ return schoolTerm('fun')+' 3'; },examen:'A2 Flyers',      unidades:55,color:'#3b6fb5',grados:'G5',     cast:'The Aurora Expedition'},
 };
 /* La serie de secundaria (17-sep-2026): NORDIC ASCENT — la subida por la
    escalera Cambridge de A1 a C1. Mismo motor (nis-fun/engine, ?level=) y
@@ -99,7 +99,7 @@ const FUN_CURSOS = {
    cinco cursos se encontraran desde el menu, cosa que no pasaba. El nombre
    vive solo aqui: cambiarlo es una linea. Datos de nis-fun/content/levels.json
    (unidades = content/<id>/index.json; temas = content/<id>/grammar). */
-const SEC_SERIE = {em:'🧗', nombre:'Nordic Ascent', sub:'Cambridge for Schools · A1 → C1', color:'#6d5bd0'};
+const SEC_SERIE = {em:'🧗', get nombre(){ return schoolTerm('ascent'); }, sub:'Cambridge for Schools · A1 → C1', color:'#6d5bd0'};
 const SEC_CURSOS = {
   a1: {em:'🌱',curso:'A1 Foundations', examen:'the grammar before A2 Key',   unidades:'12 grammar topics',            color:'#db2777',grados:'G6 – G11'},
   ket:{em:'🔑',curso:'A2 Key',         examen:'A2 Key for Schools',          unidades:'6 units + 24 grammar topics',  color:'#6d5bd0',grados:'G6 – G11'},
@@ -200,7 +200,7 @@ async function funAccessPanel(grades){
       <tbody>${cuerpo}</tbody></table></div>`;
   };
 
-  $('#main').innerHTML = `<h1>🔐 Units by grade — Fun for Nordic</h1>
+  $('#main').innerHTML = `<h1>🔐 Units by grade — ${schoolTerm('fun')}</h1>
     <div class="note">Which part of the course each grade can open. Units outside the range
       <b>still appear</b> to the student, with a lock: this way they see how far they will get, but cannot get ahead.
       It is the same as what <b>📚 Activate units</b> does with classes.</div>
@@ -330,8 +330,8 @@ function funCursoBody(nivel){
   const url = `nis-fun/engine/?level=${nivel}`;
   // Secundaria no tiene libros PDF: la fila «To print» solo es de primaria.
   const resumen = sec
-    ? `<b>${SEC_SERIE.em} ${SEC_SERIE.nombre} · ${c.curso}</b> — ${c.unidades} with audio, dialogues and exam tasks to prepare for <b>${c.examen}</b> (${c.grados}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 Fun for Nordic</b>.`
-    : `<b>${c.curso}</b> — ${c.unidades} units with audio, games and exam tasks to prepare for <b>${c.examen}</b> (${c.grados} · ${c.cast}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 Fun for Nordic</b>.`;
+    ? `<b>${SEC_SERIE.em} ${SEC_SERIE.nombre} · ${c.curso}</b> — ${c.unidades} with audio, dialogues and exam tasks to prepare for <b>${c.examen}</b> (${c.grados}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 ${schoolTerm('fun')}</b>.`
+    : `<b>${c.curso}</b> — ${c.unidades} units with audio, games and exam tasks to prepare for <b>${c.examen}</b> (${c.grados} · ${c.cast}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 ${schoolTerm('fun')}</b>.`;
   return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">${resumen}</div>
@@ -354,7 +354,7 @@ function funSecBody(render){
     <p class="muted" style="margin-top:-6px">The climb up the Cambridge ladder for 6.º–11.º: A1 Foundations
       (the grammar before the first exam), then A2 Key, B1 Preliminary, B2 First and C1 Advanced. Units with
       dialogues, audio and exam tasks, and a Grammar Lab of 24 topics per level. The format of each exam is in
-      <b>📘 Cambridge info</b>. Primary has its own series: <b>🧸 Fun for Nordic</b>.</p>
+      <b>📘 Cambridge info</b>. Primary has its own series: <b>🧸 ${schoolTerm('fun')}</b>.</p>
     <div class="grid cols-3">${SEC_ORDEN.map(tarjeta).join('')}</div>
     <div class="card" style="margin-top:16px">
       <h2 style="margin:0 0 4px;color:var(--blue-d)">✅ Mark what they submit</h2>
@@ -375,7 +375,7 @@ function funYleBody(render){
     return _hubCard(c.em, c.curso, `${c.examen} · ${c.grados}<br>${c.unidades} unidades`,
       `${render}('${tab}')`);
   };
-  return `<h1>🧸 Fun for Nordic — Cambridge Young Learners (Primary)</h1>
+  return `<h1>🧸 ${schoolTerm('fun')} — Cambridge Young Learners (Primary)</h1>
     <p class="muted" style="margin-top:-6px">The first three steps of the Cambridge ladder for 1.º–5.º:
       Pre A1 Starters, A1 Movers and A2 Flyers. 150 units with audio, games and exam tasks.
       The format of each exam is in <b>📘 Cambridge info</b>. Secondary has its own series:
@@ -543,8 +543,8 @@ function nishootJoinBody(){ return `
     <div class="muted" style="flex:1;min-width:220px">Your teacher is projecting a live game. Type the <b>PIN</b> shown on the screen (or scan the QR) and your name to join.</div>
     <a class="btn" href="live-quiz.html?join=1&v=13" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="live-quiz.html?join=1&v=13" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
-function studentNishoot(){ _setNav('tools'); $('#main').innerHTML = `${_backBtn("window._nav('tools')",'Practice tools')}<h1>🎮 NIShoot Live</h1>${nishootJoinBody()}`; }
+  <iframe src="live-quiz.html?join=1&v=13" title="${schoolTerm('shoot')}" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+function studentNishoot(){ _setNav('tools'); $('#main').innerHTML = `${_backBtn("window._nav('tools')",'Practice tools')}<h1>🎮 ${schoolTerm('shoot')}</h1>${nishootJoinBody()}`; }
 /* Student view: English Games Lab (self-contained practice games). */
 function studentGames(){ _setNav('tools'); $('#main').innerHTML = `${_backBtn("window._nav('tools')",'Practice tools')}<h1>🎲 Games Lab</h1>${gamesLabBody()}`; }
 
@@ -560,7 +560,7 @@ function studentGames(){ _setNav('tools'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=4e01185e&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=4e01185e&embed=1" title="${schoolTerm('dict')}"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 

@@ -115,7 +115,7 @@
     return { abierto: false, filas: delIdioma.filter(f => f.grade_id === gradeId && f.unlocked) };
   }
   const FUN_NOMBRE = {
-    en: { starters: 'Fun for Nordic 1 · Pre A1 Starters', movers: 'Fun for Nordic 2 · A1 Movers', flyers: 'Fun for Nordic 3 · A2 Flyers' },
+    en: { starters: schoolTerm('fun')+' 1 · Pre A1 Starters', movers: schoolTerm('fun')+' 2 · A1 Movers', flyers: schoolTerm('fun')+' 3 · A2 Flyers' },
     fr: { starters: 'Cap sur le français 1', movers: 'Cap sur le français 2', flyers: 'Cap sur le français 3' },
   };
 
@@ -460,14 +460,14 @@
   function bloqueCambridge(admin, gradeId, gradeKey, D) {
     // Fun for Nordic (por idioma)
     let filasFun = '';
-    if (D.fun === null) { filasFun = filaNoLeible('Fun for Nordic'); }
+    if (D.fun === null) { filasFun = filaNoLeible(schoolTerm('fun')); }
     else if (EDIT) {
       ['en', 'fr'].forEach(lang => {
         const etiqLang = lang === 'en' ? '🇬🇧 English' : '🇫🇷 Français';
         const filaActual = D.fun.find(r => r.grade_id === gradeId && r.lang === lang);
         const opciones = ['starters', 'movers', 'flyers'].map(lv =>
           `<option value="${lv}" ${filaActual && filaActual.level === lv ? 'selected' : ''}>${esc((FUN_NOMBRE[lang] || {})[lv] || lv)}</option>`).join('');
-        filasFun += `<tr><td colspan="3"><b>Fun for Nordic · ${esc(etiqLang)}</b>
+        filasFun += `<tr><td colspan="3"><b>${schoolTerm('fun')} · ${esc(etiqLang)}</b>
           <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
             <select class="ap-fun-nivel">${filaActual ? '' : '<option value="">— choose a level —</option>'}${opciones}</select>
             units <input class="ap-fun-desde" type="number" min="1" value="${filaActual ? filaActual.desde : 1}" style="width:64px">
@@ -481,11 +481,11 @@
       ['en', 'fr'].forEach(lang => {
         const est = funEstadoDeGrado(D.fun, gradeId, lang);
         const etiqLang = lang === 'en' ? '🇬🇧 English' : '🇫🇷 Français';
-        if (est.abierto) { filasFun += fila('Fun for Nordic · ' + etiqLang, '✅', 'open · whole course (no rule saved yet)'); return; }
-        if (!est.filas.length) { filasFun += fila('Fun for Nordic · ' + etiqLang, '🔒', 'sees nothing (no rule for this grade)'); return; }
+        if (est.abierto) { filasFun += fila(schoolTerm('fun') + ' · ' + etiqLang, '✅', 'open · whole course (no rule saved yet)'); return; }
+        if (!est.filas.length) { filasFun += fila(schoolTerm('fun') + ' · ' + etiqLang, '🔒', 'sees nothing (no rule for this grade)'); return; }
         est.filas.forEach(f => {
           const nombre = (FUN_NOMBRE[lang] && FUN_NOMBRE[lang][f.level]) || f.level;
-          filasFun += fila('Fun for Nordic · ' + etiqLang, '✅', nombre + ' · units ' + f.desde + '–' + f.hasta);
+          filasFun += fila(schoolTerm('fun') + ' · ' + etiqLang, '✅', nombre + ' · units ' + f.desde + '–' + f.hasta);
         });
       });
     }
@@ -610,7 +610,7 @@
     }
     if (D.fun) {
       const est = funEstadoDeGrado(D.fun, gradeId, 'en');
-      if (!est.abierto && est.filas.length) est.filas.forEach(f => trozos.push('Fun for Nordic ' + (f.level[0].toUpperCase() + f.level.slice(1)) + ' units ' + f.desde + '–' + f.hasta));
+      if (!est.abierto && est.filas.length) est.filas.forEach(f => trozos.push(schoolTerm('fun') + ' ' + (f.level[0].toUpperCase() + f.level.slice(1)) + ' units ' + f.desde + '–' + f.hasta));
     }
     if (D.pa) trozos.push('Practice tests ' + (practiceOpen(D.paMap, gradeId) ? 'open' : 'closed'));
     if (D.ma) trozos.push('Mocks ' + (mockOpen(D.maMap, gradeId) ? 'open' : 'closed'));

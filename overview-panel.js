@@ -146,7 +146,7 @@
       const enlaces = [
         `<a href="#" onclick="window._nav('classes_${k}');return false">🏫 Classes</a>`,
         unidad ? `<a href="#" onclick="window._nav('classes_${k}_unit_u${unidad.n}');return false">🎯 Unit ${unidad.n}</a>` : '',
-        funNivel ? `<a href="#" onclick="window._irTab('fun${funNivel}');return false">${FUN_ICONO[funNivel]} Fun for Nordic ${funNivel[0].toUpperCase() + funNivel.slice(1)}</a>` : '',
+        funNivel ? `<a href="#" onclick="window._irTab('fun${funNivel}');return false">${FUN_ICONO[funNivel]} ${schoolTerm('fun')} ${funNivel[0].toUpperCase() + funNivel.slice(1)}</a>` : '',
         funNivel ? `<a href="#" onclick="window._irTab('rhymes');return false">🎶 Rhymes</a>` : '',
         `<a href="#" onclick="window._irTab('scope');return false">📚 Scope</a>`,
       ].filter(Boolean).join('');
@@ -259,7 +259,7 @@
           ${filaPend('🎯', 'Unit products', productos ? pendProductos : null, 'unitprod', sinAcceso)}
           ${filaPend('✅', 'Worksheets', fichas ? pendFichas : null, 'corregir', sinAcceso)}
           ${filaPend('📋', 'Unit exam · Writing', examenes ? pendExamen : null, 'unitexams', sinAcceso)}
-          ${filaPend('🧸', 'Fun for Nordic · writing & recordings', fun ? pendFun : null, 'funnordic', sinAcceso)}
+          ${filaPend('🧸', schoolTerm('fun') + ' · writing & recordings', fun ? pendFun : null, 'funnordic', sinAcceso)}
         </div>
         ${calendario}
       </div>

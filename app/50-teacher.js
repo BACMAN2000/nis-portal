@@ -20,7 +20,7 @@ async function renderTeacher(tab){
     correccion.push({key:'corregir',label:'✅ Mark worksheets'});
     correccion.push({key:'unitexams',label:'📋 Unit exams'});
     correccion.push({key:'readers',label:'📖 Reading checks'});
-    correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
+    correccion.push({key:'funnordic',label:`🧸 ${schoolTerm('fun')}`});
     correccion.push({key:'mock2',label:'📝 MOCK 2'});
     correccion.push({key:'speaktest',label:'🗣️ Speaking test'});
     seguimiento.push({key:'results',label:'📝 Results'});
@@ -44,8 +44,8 @@ async function renderTeacher(tab){
      de primaria (van sin candado, como Little Readers: son material de
      consulta, no datos de alumnos; sus entregas se corrigen en Correccion >
      Fun for Nordic), luego el hub, los simulacros, las apps y los candados. */
-  cambridge.push({key:'funyle',label:'🧸 Fun for Nordic · Primary'});
-  cambridge.push({key:'funsec',label:'🧗 Nordic Ascent · Secondary'});
+  cambridge.push({key:'funyle',label:`🧸 ${schoolTerm('fun')} · Primary`});
+  cambridge.push({key:'funsec',label:`🧗 ${schoolTerm('ascent')} · Secondary`});
   cambridge.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
   if(teacherAllowedGrades().length) cambridge.push({key:'yle',label:'🛡️ YLE panel'});
   cambridge.push({key:'exams',label:'🎧 Mock exams and Practice'});
@@ -69,14 +69,14 @@ async function renderTeacher(tab){
   grupo('Cambridge','🎓',cambridge);
   grupo('Practice tools','🧰',[
     {key:'games',label:'🎲 Games Lab'},
-    {key:'livequiz',label:'🎮 NIShoot Live'},
+    {key:'livequiz',label:`🎮 ${schoolTerm('shoot')}`},
     {key:'mun',label:'🌐 MUN Academy'},
     {key:'phonics',label:'🔤 Phonics'},
     {key:'phrasal',label:'🔗 Phrasal verbs'},
       {key:'collocations',label:'🪢 Collocations'},
       {key:'idioms',label:'💬 Idioms'},
     {key:'wordform',label:'🧩 Word formation'},
-    {key:'dict',label:'📖 NIS Dictionary'},
+    {key:'dict',label:`📖 ${schoolTerm('dict')}`},
     {key:'coach',label:'🎙️ Pronunciation'},
   ]);
   grupo('Marking','✅',correccion);
@@ -150,7 +150,7 @@ function resultsFilterBar(gradeList, onChangeFn){
   const gradeOpts = `<option value="">All grades</option>`
     + gradeList.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
   const sectionOpts = `<option value="">All</option>`
-    + ['A','B'].map(s=>`<option value="${s}" ${f.section===s?'selected':''}>${s}</option>`).join('');
+    + schoolSections().map(s=>`<option value="${s}" ${f.section===s?'selected':''}>${s}</option>`).join('');
   const hasFilter = f.grade||f.section||f.name||f.dateFrom||f.dateTo;
   return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
     <div>
@@ -659,7 +659,7 @@ window._sendWritingResult = async ()=>{
         task1Score:graded?gradeState.t1:null, task1Total:rubric.subs.length*rubric.bandMax,
         task2Score:graded?gradeState.t2:null, task2Total:rubric.subs.length*rubric.bandMax,
         texts,
-        message:msg, teacherEmail:'pbaca@nordic-school.edu.pe', teacherName:breakdown.gradedBy, schoolName:'Nordic International School of Lima' }) });
+        message:msg, teacherEmail:(NIS_SCHOOL.slug==='nis'?'pbaca@nordic-school.edu.pe':''), teacherName:breakdown.gradedBy, schoolName:schoolName() }) });
   }catch(e){}
   st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Result saved and sent to the student.':'Comment saved and sent to the student.'}${nxtTxt}</span>`;
   setTimeout(_gradeWritingAfterSave, 1200);

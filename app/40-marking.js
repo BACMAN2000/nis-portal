@@ -250,7 +250,7 @@ function _readerFilterBar(grades,years,books){
   const y=(years&&years.length?years:[SCHOOL_YEAR_NOW]).map(v=>`<option value="${v}" ${String(readerFilter.year)===String(v)?'selected':''}>${v}${v===SCHOOL_YEAR_NOW?' (current)':''}</option>`).join('');
   const t=RDR_TERMS.map(v=>`<option value="${v}" ${+readerFilter.term===v?'selected':''}>${_rdrTermLab(v)}</option>`).join('');
   const g=`<option value="">All grades</option>`+grades.map(x=>`<option value="${x.id}" ${String(readerFilter.grade)===String(x.id)?'selected':''}>${x.name}</option>`).join('');
-  const s=`<option value="">All</option>`+['A','B'].map(x=>`<option value="${x}" ${readerFilter.section===x?'selected':''}>${x}</option>`).join('');
+  const s=`<option value="">All</option>`+schoolSections().map(x=>`<option value="${x}" ${readerFilter.section===x?'selected':''}>${x}</option>`).join('');
   /* La obra ya no se elige: la decide el trimestre. Se enseña para que quede
      claro de qué libro son las notas que hay debajo. */
   const obra=(books&&books.length)
@@ -1135,7 +1135,7 @@ async function littleReadersPanel(){
     if(r.ok) libros=(await r.json()).libros||[];
   }catch(e){}
   if(!libros.length){
-    main.innerHTML=`<div class="card"><h1>🧒 Nordic Little Readers</h1>
+    main.innerHTML=`<div class="card"><h1>🧒 ${schoolTerm('readers')}</h1>
       <p class="err">Could not read the list of stories.</p></div>`;
     return;
   }
@@ -1160,8 +1160,8 @@ async function littleReadersPanel(){
     </div>`).join('');
 
   main.innerHTML=`<div class="card">
-    <h1>🧒 Nordic Little Readers</h1>
-    <p class="muted">Pre-A1 and A1 stories for primary, with the characters from Fun for Nordic.
+    <h1>🧒 ${schoolTerm('readers')}</h1>
+    <p class="muted">Pre-A1 and A1 stories for primary, with the characters from ${schoolTerm('fun')}.
       Each one has eight pages with illustrations and audio, and an activity at the end.
       The readers in <b>📖 Library</b> (Tom Sawyer, Treasure Island…) start at A2 and
       are for the grades above.</p>
@@ -1214,7 +1214,7 @@ async function funNordicPanel(){
     </div>`;
 
   const marco = cuerpo => `<div class="card">
-    <h2>🧸 Fun for Nordic · 🧗 Nordic Ascent — student submissions</h2>
+    <h2>🧸 ${schoolTerm('fun')} · 🧗 ${schoolTerm('ascent')} — student submissions</h2>
     <p class="muted">What students write and record in Starters, Movers and Flyers (primary) and in
       A1 Foundations, A2 Key, B1 Preliminary, B2 First and C1 Advanced (secondary), most
       recent first. Give a score from 0 to 10 and a comment; it saves automatically.</p>

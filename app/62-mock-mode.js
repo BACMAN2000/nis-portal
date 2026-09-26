@@ -267,7 +267,7 @@ function _mockPaint(){
       <tbody>${rows}</tbody></table></div>`;
   // ---- MOCK INDIVIDUAL ----
   const optG = `<option value="">— grade —</option>` + grades.map(g=>`<option value="${g.id}" ${String(g.id)===String(_mm.grade)?'selected':''}>${g.name}</option>`).join('');
-  const optS = `<option value="">All</option>` + ['A','B'].map(s=>`<option value="${s}" ${s===_mm.section?'selected':''}>${s}</option>`).join('');
+  const optS = `<option value="">All</option>` + schoolSections().map(s=>`<option value="${s}" ${s===_mm.section?'selected':''}>${s}</option>`).join('');
   const lista = (_mm.students||[]).filter(s=>!_mm.section || (s.section||'').toUpperCase()===_mm.section);
   const optA = `<option value="">${_mm.grade ? (lista.length?'— student —':'— no students —') : '— grade first —'}</option>` + lista.map(s=>`<option value="${s.id}" ${s.id===_mm.student?'selected':''}>${esc(s.full_name||s.email)}${s.section?' · '+esc(s.section):''}${s.cefr_level?' · '+esc(s.cefr_level):''}</option>`).join('');
   const optM = [1,2,3,4,5,6,7].map(n=>`<option value="${n}" ${n===(_mm.mock||N||1)?'selected':''}>MOCK ${n}</option>`).join('');

@@ -379,8 +379,8 @@ const ENGLISH_AREAS = [
   {emoji:'🪢', title:'Collocations',   desc:'395 word partnerships level by level, measured in your own courses.', nav:'collocations', block:'practice'},
   {emoji:'💬', title:'Idioms',         desc:'290 expressions you cannot guess from their words. From B1 up.', nav:'idioms', block:'practice'},
   {emoji:'🧩', title:'Word Formation', desc:'Prefixes, suffixes and word families, with the sentence from your own course.', nav:'wordform', block:'practice'},
-  {emoji:'📖', title:'NIS Dictionary',  desc:'Our own dictionary, 10,910 words: phonetics, audio, translation and the meaning written for your course.', nav:'dict', block:'practice'},
-  {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
+  {emoji:'📖', get title(){ return schoolTerm('dict'); },  desc:'Our own dictionary, 10,910 words: phonetics, audio, translation and the meaning written for your course.', nav:'dict', block:'practice'},
+  {emoji:'🎮', get title(){ return schoolTerm('shoot'); },  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
   // Las tres puertas del examen, juntas. Cambridge es el mapa (las dos ramas
   // y sus niveles); Mocks y Practice Tests son los atajos a los simulacros que
   // el alumno ya conoce por su nombre, y por eso no se retiran.
@@ -673,15 +673,15 @@ const CAMBRIDGE_TRACKS = {
     desc:'Exams for children, with playful reading, listening and speaking tasks.',
     levels:[
       {key:'starters',    icon:'starters', name:'Starters', cefr:'Pre-A1 · YLE', short:'Starters',
-       desc:'First contact with English — Fun for Nordic 1, with audio, games and exam tasks.', href:'nis-fun/engine/?level=starters'},
+       get desc(){ return 'First contact with English — '+schoolTerm('fun')+' 1, with audio, games and exam tasks.'; }, href:'nis-fun/engine/?level=starters'},
       {key:'starterstests', icon:'practice', name:'Starters Practice Tests', cefr:'Pre A1 · practice tests', short:'Starters Tests',
        desc:'Full Pre A1 Starters practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with colouring and a virtual examiner.', href:'yle-practice.html?level=starters'},
       {key:'movers',      icon:'movers',   name:'Movers',   cefr:'A1 · YLE', short:'Movers',
-       desc:'Move on with simple sentences — Fun for Nordic 2.', href:'nis-fun/engine/?level=movers'},
+       get desc(){ return 'Move on with simple sentences — '+schoolTerm('fun')+' 2.'; }, href:'nis-fun/engine/?level=movers'},
       {key:'moverstests', icon:'practice', name:'Movers Practice Tests', cefr:'A1 · practice tests', short:'Movers Tests',
        desc:'Full A1 Movers practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with find-the-differences, picture stories and odd-one-out.', href:'yle-practice.html?level=movers'},
       {key:'flyers',      icon:'flyers',   name:'Flyers',   cefr:'A2 · YLE', short:'Flyers',
-       desc:'The A2 Flyers course — Fun for Nordic 3, unit by unit.', href:'nis-fun/engine/?level=flyers'},
+       get desc(){ return 'The A2 Flyers course — '+schoolTerm('fun')+' 3, unit by unit.'; }, href:'nis-fun/engine/?level=flyers'},
       {key:'flyerstests', icon:'practice', name:'Flyers Practice Tests', cefr:'A2 · 10 tests', short:'Flyers Tests',
        desc:'Full A2 Flyers practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with the eight-answer dialogue, the open cloze and the picture story.', href:'yle-practice.html?level=flyers'},
       {key:'words', icon:'reading', name:'Word Trainer', cefr:'All levels · vocabulary', short:'Word Trainer',

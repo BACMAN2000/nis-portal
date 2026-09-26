@@ -1,3 +1,5 @@
+/* Nombres de módulo por colegio (fase 3): schoolTerm si school.js está cargado; si no, los de NIS. */
+var _T = function(k){ return (typeof schoolTerm==='function') ? schoolTerm(k) : ({fun:'Fun for Nordic',shoot:'NIShoot Live',courses:'Nordic courses',ascent:'Nordic Ascent',dict:'NIS Dictionary',readers:'Nordic Little Readers',portal:'NIS Portal'})[k] || k; };
 /* Contenido de la ayuda del Portal NIS (ayuda.html).
    Va aparte del HTML a proposito: el texto se corrige a menudo y quien lo
    corrige no tiene por que tocar la pagina. El mismo archivo alimenta la
@@ -60,7 +62,7 @@ student: { secciones: [
         '<b>Pronunciation</b> — every sound, with the tongue and the airflow, to listen to and repeat.',
         '<b>Phonics</b> — sounds and word patterns: CVC, blends, magic-e.',
         '<b>Games Lab</b> — 7 games per topic: grammar, vocabulary, phrasal verbs and idioms (A1–C1).',
-        '<b>NIShoot Live</b> — your class’s live game. Join with the PIN your teacher gives you.'
+        '<b>'+_T('shoot')+'</b> — your class’s live game. Join with the PIN your teacher gives you.'
       ]},
       {h:'🎓 Cambridge — the official exam'},
       {lista:[
@@ -182,12 +184,12 @@ teacher: { secciones: [
     cuerpo:[
       {tabla:{cols:['Group','What it is for','What is inside'],filas:[
         ['👥 Students','On its own at the top: it is where you go in almost every time.','Your students, their profile and their progress.'],
-        ['✅ Marking','Whatever is waiting for a grade from you, or needs opening so it can be submitted.','Unit products · Mark worksheets · Unit exams · Reading checks · Fun for Nordic'],
+        ['✅ Marking','Whatever is waiting for a grade from you, or needs opening so it can be submitted.','Unit products · Mark worksheets · Unit exams · Reading checks · '+_T('fun')],
         ['📈 Monitoring','Only for viewing. Nothing gets changed here.','Results · Final result · Screen time · Honesty'],
         ['🏫 Classes','Teaching: the subject, the sequence, the material and your tools.','Classes · French · Scope &amp; Sequence · Class materials · Little Readers · Whiteboard · Material checker'],
-        ['🧸 Nordic courses','The school’s own courses.','Starters · Movers · Flyers · Cap sur le français'],
+        ['🧸 '+_T('courses'),'The school’s own courses.','Starters · Movers · Flyers · Cap sur le français'],
         ['🎓 Cambridge','The official exam: its apps and the lock that opens practice.','YLE + Main Suite · YLE panel · Mocks and Practice · Use of English · Cambridge info · Open Practice Tests'],
-        ['🎮 Activities','What your students use, so you can see it before assigning it.','Games Lab · NIShoot Live · MUN Academy · Phonics · Pronunciation'],
+        ['🎮 Activities','What your students use, so you can see it before assigning it.','Games Lab · '+_T('shoot')+' · MUN Academy · Phonics · Pronunciation'],
         ['🔐 Permissions','What you open and close by grade.','Activate units · Units by grade']
       ]}},
       {nota:'<b>You only see the groups you have access to.</b> A group with no tabs does not appear. If something you need is missing, ask coordination: access is granted by the administrator.'},
@@ -217,7 +219,7 @@ teacher: { secciones: [
       {h:'📖 Reading checks'},
       'You open and close the check for each chapter of each reader. <b>While the check is open, that chapter is closed in the reading</b>, and in every level of the book, so no one can answer it while reading. When you close it, the reading reopens on its own.',
       'It has three tabs: grades by chapter, detail by student, and <b>reading time</b> by week. Students who have not read anything still show up, in grey: they are half the picture.',
-      {h:'🧸 Fun for Nordic'},
+      {h:'🧸 '+_T('fun')},
       'The submissions for the three primary courses, with pills to filter by level (Starters, Movers, Flyers).'
     ]},
 
@@ -266,7 +268,7 @@ teacher: { secciones: [
     cuerpo:[
       {lista:[
         '<b>📚 Activate units</b> — which units each grade sees.',
-        '<b>🔐 Units by grade</b> — which part of the Fun for Nordic courses each grade sees.',
+        '<b>🔐 Units by grade</b> — which part of the '+_T('fun')+' courses each grade sees.',
         '<b>📋 Unit exams</b> and <b>📖 Reading checks</b> (under Marking) — open and close each exam.',
         '<b>🔓 Open Practice Tests</b> (under Cambridge).'
       ]},
@@ -295,12 +297,12 @@ admin: { secciones: [
       {tabla:{cols:['Group','What is inside'],filas:[
         ['📊 Overview','The homepage: how many students, how many teachers, and recent activity.'],
         ['👥 People','Users · Teachers'],
-        ['✅ Marking','Unit products · Mark worksheets · Unit exams · Reading checks · Fun for Nordic'],
+        ['✅ Marking','Unit products · Mark worksheets · Unit exams · Reading checks · '+_T('fun')],
         ['📈 Monitoring','Statistics · Results · Final result · Screen time · Honesty'],
         ['🏫 Classes','Classes · French · Scope &amp; Sequence · Class materials · Little Readers · Whiteboard · Material checker · Library'],
-        ['🧸 Nordic courses','Starters · Movers · Flyers · Cap sur le français'],
+        ['🧸 '+_T('courses'),'Starters · Movers · Flyers · Cap sur le français'],
         ['🎓 Cambridge','YLE + Main Suite · YLE panel · Study plan · Mocks and Practice · Use of English · Cambridge info · Open Mocks · Open Practice Tests'],
-        ['🎮 Activities','Games Lab · NIShoot Live · MUN Academy · Phonics · Pronunciation'],
+        ['🎮 Activities','Games Lab · '+_T('shoot')+' · MUN Academy · Phonics · Pronunciation'],
         ['🔐 Permissions','Access · Activate units · Units by grade']
       ]}},
       {nota:'The criterion behind the layout: <b>Marking</b> is whatever waits for a grade or needs opening so it can be submitted; <b>Monitoring</b> is for viewing only; <b>Permissions</b> is what gets opened and closed by grade.'}
@@ -340,7 +342,7 @@ admin: { secciones: [
       {h:'The other two doors'},
       {lista:[
         '<b>📚 Activate units</b> — which units each grade offers.',
-        '<b>🔐 Units by grade</b> — which part of the Fun for Nordic courses each grade sees.'
+        '<b>🔐 Units by grade</b> — which part of the '+_T('fun')+' courses each grade sees.'
       ]}
     ]},
 

@@ -411,7 +411,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
   const M2 = (opts.cycle===2 && window._mockReportExtras) ? _mockReportExtras(p, fin, opts.prev||null, EN) : null;
   const tgt=targetLevel(p)||'B1'; const stt=targetStatus(fin.finalCefr, tgt);
   const T = EN ? {
-    sub:'Nordic International School of Lima · Cambridge English · Results report',
+    sub:schoolName()+' · Cambridge English · Results report',
     sectionW:'Section', objective:'Target level', cefr:'Common European Framework (CEFR)', scaleName:'Cambridge English Scale',
     s1:'1) Skills summary (best result)', s2:'2) Reading & Use of English detail (by part)', s3:'3) Overall result on the CEFR',
     hSkill:'Skill', hLevel:'Level', hScore:'Score', hPct:'%', hScale:'Scale', hProg:'Progress', hStatus:'Status',
@@ -422,9 +422,9 @@ function _reportInner(p, at, sp, fin, EN, opts){
     below:'▼ Below the target ('+tgt+')', meets:'✓ Meets the target ('+tgt+')', above:'▲ Above the target ('+tgt+')',
     gnote:(fin.a2NoWriting ? 'The final result is the average of the Cambridge Scale scores of the three assessed skills (Reading & Use of English, which includes Writing, Listening and Speaking).' : 'The final result is the average of the Cambridge Scale scores of the four assessed skills (Reading & Use of English, Listening, Writing and Speaking).')+' If one skill is below 50%, the overall result is capped at 179; if two or more, at 159.',
     prov:'Provisional result', commentTitle:'A message for the family',
-    sign:'— English Department · Nordic International School of Lima',
+    sign:'— English Department · '+schoolName(),
     foot:'Cambridge Scale — pass (~60%) lands at the level boundary; below that drops a band.' } : {
-    sub:'Nordic International School of Lima · Cambridge English · Reporte de resultados',
+    sub:schoolName()+' · Cambridge English · Reporte de resultados',
     sectionW:'Sección', objective:'Objetivo del grado', cefr:'Marco Común Europeo', scaleName:'Cambridge English Scale',
     s1:'1) Resumen por destreza (mejor resultado)', s2:'2) Detalle de Reading & Use of English (por parte)', s3:'3) Resultado global según el Marco Común Europeo (CEFR)',
     hSkill:'Destreza', hLevel:'Nivel', hScore:'Puntaje', hPct:'%', hScale:'Esc.', hProg:'Progreso', hStatus:'Estado',
@@ -435,7 +435,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     below:'▼ Por debajo del objetivo ('+tgt+')', meets:'✓ Cumple el objetivo ('+tgt+')', above:'▲ Por encima del objetivo ('+tgt+')',
     gnote:(fin.a2NoWriting ? 'El resultado final es el promedio de las escalas Cambridge de las tres destrezas evaluadas (Reading & Use of English, que incluye Writing, Listening y Speaking).' : 'El resultado final es el promedio de las escalas Cambridge de las cuatro destrezas evaluadas (Reading & Use of English, Listening, Writing y Speaking).')+' Si una destreza queda por debajo del 50 %, el resultado final no supera 179; si dos o más, no supera 159.',
     prov:'Resultado provisional', commentTitle:'Comentario para la familia',
-    sign:'— English Department · Nordic International School of Lima',
+    sign:'— English Department · '+schoolName(),
     foot:'Escala Cambridge — aprobar (~60%) cae en el límite del nivel; por debajo baja de banda.' };
   const tier=(pc)=>{ if(pc==null)return['',''];
     if(pc>=80)return[EN?'High pass':'Aprobado alto','#16a34a'];

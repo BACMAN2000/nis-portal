@@ -855,7 +855,7 @@ async function _pintaYle(cajaId='yle-card', route='classes_primary'){
       target="_blank" rel="noopener" class="btn"
       style="background:${_YLE_BOT[n].c};color:#fff;text-decoration:none">${_YLE_BOT[n].t}</a>`).join('');
   caja.innerHTML = `<div class="card" style="margin-top:16px;border-top:5px solid #3b6fb5">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">🧸 Fun for Nordic — Cambridge YLE</h2>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">🧸 ${schoolTerm('fun')} — Cambridge YLE</h2>
       <div class="muted" style="font-size:.9rem;margin-bottom:12px">Interactive course to get ready for the Cambridge Young Learners exams: units with audio, crosswords and exam tasks — with Pip, Luna and Kili!</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}</div>
       ${niveles.map(rango).join('')}

@@ -4,7 +4,7 @@
 <meta name="google" content="notranslate">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unit · Nordic International School</title>
+<title>Unit</title>
 <link rel="icon" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2?v=a8d93b82" as="font" type="font/woff2" crossorigin>
@@ -216,7 +216,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 </head>
 <body>
 <header>
-  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
+  <img data-school-logo="dark" src="assets/logo-white-h.svg" alt="School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
   <div class="spacer"></div>
   <a class="back" href="./" id="backBtn"><span>&#8592;</span> Portal</a>
 </header>
@@ -239,6 +239,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="school.js?v=7c637a64"></script>
 <script src="config.js?v=720edc7d"></script>
 <script src="writing-trace.js?v=321f3e2c"></script>
 <script src="activities-data.js?v=38ce60ee"></script>
@@ -277,7 +278,7 @@ if(!U){
     <p class="muted">The unit hubs are being added grade by grade, straight from the
     school's planner. <a href="./">Go back to the portal</a>.</p></div>`;
 } else {
-  document.title = 'Unit '+(U.label||U.n)+' · '+U.title+' — Nordic International School';
+  document.title = 'Unit '+(U.label||U.n)+' · '+U.title+' — '+(typeof schoolName==='function'?schoolName():'School');
   // pinta() se llama al final del script: usa `sb`/`me`, que se declaran abajo.
 }
 

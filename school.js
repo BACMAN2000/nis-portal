@@ -5,17 +5,32 @@
    dominio (se recuerda en sessionStorage; ?school= vacío lo quita).
 
    Va ANTES de nis-splash.js para que el splash de marca Nordic no salga en un
-   colegio que no es Nordic, y ANTES de config.js: la petición se lanza en la
-   vuelta siguiente, cuando NIS_CONFIG ya existe. Lo que devuelve la base
-   (school_public) es solo marca y apps encendidas: nada que no se vea ya en la
-   pantalla de login.
+   colegio que no es Nordic, y ANTES de config.js: la petición se lanza en
+   DOMContentLoaded, cuando NIS_CONFIG ya existe. Lo que devuelve la base
+   (school_public) es solo marca, apps encendidas, nombres de módulo y
+   grados/secciones: nada que no se vea ya en la pantalla de login.
 
    Si la petición falla o tarda, NIS arranca con su marca de siempre y con todo
-   visible; otro colegio espera como mucho 2,5 s y arranca con lo que tenga. */
+   visible; otro colegio espera como mucho 2,5 s y arranca con lo que tenga.
+
+   FASE 3 (26-sep): el producto es «Cohasset Schools» y los nombres con la
+   marca de NIS dentro (Fun for Nordic, Nordic Ascent, NIS Dictionary, NIShoot)
+   salen de schoolTerm(clave): NIS los conserva por su preset y por
+   settings.terms en la base; los demás colegios ven nombres neutros salvo
+   que el superadmin les ponga los suyos. */
 (function () {
   var NIS = { slug: 'nis', name: 'Nordic International School of Lima', short_name: 'NIS',
               logo_url: 'assets/logo-h.svg', logo_dark_url: 'assets/logo-white-h.svg',
-              accent: null, is_demo: false, apps: null };
+              accent: null, is_demo: false, apps: null,
+              terms: { fun: 'Fun for Nordic', ascent: 'Nordic Ascent', dict: 'NIS Dictionary',
+                       shoot: 'NIShoot Live', readers: 'Nordic Little Readers', courses: 'Nordic courses',
+                       portal: 'NIS Portal' } };
+  var NEUTRO = { slug: 'cohasset', name: 'Cohasset Schools', short_name: 'Cohasset',
+                 logo_url: 'assets/cohasset-school.svg?v=6', logo_dark_url: 'assets/cohasset-school-white.svg?v=6',
+                 accent: '#2563EB', is_demo: false, apps: {}, terms: {} };
+  /* Nombres neutros de los módulos: lo que ve un colegio que no ha puesto los suyos. */
+  var TERMS_DEFAULT = { fun: 'Fun for English', ascent: 'English Ascent', dict: 'Dictionary',
+                        shoot: 'Quiz Live', readers: 'Little Readers', courses: 'School courses' };
 
   /* A qué app del catálogo (tabla apps) pertenece cada pestaña o tarjeta.
      Lo que no está aquí es del núcleo (Home, cuenta, ayuda, usuarios…) y se
@@ -52,16 +67,23 @@
   var esNIS = guess === 'nis';
   document.documentElement.dataset.school = guess;
 
-  window.NIS_SCHOOL = Object.assign({}, NIS, { slug: guess, loaded: false, override: !!override });
+  /* Preset síncrono: NIS con sus nombres, cualquier otro con la marca neutra.
+     Así las constantes que se evalúan al cargar los scripts ya salen bien. */
+  var preset = esNIS ? NIS : Object.assign({}, NEUTRO, { slug: guess });
+  window.NIS_SCHOOL = Object.assign({}, preset, { loaded: false, override: !!override });
+  try { document.title = (preset.terms.portal || (preset.short_name + ' Portal')) + ' — ' + preset.name; } catch (e) {}
 
   function aplicar(s) {
     if (!s) s = NIS;
     var actual = window.NIS_SCHOOL;
-    window.NIS_SCHOOL = Object.assign({}, NIS, s, { loaded: true, override: !!override });
-    var S = window.NIS_SCHOOL;
+    var base = (s.slug === 'nis') ? NIS : NEUTRO;
+    var S = Object.assign({}, base, s, { loaded: true, override: !!override });
+    S.terms = Object.assign({}, base.terms || {}, s.terms || {});
+    if (!S.apps) S.apps = base.apps;
+    window.NIS_SCHOOL = S;
     document.documentElement.dataset.school = S.slug;
     if (window.NIS_CONFIG) window.NIS_CONFIG.SCHOOL_NAME = S.name;
-    document.title = (S.short_name || S.name) + ' Portal — ' + S.name;
+    document.title = window.schoolTerm('portal') + ' — ' + S.name;
     if (S.accent) document.documentElement.style.setProperty('--accent', S.accent);
     if (S.slug !== 'nis') {
       var sp = document.querySelector('.nisSplash'); if (sp) sp.remove();
@@ -69,9 +91,12 @@
     // Si la cabecera o el login ya estaban pintados (NIS no espera), se
     // actualiza el logo en sitio; el siguiente repintado ya lo trae bien.
     if (actual && !actual.loaded) {
-      document.querySelectorAll('.app-header > img').forEach(function (i) { i.src = S.logo_dark_url || S.logo_url; i.alt = S.name; });
-      document.querySelectorAll('.auth-card img.logo').forEach(function (i) { i.src = S.logo_url; i.alt = S.name; });
+      document.querySelectorAll('.app-header > img, img[data-school-logo="dark"]').forEach(function (i) { i.src = S.logo_dark_url || S.logo_url; i.alt = S.name; });
+      document.querySelectorAll('.auth-card img.logo, img[data-school-logo="light"]').forEach(function (i) { i.src = S.logo_url; i.alt = S.name; });
     }
+    // Grados del colegio (settings.grades): la lista GRADES del portal se
+    // recorta en sitio, que es como la usan todas las pantallas.
+    if (typeof window._schoolApplyGrades === 'function' && Array.isArray(S.grades) && S.grades.length) window._schoolApplyGrades(S.grades);
     if (override) aviso(S);
   }
 
@@ -111,8 +136,7 @@
 
   pedir.then(function (s) {
     if (s) aplicar(s);
-    else if (!esNIS) aplicar({ slug: guess, name: 'Cohasset Schools', short_name: 'Cohasset', logo_url: 'assets/cohasset-school.svg?v=6', logo_dark_url: 'assets/cohasset-school-white.svg?v=6', accent: '#2563EB', apps: {} });
-    else aplicar(NIS);
+    else aplicar(esNIS ? NIS : Object.assign({}, NEUTRO, { slug: guess }));
   });
 
   /* NIS no espera a la base (arranca como siempre); otro colegio sí, para que
@@ -123,6 +147,15 @@
   window.schoolName  = function () { return (window.NIS_SCHOOL || NIS).name; };
   window.schoolShort = function () { var S = window.NIS_SCHOOL || NIS; return S.short_name || S.name; };
   window.schoolLogo  = function (dark) { var S = window.NIS_SCHOOL || NIS; return dark ? (S.logo_dark_url || S.logo_url) : (S.logo_url || S.logo_dark_url); };
+  /* Nombre de un módulo para ESTE colegio: el suyo, o el neutro. */
+  window.schoolTerm  = function (k) {
+    var S = window.NIS_SCHOOL || NIS; var t = (S.terms || {})[k];
+    if (t) return t;
+    if (k === 'portal') return window.schoolShort() + ' Portal';
+    return TERMS_DEFAULT[k] || k;
+  };
+  window.schoolGrades   = function () { var S = window.NIS_SCHOOL || {}; return Array.isArray(S.grades) && S.grades.length ? S.grades : null; };
+  window.schoolSections = function () { var S = window.NIS_SCHOOL || {}; return Array.isArray(S.sections) && S.sections.length ? S.sections : ['A', 'B']; };
   window.schoolAppKey = function (navKey) { return APP_OF_NAV[navKey] || null; };
   /* true = se muestra. Sin datos del colegio (o app desconocida) todo se ve. */
   window.schoolAppOK = function (navKey) {

@@ -1,7 +1,7 @@
 /* ===================== Portal NIS ===================== */
 const CFG = window.NIS_CONFIG;
 if(!window.supabase || !window.supabase.createClient){
-  document.getElementById('app').innerHTML = '<div class="auth-wrap"><div class="auth-card center"><h1>NIS Portal</h1><p class="muted">A required library could not be loaded (connection). Reload the page.</p><button class="btn" onclick="location.reload()">Retry</button></div></div>';
+  document.getElementById('app').innerHTML = '<div class="auth-wrap"><div class="auth-card center"><h1>'+schoolTerm('portal')+'</h1><p class="muted">A required library could not be loaded (connection). Reload the page.</p><button class="btn" onclick="location.reload()">Retry</button></div></div>';
 }
 const sb = (window.supabase && window.supabase.createClient) ? window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY) : null;
 const $ = (s, r=document) => r.querySelector(s);
@@ -13,6 +13,10 @@ const GRADES = Array.from({length:11},(_,i)=>({id:i+1,name:'G'+(i+1)}))
   // el resto del portal los trata como un grado mas (candados, mocks,
   // resultados, View as). Ver app/63-teachers-room.js.
   .concat([{id:12,name:'Teachers · Primary',staff:true},{id:13,name:'Teachers · Secondary',staff:true}]);
+/* Multi-colegio: la lista de grados del colegio (schools.settings.grades) recorta
+   GRADES en sitio, que es como la usan todas las pantallas. */
+window._schoolApplyGrades = function(ids){ const keep=GRADES.filter(g=>g.staff || ids.indexOf(g.id)>=0); if(!keep.length) return; GRADES.length=0; keep.forEach(g=>GRADES.push(g)); };
+if(window.NIS_SCHOOL && NIS_SCHOOL.loaded && typeof schoolGrades==='function' && schoolGrades()) window._schoolApplyGrades(schoolGrades());
 const LEVELS = ['A2','B1','B2','C1'];
 const SKILLS = ['Reading','Listening','Writing'];
 /* Motor de simulacros (repo mocks-cambridge), servido SIEMPRE desde este mismo
@@ -153,7 +157,7 @@ function renderStartupError(error){
     ? 'It looks like there is no internet connection.'
     : 'The portal could not start. The session or data took too long to respond.';
   root.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
-    <h1>NIS Portal</h1>
+    <h1>${schoolTerm('portal')}</h1>
     <p class="sub">${detail}</p>
     <div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap">
       <button class="btn" onclick="location.reload()">↻ Retry</button>

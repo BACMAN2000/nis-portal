@@ -22,7 +22,7 @@ const ICON3D = {
   // English · áreas y herramientas
   'My unit':'bulb', 'My project':'puzzle', 'Classes':'notebook', 'Pronunciation':'mic', 'Phonics':'text',
   'Games Lab':'dice', 'Phrasal Verbs':'link', 'Collocations':'chat-bubble', 'Idioms':'chat-text',
-  'Word Formation':'plus', 'NIS Dictionary':'zoom', 'NIShoot Live':'play',
+  'Word Formation':'plus', 'NIS Dictionary':'zoom', 'NIShoot Live':'play', 'Dictionary':'zoom', 'Quiz Live':'play',
   'Mocks':'medal', 'Practice Tests':'target', 'Practice tests':'target', 'Final result':'trophy',
   // Cambridge · puertas
   'Course':'notebook',

@@ -134,10 +134,10 @@ function _mockReportExtras(p, fin, prev, EN){
   const ex = LEVEL_EXAM[level]||level||'';
   const SK = EN ? { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' }
                : { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
-  const T = EN ? { sub:'Nordic International School of Lima · Cambridge English · Official Mock 2 · Results report',
+  const T = EN ? { sub:schoolName()+' · Cambridge English · Official Mock 2 · Results report',
                    cmp:'4) Comparison with Mock 1 (June 2026)', skill:'Skill', m1:'Mock 1', m2:'Mock 2', delta:'Change', none:'—',
                    rdy:'5) Readiness for the exam', rdyNote:'Pass mark on the Cambridge Scale for '+ex+': '+(SCALE_BOUNDARY[level]||'—')+'. Result: ', prov:' (provisional: some papers are still being marked)' }
-               : { sub:'Nordic International School of Lima · Cambridge English · Official Mock 2 · Reporte de resultados',
+               : { sub:schoolName()+' · Cambridge English · Official Mock 2 · Reporte de resultados',
                    cmp:'4) Comparación con el Mock 1 (junio de 2026)', skill:'Destreza', m1:'Mock 1', m2:'Mock 2', delta:'Cambio', none:'—',
                    rdy:'5) Aptitud para rendir el examen', rdyNote:'Escala Cambridge de aprobación para '+ex+': '+(SCALE_BOUNDARY[level]||'—')+'. Resultado: ', prov:' (provisional: aún hay papers por corregir)' };
   const cs='padding:4px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';   // compacto: informe en una hoja
@@ -297,7 +297,7 @@ async function mock2Panel(){
   const gradeOpts=`<option value="">All grades</option>`+gradeList.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
   const filter=`<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:12px 16px;margin-bottom:10px">
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADE</label><select onchange="window._setMock2Filter('grade',this.value)" style="min-width:130px">${gradeOpts}</select></div>
-      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECTION</label><select onchange="window._setMock2Filter('section',this.value)" style="min-width:90px"><option value="">All</option>${['A','B'].map(s=>`<option ${f.section===s?'selected':''}>${s}</option>`).join('')}</select></div>
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECTION</label><select onchange="window._setMock2Filter('section',this.value)" style="min-width:90px"><option value="">All</option>${schoolSections().map(s=>`<option ${f.section===s?'selected':''}>${s}</option>`).join('')}</select></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NAME</label><input type="text" placeholder="Search student…" value="${esc(f.name)}" oninput="window._liveNameFilter(this.value)" style="min-width:180px"></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">REPORT</label><select onchange="window._setMock2Filter('status',this.value)" style="min-width:150px">${[['','All'],['pending','⏳ Pending'],['completed','✅ Completed · to send'],['sent','📤 Sent']].map(([v,l])=>`<option value="${v}" ${f.status===v?'selected':''}>${l}</option>`).join('')}</select></div>
       ${(f.grade||f.section||f.name||f.status)?`<button class="btn sm ghost" onclick="window._setMock2Filter('_clear','')">✕ Clear</button>`:''}
@@ -505,7 +505,7 @@ async function mock2Stats(){
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">LEVEL</label><select onchange="window._setMock2StatsFilter('level',this.value)" style="min-width:110px"><option value="">All</option>${LEVELS.map(L=>`<option ${sf.level===L?'selected':''}>${L}</option>`).join('')}</select></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">PAPER</label><select onchange="window._setMock2StatsFilter('skill',this.value)" style="min-width:170px"><option value="">All</option>${SKILLS.map(S=>`<option value="${S}" ${sf.skill===S?'selected':''}>${SKILL_NAME[S]}</option>`).join('')}</select></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADE</label><select onchange="window._setMock2StatsFilter('grade',this.value)" style="min-width:130px">${gradeOpts}</select></div>
-      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECTION</label><select onchange="window._setMock2StatsFilter('section',this.value)" style="min-width:90px"><option value="">All</option>${['A','B'].map(s=>`<option ${f.section===s?'selected':''}>${s}</option>`).join('')}</select></div>
+      <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECTION</label><select onchange="window._setMock2StatsFilter('section',this.value)" style="min-width:90px"><option value="">All</option>${schoolSections().map(s=>`<option ${f.section===s?'selected':''}>${s}</option>`).join('')}</select></div>
       <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NAME</label><input type="text" placeholder="Search student…" value="${esc(f.name)}" oninput="window._liveNameFilter(this.value)" style="min-width:180px"></div>
       ${(f.grade||f.section||f.name||sf.level||sf.skill)?`<button class="btn sm ghost" onclick="window._setMock2StatsFilter('_clear','')">✕ Clear</button>`:''}
       <span style="flex:1"></span>
@@ -633,7 +633,7 @@ window._statementInner = function(p, fin, sp, opts){
   /* ---- textos ---- */
   const para=(t)=>'<p style="margin:0 0 7px;font-size:10px;line-height:1.35;color:'+DARK+'">'+t+'</p>';
   const intro=X.full+' / '+X.name+' is an examination targeted at Level '+X.target+' on the Council of Europe’s Common European Framework of Reference but reports results for candidates demonstrating ability from Level '+X.reports+'.';
-  const mockNote='This statement reports the results of a school mock examination (' + mockName + ', Nordic International School of Lima), marked with the Cambridge English Scale. It is a practice document issued by the school and not an official Cambridge English certificate.';
+  const mockNote='This statement reports the results of a school mock examination (' + mockName + ', ' + schoolName() + '), marked with the Cambridge English Scale. It is a practice document issued by the school and not an official Cambridge English certificate.';
   const scoreTbl='<table style="width:100%;border-collapse:collapse;font-size:10.5px"><tr style="background:'+GREY+'"><th style="text-align:left;padding:4px 8px;font-size:11px">Results</th><th style="text-align:left;padding:4px 8px;font-size:11px">Score</th></tr>'+
     X.grades.map(g=>'<tr><td style="padding:2px 8px;font-weight:700">'+g[0]+'</td><td style="padding:2px 8px;font-weight:700">'+g[1]+' — '+g[2]+'</td></tr>').join('')+'</table>';
   const other='<div style="background:'+GREY+';font-size:11px;font-weight:700;padding:4px 8px;margin-top:8px">Other</div>'+
