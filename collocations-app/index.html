@@ -52,7 +52,11 @@ var APP = {
   elMejor:'the best', deLos:'of the',
   extra:' and the word pair',
   badges: function(d){
-    return '<span class="badge insep">' + esc(d.tipo || '') + '</span>' +
+    // el tipo viene del generador en español (adjetivo+sustantivo); el portal va en inglés
+    var EN = {adjetivo:'adjective', sustantivo:'noun', adverbio:'adverb', verbo:'verb', determinante:'determiner',
+              pronombre:'pronoun', 'preposición':'preposition', 'preposicion':'preposition', 'fórmula':'set phrase'};
+    var tipo = String(d.tipo || '').split('+').map(function(w){ return EN[w] || w; }).join(' + ');
+    return '<span class="badge insep">' + esc(tipo) + '</span>' +
       (d.freq ? '<span class="badge">' + d.freq + ' times in the course</span>' : '');
   }
 };
