@@ -720,6 +720,14 @@ const CAMBRIDGE_TRACKS = {
 /* Practice Test reutiliza el nodo y el candado que ya existían (english.practice
    + practice_access): un solo interruptor para la misma cosa. */
 const CAMBRIDGE_PRACTICE_NODE = 'english.practice';
+/* Piezas IELTS de cohasset.pe (content_items ielts.*): el superadmin las coloca
+   en el colegio y el alumno las abre desde su hub de Cambridge con la sesión
+   del colegio (window._ssoCohasset, SSO). */
+const IELTS_PIECES = [
+  {key:'ielts.foundation', emoji:'🧱', title:'IELTS Foundations',    desc:'Writing & Grammar before the practice tests: 24 units. Opens on cohasset.pe with your school session.', href:'https://cohasset.pe/ielts/foundation.html'},
+  {key:'ielts.writing',    emoji:'✍️', title:'IELTS Writing Studio', desc:'18 lessons and the Cambridge 1-19 task bank with a timed workspace. Opens on cohasset.pe with your school session.', href:'https://cohasset.pe/ielts/writing.html'},
+  {key:'ielts.cbt',        emoji:'🖥️', title:'IELTS on computer',    desc:'Simulator of the computer-delivered IELTS. Opens on cohasset.pe with your school session.', href:'https://cohasset.pe/ielts-cbt/ielts-on-computer.html'},
+];
 Object.keys(CAMBRIDGE_TRACKS).forEach(bk => {
   CAMBRIDGE_TRACKS[bk].levels.forEach(l => { l.node = CAMBRIDGE_TRACKS[bk].node + '.' + l.key; });
 });
@@ -871,6 +879,10 @@ async function studentCambridgePortal(){
         <span class="cam-cta">Open Practice Test →</span>
       </div>
     </a>` : '';
+  const ieltsOn = IELTS_PIECES.filter(x=>schoolContentOK(x.key));
+  const ielts = ieltsOn.length ? `<h2 style="margin:22px 0 2px">🎯 IELTS preparation</h2>
+    <p class="muted" style="margin:0 0 10px;font-size:.86rem">Your school's IELTS route on cohasset.pe. It opens in a new tab with your school session — no other account needed.</p>
+    <div class="grid cols-3">${ieltsOn.map(x=>_hubCard(x.emoji,x.title,x.desc,`window._ssoCohasset('${x.href}')`)).join('')}</div>` : '';
   $('#main').innerHTML = `${back}<h1>🎓 Cambridge English</h1>
     <p class="muted" style="margin-top:-6px">Choose your route: <b>Young Learners</b> for children (Pre-A1 to A2) or <b>Main Suite</b> for the general exam (A2 to C2). Click a card to see its levels.</p>
     ${_camDoorsHTML(route)}
@@ -878,6 +890,7 @@ async function studentCambridgePortal(){
     <div id="cam-plan-notes"></div>
     <div class="cam-branches">${branch('yle')}${branch('main')}</div>
     ${practice}
+    ${ielts}
     ${panel('yle')}${panel('main')}
     <p class="muted center" style="font-size:.8rem;margin-top:22px">ℹ️ Each Main Suite level opens its <b>exam guide and practice tests</b>. For timed Reading, Listening and Writing mocks, use <b>Practice Test</b>.</p>`;
   // Se abre la rama que le toca: primaria entra por YLE, secundaria por Main Suite.
