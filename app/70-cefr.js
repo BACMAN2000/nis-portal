@@ -706,8 +706,15 @@ async function _renderReportNode(html){
   node.style.cssText='width:760px;padding:18px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff;box-sizing:border-box';
   node.setAttribute('data-i18n','off');   // el 📄 EN no debe salir traducido al español por nis-i18n
   node.innerHTML=html;
+  // El host vive en el documento real (html2canvas lo necesita en el flujo) pero
+  // OCULTO: con z-index:-1 se transparentaba detrás de la página y, mientras el
+  // panel MOCK 2 archivaba PDFs en segundo plano, el informe «aparecía y
+  // desaparecía» al fondo. visibility:hidden en el original; onclone lo hace
+  // visible solo en la copia que rasteriza html2canvas.
   const host=document.createElement('div');
-  host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
+  host.id='rep-render-host-'+Date.now();
+  host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1;visibility:hidden;pointer-events:none';
+  host.setAttribute('aria-hidden','true');
   host.appendChild(node); document.body.appendChild(host);
   try{
     let svgText=null;
@@ -728,7 +735,7 @@ async function _renderReportNode(html){
     // CLAVE: capturar el nodo DIRECTAMENTE con html2canvas (no via html2pdf, que
     // envolvía el nodo en un contenedor del ancho de la ventana → el reporte salía
     // encogido a la izquierda y cortado en ventanas reales).
-    return await window.html2canvas(node,{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0,windowWidth:Math.max(760,document.documentElement.scrollWidth),windowHeight:document.documentElement.scrollHeight});
+    return await window.html2canvas(node,{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0,windowWidth:Math.max(760,document.documentElement.scrollWidth),windowHeight:document.documentElement.scrollHeight,onclone:(doc)=>{ const h=doc.getElementById(host.id); if(h){ h.style.visibility='visible'; h.style.zIndex='1'; } }});
   } finally { host.remove(); }
 }
 /* Hoja 1 del informe del Mock 2: el Statement of Results (app/72-mocks.js). */
