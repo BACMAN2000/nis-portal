@@ -143,7 +143,12 @@ hoy es symlink. Respaldos con fecha en `sites-available`.
    tests y mocks por destreza, 13 readers, 9 herramientas, 3 piezas IELTS de
    cohasset.pe) y `school_content` por colegio; consola 📦 Content;
    `schoolContentOK(clave)` filtra en el portal. Las piezas IELTS abren
-   cohasset.pe en pestaña nueva con cuenta de la academia (sin SSO todavía).
+   cohasset.pe en pestaña nueva **con la sesión del colegio (SSO, 26-sep)**:
+   el portal manda a `cohasset.pe/sso/school.html#t=<token>&next=…`, el
+   backend (`routers/sso_router.py`, `POST /api/sso/school`) verifica el token
+   contra esta Supabase, lee el perfil y que el colegio tenga IELTS encendido,
+   crea o encuentra la cuenta por correo, le asegura la matrícula «IELTS ·
+   Cohasset Schools» y emite su JWT. Nunca sube de rol a una cuenta existente.
 5. **Hecho (26-sep).** cohasset.pe/colegios (menú y pie enlazan): propuesta,
    qué incluye, cómo funciona, demo y formulario → `school_leads` (INSERT
    anon, trampa anti-bots) → consola 📨 Leads → «Convert to school» crea el
