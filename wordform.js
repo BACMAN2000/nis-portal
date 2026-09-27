@@ -51,8 +51,10 @@ function esPrefijo(a){ return a.afijo && a.afijo.charAt(a.afijo.length - 1) === 
    principio de la nota, antes del ejemplo («La acción o su resultado: inform →
    information»). */
 function sentidoDe(a){
+  // significados solo en inglés (26-sep-2026); el español queda para el buscador
+  if(a.sentido_en) return a.sentido_en;
   if(a.sentido) return a.sentido;
-  var n = a.nota || '', i = n.indexOf(':');
+  var n = a.nota_en || a.nota || '', i = n.indexOf(':');
   return (i > 0 ? n.slice(0, i) : n).replace(/\.$/, '').trim();
 }
 function significado(d){
@@ -370,7 +372,7 @@ function tarjetaAfijo(a){
     '<span class="sentido">' + esc(sentidoDe(a)) + '</span>' + cl +
     '<span class="badge">' + esc(a.nivel) + '</span>' +
     (dominado(a) ? '<span class="badge dom">mastered</span>' : '') +
-    '<div class="nota">' + esc(a.nota || '') + '</div>' +
+    '<div class="nota">' + esc((a.nota_en || a.nota) || '') + '</div>' +
     '<div class="chips">' + chips + '</div>' + muestra +
     '<div class="hint">Tap a word to see it in a sentence from your course.</div></div>';
 }
@@ -619,7 +621,7 @@ function pregClase(b){
   return {clave:'c:' + a.afijo, item:a,
     enunciado:'What class of word does the suffix <b>' + esc(a.afijo) + '</b> form?',
     stem:a.ejemplos.slice(0, 4).map(function(e){ return esc(e.w); }).join(' · '),
-    opciones:mezcla(['noun','adjective','verb','adverb']), correcta:CLASE_EN[a.clase] || a.clase, porque:a.nota};
+    opciones:mezcla(['noun','adjective','verb','adverb']), correcta:CLASE_EN[a.clase] || a.clase, porque:(a.nota_en || a.nota)};
 }
 /* Qué aporta un afijo. Varios comparten sentido ('lo contrario' vale para un-,
    in-, im- y dis-), así que los distractores se deduplican entre sí: si no, la
@@ -638,7 +640,7 @@ function pregSentido(b){
   return {clave:'s:' + a.afijo, item:a,
     enunciado:'What does <b>' + esc(a.afijo) + '</b> add to the word?',
     stem:a.ejemplos.slice(0, 4).map(function(e){ return esc(e.w); }).join(' · '),
-    opciones:mezcla([sentidoDe(a)].concat(otros)), correcta:sentidoDe(a), porque:a.nota};
+    opciones:mezcla([sentidoDe(a)].concat(otros)), correcta:sentidoDe(a), porque:(a.nota_en || a.nota)};
 }
 /* Qué prefijo necesita esta raíz. */
 function pregPrefijo(b){
@@ -652,7 +654,7 @@ function pregPrefijo(b){
   return {clave:'p:' + e.w, item:a,
     enunciado:'Which prefix does <b>' + esc(raiz) + '</b> need to make <b>' + esc(e.w) + '</b>?',
     stem:'', opciones:mezcla([a.afijo].concat(otros.map(function(x){ return x.afijo; }))),
-    correcta:a.afijo, porque:a.afijo + ' means «' + sentidoDe(a) + '». ' + (a.nota || '')};
+    correcta:a.afijo, porque:a.afijo + ' means «' + sentidoDe(a) + '». ' + ((a.nota_en || a.nota) || '')};
 }
 /* Cuál NO es de la familia. */
 function pregIntruso(b){
