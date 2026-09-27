@@ -397,7 +397,7 @@ function resumenAct(tit, ok, total, a){
     '<p>' + tit + ' · ' + ok + ' of ' + total + ' in block ' + (IB + 1) + ' of ' + LEVEL + '.</p>' +
     '<div class="blockhead">' + (faltan.length ?
       plural(faltan.length, 'block', 'blocks') + ' of ' + LEVEL + ' still to practise: ' + faltan.map(function(i){ return i + 1; }).join(', ') :
-      'All ' + BLOQUES.length + ' blocks' + ' of ' + LEVEL + ' practised' + (sig ? ' — ready for ' + sig + '.' : ' — this is the last level.')) + '</div>' +
+      (BLOQUES.length === 1 ? 'The only block' : 'All ' + BLOQUES.length + ' blocks') + ' of ' + LEVEL + ' practised' + (sig ? ' — ready for ' + sig + '.' : ' — this is the last level.')) + '</div>' +
     '<div class="blocks" style="justify-content:center">' + chips + '</div>' +
     '<div class="row" style="justify-content:center">' +
     '<button class="btn" onclick="inicia(\'' + a + '\')">Try again</button>' +

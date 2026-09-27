@@ -225,7 +225,7 @@ function huecoFamilia(f){
 function hueco(d){ return MODO === 'afijos' ? huecoAfijo(d) : huecoFamilia(d); }
 function pintaHueco(h, resuelto){
   var relleno = resuelto ?
-    (MODO === 'afijos' ? esc(h.item.afijo.replace(/-/g, '')) : esc(h.palabra)) : '_____';
+    (MODO === 'afijos' ? esc(h.item.afijo.replace(/-/g, '')) : esc(h.palabra)) : '&nbsp;';
   var caja = '<span class="hueco' + (resuelto ? ' ok' : '') + '">' + relleno + '</span>';
   if(MODO !== 'afijos') return esc(h.pre) + caja + esc(h.post);
   return esc(h.pre) + (h.afijoIzquierda ? caja + esc(h.resto) : esc(h.resto) + caja) + esc(h.post);
@@ -424,18 +424,43 @@ function inicia(a){
   else if(a === 'speed') iniciaSpeed();
   else if(a === 'mem') iniciaMem();
 }
+/* Cierre de una actividad: nota, qué bloques del nivel (en este modo) quedan por
+   practicar y el paso siguiente: otro bloque, o el nivel siguiente cuando ya no
+   queda ninguno. «Practicado» = se terminó alguna actividad del bloque. */
+function bloqueHecho(i){ return !!RECS['done|' + MODO + '|' + LEVEL + '|' + i]; }
+function marcaBloqueHecho(){
+  var k = 'done|' + MODO + '|' + LEVEL + '|' + IB;
+  if(RECS[k]) return;
+  RECS[k] = 1;
+  try { localStorage.setItem('coh_wordform_rec', JSON.stringify(RECS)); } catch(e){}
+}
 function resumenAct(tit, ok, total, a){
   var pct = total ? Math.round(ok / total * 100) : 0;
+  marcaBloqueHecho();
+  var faltan = [];
+  BLOQUES.forEach(function(bl, i){ if(!bloqueHecho(i)) faltan.push(i); });
+  var sig = ORDEN[ORDEN.indexOf(LEVEL) + 1] || null;
+  var despues = faltan.filter(function(i){ return i > IB; });
+  var siguiente = faltan.length ? (despues.length ? despues[0] : faltan[0]) : null;
+  var chips = BLOQUES.map(function(bl, i){
+    var dom = domBloque(bl), hecho = bloqueHecho(i);
+    return '<button class="bk' + (hecho ? ' done' : '') + '" aria-pressed="' + (i === IB) + '" onclick="setBloque(' + i + ')"' +
+      ' title="Block ' + (i + 1) + ': ' + (hecho ? 'practised' : 'not practised yet') + ' · ' + dom + ' of ' + bl.length + ' mastered">' +
+      (hecho ? '&#10003; ' : '') + (i + 1) + '<i><b style="width:' + Math.round(dom / bl.length * 100) + '%"></b></i></button>';
+  }).join('');
   return '<div class="card" style="text-align:center">' +
     '<div class="score">' + pct + '%</div>' +
     '<p>' + tit + ' · ' + ok + ' of ' + total + ' in block ' + (IB + 1) + ' of ' + LEVEL + '.</p>' +
+    '<div class="blockhead">' + (faltan.length ?
+      plural(faltan.length, 'block', 'blocks') + ' of ' + LEVEL + ' (' + modoLabel() + ') still to practise: ' + faltan.map(function(i){ return i + 1; }).join(', ') :
+      (BLOQUES.length === 1 ? 'The only block' : 'All ' + BLOQUES.length + ' blocks') + ' of ' + LEVEL + ' (' + modoLabel() + ') practised' + (sig ? ' — ready for ' + sig + '.' : ' — this is the last level.')) + '</div>' +
+    '<div class="blocks" style="justify-content:center">' + chips + '</div>' +
     '<div class="row" style="justify-content:center">' +
     '<button class="btn" onclick="inicia(\'' + a + '\')">Again</button>' +
-    (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Next block</button>' : '') +
+    (siguiente != null ? '<button class="btn sec" onclick="setBloque(' + siguiente + ')">Next block: ' + (siguiente + 1) + '</button>' :
+      (sig ? '<button class="btn sec" onclick="setLevel(\'' + sig + '\')">Next level: ' + sig + '</button>' : '')) +
     '<button class="btn sec" onclick="alMenu()">Other activities</button></div></div>';
 }
-
-/* Rellenar: el banco son los diez del bloque. */
 function iniciaRelleno(){
   var b = BLOQUES[IB] || [], huecos = [];
   mezcla(b).forEach(function(d){
