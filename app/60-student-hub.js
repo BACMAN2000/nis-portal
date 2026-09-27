@@ -389,9 +389,9 @@ const ENGLISH_AREAS = [
   {emoji:'🎯', title:'Practice Tests',desc:'Practice tests 1, 2 and 3 in Cambridge format, always available.', nav:'practice', node:'english.practice', block:'exam'},
   // Preparación IELTS: piezas de cohasset.pe que el superadmin coloca en el
   // colegio (content_items ielts.*). Abren en pestaña nueva con cuenta de cohasset.pe.
-  {emoji:'🧱', title:'IELTS Foundations', desc:'Writing & Grammar before the practice tests: 24 units on cohasset.pe.', nav:'ielts_foundation', href:'https://cohasset.pe/ielts/foundation.html', block:'exam', when:()=>schoolContentOK('ielts.foundation')},
-  {emoji:'✍️', title:'IELTS Writing Studio', desc:'18 lessons and the Cambridge 1-19 task bank, timed workspace, on cohasset.pe.', nav:'ielts_writing', href:'https://cohasset.pe/ielts/writing.html', block:'exam', when:()=>schoolContentOK('ielts.writing')},
-  {emoji:'🖥️', title:'IELTS on computer', desc:'Simulator of the computer-delivered IELTS, on cohasset.pe.', nav:'ielts_cbt', href:'https://cohasset.pe/ielts-cbt/ielts-on-computer.html', block:'exam', when:()=>schoolContentOK('ielts.cbt')},
+  {emoji:'🧱', title:'IELTS Foundations', desc:'Writing & Grammar before the practice tests: 24 units. Opens on cohasset.pe with your school session.', nav:'ielts_foundation', href:'https://cohasset.pe/ielts/foundation.html', block:'exam', when:()=>schoolContentOK('ielts.foundation')},
+  {emoji:'✍️', title:'IELTS Writing Studio', desc:'18 lessons and the Cambridge 1-19 task bank with a timed workspace. Opens on cohasset.pe with your school session.', nav:'ielts_writing', href:'https://cohasset.pe/ielts/writing.html', block:'exam', when:()=>schoolContentOK('ielts.writing')},
+  {emoji:'🖥️', title:'IELTS on computer', desc:'Simulator of the computer-delivered IELTS. Opens on cohasset.pe with your school session.', nav:'ielts_cbt', href:'https://cohasset.pe/ielts-cbt/ielts-on-computer.html', block:'exam', when:()=>schoolContentOK('ielts.cbt')},
   // 'My Progress' NO esta aqui: vive en la barra lateral, que es donde el
   // alumno lo busca desde cualquier pantalla. Tenerlo en los dos sitios era
   // el duplicado mas visible de esta vista.

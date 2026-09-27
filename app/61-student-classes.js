@@ -58,7 +58,7 @@ function studentSubject(key){
     // Cambridge trae su dibujo 3D (cambridge-icons.js) en lugar de emoji.
     const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;
     if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
-    if(a.href) return _hubCard(em,a.title,a.desc,`window.open('${a.href}','_blank','noopener')`);
+    if(a.href) return _hubCard(em,a.title,a.desc,`window._ssoCohasset('${a.href}')`);
     return _hubCard(em,a.title,a.desc,`window._nav('${a.nav}')`);
   };
   const bloques = ENGLISH_BLOCKS.map(b=>{
@@ -678,6 +678,26 @@ function studentPractice(){
       ${schoolContentOK('practice.writing') ? _skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',_withBack(QUIZ_URL+'writing-quiz.html?branch=practice','practice')) : ''}
     </div>`;
 }
+
+/* ---------- SSO hacia cohasset.pe (26-sep-2026) ----------
+   Las piezas IELTS viven en cohasset.pe, que tiene su propia base y su propio
+   login. En vez de pedirle otra cuenta al alumno, se le manda a
+   cohasset.pe/sso/school.html con el token de SU sesión del portal en el
+   fragmento (#t=…, que nunca viaja al servidor); allí el backend de
+   cohasset.pe lo verifica contra esta Supabase, crea o encuentra su cuenta,
+   le asegura la matrícula IELTS y lo deja dentro. La pestaña se abre ANTES
+   del await para que el bloqueador de ventanas no la frene. */
+window._ssoCohasset = async (url) => {
+  const w = window.open('about:blank', '_blank');
+  let dest = url;
+  try {
+    const { data } = await sb.auth.getSession();
+    const t = data && data.session && data.session.access_token;
+    const u = new URL(url, 'https://cohasset.pe');
+    if (t && /(^|\.)cohasset\.pe$/.test(u.hostname)) dest = 'https://cohasset.pe/sso/school.html#t=' + encodeURIComponent(t) + '&next=' + encodeURIComponent(u.pathname + u.search);
+  } catch (e) {}
+  if (w) w.location.replace(dest); else location.href = dest;
+};
 
 /* ---------- Library ---------- */
 async function studentLibrary(){
