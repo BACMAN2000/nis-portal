@@ -410,7 +410,7 @@ document.write('<script src="'+RDR_ID+'-extras.js?v=1"><\/script>');
 if(window.ATTWN_C2) document.write('<script src="'+RDR_ID+'-original.js?v=1" onerror="window.READER_ORIGINAL=null"><\/script>');
 </script>
 <script src="nis-nav.js?v=c6e39903"></script>
-<script src="activity-save.js?v=a082b30c"></script>
+<script src="activity-save.js?v=1c38a81d"></script>
 </head>
 <body>
 <header>
@@ -785,7 +785,7 @@ function renderChapters(){
         <div class="card chap-card${lk?' locked':''}"${lk?'':` onclick="openChapter(${i})"`}>
           <span class="num">CHAPTER ${c.n} ${lk?'<span style="color:#b45309">🔒 EXAM</span>':(doneList[i]?'<span style="color:var(--green-txt)">✓ DONE</span>':'')}</span>
           <h2>${lk?'🔒 ':''}${c.title}</h2>
-          <div class="desc">${lk?'Its exam is open: the reading and its 13 activities are closed until your teacher finishes.':c.sum}</div>
+          <div class="desc"${lk?'':' data-i18n="off"'}>${lk?'Its exam is open: the reading and its 13 activities are closed until your teacher finishes.':c.sum}</div>
           ${lk?'':`<span class="chip">🎧 audio · ${c.vocab.length} words · ${c.comp.length} questions</span>
           <span class="act-tag">Read along · Listening · Summarize · Comprehension · +${ACTS.filter(a=>!a.need||a.need(c)).length-4} more</span>`}
         </div>`;}).join("")}

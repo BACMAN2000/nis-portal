@@ -295,6 +295,7 @@ function reconcilia(servidor){
   }
   respaldo = JSON.parse(JSON.stringify(local));
   O.write(servidor);
+  selloLocal();          // si no, el próximo arranque ve `sello` vacío/viejo y restaura otra vez
   if(O.after) O.after();
   return true;
 }
@@ -502,6 +503,7 @@ function vigilaLocalStorage(pref){
 function porPrefijo(pref, extra){
   vigilaLocalStorage(pref);
   return Object.assign({
+    storeKey: pref,      // para que selloLocal()/reconcilia() no compartan la marca "undefined_at" entre páginas
     read: function(){
       var out = {};
       try{
