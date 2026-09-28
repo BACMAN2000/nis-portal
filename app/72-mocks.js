@@ -127,7 +127,11 @@ async function mockVisibleAttempts(atts, studentId){
   return (atts||[]).filter(a=>!hidden.has(mockCycleOf(a)));
 }
 
-/* ---- extras del informe a la familia del ciclo 2: comparativa con el MOCK 1 y aptitud ---- */
+/* ---- extras del informe a la familia del ciclo 2: aptitud para el examen ----
+   28-sep-2026: se quitó la comparativa con el MOCK 1 (pedido de Paolo) — el
+   informe y el comentario de MOCK 2 hablan solo de MOCK 2, para todos los
+   grados. `prev` queda sin usar en la firma para no tocar cada punto de
+   llamada (_reportInner, mock2Panel). */
 function _mockReportExtras(p, fin, prev, EN){
   const level = fin.level || mockLevelSat([]);
   const rd = mockReadiness(fin, level);
@@ -135,23 +139,12 @@ function _mockReportExtras(p, fin, prev, EN){
   const SK = EN ? { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' }
                : { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
   const T = EN ? { sub:schoolName()+' · Cambridge English · Official Mock 2 · Results report',
-                   cmp:'4) Comparison with Mock 1 (June 2026)', skill:'Skill', m1:'Mock 1', m2:'Mock 2', delta:'Change', none:'—',
-                   rdy:'5) Readiness for the exam', rdyNote:'Pass mark on the Cambridge Scale for '+ex+': '+(SCALE_BOUNDARY[level]||'—')+'. Result: ', prov:' (provisional: some papers are still being marked)' }
+                   rdy:'4) Readiness for the exam', rdyNote:'Pass mark on the Cambridge Scale for '+ex+': '+(SCALE_BOUNDARY[level]||'—')+'. Result: ', prov:' (provisional: some papers are still being marked)' }
                : { sub:schoolName()+' · Cambridge English · Official Mock 2 · Reporte de resultados',
-                   cmp:'4) Comparación con el Mock 1 (junio de 2026)', skill:'Destreza', m1:'Mock 1', m2:'Mock 2', delta:'Cambio', none:'—',
-                   rdy:'5) Aptitud para rendir el examen', rdyNote:'Escala Cambridge de aprobación para '+ex+': '+(SCALE_BOUNDARY[level]||'—')+'. Resultado: ', prov:' (provisional: aún hay papers por corregir)' };
+                   rdy:'4) Aptitud para rendir el examen', rdyNote:'Escala Cambridge de aprobación para '+ex+': '+(SCALE_BOUNDARY[level]||'—')+'. Resultado: ', prov:' (provisional: aún hay papers por corregir)' };
   const cs='padding:4px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';   // compacto: informe en una hoja
   const th='padding:5px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
-  const cell=(b)=> b ? '<b>'+esc(b.cefr)+'</b> · '+b.scale+' <span style="color:#6b7280">('+b.level+' · '+b.pct+'%)</span>' : T.none;
-  const dcell=(a,b)=>{ if(!a||!b) return T.none; const d=b.scale-a.scale; const c=d>0?'#16a34a':d<0?'#dc2626':'#6b7280'; return '<b style="color:'+c+'">'+(d>0?'▲ +':d<0?'▼ ':'= ')+d+'</b>'; };
   let html='';
-  if(prev && prev.finalScale!=null){
-    const keys=['Reading','Listening','Writing','Speaking'].filter(k=>(prev.skills&&prev.skills[k])||(fin.skills&&fin.skills[k]));
-    html+='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 3px">'+T.cmp+'</div>'+
-      '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.skill+'</th><th style="'+th+'">'+T.m1+'</th><th style="'+th+'">'+T.m2+'</th><th style="'+th+'">'+T.delta+'</th></tr>'+
-      keys.map(k=>'<tr><td style="'+cs+';text-align:left">'+SK[k]+'</td><td style="'+cs+'">'+cell(prev.skills[k])+'</td><td style="'+cs+'">'+cell(fin.skills[k])+'</td><td style="'+cs+'">'+dcell(prev.skills[k],fin.skills[k])+'</td></tr>').join('')+
-      '<tr style="background:#f7faff"><td style="'+cs+';text-align:left"><b>'+(EN?'Overall':'Global')+'</b></td><td style="'+cs+'"><b>'+esc(prev.finalCefr)+'</b> · '+prev.finalScale+'</td><td style="'+cs+'"><b>'+esc(fin.finalCefr)+'</b> · '+(fin.finalScale!=null?fin.finalScale:'—')+'</td><td style="'+cs+'">'+dcell({scale:prev.finalScale},fin.finalScale!=null?{scale:fin.finalScale}:null)+'</td></tr></table>';
-  }
   if(rd){
     html+='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 3px">'+T.rdy+'</div>'+
       '<div style="background:#fff;border:1.5px solid '+readinessColor(rd)+';border-radius:12px;padding:8px 14px;margin:2px 0 6px">'+
@@ -163,22 +156,19 @@ function _mockReportExtras(p, fin, prev, EN){
   const pres=Object.keys(fin.skills||{}).filter(k=>fin.skills[k]);
   let strong='',weak='';
   if(pres.length){ strong=SK[pres.reduce((b,k)=>fin.skills[k].scale>fin.skills[b].scale?k:b)]; weak=SK[pres.reduce((b,k)=>fin.skills[k].scale<fin.skills[b].scale?k:b)]; }
-  const up = prev && prev.finalScale!=null && fin.finalScale!=null ? fin.finalScale-prev.finalScale : null;
   let msg;
   if(EN){
-    const trend = up==null ? '' : up>0 ? ' You have gone up '+up+' point'+(up===1?'':'s')+' on the Cambridge Scale since June.' : up<0 ? ' Your overall scale is '+(-up)+' point'+(up===-1?'':'s')+' below June: exam-day nerves count too, and we will look at it together.' : ' Your overall result is the same as in June.';
     if(!pres.length) msg=first+', we do not have your Official Mock 2 results yet. Your teacher will let you know how to complete the missing papers.';
-    else if(!rd) msg=first+', here are your Official Mock 2 results. You stand out in '+strong+'; let\'s keep working on '+weak+'.'+trend;
-    else if(rd.k==='ready') msg=first+', congratulations: your Official Mock 2 result shows you are ready to sit '+ex+'. You stand out in '+strong+'.'+trend+' Keep practising '+weak+' until the exam so you arrive in top form.';
-    else if(rd.k==='borderline') msg=first+', you are very close to the pass mark for '+ex+' ('+rd.scale+' on the Cambridge Scale; '+rd.boundary+' is needed).'+trend+' With focused practice in '+weak+' over the coming weeks you can make it; your teacher will confirm your readiness before registration.';
-    else msg=first+', your Official Mock 2 result shows you are not yet ready to sit '+ex+' ('+rd.scale+' on the Cambridge Scale; '+rd.boundary+' is needed).'+trend+' We recommend consolidating '+weak+' before registering, and your teacher will advise on the best level and date. Your effort in '+strong+' shows what you can do.';
+    else if(!rd) msg=first+', here are your Official Mock 2 results. You stand out in '+strong+'; let\'s keep working on '+weak+'.';
+    else if(rd.k==='ready') msg=first+', congratulations: your Official Mock 2 result shows you are ready to sit '+ex+'. You stand out in '+strong+'. Keep practising '+weak+' until the exam so you arrive in top form.';
+    else if(rd.k==='borderline') msg=first+', you are very close to the pass mark for '+ex+' ('+rd.scale+' on the Cambridge Scale; '+rd.boundary+' is needed). With focused practice in '+weak+' over the coming weeks you can make it; your teacher will confirm your readiness before registration.';
+    else msg=first+', your Official Mock 2 result shows you are not yet ready to sit '+ex+' ('+rd.scale+' on the Cambridge Scale; '+rd.boundary+' is needed). We recommend consolidating '+weak+' before registering, and your teacher will advise on the best level and date. Your effort in '+strong+' shows what you can do.';
   } else {
-    const trend = up==null ? '' : up>0 ? ' Has subido '+up+' punto'+(up===1?'':'s')+' en la Escala Cambridge desde junio.' : up<0 ? ' Tu escala global está '+(-up)+' punto'+(up===-1?'':'s')+' por debajo de junio: los nervios del día también cuentan, y lo revisaremos juntos.' : ' Tu resultado global es el mismo que en junio.';
     if(!pres.length) msg=first+', todavía no tenemos tus resultados del Official Mock 2. Tu profesor te indicará cómo completar los papers que faltan.';
-    else if(!rd) msg=first+', estos son tus resultados del Official Mock 2. Destacas en '+strong+'; sigamos trabajando '+weak+'.'+trend;
-    else if(rd.k==='ready') msg=first+', ¡felicitaciones! Tu resultado en el Official Mock 2 muestra que estás apto para rendir '+ex+'. Destacas en '+strong+'.'+trend+' Sigue practicando '+weak+' hasta el examen para llegar en tu mejor momento.';
-    else if(rd.k==='borderline') msg=first+', estás muy cerca de la nota de aprobación de '+ex+' ('+rd.scale+' en la Escala Cambridge; se necesita '+rd.boundary+').'+trend+' Con práctica enfocada en '+weak+' en las próximas semanas puedes lograrlo; tu profesor confirmará tu aptitud antes de la inscripción.';
-    else msg=first+', tu resultado en el Official Mock 2 muestra que aún no estás apto para rendir '+ex+' ('+rd.scale+' en la Escala Cambridge; se necesita '+rd.boundary+').'+trend+' Recomendamos consolidar '+weak+' antes de inscribirte; tu profesor orientará sobre el nivel y la fecha más convenientes. Tu esfuerzo en '+strong+' muestra lo que puedes lograr.';
+    else if(!rd) msg=first+', estos son tus resultados del Official Mock 2. Destacas en '+strong+'; sigamos trabajando '+weak+'.';
+    else if(rd.k==='ready') msg=first+', ¡felicitaciones! Tu resultado en el Official Mock 2 muestra que estás apto para rendir '+ex+'. Destacas en '+strong+'. Sigue practicando '+weak+' hasta el examen para llegar en tu mejor momento.';
+    else if(rd.k==='borderline') msg=first+', estás muy cerca de la nota de aprobación de '+ex+' ('+rd.scale+' en la Escala Cambridge; se necesita '+rd.boundary+'). Con práctica enfocada en '+weak+' en las próximas semanas puedes lograrlo; tu profesor confirmará tu aptitud antes de la inscripción.';
+    else msg=first+', tu resultado en el Official Mock 2 muestra que aún no estás apto para rendir '+ex+' ('+rd.scale+' en la Escala Cambridge; se necesita '+rd.boundary+'). Recomendamos consolidar '+weak+' antes de inscribirte; tu profesor orientará sobre el nivel y la fecha más convenientes. Tu esfuerzo en '+strong+' muestra lo que puedes lograr.';
   }
   return { sub:T.sub, msg, html, readiness:rd };
 }

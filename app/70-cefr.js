@@ -407,7 +407,7 @@ function cefrScaleSVG(scale, cefr){
    vista en pantalla). opts.detail=true añade el detalle de la evaluación de Writing y Speaking. */
 function _reportInner(p, at, sp, fin, EN, opts){
   at = at||[]; opts = opts||{};
-  // Ciclo 2 (Official Mock 2): subtítulo propio, comparativa con el Mock 1 y aptitud (app/72-mocks.js).
+  // Ciclo 2 (Official Mock 2): subtítulo propio y aptitud, sin comparar con el Mock 1 (app/72-mocks.js).
   const M2 = (opts.cycle===2 && window._mockReportExtras) ? _mockReportExtras(p, fin, opts.prev||null, EN) : null;
   const tgt=targetLevel(p)||'B1'; const stt=targetStatus(fin.finalCefr, tgt);
   const T = EN ? {
@@ -451,7 +451,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     if(rows.length){ const ps=rows.filter(x=>x.pct>=50); ba[sk]=(ps.length?ps.reduce((b,x)=>x.scale>b.scale?x:b):rows.reduce((b,x)=>x.pct>b.pct?x:b)).a; }
   });
   const wAttAny=(at||[]).some(a=>a.skill==='Writing');
-  // Compacto a propósito: el informe (con comparativa y aptitud del Mock 2) debe caber en UNA hoja A4.
+  // Compacto a propósito: el informe (con la aptitud del Mock 2) debe caber en UNA hoja A4.
   const cs='padding:4px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
   const th='padding:5px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
   const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">CEFR</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
