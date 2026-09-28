@@ -453,7 +453,10 @@ function _reportInner(p, at, sp, fin, EN, opts){
   const wAttAny=(at||[]).some(a=>a.skill==='Writing');
   // Compacto a propósito: el informe (con la aptitud del Mock 2) debe caber en UNA hoja A4.
   const cs='padding:4px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
-  const th='padding:5px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
+  // background inline en el <th> (no solo en el <tr>): brand.css define th{background:#fafbff}
+  // (regla global para tablas del portal) que pinta la caja del propio <th> POR ENCIMA
+  // del fondo azul del <tr> padre, dejando el header casi ilegible (blanco sobre gris claro).
+  const th='padding:5px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff;background:#4987c6!important';
   const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">'+T.hCefr+'</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
   const skRow=(label,b,att,opt)=>{
     if(!b){ const m=(opt&&opt.pending)?T.pending:(opt&&opt.oral)?T.oral:T.notTaken;
