@@ -36,11 +36,60 @@ function mockLevelSat(atts){
   const n={}; lv.forEach(l=>{ n[l]=(n[l]||0)+1; });
   return Object.keys(n).sort((x,y)=>n[y]-n[x])[0];
 }
+/* Ponderación OFICIAL de Cambridge por nivel, aplicada solo al ciclo 2 (Mock 1
+   sigue con el promedio simple, ya congelado y no se toca — ver sesión del
+   28-sep-2026). Verificado contra los handbooks oficiales descargados de
+   cambridgeenglish.org:
+     · A2 Key: Reading y Writing son UN solo paper (si el motor los puntúa
+       aparte, se funden aquí antes de ponderar) — 50% · Listening 25% ·
+       Speaking 25%. Confirmado en la página oficial de formato del examen.
+     · B1 Preliminary: los cuatro papers pesan igual, 25% cada uno — idéntico
+       al promedio simple, así que aquí no cambia nada. Confirmado en la
+       página oficial de formato del examen.
+     · B2 First: confirmado TEXTUALMENTE en el handbook oficial ("the
+       weighting of each of the four skills and Use of English is equal" =
+       Reading 20% + Use of English 20%, fusionados en la única línea
+       "Reading & Use of English" del Statement of Results = 40% del total;
+       Writing 20% · Listening 20% · Speaking 20%).
+     · C1 Advanced: se usa la MISMA proporción que B2 First (40/20/20/20) por
+       consistencia estructural (mismo formato de paper) y por fuentes de un
+       centro examinador afiliado a Cambridge — pero el handbook oficial de
+       C1 Advanced, a diferencia del de B2 First, NO publica esa frase de
+       ponderación explícita. Si Cambridge lo confirma o lo corrige con una
+       fuente primaria, ajustar CAMBRIDGE_WEIGHTS.C1 aquí.
+   Referencia: cambridgeenglish.org/exams-and-tests/qualifications/{key,
+   preliminary,first}/format/ y los handbooks técnicos en PDF de B2 First
+   (167791) y C1 Advanced (167804). */
+const CAMBRIDGE_WEIGHTS = {
+  B1: { Reading:0.25, Listening:0.25, Writing:0.25, Speaking:0.25 },
+  B2: { Reading:0.40, Listening:0.20, Writing:0.20, Speaking:0.20 },
+  C1: { Reading:0.40, Listening:0.20, Writing:0.20, Speaking:0.20 } // ver nota: no confirmado en el handbook oficial de C1
+};
+function weightedFinalScale(level, skills){
+  if(level==='A2'){
+    const rw=[skills.Reading, skills.Writing].filter(Boolean).map(x=>x.scale);
+    const comp=[];
+    if(rw.length) comp.push([0.50, rw.reduce((a,b)=>a+b,0)/rw.length]);
+    if(skills.Listening) comp.push([0.25, skills.Listening.scale]);
+    if(skills.Speaking) comp.push([0.25, skills.Speaking.scale]);
+    if(!comp.length) return null;
+    const wsum=comp.reduce((s,x)=>s+x[0],0);
+    return Math.round(comp.reduce((s,x)=>s+x[0]*x[1],0)/wsum);
+  }
+  const W = CAMBRIDGE_WEIGHTS[level] || CAMBRIDGE_WEIGHTS.B1;
+  const comp = Object.keys(skills).filter(k=>skills[k] && W[k]!=null).map(k=>[W[k], skills[k].scale]);
+  if(!comp.length) return null;
+  const wsum = comp.reduce((s,x)=>s+x[0],0);
+  return Math.round(comp.reduce((s,x)=>s+x[0]*x[1],0)/wsum);
+}
+window.weightedFinalScale = weightedFinalScale;
 /* Resultado del ciclo con la MISMA forma que _finalFromData (skills, finalScale,
    finalCefr, complete, missing…). Ciclo 1 = _finalFromData tal cual (con los
-   ajustes de docente que se pactaron para los informes de junio). Ciclo 2 = el
-   examen oficial: por destreza cuenta el intento oficial más reciente, sin
-   ajustes manuales; el A2 Key no tiene Writing aparte. */
+   ajustes de docente que se pactaron para los informes de junio), promedio
+   SIN ponderar. Ciclo 2 = el examen oficial: por destreza cuenta el intento
+   oficial más reciente, sin ajustes manuales; el A2 Key no tiene Writing
+   aparte; el resultado final aplica la ponderación real de Cambridge por
+   nivel (weightedFinalScale) en vez del promedio simple. */
 function mockCycleFinal(profile, atts, spk, cycle){
   if(cycle!==2) return _finalFromData(profile, atts, spk);
   const level = mockLevelSat(atts);
@@ -60,7 +109,7 @@ function mockCycleFinal(profile, atts, spk, cycle){
   const a2NoWriting = isA2 && !(atts||[]).some(a=>a.skill==='Writing');
   const skills = a2NoWriting ? { Reading, Listening, Speaking } : { Reading, Listening, Writing, Speaking };
   const present = Object.values(skills).filter(Boolean);
-  let finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
+  let finalScale = present.length ? weightedFinalScale(level, skills) : null;
   if(finalScale!=null){
     const lows = present.filter(x=>x.pct!=null && Number(x.pct)<50).length;
     const ceil = lows>=2 ? 159 : (lows>=1 ? 179 : null);

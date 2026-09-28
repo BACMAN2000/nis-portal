@@ -410,6 +410,20 @@ function _reportInner(p, at, sp, fin, EN, opts){
   // Ciclo 2 (Official Mock 2): subtítulo propio y aptitud, sin comparar con el Mock 1 (app/72-mocks.js).
   const M2 = (opts.cycle===2 && window._mockReportExtras) ? _mockReportExtras(p, fin, opts.prev||null, EN) : null;
   const tgt=targetLevel(p)||'B1'; const stt=targetStatus(fin.finalCefr, tgt);
+  // Ciclo 2 (Mock 2, 28-sep-2026): el resultado ya no promedia sin ponderar (ver
+  // weightedFinalScale en app/72-mocks.js) — la nota al pie debe decir la fórmula real,
+  // no la del promedio simple que sigue usando el Mock 1.
+  const gnoteWeighted = (lvl, en) => {
+    if(lvl==='A2') return en
+      ? "The final result applies Cambridge's official weighting for A2 Key: Reading and Writing count as a single paper (50%), Listening 25% and Speaking 25%."
+      : 'El resultado final aplica la ponderación oficial de Cambridge para A2 Key: Reading y Writing cuentan como un solo paper (50%), Listening 25% y Speaking 25%.';
+    if(lvl==='B1') return en
+      ? "The final result applies Cambridge's official weighting for B1 Preliminary: the four skills are weighted equally (25% each)."
+      : 'El resultado final aplica la ponderación oficial de Cambridge para B1 Preliminary: las cuatro destrezas pesan igual (25% cada una).';
+    return en
+      ? "The final result applies Cambridge's official weighting for "+(lvl||'B2 First / C1 Advanced')+": Reading & Use of English counts 40% of the result, Writing, Listening and Speaking 20% each."
+      : 'El resultado final aplica la ponderación oficial de Cambridge para '+(lvl||'B2 First / C1 Advanced')+': Reading & Use of English cuenta el 40% del resultado, Writing, Listening y Speaking 20% cada una.';
+  };
   const T = EN ? {
     sub:schoolName()+' · Cambridge English · Results report',
     sectionW:'Section', objective:'Target level', cefr:'Common European Framework (CEFR)', scaleName:'Cambridge English Scale',
@@ -420,7 +434,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     incl:' (includes Writing)', inReading:'Included in Reading & Use of English (A2 Key)',
     finalLbl:'Final result', targetGrade:'Target level for the grade', scaleLbl:'Cambridge Scale',
     below:'▼ Below the target ('+tgt+')', meets:'✓ Meets the target ('+tgt+')', above:'▲ Above the target ('+tgt+')',
-    gnote:(fin.a2NoWriting ? 'The final result is the average of the Cambridge Scale scores of the three assessed skills (Reading & Use of English, which includes Writing, Listening and Speaking).' : 'The final result is the average of the Cambridge Scale scores of the four assessed skills (Reading & Use of English, Listening, Writing and Speaking).')+' If one skill is below 50%, the overall result is capped at 179; if two or more, at 159.',
+    gnote:(opts.cycle===2 ? gnoteWeighted(fin.level, true) : (fin.a2NoWriting ? 'The final result is the average of the Cambridge Scale scores of the three assessed skills (Reading & Use of English, which includes Writing, Listening and Speaking).' : 'The final result is the average of the Cambridge Scale scores of the four assessed skills (Reading & Use of English, Listening, Writing and Speaking).'))+' If one skill is below 50%, the overall result is capped at 179; if two or more, at 159.',
     prov:'Provisional result', commentTitle:'A message for the family',
     sign:'— English Department · '+schoolName(),
     foot:'Cambridge Scale — pass (~60%) lands at the level boundary; below that drops a band.' } : {
@@ -433,7 +447,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     incl:' (incluye Writing)', inReading:'Incluido en Reading & Use of English (examen A2 Key)',
     finalLbl:'Resultado final', targetGrade:'Nivel objetivo del grado', scaleLbl:'Escala Cambridge',
     below:'▼ Por debajo del objetivo ('+tgt+')', meets:'✓ Cumple el objetivo ('+tgt+')', above:'▲ Por encima del objetivo ('+tgt+')',
-    gnote:(fin.a2NoWriting ? 'El resultado final es el promedio de las escalas Cambridge de las tres destrezas evaluadas (Reading & Use of English, que incluye Writing, Listening y Speaking).' : 'El resultado final es el promedio de las escalas Cambridge de las cuatro destrezas evaluadas (Reading & Use of English, Listening, Writing y Speaking).')+' Si una destreza queda por debajo del 50 %, el resultado final no supera 179; si dos o más, no supera 159.',
+    gnote:(opts.cycle===2 ? gnoteWeighted(fin.level, false) : (fin.a2NoWriting ? 'El resultado final es el promedio de las escalas Cambridge de las tres destrezas evaluadas (Reading & Use of English, que incluye Writing, Listening y Speaking).' : 'El resultado final es el promedio de las escalas Cambridge de las cuatro destrezas evaluadas (Reading & Use of English, Listening, Writing y Speaking).'))+' Si una destreza queda por debajo del 50 %, el resultado final no supera 179; si dos o más, no supera 159.',
     prov:'Resultado provisional', commentTitle:'Comentario para la familia',
     sign:'— English Department · '+schoolName(),
     foot:'Escala Cambridge — aprobar (~60%) cae en el límite del nivel; por debajo baja de banda.' };
