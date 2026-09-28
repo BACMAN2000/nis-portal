@@ -414,7 +414,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     sub:schoolName()+' · Cambridge English · Results report',
     sectionW:'Section', objective:'Target level', cefr:'Common European Framework (CEFR)', scaleName:'Cambridge English Scale',
     s1:'1) Skills summary (best result)', s2:'2) Reading & Use of English detail (by part)', s3:'3) Overall result on the CEFR',
-    hSkill:'Skill', hLevel:'Level', hScore:'Score', hPct:'%', hScale:'Scale', hProg:'Progress', hStatus:'Status',
+    hSkill:'Skill', hLevel:'Exam paper', hCefr:'CEFR result', hScore:'Score', hPct:'%', hScale:'Scale', hProg:'Progress', hStatus:'Status',
     reading:'Reading & Use of English', listening:'Listening', writing:'Writing', speaking:'Speaking',
     part:'Part', hQ:'Questions', hOk:'Correct', oral:'Oral session', notHere:'Not in this cycle', pending:'Pending (teacher)', notTaken:'Not taken',
     incl:' (includes Writing)', inReading:'Included in Reading & Use of English (A2 Key)',
@@ -427,7 +427,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     sub:schoolName()+' · Cambridge English · Reporte de resultados',
     sectionW:'Sección', objective:'Objetivo del grado', cefr:'Marco Común Europeo', scaleName:'Cambridge English Scale',
     s1:'1) Resumen por destreza (mejor resultado)', s2:'2) Detalle de Reading & Use of English (por parte)', s3:'3) Resultado global según el Marco Común Europeo (CEFR)',
-    hSkill:'Destreza', hLevel:'Nivel', hScore:'Puntaje', hPct:'%', hScale:'Esc.', hProg:'Progreso', hStatus:'Estado',
+    hSkill:'Destreza', hLevel:'Papel rendido', hCefr:'Resultado CEFR', hScore:'Puntaje', hPct:'%', hScale:'Esc.', hProg:'Progreso', hStatus:'Estado',
     reading:'Reading & Use of English', listening:'Listening', writing:'Writing', speaking:'Speaking',
     part:'Parte', hQ:'Preguntas', hOk:'Aciertos', oral:'Sesión oral', notHere:'No en este ciclo', pending:'Pendiente', notTaken:'No rindió',
     incl:' (incluye Writing)', inReading:'Incluido en Reading & Use of English (examen A2 Key)',
@@ -454,7 +454,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
   // Compacto a propósito: el informe (con la aptitud del Mock 2) debe caber en UNA hoja A4.
   const cs='padding:4px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
   const th='padding:5px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
-  const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">CEFR</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
+  const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">'+T.hCefr+'</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
   const skRow=(label,b,att,opt)=>{
     if(!b){ const m=(opt&&opt.pending)?T.pending:(opt&&opt.oral)?T.oral:T.notTaken;
       const est=(opt&&opt.oral)?T.notHere:(opt&&opt.pending)?T.pending:'-';
