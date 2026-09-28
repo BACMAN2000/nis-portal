@@ -30,6 +30,12 @@ function _skTestsOfLevel(){ return _skData().tests.filter(t=>t.level===_sk.level
 function _skTest(){ return _skData().tests.find(t=>t.n===_sk.test) || _skTestsOfLevel()[0] || _skData().tests[0]; }
 function _skFixTest(){ const list=_skTestsOfLevel(); if(!list.some(t=>t.n===_sk.test)) _sk.test = list.length ? list[0].n : _skData().tests[0].n; }
 function _skTestName(n){ const t=_skData().tests.find(x=>x.n===n); return t ? t.name : 'Test '+n; }
+/* Ciclo activo por defecto en «ALSO RECORD AS»: antes quedaba vacío y si el examinador
+   no lo cambiaba a mano, la nota se perdía para el informe (28-sep-2026, caso real:
+   7 alumnos con Speaking ya rendido que nunca llegó al Mock 2). */
+function _skDefaultCycle(){
+  return (typeof MOCK_CUTOFF!=='undefined' && new Date().toISOString()>=MOCK_CUTOFF) ? '2' : '1';
+}
 function _skUUID(){
   if(window.crypto && crypto.randomUUID) return crypto.randomUUID();
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c=>{ const r=Math.random()*16|0; return (c==='x'?r:(r&3|8)).toString(16); });
@@ -165,14 +171,14 @@ window._skPick = (id,on)=>{
 window._skClearPick = ()=>{ _sk.picked=[]; _skPaint(); };
 window._skStart = ()=>{
   if(_sk.picked.length<2) return;
-  _sk.sessionId=_skUUID(); _sk.marks={}; _sk.comments={}; _sk.part=1; _sk.saveCycle=''; _sk.view='exam';
+  _sk.sessionId=_skUUID(); _sk.marks={}; _sk.comments={}; _sk.part=1; _sk.saveCycle=_skDefaultCycle(); _sk.view='exam';
   _skTimerReset();
   _skPaint();
 };
 window._skOpen = (sid)=>{
   const rows=_sk.history.filter(h=>h.session_id===sid).sort((a,b)=>(a.seat||'').localeCompare(b.seat||''));
   if(!rows.length) return;
-  _sk.sessionId=sid; _sk.level=rows[0].level; _sk.test=rows[0].test_no; _sk.part=1; _sk.saveCycle='';
+  _sk.sessionId=sid; _sk.level=rows[0].level; _sk.test=rows[0].test_no; _sk.part=1; _sk.saveCycle=_skDefaultCycle();
   _sk.picked=rows.map(r=>r.student_id); _sk.marks={}; _sk.comments={};
   rows.forEach(r=>{ _sk.marks[r.student_id]=Object.assign({},r.marks||{}); _sk.comments[r.student_id]=r.comment||''; });
   _sk.view='exam'; _skTimerReset(); _skPaint();
@@ -459,6 +465,8 @@ window._skSave = async ()=>{
       if(e2) fails.push(c.p.full_name+': '+e2.message);
     }
     extra = fails.length ? ` <span style="color:var(--bad)">MOCK ${cycle} Speaking not updated for ${esc(fails.join(' · '))}</span>` : ` Also recorded as MOCK ${cycle} Speaking.`;
+  } else {
+    extra = ` <span style="color:#b45309;font-weight:700">⚠ Not recorded in any Mock — it will NOT show in the report or PDF until you save it again with "ALSO RECORD AS" set.</span>`;
   }
   st.innerHTML=`<span style="color:#166534">✓ Saved for ${cands.map(c=>esc(c.p.full_name)).join(', ')}.${extra}</span>`;
   // Refresca el historial en segundo plano para que «Back» ya lo muestre.
