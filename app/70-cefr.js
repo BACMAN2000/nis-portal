@@ -475,7 +475,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
   let partsTbl='';
   if(rParts.length){
     partsTbl='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 3px">'+T.s2+'</div>'+
-      '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#76cbe5"><th style="'+cs+';text-align:left;color:#0f172a">'+T.part+'</th><th style="'+cs+';color:#0f172a">'+T.hQ+'</th><th style="'+cs+';color:#0f172a">'+T.hOk+'</th><th style="'+cs+'">%</th><th style="'+cs+';width:170px">'+T.hProg+'</th></tr>'+
+      '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#76cbe5"><th style="'+cs+';background:#76cbe5!important;text-align:left;color:#0f172a">'+T.part+'</th><th style="'+cs+';background:#76cbe5!important;color:#0f172a">'+T.hQ+'</th><th style="'+cs+';background:#76cbe5!important;color:#0f172a">'+T.hOk+'</th><th style="'+cs+';background:#76cbe5!important">%</th><th style="'+cs+';background:#76cbe5!important;width:170px">'+T.hProg+'</th></tr>'+
       // Pedido de Paolo (22-sep-2026): preguntas de la parte, aciertos y después el porcentaje.
       rParts.map((pt,i)=>'<tr><td style="'+cs+';text-align:left">'+T.part+' '+(i+1)+'</td><td style="'+cs+'">'+(pt.total!=null?pt.total:'—')+'</td><td style="'+cs+'"><b>'+(pt.correct!=null?pt.correct:'—')+'</b></td><td style="'+cs+'"><b>'+pt.pct+'%</b></td><td style="'+cs+'">'+bar(pt.pct)+'</td></tr>').join('')+'</table>';
   }
