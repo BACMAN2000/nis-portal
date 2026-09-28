@@ -467,7 +467,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
   const wRow=fin.a2NoWriting
     ? '<tr><td style="'+cs+';text-align:left">'+T.writing+'</td><td colspan="7" style="'+cs+';text-align:left;color:#6b7280">'+T.inReading+'</td></tr>'
     : skRow(T.writing, fin.skills.Writing, ba['Writing'], {pending: wAttAny && !fin.skills.Writing});
-  const spRow=skRow(T.speaking, fin.skills.Speaking, null, {oral:true});
+  const spRow=skRow(T.speaking, fin.skills.Speaking, sp, {oral:true});
   const rParts = ba['Reading'] ? partsOf(ba['Reading'].breakdown) : [];
   let partsTbl='';
   if(rParts.length){
