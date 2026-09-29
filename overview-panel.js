@@ -54,6 +54,130 @@
     return SCOPE;
   }
 
+  /* ---------- Estadisticas de cada Mock oficial (empieza con el MOCK 2) ----------
+   * Se pinta aparte y despues de la portada, para que el Overview no espere a
+   * exam_attempts. Usa las MISMAS reglas que la pestana Marking -> MOCK 2
+   * (app/72-mocks.js): mockCycleOf decide que intento es del ciclo, mockCycleFinal
+   * calcula el nivel y el Speaking sale de speaking_results.cycle. Se refresca
+   * solo cada 45 s mientras la tarjeta siga en pantalla. */
+  const MOCK_REFRESH_MS = 45000;
+  let mockTimer = null;
+
+  async function cargaMockStats(cycle, grados, misIds) {
+    const host = document.getElementById('ovMockStats');
+    if (!host || typeof mockCycleOf !== 'function' || typeof mockCycleFinal !== 'function') return;
+    const meta = (typeof MOCK_CYCLE_META !== 'undefined' && MOCK_CYCLE_META[cycle]) || { label: 'MOCK ' + cycle, when: '' };
+    const corte = typeof MOCK_CUTOFF !== 'undefined' ? MOCK_CUTOFF : '2026-09-22T05:00:00.000Z';
+    const [profs, atts, spks] = await Promise.all([
+      q(sb.from('profiles').select('id,full_name,section,cefr_level,grade_id,active,is_demo').eq('role', 'student').limit(3000)),
+      q(sb.from('exam_attempts').select('id,student_id,skill,level,percent,mock,submitted_at,breakdown').gte('submitted_at', corte).limit(8000)),
+      q(sb.from('speaking_results').select('student_id,cycle,percent,level').eq('cycle', cycle).limit(3000)),
+    ]);
+    if (!document.getElementById('ovMockStats')) return;
+    if (!profs || !atts) { host.innerHTML = `<div class="card"><h2>📊 Official ${esc(meta.label)}</h2><p class="muted">not readable with your access</p></div>`; return; }
+
+    const gradosMock = grados.filter(g => g.id >= 6);       // los mocks oficiales son de 6.º a 11.º
+    const gIds = new Set(gradosMock.map(g => g.id));
+    const alumnos = profs.filter(p => p.active !== false && !p.is_demo && gIds.has(p.grade_id) && misIds.has(p.grade_id));
+    const aBy = {}; atts.forEach(a => { if (mockCycleOf(a) === cycle) (aBy[a.student_id] = aBy[a.student_id] || []).push(a); });
+    const sBy = {}; (spks || []).forEach(r => { sBy[r.student_id] = r; });
+    const spkOk = spks != null;
+
+    const info = alumnos.map(s => {
+      const at = aBy[s.id] || [];
+      const sat = at.length > 0;
+      const sp = sBy[s.id] && sBy[s.id].percent != null ? sBy[s.id] : null;
+      const fin = sat ? mockCycleFinal(s, at, sp, cycle) : null;
+      return { s, at, sat, sp, fin, level: fin ? fin.level : null };
+    });
+    const sat = info.filter(i => i.sat);
+    const spkPend = sat.filter(i => !i.sp);
+    const complete = sat.filter(i => i.fin && i.fin.complete);
+    const nSk = (list, sk) => list.filter(i => i.at.some(a => a.skill === sk)).length;
+    const papers = list => `R <b>${nSk(list, 'Reading')}</b> · L <b>${nSk(list, 'Listening')}</b> · W <b>${nSk(list, 'Writing')}</b>`;
+    const CEFR_ORD = ['<A1', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    const cefrKey = c => { const i = CEFR_ORD.indexOf(c); return i < 0 ? 99 : i; };
+    const dist = list => {
+      const c = {};
+      list.forEach(i => { if (i.fin && i.fin.finalScale != null) { const k = i.fin.finalCefr || '—'; c[k] = c[k] || { n: 0, f: 0 }; c[k].n++; if (i.fin.complete) c[k].f++; } });
+      const ks = Object.keys(c).sort((a, b) => cefrKey(a) - cefrKey(b));
+      return ks.length ? ks.map(k => `<span class="badge lvl" title="${c[k].f} final · ${c[k].n - c[k].f} provisional (Speaking not marked yet)">${esc(k)} · ${c[k].n}</span>`).join(' ') : '<span class="muted">—</span>';
+    };
+    const pct = (a, b) => b ? Math.round(a * 100 / b) + '%' : '—';
+    const examName = lv => (typeof LEVEL_EXAM !== 'undefined' && LEVEL_EXAM[lv]) ? LEVEL_EXAM[lv] : '';
+    const levelSat = list => {
+      const n = {}; list.forEach(i => { if (i.level) n[i.level] = (n[i.level] || 0) + 1; });
+      const ks = Object.keys(n).sort();
+      return ks.length ? ks.map(k => `<span class="badge">${esc(k)}${examName(k) ? ' · ' + esc(examName(k)) : ''}</span>`).join(' ') : '<span class="muted">—</span>';
+    };
+    const spkCell = list => {
+      if (!spkOk) return '<span class="muted">—</span>';
+      const p = list.filter(i => i.sat && !i.sp).length, d = list.filter(i => i.sat && i.sp).length;
+      return `<b style="color:${p ? '#b91c1c' : '#16a34a'}">${p}</b> <span class="muted" style="font-size:.78rem">pending · ${d} done</span>`;
+    };
+
+    const filasGrado = gradosMock.map(g => {
+      const li = info.filter(i => i.s.grade_id === g.id);
+      if (!li.length) return '';
+      const st = li.filter(i => i.sat);
+      return `<tr><td><b>${esc(g.name)}</b></td>
+        <td style="text-align:center">${st.length} <span class="muted" style="font-size:.78rem">/ ${li.length} · ${pct(st.length, li.length)}</span></td>
+        <td>${levelSat(st)}</td>
+        <td style="white-space:nowrap;font-size:.84rem">${papers(st)}</td>
+        <td>${dist(st)}</td>
+        <td style="white-space:nowrap">${spkCell(li)}</td></tr>`;
+    }).join('');
+
+    // Speaking pendiente: grado -> seccion, con los nombres al desplegar
+    const filasSec = [];
+    gradosMock.forEach(g => {
+      const li = info.filter(i => i.s.grade_id === g.id && i.sat);
+      const secs = {}; li.forEach(i => { const k = (i.s.section || '').trim().toUpperCase() || '—'; (secs[k] = secs[k] || []).push(i); });
+      Object.keys(secs).sort().forEach(k => {
+        const L = secs[k], pend = L.filter(i => !i.sp), done = L.length - pend.length;
+        const nombres = pend.map(i => i.s.full_name).sort((a, b) => (a || '').localeCompare(b || '')).map(n => esc(n || '—')).join(' · ');
+        filasSec.push(`<tr><td><b>${esc(g.name)}</b></td><td>${esc(k)}</td><td style="text-align:center">${L.length}</td>
+          <td style="text-align:center;color:#16a34a"><b>${done}</b></td>
+          <td style="text-align:center"><b style="color:${pend.length ? '#b91c1c' : '#16a34a'}">${pend.length}</b></td>
+          <td style="font-size:.8rem">${pend.length ? `<details><summary style="cursor:pointer">who</summary><div class="muted" style="line-height:1.6;margin-top:4px">${nombres}</div></details>` : '<span class="badge on">all done</span>'}</td></tr>`);
+      });
+    });
+
+    const hora = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    host.innerHTML = `<div class="card" style="margin-bottom:16px">
+      <div class="row" style="justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+        <h2 style="margin:0">📊 Official ${esc(meta.label)} · statistics</h2>
+        <span class="muted" style="font-size:.8rem">${esc(meta.when || '')} · live: updated ${hora} · refreshes every ${MOCK_REFRESH_MS / 1000}s <button class="btn sm ghost" style="padding:1px 8px" onclick="window._ovMockRefresh()">↻ now</button></span>
+      </div>
+      <div class="ov-stats" style="margin:12px 0">
+        <div class="stat"><div class="n">${sat.length}</div><div class="l">Students who sat</div><small>of ${info.length} enrolled (${pct(sat.length, info.length)})</small></div>
+        <div class="stat"><div class="n">${nSk(sat, 'Reading')} · ${nSk(sat, 'Listening')} · ${nSk(sat, 'Writing')}</div><div class="l">Papers taken</div><small>Reading · Listening · Writing (students)</small></div>
+        <div class="stat"><div class="n">${complete.length}</div><div class="l">Results complete</div><small>all skills incl. Speaking · ${sat.length - complete.length} provisional</small></div>
+        <div class="stat ${spkOk && spkPend.length ? 'hot' : ''}"><div class="n">${spkOk ? spkPend.length : '—'}</div><div class="l">Speaking pending</div><small>${spkOk ? (sat.length - spkPend.length) + ' already marked' : 'not readable with your access'}</small></div>
+      </div>
+      <h3 style="margin:8px 0 6px;font-size:.95rem">Level achieved · by grade <span class="muted" style="font-weight:400;font-size:.78rem">(weighted result of the skills marked so far; provisional until Speaking is in)</span></h3>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Grade</th><th style="text-align:center">Sat</th><th>Exam sat</th><th>Papers (students)</th><th>Level achieved</th><th>Speaking</th></tr></thead>
+        <tbody>${filasGrado || '<tr><td colspan="6" class="center muted">No students in your grades.</td></tr>'}
+        <tr style="background:var(--bg)"><td><b>All grades</b></td><td style="text-align:center"><b>${sat.length}</b></td><td>${levelSat(sat)}</td>
+          <td style="white-space:nowrap;font-size:.84rem">${papers(sat)}</td><td>${dist(sat)}</td><td style="white-space:nowrap">${spkCell(info)}</td></tr></tbody></table></div>
+      <h3 style="margin:16px 0 6px;font-size:.95rem">🗣️ Speaking still to take · by grade and class</h3>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Grade</th><th>Class</th><th style="text-align:center">Sat</th><th style="text-align:center">Speaking done</th><th style="text-align:center">Missing</th><th>Students</th></tr></thead>
+        <tbody>${filasSec.join('') || '<tr><td colspan="6" class="center muted">Nobody has sat this mock yet.</td></tr>'}</tbody></table></div>
+      <p class="muted" style="font-size:.78rem;margin:8px 0 0">Counts students who sat at least one written paper. Speaking counts as done once it is marked and recorded as MOCK ${cycle} (Marking → MOCK ${cycle}, or 🗣️ Speaking test with “Also record as MOCK ${cycle}”). Same rules as Marking → MOCK ${cycle}.</p>
+    </div>`;
+  }
+  function programaMock(cycle, grados, misIds) {
+    window._ovMockRefresh = () => cargaMockStats(cycle, grados, misIds);
+    if (mockTimer) clearInterval(mockTimer);
+    cargaMockStats(cycle, grados, misIds);
+    mockTimer = setInterval(() => {
+      if (!document.getElementById('ovMockStats')) { clearInterval(mockTimer); mockTimer = null; return; }
+      cargaMockStats(cycle, grados, misIds);
+    }, MOCK_REFRESH_MS);
+  }
+
   window._irTab = k => (state.profile || {}).role === 'admin' ? renderAdmin(k) : renderTeacher(k);
 
   window.overviewPanel = async function (opts) {
@@ -252,6 +376,7 @@
         <div class="stat"><div class="n">${actividades ? semana.actividades : '—'}</div><div class="l">Activities</div><small>games &amp; labs this week</small></div>
         <div class="stat"><div class="n">${minutos == null ? '—' : minutos >= 60 ? (minutos / 60).toFixed(1).replace(/\.0$/, '') + ' h' : minutos + ' min'}</div><div class="l">Screen time</div><small>latest week recorded</small></div>
       </div>
+      <div id="ovMockStats"></div>
       <div class="ov-two">
         <div class="card">
           <h2>✏️ To mark</h2>
@@ -286,5 +411,6 @@
           </tbody></table></div>
         <p class="muted" style="font-size:.82rem;margin-top:8px">To set what each teacher sees and which grades, go to <b>👨‍🏫 Teachers</b>.</p>
       </div>` : ''}`;
+    programaMock(2, grados, misIds);
   };
 })();
