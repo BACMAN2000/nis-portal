@@ -7,7 +7,12 @@
    The dictionary itself (dictionary-app/index.html?embed=1) resolves its own
    API calls against ITS OWN origin, so this same file also works unmodified
    from a different domain (e.g. nis.cohasset.pe) once that host's copy points
-   DICT_URL at the absolute https://cohasset.pe/dictionary-app/... address. */
+   DICT_URL at the absolute https://cohasset.pe/dictionary-app/... address.
+
+   Shares its corner with coh-notes-widget.js (if that one is also loaded on
+   the same page) through the #cohSideTabs container — see cohSideTabsInit()
+   below, duplicated in both files on purpose so neither depends on load
+   order or on the other file existing at all. */
 (function(){
   'use strict';
   if(window.__cohDictWidgetMounted) return;
@@ -32,10 +37,28 @@
     return base + 'dictionary-app/index.html?embed=1';
   }
 
+  function cohSideTabsInit(){
+    if(!document.getElementById('cohSideTabsCss')){
+      var s = document.createElement('style');
+      s.id = 'cohSideTabsCss';
+      s.textContent = '#cohSideTabs{position:fixed;right:16px;bottom:16px;z-index:9995;'
+        + 'display:flex;flex-direction:column;gap:8px;align-items:flex-end}'
+        + '#cohSideTabs button{border:none;color:#fff;border-radius:10px;padding:10px 16px;'
+        + 'font-weight:700;font-size:.82rem;font-family:inherit;cursor:pointer;'
+        + 'box-shadow:0 3px 12px rgba(0,0,0,.18);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}'
+        + '@media(max-width:640px){#cohSideTabs{right:10px;bottom:10px}}';
+      document.head.appendChild(s);
+    }
+    var el = document.getElementById('cohSideTabs');
+    if(!el){
+      el = document.createElement('div');
+      el.id = 'cohSideTabs';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+
   var CSS = ''
-    + '#cdwTab{position:fixed;right:16px;bottom:16px;z-index:9995;background:#0E7FA8;color:#fff;border:none;'
-    + 'border-radius:10px;padding:10px 16px;font-weight:700;font-size:.82rem;font-family:inherit;cursor:pointer;'
-    + 'box-shadow:0 3px 12px rgba(0,0,0,.18);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}'
     + '#cdwDrawer{position:fixed;top:0;right:0;width:440px;max-width:92vw;height:100vh;background:#fff;'
     + 'border-left:1px solid #E2E8F0;box-shadow:-6px 0 24px rgba(0,0,0,.15);z-index:9996;'
     + 'transition:transform .2s ease;transform:translateX(100%);display:flex;flex-direction:column}'
@@ -44,7 +67,7 @@
     + '#cdwClose{position:absolute;top:10px;right:14px;z-index:2;background:#fff;border:1px solid #E2E8F0;'
     + 'border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;'
     + 'cursor:pointer;font-size:1rem;color:#475569;box-shadow:0 1px 4px rgba(0,0,0,.15)}'
-    + '@media(max-width:640px){#cdwDrawer{width:100vw;max-width:100vw}#cdwTab{right:10px;bottom:10px}}';
+    + '@media(max-width:640px){#cdwDrawer{width:100vw;max-width:100vw}}';
 
   function mount(){
     var style = document.createElement('style');
@@ -54,6 +77,7 @@
     var tab = document.createElement('button');
     tab.id = 'cdwTab';
     tab.type = 'button';
+    tab.style.background = '#0E7FA8';
     tab.innerHTML = '<span aria-hidden="true">📖</span> Dictionary';
 
     var drawer = document.createElement('div');
@@ -61,7 +85,7 @@
     drawer.innerHTML = '<button type="button" id="cdwClose" aria-label="Close">✕</button>'
       + '<iframe id="cdwFrame" title="Cohasset Dictionary" loading="lazy"></iframe>';
 
-    document.body.appendChild(tab);
+    cohSideTabsInit().appendChild(tab);
     document.body.appendChild(drawer);
 
     var frame = drawer.querySelector('#cdwFrame');
