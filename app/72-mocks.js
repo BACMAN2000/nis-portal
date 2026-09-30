@@ -243,7 +243,7 @@ async function mock2Panel(){
   if(f.name)    students=students.filter(s=>(s.full_name||'').toLowerCase().includes(f.name.toLowerCase()));
   students.sort((a,b)=>(a.grade_id-b.grade_id)||(a.section||'').localeCompare(b.section||'')||(a.full_name||'').localeCompare(b.full_name||''));
   const ids=students.map(s=>s.id); const safeIds=ids.length?ids:['00000000-0000-0000-0000-000000000000'];
-  const { data:atts } = await sb.from('exam_attempts').select('id,student_id,skill,level,percent,score,total,mock,submitted_at,breakdown').in('student_id',safeIds).limit(8000);
+  const { data:atts } = await _fetchAttempts('id,student_id,skill,level,percent,score,total,mock,submitted_at,breakdown',safeIds);
   const { data:spks } = await sb.from('speaking_results').select('*').in('student_id',safeIds);
   // Estado del informe por alumno (mock_reports): lo mantiene la base sola (triggers) cada
   // vez que entra una nota; el panel solo lo muestra y ofrece «Send to family».
@@ -458,7 +458,7 @@ async function mock2Stats(){
   students.sort((a,b)=>(a.grade_id-b.grade_id)||(a.section||'').localeCompare(b.section||'')||(a.full_name||'').localeCompare(b.full_name||''));
   const byId={}; students.forEach(s=>{ byId[s.id]=s; });
   const ids=students.map(s=>s.id); const safeIds=ids.length?ids:['00000000-0000-0000-0000-000000000000'];
-  const { data:atts } = await sb.from('exam_attempts').select('id,student_id,skill,level,percent,score,total,mock,submitted_at,duration_min,breakdown').in('student_id',safeIds).limit(8000);
+  const { data:atts } = await _fetchAttempts('id,student_id,skill,level,percent,score,total,mock,submitted_at,duration_min,breakdown',safeIds);
   const { data:spks } = await sb.from('speaking_results').select('*').in('student_id',safeIds);
   const c2=(atts||[]).filter(a=>byId[a.student_id] && mockCycleOf(a)===2);
   const aBy={}; c2.forEach(a=>{(aBy[a.student_id]=aBy[a.student_id]||[]).push(a);});

@@ -210,8 +210,7 @@ async function cefrFinalPanel(){
 
   const ids = students.map(s=>s.id);
   const safeIds = ids.length?ids:['00000000-0000-0000-0000-000000000000'];
-  const { data:attsAll } = await sb.from('exam_attempts')
-    .select('id,student_id,skill,level,percent,mock,submitted_at').in('student_id', safeIds).limit(8000);
+  const { data:attsAll } = await _fetchAttempts('id,student_id,skill,level,percent,mock,submitted_at', safeIds);
   const atts = mockCycleAttempts(attsAll, 1);   // ciclo 1: lo anterior al 22-sep-2026 (sin breakdown: por fecha basta)
   const { data:spks } = await sb.from('speaking_results').select('*').in('student_id', safeIds).eq('cycle',1);
   const aBy={}; (atts||[]).forEach(a=>{(aBy[a.student_id]=aBy[a.student_id]||[]).push(a);});
@@ -584,6 +583,18 @@ function _ensurePrintCss(){
    notas por destreza + detalle del Writing/Speaking evaluado + impresión + descarga PDF. */
 /* Los datos de un informe: perfil, intentos DEL CICLO, su Speaking y, en el
    ciclo 2, el resultado del ciclo 1 para la comparativa. */
+/* PostgREST corta cada respuesta a 1000 filas (max_rows) aunque se pida .limit(8000): con 1500+ intentos
+   los alumnos del final quedaban sin notas en los paneles. Se pide por páginas de 1000, ordenadas por id. */
+async function _fetchAttempts(cols, ids){
+  let out=[], from=0;
+  for(;;){
+    const { data, error } = await sb.from('exam_attempts').select(cols).in('student_id',ids).order('id').range(from, from+999);
+    if(error || !data) return { data:out, error };
+    out=out.concat(data);
+    if(data.length<1000) return { data:out, error:null };
+    from+=1000;
+  }
+}
 async function _mockReportData(studentId, cycle){
   cycle = cycle===2 ? 2 : 1;
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
