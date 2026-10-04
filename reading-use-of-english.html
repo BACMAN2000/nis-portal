@@ -73,7 +73,11 @@
   .rv .yours{display:inline-block;padding:2px 8px;border-radius:6px;margin:4px 0}
   .rv .yours.ok{background:var(--good-bg);color:#065f46} .rv .yours.bad{background:var(--bad-bg);color:#991b1b}
   .rv .alt{color:var(--muted);font-size:.8rem}
-  .rv .why{color:#b45309;font-size:.84rem}
+  .rv .why{color:#b45309;font-size:.84rem;margin:2px 0}
+  .rv .model{margin-top:4px}
+  .rv .model span{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-right:4px}
+  .rv .gnote{margin-top:8px;background:var(--bg);border-left:4px solid var(--blue);border-radius:8px;padding:8px 12px;font-size:.87rem;line-height:1.55}
+  .rv .gnote span{display:block;font-size:.74rem;font-weight:700;color:var(--blue-d);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
   .bigscore{font-size:1.6rem;font-weight:800;color:var(--blue-d)}
   @media(max-width:520px){.levels{grid-template-columns:1fr}.rv{margin-left:0}}
 
@@ -166,6 +170,7 @@
 <script src="nis-nav.js?v=c6e39903"></script>
 <script src="activity-save.js?v=1c38a81d"></script>
 <script src="reading-use-of-english.data.js?v=7f5a2d3e"></script>
+<script src="reading-use-of-english.why.js?v=69ad4c57"></script>
 </head>
 <body>
 <div class="wrap">
@@ -490,20 +495,29 @@ function renderReview(){
     <div style="font-size:.88rem;color:var(--muted)">${pct >= 80 ? 'Excellent — you are ready for this grammar point.' : pct >= 60 ? 'Good work. Review the answers marked in red.' : 'Read the grammar explanation again and try once more.'}</div>`;
   $('rvList').innerHTML = its.map((it, i) => {
     const v = (st.a[i]||'').trim(), ok = v && isRight(it, v), a = answersOf(it);
-    let why = '';
+    /* Diagnóstico de la respuesta (lo que falló en concreto) + la explicación
+       gramatical del ítem (RUOE_WHY), que se muestra siempre, también si acertó. */
+    const why = [];
     if(!ok && v){
-      const w = words(v);
-      if(!hasKey(it, v)) why = `You must use the key word <b>${esc(it[1])}</b> without changing it.`;
-      else if(w < L.min || w > L.max) why = `Your answer has ${w} words; it must have ${L.min}–${L.max}.`;
+      const w = words(v), mine = forms(v)[0].split(' ');
+      const pre = base(it[2]).split(' ').filter(Boolean), post = base(it[3]).split(' ').filter(Boolean);
+      if(!hasKey(it, v)) why.push(`The key word <b>${esc(it[1])}</b> is missing or has been changed. In Part 4 you must use it exactly as it is given.`);
+      if(w < L.min || w > L.max) why.push(`Your answer has ${w} word${w===1?'':'s'}; at ${L.name} it must have ${L.min}–${L.max} (contractions count as two words).`);
+      const preW = String(it[2]).trim().split(/\s+/).pop(), postW = String(it[3]).trim().split(/\s+/)[0].replace(/[.,!?]$/,'');
+      if(pre.length && mine[0] === pre[pre.length-1]) why.push(`Don’t repeat <b>“${esc(preW)}”</b> — it is already written before the gap.`);
+      if(post.length && mine[mine.length-1] === post[0]) why.push(`Don’t repeat <b>“${esc(postW)}”</b> — it is already written after the gap.`);
+      if(!why.length) why.push('You used the key word and the right number of words, but the structure does not keep the meaning of the first sentence. Compare it with the model answer and read the grammar note.');
     }
+    const note = (window.RUOE_WHY || {})[cur.t.id + ':' + cur.level + ':' + i];
     const full = s => `${it[2] ? esc(it[2]) + ' ' : ''}<b>${esc(s)}</b>${it[3] && it[3] !== '.' ? ' ' + esc(it[3]) : '.'}`;
     return `<div class="q">
       <div class="qhead"><span class="qnum">${i+1}</span><div>${esc(it[0])} <b>(${esc(it[1])})</b></div></div>
       <div class="rv">
         <span class="yours ${ok?'ok':'bad'}">${ok ? '✓' : '✗'} ${v ? esc(v) : '<i>no answer</i>'}</span>
-        ${why ? `<div class="why">${why}</div>` : ''}
-        <div>${full(a[0])}</div>
+        ${why.map(x => `<div class="why">⚠ ${x}</div>`).join('')}
+        <div class="model"><span>Model answer:</span> ${full(a[0])}</div>
         ${a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : ''}
+        ${note ? `<div class="gnote"><span>📘 Grammar</span>${note}</div>` : ''}
       </div></div>`;
   }).join('');
 }
