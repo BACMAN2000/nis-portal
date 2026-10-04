@@ -26,14 +26,12 @@
   header p{margin:0;opacity:.88;font-size:.85rem}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(20,40,80,.04)}
   .sec-title{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:4px 0 10px}
-  /* Niveles */
   .levels{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
   .lvl{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
   .lvl b{display:block;font-size:1.05rem;color:var(--blue-d)}
   .lvl span{font-size:.82rem;color:var(--muted)}
   .lvl.on{border-color:var(--blue);background:var(--bg)}
   .lvl.c1 b{color:var(--c1)} .lvl.c1.on{border-color:var(--c1)}
-  /* Partes */
   .parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:6px}
   .part{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card);font:inherit;text-align:left;color:var(--ink);cursor:pointer}
   .part .pn{font-weight:800;color:var(--blue-d);font-size:.95rem}
@@ -43,7 +41,6 @@
   .soon-tag{display:inline-block;margin-top:5px;font-size:.68rem;font-weight:700;background:#fef3c7;color:#92400e;border-radius:999px;padding:2px 8px}
   .rule{background:var(--bg);border-left:4px solid var(--blue);padding:10px 14px;border-radius:8px;font-size:.88rem;color:var(--muted);margin:12px 0 14px}
   .rule.c1{border-left-color:var(--c1)}
-  /* Temas */
   .topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
   .topic{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card);cursor:pointer;font:inherit;text-align:left;color:var(--ink);transition:transform .12s,box-shadow .12s}
   .topic:hover{transform:translateY(-2px);box-shadow:0 8px 20px -12px rgba(20,40,80,.35)}
@@ -52,42 +49,116 @@
   .topic .meta{font-size:.78rem;color:var(--muted)}
   .prog{height:6px;background:var(--line);border-radius:999px;margin-top:10px;overflow:hidden}
   .prog i{display:block;height:100%;background:var(--good);border-radius:999px}
-  /* Tema abierto */
   .backbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--blue-d);font:inherit;font-weight:700;font-size:.88rem;padding:8px 14px;border-radius:10px;cursor:pointer;margin-bottom:12px}
   .badge{display:inline-block;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 10px;background:#dbeafe;color:#1e40af;margin-left:6px;vertical-align:middle}
   .badge.c1{background:#ede9fe;color:#5b21b6}
   .focus h2{margin:0 0 8px;font-size:1.15rem;color:var(--blue-d)}
   .focus p{margin:0 0 12px}
-  .pat{width:100%;border-collapse:collapse;font-size:.88rem}
-  .pat td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top}
+  .pat{width:100%;border-collapse:collapse;font-size:.9rem}
+  .pat td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:top}
   .pat td:first-child{font-weight:700;color:var(--blue-d);width:32%}
-  @media(max-width:620px){.pat td:first-child{width:auto;display:block;border-top:1px solid var(--line);padding-bottom:0}.pat td:last-child{display:block;border-top:none}}
-  .q{border-top:1px solid var(--line);padding:16px 0}
+  @media(max-width:620px){.pat td:first-child{width:auto;display:block;padding-bottom:0}.pat td:last-child{display:block;border-top:none}}
+  .startrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .btn{border:none;border-radius:10px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer;font-size:.92rem}
+  .btn.primary{background:var(--blue);color:#fff}
+  .btn.ghost{background:var(--card);border:1px solid var(--line);color:var(--blue-d)}
+  .foot{font-size:.76rem;color:var(--muted);text-align:center;margin-top:18px}
+  .hidden{display:none !important}
+  /* Corrección */
+  .q{border-top:1px solid var(--line);padding:14px 0}
   .q:first-child{border-top:none;padding-top:4px}
   .qhead{display:flex;gap:10px;align-items:flex-start}
   .qnum{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--blue-d);color:#fff;font-weight:700;font-size:.85rem;flex:0 0 auto}
-  .orig{font-size:1rem}
-  .key{display:inline-block;margin:8px 0 6px 38px;font-weight:800;letter-spacing:.06em;border:2px solid var(--ink);border-radius:6px;padding:2px 12px;font-size:.92rem}
-  .line{margin-left:38px;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:1rem}
-  .line input{flex:1 1 240px;min-width:180px;max-width:100%;font:inherit;font-size:.98rem;padding:7px 10px;border:1.5px solid #94a3b8;border-radius:8px;background:var(--card);color:var(--ink)}
-  .line input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(73,135,198,.18)}
-  .line input.ok{border-color:var(--good);background:var(--good-bg);color:#065f46}
-  .line input.bad{border-color:var(--bad);background:var(--bad-bg);color:#991b1b}
-  .wc{margin-left:38px;font-size:.75rem;color:var(--muted);margin-top:4px}
-  .wc.warn{color:#b45309;font-weight:600}
-  .fb{margin:8px 0 0 38px;font-size:.86rem;padding:8px 10px;border-radius:8px;background:var(--bg)}
-  .fb.ok{color:#065f46;background:var(--good-bg)} .fb.bad{color:#991b1b;background:var(--bad-bg)}
-  .fb .alt{color:var(--muted);font-size:.8rem}
-  .bar{position:sticky;bottom:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:0 -6px 20px -14px rgba(20,40,80,.4)}
-  .btn{border:none;border-radius:10px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer;font-size:.9rem}
-  .btn.primary{background:var(--blue);color:#fff}
-  .btn.ghost{background:var(--card);border:1px solid var(--line);color:var(--blue-d)}
-  .btn:disabled{opacity:.5;cursor:not-allowed}
-  .count{font-size:.85rem;color:var(--muted)}
-  .score{font-weight:800;color:var(--blue-d)}
-  .foot{font-size:.76rem;color:var(--muted);text-align:center;margin-top:18px}
-  .hidden{display:none}
-  @media(max-width:520px){.levels{grid-template-columns:1fr}.key,.line,.wc,.fb{margin-left:0}}
+  .rv{margin-left:38px;font-size:.92rem}
+  .rv .yours{display:inline-block;padding:2px 8px;border-radius:6px;margin:4px 0}
+  .rv .yours.ok{background:var(--good-bg);color:#065f46} .rv .yours.bad{background:var(--bad-bg);color:#991b1b}
+  .rv .alt{color:var(--muted);font-size:.8rem}
+  .rv .why{color:#b45309;font-size:.84rem}
+  .bigscore{font-size:1.6rem;font-weight:800;color:var(--blue-d)}
+  @media(max-width:520px){.levels{grid-template-columns:1fr}.rv{margin-left:0}}
+
+  /* ===== Pantalla de examen: el mismo marco «inspera» de los Practice Tests
+     (mocks-cambridge/reading-quiz.html), copiado tal cual. ===== */
+  .inspera-shell{position:fixed;inset:0;background:var(--bg);color:var(--ink);z-index:1000;font-family:"Montserrat","Segoe UI",system-ui,sans-serif;display:flex;flex-direction:column;--exam-fs:1rem}
+  .inspera-shell *{box-sizing:border-box}
+  .inspera-header{background:var(--card);border-bottom:1px solid var(--line);padding:12px 22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .inspera-header .brand{display:inline-flex;align-items:center;text-decoration:none}
+  .inspera-header .brand img{display:block;height:36px;width:auto}
+  .inspera-header .candidate{color:var(--muted);font-size:.85rem}
+  .inspera-header .right{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .inspera-header .timer{font-family:Consolas,"Segoe UI Mono",monospace;font-size:1.05rem;font-weight:800;color:var(--ink);background:var(--lila);padding:6px 14px;border-radius:8px;letter-spacing:2px;min-width:90px;text-align:center}
+  .inspera-header button{background:var(--card);color:var(--muted);border:1px solid var(--line);padding:6px 14px;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit}
+  .inspera-header button.finish-btn{background:#2f5f93;color:var(--card);border-color:#2f5f93}
+  .inspera-header button:hover{filter:brightness(0.97)}
+  .inspera-header .tools{display:flex;gap:4px;flex-wrap:wrap}
+  .inspera-header .tool-btn{background:var(--bg);color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:"Montserrat","Segoe UI",sans-serif;display:inline-flex;align-items:center;gap:4px}
+  .inspera-header .tool-btn:hover{background:var(--line);border-color:#94a3b8}
+  .inspera-header .tool-btn.active{background:var(--amber50);border-color:var(--gold);color:var(--ink)}
+  .inspera-header .fs-group{display:inline-flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .inspera-header .fs-group button{background:transparent;border:none;padding:6px 10px;font-weight:700;cursor:pointer;color:var(--muted);font-family:"Montserrat","Segoe UI",sans-serif}
+  .inspera-header .fs-group .fs-label{padding:0 8px;color:#94a3b8;font-size:.78rem;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .inspera-main{flex:1;overflow-y:auto;padding:18px 32px 30px;width:100%}
+  .inspera-main-inner{max-width:1000px;margin:0 auto}
+  .inspera-title{margin:6px 0 10px}
+  .inspera-title h1{font-size:1.35rem;margin:0;font-weight:700;color:var(--ink)}
+  .inspera-instruction{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0}
+  .inspera-instruction strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:4px;font-weight:700}
+  .inspera-instruction p{color:var(--muted);font-size:.92rem;margin:0;line-height:1.5}
+  .inspera-content{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px 28px;font-family:Georgia,"Times New Roman",serif;line-height:1.85;color:var(--ink);font-size:var(--exam-fs,1rem)}
+  .inspera-content .q{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:12px 0;font-family:"Montserrat","Segoe UI",sans-serif;font-size:var(--exam-fs,1rem)}
+  .inspera-content .q .stem{font-weight:600;color:var(--ink);margin-bottom:10px}
+  .paged-counter{font-size:.85rem;color:var(--muted);font-weight:600;margin-bottom:10px;font-family:"Montserrat","Segoe UI",sans-serif}
+  .transform-q{font-family:Georgia,"Times New Roman",serif;line-height:1.75}
+  .transform-q > .stem{font-family:inherit;font-weight:400;margin-bottom:8px}
+  .kw-line{font-weight:700;letter-spacing:1.5px;color:var(--blue);margin:8px 0;padding-left:28px;font-family:"Montserrat","Segoe UI",sans-serif;font-size:1rem}
+  .transform-second input.gap-inline-wide{display:inline-block;width:240px;max-width:100%;margin:0 6px;padding:4px 8px;border:none;border-bottom:1.5px dashed #94a3b8;background:var(--card);color:var(--ink);font-family:inherit;font-size:1rem;text-align:center}
+  .transform-second input.gap-inline-wide:focus{outline:none;border-bottom-color:#4987c6}
+  .transform-hint{font-family:"Montserrat","Segoe UI",sans-serif;font-size:.82rem;color:var(--muted);margin-top:8px}
+  .inspera-shell .q-flag{display:inline-flex;align-items:center;gap:4px;margin-top:8px;background:transparent;border:1px solid var(--line);border-radius:6px;padding:4px 10px;font:600 .78rem "Montserrat","Segoe UI",system-ui,sans-serif;color:var(--muted);cursor:pointer}
+  .inspera-shell .q-flag:hover{border-color:var(--gold,#d97706);color:var(--ink)}
+  .inspera-shell .q-flag.on{background:var(--amber50,#fef3c7);border-color:var(--gold,#d97706);color:var(--ink)}
+  .inspera-footer{background:var(--card);border-top:1px solid var(--line);padding:8px 14px;display:flex;align-items:stretch;gap:8px;box-shadow:0 -1px 3px rgba(0,0,0,.05);overflow-x:auto}
+  .part-tabs{display:flex;gap:6px;flex:1;align-items:stretch}
+  .part-tab{padding:8px 14px;border-radius:8px;cursor:pointer;flex-shrink:0;min-width:90px;background:var(--bg);border:1px solid var(--line);color:var(--muted);font-size:.82rem;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:2px}
+  .part-tab .pname{font-weight:700;font-size:.82rem;color:var(--ink)}
+  .part-tab .pprog{font-size:.76rem;color:var(--muted)}
+  .part-tab:hover{border-color:#94a3b8}
+  .part-tab.active{background:var(--card);border-color:#4987c6;color:var(--ink);box-shadow:0 0 0 2px #d1d2ea}
+  .part-tab.active .pname{color:var(--blue)}
+  .part-tab .qnums{display:none}
+  .part-tab.active .pprog{display:none}
+  .part-tab.active .qnums{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:3px}
+  .qnum{position:relative;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:5px;background:var(--card);color:var(--muted);font-size:.78rem;font-weight:600;cursor:pointer;padding:0;line-height:1;font-family:inherit}
+  .qnum:hover{border-color:#4987c6;color:var(--blue)}
+  .qnum.answered{background:#2f5f93;border-color:#2f5f93;color:var(--card)}
+  .qnum.current{box-shadow:0 0 0 2px #d1d2ea;border-color:#4987c6}
+  .inspera-shell .qnum.flagged::after,.inspera-shell .sp-num.flagged::after{content:'';position:absolute;top:-1px;right:-1px;border:5px solid transparent;border-top-color:var(--gold,#d97706);border-right-color:var(--gold,#d97706);border-radius:0 5px 0 0}
+  .nav-arrows{display:flex;gap:6px;flex-shrink:0;align-items:center;padding-left:8px;border-left:1px solid var(--line);margin-left:4px}
+  .nav-arrows button{background:#2f5f93;color:var(--card);border:none;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.95rem;min-width:46px}
+  .nav-arrows button:disabled{background:var(--line-2);cursor:not-allowed}
+  .inspera-shell .submit-page{max-width:900px;margin:0 auto;padding:10px 0 30px;font-family:"Montserrat","Segoe UI",system-ui,sans-serif}
+  .inspera-shell .submit-page h2{font-size:1.3rem;margin:6px 0 8px;color:var(--ink);font-weight:700}
+  .inspera-shell .submit-page .submit-summary{color:var(--muted);margin:0 0 14px;font-size:.95rem;line-height:1.5}
+  .inspera-shell .submit-page .submit-summary strong{color:var(--ink)}
+  .inspera-shell .submit-page .submit-warn{background:var(--amber50,#fef3c7);border:1px solid var(--gold,#d97706);color:var(--ink);border-radius:8px;padding:10px 14px;margin:0 0 14px;font-size:.92rem}
+  .inspera-shell .submit-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:.92rem}
+  .inspera-shell .submit-table th,.inspera-shell .submit-table td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;color:var(--ink)}
+  .inspera-shell .submit-table th{background:var(--bg);color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
+  .inspera-shell .submit-table tr:last-child td{border-bottom:none}
+  .inspera-shell .submit-table td.sp-part{font-weight:700;white-space:nowrap}
+  .inspera-shell .submit-table .sp-ok{color:var(--muted)}
+  .inspera-shell .sp-num{width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink);font-size:.8rem;font-weight:600;cursor:pointer;margin:2px 3px 2px 0;position:relative;font-family:inherit}
+  .inspera-shell .submit-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+  .inspera-shell .submit-actions button{border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;font-family:inherit;font-size:.92rem}
+  .inspera-shell .submit-actions .sp-back{background:var(--card);color:var(--muted);border:1px solid var(--line)}
+  .inspera-shell .submit-actions .sp-final{background:#2f5f93;color:#fff;border:1px solid #2f5f93}
+  @media(max-width:640px){
+    .inspera-header{padding:10px 14px}
+    .inspera-header .candidate{display:none}
+    .inspera-main{padding:14px}
+    .inspera-content{padding:16px 18px}
+    .part-tab{min-width:70px;padding:6px 10px}
+  }
 </style>
   <meta name="google" content="notranslate">
   <script src="config.js?v=720edc7d"></script>
@@ -103,7 +174,7 @@
     <p>Cambridge B2 First and C1 Advanced · grammar-focused practice, part by part</p>
   </header>
 
-  <!-- Menú principal -->
+  <!-- 1 · Menú principal -->
   <div id="menu">
     <div class="sec-title">1 · Choose your exam</div>
     <div class="levels" id="levels"></div>
@@ -114,41 +185,86 @@
     </div>
   </div>
 
-  <!-- Tema abierto -->
-  <div id="topic" class="hidden">
+  <!-- 2 · Gramática explicada (antes de los ejercicios) -->
+  <div id="grammar" class="hidden">
     <button type="button" class="backbtn" onclick="goMenu()">← Back to grammar points</button>
     <div class="card focus" id="focus"></div>
     <div class="card">
-      <div class="rule" id="topicRule"></div>
-      <div id="items"></div>
+      <div class="rule" id="gRule"></div>
+      <div class="startrow">
+        <span class="muted" id="gInfo" style="font-size:.88rem;color:var(--muted)"></span>
+        <button type="button" class="btn primary" onclick="startExam()">Start the exercises →</button>
+      </div>
     </div>
-    <div class="bar">
-      <button class="btn primary" id="checkBtn">Check answers</button>
-      <button class="btn ghost" id="resetBtn">Try again</button>
-      <button class="btn ghost" onclick="goMenu()">← Back</button>
-      <span class="count" id="count"></span>
-      <span class="score" id="score"></span>
+  </div>
+
+  <!-- 4 · Corrección -->
+  <div id="review" class="hidden">
+    <button type="button" class="backbtn" onclick="goMenu()">← Back to grammar points</button>
+    <div class="card">
+      <div id="rvHead"></div>
+      <div class="startrow" style="margin-top:12px">
+        <button type="button" class="btn ghost" onclick="openGrammar()">📖 Grammar explanation</button>
+        <button type="button" class="btn ghost" onclick="retry()">↻ Try again</button>
+        <button type="button" class="btn primary" onclick="goMenu()">← Back to grammar points</button>
+      </div>
     </div>
+    <div class="card" id="rvList"></div>
   </div>
 
   <div class="foot">Nordic International School · Reading and Use of English trainer. Original practice in Cambridge exam format.</div>
 </div>
 
+<!-- 3 · Examen: el marco de los Practice Tests, una pregunta por pantalla -->
+<div id="exam" class="inspera-shell hidden">
+  <header class="inspera-header">
+    <span class="brand" title="Nordic International School"><img src="mocks-cambridge/nordic-logo-h.svg" alt="Nordic International School"></span>
+    <div class="candidate" id="exCand"></div>
+    <div class="tools">
+      <div class="fs-group" title="Adjust text size">
+        <button type="button" onclick="fontSize(-1)">A−</button>
+        <span class="fs-label" id="fsLabel">100%</span>
+        <button type="button" onclick="fontSize(1)">A+</button>
+      </div>
+      <button type="button" class="tool-btn" id="flagBtn" onclick="toggleFlag()" title="Flag this question to come back to it later">⚐ Flag question 1</button>
+    </div>
+    <div class="right">
+      <div class="timer" id="timer">00:00</div>
+      <button type="button" onclick="openGrammar()" title="Back to the grammar explanation">Exit</button>
+      <button type="button" class="finish-btn" onclick="openSubmitPage()">Submit ✓</button>
+    </div>
+  </header>
+  <main class="inspera-main">
+    <div class="inspera-main-inner" id="exInner"></div>
+    <div class="submit-page" id="submitPage" hidden></div>
+  </main>
+  <footer class="inspera-footer">
+    <div class="part-tabs" id="exTabs"></div>
+    <div class="nav-arrows">
+      <button type="button" id="prevBtn" onclick="move(-1)" title="Previous question">◀</button>
+      <button type="button" id="nextBtn" onclick="move(1)" title="Next question">▶</button>
+    </div>
+  </footer>
+</div>
+
 <script>
 const $ = id => document.getElementById(id);
 const LEVELS = {
-  b2:{name:'B2 First', sub:'Upper-intermediate · FCE', min:2, max:5},
-  c1:{name:'C1 Advanced', sub:'Advanced · CAE', min:3, max:6}
+  b2:{name:'B2 First', sub:'Upper-intermediate · FCE', min:2, max:5, minW:'two', maxW:'five'},
+  c1:{name:'C1 Advanced', sub:'Advanced · CAE', min:3, max:6, minW:'three', maxW:'six'}
 };
-let level = 'b2', part = 4, cur = null;   // cur = {topic, level}
-/* Estado guardado: STORE['b2:passive'] = {a:{0:'…'}, checked:bool, score:n} */
+const SET = 6;               // preguntas por bloque: la Part 4 del examen tiene 6
+let level = 'b2', part = 4, cur = null, view = 'menu';
+/* STORE['b2:passive'] = {a:{i:'…'}, f:{i:true}, q:i, checked, score} */
 const STORE = {};
 const keyOf = (lv, id) => lv + ':' + id;
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
 /* ---- Corrección --------------------------------------------------------
    Se comparan las dos cadenas tras expandir contracciones (hasn't = has not),
    así el alumno puede escribir la forma corta o la larga. 'd es ambiguo
-   (had / would): se prueban las dos lecturas. */
+   (had / would): se prueban las dos lecturas. Mayúsculas y minúsculas dan
+   igual, como al teclear en el examen digital. */
 function base(s){
   return String(s||'').toLowerCase()
     .replace(/[’‘`´]/g,"'").replace(/[“”]/g,'"')
@@ -178,7 +294,42 @@ function hasKey(it, txt){
   return forms(txt).some(f => (' ' + f + ' ').includes(k));
 }
 
-/* ---- Menú --------------------------------------------------------------- */
+/* ---- Vistas --------------------------------------------------------------
+   El hash manda: #b2 (menú) · #b2/passive (gramática) · #b2/passive/exam ·
+   #b2/passive/review. Así el «atrás» del navegador también funciona. */
+function show(v){
+  view = v;
+  ['menu','grammar','review'].forEach(id => $(id).classList.toggle('hidden', id !== v));
+  $('exam').classList.toggle('hidden', v !== 'exam');
+  document.body.style.overflow = v === 'exam' ? 'hidden' : '';
+  // La barra Save / Submit del portal va fija abajo: el examen termina encima.
+  if(v === 'exam'){ const bar = document.querySelector('.nisw'); $('exam').style.bottom = bar ? bar.offsetHeight + 'px' : '0'; }
+  window.scrollTo({top:0});
+}
+function setHash(h){ if(location.hash !== h) location.hash = h; else route(); }
+function route(){
+  const m = location.hash.match(/^#(b2|c1)(?:\/(\w+))?(?:\/(exam|review))?$/);
+  if(m) level = m[1];
+  const t = m && m[2] && RUOE_P4.find(x => x.id === m[2] && x[level]);
+  if(!t){ cur = null; renderLevels(); renderParts(); show('menu'); return; }
+  if(!cur || cur.t !== t || cur.level !== level) cur = {t, level, st: stateOf(level, t.id)};
+  const sub = m[3];
+  if(sub === 'exam'){ if(cur.st.checked){ setHash('#'+level+'/'+t.id+'/review'); return; } renderExam(); show('exam'); setTimeout(focusInput, 30); }
+  else if(sub === 'review'){ if(!cur.st.checked){ setHash('#'+level+'/'+t.id+'/exam'); return; } renderReview(); show('review'); }
+  else { renderGrammar(); show('grammar'); }
+}
+window.addEventListener('hashchange', route);
+function stateOf(lv, id){
+  const k = keyOf(lv, id);
+  if(!STORE[k]) STORE[k] = {a:{}, f:{}, q:0, checked:false, score:null};
+  const s = STORE[k]; s.a = s.a || {}; s.f = s.f || {}; s.q = s.q || 0;
+  return s;
+}
+window.goMenu = () => setHash('#' + level);
+window.openGrammar = () => cur && setHash('#' + cur.level + '/' + cur.t.id);
+window.startExam = () => cur && setHash('#' + cur.level + '/' + cur.t.id + '/exam');
+
+/* ---- 1 · Menú ------------------------------------------------------------ */
 function topicsFor(lv){ return RUOE_P4.filter(t => t[lv] && t[lv].length); }
 function renderLevels(){
   $('levels').innerHTML = Object.keys(LEVELS).map(k => {
@@ -190,154 +341,196 @@ function renderLevels(){
 function renderParts(){
   $('parts').innerHTML = RUOE_PARTS.map(p => p.ready
     ? `<button type="button" class="part ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div></button>`
-    : `<button type="button" class="part soon" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div><span class="soon-tag">🚧 Under construction</span></button>`
+    : `<button type="button" class="part soon ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div><span class="soon-tag">🚧 Under construction</span></button>`
   ).join('');
   const P = RUOE_PARTS.find(p => p.n === part);
   if(!P.ready){
     $('partBody').innerHTML = `<div class="rule">🚧 <b>Part ${P.n} · ${P.name}</b> is under construction. It will be available soon. Meanwhile, practise <b>Part 4 · Key word transformations</b>.</div>`;
     return;
   }
-  const L = LEVELS[level];
-  const list = topicsFor(level);
+  const L = LEVELS[level], list = topicsFor(level);
   $('partBody').innerHTML = `<div class="rule ${level}">
-      <b>${L.name} · Part 4 — Key word transformations.</b> Complete the second sentence so that it has a similar meaning to the first sentence, using the word given.
-      <b>Do not change the word given.</b> You must use between <b>${L.min} and ${L.max} words</b>, including the word given. Contractions count as two words (<i>don't</i> = do not).
+      <b>${L.name} · Part 4 — Key word transformations.</b> Complete the second sentence so that it means the same as the first. <b>Do not change the word given.</b> You must use between <b>${L.minW} and ${L.maxW} words</b>, including the word given. Contractions count as two words (<i>don't</i> = do not).
     </div>
     <div class="sec-title">3 · Choose a grammar point (${list.length})</div>
     <div class="topics">${list.map(t => {
       const n = t[level].length, g = STORE[keyOf(level,t.id)], done = g && g.checked ? g.score : null;
-      const pct = done == null ? 0 : Math.round(done / n * 100);
+      const ans = g ? Object.values(g.a||{}).filter(v => (v||'').trim()).length : 0;
+      const pct = done == null ? Math.round(ans / n * 100) : Math.round(done / n * 100);
+      const meta = done != null ? ` · score <b>${done}/${n}</b>` : (ans ? ` · ${ans} answered` : '');
       return `<button type="button" class="topic" onclick="openTopic('${t.id}')">
         <div class="em">${t.emoji}</div><h3>${t.title}</h3>
-        <div class="meta">${n} questions${done != null ? ` · last score <b>${done}/${n}</b>` : ''}</div>
-        <div class="prog"><i style="width:${pct}%"></i></div></button>`;
+        <div class="meta">${n} questions${meta}</div>
+        <div class="prog"><i style="width:${pct}%;${done == null ? 'background:var(--blue)' : ''}"></i></div></button>`;
     }).join('')}</div>`;
 }
-window.setLevel = lv => { level = lv; renderLevels(); renderParts(); };
+window.setLevel = lv => { level = lv; history.replaceState(null, '', '#' + lv); renderLevels(); renderParts(); };
 window.setPart = n => { part = n; renderParts(); };
+window.openTopic = id => setHash('#' + level + '/' + id);
 
-/* ---- Tema --------------------------------------------------------------- */
-let ans = {}, checked = false;
-window.openTopic = id => {
-  const t = RUOE_P4.find(x => x.id === id); if(!t) return;
-  cur = {t, level};
-  const g = STORE[keyOf(level, id)];
-  ans = g ? Object.assign({}, g.a) : {}; checked = g ? !!g.checked : false;
-  history.pushState({topic:id, level}, '', '#' + level + '/' + id);
-  showTopic();
-};
-function showTopic(){
-  const {t, level:lv} = cur, L = LEVELS[lv];
-  $('menu').classList.add('hidden'); $('topic').classList.remove('hidden');
+/* ---- 2 · Gramática ------------------------------------------------------- */
+function renderGrammar(){
+  const {t, level:lv} = cur, L = LEVELS[lv], n = t[lv].length;
   $('focus').innerHTML = `<h2>${t.emoji} ${t.title}<span class="badge ${lv}">${L.name}</span></h2>
     <p><b>Grammar focus.</b> ${t.focus}</p>
     <table class="pat">${t.patterns.map(p => `<tr><td>${p[0]}</td><td>${p[1]}</td></tr>`).join('')}</table>`;
-  $('topicRule').className = 'rule ' + lv;
-  $('topicRule').innerHTML = `For each question, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. <b>Do not change the word given.</b> Use between <b>${L.min} and ${L.max} words</b>, including the word given.`;
-  renderItems(); window.scrollTo({top:0});
+  $('gRule').className = 'rule ' + lv;
+  $('gRule').innerHTML = `<b>How the exercises work.</b> They follow the digital exam: one question per screen. Read the first sentence, use the <b>KEY WORD</b> without changing it and type between <b>${L.minW} and ${L.maxW} words</b> in the box. Move with ◀ ▶ or the question numbers at the bottom, flag any question you want to come back to, and press <b>Submit ✓</b> to see your score.`;
+  const st = cur.st, ans = Object.values(st.a).filter(v => (v||'').trim()).length;
+  $('gInfo').innerHTML = `${n} questions · ${Math.ceil(n / SET)} set${n > SET ? 's' : ''} of up to ${SET}` +
+    (st.checked ? ` · last score <b>${st.score}/${n}</b>` : (ans ? ` · ${ans} answered so far` : ''));
 }
-function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-function renderItems(){
-  const {t, level:lv} = cur, items = t[lv];
-  $('items').innerHTML = items.map((it, i) => `<div class="q">
-      <div class="qhead"><span class="qnum">${i+1}</span><div class="orig">${esc(it[0])}</div></div>
-      <div class="key">${esc(it[1])}</div>
-      <div class="line">${it[2] ? `<span>${esc(it[2])}</span>` : ''}
-        <input type="text" id="in${i}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(ans[i]||'')}" ${checked?'readonly':''} aria-label="Answer ${i+1}">
-        ${it[3] && it[3] !== '.' ? `<span>${esc(it[3])}</span>` : ''}</div>
-      <div class="wc" id="wc${i}"></div>
-      <div id="fb${i}"></div>
-    </div>`).join('');
-  items.forEach((it, i) => {
-    const el = $('in' + i);
-    el.addEventListener('input', () => { ans[i] = el.value; wordCount(i); updateBar(); save(); });
-    wordCount(i);
-  });
-  if(checked) markAll(); else $('score').textContent = '';
-  updateBar();
+
+/* ---- 3 · Examen ----------------------------------------------------------
+   Mismo marco y mismo comportamiento que la Part 4 de los Practice Tests: una
+   transformación por pantalla, números abajo por bloque de 6 (la Part 4 del
+   examen tiene 6 preguntas), banderita, flechas y página de entrega. */
+function items(){ return cur.t[cur.level]; }
+function setOf(i){ return Math.floor(i / SET); }
+let fsPct = 100, timer = null;
+window.fontSize = d => { fsPct = Math.max(80, Math.min(160, fsPct + d * 10)); $('exam').style.setProperty('--exam-fs', (fsPct/100) + 'rem'); $('fsLabel').textContent = fsPct + '%'; };
+function startTimer(){
+  clearInterval(timer);
+  const st = cur.st; st.secs = st.secs || 0;
+  const paint = () => { const m = Math.floor(st.secs / 60), s = st.secs % 60; $('timer').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0'); };
+  paint(); timer = setInterval(() => { if(view !== 'exam'){ clearInterval(timer); return; } st.secs++; paint(); }, 1000);
 }
-function wordCount(i){
-  const L = LEVELS[cur.level], v = (ans[i]||'').trim(), n = v ? words(v) : 0, el = $('wc' + i);
-  if(!n){ el.textContent = ''; el.className = 'wc'; return; }
-  const out = n < L.min || n > L.max;
-  el.className = 'wc' + (out ? ' warn' : '');
-  el.textContent = `${n} word${n===1?'':'s'}` + (out ? ` — must be ${L.min}–${L.max}` : '');
+function renderExam(){
+  const L = LEVELS[cur.level];
+  $('exCand').innerHTML = `${esc(cur.t.title)} · <strong>${L.name}</strong>`;
+  $('submitPage').hidden = true; $('exInner').hidden = false;
+  renderQuestion(); startTimer();
 }
-function markAll(){
-  const {t, level:lv} = cur, items = t[lv], L = LEVELS[lv];
-  let n = 0;
-  items.forEach((it, i) => {
-    const v = (ans[i]||'').trim(), ok = v && isRight(it, v), el = $('in' + i), fb = $('fb' + i);
-    if(ok) n++;
-    el.classList.toggle('ok', !!ok); el.classList.toggle('bad', !ok); el.readOnly = true;
-    const a = answersOf(it), full = s => `${it[2] ? esc(it[2]) + ' ' : ''}<b>${esc(s)}</b>${it[3] && it[3] !== '.' ? ' ' + esc(it[3]) : '.'}`;
+function renderQuestion(){
+  const its = items(), st = cur.st, L = LEVELS[cur.level];
+  if(st.q >= its.length) st.q = 0;
+  const i = st.q, it = its[i], s = setOf(i), first = s * SET + 1, last = Math.min(its.length, (s + 1) * SET);
+  const wr = L.min + '–' + L.max;
+  $('exInner').innerHTML = `<div class="inspera-title"><h1>Reading and Use of English — Part 4</h1></div>
+    <div class="inspera-instruction"><strong>Questions ${first}–${last}</strong>
+      <p>For each question, complete the second sentence so that it means the same as the first. <b>Do not change the word given.</b> You must use between <b>${L.minW}</b> and <b>${L.maxW}</b> words, including the word given.</p></div>
+    <div class="inspera-content">
+      <div class="paged-counter">Question ${i - s * SET + 1} of ${last - first + 1}</div>
+      <div class="q transform-q">
+        <div class="stem">${i+1}. ${esc(it[0])}</div>
+        <div class="kw-line">${esc(it[1])}</div>
+        <div class="transform-second">${it[2] ? esc(it[2]) : ''}<input class="gap-inline-wide" id="exInput" type="text" placeholder="${wr} words" aria-label="Question ${i+1}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(st.a[i]||'')}">${it[3] && it[3] !== '.' ? esc(it[3]) : '.'}</div>
+        <div class="transform-hint">Write ${wr} words, including the key word.</div>
+        <button type="button" class="q-flag ${st.f[i]?'on':''}" onclick="toggleFlag()" aria-pressed="${!!st.f[i]}">${st.f[i] ? '⚑ Flagged question ' : '⚐ Flag question '}${i+1}</button>
+      </div>
+    </div>`;
+  const inp = $('exInput');
+  inp.addEventListener('input', () => { st.a[i] = inp.value; renderTabs(); touch(); });
+  inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); move(1); } });
+  $('flagBtn').textContent = (st.f[i] ? '⚑ Flagged question ' : '⚐ Flag question ') + (i+1);
+  $('flagBtn').classList.toggle('active', !!st.f[i]);
+  $('prevBtn').disabled = i === 0;
+  $('nextBtn').disabled = i === its.length - 1;
+  renderTabs();
+}
+function renderTabs(){
+  const its = items(), st = cur.st, cs = setOf(st.q), nSets = Math.ceil(its.length / SET);
+  let h = '';
+  for(let s = 0; s < nSets; s++){
+    const a = s * SET, b = Math.min(its.length, a + SET);
+    let qs = '', done = 0;
+    for(let i = a; i < b; i++){
+      const ans = !!(st.a[i]||'').trim(); if(ans) done++;
+      qs += `<button type="button" class="qnum${ans?' answered':''}${st.f[i]?' flagged':''}${i===st.q?' current':''}" onclick="event.stopPropagation();goQ(${i})">${i+1}</button>`;
+    }
+    h += `<div class="part-tab${s===cs?' active':''}" onclick="goQ(${a})">
+      <div class="pname">${nSets > 1 ? 'Set ' + (s+1) : 'Part 4'}</div>
+      <div class="pprog">${done} of ${b - a}</div>
+      <div class="qnums">${qs}</div></div>`;
+  }
+  $('exTabs').innerHTML = h;
+}
+function focusInput(){ const i = $('exInput'); if(i && window.innerWidth > 700) i.focus(); }
+window.goQ = i => { $('submitPage').hidden = true; $('exInner').hidden = false; cur.st.q = i; renderQuestion(); focusInput(); touch(); };
+window.move = d => { const n = cur.st.q + d; if(n >= 0 && n < items().length) goQ(n); };
+window.toggleFlag = () => { const st = cur.st, i = st.q; if(st.f[i]) delete st.f[i]; else st.f[i] = true; renderQuestion(); touch(); };
+/* Página de entrega: qué falta y qué está marcado, por bloque, antes de enviar. */
+window.openSubmitPage = () => {
+  const its = items(), st = cur.st, nSets = Math.ceil(its.length / SET);
+  let rows = '', answered = 0, flagged = 0;
+  for(let s = 0; s < nSets; s++){
+    const a = s * SET, b = Math.min(its.length, a + SET);
+    let done = 0, miss = '', flg = '';
+    for(let i = a; i < b; i++){
+      const isDone = !!(st.a[i]||'').trim(), isFlag = !!st.f[i];
+      if(isDone) done++; else miss += `<button type="button" class="sp-num${isFlag?' flagged':''}" onclick="goQ(${i})">${i+1}</button>`;
+      if(isFlag){ flagged++; flg += `<button type="button" class="sp-num flagged" onclick="goQ(${i})">${i+1}</button>`; }
+    }
+    answered += done;
+    rows += `<tr><td class="sp-part">${nSets > 1 ? 'Set ' + (s+1) : 'Part 4'}</td><td>${done} of ${b - a}</td><td>${miss || '<span class="sp-ok">—</span>'}</td><td>${flg || '<span class="sp-ok">—</span>'}</td></tr>`;
+  }
+  const missing = its.length - answered, bits = [];
+  if(missing) bits.push(`<strong>${missing}</strong> question${missing === 1 ? '' : 's'} not answered`);
+  if(flagged) bits.push(`<strong>${flagged}</strong> flagged`);
+  $('submitPage').innerHTML = `<h2>Submission page</h2>
+    <p class="submit-summary">You have attempted <strong>${answered} of ${its.length}</strong> questions. Check the table, then press <strong>Submit test</strong>. You will not be able to change your answers after that.</p>
+    ${bits.length ? `<div class="submit-warn">⚠ You still have ${bits.join(' and ')}. Click a number to go back to that question.</div>` : ''}
+    <table class="submit-table"><thead><tr><th>Part</th><th>Attempted</th><th>Not answered</th><th>Flagged</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="submit-actions"><button type="button" class="sp-back" onclick="goQ(cur.st.q)">◀ Back to the questions</button><button type="button" class="sp-final" onclick="submitExam()">Submit test ✓</button></div>`;
+  $('exInner').hidden = true; $('submitPage').hidden = false;
+};
+window.submitExam = () => {
+  const its = items(), st = cur.st;
+  st.score = its.filter((it, i) => (st.a[i]||'').trim() && isRight(it, st.a[i])).length;
+  st.checked = true; clearInterval(timer); touch();
+  setHash('#' + cur.level + '/' + cur.t.id + '/review');
+};
+
+/* ---- 4 · Corrección ------------------------------------------------------ */
+function renderReview(){
+  const its = items(), st = cur.st, L = LEVELS[cur.level], n = its.length;
+  const pct = Math.round(st.score / n * 100);
+  $('rvHead').innerHTML = `<div class="sec-title">${esc(cur.t.title)} · ${L.name}</div>
+    <div class="bigscore">${st.score} / ${n} <span style="font-size:1rem;color:var(--muted)">(${pct}%)</span></div>
+    <div style="font-size:.88rem;color:var(--muted)">${pct >= 80 ? 'Excellent — you are ready for this grammar point.' : pct >= 60 ? 'Good work. Review the answers marked in red.' : 'Read the grammar explanation again and try once more.'}</div>`;
+  $('rvList').innerHTML = its.map((it, i) => {
+    const v = (st.a[i]||'').trim(), ok = v && isRight(it, v), a = answersOf(it);
     let why = '';
     if(!ok && v){
       const w = words(v);
-      if(!hasKey(it, v)) why = ` You must use the key word <b>${esc(it[1])}</b> without changing it.`;
-      else if(w < L.min || w > L.max) why = ` Your answer has ${w} words; it must have ${L.min}–${L.max}.`;
+      if(!hasKey(it, v)) why = `You must use the key word <b>${esc(it[1])}</b> without changing it.`;
+      else if(w < L.min || w > L.max) why = `Your answer has ${w} words; it must have ${L.min}–${L.max}.`;
     }
-    fb.className = 'fb ' + (ok ? 'ok' : 'bad');
-    fb.innerHTML = (ok ? '✓ Correct. ' : (v ? '✗ Not quite.' + why + ' ' : '✗ No answer. ')) +
-      `Answer: ${full(a[0])}` + (a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : '');
-  });
-  const tot = items.length;
-  $('score').innerHTML = `Score: ${n}/${tot} (${Math.round(n/tot*100)}%)`;
-  return n;
+    const full = s => `${it[2] ? esc(it[2]) + ' ' : ''}<b>${esc(s)}</b>${it[3] && it[3] !== '.' ? ' ' + esc(it[3]) : '.'}`;
+    return `<div class="q">
+      <div class="qhead"><span class="qnum">${i+1}</span><div>${esc(it[0])} <b>(${esc(it[1])})</b></div></div>
+      <div class="rv">
+        <span class="yours ${ok?'ok':'bad'}">${ok ? '✓' : '✗'} ${v ? esc(v) : '<i>no answer</i>'}</span>
+        ${why ? `<div class="why">${why}</div>` : ''}
+        <div>${full(a[0])}</div>
+        ${a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : ''}
+      </div></div>`;
+  }).join('');
 }
-function updateBar(){
-  if(!cur) return;
-  const tot = cur.t[cur.level].length, done = Object.keys(ans).filter(k => (ans[k]||'').trim()).length;
-  $('count').textContent = checked ? '' : `${done}/${tot} answered`;
-  $('checkBtn').disabled = checked || done === 0;
-  $('checkBtn').textContent = checked ? 'Checked' : 'Check answers';
-}
-$('checkBtn').onclick = () => {
-  checked = true; const n = markAll(); updateBar();
-  STORE[keyOf(cur.level, cur.t.id)] = {a:Object.assign({}, ans), checked:true, score:n};
-  if(window.NIS_WORK) NIS_WORK.touch();
-  window.scrollTo({top:0, behavior:'smooth'});
+window.retry = () => {
+  const k = keyOf(cur.level, cur.t.id);
+  STORE[k] = {a:{}, f:{}, q:0, secs:0, checked:false, score:null}; cur.st = STORE[k]; touch();
+  setHash('#' + cur.level + '/' + cur.t.id + '/exam');
 };
-$('resetBtn').onclick = () => {
-  ans = {}; checked = false;
-  STORE[keyOf(cur.level, cur.t.id)] = {a:{}, checked:false, score:null};
-  renderItems(); save();
-};
-function save(){
-  if(!cur) return;
-  const k = keyOf(cur.level, cur.t.id), prev = STORE[k] || {};
-  STORE[k] = {a:Object.assign({}, ans), checked, score: checked ? prev.score : null};
-  if(window.NIS_WORK) NIS_WORK.touch();
-}
-function showMenu(){
-  cur = null;
-  $('topic').classList.add('hidden'); $('menu').classList.remove('hidden');
-  renderLevels(); renderParts(); window.scrollTo({top:0});
-}
-window.goMenu = () => { if(location.hash) history.back(); else showMenu(); };
-window.addEventListener('popstate', () => {
-  const m = location.hash.match(/^#(b2|c1)\/(\w+)/);
-  if(m && RUOE_P4.some(t => t.id === m[2] && t[m[1]])){ level = m[1]; openFromHash(m[2]); }
-  else showMenu();
+
+/* ◀ Back del portal: un paso atrás dentro de la página antes de salir. */
+if(window.NISNAV) NISNAV.setBackHandler(() => {
+  if(view === 'exam' || view === 'review'){ openGrammar(); return true; }
+  if(view === 'grammar'){ goMenu(); return true; }
+  return false;
 });
-function openFromHash(id){
-  const t = RUOE_P4.find(x => x.id === id); cur = {t, level};
-  const g = STORE[keyOf(level, id)]; ans = g ? Object.assign({}, g.a) : {}; checked = g ? !!g.checked : false;
-  showTopic();
-}
-/* El ◀ Back del portal: dentro de un tema vuelve primero al menú. */
-if(window.NISNAV) NISNAV.setBackHandler(() => { if(cur){ goMenu(); return true; } return false; });
 
 /* ---- Guardado y entrega (barra Save / Submit) ---------------------------- */
+function touch(){ if(window.NIS_WORK) NIS_WORK.touch(); }
 if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
   title: document.title,
-  read:  function(){ if(cur) save(); return { store: STORE, level: level }; },
+  read:  function(){ return { store: STORE, level: level }; },
   write: function(d){
     const p = (d && d.store) || {};
     Object.keys(p).forEach(k => { STORE[k] = p[k]; });
-    if(d && LEVELS[d.level]) level = d.level;
+    if(d && LEVELS[d.level] && !location.hash) level = d.level;
   },
-  after: function(){ if(cur) openFromHash(cur.t.id); else { renderLevels(); renderParts(); } },
+  after: function(){ cur = null; route(); },
   count: function(d){
     const p = (d && d.store) || {};
     return Object.keys(p).reduce((n, k) => n + Object.values((p[k]||{}).a || {}).filter(v => (v||'').trim()).length, 0);
@@ -346,17 +539,13 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
     const p = (d && d.store) || {}, out = {};
     Object.keys(p).forEach(k => {
       const x = p[k] || {}, n = Object.values(x.a || {}).filter(v => (v||'').trim()).length;
-      out[k] = n + ' answered' + (x.checked ? ' / score ' + x.score : '');
+      if(n || x.checked) out[k] = n + ' answered' + (x.checked ? ' / score ' + x.score : '');
     });
     return out;
   }
 }));
 
-(function init(){
-  const m = location.hash.match(/^#(b2|c1)\/(\w+)/);
-  if(m && RUOE_P4.some(t => t.id === m[2] && t[m[1]])){ level = m[1]; openFromHash(m[2]); }
-  else { const lv = location.hash.match(/^#(b2|c1)$/); if(lv) level = lv[1]; showMenu(); }
-})();
+route();
 </script>
 <script src="nis-presence.js?v=684f7b00" defer></script>
 <script src="nis-i18n.js?v=90aa61ff" defer></script>
