@@ -879,6 +879,21 @@ async function studentCambridgePortal(){
         <span class="cam-cta">Open Practice Test →</span>
       </div>
     </a>` : '';
+  /* Reading and Use of English (B2 First / C1 Advanced): práctica por punto
+     gramatical. Va con el candado de la rama Main Suite. */
+  const ruoe = nodeVisible(CAMBRIDGE_TRACKS.main.node) ? `
+    <a class="cam-practice cam-ruoe" href="${_withBack('reading-use-of-english.html',route)}">
+      <div class="cam-pwrap">
+        ${_camIco('uoe', 84)}
+        <div class="cam-ptxt">
+          <div class="cam-kicker">🧩 B2 First · C1 Advanced</div>
+          <h2>Reading and Use of English</h2>
+          <p>Exam-style practice <b>by grammar point</b>: passive, conditionals, reported speech, modals, verb patterns, linkers, phrasal verbs and more, with explanations and automatic marking.</p>
+          <div class="cam-skills"><span>Part 4 · Key word transformations</span><span>B2 · C1</span></div>
+        </div>
+        <span class="cam-cta">Open Reading &amp; UoE →</span>
+      </div>
+    </a>` : '';
   const ieltsOn = IELTS_PIECES.filter(x=>schoolContentOK(x.key));
   const ielts = ieltsOn.length ? `<h2 style="margin:22px 0 2px">🎯 IELTS preparation</h2>
     <p class="muted" style="margin:0 0 10px;font-size:.86rem">Your school's IELTS route on cohasset.pe. It opens in a new tab with your school session — no other account needed.</p>
@@ -890,6 +905,7 @@ async function studentCambridgePortal(){
     <div id="cam-plan-notes"></div>
     <div class="cam-branches">${branch('yle')}${branch('main')}</div>
     ${practice}
+    ${ruoe}
     ${ielts}
     ${panel('yle')}${panel('main')}
     <p class="muted center" style="font-size:.8rem;margin-top:22px">ℹ️ Each Main Suite level opens its <b>exam guide and practice tests</b>. For timed Reading, Listening and Writing mocks, use <b>Practice Test</b>.</p>`;

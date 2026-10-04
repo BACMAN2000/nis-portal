@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading and Use of English · Cambridge B2 / C1</title>
+<link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
+<link rel="preload" href="fonts/GothamBook.woff2?v=a8d93b82" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="nis-fonts.css?v=72345e4f">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=b3bffd5c">
+<style>
+  :root{
+  --blue:#4987c6;
+  --blue-d:#2f5f93;
+  --line:#e2e8f0;
+  --good-bg:#ecfdf3;
+  --bad-bg:#fef2f2;
+  --c1:#7c3aed
+}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Gotham',Montserrat,system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  .wrap{max-width:900px;margin:0 auto;padding:18px 16px 60px}
+  header{background:linear-gradient(135deg,var(--blue-d),#1e3a5f);color:#fff;border-radius:16px;padding:18px 22px;margin-bottom:16px}
+  header h1{margin:0 0 2px;font-size:1.3rem;color:#fff}
+  header p{margin:0;opacity:.88;font-size:.85rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(20,40,80,.04)}
+  .sec-title{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:4px 0 10px}
+  /* Niveles */
+  .levels{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+  .lvl{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+  .lvl b{display:block;font-size:1.05rem;color:var(--blue-d)}
+  .lvl span{font-size:.82rem;color:var(--muted)}
+  .lvl.on{border-color:var(--blue);background:var(--bg)}
+  .lvl.c1 b{color:var(--c1)} .lvl.c1.on{border-color:var(--c1)}
+  /* Partes */
+  .parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:6px}
+  .part{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card);font:inherit;text-align:left;color:var(--ink);cursor:pointer}
+  .part .pn{font-weight:800;color:var(--blue-d);font-size:.95rem}
+  .part .pd{font-size:.78rem;color:var(--muted)}
+  .part.on{border-color:var(--blue);box-shadow:0 0 0 3px rgba(73,135,198,.18)}
+  .part.soon{opacity:.62;cursor:not-allowed}
+  .soon-tag{display:inline-block;margin-top:5px;font-size:.68rem;font-weight:700;background:#fef3c7;color:#92400e;border-radius:999px;padding:2px 8px}
+  .rule{background:var(--bg);border-left:4px solid var(--blue);padding:10px 14px;border-radius:8px;font-size:.88rem;color:var(--muted);margin:12px 0 14px}
+  .rule.c1{border-left-color:var(--c1)}
+  /* Temas */
+  .topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+  .topic{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card);cursor:pointer;font:inherit;text-align:left;color:var(--ink);transition:transform .12s,box-shadow .12s}
+  .topic:hover{transform:translateY(-2px);box-shadow:0 8px 20px -12px rgba(20,40,80,.35)}
+  .topic .em{font-size:1.6rem;line-height:1}
+  .topic h3{margin:6px 0 4px;font-size:.98rem;color:var(--ink)}
+  .topic .meta{font-size:.78rem;color:var(--muted)}
+  .prog{height:6px;background:var(--line);border-radius:999px;margin-top:10px;overflow:hidden}
+  .prog i{display:block;height:100%;background:var(--good);border-radius:999px}
+  /* Tema abierto */
+  .backbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--blue-d);font:inherit;font-weight:700;font-size:.88rem;padding:8px 14px;border-radius:10px;cursor:pointer;margin-bottom:12px}
+  .badge{display:inline-block;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 10px;background:#dbeafe;color:#1e40af;margin-left:6px;vertical-align:middle}
+  .badge.c1{background:#ede9fe;color:#5b21b6}
+  .focus h2{margin:0 0 8px;font-size:1.15rem;color:var(--blue-d)}
+  .focus p{margin:0 0 12px}
+  .pat{width:100%;border-collapse:collapse;font-size:.88rem}
+  .pat td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top}
+  .pat td:first-child{font-weight:700;color:var(--blue-d);width:32%}
+  @media(max-width:620px){.pat td:first-child{width:auto;display:block;border-top:1px solid var(--line);padding-bottom:0}.pat td:last-child{display:block;border-top:none}}
+  .q{border-top:1px solid var(--line);padding:16px 0}
+  .q:first-child{border-top:none;padding-top:4px}
+  .qhead{display:flex;gap:10px;align-items:flex-start}
+  .qnum{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--blue-d);color:#fff;font-weight:700;font-size:.85rem;flex:0 0 auto}
+  .orig{font-size:1rem}
+  .key{display:inline-block;margin:8px 0 6px 38px;font-weight:800;letter-spacing:.06em;border:2px solid var(--ink);border-radius:6px;padding:2px 12px;font-size:.92rem}
+  .line{margin-left:38px;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:1rem}
+  .line input{flex:1 1 240px;min-width:180px;max-width:100%;font:inherit;font-size:.98rem;padding:7px 10px;border:1.5px solid #94a3b8;border-radius:8px;background:var(--card);color:var(--ink)}
+  .line input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(73,135,198,.18)}
+  .line input.ok{border-color:var(--good);background:var(--good-bg);color:#065f46}
+  .line input.bad{border-color:var(--bad);background:var(--bad-bg);color:#991b1b}
+  .wc{margin-left:38px;font-size:.75rem;color:var(--muted);margin-top:4px}
+  .wc.warn{color:#b45309;font-weight:600}
+  .fb{margin:8px 0 0 38px;font-size:.86rem;padding:8px 10px;border-radius:8px;background:var(--bg)}
+  .fb.ok{color:#065f46;background:var(--good-bg)} .fb.bad{color:#991b1b;background:var(--bad-bg)}
+  .fb .alt{color:var(--muted);font-size:.8rem}
+  .bar{position:sticky;bottom:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:0 -6px 20px -14px rgba(20,40,80,.4)}
+  .btn{border:none;border-radius:10px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer;font-size:.9rem}
+  .btn.primary{background:var(--blue);color:#fff}
+  .btn.ghost{background:var(--card);border:1px solid var(--line);color:var(--blue-d)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .count{font-size:.85rem;color:var(--muted)}
+  .score{font-weight:800;color:var(--blue-d)}
+  .foot{font-size:.76rem;color:var(--muted);text-align:center;margin-top:18px}
+  .hidden{display:none}
+  @media(max-width:520px){.levels{grid-template-columns:1fr}.key,.line,.wc,.fb{margin-left:0}}
+</style>
+  <meta name="google" content="notranslate">
+  <script src="config.js?v=720edc7d"></script>
+  <script src="anticheat.js?v=e8b83646" data-activity="reading-use-of-english"></script>
+<script src="nis-nav.js?v=c6e39903"></script>
+<script src="activity-save.js?v=1c38a81d"></script>
+<script src="reading-use-of-english.data.js?v=7f5a2d3e"></script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📘 Reading and Use of English</h1>
+    <p>Cambridge B2 First and C1 Advanced · grammar-focused practice, part by part</p>
+  </header>
+
+  <!-- Menú principal -->
+  <div id="menu">
+    <div class="sec-title">1 · Choose your exam</div>
+    <div class="levels" id="levels"></div>
+    <div class="card">
+      <div class="sec-title">2 · Choose a part</div>
+      <div class="parts" id="parts"></div>
+      <div id="partBody"></div>
+    </div>
+  </div>
+
+  <!-- Tema abierto -->
+  <div id="topic" class="hidden">
+    <button type="button" class="backbtn" onclick="goMenu()">← Back to grammar points</button>
+    <div class="card focus" id="focus"></div>
+    <div class="card">
+      <div class="rule" id="topicRule"></div>
+      <div id="items"></div>
+    </div>
+    <div class="bar">
+      <button class="btn primary" id="checkBtn">Check answers</button>
+      <button class="btn ghost" id="resetBtn">Try again</button>
+      <button class="btn ghost" onclick="goMenu()">← Back</button>
+      <span class="count" id="count"></span>
+      <span class="score" id="score"></span>
+    </div>
+  </div>
+
+  <div class="foot">Nordic International School · Reading and Use of English trainer. Original practice in Cambridge exam format.</div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const LEVELS = {
+  b2:{name:'B2 First', sub:'Upper-intermediate · FCE', min:2, max:5},
+  c1:{name:'C1 Advanced', sub:'Advanced · CAE', min:3, max:6}
+};
+let level = 'b2', part = 4, cur = null;   // cur = {topic, level}
+/* Estado guardado: STORE['b2:passive'] = {a:{0:'…'}, checked:bool, score:n} */
+const STORE = {};
+const keyOf = (lv, id) => lv + ':' + id;
+
+/* ---- Corrección --------------------------------------------------------
+   Se comparan las dos cadenas tras expandir contracciones (hasn't = has not),
+   así el alumno puede escribir la forma corta o la larga. 'd es ambiguo
+   (had / would): se prueban las dos lecturas. */
+function base(s){
+  return String(s||'').toLowerCase()
+    .replace(/[’‘`´]/g,"'").replace(/[“”]/g,'"')
+    .replace(/\b(apologi|reali|recogni|organi)z/g,'$1s').replace(/\bfavor\b/g,'favour')
+    .replace(/\bcan't\b/g,'cannot').replace(/\bcan not\b/g,'cannot')
+    .replace(/\bwon't\b/g,'will not').replace(/\bshan't\b/g,'shall not')
+    .replace(/n't\b/g,' not')
+    .replace(/'m\b/g,' am').replace(/'re\b/g,' are').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will')
+    .replace(/\b(he|she|it|that|there|what|who)'s been\b/g,'$1 has been')
+    .replace(/[.,;:!?"]/g,' ').replace(/\s+/g,' ').trim();
+}
+function forms(s){
+  const b = base(s);
+  if(!/'d\b/.test(b)) return [b];
+  return [b.replace(/'d\b/g,' would'), b.replace(/'d\b/g,' had')].map(x=>x.replace(/\s+/g,' ').trim());
+}
+/* Palabras al estilo Cambridge: las contracciones cuentan como dos
+   (hasn't = has not), «cannot» como una. */
+function words(s){ const f = forms(s)[0]; return f ? f.split(' ').length : 0; }
+function answersOf(it){ return it[4].split('|'); }
+function isRight(it, txt){
+  const mine = forms(txt);
+  return answersOf(it).some(a => forms(a).some(f => mine.includes(f)));
+}
+function hasKey(it, txt){
+  const k = ' ' + base(it[1]) + ' ';
+  return forms(txt).some(f => (' ' + f + ' ').includes(k));
+}
+
+/* ---- Menú --------------------------------------------------------------- */
+function topicsFor(lv){ return RUOE_P4.filter(t => t[lv] && t[lv].length); }
+function renderLevels(){
+  $('levels').innerHTML = Object.keys(LEVELS).map(k => {
+    const L = LEVELS[k];
+    return `<button type="button" class="lvl ${k} ${k===level?'on':''}" onclick="setLevel('${k}')">
+      <b>${L.name}</b><span>${L.sub} · Part 4 answers: ${L.min}–${L.max} words</span></button>`;
+  }).join('');
+}
+function renderParts(){
+  $('parts').innerHTML = RUOE_PARTS.map(p => p.ready
+    ? `<button type="button" class="part ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div></button>`
+    : `<button type="button" class="part soon" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div><span class="soon-tag">🚧 Under construction</span></button>`
+  ).join('');
+  const P = RUOE_PARTS.find(p => p.n === part);
+  if(!P.ready){
+    $('partBody').innerHTML = `<div class="rule">🚧 <b>Part ${P.n} · ${P.name}</b> is under construction. It will be available soon. Meanwhile, practise <b>Part 4 · Key word transformations</b>.</div>`;
+    return;
+  }
+  const L = LEVELS[level];
+  const list = topicsFor(level);
+  $('partBody').innerHTML = `<div class="rule ${level}">
+      <b>${L.name} · Part 4 — Key word transformations.</b> Complete the second sentence so that it has a similar meaning to the first sentence, using the word given.
+      <b>Do not change the word given.</b> You must use between <b>${L.min} and ${L.max} words</b>, including the word given. Contractions count as two words (<i>don't</i> = do not).
+    </div>
+    <div class="sec-title">3 · Choose a grammar point (${list.length})</div>
+    <div class="topics">${list.map(t => {
+      const n = t[level].length, g = STORE[keyOf(level,t.id)], done = g && g.checked ? g.score : null;
+      const pct = done == null ? 0 : Math.round(done / n * 100);
+      return `<button type="button" class="topic" onclick="openTopic('${t.id}')">
+        <div class="em">${t.emoji}</div><h3>${t.title}</h3>
+        <div class="meta">${n} questions${done != null ? ` · last score <b>${done}/${n}</b>` : ''}</div>
+        <div class="prog"><i style="width:${pct}%"></i></div></button>`;
+    }).join('')}</div>`;
+}
+window.setLevel = lv => { level = lv; renderLevels(); renderParts(); };
+window.setPart = n => { part = n; renderParts(); };
+
+/* ---- Tema --------------------------------------------------------------- */
+let ans = {}, checked = false;
+window.openTopic = id => {
+  const t = RUOE_P4.find(x => x.id === id); if(!t) return;
+  cur = {t, level};
+  const g = STORE[keyOf(level, id)];
+  ans = g ? Object.assign({}, g.a) : {}; checked = g ? !!g.checked : false;
+  history.pushState({topic:id, level}, '', '#' + level + '/' + id);
+  showTopic();
+};
+function showTopic(){
+  const {t, level:lv} = cur, L = LEVELS[lv];
+  $('menu').classList.add('hidden'); $('topic').classList.remove('hidden');
+  $('focus').innerHTML = `<h2>${t.emoji} ${t.title}<span class="badge ${lv}">${L.name}</span></h2>
+    <p><b>Grammar focus.</b> ${t.focus}</p>
+    <table class="pat">${t.patterns.map(p => `<tr><td>${p[0]}</td><td>${p[1]}</td></tr>`).join('')}</table>`;
+  $('topicRule').className = 'rule ' + lv;
+  $('topicRule').innerHTML = `For each question, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. <b>Do not change the word given.</b> Use between <b>${L.min} and ${L.max} words</b>, including the word given.`;
+  renderItems(); window.scrollTo({top:0});
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function renderItems(){
+  const {t, level:lv} = cur, items = t[lv];
+  $('items').innerHTML = items.map((it, i) => `<div class="q">
+      <div class="qhead"><span class="qnum">${i+1}</span><div class="orig">${esc(it[0])}</div></div>
+      <div class="key">${esc(it[1])}</div>
+      <div class="line">${it[2] ? `<span>${esc(it[2])}</span>` : ''}
+        <input type="text" id="in${i}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(ans[i]||'')}" ${checked?'readonly':''} aria-label="Answer ${i+1}">
+        ${it[3] && it[3] !== '.' ? `<span>${esc(it[3])}</span>` : ''}</div>
+      <div class="wc" id="wc${i}"></div>
+      <div id="fb${i}"></div>
+    </div>`).join('');
+  items.forEach((it, i) => {
+    const el = $('in' + i);
+    el.addEventListener('input', () => { ans[i] = el.value; wordCount(i); updateBar(); save(); });
+    wordCount(i);
+  });
+  if(checked) markAll(); else $('score').textContent = '';
+  updateBar();
+}
+function wordCount(i){
+  const L = LEVELS[cur.level], v = (ans[i]||'').trim(), n = v ? words(v) : 0, el = $('wc' + i);
+  if(!n){ el.textContent = ''; el.className = 'wc'; return; }
+  const out = n < L.min || n > L.max;
+  el.className = 'wc' + (out ? ' warn' : '');
+  el.textContent = `${n} word${n===1?'':'s'}` + (out ? ` — must be ${L.min}–${L.max}` : '');
+}
+function markAll(){
+  const {t, level:lv} = cur, items = t[lv], L = LEVELS[lv];
+  let n = 0;
+  items.forEach((it, i) => {
+    const v = (ans[i]||'').trim(), ok = v && isRight(it, v), el = $('in' + i), fb = $('fb' + i);
+    if(ok) n++;
+    el.classList.toggle('ok', !!ok); el.classList.toggle('bad', !ok); el.readOnly = true;
+    const a = answersOf(it), full = s => `${it[2] ? esc(it[2]) + ' ' : ''}<b>${esc(s)}</b>${it[3] && it[3] !== '.' ? ' ' + esc(it[3]) : '.'}`;
+    let why = '';
+    if(!ok && v){
+      const w = words(v);
+      if(!hasKey(it, v)) why = ` You must use the key word <b>${esc(it[1])}</b> without changing it.`;
+      else if(w < L.min || w > L.max) why = ` Your answer has ${w} words; it must have ${L.min}–${L.max}.`;
+    }
+    fb.className = 'fb ' + (ok ? 'ok' : 'bad');
+    fb.innerHTML = (ok ? '✓ Correct. ' : (v ? '✗ Not quite.' + why + ' ' : '✗ No answer. ')) +
+      `Answer: ${full(a[0])}` + (a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : '');
+  });
+  const tot = items.length;
+  $('score').innerHTML = `Score: ${n}/${tot} (${Math.round(n/tot*100)}%)`;
+  return n;
+}
+function updateBar(){
+  if(!cur) return;
+  const tot = cur.t[cur.level].length, done = Object.keys(ans).filter(k => (ans[k]||'').trim()).length;
+  $('count').textContent = checked ? '' : `${done}/${tot} answered`;
+  $('checkBtn').disabled = checked || done === 0;
+  $('checkBtn').textContent = checked ? 'Checked' : 'Check answers';
+}
+$('checkBtn').onclick = () => {
+  checked = true; const n = markAll(); updateBar();
+  STORE[keyOf(cur.level, cur.t.id)] = {a:Object.assign({}, ans), checked:true, score:n};
+  if(window.NIS_WORK) NIS_WORK.touch();
+  window.scrollTo({top:0, behavior:'smooth'});
+};
+$('resetBtn').onclick = () => {
+  ans = {}; checked = false;
+  STORE[keyOf(cur.level, cur.t.id)] = {a:{}, checked:false, score:null};
+  renderItems(); save();
+};
+function save(){
+  if(!cur) return;
+  const k = keyOf(cur.level, cur.t.id), prev = STORE[k] || {};
+  STORE[k] = {a:Object.assign({}, ans), checked, score: checked ? prev.score : null};
+  if(window.NIS_WORK) NIS_WORK.touch();
+}
+function showMenu(){
+  cur = null;
+  $('topic').classList.add('hidden'); $('menu').classList.remove('hidden');
+  renderLevels(); renderParts(); window.scrollTo({top:0});
+}
+window.goMenu = () => { if(location.hash) history.back(); else showMenu(); };
+window.addEventListener('popstate', () => {
+  const m = location.hash.match(/^#(b2|c1)\/(\w+)/);
+  if(m && RUOE_P4.some(t => t.id === m[2] && t[m[1]])){ level = m[1]; openFromHash(m[2]); }
+  else showMenu();
+});
+function openFromHash(id){
+  const t = RUOE_P4.find(x => x.id === id); cur = {t, level};
+  const g = STORE[keyOf(level, id)]; ans = g ? Object.assign({}, g.a) : {}; checked = g ? !!g.checked : false;
+  showTopic();
+}
+/* El ◀ Back del portal: dentro de un tema vuelve primero al menú. */
+if(window.NISNAV) NISNAV.setBackHandler(() => { if(cur){ goMenu(); return true; } return false; });
+
+/* ---- Guardado y entrega (barra Save / Submit) ---------------------------- */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read:  function(){ if(cur) save(); return { store: STORE, level: level }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    Object.keys(p).forEach(k => { STORE[k] = p[k]; });
+    if(d && LEVELS[d.level]) level = d.level;
+  },
+  after: function(){ if(cur) openFromHash(cur.t.id); else { renderLevels(); renderParts(); } },
+  count: function(d){
+    const p = (d && d.store) || {};
+    return Object.keys(p).reduce((n, k) => n + Object.values((p[k]||{}).a || {}).filter(v => (v||'').trim()).length, 0);
+  },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(k => {
+      const x = p[k] || {}, n = Object.values(x.a || {}).filter(v => (v||'').trim()).length;
+      out[k] = n + ' answered' + (x.checked ? ' / score ' + x.score : '');
+    });
+    return out;
+  }
+}));
+
+(function init(){
+  const m = location.hash.match(/^#(b2|c1)\/(\w+)/);
+  if(m && RUOE_P4.some(t => t.id === m[2] && t[m[1]])){ level = m[1]; openFromHash(m[2]); }
+  else { const lv = location.hash.match(/^#(b2|c1)$/); if(lv) level = lv[1]; showMenu(); }
+})();
+</script>
+<script src="nis-presence.js?v=684f7b00" defer></script>
+<script src="nis-i18n.js?v=90aa61ff" defer></script>
+<script src="nis-tema.js?v=0ae7c164" defer></script>
+</body>
+</html>
