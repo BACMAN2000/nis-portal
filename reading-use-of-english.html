@@ -217,9 +217,9 @@
 <script src="activity-save.js?v=1c38a81d"></script>
 <script src="reading-use-of-english.data.js?v=7f5a2d3e"></script>
 <script src="reading-use-of-english.b2.js?v=16b5ea06"></script>
-<script src="reading-use-of-english.c1.js?v=81b1702c"></script>
-<script src="reading-use-of-english.b1.js?v=b99936db"></script>
-<script src="reading-use-of-english.b2x.js?v=113b2946"></script>
+<script src="reading-use-of-english.c1.js?v=321b4493"></script>
+<script src="reading-use-of-english.b1.js?v=e63471fb"></script>
+<script src="reading-use-of-english.b2x.js?v=baa82d33"></script>
 <script src="reading-use-of-english.why.js?v=69ad4c57"></script>
 </head>
 <body>
@@ -378,7 +378,11 @@ const partOK = (lv, n) => (n === 4 && hasKwt(lv)) || !!(DX(lv)['p' + n] && DX(lv
     B2X[p].ex = (B2X[p].ex || []).concat(X.ex[p]);
   });
   const L = X.lx || {};
-  ['p1','p2','p3','p5','p6','p7'].forEach(p => ((B2X[p] || {}).ex || []).forEach(x => { if(L[x.id] && !x.lx) x.lx = L[x.id]; }));
+  const IL = X.itemlx || {};
+  ['p1','p2','p3','p5','p6','p7'].forEach(p => ((B2X[p] || {}).ex || []).forEach(x => {
+    if(L[x.id] && !x.lx) x.lx = L[x.id];
+    if(IL[x.id]) (x.items || []).forEach(it => { if(IL[x.id][it.n] && !it.lx) it.lx = IL[x.id][it.n]; });
+  }));
 })();
 (function mergeP4(){
   const extra = B2X.p4extra || {};

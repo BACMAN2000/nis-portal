@@ -334,10 +334,22 @@ function dice(boton){
   var t = boton.getAttribute('data-t'), ac = boton.getAttribute('data-say');
   if(AUDIO){ AUDIO.pause(); }
   document.querySelectorAll('.say[aria-pressed="true"]').forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
-  AUDIO = new Audio('/lexicon-audio/' + APP.audio + '/' + ac + '/' + slug(t) + '.mp3');
+  var a = AUDIO = new Audio('/lexicon-audio/' + APP.audio + '/' + ac + '/' + slug(t) + '.mp3');
   boton.setAttribute('aria-pressed', 'true');
-  AUDIO.onended = AUDIO.onerror = function(){ boton.setAttribute('aria-pressed', 'false'); };
-  AUDIO.play().catch(function(){ boton.setAttribute('aria-pressed', 'false'); });
+  a.onended = function(){ boton.setAttribute('aria-pressed', 'false'); };
+  /* Un término recién añadido puede no tener aún su mp3: entonces lo dice la
+     voz del navegador. Solo en el error de CARGA (no en el AbortError de
+     play(), que salta al pausar y daba doble voz). */
+  a.onerror = function(){ if(AUDIO === a) habla(t, ac, boton); else boton.setAttribute('aria-pressed', 'false'); };
+  a.play().catch(function(e){ if(!e || e.name !== 'NotSupportedError') boton.setAttribute('aria-pressed', 'false'); });
+}
+function habla(t, ac, boton){
+  try{
+    var u = new SpeechSynthesisUtterance(t);
+    u.lang = ac === 'us' ? 'en-US' : 'en-GB';
+    u.onend = u.onerror = function(){ boton.setAttribute('aria-pressed', 'false'); };
+    window.speechSynthesis.cancel(); window.speechSynthesis.speak(u);
+  }catch(e){ boton.setAttribute('aria-pressed', 'false'); }
 }
 
 /* ---------- practicar: menú del bloque ---------- */
