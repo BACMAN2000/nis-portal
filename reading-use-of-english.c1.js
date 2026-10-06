@@ -241,7 +241,7 @@ window.RUOE_C1 = {
       "lx": {
        "t": "turn a blind eye",
        "app": "idiom",
-       "level": "B1"
+       "level": "C1"
       }
      },
      {
@@ -359,7 +359,7 @@ window.RUOE_C1 = {
      {
       "t": "turn a blind eye",
       "app": "idiom",
-      "level": "B1"
+      "level": "C1"
      }
     ],
     "tags": [
@@ -1409,6 +1409,11 @@ window.RUOE_C1 = {
       "level": "C1"
      },
      {
+      "t": "carbon footprint",
+      "app": "collocation",
+      "level": "B2"
+     },
+     {
       "t": "turn your back on",
       "app": "idiom",
       "level": "C1"
@@ -2450,7 +2455,7 @@ window.RUOE_C1 = {
       "lx": {
        "t": "take it with a pinch of salt",
        "app": "idiom",
-       "level": "B1"
+       "level": "C1"
       }
      },
      {
@@ -2480,7 +2485,7 @@ window.RUOE_C1 = {
      {
       "t": "take it with a pinch of salt",
       "app": "idiom",
-      "level": "B1"
+      "level": "C1"
      }
     ],
     "tags": [
@@ -10600,6 +10605,11 @@ window.RUOE_C1 = {
      {
       "t": "turn into",
       "app": "phrasal",
+      "level": "B2"
+     },
+     {
+      "t": "carbon footprint",
+      "app": "collocation",
       "level": "B2"
      }
     ]

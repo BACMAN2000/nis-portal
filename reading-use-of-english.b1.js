@@ -7457,7 +7457,7 @@ window.RUOE_B1 = {
      {
       "t": "call off",
       "app": "phrasal",
-      "level": "C1"
+      "level": "B2"
      }
     ],
     "text": "Last Tuesday, a group of students from our town were kayaking when one boat turned over in a strong current. A teacher on the bank called the emergency services, and thanks to their [[1]] response, a rescue boat reached the river within ten minutes. The students were cold and [[2]] when they climbed out of the water, but nobody was badly hurt. The school has called [[3]] all its river trips until the weather improves. 'We were lucky,' said the head teacher. 'It could have been much worse.' The students have been given [[4]] help by a counsellor, because some of them still had [[5]] feelings of fear. [[6]] the weather was cold, a large crowd of local people came to thank the rescuers.",
@@ -7510,7 +7510,7 @@ window.RUOE_B1 = {
       "lx": {
        "t": "call off",
        "app": "phrasal",
-       "level": "C1"
+       "level": "B2"
       }
      },
      {

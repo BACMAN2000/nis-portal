@@ -5105,7 +5105,7 @@ window.RUOE_B2X = {
    "5": {
     "t": "carbon footprint",
     "app": "collocation",
-    "level": "A2"
+    "level": "B2"
    }
   },
   "p83-155": {
