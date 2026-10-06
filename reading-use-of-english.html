@@ -688,9 +688,11 @@ function renderQuestion(){
 }
 /* Texto de examen entero. Cada hueco lleva data-i = índice de la pregunta. */
 function paras(t){ return String(t).split(/\n\s*\n/).map(p => p.trim()).filter(Boolean); }
+/* El índice sale del número del hueco ([[n]] = pregunta n), no de un contador:
+   paras() llama a esto párrafo a párrafo y un contador volvía a 0 en cada uno,
+   así que los huecos del segundo párrafo repetían número y pisaban respuestas. */
 function gapsHtml(text, build){
-  let k = 0;
-  return esc(text).replace(/\[\[(\d+)\]\]/g, (m, n) => n === '0' ? m : build(k++, +n));
+  return esc(text).replace(/\[\[(\d+)\]\]/g, (m, n) => n === '0' ? m : build(+n - 1, +n));
 }
 function renderTextPart(){
   const p = cur.r, x = cur.x, st = cur.st, its = items(), n = its.length, s0 = st0(cur.level, cur.p);
