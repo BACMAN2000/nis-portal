@@ -1,6 +1,7 @@
 /* Reading and Use of English · B2 First: Parts 1-3 y 5-7, y ítems extra de la
-   Part 4. Generado por scratchpad/b2pdf/build.py a partir del test B2 del
-   colegio (ejercicios con formato de examen) + guías y módulos propios. */
+   Part 4. Generado por scratchpad/b2pdf/make_b2.py a partir del test B2 del
+   colegio (ejercicios con formato de examen) + guías y módulos propios. Las
+   Parts 1 y 2 van con el formato real: 8 huecos y nota por hueco (w). */
 window.RUOE_B2 = {
  "p1": {
   "guide": {
@@ -36,739 +37,1217 @@ window.RUOE_B2 = {
    {
     "id": "p72-127",
     "title": "Mellowcabs",
-    "text": "There have been many exciting innovations to come out [[1]] the African continent in recent years. One which has been attracting some interest is the Mellowcab, which is a high-[[2]], micro taxi. It is designed for short journeys in urban areas and it is hoped that it will complement existing forms of public transport. The designers have [[3]] on making the Mellowcab as environmentally-friendly as possible, with solar panels and even the brakes providing some of the power. They are also aware of the importance of advertising, so they have [[4]] up a way of using built-in LCD lights to provide eye-catching advertisements. They have also [[5]] an effort to make sure the Mellowcab is comfortable for passengers. The futuristic doors lift upwards so passengers can get in and out easily and there are even tablets for them to use on their journey.",
+    "text": "There have been many exciting innovations to come out [[1]] the African continent in recent years. One which has been attracting some interest is the Mellowcab, which is a high-[[2]], micro taxi. It is designed for short journeys in urban areas and it is hoped that it will [[3]] existing forms of public transport. The designers have [[4]] on making the Mellowcab as environmentally-friendly as possible, with solar panels and even the brakes providing some of the power. They are also aware of the importance of advertising, so they have [[5]] up a way of using built-in LCD lights to provide eye-catching advertisements. They have also [[6]] an effort to make sure the Mellowcab is comfortable for passengers. The futuristic doors lift upwards [[7]] passengers can get in and out easily and there are even tablets for them to use on their journey. The company behind the vehicle is hoping to [[8]] into the European market within the next few years.",
     "items": [
      {
       "n": 1,
+      "a": 0,
+      "t": "prepositions",
+      "w": "<b>Come out of</b> a place means to originate there: innovations coming out of the African continent. The clue is the place that follows the gap. 'In' and 'to' do not form a natural phrasal verb with 'out', and 'off' is not used for an origin.",
       "o": [
-       "in",
-       "to",
        "of",
-       "from"
-      ],
-      "a": 2,
-      "t": "prepositions"
+       "to",
+       "in",
+       "off"
+      ]
      },
      {
       "n": 2,
+      "a": 1,
+      "t": "collocations",
+      "w": "<b>High-tech</b> is a fixed compound adjective meaning using advanced technology. It describes the micro taxi with solar panels and tablets. 'High-definition' describes screens, and 'high-time' and 'high-priority' do not describe a vehicle.",
       "o": [
        "time",
        "tech",
        "definition",
        "priority"
-      ],
-      "a": 1,
-      "t": "collocations"
+      ]
      },
      {
       "n": 3,
+      "a": 0,
+      "t": "word-choice",
+      "w": "<b>Complement</b> means to go well with something and make it better. The text says the taxi will work alongside existing public transport. 'Compliment' means to praise, and 'compare' and 'compete' do not fit a direct object like 'existing forms' in this sense.",
+      "o": [
+       "complement",
+       "compliment",
+       "compare",
+       "compete"
+      ]
+     },
+     {
+      "n": 4,
+      "a": 0,
+      "t": "verbpatterns",
+      "w": "<b>Concentrate on</b> + -ing means to give your main attention to something. The clue is 'on making' after the gap. 'Interested' needs 'in', 'experienced' is not followed by 'on', and 'paid attention' would need 'to'.",
       "o": [
        "concentrated",
        "experienced",
        "interested",
        "paid attention"
-      ],
-      "a": 0,
-      "t": "verbpatterns"
+      ]
      },
      {
-      "n": 4,
+      "n": 5,
+      "a": 0,
+      "t": "phrasal",
+      "w": "<b>Think up</b> is a phrasal verb meaning to invent. The particle 'up' and the object 'a way' follow the gap. 'Came up' would need 'with', and 'set up' is used for businesses or equipment, not for ways of doing something.",
       "o": [
        "thought",
        "made",
        "came",
        "set"
-      ],
-      "a": 0,
-      "t": "phrasal"
+      ]
      },
      {
-      "n": 5,
+      "n": 6,
+      "a": 3,
+      "t": "collocations",
+      "w": "<b>Make an effort</b> is a fixed collocation: we make (not do or take) an effort. The clue is the noun 'effort' right after the gap. 'Do' goes with tasks and jobs (do homework), not with effort.",
       "o": [
        "done",
        "taken",
        "had",
        "made"
-      ],
+      ]
+     },
+     {
+      "n": 7,
+      "a": 1,
+      "t": "linkers",
+      "w": "<b>So</b> introduces the purpose: the doors lift upwards so that passengers can get in easily. 'Because' would reverse the logic, 'although' shows contrast and 'unless' shows a condition, so none of them fits the meaning.",
+      "o": [
+       "because",
+       "so",
+       "although",
+       "unless"
+      ]
+     },
+     {
+      "n": 8,
       "a": 3,
-      "t": "collocations"
+      "t": "phrasal",
+      "w": "<b>Break into</b> a market means to enter it successfully. The clue is 'into the European market' after the gap. 'Take', 'pull' and 'hold' cannot be followed by 'into' with this meaning.",
+      "o": [
+       "hold",
+       "take",
+       "pull",
+       "break"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "prepositions",
+     "collocations",
+     "word-choice",
+     "verbpatterns",
+     "phrasal",
+     "linkers"
+    ]
    },
    {
     "id": "p73-129",
     "title": "Underfloor heating",
-    "text": "When your house is feeling a little cold, you probably just [[1]] on the central heating. But have you ever wondered who invented it? Although modern heaters have been in [[2]] since the nineteenth century, their origins can be traced back to the ancient Greeks. They first [[3]] up with the idea of heating systems which went under the floors of their buildings. The Romans then [[4]] a more advanced type of heating called a hypocaust. The floor of the building would be raised on bricks to [[5]] warm air to flow under it. After the collapse of the Roman Empire, central heating disappeared for more than a thousand years.",
+    "text": "When your house is feeling a little cold, you probably just [[1]] on the central heating. But have you ever wondered who invented it? Although modern heaters have been in [[2]] since the nineteenth century, their origins can be traced back to the ancient Greeks. They first [[3]] up with the idea of heating systems which went under the floors of their buildings. The Romans then [[4]] a more advanced type of heating called a hypocaust. The floor of the building would be raised on bricks to [[5]] warm air to flow under it. After the collapse of the Roman Empire, central heating disappeared for more than a thousand years. The idea was largely forgotten until the twentieth century, when it finally [[6]] on again in Europe and Asia. Today many homeowners prefer underfloor heating [[7]] radiators because the warmth is spread evenly across the room. It can also help families to cut [[8]] on their energy bills.",
     "items": [
      {
       "n": 1,
+      "a": 2,
+      "t": "phrasal",
+      "w": "<b>Turn on</b> the heating means to switch it on. The particle 'on' after the gap shows the phrasal verb. 'Take on' means to employ, and 'start on' and 'heat on' are not used with machines like this.",
       "o": [
        "take",
        "heat",
        "turn",
        "start"
-      ],
-      "a": 2,
-      "t": "phrasal"
+      ]
      },
      {
       "n": 2,
+      "a": 1,
+      "t": "collocations",
+      "w": "<b>In production</b> is a fixed phrase meaning being made. Heaters have been made since the 19th century. 'Manufacture' and 'generation' are not used after 'in' this way, and 'in sale' is wrong (we say 'on sale').",
       "o": [
        "manufacture",
        "production",
        "sale",
        "generation"
-      ],
-      "a": 1,
-      "t": "collocations"
+      ]
      },
      {
       "n": 3,
+      "a": 0,
+      "t": "phrasal",
+      "w": "<b>Come up with</b> an idea means to think of it. The clue is 'up with the idea' after the gap. 'Thought' and 'figured' are not followed by 'up with' (we say 'think of', 'figure out'), and 'decided' does not form this phrasal verb.",
       "o": [
        "came",
        "decided",
        "thought",
        "figured"
-      ],
-      "a": 0,
-      "t": "phrasal"
+      ]
      },
      {
       "n": 4,
+      "a": 3,
+      "t": "word-choice",
+      "w": "'<b>Developed</b>' means created and improved over time, so it fits 'a more advanced type' of heating. 'Calculated' is used for numbers, 'drove' for vehicles, and 'looked' cannot take a direct object without 'at'.",
       "o": [
        "calculated",
        "drove",
        "looked",
        "developed"
-      ],
-      "a": 3,
-      "t": "word-choice"
+      ]
      },
      {
       "n": 5,
+      "a": 0,
+      "t": "verbpatterns",
+      "w": "<b>Allow</b> + object + to-infinitive: allow warm air to flow. The clue is 'warm air to flow'. 'Prohibit' has the opposite meaning, 'make' takes an infinitive without 'to', and 'able' is an adjective that cannot take an object.",
       "o": [
        "allow",
        "prohibit",
        "make",
        "able"
-      ],
+      ]
+     },
+     {
+      "n": 6,
       "a": 0,
-      "t": "verbpatterns"
+      "t": "phrasal",
+      "w": "<b>Catch on</b> means to become popular. The idea was forgotten, then became fashionable again, and the particle 'on' follows the gap. 'Went on', 'ran on' and 'held on' have different meanings (continue, keep running, wait).",
+      "o": [
+       "caught",
+       "went",
+       "ran",
+       "held"
+      ]
+     },
+     {
+      "n": 7,
+      "a": 1,
+      "t": "prepositions",
+      "w": "<b>Prefer X to Y</b> is the pattern: we use 'to', not 'than', to compare two things. The clue is 'underfloor heating ... radiators'. 'From' and 'against' are not used after 'prefer' in this structure.",
+      "o": [
+       "than",
+       "to",
+       "from",
+       "against"
+      ]
+     },
+     {
+      "n": 8,
+      "a": 2,
+      "t": "phrasal",
+      "w": "<b>Cut down on</b> something means to use or do less of it. The clue is the preposition 'on' after the gap. 'Cut off on', 'cut out on' and 'cut away on' are not phrasal verbs with this meaning.",
+      "o": [
+       "out",
+       "off",
+       "down",
+       "away"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "phrasal",
+     "collocations",
+     "word-choice",
+     "verbpatterns",
+     "prepositions"
+    ]
    },
    {
     "id": "p77-139",
     "title": "Benefits of vocational training",
-    "text": "In many countries, 16-year-olds finishing school go on to study more academic subjects in preparation for university. This was not always the case and in the past, many youngsters would study vocational subjects, like hairdressing or mechanics, which gave them skills they could use in the workplace. [[1]] vocational training has gone out of fashion, some experts are now arguing for more of it. One advantage is that vocational training usually involves [[2]] a work placement, which is valuable preparation for the world of work. In contrast to students who have only gone to university, vocational training helps trainees become more accountable. They understand that you cannot just get [[3]] with being late or taking days off for no reason. Another advantage is that they [[4]] young people to get hands-on experience in the jobs they want to do. For example, someone interested [[5]] being an engineer may spend five or six years studying at school and university, only to find the job is not for them. By taking a vocational course, they can try out the job and see if it is for them before making a lifelong commitment.",
+    "text": "In many countries, 16-year-olds finishing school go on to study more academic subjects in preparation for university. This was not always the [[1]] and in the past, many youngsters would study vocational subjects, like hairdressing or mechanics, which gave them skills they could use in the workplace. [[2]] vocational training has gone out of fashion, some experts are now arguing for more of it. One advantage is that vocational training usually involves [[3]] a work placement, which is valuable preparation for the world of work. In contrast to students who have only gone to university, vocational training helps trainees become more [[4]]. They understand that you cannot just get [[5]] with being late or taking days off for no reason. Another advantage is that they [[6]] young people to get hands-on experience in the jobs they want to do. For example, someone interested [[7]] being an engineer may spend five or six years studying at school and university, only to find the job is not for them. By taking a vocational course, they can try out the job and see if it is for them before [[8]] a lifelong commitment.",
     "items": [
      {
       "n": 1,
+      "a": 3,
+      "t": "fixedphrases",
+      "w": "<b>Not always the case</b> is a fixed phrase meaning 'not always true'. It refers back to students going on to academic subjects. 'True' cannot follow 'the' here, and 'the matter' and 'the fact' do not form this expression.",
+      "o": [
+       "fact",
+       "true",
+       "matter",
+       "case"
+      ]
+     },
+     {
+      "n": 2,
+      "a": 2,
+      "t": "linkers",
+      "w": "<b>Although</b> + clause shows contrast: vocational training went out of fashion, yet some experts want more of it. 'Despite' and 'in spite of' need a noun or -ing form, and 'even' needs 'though' to work as a linker.",
       "o": [
        "Despite",
        "In spite of",
        "Although",
        "Even"
-      ],
-      "a": 2,
-      "t": "linkers"
+      ]
      },
      {
-      "n": 2,
+      "n": 3,
+      "a": 1,
+      "t": "verbpatterns",
+      "w": "<b>Involve</b> is followed by the -ing form, and 'getting a work placement' means obtaining one. 'Going' and 'working' would need 'on' or 'in' before 'a work placement', and 'making' does not collocate with 'placement'.",
       "o": [
        "going",
        "getting",
        "making",
        "working"
-      ],
-      "a": 1,
-      "t": "verbpatterns"
+      ]
      },
      {
-      "n": 3,
+      "n": 4,
+      "a": 0,
+      "t": "word-choice",
+      "w": "<b>Accountable</b> means responsible for your actions. The next sentence explains it: trainees learn they cannot get away with being late. 'Accurate' describes correct information, 'acceptable' means good enough and 'accessible' means easy to reach.",
+      "o": [
+       "accountable",
+       "accurate",
+       "acceptable",
+       "accessible"
+      ]
+     },
+     {
+      "n": 5,
+      "a": 3,
+      "t": "phrasal",
+      "w": "<b>Get away with</b> something means to avoid punishment for it. The clue is 'with' after the gap and the idea of being late without consequences. 'Get off with' needs a punishment (a warning), not an action; 'around' and 'out' do not fit.",
       "o": [
        "around",
        "off",
        "out",
        "away"
-      ],
-      "a": 3,
-      "t": "phrasal"
+      ]
      },
      {
-      "n": 4,
+      "n": 6,
+      "a": 0,
+      "t": "verbpatterns",
+      "w": "<b>Allow</b> + object + to-infinitive: allow young people to get experience. The clue is 'young people to get'. 'Let' and 'make' are followed by the infinitive without 'to', and 'able' is an adjective that cannot take an object.",
       "o": [
        "allow",
        "let",
        "able",
        "make"
-      ],
-      "a": 0,
-      "t": "verbpatterns"
+      ]
      },
      {
-      "n": 5,
+      "n": 7,
+      "a": 2,
+      "t": "prepositions",
+      "w": "<b>Interested in</b> is the dependent preposition: someone interested in being an engineer. 'Of', 'at' and 'to' do not follow 'interested' (we say fond of, good at, keen to).",
       "o": [
        "of",
        "at",
        "in",
        "to"
-      ],
-      "a": 2,
-      "t": "prepositions"
+      ]
+     },
+     {
+      "n": 8,
+      "a": 1,
+      "t": "collocations",
+      "w": "<b>Make a commitment</b> is a fixed collocation, and after 'before' we use the -ing form. The noun 'commitment' decides the verb. 'Do', 'take' and 'have' do not combine with 'commitment' in this way.",
+      "o": [
+       "doing",
+       "making",
+       "taking",
+       "having"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "fixedphrases",
+     "linkers",
+     "verbpatterns",
+     "word-choice",
+     "phrasal",
+     "prepositions",
+     "collocations"
+    ]
    },
    {
     "id": "p78-141",
     "title": "Getting a place at university",
-    "text": "For many 18-year-olds, August is the month when they find out whether they’ve [[1]] a place at university. Although many students will end up in the universities they chose, for some there will be disappointment. Many will find it hard to [[2]] with this rejection and the lack of a ‘Plan B’ will make the problem worse. Therefore, if there’s any chance you won’t get the place you want, it’s essential to get [[3]] in planning an alternative. Firstly, this [[4]] having a list of alternative universities and courses to apply for. Many universities will have extra places to fill, so if you’re organised, you may be able to get one of them. You’ll also need to be prepared to spend a few days contacting universities to secure that place. You can [[5]] ready for this by making sure you have contact details for the appropriate university staff and allowing yourself time to contact them.",
+    "text": "For many 18-year-olds, August is the month when they find out whether they’ve [[1]] a place at university. Although many students will end [[2]] in the universities they chose, for some there will be disappointment. Many will find it hard to [[3]] with this rejection and the lack of a ‘Plan B’ will make the problem worse. Therefore, if there’s any chance you won’t get the place you want, it’s essential to get [[4]] in planning an alternative. Firstly, this [[5]] having a list of alternative universities and courses to apply for. Many universities will have extra places to [[6]], so if you’re organised, you may be able to get one of them. You’ll also need to be prepared to spend a few days [[7]] universities to secure that place. You can [[8]] ready for this by making sure you have contact details for the appropriate university staff and allowing yourself time to contact them.",
     "items": [
      {
       "n": 1,
+      "a": 2,
+      "t": "collocations",
+      "w": "<b>Get a place</b> at university means to be offered one; 'they've got' is the present perfect. The noun 'a place' is the clue. 'Taken a place' means to occupy it, 'had' does not mean offered, and 'made a place' is not a collocation.",
       "o": [
        "taken",
        "made",
        "got",
        "had"
-      ],
-      "a": 2,
-      "t": "collocations"
+      ]
      },
      {
       "n": 2,
+      "a": 2,
+      "t": "phrasal",
+      "w": "<b>End up</b> means to finally be in a situation or place. The clue is 'in the universities they chose'. 'End out', 'end off' and 'end over' are not phrasal verbs with this meaning.",
+      "o": [
+       "off",
+       "out",
+       "up",
+       "over"
+      ]
+     },
+     {
+      "n": 3,
+      "a": 1,
+      "t": "collocations",
+      "w": "<b>Cope with</b> a problem means to deal with it successfully. The preposition 'with' follows the gap. 'Succeed' needs 'in', and 'manage' and 'handle' do not combine with 'with this rejection' in this meaning.",
       "o": [
        "manage",
        "cope",
        "succeed",
        "handle"
-      ],
-      "a": 1,
-      "t": "collocations"
+      ]
      },
      {
-      "n": 3,
+      "n": 4,
+      "a": 0,
+      "t": "phrasal",
+      "w": "<b>Get ahead</b> means to start early and be in a better position. The clue is 'planning an alternative' before things go wrong. 'Get away', 'get up' and 'get out' do not combine with 'in planning'.",
       "o": [
        "ahead",
        "away",
        "up",
        "out"
-      ],
-      "a": 0,
-      "t": "phrasal"
+      ]
      },
      {
-      "n": 4,
+      "n": 5,
+      "a": 3,
+      "t": "verbpatterns",
+      "w": "<b>Mean</b> + -ing = involve: this means having a list. The clue is 'having' after the gap. 'Makes' and 'takes' need a different structure, and 'results' would need 'in' before 'having'.",
       "o": [
        "makes",
        "results",
        "takes",
        "means"
-      ],
-      "a": 3,
-      "t": "verbpatterns"
+      ]
      },
      {
-      "n": 5,
+      "n": 6,
+      "a": 3,
+      "t": "collocations",
+      "w": "<b>Fill a place</b> means to give an empty place to someone. The clue is 'extra places' that are still empty. 'Full' is an adjective, 'complete' does not collocate with 'places', and 'cover' means to protect or include.",
+      "o": [
+       "cover",
+       "full",
+       "complete",
+       "fill"
+      ]
+     },
+     {
+      "n": 7,
+      "a": 0,
+      "t": "verbpatterns",
+      "w": "<b>Spend time + -ing</b>: we spend days doing something. The expression 'spend a few days' is followed by the -ing form. 'To contact' and 'contact' are infinitive forms, and 'for contacting' is not used after 'spend'.",
+      "o": [
+       "contacting",
+       "to contact",
+       "contact",
+       "for contacting"
+      ]
+     },
+     {
+      "n": 8,
+      "a": 1,
+      "t": "collocations",
+      "w": "<b>Get ready</b> is a fixed collocation meaning to prepare yourself. The adjective 'ready' follows the gap. 'Become' does not normally combine with 'ready', and 'go' and 'come' do not link to adjectives like this.",
       "o": [
        "become",
        "get",
        "go",
        "come"
-      ],
-      "a": 1,
-      "t": "collocations"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "collocations",
+     "phrasal",
+     "verbpatterns"
+    ]
    },
    {
     "id": "p81-151",
     "title": "",
-    "text": "If you’re looking for something new to read and you want an escape from the typical novel, [[1]] novels are something worth investigating. Although it’s been said [[2]] they’re just comics for adults, there’s a lot more to them than cartoon-style pictures. If you flick [[3]] the latest offerings, you’ll find some extremely imaginative stories as well as some wonderful illustrations. For example, if you’re a fan of horror, one such novel worth investigating is Through the Woods, which has received excellent reviews from book [[4]]. Its dark atmosphere and haunting images will remind you of the fairy tales from your childhood. Another recommended read is Little Fish by Ramsey Beyer, which tells the story of a teenage girl leaving home to go to university. This autobiography is illustrated [[5]] drawings, lists and collages which document Ramsey’s own journey through young adulthood.",
+    "text": "If you’re looking for something new to read and you want an escape from the typical novel, [[1]] novels are something worth investigating. Although it’s been said [[2]] they’re just comics for adults, there’s a lot more to them than cartoon-style pictures. If you flick [[3]] the latest offerings, you’ll find some extremely imaginative stories as well as some wonderful illustrations. For example, if you’re a fan of horror, one such novel worth investigating is Through the Woods, which has received excellent reviews from book [[4]]. Its dark atmosphere and haunting images will [[5]] you of the fairy tales from your childhood. Another recommended read is Little Fish by Ramsey Beyer, which [[6]] the story of a teenage girl leaving home to go to university. This autobiography is illustrated [[7]] drawings, lists and collages which document Ramsey’s own journey through young adulthood. Both books show that graphic novels can deal [[8]] serious subjects and are well worth reading, even if you have never tried one before.",
     "items": [
      {
       "n": 1,
+      "a": 3,
+      "t": "collocations",
+      "w": "<b>Graphic novel</b> is a fixed term for a long story told with drawings. The clues are 'comics for adults' and 'illustrations'. 'Historical', 'romantic' and 'crime' novels exist, but they are not defined by pictures.",
       "o": [
        "historical",
        "romantic",
        "crime",
        "graphic"
-      ],
-      "a": 3,
-      "t": "collocations"
+      ]
      },
      {
       "n": 2,
+      "a": 2,
+      "t": "reported",
+      "w": "<b>It has been said that</b> + clause is a reporting structure, and the gap introduces what people say. 'By' and 'for' would give an agent or a purpose, and 'than' is used for comparisons.",
       "o": [
        "by",
        "for",
        "that",
        "than"
-      ],
-      "a": 2,
-      "t": "reported"
+      ]
      },
      {
       "n": 3,
+      "a": 1,
+      "t": "phrasal",
+      "w": "<b>Flick through</b> something means to turn pages quickly. The clue is 'the latest offerings', books you look at briefly. 'Flick out' and 'flick away' do not have this meaning, and 'flick at' means to hit lightly.",
       "o": [
        "out",
        "through",
        "away",
        "at"
-      ],
-      "a": 1,
-      "t": "phrasal"
+      ]
      },
      {
       "n": 4,
+      "a": 0,
+      "t": "word-choice",
+      "w": "Book <b>critics</b> are people who review books. The clue is 'excellent reviews'. Editors prepare books, novelists write novels and playwrights write plays, so none of them writes reviews as a job.",
       "o": [
        "critics",
        "editors",
        "novelists",
        "playwrights"
-      ],
-      "a": 0,
-      "t": "word-choice"
+      ]
      },
      {
       "n": 5,
+      "a": 1,
+      "t": "verbpatterns",
+      "w": "<b>Remind someone of</b> something means to make them think of it. The clue is the object 'you' followed by 'of'. 'Recall', 'remember' and 'recollect' do not take a person object plus 'of'.",
+      "o": [
+       "recall",
+       "remind",
+       "remember",
+       "recollect"
+      ]
+     },
+     {
+      "n": 6,
+      "a": 2,
+      "t": "collocations",
+      "w": "<b>Tell a story</b> is the fixed collocation. The noun 'story' after the gap decides the verb. 'Says' and 'speaks' are not used with stories, and 'explains' does not fit a book that narrates events.",
+      "o": [
+       "speaks",
+       "says",
+       "tells",
+       "explains"
+      ]
+     },
+     {
+      "n": 7,
+      "a": 2,
+      "t": "prepositions",
+      "w": "<b>Illustrated with</b> drawings means containing drawings as pictures. The passive 'is illustrated' is followed by 'with' plus the things used. 'At', 'to' and 'why' do not follow 'illustrated'.",
       "o": [
        "at",
        "why",
        "with",
        "to"
-      ],
-      "a": 2,
-      "t": "prepositions"
+      ]
+     },
+     {
+      "n": 8,
+      "a": 3,
+      "t": "prepositions",
+      "w": "<b>Deal with</b> a subject means to treat or discuss it. The phrase 'deal ... serious subjects' needs 'with'. 'Deal about' and 'deal to' do not exist, and 'deal in' means to trade in goods.",
+      "o": [
+       "in",
+       "about",
+       "to",
+       "with"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "collocations",
+     "reported",
+     "phrasal",
+     "word-choice",
+     "verbpatterns",
+     "prepositions"
+    ]
    },
    {
     "id": "p82-153",
     "title": "Terry Pratchett",
-    "text": "Terry Pratchett was the biggest-selling British author in the 1990s, famous for his [[1]] stories set in the magical Discworld. He was an extraordinary talent whose novels have entertained millions of adults and children. The Discworld series [[2]] the story of the people inhabiting a world which is situated on the backs of four elephants. These elephants themselves stand on the back of a turtle which is floating through space. The books were clearly written [[3]] someone who knows how to tell a funny story. However, Pratchett also used his books to get his ideas [[4]] on serious subjects like death and politics. Critics and authors [[5]] highly of him and he had a huge army of fans. When he died in 2015, people from all over the world paid tribute to him.",
+    "text": "Terry Pratchett was the biggest-selling British author in the 1990s, famous for his [[1]] stories set in the magical Discworld. He was an extraordinary talent whose novels have entertained millions of adults and children. He wrote about forty novels in the Discworld series, and many of them have been [[2]] for television and the stage. The Discworld series [[3]] the story of the people inhabiting a world which is situated on the backs of four elephants. These elephants themselves stand on the back of a turtle which is floating through space. The books were clearly written [[4]] someone who knows how to tell a funny story. However, Pratchett also used his books to get his ideas [[5]] on serious subjects like death and politics. Critics and authors [[6]] highly of him and he had a huge army of fans. He was [[7]] with a rare form of Alzheimer's disease in 2007, but he continued to write until shortly before his death. When he died in 2015, people from all over the world [[8]] tribute to him.",
     "items": [
      {
       "n": 1,
+      "a": 1,
+      "t": "word-choice",
+      "w": "'<b>Fantasy</b>' stories are set in imaginary or magical worlds. The clue is 'the magical Discworld'. 'Legend' is a noun, 'crime' stories are about criminals and 'graphic' stories are told with pictures.",
       "o": [
        "legend",
        "fantasy",
        "crime",
        "graphic"
-      ],
-      "a": 1,
-      "t": "word-choice"
+      ]
      },
      {
       "n": 2,
+      "a": 0,
+      "t": "word-choice",
+      "w": "<b>Adapted for</b> television means changed so that a book can be shown on TV. The clue is 'television and the stage'. 'Adopted' means taken as your own, 'adjusted' means changed slightly to fit, and 'applied' is used for rules or pressure.",
+      "o": [
+       "adapted",
+       "adopted",
+       "adjusted",
+       "applied"
+      ]
+     },
+     {
+      "n": 3,
+      "a": 2,
+      "t": "collocations",
+      "w": "<b>Tell the story of</b> is the collocation: the series narrates the people's story. The noun 'story' decides the verb. 'Says' and 'speaks' are not used with stories, and a series cannot 'write' its own story.",
       "o": [
        "says",
        "speaks",
        "tells",
        "writes"
-      ],
-      "a": 2,
-      "t": "collocations"
+      ]
      },
      {
-      "n": 3,
+      "n": 4,
+      "a": 0,
+      "t": "passive",
+      "w": "The passive 'were written <b>by</b>' introduces the person who did the action. The clue is 'someone who knows how to tell a funny story'. 'For' would mean the audience, and 'to' and 'as' do not follow 'written' here.",
       "o": [
        "by",
        "for",
        "to",
        "as"
-      ],
-      "a": 0,
-      "t": "passive"
+      ]
      },
      {
-      "n": 4,
+      "n": 5,
+      "a": 3,
+      "t": "phrasal",
+      "w": "<b>Get ideas across</b> means to make people understand them. The clue is 'ideas ... on serious subjects'. 'Get out', 'get off' and 'get away' do not give this meaning with ideas.",
       "o": [
        "out",
        "off",
        "away",
        "across"
-      ],
-      "a": 3,
-      "t": "phrasal"
+      ]
      },
      {
-      "n": 5,
+      "n": 6,
+      "a": 2,
+      "t": "collocations",
+      "w": "<b>Speak highly of</b> someone means to praise them; the clue is 'highly of him'. 'Talk' takes 'about', 'say' does not take 'highly of', and 'mention' is followed by an object, not 'of'.",
       "o": [
        "talked",
        "said",
        "spoke",
        "mentioned"
-      ],
+      ]
+     },
+     {
+      "n": 7,
+      "a": 1,
+      "t": "passive",
+      "w": "<b>Be diagnosed with</b> an illness is the fixed passive pattern. The clue is 'with a rare form of Alzheimer's disease'. 'Discovered', 'detected' and 'recognised' are not followed by 'with' for a person and an illness.",
+      "o": [
+       "discovered",
+       "diagnosed",
+       "detected",
+       "recognised"
+      ]
+     },
+     {
+      "n": 8,
       "a": 2,
-      "t": "collocations"
+      "t": "collocations",
+      "w": "<b>Pay tribute to</b> someone is a fixed collocation meaning to show public respect for them. The clue is 'tribute to him'. We do not 'make', 'give' or 'take' tribute in this phrase.",
+      "o": [
+       "gave",
+       "made",
+       "paid",
+       "took"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "word-choice",
+     "collocations",
+     "passive",
+     "phrasal"
+    ]
    },
    {
     "id": "p86-163",
     "title": "The future of travel",
-    "text": "Hyperloop One is a truly futuristic way of travelling which looks like it’s straight out of a science fiction novel. [[1]] for a long time has anyone proposed a form of transport which is so innovative. Somewhere between a high-speed train and a car, Hyperloop One is a system of pods which move at 1,000 kilometres per hour through metal tubes. These metal tubes will connect different cities around the world. [[2]] the engineers hope is that travel times will be far faster than other forms of transport. They have recently [[3]] off testing the pods, which use magnets to help them float in the air. The next stage is to construct the tubes on a test track near Las Vegas. If the engineers [[4]] their aims in the test, they hope to launch Hyperloop One for the public in 2020. For those who don’t easily [[5]] their nerve, this could be the normal way of travelling in the near future.",
+    "text": "Hyperloop One is a truly futuristic way of travelling which looks like it’s straight [[1]] of a science fiction novel. [[2]] for a long time has anyone proposed a form of transport which is so innovative. Somewhere between a high-speed train and a car, Hyperloop One is a system of pods which move at 1,000 kilometres per hour through metal tubes. These metal tubes will [[3]] different cities around the world. [[4]] the engineers hope is that travel times will be far faster than other forms of transport. They have recently [[5]] off testing the pods, which use magnets to help them float in the air. The next stage is to [[6]] the tubes on a test track near Las Vegas. If the engineers [[7]] their aims in the test, they hope to launch Hyperloop One for the public in 2020. For those who don’t easily [[8]] their nerve, this could be the normal way of travelling in the near future.",
     "items": [
      {
       "n": 1,
+      "a": 3,
+      "t": "fixedphrases",
+      "w": "<b>Straight out of</b> a book or film means as if it came directly from it. The clue is 'of a science fiction novel'. 'Away' and 'up' cannot be followed by 'of' here, and 'off' does not form this expression.",
+      "o": [
+       "up",
+       "off",
+       "away",
+       "out"
+      ]
+     },
+     {
+      "n": 2,
+      "a": 1,
+      "t": "inversion",
+      "w": "<b>Not for a long time has</b> is an inversion: a negative adverbial first, then the auxiliary before the subject. The clue is 'has anyone'. 'Never' and 'seldom' are not followed by 'for a long time', and 'only' changes the meaning.",
       "o": [
        "Only",
        "Not",
        "Never",
        "Seldom"
-      ],
-      "a": 1,
-      "t": "inversion"
+      ]
      },
      {
-      "n": 2,
+      "n": 3,
+      "a": 0,
+      "t": "word-choice",
+      "w": "<b>Connect</b> cities means to link them with a route. The clue is 'different cities' joined by tubes. 'Combine' means to mix, 'contact' means to communicate with and 'contract' means to become smaller or to agree a deal.",
+      "o": [
+       "connect",
+       "combine",
+       "contact",
+       "contract"
+      ]
+     },
+     {
+      "n": 4,
+      "a": 2,
+      "t": "relatives",
+      "w": "<b>What</b> + subject + verb is a noun clause meaning 'the thing that': 'What the engineers hope is that...'. 'That' and 'which' cannot begin a sentence as 'the thing', and 'why' asks about a reason.",
       "o": [
        "That",
        "Which",
        "What",
        "Why"
-      ],
-      "a": 2,
-      "t": "relatives"
+      ]
      },
      {
-      "n": 3,
+      "n": 5,
+      "a": 3,
+      "t": "phrasal",
+      "w": "<b>Finish off</b> means to complete. 'They have recently finished off testing' is followed by the particle 'off'. 'Wipe off' and 'cut off' mean remove, and 'spark off' means to cause, so none fits 'testing'.",
       "o": [
        "wiped",
        "sparked",
        "cut",
        "finished"
-      ],
-      "a": 3,
-      "t": "phrasal"
+      ]
      },
      {
-      "n": 4,
+      "n": 6,
+      "a": 1,
+      "t": "word-choice",
+      "w": "<b>Construct</b> means to build, and it takes a direct object: the tubes. 'Consist' needs 'of', 'contain' means to have inside and 'constitute' means to form part of something, so none fits 'build a track'.",
+      "o": [
+       "consist",
+       "construct",
+       "contain",
+       "constitute"
+      ]
+     },
+     {
+      "n": 7,
+      "a": 0,
+      "t": "word-choice",
+      "w": "<b>Accomplish an aim</b> means to achieve it. The noun 'their aims' decides the verb. 'Succeed' needs 'in', 'manage' needs 'to' + infinitive, and 'accommodate' means to provide space for.",
       "o": [
        "accomplish",
        "succeed",
        "manage",
        "accommodate"
-      ],
-      "a": 0,
-      "t": "word-choice"
+      ]
      },
      {
-      "n": 5,
+      "n": 8,
+      "a": 2,
+      "t": "collocations",
+      "w": "<b>Lose your nerve</b> is a fixed phrase meaning to become too afraid to continue. The adverb 'easily' and the noun 'nerve' are the clues. 'Find', 'take' and 'miss' do not collocate with 'nerve'.",
       "o": [
        "find",
-       "keep",
+       "take",
        "lose",
        "miss"
-      ],
-      "a": 2,
-      "t": "collocations"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "fixedphrases",
+     "inversion",
+     "word-choice",
+     "relatives",
+     "phrasal",
+     "collocations"
+    ]
    },
    {
     "id": "p87-165",
     "title": "The Segovia aqueduct",
-    "text": "The aqueduct in Segovia, Spain, is an amazing [[1]] of Roman engineering. Constructed nearly two thousand years ago, the aqueduct was used to carry water around fifteen kilometres across the valleys around the ancient city. [[2]] makes the aqueduct so special is that it is still largely intact and in fact it was still in use until the 19th century. [[3]] has something so old been kept in use for so long. Nevertheless, in the early 21st century, the lack of a conservation plan for the aqueduct [[4]] off concerns about its future. In 2006, various conservation groups [[5]] their goal of creating a group with the Spanish government to protect the aqueduct for future generations.",
+    "text": "The aqueduct in Segovia, Spain, is an amazing [[1]] of Roman engineering. Constructed nearly two thousand years ago, the aqueduct was used to carry water around fifteen kilometres across the valleys around the ancient city. Its granite blocks were [[2]] together without any cement or mortar, which is remarkable for a structure of this size. [[3]] makes the aqueduct so special is that it is still largely intact and in fact it was still in use until the 19th century. [[4]] has something so old been kept in use for so long. In 1985, the aqueduct was [[5]] a World Heritage Site by UNESCO. Nevertheless, in the early 21st century, the lack of a conservation plan for the aqueduct [[6]] off concerns about its future. In 2006, various conservation groups [[7]] their goal of creating a group with the Spanish government to protect the aqueduct for future generations. Every year, thousands of visitors travel to Segovia just to [[8]] a glimpse of it.",
     "items": [
      {
       "n": 1,
+      "a": 3,
+      "t": "collocations",
+      "w": "<b>A feat of engineering</b> is a fixed collocation for an impressive achievement. 'Of Roman engineering' is the clue. 'Effort' means trying hard, not the result, and 'work' and 'success' do not collocate naturally with 'of engineering'.",
       "o": [
        "work",
        "effort",
        "success",
        "feat"
-      ],
-      "a": 3,
-      "t": "collocations"
+      ]
      },
      {
       "n": 2,
+      "a": 3,
+      "t": "phrasal",
+      "w": "<b>Put together</b> means to assemble something from parts. The clue is the particle 'together' after the gap. 'Made together', 'set together' and 'taken together' do not say that blocks were assembled.",
+      "o": [
+       "taken",
+       "made",
+       "set",
+       "put"
+      ]
+     },
+     {
+      "n": 3,
+      "a": 1,
+      "t": "relatives",
+      "w": "<b>What</b> makes the aqueduct so special is... is a noun clause meaning 'the thing that'. 'What' is followed by a verb. 'This', 'That' and 'It' cannot be the subject of a noun clause before 'is that'.",
       "o": [
        "This",
        "What",
        "That",
        "It"
-      ],
-      "a": 1,
-      "t": "relatives"
+      ]
      },
      {
-      "n": 3,
+      "n": 4,
+      "a": 3,
+      "t": "inversion",
+      "w": "<b>Rarely has</b> + subject + past participle is an inversion after a negative adverb. The clue is 'has' before 'something'. 'Hardly' and 'barely' need 'when' or 'before' later, and 'only' changes the meaning.",
       "o": [
        "Hardly",
        "Barely",
        "Only",
        "Rarely"
-      ],
-      "a": 3,
-      "t": "inversion"
+      ]
      },
      {
-      "n": 4,
+      "n": 5,
+      "a": 0,
+      "t": "word-choice",
+      "w": "<b>Declare</b> + object + noun means to officially say that something is something: declared a World Heritage Site. 'Announced', 'reported' and 'stated' cannot be followed directly by 'a ... Site' in this way.",
+      "o": [
+       "declared",
+       "announced",
+       "reported",
+       "stated"
+      ]
+     },
+     {
+      "n": 6,
+      "a": 0,
+      "t": "phrasal",
+      "w": "<b>Spark off</b> concerns means to cause them to start. The clue is 'off' and 'concerns'. 'Come off', 'make off' and 'bring off' do not mean 'cause' and are not used with 'concerns'.",
       "o": [
        "sparked",
        "come",
        "made",
        "brought"
-      ],
-      "a": 0,
-      "t": "phrasal"
+      ]
      },
      {
-      "n": 5,
+      "n": 7,
+      "a": 2,
+      "t": "collocations",
+      "w": "<b>Achieve a goal</b> is a fixed collocation. The noun 'goal' decides the verb. 'Got' and 'made' do not collocate with 'goal' here, and 'succeeded' needs 'in' + -ing.",
       "o": [
        "got",
        "succeeded",
        "achieved",
        "made"
-      ],
-      "a": 2,
-      "t": "collocations"
+      ]
+     },
+     {
+      "n": 8,
+      "a": 1,
+      "t": "collocations",
+      "w": "<b>Catch a glimpse of</b> something means to see it briefly. It is a fixed collocation with 'glimpse'. 'Pick', 'hold' and 'keep' do not combine with 'a glimpse'.",
+      "o": [
+       "pick",
+       "catch",
+       "hold",
+       "keep"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "collocations",
+     "phrasal",
+     "relatives",
+     "inversion",
+     "word-choice"
+    ]
    },
    {
     "id": "p87-166",
     "title": "The Honest Truth",
-    "text": "After a report that a man [[1]] suspiciously in a car park, the police decided to investigate. They found the man, who was accompanied by his six-year-old son, and questioned him about his reasons for being there. The man said he was doing [[2]] wrong, but his son disagreed and informed the police that his father [[3]] to break into a car in order to steal it. The boy led the police to a car with damaged doors and told them that the damage had been caused by his father trying to open the door with a screwdriver. [[4]] they heard this, the police searched the man and found that he was indeed carrying a screwdriver. They arrested the man, but were [[5]] that the boy [[6]] with the information. He was more honest than his dad.",
+    "text": "After a report that a man [[1]] suspiciously in a car park, the police decided to investigate. They found the man, who was accompanied by his six-year-old son, and questioned him about his reasons for being there. The man said he was doing [[2]] wrong, but his son disagreed and informed the police that his father [[3]] to break into a car in order to steal it. At first, the officers did not [[4]] the boy seriously, but they decided to check his story anyway. The boy led the police to a car with damaged doors and told them that the damage had been caused by his father trying to open the door with a screwdriver. [[5]] they heard this, the police searched the man and found that he was indeed carrying a screwdriver. A check also showed that the man already had a [[6]] record for similar offences. They arrested the man, but were [[7]] that the boy [[8]] with the information. He was more honest than his dad.",
     "items": [
      {
       "n": 1,
+      "a": 3,
+      "t": "tenses",
+      "w": "We need the <b>past continuous</b>: a man was behaving suspiciously when he was reported. The action was in progress at that time. 'Had behaved' puts it before the report, and 'has been behaving' is present perfect.",
       "o": [
        "behaved",
        "had behaved",
        "has been behaving",
        "was behaving"
-      ],
-      "a": 3,
-      "t": "tenses"
+      ]
      },
      {
       "n": 2,
+      "a": 0,
+      "t": "quantifiers",
+      "w": "<b>Doing nothing wrong</b>: the negative idea comes from 'nothing'. 'But his son disagreed' shows the contrast. 'Anything' and 'none' do not fit before 'wrong' here, and 'not' would need an auxiliary.",
       "o": [
        "nothing",
        "anything",
        "not",
        "none"
-      ],
-      "a": 0,
-      "t": "quantifiers"
+      ]
      },
      {
       "n": 3,
+      "a": 2,
+      "t": "tenses",
+      "w": "The <b>past perfect continuous</b> shows an action in progress before another past action: the father had been trying to break in before the police came. 'Said' and 'informed' are past, so present forms are wrong.",
       "o": [
        "is trying",
        "has tried",
        "had been trying",
        "has been trying"
-      ],
-      "a": 2,
-      "t": "tenses"
+      ]
      },
      {
       "n": 4,
+      "a": 2,
+      "t": "collocations",
+      "w": "<b>Take someone seriously</b> means to believe that they are important or truthful. The adverb 'seriously' and the object 'the boy' are the clues. 'Hold', 'give' and 'make' do not combine with 'seriously' in this way.",
+      "o": [
+       "give",
+       "hold",
+       "take",
+       "make"
+      ]
+     },
+     {
+      "n": 5,
+      "a": 3,
+      "t": "linkers",
+      "w": "<b>As soon as</b> shows one action following another immediately: as soon as they heard this, they searched him. 'In case' and 'provided' express precaution or condition, and 'as long as' is a condition.",
       "o": [
        "In case",
        "As long as",
        "Provided",
        "As soon as"
-      ],
-      "a": 3,
-      "t": "linkers"
+      ]
      },
      {
-      "n": 5,
+      "n": 6,
+      "a": 3,
+      "t": "collocations",
+      "w": "<b>Criminal record</b> is a fixed collocation: a police file of someone's past offences. The noun 'record' and the word 'offences' are the clues. 'Crime record', 'guilty record' and 'illegal record' are not used.",
+      "o": [
+       "illegal",
+       "crime",
+       "guilty",
+       "criminal"
+      ]
+     },
+     {
+      "n": 7,
+      "a": 1,
+      "t": "word-choice",
+      "w": "<b>Be impressed that</b>: the -ed adjective describes how the police felt. 'Impressive' describes a thing, 'impress' is a verb and 'impressively' is an adverb, so none can follow 'were'.",
       "o": [
        "impressive",
        "impressed",
        "impress",
        "impressively"
-      ],
-      "a": 1,
-      "t": "word-choice"
+      ]
      },
      {
-      "n": 6,
+      "n": 8,
+      "a": 0,
+      "t": "tenses",
+      "w": "<b>Come forward</b> means to volunteer help or information. The boy volunteered it before the police were impressed, so we need the past perfect. 'Carry out' needs an object, and 'go with' means accompany.",
       "o": [
-       "had carried out",
        "had come forward",
+       "had carried out",
        "had gone",
-       "had come up"
-      ],
-      "a": 1,
-      "t": "tenses"
+       "had come round"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "tenses",
+     "quantifiers",
+     "collocations",
+     "linkers",
+     "word-choice"
+    ]
    },
    {
     "id": "p89-169",
     "title": "Spelling gets worse",
-    "text": "A recent survey has shown that many British adults find English spelling difficult. The words that people find the [[1]] to spell include ‘accommodate’, ‘occasionally’ and ‘necessary’. Researchers found that over half of the 2,000 people they questioned [[2]] problems spelling these and other frequently used words. What’s more, [[3]] them said that a spelling mistake had caused them embarrassment at work on at least one occasion. Many people blame technology for their bad spelling skills, saying that having a spellchecker on their computer makes them lazy. Others say they [[4]] how to spell because they hardly ever write things by hand anymore. As one participant in the survey commented, ‘If you [[5]] it, you lose it.’ The fact that many schoolchildren now do nearly all their writing on a screen means it is likely the problem [[6]] even worse in the future.",
+    "text": "A recent survey has shown that many British adults find English spelling difficult. The words that people find the [[1]] to spell include ‘accommodate’, ‘occasionally’ and ‘necessary’. Researchers found that over half of the 2,000 people they questioned [[2]] problems spelling these and other frequently used words. What’s more, [[3]] them said that a spelling mistake had caused them embarrassment at work on at least one occasion. Many people [[4]] technology for their bad spelling skills, saying that having a spellchecker on their computer makes them lazy. Others say they [[5]] how to spell because they hardly ever write things by hand anymore. As one participant in the survey commented, ‘If you [[6]] it, you lose it.’ The fact that many schoolchildren now do nearly all their writing on a screen means it is likely the problem [[7]] even worse in the future. Experts recommend that anyone who wants to improve should read as much as possible and look [[8]] any unfamiliar words in a dictionary.",
     "items": [
      {
       "n": 1,
+      "a": 2,
+      "t": "comparatives",
+      "w": "After 'the' and a long adjective we use the <b>superlative</b>: the most difficult words of all. The clue is 'the' before the gap and the list of examples. 'Difficult' and 'more difficult' are wrong after 'the', and 'much difficult' is not possible.",
       "o": [
        "difficult",
        "more difficult",
        "most difficult",
        "much difficult"
-      ],
-      "a": 2,
-      "t": "comparatives"
+      ]
      },
      {
       "n": 2,
+      "a": 1,
+      "t": "tenses",
+      "w": "The <b>past simple</b> reports a survey result: over half of the people questioned had problems. 'Found' and 'questioned' are past. 'Has' is present, 'having' is incomplete and 'are having' is present continuous.",
       "o": [
        "has",
        "had",
        "having",
        "are having"
-      ],
-      "a": 1,
-      "t": "tenses"
+      ]
      },
      {
       "n": 3,
+      "a": 0,
+      "t": "quantifiers",
+      "w": "<b>A number of</b> + plural means several. 'Them' is plural and countable. 'An amount of' is used with uncountable nouns, 'any of' is used in questions and negatives, and 'all them' would need 'of'.",
       "o": [
        "a number of",
        "an amount of",
        "any of",
        "all"
-      ],
-      "a": 0,
-      "t": "quantifiers"
+      ]
      },
      {
       "n": 4,
+      "a": 1,
+      "t": "verbpatterns",
+      "w": "<b>Blame someone/something for</b> is the pattern: people blame technology for their bad spelling. The clue is 'for' after 'technology'. 'Accuse' needs 'of', 'complain' needs 'about' and 'charge' needs 'with'.",
+      "o": [
+       "accuse",
+       "blame",
+       "complain",
+       "charge"
+      ]
+     },
+     {
+      "n": 5,
+      "a": 1,
+      "t": "tenses",
+      "w": "The <b>present perfect</b> links the past to now: they have forgotten how to spell. The clue is 'hardly ever write by hand anymore', a present result. 'Forgot' and 'had forgotten' are past, and 'are forgetting' suggests a temporary action.",
       "o": [
        "forgot",
        "have forgotten",
        "had forgotten",
        "are forgetting"
-      ],
-      "a": 1,
-      "t": "tenses"
+      ]
      },
      {
-      "n": 5,
+      "n": 6,
+      "a": 3,
+      "t": "conditionals",
+      "w": "The <b>zero conditional</b> (if + present simple, present simple) states a general truth: if you don't use it, you lose it. 'Aren't using' is continuous, 'not use' lacks an auxiliary and 'won't use' is wrong in an if-clause.",
       "o": [
        "aren’t using",
        "not use",
        "won’t use",
        "don’t use"
-      ],
-      "a": 3,
-      "t": "conditionals"
+      ]
      },
      {
-      "n": 6,
+      "n": 7,
+      "a": 2,
+      "t": "future",
+      "w": "<b>Will</b> + infinitive makes a prediction about the future. The clues are 'it is likely' and 'in the future'. 'Is getting' and 'gets' are present forms, and 'going to get' needs 'is' before it.",
       "o": [
        "is getting",
        "gets",
        "will get",
        "going to get"
-      ],
+      ]
+     },
+     {
+      "n": 8,
       "a": 2,
-      "t": "future"
+      "t": "phrasal",
+      "w": "<b>Look up</b> a word means to find it in a dictionary. The clue is 'in a dictionary'. 'Look out' means to be careful, 'look after' means to take care of, and 'look round' means to visit a place.",
+      "o": [
+       "after",
+       "out",
+       "up",
+       "round"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "comparatives",
+     "tenses",
+     "quantifiers",
+     "verbpatterns",
+     "conditionals",
+     "future",
+     "phrasal"
+    ]
    },
    {
     "id": "p94-181",
     "title": "A Beginner’s Guide to Bivvying",
-    "text": "If you really love camping, why don’t you try bivvying? Bivvying is the [[1]] trend for fans of outdoor activities. It’s similar to camping, but instead of a tent, you use a bivvy bag, [[2]] is simply a waterproof sack that you sleep in. A bivvy bag fits easily into a rucksack and is much lighter than a tent. [[3]] I love most about bivvying, though, is that you don’t have to find a big, flat space for a tent and can spend the night almost anywhere you want – in a cave, for example, or even on top of a mountain! Once you decide [[4]] your preferred location, you just get into your sleeping bag inside your bivvy bag and go to sleep! As long as you find a place that is [[5]] from the wind and the rain, it is just as comfortable as camping. [[6]] tried both activities, I have to admit that bivvying offers much more freedom and excitement. I’m already [[7]] forward to my next trip!",
+    "text": "If you really love camping, why don’t you try bivvying? Bivvying is the [[1]] trend for fans of outdoor activities. It’s similar to camping, but instead of a tent, you use a bivvy bag, [[2]] is simply a waterproof sack that you sleep in. A bivvy bag [[3]] easily into a rucksack and is much lighter than a tent. [[4]] I love most about bivvying, though, is that you don’t have to find a big, flat space for a tent and can spend the night almost anywhere you want – in a cave, for example, or even on top of a mountain! Once you decide [[5]] your preferred location, you just get into your sleeping bag inside your bivvy bag and go to sleep! As long as you find a place that is [[6]] from the wind and the rain, it is just as comfortable as camping. [[7]] tried both activities, I have to admit that bivvying offers much more freedom and excitement. I’m already [[8]] forward to my next trip!",
     "items": [
      {
       "n": 1,
+      "a": 3,
+      "t": "word-choice",
+      "w": "<b>The latest trend</b> means the newest one. 'The' before the gap shows a superlative or fixed adjective. 'Late' means not on time, 'later' is a comparative and 'lately' is an adverb meaning recently.",
       "o": [
        "late",
        "later",
        "lately",
        "latest"
-      ],
-      "a": 3,
-      "t": "word-choice"
+      ]
      },
      {
       "n": 2,
+      "a": 1,
+      "t": "relatives",
+      "w": "<b>Which</b> starts a non-defining relative clause after a comma and refers to 'a bivvy bag'. 'That' cannot follow a comma, 'who' is for people, and 'it' would need a conjunction.",
       "o": [
        "that",
        "which",
        "who",
        "it"
-      ],
-      "a": 1,
-      "t": "relatives"
+      ]
      },
      {
       "n": 3,
+      "a": 3,
+      "t": "word-choice",
+      "w": "<b>Fit into</b> a space means to be the right size for it. The clues are 'into a rucksack' and 'lighter than a tent'. 'Suits' means looks good on, 'matches' means goes with, and 'holds' cannot be followed by 'easily into'.",
+      "o": [
+       "holds",
+       "suits",
+       "matches",
+       "fits"
+      ]
+     },
+     {
+      "n": 4,
+      "a": 2,
+      "t": "relatives",
+      "w": "<b>What</b> I love most is a noun clause meaning 'the thing that I love most'. The clue is 'is that you don't have to...'. 'Where', 'why' and 'this' do not work as the subject here.",
       "o": [
        "Where",
        "Why",
        "What",
        "This"
-      ],
-      "a": 2,
-      "t": "relatives"
+      ]
      },
      {
-      "n": 4,
+      "n": 5,
+      "a": 2,
+      "t": "prepositions",
+      "w": "<b>Decide on</b> something means to choose it after thinking. The clue is 'your preferred location'. 'Decide at', 'to' and 'of' are not used with a chosen object.",
       "o": [
        "at",
        "to",
        "on",
        "of"
-      ],
-      "a": 2,
-      "t": "prepositions"
+      ]
      },
      {
-      "n": 5,
+      "n": 6,
+      "a": 3,
+      "t": "passive",
+      "w": "A past participle works as an adjective with passive meaning: a place that is <b>protected</b> from wind and rain. The preposition 'from' follows. 'Protection' is a noun, 'protecting' is active and 'being protected' does not fit after 'is'.",
       "o": [
        "protection",
        "protecting",
        "being protected",
        "protected"
-      ],
-      "a": 3,
-      "t": "passive"
+      ]
      },
      {
-      "n": 6,
+      "n": 7,
+      "a": 1,
+      "t": "verbpatterns",
+      "w": "<b>Having tried</b> both activities: a perfect participle clause shows that this action came before the main clause. 'Had' would need inversion in a conditional, 'have' is not an -ing form and 'to have' expresses purpose.",
       "o": [
        "Had",
        "Having",
        "Have",
        "To have"
-      ],
-      "a": 1,
-      "t": "verbpatterns"
+      ]
      },
      {
-      "n": 7,
+      "n": 8,
+      "a": 0,
+      "t": "phrasal",
+      "w": "<b>Look forward to</b> + noun means to feel happy about a future event. The clue is 'forward to my next trip'. 'Seeing', 'viewing' and 'thinking' do not form a phrase with 'forward to'.",
       "o": [
        "looking",
        "seeing",
        "viewing",
        "thinking"
-      ],
-      "a": 0,
-      "t": "phrasal"
+      ]
      }
     ],
-    "tags": []
+    "tags": [
+     "word-choice",
+     "relatives",
+     "prepositions",
+     "passive",
+     "verbpatterns",
+     "phrasal"
+    ]
    }
   ]
  },
@@ -810,100 +1289,176 @@ window.RUOE_B2 = {
    {
     "id": "p69-119",
     "title": "The Crystal Maze",
-    "text": "If you are interested [[1]] doing something different this weekend, you should check out The Crystal Maze. Based [[2]] the concept for a 1990s TV game show, The Crystal Maze is a giant interactive mystery game show. The Maze consists of four different zones: Industrial, Aztec, Futuristic and Medieval. There is amazing attention to detail in these zones and you will feel like you have [[3]] magically transported to another time. The idea is for participants to work their way through [[4]] of the zones and collect crystals, which you win by solving mysteries and overcoming challenges. The crystals buy you time in [[5]] final game, where you have to collect golden tickets, which are blown around in a giant glass dome. Although The Crystal Maze will mean most to those who remember the TV show, it is guaranteed fun for everyone.",
+    "text": "If you are interested [[1]] doing something different this weekend, you should check out The Crystal Maze. Based [[2]] the concept for a 1990s TV game show, The Crystal Maze is a giant interactive mystery game show. The Maze consists of four different zones: Industrial, Aztec, Futuristic and Medieval. There is amazing attention to detail in these zones and you will feel like you have [[3]] magically transported to another time. The idea is for participants to work their way through [[4]] of the zones and collect crystals, which you win by solving mysteries and overcoming challenges. The crystals buy you time in [[5]] final game, where you have to collect golden tickets, [[6]] are blown around in a giant glass dome. Although The Crystal Maze will mean most to those [[7]] remember the TV show, it is guaranteed fun for everyone. Sessions last about two hours and you do not need to be [[8]] expert to enjoy them.",
     "items": [
      {
       "n": 1,
       "a": [
        "in"
       ],
-      "t": "prepositions"
+      "t": "prepositions",
+      "w": "The adjective <b>interested</b> is followed by the preposition <b>in</b>, then the -ing form: interested in doing. Typical mistakes are 'interested on' or 'interested for'."
      },
      {
       "n": 2,
       "a": [
        "on"
       ],
-      "t": "prepositions"
+      "t": "prepositions",
+      "w": "We need the preposition in the fixed phrase <b>based on</b>, meaning built from an idea. Do not say 'based in' or 'based from'."
      },
      {
       "n": 3,
       "a": [
        "been"
       ],
-      "t": "auxiliaries"
+      "t": "auxiliaries",
+      "w": "After 'have' we need a past participle to make a passive: you have <b>been</b> transported. Do not write 'be' or 'being' here."
      },
      {
       "n": 4,
       "a": [
-       "each"
+       "each",
+       "all",
+       "one"
       ],
-      "t": "quantifiers"
+      "t": "quantifiers",
+      "w": "A quantifier is needed before 'of the zones': <b>each</b> of the zones. 'All' and 'one' also fit. Do not use 'every', because it cannot be followed by 'of the'."
      },
      {
       "n": 5,
       "a": [
        "the"
       ],
-      "t": "articles"
+      "t": "articles",
+      "w": "'Final game' is one specific game, so we need the definite article <b>the</b>. Using 'a' here is a typical mistake."
+     },
+     {
+      "n": 6,
+      "a": [
+       "which"
+      ],
+      "t": "relatives",
+      "w": "We need a relative pronoun for things after a comma: <b>which</b>. In a non-defining clause with a comma, 'that' is not possible."
+     },
+     {
+      "n": 7,
+      "a": [
+       "who",
+       "that"
+      ],
+      "t": "relatives",
+      "w": "'Those' + a relative pronoun for people: those <b>who</b> remember. 'That' is also possible, but 'those which' is wrong when we mean people."
+     },
+     {
+      "n": 8,
+      "a": [
+       "an"
+      ],
+      "t": "articles",
+      "w": "We need an indefinite article before 'expert', which starts with a vowel sound: <b>an</b>. Writing 'a expert' is a typical mistake."
      }
     ],
-    "tags": []
+    "tags": [
+     "prepositions",
+     "auxiliaries",
+     "quantifiers",
+     "articles",
+     "relatives"
+    ]
    },
    {
     "id": "p70-121",
     "title": "Calligraphy",
-    "text": "If you are looking [[1]] a hobby which is both creative and relaxing, you might like to try calligraphy – the art of writing beautifully. This is a hobby which requires patience, and you get the best results if you just [[2]] your time. Many years ago, calligraphy was a popular activity, but with [[3]] invention of the typewriter and the word processor, it went out of fashion. However, with a renewed interest in arts and crafts, calligraphy [[4]] started to become more fashionable again. [[5]] of the main reasons for its popularity is that it is accessible to almost everyone – all you need is a pen, some paper and plenty of free time.",
+    "text": "If you are looking [[1]] a hobby which is both creative and relaxing, you might like to try calligraphy – the art of writing beautifully. This is a hobby which requires patience, and you get the best results if you just [[2]] your time. Many years ago, calligraphy was a popular activity, but with [[3]] invention of the typewriter and the word processor, it went out of fashion. However, with a renewed interest in arts and crafts, calligraphy [[4]] started to become more fashionable again. [[5]] of the main reasons for its popularity is that it is accessible to almost everyone – all you need is a pen, some paper and plenty [[6]] free time. Beginners usually start [[7]] a simple pen and practise basic strokes before moving on to more complicated letters. Classes are held in many towns, and some of them are specially designed for people [[8]] have never held a calligraphy pen before.",
     "items": [
      {
       "n": 1,
       "a": [
        "for"
       ],
-      "t": "prepositions"
+      "t": "prepositions",
+      "w": "The verb <b>look for</b> means to search for something you want. 'Looking at' or 'looking after' would change the meaning completely."
      },
      {
       "n": 2,
       "a": [
        "take"
       ],
-      "t": "fixedphrases"
+      "t": "fixedphrases",
+      "w": "This is the fixed phrase <b>take your time</b>, meaning do not hurry. Do not use 'spend' or 'make' with 'your time' here."
      },
      {
       "n": 3,
       "a": [
        "the"
       ],
-      "t": "articles"
+      "t": "articles",
+      "w": "We mean one specific invention, followed by 'of the typewriter'. So we need the definite article <b>the</b>, not 'an' or no article."
      },
      {
       "n": 4,
       "a": [
        "has"
       ],
-      "t": "tenses"
+      "t": "tenses",
+      "w": "'However, with a renewed interest' links the past to now, so we need the present perfect. 'Calligraphy' is singular: <b>has</b> started, not 'have'."
      },
      {
       "n": 5,
       "a": [
        "One"
       ],
-      "t": "quantifiers"
+      "t": "quantifiers",
+      "w": "The pattern is <b>One</b> of the main reasons, followed by a singular verb (is). Do not use 'Some', which would need 'are'."
+     },
+     {
+      "n": 6,
+      "a": [
+       "of"
+      ],
+      "t": "quantifiers",
+      "w": "'Plenty' is followed by <b>of</b> before a noun: plenty of free time. Do not write 'plenty from' or leave out the preposition."
+     },
+     {
+      "n": 7,
+      "a": [
+       "with"
+      ],
+      "t": "prepositions",
+      "w": "The pattern is <b>start with</b> something, meaning begin by using it. 'Start by' needs an -ing form, and 'start from' sounds unnatural here."
+     },
+     {
+      "n": 8,
+      "a": [
+       "who",
+       "that"
+      ],
+      "t": "relatives",
+      "w": "We need a relative pronoun for people: people <b>who</b> have never held a pen. 'Which' is a typical mistake because it is used for things."
      }
     ],
-    "tags": []
+    "tags": [
+     "prepositions",
+     "fixedphrases",
+     "articles",
+     "tenses",
+     "quantifiers",
+     "relatives"
+    ]
    },
    {
     "id": "p75-135",
     "title": "",
-    "text": "I’m not very sporty and I certainly don’t like running through cold, muddy fields, so when my school organised a cross- country run I wasn’t very happy. Everyone was expected to participate [[1]] the run and I couldn’t think of any way to avoid it. Instead, I came up with a plan so I didn’t [[2]] to run the complete course. Before the race, I got a map and I worked out all the places where I could take short cuts. This [[3]] have reduced the distance by several kilometres. On the day of the race, I confidently set off and managed to complete it in record time. However, I soon realised that there was a problem with my plan; the course consisted [[4]] a series of checkpoints which the participants had to pass through. My teacher pointed out that I hadn’t gone through any of them. He told me to run all the way back to the beginning, passing through the checkpoints. I certainly learnt my [[5]] that day!",
+    "text": "I’m not very sporty and I certainly don’t like running through cold, muddy fields, so when my school organised a cross- country run I wasn’t very happy. Everyone was expected to participate [[1]] the run and I couldn’t think of any way to avoid it. Instead, I came up with a plan so I didn’t [[2]] to run the complete course. Before the race, I got a map and I worked out all the places [[3]] I could take short cuts. This [[4]] have reduced the distance by several kilometres. On the day of the race, I confidently set off and managed [[5]] complete it in record time. However, I soon realised that there was a problem with my plan; the course consisted [[6]] a series of checkpoints which the participants had to pass through. My teacher pointed out that I hadn’t gone through any of them. He told me to run all [[7]] way back to the beginning, passing through the checkpoints. I certainly learnt my [[8]] that day!",
     "items": [
      {
       "n": 1,
       "a": [
        "in"
       ],
-      "t": "prepositions"
+      "t": "prepositions",
+      "w": "We say <b>participate in</b> an event. Typical mistakes are 'participate to' or 'participate at'."
      },
      {
       "n": 2,
@@ -911,166 +1466,313 @@ window.RUOE_B2 = {
        "have",
        "need"
       ],
-      "t": "modals"
+      "t": "modals",
+      "w": "After 'didn't' we use the base form: didn't <b>have</b> to run, meaning it wasn't necessary. 'Need' also fits. Do not write 'didn't had'."
      },
      {
       "n": 3,
       "a": [
-       "should",
-       "would"
+       "where"
       ],
-      "t": "modals"
+      "t": "relatives",
+      "w": "We need a relative adverb for places: places <b>where</b> I could take short cuts. 'Which' would need a preposition ('in which'), and 'that' does not fit."
      },
      {
       "n": 4,
       "a": [
-       "of"
+       "should",
+       "would",
+       "could",
+       "might",
+       "may"
       ],
-      "t": "prepositions"
+      "t": "modals",
+      "w": "A modal + 'have' + past participle talks about a past result: <b>should</b> have reduced. 'Would', 'could' and 'might' also fit. Never use 'to' after the modal."
      },
      {
       "n": 5,
       "a": [
+       "to"
+      ],
+      "t": "verbpatterns",
+      "w": "The verb <b>manage</b> is followed by a to-infinitive: managed to complete. Do not use an -ing form or 'for' after it."
+     },
+     {
+      "n": 6,
+      "a": [
+       "of"
+      ],
+      "t": "prepositions",
+      "w": "The verb <b>consist of</b> means to be made up of. Do not use 'consist in' or 'consist from'."
+     },
+     {
+      "n": 7,
+      "a": [
+       "the"
+      ],
+      "t": "articles",
+      "w": "The expression 'all the way back' needs the definite article <b>the</b>. Writing 'all way' or 'all a way' is a typical mistake."
+     },
+     {
+      "n": 8,
+      "a": [
        "lesson"
       ],
-      "t": "fixedphrases"
+      "t": "fixedphrases",
+      "w": "This is the fixed phrase <b>learn your lesson</b>, meaning learn from a bad experience. Do not say 'learn my class' or 'learn my homework'."
      }
     ],
-    "tags": []
+    "tags": [
+     "prepositions",
+     "modals",
+     "relatives",
+     "verbpatterns",
+     "articles",
+     "fixedphrases"
+    ]
    },
    {
     "id": "p76-137",
     "title": "",
-    "text": "I’ve been skiing for about five years now but in all that time I’ve never been so afraid as I was last weekend. Some friends suggested going to a difficult ski run with them and at first I was really enthusiastic. However, when we got to the mountain, I felt terribly anxious [[1]] what we were going to do. The start of the run involved a vertical drop followed by a steep downhill run. There was a big group of us and the most experienced skiers insisted [[2]] going first so we could see how to do it. They [[3]] have done that because it only gave me more time to worry. All of a sudden, it was my turn to go and I just froze – the thought of having some terrible accident prevented me [[4]] moving any part of my body. After some time, one of my friends helped me away from the edge of the run and I went back down the mountain. Looking [[5]] now, I feel sad that I couldn’t do it but I also realise that it’s important to know your limits.",
+    "text": "I’ve been skiing for about five years now but in all that time I’ve never been so afraid [[1]] I was last weekend. Some friends suggested going to a difficult ski run with them and at first I was really enthusiastic. However, when we got to the mountain, I felt terribly anxious [[2]] what we were going to do. The start of the run involved a vertical drop followed by a steep downhill run. There was a big group of us and the most experienced skiers insisted [[3]] going first so we could see how to do it. They [[4]] have done that because it only gave me more time to worry. All [[5]] a sudden, it was my turn to go and I just froze – the thought of having some terrible accident prevented me [[6]] moving any part of my body. After some time, one of my friends helped me away from the edge of the run and I went back down the mountain. Looking [[7]] now, I feel sad that I couldn’t do it but I also realise that it’s important [[8]] know your limits.",
     "items": [
      {
       "n": 1,
       "a": [
-       "about"
+       "as"
       ],
-      "t": "prepositions"
+      "t": "comparatives",
+      "w": "In a negative sentence the pattern 'so + adjective + <b>as</b>' compares two things. After 'so afraid' we use 'as', never 'than'."
      },
      {
       "n": 2,
       "a": [
-       "on"
+       "about"
       ],
-      "t": "prepositions"
+      "t": "prepositions",
+      "w": "The adjective <b>anxious</b> is followed by the preposition about: anxious about what we were going to do. Do not use 'anxious for' or 'anxious of'."
      },
      {
       "n": 3,
       "a": [
-       "shouldn't"
+       "on"
       ],
-      "t": "modals"
+      "t": "prepositions",
+      "w": "The verb <b>insist on</b> is followed by an -ing form: insisted on going. Do not say 'insisted to go' or 'insisted in going'."
      },
      {
       "n": 4,
       "a": [
-       "from"
+       "shouldn't"
       ],
-      "t": "prepositions"
+      "t": "modals",
+      "w": "We criticise a past action with a negative modal perfect: <b>shouldn't</b> have done. 'Needn't' is possible, but 'mustn't' does not fit this meaning."
      },
      {
       "n": 5,
       "a": [
+       "of"
+      ],
+      "t": "fixedphrases",
+      "w": "The fixed phrase <b>all of a sudden</b> means suddenly. Do not change it to 'all at a sudden' or 'all in a sudden'."
+     },
+     {
+      "n": 6,
+      "a": [
+       "from"
+      ],
+      "t": "prepositions",
+      "w": "The pattern is <b>prevent someone from</b> + -ing. Do not say 'prevented me to move' or 'prevented me of moving'."
+     },
+     {
+      "n": 7,
+      "a": [
        "back"
       ],
-      "t": "phrasal"
+      "t": "phrasal",
+      "w": "<b>Looking back</b> means thinking about the past. 'Behind' or 'again' are typical wrong answers."
+     },
+     {
+      "n": 8,
+      "a": [
+       "to"
+      ],
+      "t": "verbpatterns",
+      "w": "After the adjective 'important' we use a to-infinitive: important <b>to</b> know. Do not use an -ing form ('important knowing')."
      }
     ],
-    "tags": []
+    "tags": [
+     "comparatives",
+     "prepositions",
+     "modals",
+     "fixedphrases",
+     "phrasal",
+     "verbpatterns"
+    ]
    },
    {
     "id": "p80-147",
     "title": "The effects of deforestation",
-    "text": "In some parts of the world, trees are being chopped [[1]] at an alarming rate in a process known as deforestation. No one knows exactly how many, but estimates suggest that it’s around four billion trees a year. On the one hand, it’s contributing to global warming because if these trees [[2]] still alive, they would be helping to reduce greenhouse gases. On the other hand, it’s having a terrible effect on the animals that live in the woods and forests. Among the animals affected [[3]] deforestation are birds, insects and even mammals like the Asian elephant. In some cases, these animals, which depend on trees for food and shelter, are actually dying [[4]]. To my mind, it’s absolutely unacceptable for us to let this happen and it’s high [[5]] that governments made it a priority to protect our woods and forests.",
+    "text": "In some parts of the world, trees are being chopped [[1]] at an alarming rate in a process known as deforestation. No one knows exactly [[2]] many, but estimates suggest that it’s around four billion trees a year. On the one hand, it’s contributing to global warming because if these trees [[3]] still alive, they would be helping to reduce greenhouse gases. On the [[4]] hand, it’s having a terrible effect on the animals that live in the woods and forests. Among the animals affected [[5]] deforestation are birds, insects and even mammals like the Asian elephant. In some cases, these animals, which depend on trees for food and shelter, are actually dying [[6]]. To my mind, it’s absolutely unacceptable for us to let this happen and it’s high [[7]] that governments made it a priority to protect our woods and forests. Planting new trees can help, but it takes decades [[8]] a young forest to grow back, so we must also protect the ones we already have.",
     "items": [
      {
       "n": 1,
       "a": [
        "down"
       ],
-      "t": "phrasal"
+      "t": "phrasal",
+      "w": "<b>Chop down</b> is a phrasal verb meaning cut a tree so that it falls. Here it is passive: are being chopped down. 'Chopped out' or 'chopped off' do not fit."
      },
      {
       "n": 2,
       "a": [
-       "were"
+       "how"
       ],
-      "t": "conditionals"
+      "t": "pronouns",
+      "w": "We need the question word <b>how</b> to form 'how many', which asks about quantity. 'What many' and 'which many' are wrong."
      },
      {
       "n": 3,
       "a": [
-       "by"
+       "were"
       ],
-      "t": "prepositions"
+      "t": "conditionals",
+      "w": "This is a second conditional: if + past simple, would + verb. 'If these trees <b>were</b> still alive' is the unreal condition. 'Are' and 'be' are typical mistakes."
      },
      {
       "n": 4,
       "a": [
-       "out"
+       "other"
       ],
-      "t": "phrasal"
+      "t": "fixedphrases",
+      "w": "The contrast 'On the one hand ... on the <b>other</b> hand' is fixed. Do not write 'another hand' or 'second hand'."
      },
      {
       "n": 5,
       "a": [
+       "by"
+      ],
+      "t": "passive",
+      "w": "We need the agent of a passive participle: animals affected <b>by</b> deforestation. 'From' and 'with' are typical wrong choices."
+     },
+     {
+      "n": 6,
+      "a": [
+       "out"
+      ],
+      "t": "phrasal",
+      "w": "<b>Die out</b> means become extinct. 'Dying away' or 'dying off' have a different meaning, so only 'out' fits."
+     },
+     {
+      "n": 7,
+      "a": [
        "time"
       ],
-      "t": "fixedphrases"
+      "t": "fixedphrases",
+      "w": "The expression <b>it's high time</b> + past simple means something should already have happened. Do not use 'moment' or 'day'."
+     },
+     {
+      "n": 8,
+      "a": [
+       "for"
+      ],
+      "t": "prepositions",
+      "w": "In 'it takes decades <b>for</b> a young forest to grow back', 'for' introduces the subject of the infinitive. 'To' and 'that' do not fit here."
      }
     ],
-    "tags": []
+    "tags": [
+     "phrasal",
+     "pronouns",
+     "conditionals",
+     "fixedphrases",
+     "passive",
+     "prepositions"
+    ]
    },
    {
     "id": "p81-149",
     "title": "",
-    "text": "Do you wish you [[1]] do more to help make the world a cleaner place to live in? Have you been telling yourself that it’s high [[2]] you did more to protect the environment? If so, then you should come along to our group. We meet every Wednesday and we share ideas on how to help the environment. Some of our discussions have been about how to reduce your carbon [[3]], switching to renewable energy and growing your own organic food. However, if new members wanted to propose a new topic, we [[4]] be more than happy to discuss it. Apart from our weekly discussions, we’ve also been involved in various campaigns such as calling [[5]] better traffic controls in the town and the use of solar energy for street lights.",
+    "text": "Do you wish you [[1]] do more to help make the world a cleaner place to live in? Have you been telling yourself that it’s high [[2]] you did more to protect the environment? If [[3]], then you should come along to our group. We meet every Wednesday and we share ideas on [[4]] to help the environment. Some of our discussions have been about how to reduce your carbon [[5]], switching to renewable energy and growing your own organic food. However, if new members wanted to propose a new topic, we [[6]] be more than happy to discuss it. Apart from our weekly discussions, we’ve also been involved in various campaigns such as calling [[7]] better traffic controls in the town and the use of solar energy for street lights. Everyone is welcome to join us, and you do not need [[8]] have any experience in order to take part in our activities.",
     "items": [
      {
       "n": 1,
       "a": [
        "could"
       ],
-      "t": "modals"
+      "t": "modals",
+      "w": "After 'wish' we use a past form for a present wish: Do you wish you <b>could</b> do more? 'Can' and 'will' are typical mistakes."
      },
      {
       "n": 2,
       "a": [
        "time"
       ],
-      "t": "fixedphrases"
+      "t": "fixedphrases",
+      "w": "The fixed phrase <b>it's high time</b> + past simple means you should already have done something. 'Moment' and 'hour' are wrong."
      },
      {
       "n": 3,
       "a": [
-       "footprint"
+       "so"
       ],
-      "t": "collocations"
+      "t": "fixedphrases",
+      "w": "<b>If so</b> is a fixed phrase meaning 'if that is true' (if the answer is yes). Do not say 'if yes' or 'if it'."
      },
      {
       "n": 4,
       "a": [
-       "would"
+       "how"
       ],
-      "t": "conditionals"
+      "t": "pronouns",
+      "w": "After 'ideas on' we use <b>how</b> + to-infinitive: ideas on how to help. 'What' and 'which' do not combine with 'to help the environment' here."
      },
      {
       "n": 5,
       "a": [
+       "footprint"
+      ],
+      "t": "collocations",
+      "w": "The collocation is <b>carbon footprint</b>, meaning the CO2 we produce. Do not say 'carbon trace' or 'carbon step'."
+     },
+     {
+      "n": 6,
+      "a": [
+       "would"
+      ],
+      "t": "conditionals",
+      "w": "This is a second conditional: if new members wanted, we <b>would</b> be happy. Do not use 'will' after a past tense in the if-clause."
+     },
+     {
+      "n": 7,
+      "a": [
        "for"
       ],
-      "t": "prepositions"
+      "t": "prepositions",
+      "w": "The verb <b>call for</b> means ask publicly for something. 'Call to' or 'call on better controls' do not fit."
+     },
+     {
+      "n": 8,
+      "a": [
+       "to"
+      ],
+      "t": "verbpatterns",
+      "w": "The verb <b>need</b> is followed by a to-infinitive: you do not need to have any experience. Do not write 'need have' or 'need for have'."
      }
     ],
-    "tags": []
+    "tags": [
+     "modals",
+     "fixedphrases",
+     "pronouns",
+     "collocations",
+     "conditionals",
+     "prepositions",
+     "verbpatterns"
+    ]
    },
    {
     "id": "p83-155",
     "title": "Millennial consumers",
-    "text": "The millennial generation is the group of people [[1]] were born between 1980 and 2000. They stand out from previous generations because they are the internet generation. [[2]] grown up with access to huge amounts of information about the world, they see things differently, especially when it comes to buying things. Before [[3]] an important purchase, many millennials will do some research into the product. By simply switching [[4]] a computer, millennials have instant access to all sorts of information about comparable products and prices. Another way in [[5]] millennials differ is that they tend to place less importance on owning things like TVs and other material products. While they might purchase one if they see it as good value, they are happy to wait if it does not make economic sense.",
+    "text": "The millennial generation is the group of people [[1]] were born between 1980 and 2000. They stand out [[2]] previous generations because they are the internet generation. [[3]] grown up with access to huge amounts of information about the world, they see things differently, especially when it comes to buying things. Before [[4]] an important purchase, many millennials will do some research into the product. By simply switching [[5]] a computer, millennials have instant access to all sorts of information about comparable products and prices. Many of them also compare prices on several different websites and read reviews written [[6]] other customers before deciding where to spend their money. Another way in [[7]] millennials differ is that they tend to place less importance on owning things like TVs and other material products. While they might purchase one if they see it [[8]] good value, they are happy to wait if it does not make economic sense.",
     "items": [
      {
       "n": 1,
@@ -1078,289 +1780,473 @@ window.RUOE_B2 = {
        "that",
        "who"
       ],
-      "t": "relatives"
+      "t": "relatives",
+      "w": "We need a relative pronoun for people: people <b>who</b> were born between 1980 and 2000. 'That' also fits, but 'which' is wrong for people."
      },
      {
       "n": 2,
       "a": [
-       "Having"
+       "from"
       ],
-      "t": "tenses"
+      "t": "prepositions",
+      "w": "The phrasal verb <b>stand out from</b> means to be clearly different from something. Do not say 'stand out of' or 'stand out to'."
      },
      {
       "n": 3,
       "a": [
-       "making"
+       "Having"
       ],
-      "t": "verbpatterns"
+      "t": "verbpatterns",
+      "w": "A perfect participle clause shows an earlier action: <b>Having</b> grown up with access to information. 'Have' and 'Being' do not work here."
      },
      {
       "n": 4,
       "a": [
-       "on"
+       "making"
       ],
-      "t": "phrasal"
+      "t": "verbpatterns",
+      "w": "After the preposition 'before' we use an -ing form: Before <b>making</b> a purchase. 'Before to make' is a typical mistake."
      },
      {
       "n": 5,
       "a": [
+       "on"
+      ],
+      "t": "phrasal",
+      "w": "The phrasal verb <b>switch on</b> means turn on a device. 'Switch up' or 'switch in' have different meanings."
+     },
+     {
+      "n": 6,
+      "a": [
+       "by"
+      ],
+      "t": "prepositions",
+      "w": "In a passive structure, <b>by</b> introduces the agent: reviews written by other customers. 'From' or 'of' are typical mistakes."
+     },
+     {
+      "n": 7,
+      "a": [
        "which"
       ],
-      "t": "relatives"
+      "t": "relatives",
+      "w": "After the preposition 'in' we use a relative pronoun: a way in <b>which</b>. 'That' cannot follow a preposition."
+     },
+     {
+      "n": 8,
+      "a": [
+       "as"
+      ],
+      "t": "prepositions",
+      "w": "We use <b>see something as</b> to mean consider it to be: see it as good value. 'Like' is informal and 'for' is wrong."
      }
     ],
-    "tags": []
+    "tags": [
+     "relatives",
+     "prepositions",
+     "verbpatterns",
+     "phrasal"
+    ]
    },
    {
     "id": "p84-157",
     "title": "Satoshi Nakomoto",
-    "text": "Satoshi Nakomoto is generally said to be the man [[1]] created the bitcoin, although his exact identity is unknown. Bitcoin is a digital currency which first appeared in 2009 and it represented a totally new concept of money. Whereas governments are normally responsible for creating money, bitcoin is created by computers. Anyone can participate in the creation of bitcoins if they have the software. [[2]] downloaded the program, your computer generates or ‘mines’ codes and when it finds a new code, a new bitcoin is made. However, it is a slow process. It is estimated that your computer would have to carry [[3]] calculating codes for more than a thousand years before it produced just one bitcoin. It would certainly be difficult to [[4]] a living from mining bitcoin. Nevertheless, Nakamoto himself is said to have [[5]] a fortune from it, with an estimated wealth of nearly a billion dollars.",
+    "text": "Satoshi Nakomoto is generally said to be the man [[1]] created the bitcoin, although his exact identity is unknown. Bitcoin is a digital currency [[2]] first appeared in 2009 and it represented a totally new concept of money. Whereas governments are normally responsible [[3]] creating money, bitcoin is created by computers. Anyone can participate in the creation of bitcoins if they have the software. [[4]] downloaded the program, your computer generates or ‘mines’ codes and when it finds a new code, a new bitcoin is made. However, it is a slow process. It is estimated that your computer would have to carry [[5]] calculating codes for more than a thousand years before it produced just one bitcoin. It would certainly be difficult to [[6]] a living from mining bitcoin. Nevertheless, Nakamoto himself is said to have [[7]] a fortune from it, with an estimated wealth of nearly a billion dollars. Today, thousands [[8]] people around the world buy and sell bitcoin every day.",
     "items": [
      {
       "n": 1,
       "a": [
        "who"
       ],
-      "t": "relatives"
+      "t": "relatives",
+      "w": "We need a relative pronoun for a person, the man who created bitcoin. Use <b>who</b>. 'Which' is for things, and 'whose' needs a noun after it."
      },
      {
       "n": 2,
       "a": [
-       "Having"
+       "which",
+       "that"
       ],
-      "t": "tenses"
+      "t": "relatives",
+      "w": "We need a relative pronoun for a thing in a defining clause: a currency <b>which</b> first appeared. 'That' is also possible. 'Who' is only for people."
      },
      {
       "n": 3,
       "a": [
-       "on"
+       "for"
       ],
-      "t": "phrasal"
+      "t": "prepositions",
+      "w": "The adjective <b>responsible</b> is followed by 'for' and then an -ing form: responsible for creating. 'Responsible of' is a typical mistake."
      },
      {
       "n": 4,
       "a": [
-       "make"
+       "Having"
       ],
-      "t": "collocations"
+      "t": "verbpatterns",
+      "w": "A perfect participle shows one action happened before another: <b>Having</b> downloaded the program, your computer generates codes. 'Have' and 'Being' do not fit."
      },
      {
       "n": 5,
       "a": [
+       "on"
+      ],
+      "t": "phrasal",
+      "w": "The phrasal verb <b>carry on</b> + -ing means continue doing something. 'Carry out' needs an object and has a different meaning."
+     },
+     {
+      "n": 6,
+      "a": [
+       "make"
+      ],
+      "t": "collocations",
+      "w": "The collocation is <b>make a living</b>, meaning earn money to live. 'Do a living' and 'get a living' are not natural."
+     },
+     {
+      "n": 7,
+      "a": [
        "made"
       ],
-      "t": "collocations"
+      "t": "collocations",
+      "w": "After 'is said to have' we need a past participle: have <b>made</b> a fortune. The collocation is 'make a fortune', not 'do a fortune'."
+     },
+     {
+      "n": 8,
+      "a": [
+       "of"
+      ],
+      "t": "quantifiers",
+      "w": "After 'thousands' we need <b>of</b> before a noun: thousands of people. 'Thousands people' is a typical mistake."
      }
     ],
-    "tags": []
+    "tags": [
+     "relatives",
+     "prepositions",
+     "verbpatterns",
+     "phrasal",
+     "collocations",
+     "quantifiers"
+    ]
    },
    {
     "id": "p90-172",
     "title": "Slow Fashion",
-    "text": "Everyone knows that cars and factories create pollution, but have you ever thought about the clothes you wear? Not only is the clothing industry responsible [[1]] a huge amount of waste, but the pesticides that are used [[2]] produce cotton are also very harmful to the environment. One of the main problems is that people no longer look after their clothes as they did in the past. Fashion changes [[3]] quickly that people prefer to throw their old clothes away in order to buy new ones. Our grandparents [[4]] afford many clothes, but they knew how to treat them to make them last. If we extended the life of our clothes by just nine months, we [[5]] reduce our carbon, water and waste footprints by around 20–30% each. Remember too that if you keep clothes for long [[6]], they come back in fashion!",
+    "text": "Everyone knows that cars and factories create pollution, but [[1]] you ever thought about the clothes you wear? Not only is the clothing industry responsible [[2]] a huge amount of waste, but the pesticides that are used [[3]] produce cotton are also very harmful to the environment. One of the main problems is that people no longer look after their clothes as they did in the past. Fashion changes [[4]] quickly that people prefer to throw their old clothes away in order to buy new ones. Our grandparents [[5]] afford many clothes, but they knew how to treat them to make them last. If we extended the life [[6]] our clothes by just nine months, we [[7]] reduce our carbon, water and waste footprints by around 20–30% each. Remember too that if you keep clothes for long [[8]], they come back in fashion! Buying fewer items and repairing old ones can also make a big difference.",
     "items": [
      {
       "n": 1,
       "a": [
-       "for"
+       "have"
       ],
-      "t": "prepositions"
+      "t": "tenses",
+      "w": "This is a present perfect question: <b>have</b> you ever thought. After 'but' the question keeps the auxiliary. 'Did' or 'do' cannot be used before 'thought'."
      },
      {
       "n": 2,
       "a": [
-       "to"
+       "for"
       ],
-      "t": "verbpatterns"
+      "t": "prepositions",
+      "w": "The adjective <b>responsible</b> is followed by 'for': responsible for a huge amount of waste. 'Responsible of' or 'responsible to' are typical mistakes."
      },
      {
       "n": 3,
       "a": [
-       "so"
+       "to"
       ],
-      "t": "word-choice"
+      "t": "verbpatterns",
+      "w": "The passive 'are used' is followed by a to-infinitive of purpose: used <b>to</b> produce cotton. Do not write 'used for produce'."
      },
      {
       "n": 4,
       "a": [
-       "couldn't"
+       "so"
       ],
-      "t": "modals"
+      "t": "word-choice",
+      "w": "The pattern is <b>so</b> + adverb + that: changes so quickly that people throw clothes away. 'Such' needs a noun, and 'too' has a negative sense."
      },
      {
       "n": 5,
+      "a": [
+       "couldn't"
+      ],
+      "t": "modals",
+      "w": "We talk about past inability with <b>couldn't</b> + base form: couldn't afford. Do not write 'didn't can' or 'weren't able afford'."
+     },
+     {
+      "n": 6,
+      "a": [
+       "of"
+      ],
+      "t": "prepositions",
+      "w": "We use <b>of</b> to link 'the life' with its owner: the life of our clothes. 'Life from' and 'life for' do not fit."
+     },
+     {
+      "n": 7,
       "a": [
        "would",
        "could"
       ],
-      "t": "conditionals"
+      "t": "conditionals",
+      "w": "In a second conditional the main clause uses <b>would</b> + verb: If we extended the life of our clothes, we would reduce. 'Could' also fits. 'Will' is wrong."
      },
      {
-      "n": 6,
+      "n": 8,
       "a": [
        "enough"
       ],
-      "t": "word-choice"
+      "t": "word-choice",
+      "w": "<b>Enough</b> comes after the adjective or adverb: for long enough. 'Enough long' and 'too long' are typical mistakes."
      }
     ],
-    "tags": []
+    "tags": [
+     "tenses",
+     "prepositions",
+     "verbpatterns",
+     "word-choice",
+     "modals",
+     "conditionals"
+    ]
    },
    {
     "id": "p92-175",
     "title": "Green Adventures",
-    "text": "When Ben and Claire Marston realised that their teenage children were spending [[1]] much time in front of TV, phone and computer screens, they decided to do something about it. ‘We didn’t ban screen time completely, but realised that we [[2]] be spending far more time outside in the fresh air,’ says Claire. They decided to change their lifestyle by giving [[3]] a challenge – to try out one new outdoor activity a week for a whole year! At first, the children weren’t keen on leaving their phones at home [[4]] explore a forest or go swimming in a lake. ‘ [[5]] was difficult to make them switch off and go out of the house, especially if it was raining,’ Claire remembers. By the end of the year, however, the whole family was fitter, healthier and happier and they all felt they had benefited [[6]] the experience.",
+    "text": "When Ben and Claire Marston realised that their teenage children were spending [[1]] much time in front of TV, phone and computer screens, they decided to do something [[2]] it. ‘We didn’t ban screen time completely, but realised that we [[3]] be spending far more time outside in the fresh air,’ says Claire. They decided to change their lifestyle by giving [[4]] a challenge – to try out one new outdoor activity a week for a whole year! At first, the children weren’t keen on leaving their phones at home [[5]] explore a forest or go swimming in a lake. ‘ [[6]] was difficult to make them switch off and go out of the house, especially if it was raining,’ Claire remembers. By the end of the year, however, the whole family was fitter, healthier and happier and they all felt they had benefited [[7]] the experience. These days, the family spend most [[8]] their free time outdoors, and the children no longer miss their screens.",
     "items": [
      {
       "n": 1,
       "a": [
-       "too"
+       "too",
+       "so"
       ],
-      "t": "quantifiers"
+      "t": "quantifiers",
+      "w": "'Much time' needs a word before it: spending <b>too</b> much time, meaning more than is good. 'So' also fits. 'Very much' does not work here."
      },
      {
       "n": 2,
       "a": [
-       "should"
+       "about"
       ],
-      "t": "modals"
+      "t": "prepositions",
+      "w": "In the phrase <b>do something about</b> a problem, 'about' means in order to deal with it. 'Do something for it' or 'with it' change the meaning."
      },
      {
       "n": 3,
       "a": [
-       "themselves"
+       "should",
+       "could"
       ],
-      "t": "pronouns"
+      "t": "modals",
+      "w": "We use <b>should</b> + be + -ing to say what would be better to do: we should be spending more time outside. 'Could' also fits. 'Must' is too strong."
      },
      {
       "n": 4,
       "a": [
-       "to"
+       "themselves"
       ],
-      "t": "verbpatterns"
+      "t": "pronouns",
+      "w": "The subject (the parents) and the object are the same people, so we need a reflexive pronoun: giving <b>themselves</b> a challenge. 'Them' is wrong."
      },
      {
       "n": 5,
       "a": [
-       "It"
+       "to"
       ],
-      "t": "pronouns"
+      "t": "verbpatterns",
+      "w": "A to-infinitive shows purpose: leaving their phones at home <b>to</b> explore a forest. Do not use 'for explore' or 'for exploring'."
      },
      {
       "n": 6,
       "a": [
+       "It"
+      ],
+      "t": "pronouns",
+      "w": "We need the empty subject <b>It</b> before 'was difficult to make them': It was difficult to... 'This' and 'There' are typical wrong answers."
+     },
+     {
+      "n": 7,
+      "a": [
        "from"
       ],
-      "t": "prepositions"
+      "t": "prepositions",
+      "w": "The verb <b>benefit from</b> something means get an advantage from it. 'Benefit of' and 'benefit with' are typical mistakes."
+     },
+     {
+      "n": 8,
+      "a": [
+       "of"
+      ],
+      "t": "quantifiers",
+      "w": "'Most' is followed by <b>of</b> when a determiner comes next: most of their free time. 'Most their time' is wrong."
      }
     ],
-    "tags": []
+    "tags": [
+     "quantifiers",
+     "prepositions",
+     "modals",
+     "pronouns",
+     "verbpatterns"
+    ]
    },
    {
     "id": "p93-178",
     "title": "The Mystery of Everest",
-    "text": "Who were the first people [[1]] climb Mount Everest? Until recently, it [[2]] believed that Edmund Hillary and Tenzing Norgay got to the top of the world’s highest mountain before anybody else. However, the discovery of a body in 1999 about 600 metres below the summit has [[3]] experts question this. It was the body of George Mallory, who, with his partner, Andrew Irvine, [[4]] missing during their attempt to climb Everest in 1924, nearly thirty years before Hillary and Norgay. Mallory and Irvine disappeared after [[5]] seen only a few hundred metres below the summit, but it isn’t known if they died before or after they reached the summit. The key to the mystery seems to be in the camera Andrew Irvine, [[6]] body has never been found, was carrying. If they reached the top of the mountain, they [[7]] have taken photos to record their achievement. If the camera is found and shows this is the case, the history books will have to be rewritten.",
+    "text": "Who were the first people [[1]] climb Mount Everest? Until recently, it [[2]] believed that Edmund Hillary and Tenzing Norgay got to the top of the world’s highest mountain before anybody else. However, the discovery of a body in 1999 about 600 metres below the summit has [[3]] experts question this. It was the body of George Mallory, who, with his partner, Andrew Irvine, [[4]] missing during their attempt to climb Everest in 1924, nearly thirty years before Hillary and Norgay. Mallory and Irvine disappeared after [[5]] seen only a few hundred metres below the summit, but it isn’t known if they died before or after they reached the summit. The key to the mystery seems to be in the camera Andrew Irvine, [[6]] body has never been found, was carrying. If they reached the top of the mountain, they [[7]] have taken photos to record their achievement. If the camera is found and shows this is the case, the history books will have [[8]] be rewritten.",
     "items": [
      {
       "n": 1,
       "a": [
        "to"
       ],
-      "t": "verbpatterns"
+      "t": "verbpatterns",
+      "w": "After 'the first people' we use a to-infinitive: the first people <b>to</b> climb. 'Who climb' or 'that climb' would not fit the past meaning."
      },
      {
       "n": 2,
       "a": [
        "was"
       ],
-      "t": "passive"
+      "t": "passive",
+      "w": "'It was believed that' is a passive structure about the past, because 'until recently' refers to the past. <b>Was</b> is needed; 'is' does not fit."
      },
      {
       "n": 3,
       "a": [
        "made"
       ],
-      "t": "verbpatterns"
+      "t": "verbpatterns",
+      "w": "We use <b>make</b> + object + base verb to mean cause: has made experts question. 'Let' and 'got' do not fit, and 'to' cannot follow."
      },
      {
       "n": 4,
       "a": [
-       "went"
+       "went",
+       "was"
       ],
-      "t": "collocations"
+      "t": "collocations",
+      "w": "The collocation is <b>go missing</b>, meaning disappear: went missing in 1924. 'Was' also fits as a state, but 'become missing' is wrong."
      },
      {
       "n": 5,
       "a": [
        "being"
       ],
-      "t": "passive"
+      "t": "passive",
+      "w": "After a preposition we use an -ing form. Here the meaning is passive: after <b>being</b> seen. 'After seen' and 'after been seen' are typical mistakes."
      },
      {
       "n": 6,
       "a": [
        "whose"
       ],
-      "t": "relatives"
+      "t": "relatives",
+      "w": "We need a possessive relative pronoun: Andrew Irvine, <b>whose</b> body has never been found. 'Who's' means 'who is', and 'which' cannot show possession."
      },
      {
       "n": 7,
       "a": [
-       "would"
+       "would",
+       "must"
       ],
-      "t": "modals"
+      "t": "modals",
+      "w": "A conditional result in the past uses a modal + have + past participle: they <b>would</b> have taken photos. 'Must' also fits as a deduction. 'Will' is wrong."
+     },
+     {
+      "n": 8,
+      "a": [
+       "to"
+      ],
+      "t": "verbpatterns",
+      "w": "After 'have' the obligation form is <b>have to</b> + base verb: will have to be rewritten. 'Will have be' is a typical mistake, as is 'will have for be'."
      }
     ],
-    "tags": []
+    "tags": [
+     "verbpatterns",
+     "passive",
+     "collocations",
+     "relatives",
+     "modals"
+    ]
    },
    {
     "id": "p95-182",
     "title": "Taxis that drive themselves!",
-    "text": "Singapore has recently become the first city in the world [[1]] introduce driverless taxis onto the roads. At the moment, there are only a few of them and they are still [[2]] tested. However, it is hoped that by 2018, they [[3]] have replaced all the taxis that now have drivers, helping to reduce the amount of traffic in the city. The reason [[4]] Singapore was chosen by the company ‘Nutonomy’ as the location for the first taxi service of this kind is that it offers safer conditions for driving [[5]] most other big cities. [[6]] completing these tests successfully, Nutonomy is planning to introduce similar services in other parts of Asia, the US and Europe over the next few years.",
+    "text": "Singapore has recently become the first city in the world [[1]] introduce driverless taxis onto the roads. At the moment, there are only a few of them and they are still [[2]] tested. However, it is hoped that by 2018, they [[3]] have replaced all the taxis that now have drivers, helping to reduce the amount of traffic in the city. Passengers book a taxi on their phones and are then taken wherever they want to go, without having [[4]] pay extra for the service. Each car carries an engineer [[5]] can take control if anything goes wrong. The reason [[6]] Singapore was chosen by the company ‘Nutonomy’ as the location for the first taxi service of this kind is that it offers safer conditions for driving [[7]] most other big cities. [[8]] completing these tests successfully, Nutonomy is planning to introduce similar services in other parts of Asia, the US and Europe over the next few years.",
     "items": [
      {
       "n": 1,
       "a": [
        "to"
       ],
-      "t": "verbpatterns"
+      "t": "verbpatterns",
+      "w": "After 'the first city in the world' we use a to-infinitive: the first city <b>to</b> introduce. 'That introduced' would need a past verb, and 'for' is wrong."
      },
      {
       "n": 2,
       "a": [
        "being"
       ],
-      "t": "passive"
+      "t": "passive",
+      "w": "This is a present continuous passive: they are still <b>being</b> tested. 'Be' and 'been' are typical mistakes."
      },
      {
       "n": 3,
       "a": [
        "will"
       ],
-      "t": "future"
+      "t": "future",
+      "w": "'By 2018' with a completed result needs the future perfect: they <b>will</b> have replaced. 'Would' is wrong because the sentence looks forward from now."
      },
      {
       "n": 4,
       "a": [
-       "why"
+       "to"
       ],
-      "t": "relatives"
+      "t": "verbpatterns",
+      "w": "After 'without' we use an -ing form, and <b>having to</b> means being obliged: without having to pay. 'Without to pay' and 'without have pay' are wrong."
      },
      {
       "n": 5,
       "a": [
-       "than"
+       "who",
+       "that"
       ],
-      "t": "comparatives"
+      "t": "relatives",
+      "w": "We need a relative pronoun for a person: an engineer <b>who</b> can take control. 'That' is also possible, but 'which' is only for things."
      },
      {
       "n": 6,
       "a": [
+       "why",
+       "that"
+      ],
+      "t": "relatives",
+      "w": "After 'the reason' we use <b>why</b> to introduce the explanation. 'That' is also possible. 'The reason because' is a very common mistake."
+     },
+     {
+      "n": 7,
+      "a": [
+       "than"
+      ],
+      "t": "comparatives",
+      "w": "After the comparative 'safer' we need <b>than</b> to introduce the second thing: safer conditions than most other cities. 'That' and 'as' are wrong."
+     },
+     {
+      "n": 8,
+      "a": [
        "After"
       ],
-      "t": "linkers"
+      "t": "linkers",
+      "w": "<b>After</b> + -ing links two actions with the same subject: After completing these tests. 'Later' or 'Afterwards' cannot be followed by an -ing form."
      }
     ],
-    "tags": []
+    "tags": [
+     "verbpatterns",
+     "passive",
+     "future",
+     "relatives",
+     "comparatives",
+     "linkers"
+    ]
    }
   ]
  },

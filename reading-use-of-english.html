@@ -206,7 +206,7 @@
 <script src="nis-nav.js?v=c6e39903"></script>
 <script src="activity-save.js?v=1c38a81d"></script>
 <script src="reading-use-of-english.data.js?v=7f5a2d3e"></script>
-<script src="reading-use-of-english.b2.js?v=0d60a279"></script>
+<script src="reading-use-of-english.b2.js?v=f7bbbd71"></script>
 <script src="reading-use-of-english.why.js?v=69ad4c57"></script>
 </head>
 <body>
@@ -819,6 +819,11 @@ function renderReview(){
   $('rvGrammarBtn').textContent = cur.k === 'kwt' ? '📖 Grammar explanation' : '📖 How this part works';
   $('rvList').innerHTML = its.map((it, i) => reviewItem(it, i, L)).join('');
 }
+/* Nota de cada hueco (it.w, como RUOE_WHY en la Part 4); si falta, la de su categoría. */
+function gapNote(it){
+  const txt = it.w || TAGNOTE[it.t];
+  return txt ? `<div class="gnote"><span>📘 ${TAGLABEL[it.t] || it.t || 'Grammar'}</span>${txt}</div>` : '';
+}
 function yours(ok, txt){ return `<span class="yours ${ok?'ok':'bad'}">${ok ? '✓' : '✗'} ${txt ? txt : '<i>no answer</i>'}</span>`; }
 function reviewItem(it, i, L){
   const st = cur.st, v = st.a[i], has = filled(i), ok = correctAt(i), num = numOf(i);
@@ -836,12 +841,12 @@ function reviewItem(it, i, L){
     const L4 = j => String.fromCharCode(65 + j);
     return q(`Options: ${it.o.map((o, j) => `${L4(j)} ${esc(o)}`).join(' · ')}`,
       yours(ok, has && `${L4(+v)} ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)} ${esc(it.o[it.a])}</b></div>` +
-      (TAGNOTE[it.t] ? `<div class="gnote"><span>📘 ${TAGLABEL[it.t] || it.t}</span>${TAGNOTE[it.t]}</div>` : ''));
+      gapNote(it));
   }
   if(p === 2 || p === 3){
     const head = p === 3 ? `Word given: <b>${esc(it.r)}</b>` : `Gap ${num}`;
     const note = p === 3 ? (it.x ? `<div class="gnote"><span>📘 Word formation</span>${esc(it.r)} → <b>${esc(it.a[0])}</b> · ${esc(it.x)}</div>` : '')
-                         : (TAGNOTE[it.t] ? `<div class="gnote"><span>📘 ${TAGLABEL[it.t] || it.t}</span>${TAGNOTE[it.t]}</div>` : '');
+                         : gapNote(it);
     return q(head, yours(ok, has && esc(v)) + `<div class="model"><span>Answer:</span> <b>${esc(it.a[0])}</b></div>` +
       (it.a.length > 1 ? `<div class="alt">Also accepted: ${it.a.slice(1).map(esc).join(' · ')}</div>` : '') + note);
   }
