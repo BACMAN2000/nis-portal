@@ -2468,9 +2468,27 @@ window.RUOE_B2 = {
       "p72-126"
      ],
      [
+      "Today, most parents would find it ___ to give a child such a product.",
+      "ACCEPT",
+      "unacceptable",
+      "p73-128"
+     ],
+     [
       "This may make the victims feel better but some people argue that ___ fails to prevent criminal activity.",
       "PRISON",
       "imprisonment",
+      "p73-130"
+     ],
+     [
+      "They are also often ___ and easily influenced by their friends.",
+      "EXPERIENCE",
+      "inexperienced",
+      "p73-130"
+     ],
+     [
+      "However, this ___ to make rational decisions is often misunderstood by adults.",
+      "ABLE",
+      "inability",
       "p73-130"
      ],
      [
@@ -2480,10 +2498,22 @@ window.RUOE_B2 = {
       "p73-130"
      ],
      [
+      "After years of ___ trying to control the growing problem, the council decided to take a different approach.",
+      "SUCCESS",
+      "unsuccessfully",
+      "p74-132"
+     ],
+     [
       "In recent years, we have seen record levels of youth ___ around the world.",
       "EMPLOY",
       "unemployment",
       "p76-138"
+     ],
+     [
+      "Fractals are created from complicated mathematical patterns which repeat themselves ___, getting smaller every time they are repeated.",
+      "DEFINITE",
+      "indefinitely",
+      "p78-142"
      ],
      [
       "However, something similar has ___ been part of African culture for hundreds of years.",
@@ -2492,7 +2522,13 @@ window.RUOE_B2 = {
       "p78-142"
      ],
      [
-      "Recently, however, it has been found that microbeads are not as harmless and ___ as they might seem.",
+      "While you’re patiently working with those little stones and minerals, it’s ___ not to forget the stresses and strains of work and school.",
+      "POSSIBLE",
+      "impossible",
+      "p79-144"
+     ],
+     [
+      "These microbeads are tiny round pieces of plastic that are meant to make the product more effective. Traditionally, natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for artificial microbeads. Recently, however, it has been found that microbeads are not as harmless and ___ as they might seem.",
       "SIGNIFY",
       "insignificant",
       "p80-146"
@@ -2504,10 +2540,28 @@ window.RUOE_B2 = {
       "p80-146"
      ],
      [
+      "At first, many people thought it was ___ to live in a house made of grass, but visitors are now amazed by how beautiful these buildings are.",
+      "USUAL",
+      "unusual",
+      "p80-148"
+     ],
+     [
       "It has been used to help people who are ___ to read and write due to blindness or other poor vision.",
       "ABLE",
       "unable",
       "p81-150"
+     ],
+     [
+      "Today, Braille can be found on signs and medicine packets, which gives blind people greater ___ in their daily lives.",
+      "DEPEND",
+      "independence",
+      "p81-150"
+     ],
+     [
+      "Even so, learners will still encounter various difficulties such as ___ endings or unusual pronunciation.",
+      "REGULAR",
+      "irregular",
+      "p82-152"
      ],
      [
       "Anti-consumerists believe that excessive consumption of goods is ___ for several reasons.",
@@ -2522,6 +2576,24 @@ window.RUOE_B2 = {
       "p83-154"
      ],
      [
+      "This saves time and removes ___ costs.",
+      "NECESSARY",
+      "unnecessary",
+      "p83-156"
+     ],
+     [
+      "Most tourist destinations are a magnet for these thieves, who target tourists, taking money, passports and other valuables while the owner is ___ of what is happening.",
+      "AWARE",
+      "unaware",
+      "p84-158"
+     ],
+     [
+      "Many city children are ___ with farm animals, so a week in the countryside can be a real surprise for them.",
+      "FAMILIAR",
+      "unfamiliar",
+      "p85-160"
+     ],
+     [
       "When he was young, Brown was diagnosed with cerebral palsy, which left him seriously ___.",
       "ABLE",
       "disabled",
@@ -2534,16 +2606,40 @@ window.RUOE_B2 = {
       "p86-162"
      ],
      [
+      "His mother, however, ___ and insisted that he stay at home.",
+      "AGREE",
+      "disagreed",
+      "p86-162"
+     ],
+     [
       "Yet despite this ___, Hawking continued his scientific work and went on to make some great discoveries.",
       "ABLE",
       "disability",
       "p87-164"
      ],
      [
+      "It has even helped to free people who were ___ sent to prison for something they did not do.",
+      "JUST",
+      "unjustly",
+      "p88-167"
+     ],
+     [
       "Some things, which once seemed ___, already have.",
       "BELIEVE",
       "unbelievable",
       "p89-170"
+     ],
+     [
+      "Of course, not every prediction has come true, and some have proved completely ___.",
+      "ACCURATE",
+      "inaccurate",
+      "p89-170"
+     ],
+     [
+      "Many people who practise parkour see it as an art of personal self-development and believe it shouldn’t become a competitive sport, but as it becomes more popular, it seems ___ that this will continue to be the case.",
+      "LIKELY",
+      "unlikely",
+      "p92-176"
      ]
     ]
    },
@@ -2742,6 +2838,12 @@ window.RUOE_B2 = {
       "p69-120"
      ],
      [
+      "This has raised international ___ of this activity and in 2010, UNESCO took the decision to recognise the Castellers as an important cultural event.",
+      "AWARE",
+      "awareness",
+      "p69-120"
+     ],
+     [
       "This has raised international awareness of this activity and in 2010, UNESCO took the ___ to recognise the Castellers as an important cultural event.",
       "DECIDE",
       "decision",
@@ -2751,6 +2853,12 @@ window.RUOE_B2 = {
       "However, they are well-organised and the teachers usually have special ___.",
       "QUALIFY",
       "qualifications",
+      "p70-122"
+     ],
+     [
+      "What was interesting was how the teachers used the ___ environment to teach other subjects.",
+      "NATURE",
+      "natural",
       "p70-122"
      ],
      [
@@ -2778,6 +2886,12 @@ window.RUOE_B2 = {
       "p72-126"
      ],
      [
+      "In fact, early inventors experimented with giant moveable wings strapped onto people. Unfortunately, however, flying machines changed very little after the ___ of the aeroplane.",
+      "INVENT",
+      "invention",
+      "p72-126"
+     ],
+     [
       "The next ___ of flying machines, called drones, are smaller and lighter than aircraft of the past.",
       "GENERATE",
       "generation",
@@ -2799,6 +2913,12 @@ window.RUOE_B2 = {
       "Most good sets include everything you need to make some exciting ___ such as making crystals or testing food. Fortunately, they are also safe, so there’s no danger of having an accident.",
       "DISCOVER",
       "discoveries",
+      "p73-128"
+     ],
+     [
+      "Modern sets also come with clear ___ which explain every step of each experiment.",
+      "INSTRUCT",
+      "instructions",
       "p73-128"
      ],
      [
@@ -2832,9 +2952,21 @@ window.RUOE_B2 = {
       "p75-134"
      ],
      [
+      "Nowadays, however, the ___ is for the wrestlers to push their opponent out of the ring.",
+      "OBJECT",
+      "objective",
+      "p75-134"
+     ],
+     [
       "In order to do this, they depend on their size and ___.",
       "STRONG",
       "strength",
+      "p75-134"
+     ],
+     [
+      "There are no ___ on size so there is every incentive for wrestlers to be as big as possible.",
+      "RESTRICT",
+      "restrictions",
       "p75-134"
      ],
      [
@@ -2874,9 +3006,21 @@ window.RUOE_B2 = {
       "p76-138"
      ],
      [
+      "Although many people blame the financial crisis, there are other important factors such as a ___ of skills in certain sectors.",
+      "SHORT",
+      "shortage",
+      "p76-138"
+     ],
+     [
       "One such ___ is to improve access to the internet for people around the world.",
       "PROPOSE",
       "proposal",
+      "p76-138"
+     ],
+     [
+      "This would make a huge ___ to people’s lives because it would improve infrastructure and training opportunities.",
+      "DIFFER",
+      "difference",
       "p76-138"
      ],
      [
@@ -2886,9 +3030,21 @@ window.RUOE_B2 = {
       "p77-140"
      ],
      [
+      "In order to be a firefighter, you will need to demonstrate a variety of qualities such as stamina, self-discipline and quick reactions, as well as having good ___ skills.",
+      "COMMUNICATE",
+      "communication",
+      "p77-140"
+     ],
+     [
       "Most small towns and ___ have their own fire service who you should speak to if you would like more information.",
       "NEIGHBOUR",
       "neighbourhoods",
+      "p77-140"
+     ],
+     [
+      "Most small towns and neighbourhoods have their own fire service who you should speak to if you would like more ___.",
+      "INFORM",
+      "information",
       "p77-140"
      ],
      [
@@ -2922,6 +3078,18 @@ window.RUOE_B2 = {
       "p80-148"
      ],
      [
+      "The characters are like the six spots on the face of a dice, with different ___ of spots representing different letters of the alphabet.",
+      "COMBINE",
+      "combinations",
+      "p81-150"
+     ],
+     [
+      "It has been used to help people who are unable to read and write due to ___ or other poor vision.",
+      "BLIND",
+      "blindness",
+      "p81-150"
+     ],
+     [
       "Since its ___ in the 1820s, it has given thousands of blind people the chance to appreciate written texts and become more knowledgeable about literature.",
       "APPEAR",
       "appearance",
@@ -2952,6 +3120,12 @@ window.RUOE_B2 = {
       "p82-152"
      ],
      [
+      "The anti-consumerist ___ emerged around the year 2000 as a reaction to what some people saw as the harmful effects of a consumer society.",
+      "MOVE",
+      "movement",
+      "p83-154"
+     ],
+     [
       "Although it can result in economic ___, they argue that this does not always benefit ordinary people.",
       "GROW",
       "growth",
@@ -2961,6 +3135,12 @@ window.RUOE_B2 = {
       "Anti-consumerists believe that the ___ industry is partly responsible for this tendency as its job is to convince people to buy things we do not need.",
       "ADVERT",
       "advertising",
+      "p83-154"
+     ],
+     [
+      "As a result, they continue to contribute to ___ and over- consumption of our resources.",
+      "POLLUTE",
+      "pollution",
       "p83-154"
      ],
      [
@@ -2994,6 +3174,18 @@ window.RUOE_B2 = {
       "p85-160"
      ],
      [
+      "They believed that his ___ had left him incapable of leading a fulfilled life.",
+      "ILL",
+      "illness",
+      "p86-162"
+     ],
+     [
+      "In the years to come, Christy Brown wrote plays, novels and poems as well as producing ___.",
+      "PAINT",
+      "paintings",
+      "p86-162"
+     ],
+     [
       "Among his ___ is the novel Down All the Days, which is said to be one of the most important Irish novels.",
       "ACCOMPLISH",
       "accomplishments",
@@ -3006,9 +3198,21 @@ window.RUOE_B2 = {
       "p87-164"
      ],
      [
+      "Yet despite this disability, Hawking continued his scientific work and went on to make some great ___.",
+      "DISCOVER",
+      "discoveries",
+      "p87-164"
+     ],
+     [
       "Many people say his greatest ___ is his contribution to understanding the nature of the universe.",
       "ACCOMPLISH",
       "accomplishment",
+      "p87-164"
+     ],
+     [
+      "Many people say his greatest accomplishment is his ___ to understanding the nature of the universe.",
+      "CONTRIBUTE",
+      "contribution",
       "p87-164"
      ],
      [
@@ -3078,7 +3282,7 @@ window.RUOE_B2 = {
       "p90-173"
      ],
      [
-      "Everything was going well until there was a ___ from somebody about their coffee.",
+      "Everything was going well until there was a ___ from somebody about their coffee. Apparently, what I had thought was sugar was actually salt!",
       "COMPLAIN",
       "complaint",
       "p90-173"
@@ -3105,6 +3309,12 @@ window.RUOE_B2 = {
       "A ground-breaking new ___ will soon be giving people the chance to go to space and back in just a few hours!",
       "INVENT",
       "invention",
+      "p93-179"
+     ],
+     [
+      "The ‘World View’ company, which aims to make trips into space accessible to everyone, has developed a space craft pulled by a huge balloon that can take passengers to ___ of 30 kilometres above the Earth!",
+      "HIGH",
+      "heights",
       "p93-179"
      ],
      [
@@ -3190,6 +3400,18 @@ window.RUOE_B2 = {
       "p71-124"
      ],
      [
+      "The ___ is the person with the most points and in some competitions they can win a substantial amount of money.",
+      "WIN",
+      "winner",
+      "p71-124"
+     ],
+     [
+      "Consequently, many of the ___ will have spent months studying and learning new words, paying special attention to the relationship between the sound and spelling of words.",
+      "PARTICIPATE",
+      "participants",
+      "p71-124"
+     ],
+     [
       "They’re the perfect gift for the future ___.",
       "SCIENCE",
       "scientist",
@@ -3218,6 +3440,18 @@ window.RUOE_B2 = {
       "SWIM",
       "swimmer",
       "p76-136"
+     ],
+     [
+      "One interesting project is in Bali, where ___ are using bamboo to create schools and living spaces.",
+      "DESIGN",
+      "designers",
+      "p80-148"
+     ],
+     [
+      "Even so, ___ will still encounter various difficulties such as irregular endings or unusual pronunciation.",
+      "LEARN",
+      "learners",
+      "p82-152"
      ],
      [
       "Hawking’s father had encouraged him to study medicine at university but Hawking wanted be a ___.",
@@ -3312,9 +3546,21 @@ window.RUOE_B2 = {
       ""
      ],
      [
+      "For me, there was nothing more unpleasant than being at training sessions at a cold and ___ training ground.",
+      "WIND",
+      "windy",
+      "p69-118"
+     ],
+     [
       "Those sessions seemed to be ___ and I would beg my dad not to take me again.",
       "END",
       "endless",
+      "p69-118"
+     ],
+     [
+      "After seeing an ___ final between England and South Africa, I was determined to become a rugby star.",
+      "EXCITE",
+      "exciting",
       "p69-118"
      ],
      [
@@ -3336,6 +3582,12 @@ window.RUOE_B2 = {
       "p69-120"
      ],
      [
+      "This has raised international awareness of this activity and in 2010, UNESCO took the decision to recognise the Castellers as an important ___ event.",
+      "CULTURE",
+      "cultural",
+      "p69-120"
+     ],
+     [
       "I recently attended an open day at a local forest school and it was very ___ indeed.",
       "INFORM",
       "informative",
@@ -3346,6 +3598,18 @@ window.RUOE_B2 = {
       "SUCCESS",
       "successful",
       "p71-124"
+     ],
+     [
+      "In other experiments, they are creating ___ insects which work together like bees.",
+      "ROBOT",
+      "robotic",
+      "p72-126"
+     ],
+     [
+      "Engineers hope that they will be extremely ___ in rescue missions after natural disasters.",
+      "USE",
+      "useful",
+      "p72-126"
      ],
      [
       "Children could certainly be ___ with them but there was always the chance that something might go wrong.",
@@ -3366,6 +3630,30 @@ window.RUOE_B2 = {
       "p74-132"
      ],
      [
+      "Rather than trying to stop graffiti, they established a set of rules for where, when and how artists could create ___ artwork.",
+      "ACCEPT",
+      "acceptable",
+      "p74-132"
+     ],
+     [
+      "There is now far less unwanted graffiti and parts of the town have been brightened up with ___ pieces of art.",
+      "BEAUTY",
+      "beautiful",
+      "p74-132"
+     ],
+     [
+      "His second attempt was ___, with Webb swimming nearly 40 miles across the channel from England to France.",
+      "SUCCESS",
+      "successful",
+      "p76-136"
+     ],
+     [
+      "Webb’s crossing took 21 hours and since then there have been ___ other attempts to swim across the Channel.",
+      "NUMBER",
+      "numerous",
+      "p76-136"
+     ],
+     [
       "Although many people blame the ___ crisis, there are other important factors such as a shortage of skills in certain sectors.",
       "FINANCE",
       "financial",
@@ -3375,6 +3663,12 @@ window.RUOE_B2 = {
       "Fortunately, some organisations are working hard to find ___ solutions to try to overcome these problems.",
       "SATISFY",
       "satisfactory",
+      "p76-138"
+     ],
+     [
+      "Another important idea is to ensure that money is ___ for new start-ups.",
+      "AVAIL",
+      "available",
       "p76-138"
      ],
      [
@@ -3390,10 +3684,34 @@ window.RUOE_B2 = {
       "p77-140"
      ],
      [
+      "Firefighters may not enter the profession for financial reasons but it is one of the most ___ jobs because firefighters both protect and save people’s lives.",
+      "REWARD",
+      "rewarding",
+      "p77-140"
+     ],
+     [
       "If you are interested in getting some experience, you could try becoming a firefighter on a ___ basis first.",
       "VOLUNTEER",
       "voluntary",
       "p77-140"
+     ],
+     [
+      "This can be seen in the patterns on the ___ dresses of Ethiopian women.",
+      "TRADITION",
+      "traditional",
+      "p78-142"
+     ],
+     [
+      "Even more ___ though, is that fractals can also be seen throughout nature, such as in the repeated rings of a tree or in the lines on a leaf.",
+      "INTEREST",
+      "interesting",
+      "p78-142"
+     ],
+     [
+      "More and more of us are looking for ___ activities to do in our free time and jewellery making is a good option.",
+      "CREATE",
+      "creative",
+      "p79-144"
      ],
      [
       "Firstly, it’s a very ___ hobby.",
@@ -3405,6 +3723,18 @@ window.RUOE_B2 = {
       "Not so long ago, companies developed a new ___ process where they would add microbeads to washing powder, toothpaste and other beauty products.",
       "INDUSTRY",
       "industrial",
+      "p80-146"
+     ],
+     [
+      "These microbeads are tiny round pieces of plastic that are meant to make the product more ___. Traditionally, natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for artificial microbeads. Recently, however, it has been found that microbeads are not as harmless and insignificant as they might seem.",
+      "EFFECT",
+      "effective",
+      "p80-146"
+     ],
+     [
+      "These microbeads are tiny round pieces of plastic that are meant to make the product more effective. Traditionally, natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for ___ microbeads. Recently, however, it has been found that microbeads are not as harmless and insignificant as they might seem.",
+      "ART",
+      "artificial",
       "p80-146"
      ],
      [
@@ -3432,6 +3762,12 @@ window.RUOE_B2 = {
       "p80-148"
      ],
      [
+      "At first, many people thought it was unusual to live in a house made of grass, but visitors are now amazed by how ___ these buildings are.",
+      "BEAUTY",
+      "beautiful",
+      "p80-148"
+     ],
+     [
       "Since its appearance in the 1820s, it has given thousands of blind people the chance to appreciate written texts and become more ___ about literature.",
       "KNOW",
       "knowledgeable",
@@ -3454,6 +3790,12 @@ window.RUOE_B2 = {
       "SPEAK",
       "spoken",
       "p82-152"
+     ],
+     [
+      "The anti-consumerist movement emerged around the year 2000 as a reaction to what some people saw as the ___ effects of a consumer society.",
+      "HARM",
+      "harmful",
+      "p83-154"
      ],
      [
       "They are never fully ___ with their purchases but they go on buying things regardless.",
@@ -3486,9 +3828,21 @@ window.RUOE_B2 = {
       "p84-158"
      ],
      [
+      "Nowadays many British families are fed up with crowds of tourists, bad food and ___ days out.",
+      "EXPENSE",
+      "expensive",
+      "p85-160"
+     ],
+     [
       "Instead they are considering the benefits of staying in the UK, and looking for an experience which is far more ___ and rewarding.",
       "MEANING",
       "meaningful",
+      "p85-160"
+     ],
+     [
+      "Part of the appeal is the ___ surroundings but it’s also the number of activities which attracts people.",
+      "PEACE",
+      "peaceful",
       "p85-160"
      ],
      [
@@ -3710,15 +4064,51 @@ window.RUOE_B2 = {
       ""
      ],
      [
+      "He enrolled me in the local rugby club when I was only eight years old and I ___ hated it at first.",
+      "ABSOLUTE",
+      "absolutely",
+      "p69-118"
+     ],
+     [
+      "Despite being a ___ Catalan tradition, groups of Castellers have made appearances all over the world, from Paris to New York.",
+      "PARTICULAR",
+      "particularly",
+      "p69-120"
+     ],
+     [
       "It turns out that there are a number of forest schools around the world but they are ___ new in the UK.",
       "RELATE",
       "relatively",
       "p70-122"
      ],
      [
+      "I ___ attended an open day at a local forest school and it was very informative indeed.",
+      "RECENT",
+      "recently",
+      "p70-122"
+     ],
+     [
+      "It ___ looked a lot more fun than my maths classes.",
+      "CERTAIN",
+      "certainly",
+      "p70-122"
+     ],
+     [
+      "The object of the game is very simple; students are asked to spell words which increase in difficulty as the game goes on. Competitors earn points for the words they spell ___ and lose points for misspelling them.",
+      "CORRECT",
+      "correctly",
+      "p71-124"
+     ],
+     [
       "Most good sets include everything you need to make some exciting discoveries such as making crystals or testing food. ___, they are also safe, so there’s no danger of having an accident.",
       "FORTUNE",
       "Fortunately",
+      "p73-128"
+     ],
+     [
+      "In the past, however, chemistry sets were not quite as safe and they often included chemicals which are now considered ___ dangerous.",
+      "EXTREME",
+      "extremely",
       "p73-128"
      ],
      [
@@ -3728,10 +4118,28 @@ window.RUOE_B2 = {
       "p73-128"
      ],
      [
+      "This may be ___ true in relation to youth crime. Youngsters are less likely to stop and think about their actions than adults, so they are more likely to make mistakes.",
+      "PARTICULAR",
+      "particularly",
+      "p73-130"
+     ],
+     [
       "The shopkeepers who were constantly cleaning up their shop fronts were ___ frustrated with the situation.",
       "UNDERSTAND",
       "understandably",
       "p74-132"
+     ],
+     [
+      "Despite the fact that each round may only last a few minutes, sumo wrestling is ___ popular in Japan and there are big prizes for the sumo stars.",
+      "EXTREME",
+      "extremely",
+      "p75-134"
+     ],
+     [
+      "That’s ___ equivalent to the length of 2,575 swimming pools.",
+      "ROUGH",
+      "roughly",
+      "p76-136"
      ],
      [
       "Fractal art is considered a ___ new art form which first appeared in the 1980s.",
@@ -3758,15 +4166,57 @@ window.RUOE_B2 = {
       "p79-144"
      ],
      [
-      "These microbeads are tiny round pieces of plastic that are meant to make the product more effective. ___, natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for artificial microbeads.",
+      "Lastly, you’ll be able to make some ___ presents for your family and friends.",
+      "LOVE",
+      "lovely",
+      "p79-144"
+     ],
+     [
+      "These microbeads are tiny round pieces of plastic that are meant to make the product more effective. ___, natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for artificial microbeads. Recently, however, it has been found that microbeads are not as harmless and insignificant as they might seem.",
       "TRADITION",
       "Traditionally",
       "p80-146"
      ],
      [
+      "These microbeads are tiny round pieces of plastic that are meant to make the product more effective. Traditionally, natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for artificial microbeads. ___, however, it has been found that microbeads are not as harmless and insignificant as they might seem.",
+      "RECENT",
+      "Recently",
+      "p80-146"
+     ],
+     [
+      "However, when you consider that there are over fifty thousand characters, it will ___ be difficult to express your thoughts in written form.",
+      "CERTAIN",
+      "certainly",
+      "p82-152"
+     ],
+     [
+      "The euro is a ___ new currency, or unit of money, which was introduced in 1999.",
+      "RELATIVE",
+      "relatively",
+      "p83-156"
+     ],
+     [
+      "Many people believed that the euro made economic sense because the countries of the European Union were already working ___ together.",
+      "CLOSE",
+      "closely",
+      "p83-156"
+     ],
+     [
       "This can be ___ inconvenient for the victim.",
       "HUGE",
       "hugely",
+      "p84-158"
+     ],
+     [
+      "Not ___, most tourists take particular care to keep their belongings well out of reach of the pickpockets.",
+      "SURPRISE",
+      "surprisingly",
+      "p84-158"
+     ],
+     [
+      "Some pickpockets now carry these devices which, when activated, can ___ take money from your bank account.",
+      "INSTANT",
+      "instantly",
       "p84-158"
      ],
      [
@@ -3780,6 +4230,18 @@ window.RUOE_B2 = {
       "WIDE",
       "widely",
       "p87-164"
+     ],
+     [
+      "He took up the offer and while at university, his teachers realised that he was ___ intelligent and that he had the capability of becoming an important scientist.",
+      "EXTREME",
+      "extremely",
+      "p87-164"
+     ],
+     [
+      "Everything was going well until there was a complaint from somebody about their coffee. ___, what I had thought was sugar was actually salt!",
+      "APPARENT",
+      "Apparently",
+      "p90-173"
      ],
      [
       "This is maybe a better description of the sport, which involves moving ___ across an area, using only the body’s natural abilities.",
@@ -3806,7 +4268,7 @@ window.RUOE_B2 = {
    {
     "id": "p69-118",
     "title": "Rugby",
-    "text": "When I was a younger, I used to play rugby in my free time. My dad had always been a big fan and he couldn’t wait for me to take up the sport. He [[1]] me in the local rugby club when I was only eight years old and I absolutely hated it at first. For me, there was nothing more [[2]] than being at training sessions at a cold and windy training ground. Those sessions seemed to be [[3]] and I would beg my dad not to take me again. Then I saw the Rugby World Cup and those feelings changed. After seeing an exciting final between England and South Africa, I was [[4]] to become a rugby star. I was [[5]] to endure the harsh conditions and I would go out training in all weather. I never did become a rugby star, and I don’t even play anymore, but I’d recommend it to anyone.",
+    "text": "When I was a younger, I used to play rugby in my free time. My dad had always been a big fan and he couldn’t wait for me to take up the sport. He [[1]] me in the local rugby club when I was only eight years old and I [[2]] hated it at first. For me, there was nothing more [[3]] than being at training sessions at a cold and [[4]] training ground. Those sessions seemed to be [[5]] and I would beg my dad not to take me again. Then I saw the Rugby World Cup and those feelings changed. After seeing an [[6]] final between England and South Africa, I was [[7]] to become a rugby star. I was [[8]] to endure the harsh conditions and I would go out training in all weather. I never did become a rugby star, and I don’t even play anymore, but I’d recommend it to anyone.",
     "items": [
      {
       "n": 1,
@@ -3814,46 +4276,78 @@ window.RUOE_B2 = {
       "a": [
        "enrolled"
       ],
-      "x": "inflection -led (ENROL -> enrolled, doubled l)"
+      "x": "inflection -led (ENROL -> enrolled, doubled l)",
+      "w": "After 'He' we need a past simple verb. ENROL ends in one vowel + one consonant, so the l is doubled: <b>enrolled</b>. Don't write 'enroled'."
      },
      {
       "n": 2,
+      "r": "ABSOLUTE",
+      "a": [
+       "absolutely"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the verb 'hated' we need an adverb. ABSOLUTE + <b>-ly</b> makes <b>absolutely</b>. The final -e of the adjective is kept."
+     },
+     {
+      "n": 3,
       "r": "PLEASE",
       "a": [
        "unpleasant"
       ],
-      "x": "prefix un- (negative) + suffix -ant (drops -e)"
+      "x": "prefix un- (negative) + suffix -ant (drops -e)",
+      "w": "After 'nothing more' we need an adjective with a negative meaning. PLEASE becomes <b>unpleasant</b>: add un- and change -e to -ant. Don't write 'unpleased'."
      },
      {
-      "n": 3,
+      "n": 4,
+      "r": "WIND",
+      "a": [
+       "windy"
+      ],
+      "x": "suffix -y (adjective)",
+      "w": "After 'cold and' we need an adjective that describes the weather. WIND + <b>-y</b> makes <b>windy</b>."
+     },
+     {
+      "n": 5,
       "r": "END",
       "a": [
        "endless"
       ],
-      "x": "suffix -less (adjective)"
+      "x": "suffix -less (adjective)",
+      "w": "After 'seemed to be' we need an adjective. END + <b>-less</b> makes <b>endless</b>, meaning 'without an end'. Don't write 'endful'."
      },
      {
-      "n": 4,
+      "n": 6,
+      "r": "EXCITE",
+      "a": [
+       "exciting"
+      ],
+      "x": "suffix -ing (adjective, drops -e)",
+      "w": "After 'an' and before 'final' we need an adjective. EXCITE loses its -e and takes <b>-ing</b>: <b>exciting</b>. The final causes the feeling, so not 'excited'."
+     },
+     {
+      "n": 7,
       "r": "DETERMINE",
       "a": [
        "determined"
       ],
-      "x": "suffix -d (participle adjective)"
+      "x": "suffix -d (participle adjective)",
+      "w": "After 'I was' we need an adjective. DETERMINE + <b>-d</b> gives <b>determined</b>. 'Determined to do something' is a fixed pattern."
      },
      {
-      "n": 5,
+      "n": 8,
       "r": "WILL",
       "a": [
        "willing"
       ],
-      "x": "suffix -ing (adjective)"
+      "x": "suffix -ing (adjective)",
+      "w": "After 'I was' we need an adjective. WILL + <b>-ing</b> makes <b>willing</b> ('ready to do something'). Don't write 'willful', which means something different."
      }
     ]
    },
    {
     "id": "p69-120",
     "title": "Human Towers",
-    "text": "A free time activity which has been increasing in [[1]] in recent years is Castellers or ‘Human Towers’. As the name suggests, it consists of building towers made out of people, with adults and children standing one on top of another. These [[2]] towers can consist of up to nine levels of people. Castellers were first recorded in the 18th century in Catalonia, Spain, but the most famous groups have been in [[3]] since the early 20th century. Many Catalan towns have their own teams which compete with other towns in the region to build the tallest towers. Despite being a particularly Catalan tradition, groups of Castellers have made [[4]] all over the world, from Paris to New York. This has raised international awareness of this activity and in 2010, UNESCO took the [[5]] to recognise the Castellers as an important cultural event.",
+    "text": "A free time activity which has been increasing in [[1]] in recent years is Castellers or ‘Human Towers’. As the name suggests, it consists of building towers made out of people, with adults and children standing one on top of another. These [[2]] towers can consist of up to nine levels of people. Hundreds of spectators gather to watch each performance. Castellers were first recorded in the 18th century in Catalonia, Spain, but the most famous groups have been in [[3]] since the early 20th century. Many Catalan towns have their own teams which compete with other towns in the region to build the tallest towers. Teams practise together every week to prepare for the next big competition. Despite being a [[4]] Catalan tradition, groups of Castellers have made [[5]] all over the world, from Paris to New York. This has raised international [[6]] of this activity and in 2010, UNESCO took the [[7]] to recognise the Castellers as an important [[8]] event.",
     "items": [
      {
       "n": 1,
@@ -3861,7 +4355,8 @@ window.RUOE_B2 = {
       "a": [
        "popularity"
       ],
-      "x": "suffix -ity (noun)"
+      "x": "suffix -ity (noun)",
+      "w": "After 'in' we need a noun. POPULAR + <b>-ity</b> makes the noun <b>popularity</b>. Don't write 'popularness' - adjectives ending in -ar take -ity."
      },
      {
       "n": 2,
@@ -3869,7 +4364,8 @@ window.RUOE_B2 = {
       "a": [
        "impressive"
       ],
-      "x": "suffix -ive (adjective)"
+      "x": "suffix -ive (adjective)",
+      "w": "Before the noun 'towers' we need an adjective. IMPRESS + <b>-ive</b> makes <b>impressive</b>. Don't write 'impressed' or 'impressing'."
      },
      {
       "n": 3,
@@ -3877,30 +4373,60 @@ window.RUOE_B2 = {
       "a": [
        "existence"
       ],
-      "x": "suffix -ence (noun)"
+      "x": "suffix -ence (noun)",
+      "w": "After 'in' we need a noun. EXIST + <b>-ence</b> makes <b>existence</b>. The ending is -ence, not -ance."
      },
      {
       "n": 4,
+      "r": "PARTICULAR",
+      "a": [
+       "particularly"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the adjective 'Catalan' we need an adverb. PARTICULAR + <b>-ly</b> makes <b>particularly</b>. The root ends in -ar, so just add -ly."
+     },
+     {
+      "n": 5,
       "r": "APPEAR",
       "a": [
        "appearances"
       ],
-      "x": "suffix -ance (noun) + plural -s"
+      "x": "suffix -ance (noun) + plural -s",
+      "w": "After 'made' we need a plural noun ('made appearances' = performed in public). APPEAR + <b>-ance</b> + -s makes <b>appearances</b>. The ending is -ance, not -ence."
      },
      {
-      "n": 5,
+      "n": 6,
+      "r": "AWARE",
+      "a": [
+       "awareness"
+      ],
+      "x": "suffix -ness (noun)",
+      "w": "After the adjective 'international' we need a noun. AWARE + <b>-ness</b> makes <b>awareness</b>. The final -e of the root is kept."
+     },
+     {
+      "n": 7,
       "r": "DECIDE",
       "a": [
        "decision"
       ],
-      "x": "suffix -sion (noun, drops -e)"
+      "x": "suffix -sion (noun, drops -e)",
+      "w": "After 'the' we need a noun ('took the decision'). DECIDE changes to <b>decision</b>: drop -de and add -sion. Don't write 'decideion'."
+     },
+     {
+      "n": 8,
+      "r": "CULTURE",
+      "a": [
+       "cultural"
+      ],
+      "x": "suffix -al (adjective, drops -e)",
+      "w": "Before the noun 'event' we need an adjective. CULTURE becomes <b>cultural</b>: drop -e and add <b>-al</b>. Don't write 'culturel'."
      }
     ]
    },
    {
     "id": "p70-122",
     "title": "Forest Schools",
-    "text": "When a friend recently told me about forest schools, I looked at him in [[1]]. ‘What on earth is a forest school?’ I asked him. It turns out that there are a number of forest schools around the world but they are [[2]] new in the UK. However, they are well-organised and the teachers usually have special [[3]]. They have been trained to organise safe outdoor spaces and they can teach pupils a great deal about the countryside. I recently attended an open day at a local forest school and it was very [[4]] indeed. What was interesting was how the teachers used the natural environment to teach other subjects. For example, one of the teachers, who was a [[5]], was showing teenagers how to use maths in order to build a tree house. It certainly looked a lot more fun than my maths classes.",
+    "text": "When a friend recently told me about forest schools, I looked at him in [[1]]. ‘What on earth is a forest school?’ I asked him. It turns out that there are a number of forest schools around the world but they are [[2]] new in the UK. However, they are well-organised and the teachers usually have special [[3]]. They have been trained to organise safe outdoor spaces and they can teach pupils a great deal about the countryside. Children spend most of the day outdoors, whatever the weather. The classes are usually small, so every pupil gets plenty of attention. I [[4]] attended an open day at a local forest school and it was very [[5]] indeed. What was interesting was how the teachers used the [[6]] environment to teach other subjects. For example, one of the teachers, who was a [[7]], was showing teenagers how to use maths in order to build a tree house. It [[8]] looked a lot more fun than my maths classes.",
     "items": [
      {
       "n": 1,
@@ -3908,7 +4434,8 @@ window.RUOE_B2 = {
       "a": [
        "disbelief"
       ],
-      "x": "prefix dis- (negative) + noun change (believe -> belief)"
+      "x": "prefix dis- (negative) + noun change (believe -> belief)",
+      "w": "After 'in' we need a noun. BELIEVE changes to the noun belief, and <b>dis-</b> gives a negative meaning: <b>disbelief</b>. Don't write 'unbelieve'."
      },
      {
       "n": 2,
@@ -3916,7 +4443,8 @@ window.RUOE_B2 = {
       "a": [
        "relatively"
       ],
-      "x": "suffix -ive + -ly adverb (relate -> relatively)"
+      "x": "suffix -ive + -ly adverb (relate -> relatively)",
+      "w": "Before the adjective 'new' we need an adverb. RELATE becomes the adjective relative, then <b>-ly</b> gives <b>relatively</b>."
      },
      {
       "n": 3,
@@ -3924,30 +4452,60 @@ window.RUOE_B2 = {
       "a": [
        "qualifications"
       ],
-      "x": "suffix -ication (noun) + plural -s"
+      "x": "suffix -ication (noun) + plural -s",
+      "w": "After 'special' we need a plural noun. QUALIFY changes -y to <b>-ications</b>: <b>qualifications</b>. Remember the plural -s."
      },
      {
       "n": 4,
+      "r": "RECENT",
+      "a": [
+       "recently"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the verb 'attended' we need an adverb. RECENT + <b>-ly</b> makes <b>recently</b>. The root ends in -t, so nothing else changes."
+     },
+     {
+      "n": 5,
       "r": "INFORM",
       "a": [
        "informative"
       ],
-      "x": "suffix -ative (adjective)"
+      "x": "suffix -ative (adjective)",
+      "w": "After 'very' we need an adjective. INFORM + <b>-ative</b> makes <b>informative</b> ('giving useful information'). Don't write 'informal', which means something else."
      },
      {
-      "n": 5,
+      "n": 6,
+      "r": "NATURE",
+      "a": [
+       "natural"
+      ],
+      "x": "internal change (nature -> natural)",
+      "w": "Before the noun 'environment' we need an adjective. NATURE becomes <b>natural</b>: the ending -ure changes to <b>-ural</b>."
+     },
+     {
+      "n": 7,
       "r": "MATHS",
       "a": [
        "mathematician"
       ],
-      "x": "suffix -ematician (person noun)"
+      "x": "suffix -ematician (person noun)",
+      "w": "After 'a' we need a person noun for someone who works with maths. MATHS becomes <b>mathematician</b>. Watch the spelling: mathe-ma-ti-cian."
+     },
+     {
+      "n": 8,
+      "r": "CERTAIN",
+      "a": [
+       "certainly"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the verb 'looked' we need an adverb. CERTAIN + <b>-ly</b> makes <b>certainly</b>. Don't write 'certainty', which is a noun."
      }
     ]
    },
    {
     "id": "p71-124",
     "title": "Spelling Bees",
-    "text": "The spelling bee is a type of competition for young students which has enjoyed success for the last 90 years. In fact, they have been so [[1]] that they have inspired three films and a novel! The object of the game is very simple; students are asked to spell words which increase in [[2]] as the game goes on. [[3]] earn points for the words they spell correctly and lose points for misspelling them. The winner is the person with the most points and in some competitions they can win a substantial amount of money. Consequently, many of the participants will have spent months studying and learning new words, paying special attention to the [[4]] between the sound and spelling of words. In national [[5]] some of the more challenging words have included eudaemonic, which means ‘producing happiness’, and cymotrichous, which means ‘having wavy hair’.",
+    "text": "The spelling bee is a type of competition for young students which has enjoyed success for the last 90 years. In fact, they have been so [[1]] that they have inspired three films and a novel! The object of the game is very simple; students are asked to spell words which increase in [[2]] as the game goes on. [[3]] earn points for the words they spell [[4]] and lose points for misspelling them. Judges read each word aloud, and students must say the letters in the right order. The [[5]] is the person with the most points and in some competitions they can win a substantial amount of money. Some contestants practise with their families for hours every evening. Consequently, many of the [[6]] will have spent months studying and learning new words, paying special attention to the [[7]] between the sound and spelling of words. In national [[8]] some of the more challenging words have included eudaemonic, which means ‘producing happiness’, and cymotrichous, which means ‘having wavy hair’.",
     "items": [
      {
       "n": 1,
@@ -3955,7 +4513,8 @@ window.RUOE_B2 = {
       "a": [
        "successful"
       ],
-      "x": "suffix -ful (adjective)"
+      "x": "suffix -ful (adjective)",
+      "w": "After 'so' we need an adjective. SUCCESS + <b>-ful</b> makes <b>successful</b>. Don't write 'successfull' - -ful has only one l."
      },
      {
       "n": 2,
@@ -3963,7 +4522,8 @@ window.RUOE_B2 = {
       "a": [
        "difficulty"
       ],
-      "x": "suffix -y (noun)"
+      "x": "suffix -y (noun)",
+      "w": "After 'in' we need a noun ('increase in difficulty'). DIFFICULT + <b>-y</b> makes <b>difficulty</b>. Don't write 'difficultness'."
      },
      {
       "n": 3,
@@ -3971,30 +4531,60 @@ window.RUOE_B2 = {
       "a": [
        "Competitors"
       ],
-      "x": "suffix -itor (person noun) + plural -s"
+      "x": "suffix -itor (person noun) + plural -s",
+      "w": "We need a plural person noun as the subject of 'earn'. COMPETE becomes <b>competitors</b>: -ete changes to -etitor, then add -s. Use a capital letter."
      },
      {
       "n": 4,
+      "r": "CORRECT",
+      "a": [
+       "correctly"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "After the verb 'spell' we need an adverb. CORRECT + <b>-ly</b> makes <b>correctly</b>. The root keeps its spelling."
+     },
+     {
+      "n": 5,
+      "r": "WIN",
+      "a": [
+       "winner"
+      ],
+      "x": "suffix -er (person noun, doubled n)",
+      "w": "After 'The' we need a person noun. WIN + <b>-er</b> makes <b>winner</b>. The n is doubled after a short vowel."
+     },
+     {
+      "n": 6,
+      "r": "PARTICIPATE",
+      "a": [
+       "participants"
+      ],
+      "x": "suffix -ant (person noun, drops -ate) + plural -s",
+      "w": "After 'many of the' we need a plural person noun. PARTICIPATE drops -ate and takes <b>-ants</b>: <b>participants</b>, people who take part."
+     },
+     {
+      "n": 7,
       "r": "RELATION",
       "a": [
        "relationship"
       ],
-      "x": "suffix -ship (noun)"
+      "x": "suffix -ship (noun)",
+      "w": "After 'the' we need a noun for a connection. RELATION + <b>-ship</b> makes <b>relationship</b>. The root alone is not enough here."
      },
      {
-      "n": 5,
+      "n": 8,
       "r": "CHAMPION",
       "a": [
        "championships"
       ],
-      "x": "suffix -ship (noun) + plural -s"
+      "x": "suffix -ship (noun) + plural -s",
+      "w": "After 'national' we need a plural noun (competitions). CHAMPION + <b>-ship</b> + -s makes <b>championships</b>. Don't forget the plural."
      }
     ]
    },
    {
     "id": "p72-126",
     "title": "Flying robots",
-    "text": "People interested in building flying machines have been looking to nature for [[1]] for many years. In fact, early inventors experimented with giant moveable wings strapped onto people. [[2]], however, flying machines changed very little after the invention of the aeroplane. Nevertheless, there has been renewed interest in nature’s answers to the problems of flight in recent years. The next [[3]] of flying machines, called drones, are smaller and lighter than aircraft of the past. This means that many of the features of flying insects and birds can be copied. For example, inventors are carefully studying the [[4]] of birds’ wings and attempting to use it in their designs. In other experiments, they are creating robotic insects which work together like bees. It seems that the [[5]] of nature still has something to offer in this age of technology.",
+    "text": "People interested in building flying machines have been looking to nature for [[1]] for many years. In fact, early inventors experimented with giant moveable wings strapped onto people. [[2]], however, flying machines changed very little after the [[3]] of the aeroplane. Nevertheless, there has been renewed interest in nature’s answers to the problems of flight in recent years. The next [[4]] of flying machines, called drones, are smaller and lighter than aircraft of the past. This means that many of the features of flying insects and birds can be copied. For example, inventors are carefully studying the [[5]] of birds’ wings and attempting to use it in their designs. In other experiments, they are creating [[6]] insects which work together like bees. Some of these machines are so small that they can fit in the palm of a hand. Engineers hope that they will be extremely [[7]] in rescue missions after natural disasters. It seems that the [[8]] of nature still has something to offer in this age of technology.",
     "items": [
      {
       "n": 1,
@@ -4002,7 +4592,8 @@ window.RUOE_B2 = {
       "a": [
        "inspiration"
       ],
-      "x": "suffix -ation (noun, drops -e)"
+      "x": "suffix -ation (noun, drops -e)",
+      "w": "After 'for' we need a noun. INSPIRE changes to <b>inspiration</b>: the -e goes and -ation is added. Don't write 'inspiring', an adjective."
      },
      {
       "n": 2,
@@ -4010,38 +4601,69 @@ window.RUOE_B2 = {
       "a": [
        "Unfortunately"
       ],
-      "x": "suffix -ate + -ly adverb with prefix un- (negative)"
+      "x": "suffix -ate + -ly adverb with prefix un- (negative)",
+      "w": "At the start of the sentence we need an adverb with a negative meaning. FORTUNE becomes fortunate, then <b>un-</b> and -ly: <b>unfortunately</b>. Use a capital letter."
      },
      {
       "n": 3,
+      "r": "INVENT",
+      "a": [
+       "invention"
+      ],
+      "x": "suffix -ion (noun)",
+      "w": "After 'the' we need a noun. INVENT + <b>-ion</b> makes <b>invention</b>. Don't write 'inventor', which is a person."
+     },
+     {
+      "n": 4,
       "r": "GENERATE",
       "a": [
        "generation"
       ],
-      "x": "suffix -ion (noun, drops -e)"
+      "x": "suffix -ion (noun, drops -e)",
+      "w": "After 'the next' we need a noun. GENERATE drops -e and adds <b>-ion</b>: <b>generation</b>. Don't write 'generating'."
      },
      {
-      "n": 4,
+      "n": 5,
       "r": "MOVE",
       "a": [
        "movement"
       ],
-      "x": "suffix -ment (noun)"
+      "x": "suffix -ment (noun)",
+      "w": "After 'the' we need a noun. MOVE + <b>-ment</b> makes <b>movement</b>. The -e of the verb is kept."
      },
      {
-      "n": 5,
+      "n": 6,
+      "r": "ROBOT",
+      "a": [
+       "robotic"
+      ],
+      "x": "suffix -ic (adjective)",
+      "w": "Before the noun 'insects' we need an adjective. ROBOT + <b>-ic</b> makes <b>robotic</b>. Don't write 'robotical'."
+     },
+     {
+      "n": 7,
+      "r": "USE",
+      "a": [
+       "useful"
+      ],
+      "x": "suffix -ful (adjective)",
+      "w": "After 'extremely' we need an adjective. USE + <b>-ful</b> makes <b>useful</b>. Don't write 'usefull' - -ful has only one l."
+     },
+     {
+      "n": 8,
       "r": "SIMPLE",
       "a": [
        "simplicity"
       ],
-      "x": "suffix -icity (noun)"
+      "x": "suffix -icity (noun)",
+      "w": "After 'the' we need a noun. SIMPLE changes to <b>simplicity</b>: drop -le and add -icity. Don't write 'simpleness'."
      }
     ]
    },
    {
     "id": "p73-128",
     "title": "Chemistry sets",
-    "text": "If you’re wondering what to get a child for their next birthday, you might be considering getting them a chemistry set. They’re the perfect gift for the future [[1]]. Most good sets include everything you need to make some exciting [[2]] such as making crystals or testing food. [[3]], they are also safe, so there’s no danger of having an accident. In the past, however, chemistry sets were not quite as safe and they often included chemicals which are now considered extremely dangerous. Children could certainly be [[4]] with them but there was always the chance that something might go wrong. For example, [[5]] mixing together some of the ingredients could create substances with a serious health risk. These are not things you would want your little brother or sister playing with.",
+    "text": "If you’re wondering what to get a child for their next birthday, you might be considering getting them a chemistry set. They’re the perfect gift for the future [[1]]. Most good sets include everything you need to make some exciting [[2]] such as making crystals or testing food. [[3]], they are also safe, so there’s no danger of having an accident. Modern sets also come with clear [[4]] which explain every step of each experiment. In the past, however, chemistry sets were not quite as safe and they often included chemicals which are now considered [[5]] dangerous. Children could certainly be [[6]] with them but there was always the chance that something might go wrong. For example, [[7]] mixing together some of the ingredients could create substances with a serious health risk. These are not things you would want your little brother or sister playing with. Today, most parents would find it [[8]] to give a child such a product.",
     "items": [
      {
       "n": 1,
@@ -4049,7 +4671,8 @@ window.RUOE_B2 = {
       "a": [
        "scientist"
       ],
-      "x": "suffix -ist (person noun)"
+      "x": "suffix -ist (person noun)",
+      "w": "After 'future' we need a person noun. SCIENCE changes to <b>scientist</b>: -ce becomes -t, then -ist is added. Don't write 'sciencist'."
      },
      {
       "n": 2,
@@ -4057,7 +4680,8 @@ window.RUOE_B2 = {
       "a": [
        "discoveries"
       ],
-      "x": "suffix -ery (noun) + plural -s"
+      "x": "suffix -ery (noun) + plural -s",
+      "w": "After 'exciting' we need a plural noun. DISCOVER + <b>-y</b> makes discovery; the plural is <b>discoveries</b> (y changes to ies)."
      },
      {
       "n": 3,
@@ -4065,1163 +4689,17 @@ window.RUOE_B2 = {
       "a": [
        "Fortunately"
       ],
-      "x": "suffix -ly adverb (+ -ate)"
+      "x": "suffix -ly adverb (+ -ate)",
+      "w": "At the start of the sentence we need an adverb ('luckily'). FORTUNE becomes fortunate, then <b>-ly</b>: <b>fortunately</b>. Use a capital letter."
      },
      {
       "n": 4,
-      "r": "CREATE",
+      "r": "INSTRUCT",
       "a": [
-       "creative"
+       "instructions"
       ],
-      "x": "suffix -ive (adjective, drops -e)"
-     },
-     {
-      "n": 5,
-      "r": "SIMPLE",
-      "a": [
-       "simply"
-      ],
-      "x": "suffix -ly adverb (drops -e)"
-     }
-    ]
-   },
-   {
-    "id": "p73-130",
-    "title": "Dealing with crime",
-    "text": "Many people believe that the best way to deal with criminal behaviour is by providing a suitable [[1]] such as being sent to prison. This may make the victims feel better but some people argue that [[2]] fails to prevent criminal activity. However, it is possible that a lot of crime is [[3]] if it is dealt with differently. This may be particularly true in relation to youth crime. [[4]] are less likely to stop and think about their actions than adults, so they are more likely to make mistakes. However, this inability to make rational decisions is often [[5]] by adults. They just see a child who needs to be punished in order to stop their criminal tendencies. Therefore, it is important children are taught to think about the consequences of their actions from an early age.",
-    "items": [
-     {
-      "n": 1,
-      "r": "PUNISH",
-      "a": [
-       "punishment"
-      ],
-      "x": "suffix -ment (noun)"
-     },
-     {
-      "n": 2,
-      "r": "PRISON",
-      "a": [
-       "imprisonment"
-      ],
-      "x": "prefix im- + suffix -ment (noun)"
-     },
-     {
-      "n": 3,
-      "r": "PREVENT",
-      "a": [
-       "preventable"
-      ],
-      "x": "suffix -able (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "YOUNG",
-      "a": [
-       "Youngsters"
-      ],
-      "x": "suffix -ster (person noun) + plural -s"
-     },
-     {
-      "n": 5,
-      "r": "UNDERSTAND",
-      "a": [
-       "misunderstood"
-      ],
-      "x": "prefix mis- (negative) + irregular past participle"
-     }
-    ]
-   },
-   {
-    "id": "p74-132",
-    "title": "Dealing with graffiti",
-    "text": "A town council in Australia has taken a novel approach to the problem of graffiti. For years, the town had been a magnet for graffiti artists but for many residents, the street art was little more than [[1]]. Graffiti was appearing everywhere and not all of it was ‘good art’. The shopkeepers who were constantly cleaning up their shop fronts were [[2]] frustrated with the situation. After years of unsuccessfully trying to control the [[3]] problem, the council decided to take a different approach. They realised that working with the graffiti artists might be the best form of [[4]] of unwanted artwork. Rather than trying to stop graffiti, they established a set of rules for where, when and how artists could create acceptable artwork. They decided on these rules with local [[5]] groups and there have been some pleasant results. There is now far less unwanted graffiti and parts of the town have been brightened up with beautiful pieces of art.",
-    "items": [
-     {
-      "n": 1,
-      "r": "VANDAL",
-      "a": [
-       "vandalism"
-      ],
-      "x": "suffix -ism (noun)"
-     },
-     {
-      "n": 2,
-      "r": "UNDERSTAND",
-      "a": [
-       "understandably"
-      ],
-      "x": "suffix -able + -ly adverb (drops -e)"
-     },
-     {
-      "n": 3,
-      "r": "GROW",
-      "a": [
-       "growing"
-      ],
-      "x": "suffix -ing (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "PREVENT",
-      "a": [
-       "prevention"
-      ],
-      "x": "suffix -ion (noun)"
-     },
-     {
-      "n": 5,
-      "r": "YOUNG",
-      "a": [
-       "youth"
-      ],
-      "x": "noun change (young -> youth)"
-     }
-    ]
-   },
-   {
-    "id": "p75-134",
-    "title": "Sumo Wrestling",
-    "text": "Sumo wrestling is a popular sport in Japan, which dates back hundreds of years. It has gone through various stages of [[1]] to become the sport that it is today. Originally, it was more similar to Western forms of wrestling where [[2]] were expected to throw each other to the ground. Nowadays, however, the objective is for the wrestlers to push their [[3]] out of the ring. In order to do this, they depend on their size and [[4]]. There are no restrictions on size so there is every incentive for wrestlers to be as big as possible. Despite the fact that each round may only last a few minutes, sumo wrestling is extremely popular in Japan and there are big prizes for the sumo stars. Some wrestlers can expect to receive [[5]] totalling more than £60,000.",
-    "items": [
-     {
-      "n": 1,
-      "r": "DEVELOP",
-      "a": [
-       "development"
-      ],
-      "x": "suffix -ment (noun)"
-     },
-     {
-      "n": 2,
-      "r": "COMPETE",
-      "a": [
-       "competitors"
-      ],
-      "x": "suffix -itor (person noun) + plural -s"
-     },
-     {
-      "n": 3,
-      "r": "OPPOSE",
-      "a": [
-       "opponent",
-       "opponents"
-      ],
-      "x": "suffix -ent (noun, from verb), singular or plural"
-     },
-     {
-      "n": 4,
-      "r": "STRONG",
-      "a": [
-       "strength"
-      ],
-      "x": "suffix -th (noun, vowel change)"
-     },
-     {
-      "n": 5,
-      "r": "WIN",
-      "a": [
-       "winnings"
-      ],
-      "x": "suffix -ing (noun) + plural -s (doubled n)"
-     }
-    ]
-   },
-   {
-    "id": "p76-136",
-    "title": "Swimming challenge",
-    "text": "There can be no [[1]] that crossing the English Channel is one of the toughest swims in the world. Matthew Webb was the first [[2]] to undertake the challenge in 1875. Although his first attempt was a [[3]], he was back in the water within weeks. His second attempt was successful, with Webb swimming nearly 40 miles across the channel from England to France. That’s roughly equivalent to the [[4]] of 2,575 swimming pools. Webb’s crossing took 21 hours and since then there have been numerous other attempts to swim across the Channel. The record crossing is somewhat faster than Webb’s, with Trent Grimsey recording the fastest crossing in 2012. Grimsey, who had swum in long distance [[5]] around the world, managed to make the crossing in just under seven hours.",
-    "items": [
-     {
-      "n": 1,
-      "r": "ARGUE",
-      "a": [
-       "argument"
-      ],
-      "x": "suffix -ment (noun, drops -e)"
-     },
-     {
-      "n": 2,
-      "r": "SWIM",
-      "a": [
-       "swimmer"
-      ],
-      "x": "suffix -er (person noun, doubled m)"
-     },
-     {
-      "n": 3,
-      "r": "FAIL",
-      "a": [
-       "failure"
-      ],
-      "x": "suffix -ure (noun)"
-     },
-     {
-      "n": 4,
-      "r": "LONG",
-      "a": [
-       "length"
-      ],
-      "x": "suffix -th (noun, vowel change)"
-     },
-     {
-      "n": 5,
-      "r": "COMPETE",
-      "a": [
-       "competitions"
-      ],
-      "x": "suffix -ition (noun) + plural -s"
-     }
-    ]
-   },
-   {
-    "id": "p76-138",
-    "title": "Some solutions to help the young unemployed",
-    "text": "In recent years, we have seen record levels of youth [[1]] around the world. In some countries, this has resulted in some people being forced into [[2]] and in many countries, it has caused great anxiety. Although many people blame the [[3]] crisis, there are other important factors such as a shortage of skills in certain sectors. Another problem is a lack of money or infrastructure for creating new jobs. Fortunately, some organisations are working hard to find [[4]] solutions to try to overcome these problems. One such [[5]] is to improve access to the internet for people around the world. This would make a huge difference to people’s lives because it would improve infrastructure and training opportunities. Another important idea is to ensure that money is available for new start-ups. This would mean that young people could start their own businesses and even help others out of unemployment.",
-    "items": [
-     {
-      "n": 1,
-      "r": "EMPLOY",
-      "a": [
-       "unemployment"
-      ],
-      "x": "prefix un- (negative) + suffix -ment (noun)"
-     },
-     {
-      "n": 2,
-      "r": "POOR",
-      "a": [
-       "poverty"
-      ],
-      "x": "noun change (poor -> poverty)"
-     },
-     {
-      "n": 3,
-      "r": "FINANCE",
-      "a": [
-       "financial"
-      ],
-      "x": "suffix -ial (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "SATISFY",
-      "a": [
-       "satisfactory"
-      ],
-      "x": "suffix -factory (adjective)"
-     },
-     {
-      "n": 5,
-      "r": "PROPOSE",
-      "a": [
-       "proposal"
-      ],
-      "x": "suffix -al (noun)"
-     }
-    ]
-   },
-   {
-    "id": "p77-140",
-    "title": "Firefighting",
-    "text": "If you are looking for a job which is both [[1]] and respected, you might consider being a firefighter. Firefighters may not enter the profession for [[2]] reasons but it is one of the most rewarding jobs because firefighters both protect and save people’s lives. In order to be a firefighter, you will need to demonstrate a [[3]] of qualities such as stamina, self-discipline and quick reactions, as well as having good communication skills. If you are interested in getting some experience, you could try becoming a firefighter on a [[4]] basis first. Most volunteers receive full training but they are not ‘on call’ full-time. They study or work in other jobs and are only called out to emergencies. Most small towns and [[5]] have their own fire service who you should speak to if you would like more information.",
-    "items": [
-     {
-      "n": 1,
-      "r": "SATISFY",
-      "a": [
-       "satisfying"
-      ],
-      "x": "suffix -ing (adjective)"
-     },
-     {
-      "n": 2,
-      "r": "FINANCE",
-      "a": [
-       "financial"
-      ],
-      "x": "suffix -ial (adjective)"
-     },
-     {
-      "n": 3,
-      "r": "VARY",
-      "a": [
-       "variety"
-      ],
-      "x": "suffix -iety (noun)"
-     },
-     {
-      "n": 4,
-      "r": "VOLUNTEER",
-      "a": [
-       "voluntary"
-      ],
-      "x": "suffix -ary (adjective)"
-     },
-     {
-      "n": 5,
-      "r": "NEIGHBOUR",
-      "a": [
-       "neighbourhoods"
-      ],
-      "x": "suffix -hood (noun) + plural -s"
-     }
-    ]
-   },
-   {
-    "id": "p78-142",
-    "title": "Fractal Art",
-    "text": "Fractal art is considered a [[1]] new art form which first appeared in the 1980s. Fractals are created from complicated mathematical patterns which repeat themselves indefinitely, getting smaller every time they are repeated. Because of the complexity of the calculations, some [[2]] such as a computer and specialist software is considered necessary for modern fractal art. However, something similar has [[3]] been part of African culture for hundreds of years. This can be seen in the patterns on the traditional dresses of Ethiopian women. Unlike modern fractal art, these dresses were not made with computers. Instead, someone would [[4]] recreate these complex patterns by hand. Even more interesting though, is that fractals can also be seen throughout nature, such as in the repeated rings of a tree or in the lines on a leaf. Perhaps this connection between nature, science and art explains the [[5]] of fractal art.",
-    "items": [
-     {
-      "n": 1,
-      "r": "RELATE",
-      "a": [
-       "relatively"
-      ],
-      "x": "suffix -ive + -ly adverb (relate -> relatively)"
-     },
-     {
-      "n": 2,
-      "r": "EQUIP",
-      "a": [
-       "equipment"
-      ],
-      "x": "suffix -ment (noun)"
-     },
-     {
-      "n": 3,
-      "r": "DOUBT",
-      "a": [
-       "undoubtedly"
-      ],
-      "x": "prefix un- (negative) + suffix -ed + -ly adverb"
-     },
-     {
-      "n": 4,
-      "r": "PATIENCE",
-      "a": [
-       "patiently"
-      ],
-      "x": "suffix -ly adverb (patience -> patiently)"
-     },
-     {
-      "n": 5,
-      "r": "ATTRACT",
-      "a": [
-       "attraction"
-      ],
-      "x": "suffix -ion (noun)"
-     }
-    ]
-   },
-   {
-    "id": "p79-144",
-    "title": "Jewellery making",
-    "text": "Jewellery making is the perfect hobby for anyone who wants to switch off from their hectic day-to-day life. More and more of us are looking for creative activities to do in our free time and jewellery making is a good option. Firstly, it’s a very [[1]] hobby. You don’t need any expensive [[2]] or specialist skills. You can find the things you need very [[3]] in the high street or on the internet. Secondly, it’s an incredibly relaxing hobby. While you’re [[4]] working with those little stones and minerals, it’s impossible not to forget the stresses and strains of work and school. Lastly, you’ll be able to make some lovely presents for your family and friends. With all of these advantages, it’s easy to see the [[5]] of jewellery making.",
-    "items": [
-     {
-      "n": 1,
-      "r": "ACCESS",
-      "a": [
-       "accessible"
-      ],
-      "x": "suffix -ible (adjective)"
-     },
-     {
-      "n": 2,
-      "r": "EQUIP",
-      "a": [
-       "equipment"
-      ],
-      "x": "suffix -ment (noun)"
-     },
-     {
-      "n": 3,
-      "r": "EASY",
-      "a": [
-       "easily"
-      ],
-      "x": "suffix -ily adverb (y -> i)"
-     },
-     {
-      "n": 4,
-      "r": "PATIENT",
-      "a": [
-       "patiently"
-      ],
-      "x": "suffix -ly adverb"
-     },
-     {
-      "n": 5,
-      "r": "ATTRACT",
-      "a": [
-       "attraction",
-       "attractions"
-      ],
-      "x": "suffix -ion (noun), singular or plural"
-     }
-    ]
-   },
-   {
-    "id": "p80-146",
-    "title": "Microbeads",
-    "text": "Not so long ago, companies developed a new [[1]] process where they would add microbeads to washing powder, toothpaste and other beauty products. These microbeads are tiny round pieces of plastic that are meant to make the product more effective. [[2]], natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for artificial microbeads. Recently, however, it has been found that microbeads are not as harmless and [[3]] as they might seem. The problem is that after they have been washed down the sink, these toxic particles end up in the water supply. [[4]], once they are in our rivers and oceans, they are consumed by birds and fish and the microbeads enter the food chain. However, in an [[5]] move, several multinational companies have announced that they will stop using microbeads. They have accepted that microbeads can be harmful to the environment and have promised an end to them.",
-    "items": [
-     {
-      "n": 1,
-      "r": "INDUSTRY",
-      "a": [
-       "industrial"
-      ],
-      "x": "suffix -ial (adjective)"
-     },
-     {
-      "n": 2,
-      "r": "TRADITION",
-      "a": [
-       "Traditionally"
-      ],
-      "x": "suffix -al + -ly adverb"
-     },
-     {
-      "n": 3,
-      "r": "SIGNIFY",
-      "a": [
-       "insignificant"
-      ],
-      "x": "prefix in- (negative) + suffix -icant"
-     },
-     {
-      "n": 4,
-      "r": "FORTUNE",
-      "a": [
-       "Unfortunately"
-      ],
-      "x": "prefix un- (negative) + suffix -ate + -ly adverb"
-     },
-     {
-      "n": 5,
-      "r": "ORDINARY",
-      "a": [
-       "extraordinary"
-      ],
-      "x": "prefix extra-"
-     }
-    ]
-   },
-   {
-    "id": "p80-148",
-    "title": "Bamboo Houses",
-    "text": "Growing concern over the effects of modern construction methods has meant that some architects are looking to more [[1]] ways of making buildings. One interesting project is in Bali, where designers are using bamboo to create schools and [[2]] spaces. Bamboo is a type of wood which has been used to build houses for thousands of years. Apart from being [[3]] for the environment (it’s biodegradable), there’s also no shortage of it in Bali, where it grows quickly and easily. Not only that, but bamboo’s flexibility means that there’s plenty of [[4]] in the designs. Bamboo is not the best material in [[5]] weather. However, if treated properly, these bamboo structures can last for many years.",
-    "items": [
-     {
-      "n": 1,
-      "r": "TRADITION",
-      "a": [
-       "traditional"
-      ],
-      "x": "suffix -al (adjective)"
-     },
-     {
-      "n": 2,
-      "r": "LIVE",
-      "a": [
-       "living"
-      ],
-      "x": "suffix -ing (adjective)"
-     },
-     {
-      "n": 3,
-      "r": "BENEFIT",
-      "a": [
-       "beneficial"
-      ],
-      "x": "suffix -ial (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "ORIGIN",
-      "a": [
-       "originality"
-      ],
-      "x": "suffix -al + -ity (noun)"
-     },
-     {
-      "n": 5,
-      "r": "STORM",
-      "a": [
-       "stormy"
-      ],
-      "x": "suffix -y (adjective)"
-     }
-    ]
-   },
-   {
-    "id": "p81-150",
-    "title": "Braille",
-    "text": "Braille is a system of raised characters on firm card which are read by touch. The characters are like the six spots on the face of a dice, with different combinations of spots representing different letters of the alphabet. It has been used to help people who are [[1]] to read and write due to blindness or other poor vision. Since its [[2]] in the 1820s, it has given thousands of blind people the chance to appreciate written texts and become more [[3]] about literature. It was invented by a blind Frenchman called Louis Braille who was familiar with a similar form of writing called Night Writing. His [[4]] was that Night Writing could be improved and he came up with his form of Braille. Since then, [[5]] Braille systems have been developed and all the letters of the alphabet as well as numbers are represented.",
-    "items": [
-     {
-      "n": 1,
-      "r": "ABLE",
-      "a": [
-       "unable"
-      ],
-      "x": "prefix un- (negative)"
-     },
-     {
-      "n": 2,
-      "r": "APPEAR",
-      "a": [
-       "appearance"
-      ],
-      "x": "suffix -ance (noun)"
-     },
-     {
-      "n": 3,
-      "r": "KNOW",
-      "a": [
-       "knowledgeable"
-      ],
-      "x": "suffix -ledgeable (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "THINK",
-      "a": [
-       "thinking"
-      ],
-      "x": "suffix -ing (noun)"
-     },
-     {
-      "n": 5,
-      "r": "VARY",
-      "a": [
-       "various"
-      ],
-      "x": "suffix -ous (adjective)"
-     }
-    ]
-   },
-   {
-    "id": "p82-152",
-    "title": "Is it easy to learn a new language?",
-    "text": "Although all of us have the [[1]] to learn new languages, it’s not always easy. It’s easier if the language you’re learning is similar to your own because you’re likely to have some [[2]] of the way the language works. Some of the words and sounds may be similar or the grammar may work in a similar way. Even so, learners will still encounter [[3]] difficulties such as irregular endings or unusual pronunciation. However, if the language is very different from your own, it can be much harder to learn. The Chinese Mandarin language is a good example. Some people will say that learning the [[4]] language is not as difficult as it sounds. However, when you consider that there are over fifty thousand characters, it will certainly be difficult to express your [[5]] in written form.",
-    "items": [
-     {
-      "n": 1,
-      "r": "ABLE",
-      "a": [
-       "ability"
-      ],
-      "x": "suffix -ility (noun)"
-     },
-     {
-      "n": 2,
-      "r": "KNOW",
-      "a": [
-       "knowledge"
-      ],
-      "x": "suffix -ledge (noun)"
-     },
-     {
-      "n": 3,
-      "r": "VARY",
-      "a": [
-       "various"
-      ],
-      "x": "suffix -ous (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "SPEAK",
-      "a": [
-       "spoken"
-      ],
-      "x": "past participle used as adjective (irregular)"
-     },
-     {
-      "n": 5,
-      "r": "THINK",
-      "a": [
-       "thoughts"
-      ],
-      "x": "noun change (think -> thought) + plural -s"
-     }
-    ]
-   },
-   {
-    "id": "p83-154",
-    "title": "Anti-consumerism",
-    "text": "The anti-consumerist movement emerged around the year 2000 as a reaction to what some people saw as the harmful effects of a consumer society. Anti-consumerists believe that excessive consumption of goods is [[1]] for several reasons. Although it can result in economic [[2]], they argue that this does not always benefit ordinary people. Instead they become trapped in a cycle of working in order to buy things that they do not need. They are never fully [[3]] with their purchases but they go on buying things regardless. Anti-consumerists believe that the [[4]] industry is partly responsible for this tendency as its job is to convince people to buy things we do not need. Some anti-consumerists also believe that consumerism is bad for the environment. They point out that some businesses think it is [[5]] to take environmental concerns into account because it affects their profits. As a result, they continue to contribute to pollution and over- consumption of our resources.",
-    "items": [
-     {
-      "n": 1,
-      "r": "DESIRE",
-      "a": [
-       "undesirable"
-      ],
-      "x": "prefix un- (negative) + suffix -able (drops -e)"
-     },
-     {
-      "n": 2,
-      "r": "GROW",
-      "a": [
-       "growth"
-      ],
-      "x": "suffix -th (noun)"
-     },
-     {
-      "n": 3,
-      "r": "SATISFY",
-      "a": [
-       "satisfied"
-      ],
-      "x": "suffix -ied (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "ADVERT",
-      "a": [
-       "advertising"
-      ],
-      "x": "suffix -ing (noun)"
-     },
-     {
-      "n": 5,
-      "r": "ECONOMIC",
-      "a": [
-       "uneconomical"
-      ],
-      "x": "prefix un- (negative) + suffix -al"
-     }
-    ]
-   },
-   {
-    "id": "p83-156",
-    "title": "The euro",
-    "text": "The euro is a relatively new currency, or unit of money, which was introduced in 1999. It is a truly [[1]] currency, having been adopted by 19 European countries. At first, it was only used by financial markets, but in 2002 many European countries started using euro coins and notes. The euro [[2]] the financial system in Europe because everyone was using the same currency. Many people believed that the euro made [[3]] sense because the countries of the European Union were already working closely together. They felt that it would [[4]] the European project and would bring the countries together even more. Despite that, some countries did not feel that it would be [[5]] to adopt the euro. Britain was one such country which decided to keep its own currency, the pound.",
-    "items": [
-     {
-      "n": 1,
-      "r": "NATION",
-      "a": [
-       "international"
-      ],
-      "x": "prefix inter- + suffix -al"
-     },
-     {
-      "n": 2,
-      "r": "REVOLUTION",
-      "a": [
-       "revolutionised"
-      ],
-      "x": "suffix -ise + -d (verb, past)"
-     },
-     {
-      "n": 3,
-      "r": "ECONOMY",
-      "a": [
-       "economic"
-      ],
-      "x": "suffix -ic (adjective, y -> i)"
-     },
-     {
-      "n": 4,
-      "r": "STRONG",
-      "a": [
-       "strengthen"
-      ],
-      "x": "suffix -th + -en (verb)"
-     },
-     {
-      "n": 5,
-      "r": "DESIRE",
-      "a": [
-       "desirable"
-      ],
-      "x": "suffix -able (adjective, drops -e)"
-     }
-    ]
-   },
-   {
-    "id": "p84-158",
-    "title": "Pickpockets",
-    "text": "For many people going on city breaks, their biggest fear is the pickpocket. Most tourist destinations are a magnet for these thieves, who target tourists, taking money, passports and other [[1]] while the owner is unaware of what is happening. This can be [[2]] inconvenient for the victim. For example, if you lose your passport, you will probably have to spend the rest of your holiday making a lot of [[3]] to replace it. Not surprisingly, most tourists take particular care to keep their belongings well out of reach of the pickpockets. Recently, however, a new threat has appeared in the form of remote credit card readers. Some pickpockets now carry these devices which, when [[4]], can instantly take money from your bank account. Any new ‘contactless’ cards are at risk and the pickpocket does not even have to touch you. It seems that tourists are largely [[5]] in this situation and the only thing you can do is to leave your card at home.",
-    "items": [
-     {
-      "n": 1,
-      "r": "VALUE",
-      "a": [
-       "valuables"
-      ],
-      "x": "suffix -able (noun) + plural -s"
-     },
-     {
-      "n": 2,
-      "r": "HUGE",
-      "a": [
-       "hugely"
-      ],
-      "x": "suffix -ly adverb (drops -e)"
-     },
-     {
-      "n": 3,
-      "r": "ARRANGE",
-      "a": [
-       "arrangements"
-      ],
-      "x": "suffix -ment + plural -s"
-     },
-     {
-      "n": 4,
-      "r": "ACTIVATE",
-      "a": [
-       "activated"
-      ],
-      "x": "suffix -ed (participle)"
-     },
-     {
-      "n": 5,
-      "r": "HELP",
-      "a": [
-       "helpless"
-      ],
-      "x": "suffix -less (adjective)"
-     }
-    ]
-   },
-   {
-    "id": "p85-160",
-    "title": "Farm holidays",
-    "text": "Nowadays many British families are fed up with crowds of tourists, bad food and expensive days out. Instead they are considering the benefits of staying in the UK, and looking for an experience which is far more [[1]] and rewarding. One type of holiday which is becoming more popular is the farm holiday. Part of the appeal is the peaceful surroundings but it’s also the number of [[2]] which attracts people. Apart from going walking or fishing, there is also the chance of [[3]] out on the farm. [[4]] in farmyard tasks, such as feeding the animals, collecting the eggs and milking the cows, is usually encouraged. Some farms also organise bird and nature watching excursions. Many parents now see this type of holiday as a [[5]] educational experience for their children. It’s also an opportunity for Mum and Dad to switch off from their busy lives.",
-    "items": [
-     {
-      "n": 1,
-      "r": "MEANING",
-      "a": [
-       "meaningful"
-      ],
-      "x": "suffix -ful (adjective)"
-     },
-     {
-      "n": 2,
-      "r": "ACTIVE",
-      "a": [
-       "activities"
-      ],
-      "x": "suffix -ity (noun) + plural -ies"
-     },
-     {
-      "n": 3,
-      "r": "HELP",
-      "a": [
-       "helping"
-      ],
-      "x": "suffix -ing (noun)"
-     },
-     {
-      "n": 4,
-      "r": "PARTICIPATE",
-      "a": [
-       "Participation",
-       "Participating"
-      ],
-      "x": "suffix -ion (noun) or -ing form"
-     },
-     {
-      "n": 5,
-      "r": "VALUE",
-      "a": [
-       "valuable"
-      ],
-      "x": "suffix -able (adjective, drops -e)"
-     }
-    ]
-   },
-   {
-    "id": "p86-162",
-    "title": "Christy Brown",
-    "text": "The [[1]] Irish artist and writer Christy Brown was the subject of the 1989 film, My Left Foot. When he was young, Brown was diagnosed with cerebral palsy, which left him seriously [[2]]. Unable to walk or talk, the doctors believed that Brown should be committed to a hospital. They believed that his illness had left him [[3]] of leading a fulfilled life. His mother, however, disagreed and insisted that he stay at home. Brown’s left foot was the only part of his body that he could move, but he was a quick learner and he [[4]] learnt to use his left foot to write and draw. In the years to come, Christy Brown wrote plays, novels and poems as well as producing paintings. Among his [[5]] is the novel Down All the Days, which is said to be one of the most important Irish novels.",
-    "items": [
-     {
-      "n": 1,
-      "r": "CELEBRATE",
-      "a": [
-       "celebrated"
-      ],
-      "x": "suffix -d (participle adjective)"
-     },
-     {
-      "n": 2,
-      "r": "ABLE",
-      "a": [
-       "disabled"
-      ],
-      "x": "prefix dis- + suffix -d (participle adjective)"
-     },
-     {
-      "n": 3,
-      "r": "CAPABLE",
-      "a": [
-       "incapable"
-      ],
-      "x": "prefix in- (negative)"
-     },
-     {
-      "n": 4,
-      "r": "SUCCESS",
-      "a": [
-       "successfully"
-      ],
-      "x": "suffix -ful + -ly adverb"
-     },
-     {
-      "n": 5,
-      "r": "ACCOMPLISH",
-      "a": [
-       "accomplishments"
-      ],
-      "x": "suffix -ment + plural -s"
-     }
-    ]
-   },
-   {
-    "id": "p87-164",
-    "title": "Stephen Hawking",
-    "text": "Stephen Hawking is [[1]] thought to be one of the greatest scientists of our time. Hawking’s father had encouraged him to study medicine at university but Hawking wanted be a [[2]]. He got a place at Oxford University but he could only study physics there. He took up the offer and while at university, his teachers realised that he was extremely intelligent and that he had the [[3]] of becoming an important scientist. However, having been awarded a place at Cambridge University to study cosmology (the study of the universe), Hawking was diagnosed with motor neurone disease, which affected his speech and movement. Yet despite this [[4]], Hawking continued his scientific work and went on to make some great discoveries. Many people say his greatest [[5]] is his contribution to understanding the nature of the universe. Hawking, with his partner Roger Penrose, proved that the universe started with the Big Bang and will end with Black Holes.",
-    "items": [
-     {
-      "n": 1,
-      "r": "WIDE",
-      "a": [
-       "widely"
-      ],
-      "x": "suffix -ly adverb (drops -e)"
-     },
-     {
-      "n": 2,
-      "r": "MATHEMATICS",
-      "a": [
-       "mathematician"
-      ],
-      "x": "suffix -ematician (person noun)"
-     },
-     {
-      "n": 3,
-      "r": "CAPABLE",
-      "a": [
-       "capability"
-      ],
-      "x": "suffix -ility (noun)"
-     },
-     {
-      "n": 4,
-      "r": "ABLE",
-      "a": [
-       "disability"
-      ],
-      "x": "prefix dis- + suffix -ility (noun)"
-     },
-     {
-      "n": 5,
-      "r": "ACCOMPLISH",
-      "a": [
-       "accomplishment"
-      ],
-      "x": "suffix -ment (noun)"
-     }
-    ]
-   },
-   {
-    "id": "p88-167",
-    "title": "Genetic Fingerprinting",
-    "text": "DNA, which is found in all animal tissue, contains genetic [[1]] about the individual who produces it. The structure of DNA was discovered in 1953 by the [[2]] Watson and Crick. Their discovery led to the [[3]] of genetic fingerprinting, which is a very accurate way of identifying [[4]]. It works by comparing a sample from the scene of a crime with a sample from a suspect. As we all have our own unique genetic make-up, this method of [[5]] has proved very [[6]]. Genetic fingerprinting is particularly useful when there is some [[7]] in establishing the true facts of a case.",
-    "items": [
-     {
-      "n": 1,
-      "r": "INFORM",
-      "a": [
-       "information"
-      ],
-      "x": "suffix -ation (noun)"
-     },
-     {
-      "n": 2,
-      "r": "SCIENCE",
-      "a": [
-       "scientists"
-      ],
-      "x": "suffix -ist (person noun) + plural -s"
-     },
-     {
-      "n": 3,
-      "r": "DEVELOP",
-      "a": [
-       "development"
-      ],
-      "x": "suffix -ment (noun)"
-     },
-     {
-      "n": 4,
-      "r": "CRIME",
-      "a": [
-       "criminals"
-      ],
-      "x": "suffix -inal (noun) + plural -s"
-     },
-     {
-      "n": 5,
-      "r": "IDENTITY",
-      "a": [
-       "identification"
-      ],
-      "x": "suffix -ification (noun)"
-     },
-     {
-      "n": 6,
-      "r": "SUCCESS",
-      "a": [
-       "successful"
-      ],
-      "x": "suffix -ful (adjective)"
-     },
-     {
-      "n": 7,
-      "r": "DIFFICULT",
-      "a": [
-       "difficulty"
-      ],
-      "x": "suffix -y (noun)"
-     }
-    ]
-   },
-   {
-    "id": "p89-170",
-    "title": "Fiction or Reality?",
-    "text": "What is it that makes science fiction so [[1]]? It isn’t just the fact that it is highly [[2]], but in many ways it allows us to see into the future. In a world that is experiencing rapid [[3]] advances, it makes us wonder whether what it describes could ever become [[4]]. Some things, which once seemed [[5]], already have. Credit cards and video chatting, for example, both made their first [[6]] in science fiction long before becoming part of our real lives. Artificial intelligence and trips into space also [[7]] in this kind of literature.",
-    "items": [
-     {
-      "n": 1,
-      "r": "EXCITE",
-      "a": [
-       "exciting"
-      ],
-      "x": "suffix -ing (adjective)"
-     },
-     {
-      "n": 2,
-      "r": "IMAGINE",
-      "a": [
-       "imaginative"
-      ],
-      "x": "suffix -ative (adjective)"
-     },
-     {
-      "n": 3,
-      "r": "TECHNOLOGY",
-      "a": [
-       "technological"
-      ],
-      "x": "suffix -ical (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "REAL",
-      "a": [
-       "reality"
-      ],
-      "x": "suffix -ity (noun)"
-     },
-     {
-      "n": 5,
-      "r": "BELIEVE",
-      "a": [
-       "unbelievable"
-      ],
-      "x": "prefix un- (negative) + suffix -able"
-     },
-     {
-      "n": 6,
-      "r": "APPEAR",
-      "a": [
-       "appearance"
-      ],
-      "x": "suffix -ance (noun)"
-     },
-     {
-      "n": 7,
-      "r": "ORIGIN",
-      "a": [
-       "originated"
-      ],
-      "x": "suffix -ate + -d (verb, past)"
-     }
-    ]
-   },
-   {
-    "id": "p90-173",
-    "title": "My First Job",
-    "text": "After my first year at university, I needed to find a job for the summer. I wasn’t looking for a [[1]] career, but a way to earn some money fast. I sent off several [[2]] and had three interviews. Finally, I was offered the job of Catering Assistant at a local fast food restaurant! On my first day, I arrived at work bright and early. My first task was to mop the floor, which I did to the [[3]] of my boss, Mike. In fact, Mike was so impressed that he decided to try me out at the counter. The idea of serving customers seemed quite [[4]] to me, but Mike seemed to have confidence in my [[5]]. Everything was going well until there was a [[6]] from somebody about their coffee. Apparently, what I had thought was sugar was actually salt! Mike was very understanding about my mistake, but I was so [[7]] that I almost didn’t go back to work the next day.",
-    "items": [
-     {
-      "n": 1,
-      "r": "FULFIL",
-      "a": [
-       "fulfilling"
-      ],
-      "x": "suffix -ing (adjective)"
-     },
-     {
-      "n": 2,
-      "r": "APPLY",
-      "a": [
-       "applications"
-      ],
-      "x": "suffix -ation (noun) + plural -s"
-     },
-     {
-      "n": 3,
-      "r": "SATISFY",
-      "a": [
-       "satisfaction"
-      ],
-      "x": "suffix -action (noun)"
-     },
-     {
-      "n": 4,
-      "r": "DAUNT",
-      "a": [
-       "daunting"
-      ],
-      "x": "suffix -ing (adjective)"
-     },
-     {
-      "n": 5,
-      "r": "ABLE",
-      "a": [
-       "abilities"
-      ],
-      "x": "suffix -ity (noun) + plural -ies"
-     },
-     {
-      "n": 6,
-      "r": "COMPLAIN",
-      "a": [
-       "complaint"
-      ],
-      "x": "suffix -t (noun)"
-     },
-     {
-      "n": 7,
-      "r": "EMBARRASS",
-      "a": [
-       "embarrassed"
-      ],
-      "x": "suffix -ed (participle adjective)"
-     }
-    ]
-   },
-   {
-    "id": "p92-176",
-    "title": "Parkour",
-    "text": "The word ‘parkour’ comes from the French word ‘parcours’ which means ‘route’ or ‘course’, but it is also referred to as ‘free running’. This is maybe a better [[1]] of the sport, which involves moving [[2]] across an area, using only the body’s natural [[3]]. Parkour is in many ways a unique sport. You can do it almost anywhere and you need no special [[4]]. The idea is that you start running and then deal with any obstacles you come across by climbing up them or jumping over them. The sport attracts mainly young people who enjoy pushing themselves to their limits [[5]] as they try to find the most [[6]] way of getting from one point to another. Many people who practise parkour see it as an art of personal self-development and believe it shouldn’t become a [[7]] sport, but as it becomes more popular, it seems unlikely that this will continue to be the case.",
-    "items": [
-     {
-      "n": 1,
-      "r": "DESCRIBE",
-      "a": [
-       "description"
-      ],
-      "x": "suffix -ion (noun, describe -> description)"
-     },
-     {
-      "n": 2,
-      "r": "FREE",
-      "a": [
-       "freely"
-      ],
-      "x": "suffix -ly adverb"
-     },
-     {
-      "n": 3,
-      "r": "ABLE",
-      "a": [
-       "abilities"
-      ],
-      "x": "suffix -ity (noun) + plural -ies"
-     },
-     {
-      "n": 4,
-      "r": "EQUIP",
-      "a": [
-       "equipment"
-      ],
-      "x": "suffix -ment (noun)"
-     },
-     {
-      "n": 5,
-      "r": "PHYSICAL",
-      "a": [
-       "physically"
-      ],
-      "x": "suffix -ly adverb (-ical -> -ically)"
-     },
-     {
-      "n": 6,
-      "r": "SKILL",
-      "a": [
-       "skilful"
-      ],
-      "x": "suffix -ful (adjective, drops one l)"
-     },
-     {
-      "n": 7,
-      "r": "COMPETE",
-      "a": [
-       "competitive"
-      ],
-      "x": "suffix -itive (adjective)"
-     }
-    ]
-   },
-   {
-    "id": "p93-179",
-    "title": "A Day Trip to Space",
-    "text": "A ground-breaking new [[1]] will soon be giving people the chance to go to space and back in just a few hours! The ‘World View’ company, which aims to make trips into space [[2]] to everyone, has developed a space craft pulled by a huge balloon that can take passengers to heights of 30 kilometres above the Earth! The space craft has no engine – it simply floats in the air – making the trip a very [[3]] experience. Since it creates no air [[4]], it is also an [[5]] green way to travel. The pilot, who is a former NASA astronaut, says the view of the Earth from space is so [[6]] that it will change the way people see the world. He is hoping that it may even [[7]] relationships between people from different countries by showing them that we all live on the same planet and are closer to each other than we think.",
-    "items": [
-     {
-      "n": 1,
-      "r": "INVENT",
-      "a": [
-       "invention"
-      ],
-      "x": "suffix -ion (noun)"
-     },
-     {
-      "n": 2,
-      "r": "ACCESS",
-      "a": [
-       "accessible"
-      ],
-      "x": "suffix -ible (adjective)"
-     },
-     {
-      "n": 3,
-      "r": "RELAX",
-      "a": [
-       "relaxing"
-      ],
-      "x": "suffix -ing (adjective)"
-     },
-     {
-      "n": 4,
-      "r": "POLLUTE",
-      "a": [
-       "pollution"
-      ],
-      "x": "suffix -ion (noun)"
+      "x": "suffix -ion (noun) + plural -s",
+      "w": "After the adjective 'clear' we need a plural noun (the verb 'explain' is plural). INSTRUCT + <b>-ion</b> + -s makes <b>instructions</b>."
      },
      {
       "n": 5,
@@ -5229,23 +4707,1855 @@ window.RUOE_B2 = {
       "a": [
        "extremely"
       ],
-      "x": "suffix -ly adverb (drops -e)"
+      "x": "suffix -ly (adverb)",
+      "w": "Before the adjective 'dangerous' we need an adverb. EXTREME + <b>-ly</b> makes <b>extremely</b>. The final -e is kept."
      },
      {
       "n": 6,
-      "r": "IMPRESS",
+      "r": "CREATE",
       "a": [
-       "impressive"
+       "creative"
       ],
-      "x": "suffix -ive (adjective)"
+      "x": "suffix -ive (adjective, drops -e)",
+      "w": "After 'be' we need an adjective. CREATE drops -e and adds <b>-ive</b>: <b>creative</b>. Don't write 'creating'."
      },
      {
       "n": 7,
+      "r": "SIMPLE",
+      "a": [
+       "simply"
+      ],
+      "x": "suffix -ly adverb (drops -e)",
+      "w": "Before 'mixing' we need an adverb. SIMPLE ends in -le, so -le changes to <b>-ly</b>: <b>simply</b>. Don't write 'simplely'."
+     },
+     {
+      "n": 8,
+      "r": "ACCEPT",
+      "a": [
+       "unacceptable"
+      ],
+      "x": "prefix un- (negative) + suffix -able (adjective)",
+      "w": "After 'would find it' we need a negative adjective. ACCEPT + <b>un-</b> + -able makes <b>unacceptable</b>. The prefix is un-, not in-."
+     }
+    ]
+   },
+   {
+    "id": "p73-130",
+    "title": "Dealing with crime",
+    "text": "Many people believe that the best way to deal with criminal behaviour is by providing a suitable [[1]] such as being sent to prison. This may make the victims feel better but some people argue that [[2]] fails to prevent criminal activity. However, it is possible that a lot of crime is [[3]] if it is dealt with differently. This may be [[4]] true in relation to youth crime. [[5]] are less likely to stop and think about their actions than adults, so they are more likely to make mistakes. They are also often [[6]] and easily influenced by their friends. However, this [[7]] to make rational decisions is often [[8]] by adults. They just see a child who needs to be punished in order to stop their criminal tendencies. Research suggests that most young offenders stop breaking the law as they grow older. Therefore, it is important children are taught to think about the consequences of their actions from an early age.",
+    "items": [
+     {
+      "n": 1,
+      "r": "PUNISH",
+      "a": [
+       "punishment"
+      ],
+      "x": "suffix -ment (noun)",
+      "w": "After 'a suitable' we need a noun. PUNISH + <b>-ment</b> makes <b>punishment</b>. Don't write 'punishion'."
+     },
+     {
+      "n": 2,
+      "r": "PRISON",
+      "a": [
+       "imprisonment"
+      ],
+      "x": "prefix im- + suffix -ment (noun)",
+      "w": "As the subject of 'fails' we need a noun. PRISON becomes the verb imprison, then <b>-ment</b>: <b>imprisonment</b>. Don't write 'prisonment'."
+     },
+     {
+      "n": 3,
+      "r": "PREVENT",
+      "a": [
+       "preventable"
+      ],
+      "x": "suffix -able (adjective)",
+      "w": "After 'crime is' we need an adjective meaning 'can be stopped'. PREVENT + <b>-able</b> makes <b>preventable</b>."
+     },
+     {
+      "n": 4,
+      "r": "PARTICULAR",
+      "a": [
+       "particularly"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the adjective 'true' we need an adverb. PARTICULAR + <b>-ly</b> makes <b>particularly</b>. The root ends in -ar, so just add -ly."
+     },
+     {
+      "n": 5,
+      "r": "YOUNG",
+      "a": [
+       "Youngsters"
+      ],
+      "x": "suffix -ster (person noun) + plural -s",
+      "w": "At the start of the sentence we need a plural person noun ('are less likely'). YOUNG + <b>-ster</b> + -s makes <b>youngsters</b>. Use a capital letter."
+     },
+     {
+      "n": 6,
+      "r": "EXPERIENCE",
+      "a": [
+       "inexperienced"
+      ],
+      "x": "prefix in- (negative) + suffix -d (adjective)",
+      "w": "After 'often' we need an adjective with a negative meaning. EXPERIENCE + <b>in-</b> + -d makes <b>inexperienced</b>. Don't write 'unexperienced'."
+     },
+     {
+      "n": 7,
+      "r": "ABLE",
+      "a": [
+       "inability"
+      ],
+      "x": "prefix in- (negative) + internal change (able -> ability)",
+      "w": "After 'this' we need a noun. ABLE becomes <b>inability</b>: the negative prefix in- and -le changes to -ility. Don't write 'unability'."
+     },
+     {
+      "n": 8,
+      "r": "UNDERSTAND",
+      "a": [
+       "misunderstood"
+      ],
+      "x": "prefix mis- (negative) + irregular past participle",
+      "w": "After 'is often' we need a past participle. UNDERSTAND + <b>mis-</b> (wrongly) gives <b>misunderstood</b>. The past form is irregular."
+     }
+    ]
+   },
+   {
+    "id": "p74-132",
+    "title": "Dealing with graffiti",
+    "text": "A town council in Australia has taken a novel approach to the problem of graffiti. For years, the town had been a magnet for graffiti artists but for many residents, the street art was little more than [[1]]. Graffiti was appearing everywhere and not all of it was ‘good art’. The shopkeepers who were constantly cleaning up their shop fronts were [[2]] frustrated with the situation. After years of [[3]] trying to control the [[4]] problem, the council decided to take a different approach. They realised that working with the graffiti artists might be the best form of [[5]] of unwanted artwork. Rather than trying to stop graffiti, they established a set of rules for where, when and how artists could create [[6]] artwork. They decided on these rules with local [[7]] groups and there have been some pleasant results. There is now far less unwanted graffiti and parts of the town have been brightened up with [[8]] pieces of art.",
+    "items": [
+     {
+      "n": 1,
+      "r": "VANDAL",
+      "a": [
+       "vandalism"
+      ],
+      "x": "suffix -ism (noun)",
+      "w": "After 'little more than' we need a noun. VANDAL + <b>-ism</b> makes <b>vandalism</b>, meaning deliberate damage to property."
+     },
+     {
+      "n": 2,
+      "r": "UNDERSTAND",
+      "a": [
+       "understandably"
+      ],
+      "x": "suffix -able + -ly adverb (drops -e)",
+      "w": "Before 'frustrated' we need an adverb. UNDERSTAND + <b>-able</b> becomes understandable, then -ly: <b>understandably</b>. The ending -able becomes -ably."
+     },
+     {
+      "n": 3,
+      "r": "SUCCESS",
+      "a": [
+       "unsuccessfully"
+      ],
+      "x": "prefix un- (negative) + suffix -ful + -ly (adverb)",
+      "w": "After 'years of' we need an adverb with a negative meaning. SUCCESS + <b>un-</b> + -ful + -ly makes <b>unsuccessfully</b>. Note -ful + -ly = -fully."
+     },
+     {
+      "n": 4,
+      "r": "GROW",
+      "a": [
+       "growing"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "Before the noun 'problem' we need an adjective ('getting bigger'). GROW + <b>-ing</b> makes <b>growing</b>. Don't write 'grown'."
+     },
+     {
+      "n": 5,
+      "r": "PREVENT",
+      "a": [
+       "prevention"
+      ],
+      "x": "suffix -ion (noun)",
+      "w": "After 'form of' we need a noun. PREVENT + <b>-ion</b> makes <b>prevention</b>. Don't write 'preventation'."
+     },
+     {
+      "n": 6,
+      "r": "ACCEPT",
+      "a": [
+       "acceptable"
+      ],
+      "x": "suffix -able (adjective)",
+      "w": "Before 'artwork' we need an adjective ('good enough to be allowed'). ACCEPT + <b>-able</b> makes <b>acceptable</b>. Don't write 'accepted'."
+     },
+     {
+      "n": 7,
+      "r": "YOUNG",
+      "a": [
+       "youth"
+      ],
+      "x": "noun change (young -> youth)",
+      "w": "Before 'groups' we need a noun used like an adjective. YOUNG changes to <b>youth</b>: 'local youth groups'. Don't write 'youngs'."
+     },
+     {
+      "n": 8,
+      "r": "BEAUTY",
+      "a": [
+       "beautiful"
+      ],
+      "x": "suffix -ful (adjective, y -> i)",
+      "w": "Before the noun 'pieces' we need an adjective. BEAUTY changes y to i and adds <b>-ful</b>: <b>beautiful</b>. Don't write 'beautyful'."
+     }
+    ]
+   },
+   {
+    "id": "p75-134",
+    "title": "Sumo Wrestling",
+    "text": "Sumo wrestling is a popular sport in Japan, which dates back hundreds of years. It has gone through various stages of [[1]] to become the sport that it is today. Originally, it was more similar to Western forms of wrestling where [[2]] were expected to throw each other to the ground. Nowadays, however, the [[3]] is for the wrestlers to push their [[4]] out of the ring. In order to do this, they depend on their size and [[5]]. There are no [[6]] on size so there is every incentive for wrestlers to be as big as possible. Wrestlers follow a strict daily routine of exercise and eating, and many of them live together in special stables. The most successful wrestlers become famous across the country. Despite the fact that each round may only last a few minutes, sumo wrestling is [[7]] popular in Japan and there are big prizes for the sumo stars. Some wrestlers can expect to receive [[8]] totalling more than £60,000.",
+    "items": [
+     {
+      "n": 1,
+      "r": "DEVELOP",
+      "a": [
+       "development"
+      ],
+      "x": "suffix -ment (noun)",
+      "w": "After 'stages of' we need a noun. DEVELOP + <b>-ment</b> makes <b>development</b>. Don't write 'developement'."
+     },
+     {
+      "n": 2,
+      "r": "COMPETE",
+      "a": [
+       "competitors"
+      ],
+      "x": "suffix -itor (person noun) + plural -s",
+      "w": "After 'where' we need a plural person noun, the subject of 'were expected'. COMPETE becomes <b>competitors</b>: -ete changes to -etitor, then add -s."
+     },
+     {
+      "n": 3,
+      "r": "OBJECT",
+      "a": [
+       "objective"
+      ],
+      "x": "suffix -ive (noun)",
+      "w": "After 'the' we need a noun meaning 'aim'. OBJECT + <b>-ive</b> makes <b>objective</b>. Don't confuse it with 'object' (a thing)."
+     },
+     {
+      "n": 4,
+      "r": "OPPOSE",
+      "a": [
+       "opponent",
+       "opponents"
+      ],
+      "x": "suffix -ent (noun, from verb), singular or plural",
+      "w": "After 'push their' we need a noun for the person you fight. OPPOSE becomes <b>opponent</b>: -se changes to -nent. The plural 'opponents' is also correct."
+     },
+     {
+      "n": 5,
+      "r": "STRONG",
+      "a": [
+       "strength"
+      ],
+      "x": "suffix -th (noun, vowel change)",
+      "w": "After 'size and' we need a noun. STRONG changes to <b>strength</b>. Don't write 'strongness'."
+     },
+     {
+      "n": 6,
+      "r": "RESTRICT",
+      "a": [
+       "restrictions"
+      ],
+      "x": "suffix -ion (noun) + plural -s",
+      "w": "After 'no' we need a plural noun. RESTRICT + <b>-ion</b> + -s makes <b>restrictions</b>."
+     },
+     {
+      "n": 7,
+      "r": "EXTREME",
+      "a": [
+       "extremely"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the adjective 'popular' we need an adverb. EXTREME + <b>-ly</b> makes <b>extremely</b>. Keep the final -e."
+     },
+     {
+      "n": 8,
+      "r": "WIN",
+      "a": [
+       "winnings"
+      ],
+      "x": "suffix -ing (noun) + plural -s (doubled n)",
+      "w": "After 'receive' we need a plural noun for money that is won. WIN + <b>-ing</b> + -s makes <b>winnings</b>. The n is doubled."
+     }
+    ]
+   },
+   {
+    "id": "p76-136",
+    "title": "Swimming challenge",
+    "text": "There can be no [[1]] that crossing the English Channel is one of the toughest swims in the world. Matthew Webb was the first [[2]] to undertake the challenge in 1875. Although his first attempt was a [[3]], he was back in the water within weeks. His second attempt was [[4]], with Webb swimming nearly 40 miles across the channel from England to France. That’s [[5]] equivalent to the [[6]] of 2,575 swimming pools. Webb’s crossing took 21 hours and since then there have been [[7]] other attempts to swim across the Channel. The record crossing is somewhat faster than Webb’s, with Trent Grimsey recording the fastest crossing in 2012. Grimsey, who had swum in long distance [[8]] around the world, managed to make the crossing in just under seven hours. Even today, many swimmers dream of repeating this achievement, but strong winds and cold water make it extremely difficult. Anyone who wants to try must train for many months before the attempt.",
+    "items": [
+     {
+      "n": 1,
+      "r": "ARGUE",
+      "a": [
+       "argument"
+      ],
+      "x": "suffix -ment (noun, drops -e)",
+      "w": "After 'no' we need a noun. ARGUE drops the -e and adds <b>-ment</b>: <b>argument</b>. Don't write 'arguement'."
+     },
+     {
+      "n": 2,
+      "r": "SWIM",
+      "a": [
+       "swimmer"
+      ],
+      "x": "suffix -er (person noun, doubled m)",
+      "w": "After 'the first' we need a person noun. SWIM + <b>-er</b> makes <b>swimmer</b>. The m is doubled."
+     },
+     {
+      "n": 3,
+      "r": "FAIL",
+      "a": [
+       "failure"
+      ],
+      "x": "suffix -ure (noun)",
+      "w": "After 'a' we need a noun. FAIL + <b>-ure</b> makes <b>failure</b>. Don't write 'failer'."
+     },
+     {
+      "n": 4,
+      "r": "SUCCESS",
+      "a": [
+       "successful"
+      ],
+      "x": "suffix -ful (adjective)",
+      "w": "After 'was' we need an adjective. SUCCESS + <b>-ful</b> makes <b>successful</b>. Don't write 'successfull'."
+     },
+     {
+      "n": 5,
+      "r": "ROUGH",
+      "a": [
+       "roughly"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the adjective 'equivalent' we need an adverb. ROUGH + <b>-ly</b> makes <b>roughly</b>, meaning 'about'."
+     },
+     {
+      "n": 6,
+      "r": "LONG",
+      "a": [
+       "length"
+      ],
+      "x": "suffix -th (noun, vowel change)",
+      "w": "After 'the' we need a noun. LONG changes to <b>length</b>: the vowel changes and -th is added. Don't write 'longth'."
+     },
+     {
+      "n": 7,
+      "r": "NUMBER",
+      "a": [
+       "numerous"
+      ],
+      "x": "suffix -ous (adjective, internal change)",
+      "w": "Before 'other attempts' we need an adjective meaning 'many'. NUMBER becomes <b>numerous</b>. Don't write 'numberous'."
+     },
+     {
+      "n": 8,
+      "r": "COMPETE",
+      "a": [
+       "competitions"
+      ],
+      "x": "suffix -ition (noun) + plural -s",
+      "w": "After 'long distance' we need a plural noun. COMPETE becomes <b>competitions</b>: -ete changes to -etition, then add -s."
+     }
+    ]
+   },
+   {
+    "id": "p76-138",
+    "title": "Some solutions to help the young unemployed",
+    "text": "In recent years, we have seen record levels of youth [[1]] around the world. In some countries, this has resulted in some people being forced into [[2]] and in many countries, it has caused great anxiety. Although many people blame the [[3]] crisis, there are other important factors such as a [[4]] of skills in certain sectors. Another problem is a lack of money or infrastructure for creating new jobs. Fortunately, some organisations are working hard to find [[5]] solutions to try to overcome these problems. One such [[6]] is to improve access to the internet for people around the world. This would make a huge [[7]] to people’s lives because it would improve infrastructure and training opportunities. Another important idea is to ensure that money is [[8]] for new start-ups. This would mean that young people could start their own businesses and even help others out of unemployment. Governments and businesses must work together if any real progress is to be made.",
+    "items": [
+     {
+      "n": 1,
+      "r": "EMPLOY",
+      "a": [
+       "unemployment"
+      ],
+      "x": "prefix un- (negative) + suffix -ment (noun)",
+      "w": "After 'youth' we need a noun. EMPLOY + <b>un-</b> + -ment makes <b>unemployment</b>. The prefix gives the negative meaning."
+     },
+     {
+      "n": 2,
+      "r": "POOR",
+      "a": [
+       "poverty"
+      ],
+      "x": "noun change (poor -> poverty)",
+      "w": "After 'forced into' we need a noun. POOR changes to <b>poverty</b>. Don't write 'poorness'."
+     },
+     {
+      "n": 3,
+      "r": "FINANCE",
+      "a": [
+       "financial"
+      ],
+      "x": "suffix -ial (adjective)",
+      "w": "Before the noun 'crisis' we need an adjective. FINANCE changes -ce to <b>-cial</b>: <b>financial</b>."
+     },
+     {
+      "n": 4,
+      "r": "SHORT",
+      "a": [
+       "shortage"
+      ],
+      "x": "suffix -age (noun)",
+      "w": "After 'a' we need a noun meaning 'not enough'. SHORT + <b>-age</b> makes <b>shortage</b>. Don't write 'shortness'."
+     },
+     {
+      "n": 5,
+      "r": "SATISFY",
+      "a": [
+       "satisfactory"
+      ],
+      "x": "suffix -factory (adjective)",
+      "w": "Before 'solutions' we need an adjective ('good enough'). SATISFY becomes <b>satisfactory</b> with the ending -factory. Don't write 'satisfied'."
+     },
+     {
+      "n": 6,
+      "r": "PROPOSE",
+      "a": [
+       "proposal"
+      ],
+      "x": "suffix -al (noun)",
+      "w": "After 'One such' we need a noun. PROPOSE drops -e and adds <b>-al</b>: <b>proposal</b>. Don't write 'proposition'."
+     },
+     {
+      "n": 7,
+      "r": "DIFFER",
+      "a": [
+       "difference"
+      ],
+      "x": "suffix -ence (noun)",
+      "w": "After 'a huge' we need a noun. DIFFER + <b>-ence</b> makes <b>difference</b>. The ending is -ence, not -ance."
+     },
+     {
+      "n": 8,
+      "r": "AVAIL",
+      "a": [
+       "available"
+      ],
+      "x": "suffix -able (adjective)",
+      "w": "After 'is' we need an adjective ('can be used'). AVAIL + <b>-able</b> makes <b>available</b>. Don't write 'availible'."
+     }
+    ]
+   },
+   {
+    "id": "p77-140",
+    "title": "Firefighting",
+    "text": "If you are looking for a job which is both [[1]] and respected, you might consider being a firefighter. Firefighters may not enter the profession for [[2]] reasons but it is one of the most [[3]] jobs because firefighters both protect and save people’s lives. Firefighters also visit local schools to teach children how to stay safe at home. In order to be a firefighter, you will need to demonstrate a [[4]] of qualities such as stamina, self-discipline and quick reactions, as well as having good [[5]] skills. If you are interested in getting some experience, you could try becoming a firefighter on a [[6]] basis first. Most volunteers receive full training but they are not ‘on call’ full-time. They study or work in other jobs and are only called out to emergencies. Many of them say they are proud to help their local communities. Most small towns and [[7]] have their own fire service who you should speak to if you would like more [[8]].",
+    "items": [
+     {
+      "n": 1,
+      "r": "SATISFY",
+      "a": [
+       "satisfying"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "After 'both' we need an adjective. SATISFY changes y to <b>-ying</b>: <b>satisfying</b>. It describes the job, so not 'satisfied'."
+     },
+     {
+      "n": 2,
+      "r": "FINANCE",
+      "a": [
+       "financial"
+      ],
+      "x": "suffix -ial (adjective)",
+      "w": "Before 'reasons' we need an adjective. FINANCE changes -ce to <b>-cial</b>: <b>financial</b>."
+     },
+     {
+      "n": 3,
+      "r": "REWARD",
+      "a": [
+       "rewarding"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "After 'the most' we need an adjective. REWARD + <b>-ing</b> makes <b>rewarding</b>, meaning 'giving you satisfaction'."
+     },
+     {
+      "n": 4,
+      "r": "VARY",
+      "a": [
+       "variety"
+      ],
+      "x": "suffix -iety (noun)",
+      "w": "After 'a' we need a noun. VARY changes to <b>variety</b>: -y becomes -iety. 'A variety of' is a fixed phrase."
+     },
+     {
+      "n": 5,
+      "r": "COMMUNICATE",
+      "a": [
+       "communication"
+      ],
+      "x": "suffix -ion (noun, drops -e)",
+      "w": "Before 'skills' we need a noun used like an adjective. COMMUNICATE drops -e and adds <b>-ion</b>: <b>communication</b>."
+     },
+     {
+      "n": 6,
+      "r": "VOLUNTEER",
+      "a": [
+       "voluntary"
+      ],
+      "x": "suffix -ary (adjective)",
+      "w": "Before 'basis' we need an adjective ('done by choice'). VOLUNTEER becomes <b>voluntary</b>. Don't write 'volunteering'."
+     },
+     {
+      "n": 7,
+      "r": "NEIGHBOUR",
+      "a": [
+       "neighbourhoods"
+      ],
+      "x": "suffix -hood (noun) + plural -s",
+      "w": "After 'towns and' we need a plural noun. NEIGHBOUR + <b>-hood</b> + -s makes <b>neighbourhoods</b>. Keep the British spelling -our."
+     },
+     {
+      "n": 8,
+      "r": "INFORM",
+      "a": [
+       "information"
+      ],
+      "x": "suffix -ation (noun)",
+      "w": "After 'more' we need an uncountable noun. INFORM becomes <b>information</b> with <b>-ation</b>. Don't add -s."
+     }
+    ]
+   },
+   {
+    "id": "p78-142",
+    "title": "Fractal Art",
+    "text": "Fractal art is considered a [[1]] new art form which first appeared in the 1980s. Fractals are created from complicated mathematical patterns which repeat themselves [[2]], getting smaller every time they are repeated. Because of the complexity of the calculations, some [[3]] such as a computer and specialist software is considered necessary for modern fractal art. Today, thousands of artists around the world share their fractal images online. However, something similar has [[4]] been part of African culture for hundreds of years. This can be seen in the patterns on the [[5]] dresses of Ethiopian women. Unlike modern fractal art, these dresses were not made with computers. Instead, someone would [[6]] recreate these complex patterns by hand. Even more [[7]] though, is that fractals can also be seen throughout nature, such as in the repeated rings of a tree or in the lines on a leaf. Perhaps this connection between nature, science and art explains the [[8]] of fractal art.",
+    "items": [
+     {
+      "n": 1,
+      "r": "RELATE",
+      "a": [
+       "relatively"
+      ],
+      "x": "suffix -ive + -ly adverb (relate -> relatively)",
+      "w": "Before the adjective 'new' we need an adverb. RELATE becomes relative, then <b>-ly</b>: <b>relatively</b>. Don't write 'relativly'."
+     },
+     {
+      "n": 2,
+      "r": "DEFINITE",
+      "a": [
+       "indefinitely"
+      ],
+      "x": "prefix in- (negative) + suffix -ly (adverb)",
+      "w": "After 'themselves' we need an adverb ('without an end'). DEFINITE takes <b>in-</b> (negative) and -ly: <b>indefinitely</b>. The -e is kept."
+     },
+     {
+      "n": 3,
+      "r": "EQUIP",
+      "a": [
+       "equipment"
+      ],
+      "x": "suffix -ment (noun)",
+      "w": "After 'some' we need an uncountable noun. EQUIP + <b>-ment</b> makes <b>equipment</b>. It has no plural."
+     },
+     {
+      "n": 4,
+      "r": "DOUBT",
+      "a": [
+       "undoubtedly"
+      ],
+      "x": "prefix un- (negative) + suffix -ed + -ly adverb",
+      "w": "Between 'has' and 'been' we need an adverb. DOUBT + <b>un-</b> + -ed + -ly makes <b>undoubtedly</b>, meaning 'without doubt'."
+     },
+     {
+      "n": 5,
+      "r": "TRADITION",
+      "a": [
+       "traditional"
+      ],
+      "x": "suffix -al (adjective)",
+      "w": "Before 'dresses' we need an adjective. TRADITION + <b>-al</b> makes <b>traditional</b>. Don't write 'traditionel'."
+     },
+     {
+      "n": 6,
+      "r": "PATIENCE",
+      "a": [
+       "patiently"
+      ],
+      "x": "suffix -ly adverb (patience -> patiently)",
+      "w": "Before the verb 'recreate' we need an adverb. PATIENCE becomes the adjective patient, then <b>-ly</b>: <b>patiently</b>."
+     },
+     {
+      "n": 7,
+      "r": "INTEREST",
+      "a": [
+       "interesting"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "After 'Even more' we need an adjective. INTEREST + <b>-ing</b> makes <b>interesting</b>. It describes the fact, so not 'interested'."
+     },
+     {
+      "n": 8,
+      "r": "ATTRACT",
+      "a": [
+       "attraction"
+      ],
+      "x": "suffix -ion (noun)",
+      "w": "After 'the' we need a noun. ATTRACT + <b>-ion</b> makes <b>attraction</b>, meaning why people like fractal art."
+     }
+    ]
+   },
+   {
+    "id": "p79-144",
+    "title": "Jewellery making",
+    "text": "Jewellery making is the perfect hobby for anyone who wants to switch off from their hectic day-to-day life. More and more of us are looking for [[1]] activities to do in our free time and jewellery making is a good option. Firstly, it’s a very [[2]] hobby. You don’t need any expensive [[3]] or specialist skills. You can find the things you need very [[4]] in the high street or on the internet. Basic materials such as beads, wire and glue are also fairly cheap, so you can start with a small budget. Secondly, it’s an incredibly relaxing hobby. While you’re [[5]] working with those little stones and minerals, it’s [[6]] not to forget the stresses and strains of work and school. Many beginners are surprised by how quickly they can finish a simple piece. Lastly, you’ll be able to make some [[7]] presents for your family and friends. With all of these advantages, it’s easy to see the [[8]] of jewellery making.",
+    "items": [
+     {
+      "n": 1,
+      "r": "CREATE",
+      "a": [
+       "creative"
+      ],
+      "x": "suffix -ive (adjective, drops -e)",
+      "w": "After 'for' we need an adjective. CREATE drops -e and adds <b>-ive</b>: <b>creative</b>. Don't write 'creating'."
+     },
+     {
+      "n": 2,
+      "r": "ACCESS",
+      "a": [
+       "accessible"
+      ],
+      "x": "suffix -ible (adjective)",
+      "w": "After 'very' we need an adjective ('easy to get'). ACCESS + <b>-ible</b> makes <b>accessible</b>. The ending is -ible, not -able."
+     },
+     {
+      "n": 3,
+      "r": "EQUIP",
+      "a": [
+       "equipment"
+      ],
+      "x": "suffix -ment (noun)",
+      "w": "After 'expensive' we need an uncountable noun. EQUIP + <b>-ment</b> makes <b>equipment</b>."
+     },
+     {
+      "n": 4,
+      "r": "EASY",
+      "a": [
+       "easily"
+      ],
+      "x": "suffix -ily adverb (y -> i)",
+      "w": "After 'very' we need an adverb. EASY changes y to i and adds <b>-ly</b>: <b>easily</b>. Don't write 'easyly'."
+     },
+     {
+      "n": 5,
+      "r": "PATIENT",
+      "a": [
+       "patiently"
+      ],
+      "x": "suffix -ly adverb",
+      "w": "Before the verb 'working' we need an adverb. PATIENT + <b>-ly</b> makes <b>patiently</b>."
+     },
+     {
+      "n": 6,
+      "r": "POSSIBLE",
+      "a": [
+       "impossible"
+      ],
+      "x": "prefix im- (negative) + suffix -ible",
+      "w": "After 'it's' we need an adjective with a negative meaning. POSSIBLE takes <b>im-</b> because the root starts with p: <b>impossible</b>."
+     },
+     {
+      "n": 7,
+      "r": "LOVE",
+      "a": [
+       "lovely"
+      ],
+      "x": "suffix -ly (adjective)",
+      "w": "Before 'presents' we need an adjective. LOVE + <b>-ly</b> makes <b>lovely</b>. Not every -ly word is an adverb."
+     },
+     {
+      "n": 8,
+      "r": "ATTRACT",
+      "a": [
+       "attraction",
+       "attractions"
+      ],
+      "x": "suffix -ion (noun), singular or plural",
+      "w": "After 'the' we need a noun. ATTRACT + <b>-ion</b> makes <b>attraction</b>, meaning what makes people like something."
+     }
+    ]
+   },
+   {
+    "id": "p80-146",
+    "title": "Microbeads",
+    "text": "Not so long ago, companies developed a new [[1]] process where they would add microbeads to washing powder, toothpaste and other beauty products. These microbeads are tiny round pieces of plastic that are meant to make the product more [[2]]. [[3]], natural alternatives like fruit stones or minerals would have been used but many companies decided to substitute them for [[4]] microbeads. [[5]], however, it has been found that microbeads are not as harmless and [[6]] as they might seem. The problem is that after they have been washed down the sink, these toxic particles end up in the water supply. [[7]], once they are in our rivers and oceans, they are consumed by birds and fish and the microbeads enter the food chain. However, in an [[8]] move, several multinational companies have announced that they will stop using microbeads. They have accepted that microbeads can be harmful to the environment and have promised an end to them.",
+    "items": [
+     {
+      "n": 1,
+      "r": "INDUSTRY",
+      "a": [
+       "industrial"
+      ],
+      "x": "suffix -ial (adjective)",
+      "w": "Before the noun 'process' we need an adjective. INDUSTRY changes y to <b>-ial</b>: <b>industrial</b>."
+     },
+     {
+      "n": 2,
+      "r": "EFFECT",
+      "a": [
+       "effective"
+      ],
+      "x": "suffix -ive (adjective)",
+      "w": "After 'more' we need an adjective. EFFECT + <b>-ive</b> makes <b>effective</b>. Don't write 'effected'."
+     },
+     {
+      "n": 3,
+      "r": "TRADITION",
+      "a": [
+       "Traditionally"
+      ],
+      "x": "suffix -al + -ly adverb",
+      "w": "At the start of the sentence we need an adverb. TRADITION + <b>-al</b> + -ly makes <b>traditionally</b>. Use a capital letter."
+     },
+     {
+      "n": 4,
+      "r": "ART",
+      "a": [
+       "artificial"
+      ],
+      "x": "suffix -ificial (adjective)",
+      "w": "Before 'microbeads' we need an adjective ('not natural'). ART becomes <b>artificial</b> with the ending -ificial."
+     },
+     {
+      "n": 5,
+      "r": "RECENT",
+      "a": [
+       "Recently"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "The gap starts a sentence and is followed by a comma, so we need an adverb of time. RECENT + <b>-ly</b> makes <b>recently</b>, meaning not long ago. It contrasts with the past habits described before."
+     },
+     {
+      "n": 6,
+      "r": "SIGNIFY",
+      "a": [
+       "insignificant"
+      ],
+      "x": "prefix in- (negative) + suffix -icant",
+      "w": "After 'harmless and' we need a negative adjective ('not important'). SIGNIFY becomes <b>insignificant</b>: prefix in- plus -icant. Don't write 'unsignificant'."
+     },
+     {
+      "n": 7,
+      "r": "FORTUNE",
+      "a": [
+       "Unfortunately"
+      ],
+      "x": "prefix un- (negative) + suffix -ate + -ly adverb",
+      "w": "At the start of the sentence we need a negative adverb ('sadly'). FORTUNE becomes fortunate, then <b>un-</b> and -ly: <b>unfortunately</b>."
+     },
+     {
+      "n": 8,
+      "r": "ORDINARY",
+      "a": [
+       "extraordinary"
+      ],
+      "x": "prefix extra-",
+      "w": "Before 'move' we need an adjective ('very unusual'). ORDINARY takes <b>extra-</b>: <b>extraordinary</b>. The root does not change."
+     }
+    ]
+   },
+   {
+    "id": "p80-148",
+    "title": "Bamboo Houses",
+    "text": "Growing concern over the effects of modern construction methods has meant that some architects are looking to more [[1]] ways of making buildings. One interesting project is in Bali, where [[2]] are using bamboo to create schools and [[3]] spaces. Bamboo is a type of wood which has been used to build houses for thousands of years. Apart from being [[4]] for the environment (it’s biodegradable), there’s also no shortage of it in Bali, where it grows quickly and easily. Not only that, but bamboo’s flexibility means that there’s plenty of [[5]] in the designs. Bamboo is not the best material in [[6]] weather. However, if treated properly, these bamboo structures can last for many years. At first, many people thought it was [[7]] to live in a house made of grass, but visitors are now amazed by how [[8]] these buildings are. Local workers also learn new skills, so the project helps the whole community. Many families in the area have already asked for homes of the same kind.",
+    "items": [
+     {
+      "n": 1,
+      "r": "TRADITION",
+      "a": [
+       "traditional"
+      ],
+      "x": "suffix -al (adjective)",
+      "w": "'Ways' is a noun, so the gap needs an adjective. TRADITION + <b>-al</b> makes <b>traditional</b>. Watch the spelling: only one n in the middle."
+     },
+     {
+      "n": 2,
+      "r": "DESIGN",
+      "a": [
+       "designers"
+      ],
+      "x": "suffix -er (person noun) + plural -s",
+      "w": "After 'where' we need the subject of 'are using': a plural person noun. DESIGN + <b>-er</b> + -s makes <b>designers</b>."
+     },
+     {
+      "n": 3,
+      "r": "LIVE",
+      "a": [
+       "living"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "'Spaces' is a noun, so we need an adjective meaning 'for living in'. LIVE + <b>-ing</b> makes <b>living</b>. Drop the final -e before -ing."
+     },
+     {
+      "n": 4,
+      "r": "BENEFIT",
+      "a": [
+       "beneficial"
+      ],
+      "x": "suffix -ial (adjective)",
+      "w": "After 'being' we need an adjective, followed by 'for'. BENEFIT + <b>-ial</b> makes <b>beneficial</b>. Don't write 'benefitial': the t changes to c."
+     },
+     {
+      "n": 5,
+      "r": "ORIGIN",
+      "a": [
+       "originality"
+      ],
+      "x": "suffix -al + -ity (noun)",
+      "w": "After 'plenty of' we need an uncountable noun meaning 'new ideas'. ORIGIN + <b>-al</b> + -ity makes <b>originality</b>."
+     },
+     {
+      "n": 6,
+      "r": "STORM",
+      "a": [
+       "stormy"
+      ],
+      "x": "suffix -y (adjective)",
+      "w": "Before the noun 'weather' we need an adjective. STORM + <b>-y</b> makes <b>stormy</b>. Don't write 'stormey'."
+     },
+     {
+      "n": 7,
+      "r": "USUAL",
+      "a": [
+       "unusual"
+      ],
+      "x": "prefix un- (negative)",
+      "w": "After 'it was' we need an adjective with a negative meaning, because the idea surprised people. USUAL + <b>un-</b> makes <b>unusual</b>. The root does not change."
+     },
+     {
+      "n": 8,
+      "r": "BEAUTY",
+      "a": [
+       "beautiful"
+      ],
+      "x": "suffix -ful (adjective, y -> i)",
+      "w": "After 'how' we need an adjective. BEAUTY + <b>-ful</b> makes <b>beautiful</b>. The y changes to i; don't write 'beautyful'."
+     }
+    ]
+   },
+   {
+    "id": "p81-150",
+    "title": "Braille",
+    "text": "Braille is a system of raised characters on firm card which are read by touch. The characters are like the six spots on the face of a dice, with different [[1]] of spots representing different letters of the alphabet. It has been used to help people who are [[2]] to read and write due to [[3]] or other poor vision. Since its [[4]] in the 1820s, it has given thousands of blind people the chance to appreciate written texts and become more [[5]] about literature. It was invented by a blind Frenchman called Louis Braille who was familiar with a similar form of writing called Night Writing. His [[6]] was that Night Writing could be improved and he came up with his form of Braille. Since then, [[7]] Braille systems have been developed and all the letters of the alphabet as well as numbers are represented. Today, Braille can be found on signs and medicine packets, which gives blind people greater [[8]] in their daily lives. Many schools and libraries now offer books in Braille for young readers, and special machines can even print it quickly.",
+    "items": [
+     {
+      "n": 1,
+      "r": "COMBINE",
+      "a": [
+       "combinations"
+      ],
+      "x": "suffix -ation (noun, drops -e) + plural -s",
+      "w": "After 'different' and before 'of spots' we need a plural noun. COMBINE + <b>-ation</b> + -s makes <b>combinations</b>. Drop the -e of combine."
+     },
+     {
+      "n": 2,
+      "r": "ABLE",
+      "a": [
+       "unable"
+      ],
+      "x": "prefix un- (negative)",
+      "w": "After 'who are' and before 'to read' we need a negative adjective. ABLE + <b>un-</b> makes <b>unable</b>. The meaning is 'not able'."
+     },
+     {
+      "n": 3,
+      "r": "BLIND",
+      "a": [
+       "blindness"
+      ],
+      "x": "suffix -ness (noun)",
+      "w": "After 'due to' we need a noun. BLIND + <b>-ness</b> makes <b>blindness</b>. Don't write 'blindity'; this adjective takes -ness."
+     },
+     {
+      "n": 4,
+      "r": "APPEAR",
+      "a": [
+       "appearance"
+      ],
+      "x": "suffix -ance (noun)",
+      "w": "After 'Since its' we need a noun meaning 'the first time it was seen'. APPEAR + <b>-ance</b> makes <b>appearance</b>. Don't write 'appearence'."
+     },
+     {
+      "n": 5,
+      "r": "KNOW",
+      "a": [
+       "knowledgeable"
+      ],
+      "x": "suffix -ledgeable (adjective)",
+      "w": "After 'become more' we need an adjective followed by 'about'. KNOW + <b>-ledgeable</b> makes <b>knowledgeable</b>. Keep the e in -ledgeable."
+     },
+     {
+      "n": 6,
+      "r": "THINK",
+      "a": [
+       "thinking"
+      ],
+      "x": "suffix -ing (noun)",
+      "w": "After 'His' we need a noun meaning 'idea'. THINK + <b>-ing</b> makes the noun <b>thinking</b>. Don't change the root into 'thought' here."
+     },
+     {
+      "n": 7,
+      "r": "VARY",
+      "a": [
+       "various"
+      ],
+      "x": "suffix -ous (adjective)",
+      "w": "Before the noun 'systems' we need an adjective meaning 'different'. VARY + <b>-ous</b> makes <b>various</b>. The y of vary changes to i."
+     },
+     {
+      "n": 8,
+      "r": "DEPEND",
+      "a": [
+       "independence"
+      ],
+      "x": "prefix in- (negative) + suffix -ence (noun)",
+      "w": "After 'greater' we need an uncountable noun meaning 'freedom from help'. DEPEND with <b>in-</b> and -ence makes <b>independence</b>. Don't write -ance."
+     }
+    ]
+   },
+   {
+    "id": "p82-152",
+    "title": "Is it easy to learn a new language?",
+    "text": "Although all of us have the [[1]] to learn new languages, it’s not always easy. It’s easier if the language you’re learning is similar to your own because you’re likely to have some [[2]] of the way the language works. Some of the words and sounds may be similar or the grammar may work in a similar way. Even so, [[3]] will still encounter [[4]] difficulties such as [[5]] endings or unusual pronunciation. However, if the language is very different from your own, it can be much harder to learn. The Chinese Mandarin language is a good example. Some people will say that learning the [[6]] language is not as difficult as it sounds. However, when you consider that there are over fifty thousand characters, it will [[7]] be difficult to express your [[8]] in written form. Whatever language you choose, steady practice and a positive attitude will help you to make progress. Teachers often advise students to practise a little every day, because progress comes slowly but surely.",
+    "items": [
+     {
+      "n": 1,
+      "r": "ABLE",
+      "a": [
+       "ability"
+      ],
+      "x": "suffix -ility (noun)",
+      "w": "After 'the' and before 'to learn' we need a noun meaning 'power or skill'. ABLE changes to <b>ability</b>: -le becomes -ility. Don't write 'ableity'."
+     },
+     {
+      "n": 2,
+      "r": "KNOW",
+      "a": [
+       "knowledge"
+      ],
+      "x": "suffix -ledge (noun)",
+      "w": "After 'some' we need a noun meaning 'understanding'. KNOW + <b>-ledge</b> makes <b>knowledge</b>. Don't forget the d."
+     },
+     {
+      "n": 3,
+      "r": "LEARN",
+      "a": [
+       "learners"
+      ],
+      "x": "suffix -er (person noun) + plural -s",
+      "w": "After 'Even so' we need the plural subject of 'will encounter': people who learn. LEARN + <b>-er</b> + -s makes <b>learners</b>."
+     },
+     {
+      "n": 4,
+      "r": "VARY",
+      "a": [
+       "various"
+      ],
+      "x": "suffix -ous (adjective)",
+      "w": "Before the noun 'difficulties' we need an adjective meaning 'different kinds of'. VARY + <b>-ous</b> makes <b>various</b>. The y changes to i."
+     },
+     {
+      "n": 5,
+      "r": "REGULAR",
+      "a": [
+       "irregular"
+      ],
+      "x": "prefix ir- (negative)",
+      "w": "Before 'endings' we need an adjective with a negative meaning. REGULAR + <b>ir-</b> makes <b>irregular</b>. Before r we use ir-, not un- or in-."
+     },
+     {
+      "n": 6,
+      "r": "SPEAK",
+      "a": [
+       "spoken"
+      ],
+      "x": "past participle used as adjective (irregular)",
+      "w": "After 'the' and before 'language' we need an adjective meaning 'not written'. SPEAK has an irregular past participle: <b>spoken</b>. Don't write 'speaked'."
+     },
+     {
+      "n": 7,
+      "r": "CERTAIN",
+      "a": [
+       "certainly"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Between 'will' and 'be' we need an adverb. CERTAIN + <b>-ly</b> makes <b>certainly</b>."
+     },
+     {
+      "n": 8,
+      "r": "THINK",
+      "a": [
+       "thoughts"
+      ],
+      "x": "noun change (think -> thought) + plural -s",
+      "w": "After 'your' we need a plural noun. THINK changes to <b>thoughts</b>: the root changes (think -> thought) and takes -s."
+     }
+    ]
+   },
+   {
+    "id": "p83-154",
+    "title": "Anti-consumerism",
+    "text": "The anti-consumerist [[1]] emerged around the year 2000 as a reaction to what some people saw as the [[2]] effects of a consumer society. Anti-consumerists believe that excessive consumption of goods is [[3]] for several reasons. Although it can result in economic [[4]], they argue that this does not always benefit ordinary people. Instead they become trapped in a cycle of working in order to buy things that they do not need. They are never fully [[5]] with their purchases but they go on buying things regardless. Anti-consumerists believe that the [[6]] industry is partly responsible for this tendency as its job is to convince people to buy things we do not need. Some anti-consumerists also believe that consumerism is bad for the environment. They point out that some businesses think it is [[7]] to take environmental concerns into account because it affects their profits. As a result, they continue to contribute to [[8]] and over- consumption of our resources.",
+    "items": [
+     {
+      "n": 1,
+      "r": "MOVE",
+      "a": [
+       "movement"
+      ],
+      "x": "suffix -ment (noun, drops -e)",
+      "w": "After 'anti-consumerist' and before 'emerged' we need a noun. MOVE + <b>-ment</b> makes <b>movement</b>. Drop the final -e of move."
+     },
+     {
+      "n": 2,
+      "r": "HARM",
+      "a": [
+       "harmful"
+      ],
+      "x": "suffix -ful (adjective)",
+      "w": "Before the noun 'effects' we need an adjective. HARM + <b>-ful</b> makes <b>harmful</b>. Only one l in the ending -ful."
+     },
+     {
+      "n": 3,
+      "r": "DESIRE",
+      "a": [
+       "undesirable"
+      ],
+      "x": "prefix un- (negative) + suffix -able (drops -e)",
+      "w": "After 'is' we need an adjective with a negative meaning. DESIRE + <b>un-</b> + -able makes <b>undesirable</b>. Drop the -e of desire."
+     },
+     {
+      "n": 4,
+      "r": "GROW",
+      "a": [
+       "growth"
+      ],
+      "x": "suffix -th (noun)",
+      "w": "After 'economic' we need a noun meaning 'getting bigger'. GROW + <b>-th</b> makes <b>growth</b>. Don't write 'growing' or 'grown'."
+     },
+     {
+      "n": 5,
+      "r": "SATISFY",
+      "a": [
+       "satisfied"
+      ],
+      "x": "suffix -ied (adjective)",
+      "w": "After 'fully' and before 'with' we need an adjective. SATISFY + <b>-ied</b> makes <b>satisfied</b>. The y changes to i."
+     },
+     {
+      "n": 6,
+      "r": "ADVERT",
+      "a": [
+       "advertising"
+      ],
+      "x": "suffix -ing (noun)",
+      "w": "Before the noun 'industry' we need a noun used as a modifier. ADVERT + <b>-ising</b> makes <b>advertising</b>. 'Advertisement' is not possible here."
+     },
+     {
+      "n": 7,
+      "r": "ECONOMIC",
+      "a": [
+       "uneconomical"
+      ],
+      "x": "prefix un- (negative) + suffix -al",
+      "w": "After 'it is' we need a negative adjective: businesses think it costs too much. ECONOMIC + <b>un-</b> + -al makes <b>uneconomical</b>."
+     },
+     {
+      "n": 8,
+      "r": "POLLUTE",
+      "a": [
+       "pollution"
+      ],
+      "x": "suffix -ion (noun, drops -e)",
+      "w": "After 'to' we need a noun, joined to 'consumption' by 'and'. POLLUTE + <b>-ion</b> makes <b>pollution</b>. Drop the -e."
+     }
+    ]
+   },
+   {
+    "id": "p83-156",
+    "title": "The euro",
+    "text": "The euro is a [[1]] new currency, or unit of money, which was introduced in 1999. It is a truly [[2]] currency, having been adopted by 19 European countries. At first, it was only used by financial markets, but in 2002 many European countries started using euro coins and notes. The euro [[3]] the financial system in Europe because everyone was using the same currency. Many people believed that the euro made [[4]] sense because the countries of the European Union were already working [[5]] together. They felt that it would [[6]] the European project and would bring the countries together even more. Despite that, some countries did not feel that it would be [[7]] to adopt the euro. Britain was one such country which decided to keep its own currency, the pound. Today, the euro makes travel easier, because tourists no longer need to change money in every country they visit. This saves time and removes [[8]] costs. Even so, economists still argue about whether one currency really suits every country.",
+    "items": [
+     {
+      "n": 1,
+      "r": "RELATIVE",
+      "a": [
+       "relatively"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Between 'a' and the adjective 'new' we need an adverb. RELATIVE + <b>-ly</b> makes <b>relatively</b>. Keep the final e before -ly."
+     },
+     {
+      "n": 2,
+      "r": "NATION",
+      "a": [
+       "international"
+      ],
+      "x": "prefix inter- + suffix -al",
+      "w": "Before the noun 'currency' we need an adjective meaning 'between nations'. NATION with <b>inter-</b> and -al makes <b>international</b>."
+     },
+     {
+      "n": 3,
+      "r": "REVOLUTION",
+      "a": [
+       "revolutionised"
+      ],
+      "x": "suffix -ise + -d (verb, past)",
+      "w": "After 'The euro' we need a past tense verb. REVOLUTION + <b>-ise</b> + -d makes <b>revolutionised</b>. The -ized spelling is also correct."
+     },
+     {
+      "n": 4,
+      "r": "ECONOMY",
+      "a": [
+       "economic"
+      ],
+      "x": "suffix -ic (adjective, y -> i)",
+      "w": "After 'made' and before 'sense' we need an adjective. ECONOMY + <b>-ic</b> makes <b>economic</b>. The y of economy changes to i."
+     },
+     {
+      "n": 5,
+      "r": "CLOSE",
+      "a": [
+       "closely"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "After 'working' we need an adverb meaning 'in a near way'. CLOSE + <b>-ly</b> makes <b>closely</b>. Keep the e; don't write 'closly'."
+     },
+     {
+      "n": 6,
       "r": "STRONG",
       "a": [
        "strengthen"
       ],
-      "x": "suffix -th + -en (verb)"
+      "x": "suffix -th + -en (verb)",
+      "w": "After 'would' we need a base verb meaning 'make stronger'. STRONG changes to <b>strengthen</b>: add -th (strength) and -en. Don't write 'strongen'."
+     },
+     {
+      "n": 7,
+      "r": "DESIRE",
+      "a": [
+       "desirable"
+      ],
+      "x": "suffix -able (adjective, drops -e)",
+      "w": "After 'would be' we need an adjective meaning 'worth wanting'. DESIRE + <b>-able</b> makes <b>desirable</b>. Drop the -e of desire."
+     },
+     {
+      "n": 8,
+      "r": "NECESSARY",
+      "a": [
+       "unnecessary"
+      ],
+      "x": "prefix un- (negative)",
+      "w": "Before the noun 'costs' we need a negative adjective: costs we do not need. NECESSARY + <b>un-</b> makes <b>unnecessary</b>. Keep both n's: un + necessary."
+     }
+    ]
+   },
+   {
+    "id": "p84-158",
+    "title": "Pickpockets",
+    "text": "For many people going on city breaks, their biggest fear is the pickpocket. Most tourist destinations are a magnet for these thieves, who target tourists, taking money, passports and other [[1]] while the owner is [[2]] of what is happening. This can be [[3]] inconvenient for the victim. For example, if you lose your passport, you will probably have to spend the rest of your holiday making a lot of [[4]] to replace it. Not [[5]], most tourists take particular care to keep their belongings well out of reach of the pickpockets. Recently, however, a new threat has appeared in the form of remote credit card readers. Some pickpockets now carry these devices which, when [[6]], can [[7]] take money from your bank account. Any new ‘contactless’ cards are at risk and the pickpocket does not even have to touch you. It seems that tourists are largely [[8]] in this situation and the only thing you can do is to leave your card at home.",
+    "items": [
+     {
+      "n": 1,
+      "r": "VALUE",
+      "a": [
+       "valuables"
+      ],
+      "x": "suffix -able (noun) + plural -s",
+      "w": "After 'other' we need a plural noun meaning 'expensive things'. VALUE + <b>-able</b> + -s makes <b>valuables</b>. Drop the -e of value."
+     },
+     {
+      "n": 2,
+      "r": "AWARE",
+      "a": [
+       "unaware"
+      ],
+      "x": "prefix un- (negative)",
+      "w": "After 'is' and before 'of' we need a negative adjective: the owner does not notice. AWARE + <b>un-</b> makes <b>unaware</b>."
+     },
+     {
+      "n": 3,
+      "r": "HUGE",
+      "a": [
+       "hugely"
+      ],
+      "x": "suffix -ly adverb (drops -e)",
+      "w": "Before the adjective 'inconvenient' we need an adverb. HUGE + <b>-ly</b> makes <b>hugely</b>. Keep the e."
+     },
+     {
+      "n": 4,
+      "r": "ARRANGE",
+      "a": [
+       "arrangements"
+      ],
+      "x": "suffix -ment + plural -s",
+      "w": "After 'a lot of' we need a plural noun. ARRANGE + <b>-ment</b> + -s makes <b>arrangements</b>. Keep the e before -ment."
+     },
+     {
+      "n": 5,
+      "r": "SURPRISE",
+      "a": [
+       "surprisingly"
+      ],
+      "x": "suffix -ing + -ly (adverb, drops -e)",
+      "w": "After 'Not' we need an adverb. SURPRISE + <b>-ing</b> + -ly makes <b>surprisingly</b>. Drop the e of surprise."
+     },
+     {
+      "n": 6,
+      "r": "ACTIVATE",
+      "a": [
+       "activated"
+      ],
+      "x": "suffix -ed (participle)",
+      "w": "After 'when' we need a past participle: when the device is switched on. ACTIVATE + <b>-d</b> makes <b>activated</b>. Only one d is added."
+     },
+     {
+      "n": 7,
+      "r": "INSTANT",
+      "a": [
+       "instantly"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Between 'can' and the verb 'take' we need an adverb meaning 'immediately'. INSTANT + <b>-ly</b> makes <b>instantly</b>."
+     },
+     {
+      "n": 8,
+      "r": "HELP",
+      "a": [
+       "helpless"
+      ],
+      "x": "suffix -less (adjective)",
+      "w": "After 'largely' we need an adjective meaning 'without help'. HELP + <b>-less</b> makes <b>helpless</b>. Don't write 'helpfull'."
+     }
+    ]
+   },
+   {
+    "id": "p85-160",
+    "title": "Farm holidays",
+    "text": "Nowadays many British families are fed up with crowds of tourists, bad food and [[1]] days out. Instead they are considering the benefits of staying in the UK, and looking for an experience which is far more [[2]] and rewarding. One type of holiday which is becoming more popular is the farm holiday. Part of the appeal is the [[3]] surroundings but it’s also the number of [[4]] which attracts people. Apart from going walking or fishing, there is also the chance of [[5]] out on the farm. [[6]] in farmyard tasks, such as feeding the animals, collecting the eggs and milking the cows, is usually encouraged. Some farms also organise bird and nature watching excursions. Many parents now see this type of holiday as a [[7]] educational experience for their children. It’s also an opportunity for Mum and Dad to switch off from their busy lives. Many city children are [[8]] with farm animals, so a week in the countryside can be a real surprise for them. They can see where their food really comes from.",
+    "items": [
+     {
+      "n": 1,
+      "r": "EXPENSE",
+      "a": [
+       "expensive"
+      ],
+      "x": "suffix -ive (adjective, drops -e)",
+      "w": "Before the noun 'days out' we need an adjective. EXPENSE + <b>-ive</b> makes <b>expensive</b>. Drop the final e."
+     },
+     {
+      "n": 2,
+      "r": "MEANING",
+      "a": [
+       "meaningful"
+      ],
+      "x": "suffix -ful (adjective)",
+      "w": "After 'far more' and before 'and rewarding' we need an adjective. MEANING + <b>-ful</b> makes <b>meaningful</b>. Don't write 'meaningfull'."
+     },
+     {
+      "n": 3,
+      "r": "PEACE",
+      "a": [
+       "peaceful"
+      ],
+      "x": "suffix -ful (adjective)",
+      "w": "After 'the' and before 'surroundings' we need an adjective. PEACE + <b>-ful</b> makes <b>peaceful</b>. Keep the e of peace; only one l."
+     },
+     {
+      "n": 4,
+      "r": "ACTIVE",
+      "a": [
+       "activities"
+      ],
+      "x": "suffix -ity (noun) + plural -ies",
+      "w": "After 'the number of' we need a plural noun. ACTIVE changes to <b>activities</b>: -ive becomes -ity, and y becomes ies."
+     },
+     {
+      "n": 5,
+      "r": "HELP",
+      "a": [
+       "helping"
+      ],
+      "x": "suffix -ing (noun)",
+      "w": "After 'the chance of' we need an -ing form of 'help out'. HELP + <b>-ing</b> makes <b>helping</b>."
+     },
+     {
+      "n": 6,
+      "r": "PARTICIPATE",
+      "a": [
+       "Participation",
+       "Participating"
+      ],
+      "x": "suffix -ion (noun) or -ing form",
+      "w": "At the start of the sentence we need a noun or -ing form as subject. PARTICIPATE + <b>-ion</b> makes <b>Participation</b>. Drop the e."
+     },
+     {
+      "n": 7,
+      "r": "VALUE",
+      "a": [
+       "valuable"
+      ],
+      "x": "suffix -able (adjective, drops -e)",
+      "w": "After 'a' and before 'educational' we need an adjective. VALUE + <b>-able</b> makes <b>valuable</b>. Drop the -e of value."
+     },
+     {
+      "n": 8,
+      "r": "FAMILIAR",
+      "a": [
+       "unfamiliar"
+      ],
+      "x": "prefix un- (negative)",
+      "w": "After 'are' and before 'with' we need a negative adjective: they do not know the animals. FAMILIAR + <b>un-</b> makes <b>unfamiliar</b>."
+     }
+    ]
+   },
+   {
+    "id": "p86-162",
+    "title": "Christy Brown",
+    "text": "The [[1]] Irish artist and writer Christy Brown was the subject of the 1989 film, My Left Foot. When he was young, Brown was diagnosed with cerebral palsy, which left him seriously [[2]]. Unable to walk or talk, the doctors believed that Brown should be committed to a hospital. They believed that his [[3]] had left him [[4]] of leading a fulfilled life. His mother, however, [[5]] and insisted that he stay at home. Brown’s left foot was the only part of his body that he could move, but he was a quick learner and he [[6]] learnt to use his left foot to write and draw. In the years to come, Christy Brown wrote plays, novels and poems as well as producing [[7]]. Among his [[8]] is the novel Down All the Days, which is said to be one of the most important Irish novels. He died in 1981, but his books are still read by people all over the world.",
+    "items": [
+     {
+      "n": 1,
+      "r": "CELEBRATE",
+      "a": [
+       "celebrated"
+      ],
+      "x": "suffix -d (participle adjective)",
+      "w": "Before the nouns 'Irish artist' we need an adjective meaning 'famous'. CELEBRATE + <b>-d</b> makes <b>celebrated</b>. Don't write 'celebrateed'."
+     },
+     {
+      "n": 2,
+      "r": "ABLE",
+      "a": [
+       "disabled"
+      ],
+      "x": "prefix dis- + suffix -d (participle adjective)",
+      "w": "After 'seriously' we need a participle adjective meaning 'unable to do things'. ABLE gets <b>dis-</b> and -d: <b>disabled</b>. Drop the -e."
+     },
+     {
+      "n": 3,
+      "r": "ILL",
+      "a": [
+       "illness"
+      ],
+      "x": "suffix -ness (noun)",
+      "w": "After 'his' and before 'had left' we need a noun. ILL + <b>-ness</b> makes <b>illness</b>. Note the double l and the double s."
+     },
+     {
+      "n": 4,
+      "r": "CAPABLE",
+      "a": [
+       "incapable"
+      ],
+      "x": "prefix in- (negative)",
+      "w": "After 'him' and before 'of leading' we need a negative adjective. CAPABLE + <b>in-</b> makes <b>incapable</b>. It means 'not able'."
+     },
+     {
+      "n": 5,
+      "r": "AGREE",
+      "a": [
+       "disagreed"
+      ],
+      "x": "prefix dis- (negative) + suffix -d (past tense)",
+      "w": "After 'however' we need a past tense verb with a negative meaning. AGREE + <b>dis-</b> + -d makes <b>disagreed</b>. Agree already ends in e, so add only d."
+     },
+     {
+      "n": 6,
+      "r": "SUCCESS",
+      "a": [
+       "successfully"
+      ],
+      "x": "suffix -ful + -ly adverb",
+      "w": "After 'he' and before 'learnt' we need an adverb. SUCCESS + <b>-ful</b> + -ly makes <b>successfully</b>. Remember the double c and double s."
+     },
+     {
+      "n": 7,
+      "r": "PAINT",
+      "a": [
+       "paintings"
+      ],
+      "x": "suffix -ing (noun) + plural -s",
+      "w": "After 'producing' we need a plural noun meaning 'pictures'. PAINT + <b>-ing</b> + -s makes <b>paintings</b>."
+     },
+     {
+      "n": 8,
+      "r": "ACCOMPLISH",
+      "a": [
+       "accomplishments"
+      ],
+      "x": "suffix -ment + plural -s",
+      "w": "After 'Among his' we need a plural noun meaning 'achievements'. ACCOMPLISH + <b>-ment</b> + -s makes <b>accomplishments</b>."
+     }
+    ]
+   },
+   {
+    "id": "p87-164",
+    "title": "Stephen Hawking",
+    "text": "Stephen Hawking is [[1]] thought to be one of the greatest scientists of our time. Hawking’s father had encouraged him to study medicine at university but Hawking wanted be a [[2]]. He got a place at Oxford University but he could only study physics there. He took up the offer and while at university, his teachers realised that he was [[3]] intelligent and that he had the [[4]] of becoming an important scientist. However, having been awarded a place at Cambridge University to study cosmology (the study of the universe), Hawking was diagnosed with motor neurone disease, which affected his speech and movement. Yet despite this [[5]], Hawking continued his scientific work and went on to make some great [[6]]. Many people say his greatest [[7]] is his [[8]] to understanding the nature of the universe. Hawking, with his partner Roger Penrose, proved that the universe started with the Big Bang and will end with Black Holes.",
+    "items": [
+     {
+      "n": 1,
+      "r": "WIDE",
+      "a": [
+       "widely"
+      ],
+      "x": "suffix -ly adverb (drops -e)",
+      "w": "Before 'thought' we need an adverb. WIDE + <b>-ly</b> makes <b>widely</b>. Keep the e."
+     },
+     {
+      "n": 2,
+      "r": "MATHEMATICS",
+      "a": [
+       "mathematician"
+      ],
+      "x": "suffix -ematician (person noun)",
+      "w": "After 'be a' we need a noun for a person who studies maths. MATHEMATICS changes to <b>mathematician</b>: -ics becomes -ician."
+     },
+     {
+      "n": 3,
+      "r": "EXTREME",
+      "a": [
+       "extremely"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "Before the adjective 'intelligent' we need an adverb. EXTREME + <b>-ly</b> makes <b>extremely</b>. Keep the e."
+     },
+     {
+      "n": 4,
+      "r": "CAPABLE",
+      "a": [
+       "capability"
+      ],
+      "x": "suffix -ility (noun)",
+      "w": "After 'the' and before 'of becoming' we need a noun. CAPABLE changes to <b>capability</b>: -le becomes -ility."
+     },
+     {
+      "n": 5,
+      "r": "ABLE",
+      "a": [
+       "disability"
+      ],
+      "x": "prefix dis- + suffix -ility (noun)",
+      "w": "After 'this' we need a noun: his illness. ABLE with <b>dis-</b> and -ility makes <b>disability</b>. Don't write 'disableity'."
+     },
+     {
+      "n": 6,
+      "r": "DISCOVER",
+      "a": [
+       "discoveries"
+      ],
+      "x": "suffix -y (noun) + plural -ies",
+      "w": "After 'great' we need a plural noun. DISCOVER + <b>-y</b> makes discovery; the plural is <b>discoveries</b>. The y changes to ies."
+     },
+     {
+      "n": 7,
+      "r": "ACCOMPLISH",
+      "a": [
+       "accomplishment"
+      ],
+      "x": "suffix -ment (noun)",
+      "w": "After 'greatest' we need a noun meaning 'achievement'. ACCOMPLISH + <b>-ment</b> makes <b>accomplishment</b>."
+     },
+     {
+      "n": 8,
+      "r": "CONTRIBUTE",
+      "a": [
+       "contribution"
+      ],
+      "x": "suffix -ion (noun, drops -e)",
+      "w": "After 'is his' we need a noun followed by 'to'. CONTRIBUTE + <b>-ion</b> makes <b>contribution</b>. Drop the e."
+     }
+    ]
+   },
+   {
+    "id": "p88-167",
+    "title": "Genetic Fingerprinting",
+    "text": "DNA, which is found in all animal tissue, contains genetic [[1]] about the individual who produces it. The structure of DNA was discovered in 1953 by the [[2]] Watson and Crick. Their discovery led to the [[3]] of genetic fingerprinting, which is a very accurate way of identifying [[4]]. It works by comparing a sample from the scene of a crime with a sample from a suspect. As we all have our own unique genetic make-up, this method of [[5]] has proved very [[6]]. Before this technique existed, police often had to rely on witnesses, who could easily make mistakes. Today, a tiny drop of blood or a single hair is enough to give a clear result. It has even helped to free people who were [[7]] sent to prison for something they did not do. Genetic fingerprinting is particularly useful when there is some [[8]] in establishing the true facts of a case.",
+    "items": [
+     {
+      "n": 1,
+      "r": "INFORM",
+      "a": [
+       "information"
+      ],
+      "x": "suffix -ation (noun)",
+      "w": "After 'genetic' we need an uncountable noun. INFORM + <b>-ation</b> makes <b>information</b>. Don't add -s."
+     },
+     {
+      "n": 2,
+      "r": "SCIENCE",
+      "a": [
+       "scientists"
+      ],
+      "x": "suffix -ist (person noun) + plural -s",
+      "w": "After 'the' we need a plural noun for people who do science. SCIENCE + <b>-ist</b> + -s makes <b>scientists</b>."
+     },
+     {
+      "n": 3,
+      "r": "DEVELOP",
+      "a": [
+       "development"
+      ],
+      "x": "suffix -ment (noun)",
+      "w": "After 'the' and before 'of' we need a noun. DEVELOP + <b>-ment</b> makes <b>development</b>. Don't write 'developement'."
+     },
+     {
+      "n": 4,
+      "r": "CRIME",
+      "a": [
+       "criminals"
+      ],
+      "x": "suffix -inal (noun) + plural -s",
+      "w": "After 'identifying' we need a plural noun for people who commit crimes. CRIME changes to <b>criminals</b>: -inal and -s."
+     },
+     {
+      "n": 5,
+      "r": "IDENTITY",
+      "a": [
+       "identification"
+      ],
+      "x": "suffix -ification (noun)",
+      "w": "After 'this method of' we need a noun. IDENTITY becomes <b>identification</b>: -ity changes to -ification."
+     },
+     {
+      "n": 6,
+      "r": "SUCCESS",
+      "a": [
+       "successful"
+      ],
+      "x": "suffix -ful (adjective)",
+      "w": "After 'very' we need an adjective. SUCCESS + <b>-ful</b> makes <b>successful</b>. Remember double c, double s and one l."
+     },
+     {
+      "n": 7,
+      "r": "JUST",
+      "a": [
+       "unjustly"
+      ],
+      "x": "prefix un- (negative) + suffix -ly (adverb)",
+      "w": "Between 'were' and 'sent' we need an adverb with a negative meaning: not fairly. JUST + <b>un-</b> + -ly makes <b>unjustly</b>."
+     },
+     {
+      "n": 8,
+      "r": "DIFFICULT",
+      "a": [
+       "difficulty"
+      ],
+      "x": "suffix -y (noun)",
+      "w": "After 'some' we need an uncountable noun followed by 'in'. DIFFICULT + <b>-y</b> makes <b>difficulty</b>. Don't write 'difficulity'."
+     }
+    ]
+   },
+   {
+    "id": "p89-170",
+    "title": "Fiction or Reality?",
+    "text": "What is it that makes science fiction so [[1]]? It isn’t just the fact that it is highly [[2]], but in many ways it allows us to see into the future. In a world that is experiencing rapid [[3]] advances, it makes us wonder whether what it describes could ever become [[4]]. Some things, which once seemed [[5]], already have. Credit cards and video chatting, for example, both made their first [[6]] in science fiction long before becoming part of our real lives. Artificial intelligence and trips into space also [[7]] in this kind of literature. Of course, not every prediction has come true, and some have proved completely [[8]]. Nobody has yet travelled to another galaxy, for example, and we still do not live on the Moon. Even so, writers continue to inspire scientists, who often say that a book or film first gave them the idea for an invention.",
+    "items": [
+     {
+      "n": 1,
+      "r": "EXCITE",
+      "a": [
+       "exciting"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "After 'so' we need an adjective. EXCITE + <b>-ing</b> makes <b>exciting</b>. Drop the final -e."
+     },
+     {
+      "n": 2,
+      "r": "IMAGINE",
+      "a": [
+       "imaginative"
+      ],
+      "x": "suffix -ative (adjective)",
+      "w": "After 'highly' we need an adjective. IMAGINE + <b>-ative</b> makes <b>imaginative</b>. Drop the -e."
+     },
+     {
+      "n": 3,
+      "r": "TECHNOLOGY",
+      "a": [
+       "technological"
+      ],
+      "x": "suffix -ical (adjective)",
+      "w": "Before the noun 'advances' we need an adjective. TECHNOLOGY + <b>-ical</b> makes <b>technological</b>. The y changes to -ical."
+     },
+     {
+      "n": 4,
+      "r": "REAL",
+      "a": [
+       "reality"
+      ],
+      "x": "suffix -ity (noun)",
+      "w": "After 'become' we need a noun meaning 'something that exists'. REAL + <b>-ity</b> makes <b>reality</b>."
+     },
+     {
+      "n": 5,
+      "r": "BELIEVE",
+      "a": [
+       "unbelievable"
+      ],
+      "x": "prefix un- (negative) + suffix -able",
+      "w": "After 'seemed' we need a negative adjective. BELIEVE + <b>un-</b> + -able makes <b>unbelievable</b>. Drop the -e."
+     },
+     {
+      "n": 6,
+      "r": "APPEAR",
+      "a": [
+       "appearance"
+      ],
+      "x": "suffix -ance (noun)",
+      "w": "After 'their first' we need a noun. APPEAR + <b>-ance</b> makes <b>appearance</b>. Don't write 'appearence'."
+     },
+     {
+      "n": 7,
+      "r": "ORIGIN",
+      "a": [
+       "originated"
+      ],
+      "x": "suffix -ate + -d (verb, past)",
+      "w": "After 'also' we need a past tense verb. ORIGIN + <b>-ate</b> + -d makes <b>originated</b>."
+     },
+     {
+      "n": 8,
+      "r": "ACCURATE",
+      "a": [
+       "inaccurate"
+      ],
+      "x": "prefix in- (negative)",
+      "w": "After 'completely' we need a negative adjective: not correct. ACCURATE + <b>in-</b> makes <b>inaccurate</b>. Don't write 'unaccurate'."
+     }
+    ]
+   },
+   {
+    "id": "p90-173",
+    "title": "My First Job",
+    "text": "After my first year at university, I needed to find a job for the summer. I wasn’t looking for a [[1]] career, but a way to earn some money fast. I sent off several [[2]] and had three interviews. Finally, I was offered the job of Catering Assistant at a local fast food restaurant! On my first day, I arrived at work bright and early. My first task was to mop the floor, which I did to the [[3]] of my boss, Mike. In fact, Mike was so impressed that he decided to try me out at the counter. The idea of serving customers seemed quite [[4]] to me, but Mike seemed to have confidence in my [[5]]. Everything was going well until there was a [[6]] from somebody about their coffee. [[7]], what I had thought was sugar was actually salt! Mike was very understanding about my mistake, but I was so [[8]] that I almost didn’t go back to work the next day.",
+    "items": [
+     {
+      "n": 1,
+      "r": "FULFIL",
+      "a": [
+       "fulfilling"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "After 'a' and before 'career' we need an adjective meaning 'satisfying'. FULFIL + <b>-ing</b> makes <b>fulfilling</b>. Only one l in fulfil."
+     },
+     {
+      "n": 2,
+      "r": "APPLY",
+      "a": [
+       "applications"
+      ],
+      "x": "suffix -ation (noun) + plural -s",
+      "w": "After 'several' we need a plural noun. APPLY changes to <b>applications</b>: -ication and -s. The y changes to i."
+     },
+     {
+      "n": 3,
+      "r": "SATISFY",
+      "a": [
+       "satisfaction"
+      ],
+      "x": "suffix -action (noun)",
+      "w": "After 'to the' and before 'of' we need a noun. SATISFY becomes <b>satisfaction</b>. Don't write 'satisfication'."
+     },
+     {
+      "n": 4,
+      "r": "DAUNT",
+      "a": [
+       "daunting"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "After 'seemed quite' we need an adjective meaning 'scary'. DAUNT + <b>-ing</b> makes <b>daunting</b>."
+     },
+     {
+      "n": 5,
+      "r": "ABLE",
+      "a": [
+       "abilities"
+      ],
+      "x": "suffix -ity (noun) + plural -ies",
+      "w": "After 'my' we need a plural noun. ABLE becomes <b>abilities</b>: -le changes to -ility, then -ies. Don't write 'abilitys'."
+     },
+     {
+      "n": 6,
+      "r": "COMPLAIN",
+      "a": [
+       "complaint"
+      ],
+      "x": "suffix -t (noun)",
+      "w": "After 'a' we need a noun for a statement that something is wrong. COMPLAIN becomes <b>complaint</b> with -t."
+     },
+     {
+      "n": 7,
+      "r": "APPARENT",
+      "a": [
+       "Apparently"
+      ],
+      "x": "suffix -ly (adverb)",
+      "w": "At the start of the sentence we need an adverb meaning 'it seems'. APPARENT + <b>-ly</b> makes <b>Apparently</b>. Start with a capital letter."
+     },
+     {
+      "n": 8,
+      "r": "EMBARRASS",
+      "a": [
+       "embarrassed"
+      ],
+      "x": "suffix -ed (participle adjective)",
+      "w": "After 'so' we need a participle adjective for a feeling. EMBARRASS + <b>-ed</b> makes <b>embarrassed</b>. Note double r and double s."
+     }
+    ]
+   },
+   {
+    "id": "p92-176",
+    "title": "Parkour",
+    "text": "The word ‘parkour’ comes from the French word ‘parcours’ which means ‘route’ or ‘course’, but it is also referred to as ‘free running’. This is maybe a better [[1]] of the sport, which involves moving [[2]] across an area, using only the body’s natural [[3]]. Parkour is in many ways a unique sport. You can do it almost anywhere and you need no special [[4]]. The idea is that you start running and then deal with any obstacles you come across by climbing up them or jumping over them. The sport attracts mainly young people who enjoy pushing themselves to their limits [[5]] as they try to find the most [[6]] way of getting from one point to another. Many people who practise parkour see it as an art of personal self-development and believe it shouldn’t become a [[7]] sport, but as it becomes more popular, it seems [[8]] that this will continue to be the case.",
+    "items": [
+     {
+      "n": 1,
+      "r": "DESCRIBE",
+      "a": [
+       "description"
+      ],
+      "x": "suffix -ion (noun, describe -> description)",
+      "w": "After 'better' we need a noun. DESCRIBE becomes <b>description</b>. Don't write 'describtion'."
+     },
+     {
+      "n": 2,
+      "r": "FREE",
+      "a": [
+       "freely"
+      ],
+      "x": "suffix -ly adverb",
+      "w": "After 'moving' we need an adverb. FREE + <b>-ly</b> makes <b>freely</b>."
+     },
+     {
+      "n": 3,
+      "r": "ABLE",
+      "a": [
+       "abilities"
+      ],
+      "x": "suffix -ity (noun) + plural -ies",
+      "w": "After 'natural' we need a plural noun. ABLE becomes <b>abilities</b>: -le changes to -ility, then -ies."
+     },
+     {
+      "n": 4,
+      "r": "EQUIP",
+      "a": [
+       "equipment"
+      ],
+      "x": "suffix -ment (noun)",
+      "w": "After 'no special' we need an uncountable noun. EQUIP + <b>-ment</b> makes <b>equipment</b>. Don't add -s."
+     },
+     {
+      "n": 5,
+      "r": "PHYSICAL",
+      "a": [
+       "physically"
+      ],
+      "x": "suffix -ly adverb (-ical -> -ically)",
+      "w": "After 'limits' we need an adverb meaning 'with their bodies'. PHYSICAL + <b>-ly</b> makes <b>physically</b>. Two l's: physical + ly."
+     },
+     {
+      "n": 6,
+      "r": "SKILL",
+      "a": [
+       "skilful"
+      ],
+      "x": "suffix -ful (adjective, drops one l)",
+      "w": "After 'the most' we need an adjective. SKILL + <b>-ful</b> makes <b>skilful</b>. Drop one l (US 'skillful' is also accepted)."
+     },
+     {
+      "n": 7,
+      "r": "COMPETE",
+      "a": [
+       "competitive"
+      ],
+      "x": "suffix -itive (adjective)",
+      "w": "After 'a' and before 'sport' we need an adjective. COMPETE becomes <b>competitive</b>: -ete changes to -etitive."
+     },
+     {
+      "n": 8,
+      "r": "LIKELY",
+      "a": [
+       "unlikely"
+      ],
+      "x": "prefix un- (negative)",
+      "w": "After 'seems' we need a negative adjective: probably not true. LIKELY + <b>un-</b> makes <b>unlikely</b>."
+     }
+    ]
+   },
+   {
+    "id": "p93-179",
+    "title": "A Day Trip to Space",
+    "text": "A ground-breaking new [[1]] will soon be giving people the chance to go to space and back in just a few hours! The ‘World View’ company, which aims to make trips into space [[2]] to everyone, has developed a space craft pulled by a huge balloon that can take passengers to [[3]] of 30 kilometres above the Earth! The space craft has no engine – it simply floats in the air – making the trip a very [[4]] experience. Since it creates no air [[5]], it is also an [[6]] green way to travel. The pilot, who is a former NASA astronaut, says the view of the Earth from space is so [[7]] that it will change the way people see the world. He is hoping that it may even [[8]] relationships between people from different countries by showing them that we all live on the same planet and are closer to each other than we think.",
+    "items": [
+     {
+      "n": 1,
+      "r": "INVENT",
+      "a": [
+       "invention"
+      ],
+      "x": "suffix -ion (noun)",
+      "w": "After 'new' we need a noun. INVENT + <b>-ion</b> makes <b>invention</b>."
+     },
+     {
+      "n": 2,
+      "r": "ACCESS",
+      "a": [
+       "accessible"
+      ],
+      "x": "suffix -ible (adjective)",
+      "w": "After 'make trips' we need an adjective meaning 'easy to reach'. ACCESS + <b>-ible</b> makes <b>accessible</b>. Note -ible, not -able."
+     },
+     {
+      "n": 3,
+      "r": "HIGH",
+      "a": [
+       "heights"
+      ],
+      "x": "internal change (high -> height) + plural -s",
+      "w": "After 'to' we need a plural noun. HIGH changes to the noun <b>height</b> (gh + t), and the plural is <b>heights</b>. Don't write 'highs'."
+     },
+     {
+      "n": 4,
+      "r": "RELAX",
+      "a": [
+       "relaxing"
+      ],
+      "x": "suffix -ing (adjective)",
+      "w": "After 'very' we need an adjective. RELAX + <b>-ing</b> makes <b>relaxing</b>."
+     },
+     {
+      "n": 5,
+      "r": "POLLUTE",
+      "a": [
+       "pollution"
+      ],
+      "x": "suffix -ion (noun)",
+      "w": "After 'air' we need a noun. POLLUTE + <b>-ion</b> makes <b>pollution</b>. Drop the -e."
+     },
+     {
+      "n": 6,
+      "r": "EXTREME",
+      "a": [
+       "extremely"
+      ],
+      "x": "suffix -ly adverb (drops -e)",
+      "w": "Before the adjective 'green' we need an adverb. EXTREME + <b>-ly</b> makes <b>extremely</b>."
+     },
+     {
+      "n": 7,
+      "r": "IMPRESS",
+      "a": [
+       "impressive"
+      ],
+      "x": "suffix -ive (adjective)",
+      "w": "After 'so' we need an adjective meaning 'amazing'. IMPRESS + <b>-ive</b> makes <b>impressive</b>."
+     },
+     {
+      "n": 8,
+      "r": "STRONG",
+      "a": [
+       "strengthen"
+      ],
+      "x": "suffix -th + -en (verb)",
+      "w": "After 'may even' we need a base verb. STRONG changes to <b>strengthen</b>: add -th and -en."
      }
     ]
    }
@@ -5256,21 +6566,34 @@ window.RUOE_B2 = {
    {
     "id": "p28-66",
     "title": "Critical Thinking",
-    "text": "[A] Have you noticed how there’s so much talk about critical thinking skills these days? There are hundreds of websites and books devoted to the topic and in some countries, you can even get a secondary school qualification in critical thinking. So, what exactly is it and why is it generating so much interest?\n\n[B] Critical thinking means different things to different people. For some, it’s about answering questions without letting your own emotions and beliefs get in the way. For others, it’s about accepting that one question might have different answers. However, if we put these differences to one side, most people would agree that critical thinking describes the process of analysing and evaluating a situation in order to understand the truth. For this process to work, critical thinkers have to be self-disciplined, careful in their analysis and open to new ideas.\n\n[C] Surprisingly, critical thinking is not a new concept. In fact, it began in the teachings of the ancient Greek philosophers more than two thousand years ago. They were concerned that ordinary citizens automatically believed their leaders without asking themselves whether they were right or wrong. However, these philosophers thought it was important for a society to know the truth, and that was only possible by asking the right questions. This belief has been held by many of the brightest thinkers ever since. Without it, we might still think that the sun orbits the Earth or that the Earth is flat.\n\n[D] Despite the importance of critical thinking in human history, the situation changed in the 19th century with the industrial revolution. More children than ever had access to education, but they studied subjects which were useful for industrial society, like maths and English. Although students learnt in large groups, there were few opportunities for critical thinking. Students were generally expected to be passive learners, learning facts and taking tests. They would sit in rows and only speak if they were spoken to by the teacher.\n\n[E] th This way of teaching has endured for over 150 years and is still common today. However, a growing number of people now believe that school leavers need different skills to overcome the challenges of the 21st century. Among them is the ability to ask the right questions to achieve a better understanding of the world around us. This means not just accepting that what you are told is the truth. It also means being able to work on your own to find answers and solve problems. Not only that, but students should also be able to work with others by contributing to arguments in a useful and meaningful way.\n\n[F] st As a result, teachers are now thinking about how they can promote critical thinking skills in teenagers. For example, in many classrooms, students are no longer required to sit passively, memorising facts and figures. Instead, they are asked to think carefully, share experiences and give opinions. In fact, even the classrooms themselves are changing. Nowadays you’re more likely to find collaborative spaces where students sit in small groups, use tablets and work on projects. It’s an exciting time in education and it will be interesting to see how the next generation of thinkers turns out.",
+    "text": "[A] Have you noticed how there’s so much talk about critical thinking skills these days? There are hundreds of websites and books devoted to the topic and in some countries, you can even get a secondary school qualification in critical thinking. So, what exactly is it and why is it generating so much interest?\n\n[B] Critical thinking means different things to different people. For some, it’s about answering questions without letting your own emotions and beliefs get in the way. For others, it’s about accepting that one question might have different answers. However, if we put these differences to one side, most people would agree that critical thinking describes the process of analysing and evaluating a situation in order to understand the truth. For this process to work, critical thinkers have to be self-disciplined, careful in their analysis and open to new ideas.\n\n[C] Surprisingly, critical thinking is not a new concept. In fact, it began in the teachings of the ancient Greek philosophers more than two thousand years ago. They were concerned that ordinary citizens automatically believed their leaders without asking themselves whether they were right or wrong. However, these philosophers thought it was important for a society to know the truth, and that was only possible by asking the right questions. This belief has been held by many of the brightest thinkers ever since. Without it, we might still think that the sun orbits the Earth or that the Earth is flat.\n\n[D] Despite the importance of critical thinking in human history, the situation changed in the 19th century with the industrial revolution. More children than ever had access to education, but they studied subjects which were useful for industrial society, like maths and English. Although students learnt in large groups, there were few opportunities for critical thinking. Students were generally expected to be passive learners, learning facts and taking tests. They would sit in rows and only speak if they were spoken to by the teacher.\n\n[E] This way of teaching has endured for over 150 years and is still common today. However, a growing number of people now believe that school leavers need different skills to overcome the challenges of the 21st century. Among them is the ability to ask the right questions to achieve a better understanding of the world around us. This means not just accepting that what you are told is the truth. It also means being able to work on your own to find answers and solve problems. Not only that, but students should also be able to work with others by contributing to arguments in a useful and meaningful way.\n\n[F] As a result, teachers are now thinking about how they can promote critical thinking skills in teenagers. For example, in many classrooms, students are no longer required to sit passively, memorising facts and figures. Instead, they are asked to think carefully, share experiences and give opinions. In fact, even the classrooms themselves are changing. Nowadays you’re more likely to find collaborative spaces where students sit in small groups, use tablets and work on projects. It’s an exciting time in education and it will be interesting to see how the next generation of thinkers turns out.\n\n[G] Of course, not everyone is convinced. Some teachers worry that students need a solid base of knowledge before they can think critically about anything, and that too much discussion in class can leave less time for learning the basics. Others point out that critical thinking is difficult to measure in exams. These concerns are fair, but supporters argue that facts and thinking skills are not opposites. After all, it is hard to question an idea if you know nothing about it, but it is equally hard to use what you know if you have never been asked to think for yourself.",
     "qs": [
      {
       "n": 1,
+      "s": "What is the writer’s main purpose in the first paragraph?",
+      "o": [
+       "to complain that there are too many books on critical thinking",
+       "to introduce a topic that is receiving a lot of attention",
+       "to explain why critical thinking should be taught in schools",
+       "to describe a qualification that students can take"
+      ],
+      "a": 1,
+      "w": "The writer starts with <b>so much talk about critical thinking</b> and asks <b>what exactly is it and why</b> there is interest. The qualification is only an example, and nobody complains about books or argues for teaching it yet."
+     },
+     {
+      "n": 2,
       "s": "What point is the writer trying to make in paragraph B?",
       "o": [
        "Everyone agrees that critical thinkers are self-disciplined.",
        "It’s not always important to understand the truth.",
-       "Critical thinking involves a search for truth.",
-       "We should pay more attention to our emotions."
+       "We should pay more attention to our emotions.",
+       "Critical thinking involves a search for truth."
       ],
-      "a": 2
+      "a": 3,
+      "w": "Most people agree that critical thinking means <b>analysing and evaluating a situation in order to understand the truth</b>. Self-discipline is a requirement, but people <b>mean different things</b> by the term, so ‘everyone agrees’ is too strong."
      },
      {
-      "n": 2,
+      "n": 3,
       "s": "Early philosophers were",
       "o": [
        "worried that people weren’t well-informed.",
@@ -5278,32 +6601,35 @@ window.RUOE_B2 = {
        "annoyed because people didn’t want to know the truth.",
        "surprised about the things the leaders said."
       ],
-      "a": 0
+      "a": 0,
+      "w": "Paragraph C says they were concerned that citizens <b>automatically believed their leaders</b> without asking questions. They wanted people to know the truth, so they were not keen on blind belief."
      },
      {
-      "n": 3,
+      "n": 4,
       "s": "What was the advantage of the 19th century school system?",
       "o": [
        "Lots of students were good at maths and English.",
        "There weren’t many opportunities for critical thinking.",
-       "Students could take exams to show what they’d learnt.",
-       "Many students could study at the same time."
+       "Many students could study at the same time.",
+       "Students could take exams to show what they’d learnt."
       ],
-      "a": 3
-     },
-     {
-      "n": 4,
-      "s": "What is suggested about young people in paragraph E?",
-      "o": [
-       "Traditional education won’t help them in today’s world.",
-       "They never accept what other people tell them.",
-       "They are unable to understand the world around us.",
-       "They all want to make a difference to the world."
-      ],
-      "a": 0
+      "a": 2,
+      "w": "More children had access to education and <b>students learnt in large groups</b>. Few chances for critical thinking was a disadvantage, and the text does not say students were good at maths and English."
      },
      {
       "n": 5,
+      "s": "What is suggested about young people in paragraph E?",
+      "o": [
+       "They never accept what other people tell them.",
+       "They are unable to understand the world around us.",
+       "They all want to make a difference to the world.",
+       "Traditional education won’t help them in today’s world."
+      ],
+      "a": 3,
+      "w": "Paragraph E says <b>school leavers need different skills</b> to overcome 21st-century challenges. Young people should not just accept what they are told, but the text does not say they never do."
+     },
+     {
+      "n": 6,
       "s": "The writer uses the expression ‘collaborative spaces’ in the final paragraph to describe",
       "o": [
        "a new subject which students study at school now.",
@@ -5311,14 +6637,15 @@ window.RUOE_B2 = {
        "a way of remembering facts and figures.",
        "a classroom with the chairs organised in rows."
       ],
-      "a": 1
+      "a": 1,
+      "w": "You find <b>collaborative spaces where students sit in small groups</b> and work on projects. Rows of chairs describe the old classrooms, and memorising facts is what students no longer have to do."
      }
     ]
    },
    {
     "id": "p47-91",
     "title": "The beauty of books · version 1",
-    "text": "You might have heard people saying that young people don’t read any more. They say we don’t appreciate good literature and that we’re losing our language skills. Fortunately, research has shown that the younger generation still enjoys reading. Nevertheless, we might not appreciate just how important it can be. So, in case you’re not sure why it’s worth doing, I’m going to spell it out for you.\n\nFor me, the main reason is that books help you relax. Anyone who’s read a novel for pleasure must have had that feeling of being in a different world. From the moment you turn the page, you switch off from the world around you and your troubles melt away. In fact, recent research, where scientists studied the effects of reading on the body, has shown that it really does have a relaxing effect. It was found that when people start reading, there is a drop in the heart rate and the muscles start to relax. Not only that, but the research also showed that it can reduce stress more quickly than walking or listening to music.\n\nInterestingly, although we’re helping our bodies relax, reading is also a great way of providing stimulation for our brains. This is important because our brains need to get exercise just like the rest of our bodies. Scientists have used special machines called MRI scanners to analyse what’s going on inside your head and it seems that reading exercises different parts of your brain at the same time. They have also discovered that the more difficult the read, the more stimulation your brain gets. What’s more, this effect is said to last long after you’ve put the book down.\n\nAnother reason for getting into a good book is that it’s good for your emotional intelligence, which means you have a better understanding of your own and other people’s feelings. This is because when you’re reading a novel, you’re seeing the world through someone else’s eyes. In fact, psychologists think that you experience what’s happening in the story as if you were experiencing it yourself. This helps us develop greater social awareness which we can use in our day-to-day lives. A word of caution though; this only seems to work if you read novels rather than non-fiction books.\n\nMy final reason might be of special interest to people studying a foreign language because reading is proven to be a fantastic way of improving your language skills, no matter whether you’re studying Mandarin, Russian or Irish. It’s not only a good way to learn new vocabulary but it also helps you see how grammatical structures are used in different ways. We also know that you’re more likely to understand and remember new language if has some personal meaning for you. This means that reading a book by your favourite author might make more sense than working through a grammar text book.\n\nI could go on telling you why you should read more but it’s quite clear that reading is an extremely worthwhile activity. And the best thing is, you get all of these benefits but it will hardly cost you a penny.",
+    "text": "You might have heard people saying that young people don’t read any more. They say we don’t appreciate good literature and that we’re losing our language skills. Fortunately, research has shown that the younger generation still enjoys reading. Nevertheless, we might not appreciate just how important it can be. So, in case you’re not sure why it’s worth doing, I’m going to spell it out for you.\n\nFor me, the main reason is that books help you relax. Anyone who’s read a novel for pleasure must have had that feeling of being in a different world. From the moment you turn the page, you switch off from the world around you and your troubles melt away. In fact, recent research, where scientists studied the effects of reading on the body, has shown that it really does have a relaxing effect. It was found that when people start reading, there is a drop in the heart rate and the muscles start to relax. Not only that, but the research also showed that it can reduce stress more quickly than walking or listening to music.\n\nInterestingly, although we’re helping our bodies relax, reading is also a great way of providing stimulation for our brains. This is important because our brains need to get exercise just like the rest of our bodies. Scientists have used special machines called MRI scanners to analyse what’s going on inside your head and it seems that reading exercises different parts of your brain at the same time. They have also discovered that the more difficult the read, the more stimulation your brain gets. What’s more, this effect is said to last long after you’ve put the book down.\n\nAnother reason for getting into a good book is that it’s good for your emotional intelligence, which means you have a better understanding of your own and other people’s feelings. This is because when you’re reading a novel, you’re seeing the world through someone else’s eyes. In fact, psychologists think that you experience what’s happening in the story as if you were experiencing it yourself. This helps us develop greater social awareness which we can use in our day-to-day lives. A word of caution though; this only seems to work if you read novels rather than non-fiction books.\n\nMy final reason might be of special interest to people studying a foreign language because reading is proven to be a fantastic way of improving your language skills, no matter whether you’re studying Mandarin, Russian or Irish. It’s not only a good way to learn new vocabulary but it also helps you see how grammatical structures are used in different ways. We also know that you’re more likely to understand and remember new language if has some personal meaning for you. This means that reading a book by your favourite author might make more sense than working through a grammar text book.\n\nOf course, it isn’t always easy to find the time to read. Many of us spend our free evenings watching series or scrolling through our phones, and a book can feel like hard work by comparison. My advice is to start small. Try reading for just ten minutes before you go to sleep, and you may find that you soon want to carry on for longer. If you don’t want to buy books, you can borrow them from a library, and there are plenty of free ones online too. Audiobooks can also be a good option for people who spend a lot of time travelling, although some readers say they don’t give the same feeling of escape.\n\nI could go on telling you why you should read more but it’s quite clear that reading is an extremely worthwhile activity. And the best thing is, you get all of these benefits but it will hardly cost you a penny.",
     "qs": [
      {
       "n": 1,
@@ -5329,7 +6656,8 @@ window.RUOE_B2 = {
        "They are no longer able to communicate effectively.",
        "It’s likely that none of them appreciate the best literature."
       ],
-      "a": 0
+      "a": 0,
+      "w": "The writer says <b>we might not appreciate just how important it can be</b>. ‘None of them’ is too strong, because research shows the younger generation <b>still enjoys reading</b>."
      },
      {
       "n": 2,
@@ -5340,18 +6668,20 @@ window.RUOE_B2 = {
        "It causes your heart to beat more slowly.",
        "It increases the risk of a heart attack."
       ],
-      "a": 2
+      "a": 2,
+      "w": "The research found <b>a drop in the heart rate</b> when people start reading. Reading helps the muscles relax, so it does not stop the body relaxing, and temperature is never mentioned."
      },
      {
       "n": 3,
       "s": "What does the writer mean by ‘providing stimulation’ in paragraph 3?",
       "o": [
-       "making something more interesting",
-       "helping something develop",
-       "increasing intelligence",
-       "improving reading skills"
+       "making the brain feel more relaxed",
+       "giving the brain activity to work on",
+       "making people more intelligent",
+       "teaching the brain new reading skills"
       ],
-      "a": 1
+      "a": 1,
+      "w": "The writer says our brains <b>need to get exercise</b> and reading uses different parts of the brain. So stimulation means giving the brain something to do. Relaxation was the topic of the previous paragraph."
      },
      {
       "n": 4,
@@ -5362,36 +6692,51 @@ window.RUOE_B2 = {
        "Psychologists are undecided about the importance of emotional intelligence.",
        "Non-fiction books have no obvious effect on emotional intelligence."
       ],
-      "a": 3
+      "a": 3,
+      "w": "The writer warns that <b>this only seems to work if you read novels rather than non-fiction books</b>. Regular reading is not mentioned, and the psychologists in the text seem sure of their ideas."
      },
      {
       "n": 5,
+      "s": "What does the writer say about learning a language through reading?",
+      "o": [
+       "Grammar books are more useful than novels.",
+       "It only works for certain languages.",
+       "It is easier to remember language that has a personal meaning for you.",
+       "It helps with vocabulary but not with grammar."
+      ],
+      "a": 2,
+      "w": "You are <b>more likely to understand and remember new language if it has some personal meaning</b>. Reading also shows how grammar is used, it works for any language, and a favourite author may be better than a grammar book."
+     },
+     {
+      "n": 6,
       "s": "How does the writer feel in general about reading?",
       "o": [
+       "There are a number of good reasons why you should read.",
        "He’s probably said too much on the subject already.",
        "The majority of people don’t spend enough time doing it.",
-       "There are a number of good reasons why you should read.",
        "It’s a shame that readers no longer appreciate good books."
       ],
-      "a": 2
+      "a": 0,
+      "w": "He gives several reasons and ends that reading is <b>an extremely worthwhile activity</b>. He says <b>I could go on</b>, so he has not said too much, and he never complains that people read too little."
      }
     ]
    },
    {
     "id": "p49-93",
     "title": "The beauty of books · version 2",
-    "text": "You might have heard people saying that young people don’t read any more. They say we don’t appreciate good literature and that we’re losing our language skills. Fortunately, research has shown that the younger generation still enjoys reading. Nevertheless, we might not appreciate just how important it can be. So, in case you’re not sure why it’s worth doing, I’m going to spell it out for you.\n\nFor me, the main reason is that books help you relax. Anyone who’s read a novel for pleasure must have had that feeling of being in a different world. From the moment you turn the page, you switch off from the world around you and your troubles melt away. In fact, recent research, where scientists studied the effects of reading on the body, has shown that it really does have a relaxing effect. It was found that when people start reading, there is a drop in the heart rate and the muscles start to relax. Not only that, but the research also showed that it can reduce stress more quickly than walking or listening to music.\n\nInterestingly, although we’re helping our bodies relax, reading is also a great way of providing stimulation for our brains. This is important because our brains need to get exercise just like the rest of our bodies. Scientists have used special machines called MRI scanners to analyse what’s going on inside your head and it seems that reading exercises different parts of your brain at the same time. They have also discovered that the more difficult the read, the more stimulation your brain gets. What’s more, this effect is said to last long after you’ve put the book down.\n\nAnother reason for getting into a good book is that it’s good for your emotional intelligence, which means you have a better understanding of your own and other people’s feelings. This is because when you’re reading a novel, you’re seeing the world through someone else’s eyes. In fact, psychologists think that you experience what’s happening in the story as if you were experiencing it yourself. This helps us develop greater social awareness which we can use in our day-to-day lives. A word of caution though; this only seems to work if you read novels rather than non-fiction books.\n\nMy final reason might be of special interest to people studying a foreign language because reading is proven to be a fantastic way of improving your language skills, no matter whether you’re studying Mandarin, Russian or Irish. It’s not only a good way to learn new vocabulary but it also helps you see how grammatical structures are used in different ways. We also know that you’re more likely to understand and remember new language if has some personal meaning for you. This means that reading a book by your favourite author might make more sense than working through a grammar text book.\n\nI could go on telling you why you should read more but it’s quite clear that reading is an extremely worthwhile activity. And the best thing is, you get all of these benefits but it will hardly cost you a penny.",
+    "text": "You might have heard people saying that young people don’t read any more. They say we don’t appreciate good literature and that we’re losing our language skills. Fortunately, research has shown that the younger generation still enjoys reading. Nevertheless, we might not appreciate just how important it can be. So, in case you’re not sure why it’s worth doing, I’m going to spell it out for you.\n\nFor me, the main reason is that books help you relax. Anyone who’s read a novel for pleasure must have had that feeling of being in a different world. From the moment you turn the page, you switch off from the world around you and your troubles melt away. In fact, recent research, where scientists studied the effects of reading on the body, has shown that it really does have a relaxing effect. It was found that when people start reading, there is a drop in the heart rate and the muscles start to relax. Not only that, but the research also showed that it can reduce stress more quickly than walking or listening to music.\n\nInterestingly, although we’re helping our bodies relax, reading is also a great way of providing stimulation for our brains. This is important because our brains need to get exercise just like the rest of our bodies. Scientists have used special machines called MRI scanners to analyse what’s going on inside your head and it seems that reading exercises different parts of your brain at the same time. They have also discovered that the more difficult the read, the more stimulation your brain gets. What’s more, this effect is said to last long after you’ve put the book down.\n\nAnother reason for getting into a good book is that it’s good for your emotional intelligence, which means you have a better understanding of your own and other people’s feelings. This is because when you’re reading a novel, you’re seeing the world through someone else’s eyes. In fact, psychologists think that you experience what’s happening in the story as if you were experiencing it yourself. This helps us develop greater social awareness which we can use in our day-to-day lives. A word of caution though; this only seems to work if you read novels rather than non-fiction books.\n\nMy final reason might be of special interest to people studying a foreign language because reading is proven to be a fantastic way of improving your language skills, no matter whether you’re studying Mandarin, Russian or Irish. It’s not only a good way to learn new vocabulary but it also helps you see how grammatical structures are used in different ways. We also know that you’re more likely to understand and remember new language if has some personal meaning for you. This means that reading a book by your favourite author might make more sense than working through a grammar text book.\n\nOf course, it isn’t always easy to find the time to read. Many of us spend our free evenings watching series or scrolling through our phones, and a book can feel like hard work by comparison. My advice is to start small. Try reading for just ten minutes before you go to sleep, and you may find that you soon want to carry on for longer. If you don’t want to buy books, you can borrow them from a library, and there are plenty of free ones online too. Audiobooks can also be a good option for people who spend a lot of time travelling, although some readers say they don’t give the same feeling of escape.\n\nI could go on telling you why you should read more but it’s quite clear that reading is an extremely worthwhile activity. And the best thing is, you get all of these benefits but it will hardly cost you a penny.",
     "qs": [
      {
       "n": 1,
       "s": "What do we learn about young people’s reading habits in the first paragraph?",
       "o": [
        "They don’t seem to like good literature.",
-       "Reading is still a popular activity among them.",
        "They only read to improve their language skills.",
-       "They seldom read."
+       "They seldom read.",
+       "Reading is still a popular activity among them."
       ],
-      "a": 1
+      "a": 3,
+      "w": "<b>research has shown that the younger generation still enjoys reading</b>. The other options are things ‘people say’, which the writer is arguing against."
      },
      {
       "n": 2,
@@ -5402,18 +6747,20 @@ window.RUOE_B2 = {
        "Your troubles are solved.",
        "You choose to do nothing about your troubles."
       ],
-      "a": 1
+      "a": 1,
+      "w": "You <b>switch off from the world around you</b>, so your problems disappear while you read. They are not solved and you are not comparing them with other people’s."
      },
      {
       "n": 3,
       "s": "According to the writer, what effect does reading have on the brain?",
       "o": [
-       "It makes your brain more active.",
        "It increases the brain’s ability to analyse.",
        "It stops your brain from exercising.",
+       "It makes your brain more active.",
        "It has no clear effect."
       ],
-      "a": 0
+      "a": 2,
+      "w": "Reading <b>exercises different parts of your brain at the same time</b>. Scientists use scanners to analyse the brain, but the text doesn’t say reading improves analysis, and the effect is clear."
      },
      {
       "n": 4,
@@ -5424,25 +6771,39 @@ window.RUOE_B2 = {
        "be sensible",
        "be clever"
       ],
-      "a": 0
+      "a": 0,
+      "w": "After ‘a word of caution’ the writer warns that <b>this only seems to work if you read novels</b>. It is a warning to take care with the claim, not a reason to be afraid."
      },
      {
       "n": 5,
       "s": "What does the writer suggest about language learning?",
       "o": [
        "Some languages are easier to acquire than others.",
+       "Reading can help you get better at languages.",
        "It’s easier to learn vocabulary than grammar by reading.",
-       "A grammar book is the best way to learn a language.",
-       "Reading can help you get better at languages."
+       "A grammar book is the best way to learn a language."
       ],
-      "a": 3
+      "a": 1,
+      "w": "<b>reading is proven to be a fantastic way of improving your language skills</b>, whatever the language. The text doesn’t compare languages, and a favourite author’s book may be better than a grammar book."
+     },
+     {
+      "n": 6,
+      "s": "What advice does the writer give to people who find it hard to make time for reading?",
+      "o": [
+       "Stop watching series completely.",
+       "Choose audiobooks instead of printed books.",
+       "Read only in libraries.",
+       "Begin with a short period of reading each day."
+      ],
+      "a": 3,
+      "w": "He says <b>start small</b> and try <b>ten minutes before you go to sleep</b>. Audiobooks are only one possible option for people who travel, and libraries are suggested just as a free way to get books."
      }
     ]
    },
    {
     "id": "p51-95",
     "title": "Black Friday · version 1",
-    "text": "Unless you live in the United States, you probably wouldn’t have heard of Black Friday until a few years ago. Black Friday has been a big shopping day in the US since the 1950s but has only recently been happening in other countries. For shops, Black Friday marks the beginning of the busiest shopping period of the year. Crowds of shoppers descend on the shopping centres and spend large amounts of money. For example, it is estimated that in 2016, more than $650 billion worth of goods were purchased.\n\nBlack Friday is the day after Thanksgiving, which is a national holiday on the fourth Thursday of November. It seems that it first appeared in the 1950s. Although it isn’t clear how the day got its name, most people now think Black Friday refers to an accounting term. Accountants write profits in black ink and losses in red ink in their accounting records. So, to be ‘in the black’ means you have made a profit. That’s the aim of this super shopping day.\n\nHaving recognised the importance of Black Friday, shops went to great efforts to attract people to their shops, with promises of big discounts. As a result, the malls were filled with shoppers from early in the morning until late at night. It marked the high point of the year for shops and enthusiastic shoppers looking for great bargains.\n\nShops use many strategies to draw customers in, the most famous being the ‘doorbuster’. These are products with huge discounts, which the shops probably make a loss on. Some people take these bargains very seriously and they will do anything to get them. Eager shoppers camp out in front of the store and even wait there all night in order to be the first in line when it opens. Sadly, however, they do not all leave the store satisfied because, once the doors open, it might not be so easy to get your hands on the doorbuster deal. They are often so limited that there are not enough for everyone.\n\nAnother reason why Black Friday might not be such a good thing is that the bargains on offer may not be quite what they seem. In some cases, the doorbusters are low quality products. They hope that if the price is low enough, people will buy them. In other cases, shops rely on the fact that not everyone will get the bargain they came for. The shops see this as a chance to sell them more expensive products, which they had no intention of buying.\n\nThere is no doubt that some fortunate shoppers manage to get a good deal on Black Friday, which will undoubtedly brighten up their holiday season. However, this is not the case for many others. Even if they have managed to get some bargains, it is likely they will have bought something they could not afford or did not need. My advice would be to remain at home or go out for a walk far away from the shops and enjoy your Thanksgiving weekend in peace.",
+    "text": "Unless you live in the United States, you probably wouldn’t have heard of Black Friday until a few years ago. Black Friday has been a big shopping day in the US since the 1950s but has only recently been happening in other countries. For shops, Black Friday marks the beginning of the busiest shopping period of the year. Crowds of shoppers descend on the shopping centres and spend large amounts of money. For example, it is estimated that in 2016, more than $650 billion worth of goods were purchased.\n\nBlack Friday is the day after Thanksgiving, which is a national holiday on the fourth Thursday of November. It seems that it first appeared in the 1950s. Although it isn’t clear how the day got its name, most people now think Black Friday refers to an accounting term. Accountants write profits in black ink and losses in red ink in their accounting records. So, to be ‘in the black’ means you have made a profit. That’s the aim of this super shopping day.\n\nHaving recognised the importance of Black Friday, shops went to great efforts to attract people to their shops, with promises of big discounts. As a result, the malls were filled with shoppers from early in the morning until late at night. It marked the high point of the year for shops and enthusiastic shoppers looking for great bargains.\n\nShops use many strategies to draw customers in, the most famous being the ‘doorbuster’. These are products with huge discounts, which the shops probably make a loss on. Some people take these bargains very seriously and they will do anything to get them. Eager shoppers camp out in front of the store and even wait there all night in order to be the first in line when it opens. Sadly, however, they do not all leave the store satisfied because, once the doors open, it might not be so easy to get your hands on the doorbuster deal. They are often so limited that there are not enough for everyone.\n\nAnother reason why Black Friday might not be such a good thing is that the bargains on offer may not be quite what they seem. In some cases, the doorbusters are low quality products. They hope that if the price is low enough, people will buy them. In other cases, shops rely on the fact that not everyone will get the bargain they came for. The shops see this as a chance to sell them more expensive products, which they had no intention of buying.\n\nIn recent years, the focus has begun to shift from the shopping centres to the internet. Many retailers now offer their best deals online, which means shoppers can compare prices from the comfort of their sofa. This may seem like a better option, but it brings problems of its own. Popular websites often crash when thousands of customers try to buy the same item at the same moment, and delivery companies struggle to cope with the number of parcels. What is more, it is much easier to spend money you don’t have when all it takes is one click.\n\nThere is no doubt that some fortunate shoppers manage to get a good deal on Black Friday, which will undoubtedly brighten up their holiday season. However, this is not the case for many others. Even if they have managed to get some bargains, it is likely they will have bought something they could not afford or did not need. My advice would be to remain at home or go out for a walk far away from the shops and enjoy your Thanksgiving weekend in peace.",
     "qs": [
      {
       "n": 1,
@@ -5453,7 +6814,8 @@ window.RUOE_B2 = {
        "People approach the shops in large numbers.",
        "People speak to the retailers in a negative way."
       ],
-      "a": 2
+      "a": 2,
+      "w": "<b>Crowds of shoppers descend on the shopping centres</b> means a large number of people arrive. The idea is a busy rush to the shops, not an attack or anyone climbing down from a roof."
      },
      {
       "n": 2,
@@ -5464,10 +6826,23 @@ window.RUOE_B2 = {
        "to explain why Black Friday is a popular event",
        "to present ways of improving Black Friday"
       ],
-      "a": 0
+      "a": 0,
+      "w": "The paragraph explains the date, <b>how the day got its name</b> and the idea of being ‘in the black’. It gives facts, not opinions, and explains the name rather than why people like the event."
      },
      {
       "n": 3,
+      "s": "What do we learn about shops from paragraph 3?",
+      "o": [
+       "They were surprised by how much money shoppers spent.",
+       "They reduced the price of only a few products.",
+       "They stayed open all night to compete with online shops.",
+       "They made a great effort to attract customers once they saw how important the day was."
+      ],
+      "a": 3,
+      "w": "<b>Having recognised the importance of Black Friday, shops went to great efforts to attract people</b>. They promised big discounts, and long opening hours were the result, not a reaction to online shops."
+     },
+     {
+      "n": 4,
       "s": "In the fourth paragraph, what does the author say might be a consequence of going to a store on Black Friday?",
       "o": [
        "Shoppers dislike waiting for the stores to open.",
@@ -5475,10 +6850,11 @@ window.RUOE_B2 = {
        "Shoppers enjoy competing for goods with each other.",
        "Shoppers usually leave the store feeling dissatisfied."
       ],
-      "a": 1
+      "a": 1,
+      "w": "<b>they do not all leave the store satisfied</b> because the doorbuster deals are so limited that <b>there are not enough for everyone</b>. ‘Usually dissatisfied’ is too strong, as the text says ‘not all’."
      },
      {
-      "n": 4,
+      "n": 5,
       "s": "What point is the writer trying to make in paragraph 5?",
       "o": [
        "Shops see Black Friday as an opportunity to sell things people might not buy otherwise.",
@@ -5486,25 +6862,27 @@ window.RUOE_B2 = {
        "Most people feel uncomfortable about spending their money on Black Friday.",
        "Many of the Black Friday bargains are better than they seem."
       ],
-      "a": 0
+      "a": 0,
+      "w": "<b>The shops see this as a chance to sell them more expensive products</b> that they had no intention of buying. The writer says the bargains are <b>not quite what they seem</b>, so they are worse, not better."
      },
      {
-      "n": 5,
+      "n": 6,
       "s": "What do we learn about the writer’s general attitude to Black Friday in the final paragraph?",
       "o": [
        "If you are persistent and determined, you can get some very good bargains on Black Friday.",
        "The holiday season would not be as much fun without the Black Friday sales.",
-       "Retailers should not be allowed to promote Black Friday sales over the Thanksgiving weekend.",
-       "While some people benefit, most people would be better off doing something else on Black Friday."
+       "While some people benefit, most people would be better off doing something else on Black Friday.",
+       "Retailers should not be allowed to promote Black Friday sales over the Thanksgiving weekend."
       ],
-      "a": 3
+      "a": 2,
+      "w": "<b>some fortunate shoppers manage to get a good deal</b>, but this is not true for many others, and he advises staying at home. He doesn’t say shops should be stopped from advertising sales."
      }
     ]
    },
    {
     "id": "p53-97",
     "title": "Black Friday · version 2",
-    "text": "Unless you live in the United States, you probably wouldn’t have heard of Black Friday until a few years ago. Black Friday has been a big shopping day in the US since the 1950s but has only recently been happening in other countries. For shops, Black Friday marks the beginning of the busiest shopping period of the year. Crowds of shoppers descend on the shopping centres and spend large amounts of money. For example, it is estimated that in 2016, more than $650 billion worth of goods were purchased.\n\nBlack Friday is the day after Thanksgiving, which is a national holiday on the fourth Thursday of November. It seems that it first appeared in the 1950s. Although it isn’t clear how the day got its name, most people now think Black Friday refers to an accounting term. Accountants write profits in black ink and losses in red ink in their accounting records. So, to be ‘in the black’ means you have made a profit. That’s the aim of this super shopping day.\n\nHaving recognised the importance of Black Friday, shops went to great efforts to attract people to their shops, with promises of big discounts. As a result, the malls were filled with shoppers from early in the morning until late at night. It marked the high point of the year for shops and enthusiastic shoppers looking for great bargains.\n\nShops use many strategies to draw customers in, the most famous being the ‘doorbuster’. These are products with huge discounts, which the shops probably make a loss on. Some people take these bargains very seriously and they will do anything to get them. Eager shoppers camp out in front of the store and even wait there all night in order to be the first in line when it opens. Sadly, however, they do not all leave the store satisfied because, once the doors open, it might not be so easy to get your hands on the doorbuster deal. They are often so limited that there are not enough for everyone.\n\nAnother reason why Black Friday might not be such a good thing is that the bargains on offer may not be quite what they seem. In some cases, the doorbusters are low quality products. They hope that if the price is low enough, people will buy them. In other cases, shops rely on the fact that not everyone will get the bargain they came for. The shops see this as a chance to sell them more expensive products, which they had no intention of buying.\n\nThere is no doubt that some fortunate shoppers manage to get a good deal on Black Friday, which will undoubtedly brighten up their holiday season. However, this is not the case for many others. Even if they have managed to get some bargains, it is likely they will have bought something they could not afford or did not need. My advice would be to remain at home or go out for a walk far away from the shops and enjoy your Thanksgiving weekend in peace.",
+    "text": "Unless you live in the United States, you probably wouldn’t have heard of Black Friday until a few years ago. Black Friday has been a big shopping day in the US since the 1950s but has only recently been happening in other countries. For shops, Black Friday marks the beginning of the busiest shopping period of the year. Crowds of shoppers descend on the shopping centres and spend large amounts of money. For example, it is estimated that in 2016, more than $650 billion worth of goods were purchased.\n\nBlack Friday is the day after Thanksgiving, which is a national holiday on the fourth Thursday of November. It seems that it first appeared in the 1950s. Although it isn’t clear how the day got its name, most people now think Black Friday refers to an accounting term. Accountants write profits in black ink and losses in red ink in their accounting records. So, to be ‘in the black’ means you have made a profit. That’s the aim of this super shopping day.\n\nHaving recognised the importance of Black Friday, shops went to great efforts to attract people to their shops, with promises of big discounts. As a result, the malls were filled with shoppers from early in the morning until late at night. It marked the high point of the year for shops and enthusiastic shoppers looking for great bargains.\n\nShops use many strategies to draw customers in, the most famous being the ‘doorbuster’. These are products with huge discounts, which the shops probably make a loss on. Some people take these bargains very seriously and they will do anything to get them. Eager shoppers camp out in front of the store and even wait there all night in order to be the first in line when it opens. Sadly, however, they do not all leave the store satisfied because, once the doors open, it might not be so easy to get your hands on the doorbuster deal. They are often so limited that there are not enough for everyone.\n\nAnother reason why Black Friday might not be such a good thing is that the bargains on offer may not be quite what they seem. In some cases, the doorbusters are low quality products. They hope that if the price is low enough, people will buy them. In other cases, shops rely on the fact that not everyone will get the bargain they came for. The shops see this as a chance to sell them more expensive products, which they had no intention of buying.\n\nIn recent years, the focus has begun to shift from the shopping centres to the internet. Many retailers now offer their best deals online, which means shoppers can compare prices from the comfort of their sofa. This may seem like a better option, but it brings problems of its own. Popular websites often crash when thousands of customers try to buy the same item at the same moment, and delivery companies struggle to cope with the number of parcels. What is more, it is much easier to spend money you don’t have when all it takes is one click.\n\nThere is no doubt that some fortunate shoppers manage to get a good deal on Black Friday, which will undoubtedly brighten up their holiday season. However, this is not the case for many others. Even if they have managed to get some bargains, it is likely they will have bought something they could not afford or did not need. My advice would be to remain at home or go out for a walk far away from the shops and enjoy your Thanksgiving weekend in peace.",
     "qs": [
      {
       "n": 1,
@@ -5515,7 +6893,8 @@ window.RUOE_B2 = {
        "discussing some problems related to Black Friday",
        "recommending Black Friday to the reader"
       ],
-      "a": 1
+      "a": 1,
+      "w": "The paragraph says <b>Black Friday has been a big shopping day in the US since the 1950s</b> and describes what happens in shops. There are no problems or recommendations yet, and the big spending is only a fact."
      },
      {
       "n": 2,
@@ -5523,83 +6902,102 @@ window.RUOE_B2 = {
       "o": [
        "the tallest part of a shop or supermarket",
        "something that should be done soon",
-       "an important time for shops and other stores",
-       "the biggest discounts offered on products"
+       "the biggest discounts offered on products",
+       "an important time for shops and other stores"
       ],
-      "a": 2
+      "a": 3,
+      "w": "<b>It marked the high point of the year for shops</b> means the best, busiest time for them. It is not about height or about discounts, which are mentioned in a different sentence."
      },
      {
       "n": 3,
       "s": "What point is the writer trying to make in paragraph 4?",
       "o": [
-       "Some people are unable to find bargains on Black Friday.",
        "Shops tend to lose money on Black Friday.",
        "Customers have to queue all night to get a bargain.",
+       "Some people are unable to find bargains on Black Friday.",
        "Shops need to try different strategies for Black Friday."
       ],
-      "a": 0
+      "a": 2,
+      "w": "<b>it might not be so easy to get your hands on the doorbuster deal</b> because <b>there are not enough for everyone</b>. Shops lose money only on doorbusters, and queuing all night is something only some people choose to do."
      },
      {
       "n": 4,
-      "s": "What does the writer suggest when he says the shoppers ‘give in’ in paragraph 5?",
+      "s": "What does the writer suggest about the shops in paragraph 5?",
       "o": [
-       "They buy something because they are afraid of the retailer.",
-       "They accept that they can’t afford anything.",
-       "They don’t want to pay for the product in cash.",
-       "They can’t control the desire to buy something."
+       "They sometimes depend on customers not finding the bargain they wanted.",
+       "They never sell the doorbuster products at the advertised price.",
+       "They refuse to sell cheaper products to customers who ask.",
+       "They are honest about the quality of their cheap goods."
       ],
-      "a": 3
+      "a": 0,
+      "w": "<b>shops rely on the fact that not everyone will get the bargain they came for</b> and then sell them a more expensive product. Some doorbusters are low quality, but the writer doesn’t say the shops are open about it."
      },
      {
       "n": 5,
-      "s": "What is the writer’s purpose in paragraph 6?",
+      "s": "What problem with online Black Friday shopping does the writer mention?",
+      "o": [
+       "Prices online are higher than in the shops.",
+       "Delivery companies refuse to take parcels.",
+       "Shoppers can’t compare different products.",
+       "Websites may stop working when too many people use them."
+      ],
+      "a": 3,
+      "w": "<b>Popular websites often crash when thousands of customers try to buy</b> at the same moment. Shoppers can compare prices from the sofa, and delivery companies <b>struggle to cope</b>, but they don’t refuse."
+     },
+     {
+      "n": 6,
+      "s": "What is the writer’s purpose in the final paragraph?",
       "o": [
        "to encourage readers to buy things on Black Friday",
-       "to complain about people’s behaviour on Black Friday",
        "to recommend other ways to spend Black Friday",
+       "to complain about people’s behaviour on Black Friday",
        "to argue that Black Friday is bad for everyone"
       ],
-      "a": 2
+      "a": 1,
+      "w": "<b>My advice would be to remain at home or go out for a walk</b>. The writer admits that <b>some fortunate shoppers manage to get a good deal</b>, so he does not say it is bad for everyone."
      }
     ]
    },
    {
     "id": "p60-107",
     "title": "Write to Freedom · version 1",
-    "text": "Caspar Walsh knows a lot about youth crime. He spent his own youth committing offences such as fraud and robbery and was in and out of institutions for young offenders during his teens. At the age of 18, he decided that he didn’t want to end up spending the rest of his life in prison. He turned away from the life he used to lead, finding solace in writing about his experiences. Now over a decade later, he is dedicating his life to helping other young people in a similar situation through a project which encourages self-expression through the written word and through connecting with nature.\n\nThe Write to Freedom charity, which began in 2007, runs a ‘wilderness and writing’ course created by Caspar during which young men in prison spend four weekends camping out in Dartmoor National Park. Caspar believes that through spending time in nature, troubled youngsters will have the opportunity to reflect on their lives. Putting their feelings down on paper will help this process. The hope is that, with the support of mentors to guide them, they will be able to make positive changes to their lives. After completing the course, students can apply to become mentors on the same project.\n\nBut how do angry young men react when they suddenly find themselves in the solitude of nature after spending most of their lives in an urban environment? Fear and mistrust are often the first feelings. Some of them want to challenge the new set of rules that they aren’t used to, refusing to switch off their mobile phones, for example, when asked to. However, after spending the weekend walking in the fresh air, making fires, and sleeping under the stars, these feelings are usually replaced by more positive ones. While some participants simply appreciate the chance to get away from prison life, others feel they acquire some useful life skills and learn more about themselves during the course.\n\nWriting is an unfamiliar activity for the students, many of whom have limited literacy skills as a result of truancy and a general lack of interest in school. However, they are often surprised to find that once they start writing, whether about themselves, their own dreams, or fictional stories, they find it enjoyable and empowering. Putting their ideas and thoughts down on paper gives them the feeling that they are capable of achieving their aims.\n\nOrganisations like Write to Freedom are growing in number, but many more are needed. Apart from the huge financial cost of imprisoning a young person, which is about £55,000 a year in the UK, prison is often not the answer for young offenders. In many cases, young people who have committed crimes are, with the right help and guidance, capable of living productive lives in society. The Write to Freedom project is one small step towards making that happen.",
+    "text": "Caspar Walsh knows a lot about youth crime. He spent his own youth committing offences such as fraud and robbery and was in and out of institutions for young offenders during his teens. At the age of 18, he decided that he didn’t want to end up spending the rest of his life in prison. He turned away from the life he used to lead, finding solace in writing about his experiences. Now over a decade later, he is dedicating his life to helping other young people in a similar situation through a project which encourages self-expression through the written word and through connecting with nature.\n\nThe Write to Freedom charity, which began in 2007, runs a ‘wilderness and writing’ course created by Caspar during which young men in prison spend four weekends camping out in Dartmoor National Park. Caspar believes that through spending time in nature, troubled youngsters will have the opportunity to reflect on their lives. Putting their feelings down on paper will help this process. The hope is that, with the support of mentors to guide them, they will be able to make positive changes to their lives. After completing the course, students can apply to become mentors on the same project.\n\nBut how do angry young men react when they suddenly find themselves in the solitude of nature after spending most of their lives in an urban environment? Fear and mistrust are often the first feelings. Some of them want to challenge the new set of rules that they aren’t used to, refusing to switch off their mobile phones, for example, when asked to. However, after spending the weekend walking in the fresh air, making fires, and sleeping under the stars, these feelings are usually replaced by more positive ones. While some participants simply appreciate the chance to get away from prison life, others feel they acquire some useful life skills and learn more about themselves during the course.\n\nWriting is an unfamiliar activity for the students, many of whom have limited literacy skills as a result of truancy and a general lack of interest in school. However, they are often surprised to find that once they start writing, whether about themselves, their own dreams, or fictional stories, they find it enjoyable and empowering. Putting their ideas and thoughts down on paper gives them the feeling that they are capable of achieving their aims.\n\nCaspar admits that the course does not work for everyone. Some of the young men find it hard to return to their old neighbourhoods and the friends who got them into trouble, and a few go back to crime. However, those who stay in touch with the charity are much less likely to reoffend, and several have returned as volunteers to talk to the new groups about what they have learnt. For Caspar, that is the proof that the project is worth the effort.\n\nOrganisations like Write to Freedom are growing in number, but many more are needed. Apart from the huge financial cost of imprisoning a young person, which is about £55,000 a year in the UK, prison is often not the answer for young offenders. In many cases, young people who have committed crimes are, with the right help and guidance, capable of living productive lives in society. The Write to Freedom project is one small step towards making that happen.",
     "qs": [
      {
       "n": 1,
       "s": "What happened to Caspar when he was 18?",
       "o": [
-       "He changed his behaviour dramatically.",
        "He went back to his previous way of life.",
        "He became a professional author.",
-       "He made contact with other young offenders."
+       "He made contact with other young offenders.",
+       "He changed his behaviour dramatically."
       ],
-      "a": 0
+      "a": 3,
+      "w": "At 18 he <b>didn’t want to end up spending the rest of his life in prison</b> and <b>turned away from the life he used to lead</b>. He did not go back to it, and he is not said to be a professional author."
      },
      {
       "n": 2,
       "s": "What does ‘solace’ in paragraph 1 mean?",
       "o": [
        "forgiveness",
+       "comfort",
        "punishment",
-       "success",
-       "comfort"
+       "success"
       ],
-      "a": 3
+      "a": 1,
+      "w": "He <b>turned away from the life he used to lead, finding solace in writing</b>. Writing gave him something positive after a hard life, so ‘comfort’ fits. Forgiveness and punishment do not make sense here."
      },
      {
       "n": 3,
-      "s": "What do the prisoners learn in the ‘wilderness and writing’ course?",
+      "s": "Caspar believes that the ‘wilderness and writing’ course will give young prisoners",
       "o": [
-       "practical skills like making a fire",
-       "literacy skills they never learnt in school",
-       "social skills and how to cooperate with a mentor",
-       "how to live outside prison"
+       "a chance to think about their lives.",
+       "a qualification they can use to find work.",
+       "an opportunity to become professional writers.",
+       "a break from the mentors who guide them."
       ],
-      "a": 2
+      "a": 0,
+      "w": "<b>troubled youngsters will have the opportunity to reflect on their lives</b>. They can become mentors later, but jobs, qualifications and writing careers are never promised, and mentors support them."
      },
      {
       "n": 4,
@@ -5607,64 +7005,57 @@ window.RUOE_B2 = {
       "o": [
        "enjoy having time to concentrate on their problems.",
        "don’t like being in unfamiliar situations.",
-       "find it hard to change their attitude to authority.",
-       "feel they have benefited from it overall."
+       "feel they have benefited from it overall.",
+       "find it hard to change their attitude to authority."
       ],
-      "a": 3
+      "a": 2,
+      "w": "<b>these feelings are usually replaced by more positive ones</b> and people say they gain <b>useful life skills</b>. Fear is only the first reaction, so they do not dislike new situations overall."
      },
      {
       "n": 5,
       "s": "Which of the following best describes students’ attitudes towards writing?",
       "o": [
-       "They don’t expect it to be so rewarding.",
        "They are reluctant to do it.",
+       "They don’t expect it to be so rewarding.",
        "They feel unable to express themselves.",
        "They struggle to come up with ideas."
       ],
-      "a": 0
+      "a": 1,
+      "w": "Students are <b>often surprised to find</b> that writing is <b>enjoyable and empowering</b>. They have limited literacy skills, but nothing says they are reluctant or short of ideas once they begin."
      },
      {
       "n": 6,
       "s": "The writer criticises prisons for",
       "o": [
        "paying their employees too highly.",
-       "being inappropriate for certain kinds of criminal.",
        "mistreating young inmates.",
+       "being inappropriate for certain kinds of criminal.",
        "failing to work with organisations that help young offenders."
       ],
-      "a": 1
+      "a": 2,
+      "w": "<b>prison is often not the answer for young offenders</b>, who can live productive lives with the right help. The text mentions the cost of prison, but not staff pay, mistreatment or a lack of cooperation."
      }
     ]
    },
    {
     "id": "p62-109",
     "title": "Write to Freedom · version 2",
-    "text": "Caspar Walsh knows a lot about youth crime. He spent his own youth committing offences such as fraud and robbery and was in and out of institutions for young offenders during his teens. At the age of 18, he decided that he didn’t want to end up spending the rest of his life in prison. He turned away from the life he used to lead, finding comfort in writing about his experiences. Now over a decade later, he is dedicating his life to helping other young people in a similar situation through a project which encourages self-expression through the written word and through connecting with nature.\n\nThe Write to Freedom charity, which began in 2007, runs a ‘wilderness and writing’ course created by Caspar during which young men in prison spend four weekends camping out in Dartmoor National Park. Caspar believes that through spending time in nature, troubled youngsters will have the opportunity to reflect on their lives. Putting their feelings down on paper will help this process. The hope is that, with the support of mentors to guide them, they will be able to make positive changes to their lives. After completing the course, students can apply to become mentors on the same project.\n\nBut how do angry young men react when they suddenly find themselves surrounded by nature after spending most of their lives in an urban environment? Fear and mistrust are often the first feelings. Some of them want to challenge the new set of rules that they aren’t used to, refusing to switch off their mobile phones, for example, when asked to. However, after spending the weekend walking in the fresh air, making fires, and sleeping under the stars, these feelings are usually replaced by more positive ones. While some participants simply appreciate the chance to get away from prison life, others feel they acquire some useful life skills and learn more about themselves during the course.\n\nWriting is an unfamiliar activity for the students, many of whom have limited literacy skills as a result of missing classes and a general lack of interest in school. However, they are often surprised to find that once they start writing, whether about themselves, their own dreams, or fictional stories, they find it enjoyable and rewarding. Putting their ideas and thoughts down on paper gives them the feeling that they are capable of achieving their aims.\n\nOrganisations like Write to Freedom are growing in number, but many more are needed. Apart from the huge financial cost of imprisoning a young person, which is about £55,000 a year in the UK, prison is often not the answer for young offenders. In many cases, young people who have committed crimes are, with the right help and guidance, capable of living productive lives in society. The Write to Freedom project is one small step towards making that happen.",
+    "text": "Caspar Walsh knows a lot about youth crime. He spent his own youth committing offences such as fraud and robbery and was in and out of institutions for young offenders during his teens. At the age of 18, he decided that he didn’t want to end up spending the rest of his life in prison. He turned away from the life he used to lead, finding comfort in writing about his experiences. Now over a decade later, he is dedicating his life to helping other young people in a similar situation through a project which encourages self-expression through the written word and through connecting with nature.\n\nThe Write to Freedom charity, which began in 2007, runs a ‘wilderness and writing’ course created by Caspar during which young men in prison spend four weekends camping out in Dartmoor National Park. Caspar believes that through spending time in nature, troubled youngsters will have the opportunity to reflect on their lives. Putting their feelings down on paper will help this process. The hope is that, with the support of mentors to guide them, they will be able to make positive changes to their lives. After completing the course, students can apply to become mentors on the same project.\n\nBut how do angry young men react when they suddenly find themselves surrounded by nature after spending most of their lives in an urban environment? Fear and mistrust are often the first feelings. Some of them want to challenge the new set of rules that they aren’t used to, refusing to switch off their mobile phones, for example, when asked to. However, after spending the weekend walking in the fresh air, making fires, and sleeping under the stars, these feelings are usually replaced by more positive ones. While some participants simply appreciate the chance to get away from prison life, others feel they acquire some useful life skills and learn more about themselves during the course.\n\nWriting is an unfamiliar activity for the students, many of whom have limited literacy skills as a result of missing classes and a general lack of interest in school. However, they are often surprised to find that once they start writing, whether about themselves, their own dreams, or fictional stories, they find it enjoyable and rewarding. Putting their ideas and thoughts down on paper gives them the feeling that they are capable of achieving their aims.\n\nCaspar admits that the course does not work for everyone. Some of the young men find it hard to return to their old neighbourhoods and the friends who got them into trouble, and a few go back to crime. However, those who stay in touch with the charity are much less likely to reoffend, and several have returned as volunteers to talk to the new groups about what they have learnt. For Caspar, that is the proof that the project is worth the effort.\n\nOrganisations like Write to Freedom are growing in number, but many more are needed. Apart from the huge financial cost of imprisoning a young person, which is about £55,000 a year in the UK, prison is often not the answer for young offenders. In many cases, young people who have committed crimes are, with the right help and guidance, capable of living productive lives in society. The Write to Freedom project is one small step towards making that happen.",
     "qs": [
      {
       "n": 1,
       "s": "What caused Caspar Walsh to stop committing crimes?",
       "o": [
-       "writing about his experiences",
        "the thought of what his future might be",
+       "writing about his experiences",
        "taking part in a project for young offenders",
        "his love of nature"
       ],
-      "a": 1
+      "a": 0,
+      "w": "<b>he didn’t want to end up spending the rest of his life in prison</b>. Writing helped him afterwards, and the project came later, so neither was the cause."
      },
      {
       "n": 2,
-      "s": "What does ‘these feelings’ in paragraph 3 refer to?",
-      "o": [
-       "the challenge of being alone",
-       "the appreciation of freedom",
-       "the fear and mistrust learnt in urban life",
-       "the peacefulness found in nature"
-      ],
-      "a": 2
-     },
-     {
-      "n": 3,
       "s": "The main purpose of the ‘wilderness and writing’ course is to",
       "o": [
        "give teenage prisoners a holiday.",
@@ -5672,18 +7063,32 @@ window.RUOE_B2 = {
        "help young criminals understand themselves better.",
        "improve young prisoners’ writing skills."
       ],
-      "a": 2
+      "a": 2,
+      "w": "Caspar thinks time in nature gives young men <b>the opportunity to reflect on their lives</b>, and writing helps. It is not a holiday or a job scheme, and writing is a tool, not the main aim."
      },
      {
-      "n": 4,
+      "n": 3,
       "s": "How do the participants feel during the course?",
       "o": [
        "angry, then grateful",
-       "uninterested, then appreciative",
        "scared, then relaxed",
+       "uninterested, then appreciative",
        "troubled, then useful"
       ],
-      "a": 2
+      "a": 1,
+      "w": "<b>Fear and mistrust are often the first feelings</b>, later replaced by <b>more positive ones</b> after walking and sleeping outdoors. Some are angry about rules, but ‘grateful’ is not stated."
+     },
+     {
+      "n": 4,
+      "s": "What does ‘these feelings’ in paragraph 3 refer to?",
+      "o": [
+       "the challenge of being alone",
+       "the appreciation of freedom",
+       "the peacefulness found in nature",
+       "the fear and mistrust at the start"
+      ],
+      "a": 3,
+      "w": "<b>these feelings are usually replaced by more positive ones</b> refers back to the <b>fear and mistrust</b> in the previous sentences. Appreciation and peacefulness are the positive feelings that come afterwards."
      },
      {
       "n": 5,
@@ -5694,18 +7099,20 @@ window.RUOE_B2 = {
        "They were unable to write about their negative feelings.",
        "They didn’t use to believe writing was a useful skill."
       ],
-      "a": 0
+      "a": 0,
+      "w": "The text says <b>limited literacy skills as a result of missing classes and a general lack of interest in school</b>. A mentor at school is not mentioned, and the other options come from different parts of the text."
      },
      {
       "n": 6,
       "s": "The writer believes that",
       "o": [
        "giving prisons more money is not the best way to help young offenders.",
-       "young offenders need more programmes to help them turn away from crime.",
+       "the Write to Freedom project is too expensive to continue.",
        "the Write to Freedom project’s success has been too small.",
-       "Projects like Write to Freedom are effective, but often costly"
+       "young offenders need more programmes to help them turn away from crime."
       ],
-      "a": 1
+      "a": 3,
+      "w": "<b>Organisations like Write to Freedom are growing in number, but many more are needed.</b> The project is called <b>one small step</b>, which is not a criticism of its success, and its cost is never a problem."
      }
     ]
    }
@@ -5716,164 +7123,241 @@ window.RUOE_B2 = {
    {
     "id": "p25-62",
     "title": "Free time forecasters · version 1",
-    "text": "[A] A quick internet search for ‘unusual hobbies’ turns up some interesting results. Collecting things has always been a popular hobby and you will find a huge range of weird and wonderful collections. [[1]] Hobbyists are now investigating everything from plants to robotics and one in particular has a huge number of followers – meteorology.\n\n[B] If you’re wondering what it is, meteorology is the study of weather patterns, and meteorologists are the people who bring us our daily weather forecasts. We all know the professional weathermen and women on local and national TV but there are another 200,000 amateur meteorologists in the United States alone who contribute to making our forecasts as accurate as possible. [[2]]\n\n[C] One such meteorologist is Pierre Alan, who, at 15 years old, has been interested in the weather since he was only six years old. [[3]] ‘I still keep a record of my readings but nowadays I upload the information to my weather website,’ says Pierre. ‘I’m also more interested in trying to predict the weather, so I publish my predictions on the website.’\n\n[D] The basic equipment for measuring the weather has really changed very little over the years; a thermometer for measuring temperature, a barometer for measuring humidity, a rain gauge measuring rainfall and an anemometer, which measures wind speed. [[4]] The result is that there are thousands of weather hobbyists with highly accurate equipment and the possibility of sharing their information with other meteorologists through the internet. Pierre even has a webcam on his roof so that users of his website can see for themselves what the weather is like!\n\n[E] One of the disadvantages of a hobby like this is that a lot of people don’t think it’s cool. ‘Some of my friends have made fun of what I do and they don’t understand why I like it,’ explains Pierre. ‘They think you have to be good at football or a great dancer to be interesting. I don’t agree with them though because I think you have to do the things that interest you. That’s what will make you happy and might even make a difference to the world.’ [[5]] In fact, Pierre has become famous for his often-accurate forecasts and he’s been invited to give the weather forecast on several TV channels.",
+    "text": "[A] A quick internet search for ‘unusual hobbies’ turns up some interesting results. Collecting things has always been a popular hobby and you will find a huge range of weird and wonderful collections. [[1]] Hobbyists are now investigating everything from plants to robotics and one in particular has a huge number of followers – meteorology.\n\n[B] If you’re wondering what it is, meteorology is the study of weather patterns, and meteorologists are the people who bring us our daily weather forecasts. We all know the professional weathermen and women on local and national TV but there are another 200,000 amateur meteorologists in the United States alone who contribute to making our forecasts as accurate as possible. [[2]]\n\n[C] One such meteorologist is Pierre Alan, who, at 15 years old, has been interested in the weather since he was only six years old. [[3]] ‘I still keep a record of my readings but nowadays I upload the information to my weather website,’ says Pierre. ‘I’m also more interested in trying to predict the weather, so I publish my predictions on the website.’\n\n[D] The basic equipment for measuring the weather has really changed very little over the years; a thermometer for measuring temperature, a barometer for measuring humidity, a rain gauge measuring rainfall and an anemometer, which measures wind speed. [[4]] The result is that there are thousands of weather hobbyists with highly accurate equipment and the possibility of sharing their information with other meteorologists through the internet. [[5]]\n\n[E] One of the disadvantages of a hobby like this is that a lot of people don’t think it’s cool. ‘Some of my friends have made fun of what I do and they don’t understand why I like it,’ explains Pierre. ‘They think you have to be good at football or a great dancer to be interesting. I don’t agree with them though because I think you have to do the things that interest you. That’s what will make you happy and might even make a difference to the world.’ [[6]] In fact, Pierre has become famous for his often-accurate forecasts and he’s been invited to give the weather forecast on several TV channels.\n\n[F] For anyone who would like to follow Pierre’s example, getting started is easier than you might think. You don’t need to spend a fortune, because a simple thermometer and a rain gauge can be bought for the price of a pizza. The most important thing is to take your readings at the same time every day and to write them down carefully. Over a few months, you will begin to notice patterns, and that is when the hobby becomes really exciting. Before long, you might find that you can predict tomorrow’s weather better than the forecast on TV.",
     "bank": {
-     "A": "However, what has changed is that most serious meteorologists now take digital measurements and for this you need to connect the equipment to a computer.",
-     "B": "These amateurs, who are fascinated by meteorological events, dedicate their free time to monitoring the weather from their homes and portable weather stations.",
-     "C": "Fortunately, a lot of people agree with him and some people do think that meteorology is cool.",
-     "D": "When he was starting out, he would measure the rain and snow fall in his garden with plastic cups and kept a diary of daily weather conditions.",
+     "A": "When he was starting out, he would measure the rain and snow fall in his garden with plastic cups and kept a diary of daily weather conditions.",
+     "B": "Fortunately, a lot of people agree with him and some people do think that meteorology is cool.",
+     "C": "However, another type of hobby which is becoming more popular is that of amateur scientist.",
+     "D": "Pierre even has a webcam on his roof so that users of his website can see for themselves what the weather is like!",
      "E": "He decided to stop studying the weather because the equipment was too expensive to maintain.",
-     "F": "However, another type of hobby which is becoming more popular is that of amateur scientist."
-    },
-    "a": {
-     "1": "F",
-     "2": "B",
-     "3": "D",
-     "4": "A",
-     "5": "C"
-    }
-   },
-   {
-    "id": "p27-64",
-    "title": "Free time forecasters · version 2",
-    "text": "[A] A quick internet search for ‘unusual hobbies’ turns up some interesting results. Collecting things has always been a popular hobby and you will find a huge range of weird and wonderful collections. [[1]] Hobbyists are now investigating everything from plants to robotics and one in particular has a huge number of followers – meteorology.\n\n[B] If you’re wondering what it is, meteorology is the study of weather patterns, and meteorologists are the people who bring us our daily weather forecasts. We all know the professional weathermen and women on local and national TV but there are another 200,000 amateur meteorologists in the United States alone who contribute to making our forecasts as accurate as possible. [[2]]\n\n[C] One such meteorologist is Pierre Alan, who, at 15 years old, has been interested in the weather since he was only six years old. [[3]] ‘I still keep a record of my readings but nowadays I upload the information to my weather website,’ says Pierre. ‘I’m also more interested in trying to predict the weather, so I publish my predictions on the website.’\n\n[D] The basic equipment for measuring the weather has really changed very little over the years; a thermometer for measuring temperature, a barometer for measuring humidity, a rain gauge measuring rainfall and an anemometer, which measures wind speed. [[4]] The result is that there are thousands of weather hobbyists with highly accurate equipment and the possibility of sharing their information with other meteorologists through the internet. Pierre even has a webcam on his roof so that users of his website can see for themselves what the weather is like!\n\n[E] One of the disadvantages of a hobby like this is that a lot of people don’t think it’s cool. ‘Some of my friends have made fun of what I do and they don’t understand why I like it,’ explains Pierre. ‘They think you have to be good at football or a great dancer to be interesting. I don’t agree with them though because I think you have to do the things that interest you. That’s what will make you happy and might even make a difference to the world.’ [[5]] In fact, Pierre has become famous for his often-accurate forecasts and he’s been invited to give the weather forecast on several TV channels.",
-    "bank": {
-     "A": "However, what has changed is that most serious meteorologists now take digital measurements and for this you need to connect the equipment to a computer.",
-     "B": "These amateurs, who are fascinated by meteorological events, give all their free time to observing the weather from their homes and mobile weather stations.",
-     "C": "Fortunately, a lot of people agree with him and some people do think that meteorology is cool.",
-     "D": "When he was starting out, he would measure the rain and snow fall in his garden with plastic cups and kept a diary of daily weather conditions.",
-     "E": "He decided to stop studying the weather because the equipment was too expensive to maintain.",
-     "F": "However, another type of hobby which is becoming more popular is that of amateur scientist."
-    },
-    "a": {
-     "1": "F",
-     "2": "B",
-     "3": "D",
-     "4": "A",
-     "5": "C"
-    }
-   },
-   {
-    "id": "p36-75",
-    "title": "Board games versus computer games: who’s the winner? · version 1",
-    "text": "[A] Computer games are everywhere, with companies investing big money on advertising the latest titles. They are featured on TV and billboards and some even have their own TV series and films. [[1]] Traditional games like Scrabble and chess are still popular with all ages, while for kids there is a new generation of board games to accompany their favourite TV series, such as Game of Thrones and Star Wars. What is it that makes board games so special and why should we play them rather than computer games?\n\n[B] You can’t deny that computer games are a powerful form of entertainment. Despite spending hours in front of screens at school and at work, many of us rush home to play our favourite computer games. There is debate about whether computer games are harmful or not, but it’s clear that there are benefits such as developing attention span and helping your brain grow. However, anyone who’s spent much time in front of a screen will also be familiar with the negative side effects, like headaches and sore eyes. While board games have similar positive qualities to computer games, they don’t tend to have the same unwanted side effects. [[2]]\n\n[C] Nowadays, the makers of board games love to point out the positive qualities of their products for younger children. [[3]] All of these social skills are considered important for the healthy development of children. However, they should also consider putting these labels on their adult games. There is nothing to say that we should stop developing these skills, and they may be even more important in adults. By participating in board games from time to time, we may be helping ourselves to become more sociable.\n\n[D] Another important benefit, which is related to developing social skills, is the positive effect board games have on family life. Everyone knows that family relationships can be difficult, even at the best of times. However, board games can bring families together, if only for a few hours each week. [[4]] When you’re playing Monopoly, the only thing that matters is winning, and the tensions of normal life disappear. Even if your annoying sister has beaten you again, you’ll probably leave the game with the feeling that you’ve had an enjoyable experience together.\n\n[E] So far, many of the benefits are common to both board and computer games. However, one advantage, which is not shared by computer games, is that board games are tactile. There are physical objects which you can touch. [[5]] After all, it is our sense of touch that helps us interact with the real world and this is currently missing from most computer games. I’m not against computer games, but there is something about playing a board game that’s far more rewarding. It’s a way to connect with your family and friends and, most importantly, the world around you.",
-    "bank": {
-     "A": "While there is much talk of computer game addiction, people rarely mention addiction to board games.",
-     "B": "They can teach us the value of taking time out from our routines and learning to enjoy the company of others.",
-     "C": "In spite of the negative effects, it’s clear that computer games are far more enjoyable than traditional board games.",
-     "D": "Nevertheless, board games, with their folding boards, dice and brightly coloured pieces, have been making a comeback in recent years.",
-     "E": "This may seem insignificant but in a world which is increasingly virtual, this sensation should be valued.",
-     "F": "It would seem that in the near future, people will give up playing computer games altogether.",
-     "G": "They tell us that games help to develop turntaking skills, verbal communication, patience and perseverance."
-    },
-    "a": {
-     "1": "D",
-     "2": "A",
-     "3": "G",
-     "4": "B",
-     "5": "E"
-    }
-   },
-   {
-    "id": "p37-77",
-    "title": "Board games versus computer games: who’s the winner? · version 2",
-    "text": "[A] Computer games are everywhere, with companies investing big money on advertising the latest titles. [[1]] Nevertheless, board games, with their folding boards, dice and brightly coloured pieces, have been making a comeback in recent years. Traditional games like Scrabble and chess are still popular with all ages, while for kids there is a new generation of board games to accompany their favourite TV series, such as Game of Thrones and Star Wars. What is it that makes board games so special and why should we play them rather than computer games?\n\n[B] You can’t deny that computer games are a powerful form of entertainment. Despite spending hours in front of screens at school and at work, many of us rush home to play our favourite computer games. There is debate about whether computer games are harmful or not, but it’s clear that there are benefits such as developing attention span and helping your brain grow. [[2]] While board games have similar positive qualities to computer games, they don’t tend to have the same unwanted side effects. While there is much talk of computer game addiction, people rarely mention addiction to board games.\n\n[C] Nowadays, the makers of board games love to point out the positive qualities of their products for younger children. They tell us that games help to develop turn-taking skills, verbal communication, patience and perseverance. [[3]] However, they should also consider putting these labels on their adult games as well. There is nothing to say that we should stop developing these skills, and they may be even more important in adults. By participating in board games from time to time, we may be helping ourselves to become more sociable.\n\n[D] Another important benefit, which is related to developing social skills, is the positive effect board games have on family life. Everyone knows that family relationships can be difficult, even at the best of times. [[4]] They can teach us the value of taking time out from our routines and learning to enjoy the company of others. When you’re playing Monopoly, the only thing that matters is winning, and the tensions of normal life disappear. Even if your annoying sister has beaten you again, you’ll probably leave the game with the feeling that you’ve had an enjoyable experience together.\n\n[E] So far, many of the benefits are common to both board and computer games. However, one advantage, which is not shared by computer games, is that board games are tactile. There are physical objects which you can touch. [[5]] After all, it is our sense of touch that helps us interact with the real world and this is currently missing from most computer games. I’m not against computer games, but there is something about playing a board game that’s far more rewarding. It’s a way to connect with your family and friends and, most importantly, the world around you.",
-    "bank": {
-     "A": "All of these social skills are considered important for the healthy development of children.",
-     "B": "However, anyone who’s spent much time in front of a screen will also be familiar with the negative side effects, like headaches and sore eyes.",
-     "C": "Although some adults play board games, they are only suitable for younger family members.",
-     "D": "This may seem insignificant but in a world which is increasingly virtual, this sensation should be valued.",
-     "E": "They are featured on TV and billboards and some even have their own TV series and films.",
-     "F": "However, board games can bring families together, if only for a few hours each week."
-    },
-    "a": {
-     "1": "E",
-     "2": "B",
-     "3": "A",
-     "4": "F",
-     "5": "D"
-    }
-   },
-   {
-    "id": "p42-83",
-    "title": "Banksy · version 1",
-    "text": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was street artist from Bristol, a city in the west of England, [[1]].\n\n[A] Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, he realised that he had to work out a faster way of painting his murals. The idea he had was to prepare stencils, which [[2]] He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall.\n\n[B] Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple but they could have a very powerful effect. Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like Ronald MacDonald and Mickey Mouse, [[3]].\n\n[C] The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which was when his career really took off. Fans were delighted by [[4]] Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet.\n\n[D] Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius who was responsible for a whole new style of art. For others, he was just a graffiti artist, [[5]] Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from selling pieces of walls with his paintings on them.\n\n[E] For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed.",
-    "bank": {
-     "A": "are designs that are sketched onto card, a technique which is often used for painting signs.",
-     "B": "whose work was little more than vandalism.",
-     "C": "his unique style and he soon became well known in the alternative London art scene.",
-     "D": "where he had made a name for himself with his innovative street art.",
-     "E": "although he had not once believed that he would be caught.",
-     "F": "but they would be portrayed in unusual or ironic situations.",
-     "G": "despite having spent many years working as a bus driver in London."
-    },
-    "a": {
-     "1": "D",
-     "2": "A",
-     "3": "F",
-     "4": "C",
-     "5": "B"
-    }
-   },
-   {
-    "id": "p43-85",
-    "title": "Banksy · version 2",
-    "text": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was a street artist from Bristol, a city in the west of England, [[1]]\n\n[A] Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, [[2]] The idea he had was to prepare stencils, which are designs that are sketched onto card, a technique which is often used for painting signs. He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall.\n\n[B] Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple [[3]] Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like famous cartoon figures, but they would be shown in unusual or amusing situations.\n\n[C] The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which [[4]] Fans were delighted by his unique style and he soon became well-known in the alternative London art scene. Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet.\n\n[D] Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius who was responsible for a whole new style of art. For others, he was just a graffiti artist, whose work was little more than vandalism. Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from [[5]]\n\n[E] For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool where I’d spent many summers as a child. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed.",
-    "bank": {
-     "A": "he realised that he would have to work a lot faster.",
-     "B": "selling pieces of walls with his paintings on them.",
-     "C": "was when his career really took off.",
-     "D": "where he had become well-known locally for his innovative street art.",
-     "E": "although he never wanted to meet them.",
-     "F": "but they could have a very powerful effect."
-    },
-    "a": {
-     "1": "D",
-     "2": "A",
-     "3": "F",
-     "4": "C",
-     "5": "B"
-    }
-   },
-   {
-    "id": "p54-99",
-    "title": "Voluntary work abroad · version 1",
-    "text": "A\nAre you looking for a different experience before starting university? If you are, you might consider voluntary work abroad in the summer holidays. It is a great opportunity to experience a different culture while making a contribution to the community. [[1]] This will look great on your CV and help you decide if that career is really for you.\n\nB\nMany people who have had the chance to volunteer abroad will tell you how rewarding the experience was, both for them and the people they worked with. ‘I was building affordable homes for people in Nepal,’ explains Uma, 19. ‘I spent two weeks working in a small Nepalese village and I helped build homes for two families. I felt that we’d really made a difference to their day-to-day lives.’ Volunteering abroad, as in Uma’s case, can have a positive impact. [[2]]\n\nC\nHowever, before deciding to enrol on an overseas volunteer programme it is important to weigh up the benefits for you and the local community. [[3]] If you can only spare a few weeks, you need to be realistic about what you can achieve. For example, if you are planning on teaching English to school pupils, you will probably need to spend several months working with them in order to see real progress. ‘I was teaching English to primary school kids in Ecuador,’ explains Connie, 19. ‘At the end of the two weeks, I was disappointed because they couldn’t speak much more English than when I arrived. To be honest, I wish I’d chosen a different project like building a classroom. It would have been finished when I left and the villagers would be using it now.’\n\nD\nIt is important to consider whether the project you are working on will have a sustainable impact on the local community. This means asking yourself whether your contribution will continue to make a difference in the future. It also means that you should take environmental considerations into account. There are a number of voluntary organisations which are aware of the value of sustainable development and they will work out long-term objectives with the local people. ‘The organisation I chose had close ties with a village in central Africa,’ says Jon, 18. ‘ [[4]] It made me proud that my work would have long-lasting benefits.’\n\nE\nWhen considering voluntary work abroad, think carefully before deciding what to do. It can be tempting to choose a project based on its location or the opportunities for sightseeing. However, the people who need most help are often not in the most exotic places and there might not be much to do in your free time. Therefore, if your intention is to make a real difference, you need to make your decision by thinking about what you can offer. You need to ask yourself what skills you can contribute and how much time can you give. [[5]] If you do these things, volunteering abroad is sure to be a positive experience for everyone.",
-    "bank": {
-     "A": "They had worked out a five-year plan to improve the water supply in the village using solar-powered water pumps.",
-     "B": "An important consideration, which is easy to overlook, is how much time you can dedicate.",
-     "C": "Even when you add the price of the flights on, these organisations generally offer a very good deal.",
-     "D": "This is especially true when the volunteer leaves something useful behind when they go, such as housing, school buildings, better health conditions or language skills.",
-     "E": "Once you’ve decided what you can offer, look for a respected organisation which is committed to making a long-lasting contribution to the local community.",
-     "F": "The problem with building houses in Nepal was that nobody really needed them.",
-     "G": "Not only that, but there’s the added bonus that you can get valuable experience in jobs such as teaching, nursing and engineering."
-    },
-    "a": {
-     "1": "G",
-     "2": "D",
-     "3": "B",
-     "4": "A",
-     "5": "E"
-    }
-   },
-   {
-    "id": "p56-101",
-    "title": "Voluntary work abroad · version 2",
-    "text": "A\nAre you looking for a different experience before starting university? [[1]] It is a great opportunity to experience a different culture while making a contribution to the community. Not only that, but there is the added bonus that you can get valuable experience in jobs such as teaching, nursing and engineering. This will look great on your CV and help you decide if that career is really for you.\n\nB\n[[2]] ‘I was building affordable homes for people in Nepal,’ explains Uma, 19. ‘I spent two weeks working in a small Nepalese village and I helped build homes for two families. I felt that we’d really made a difference to their day-to-day lives.’ Volunteering abroad, as in Uma’s case, can have a positive impact. This is especially true when volunteers leave something useful behind when they go, such as housing, school buildings, better health conditions or language skills.\n\nC\nHowever, before deciding to enrol on an overseas volunteer programme it is important to weigh up the benefits for you and the local community. An important consideration, which is easy to overlook, is how much time you can offer. If you can only spare a few weeks, you need to be realistic about what you can achieve. For example, if you are planning on teaching English to school pupils, you will probably need to spend several months working with them in order to see real progress. ‘I was teaching English to primary school kids in Ecuador,’ explains Connie, 19. ‘At the end of the two weeks, I was disappointed because they couldn’t speak much more English than when I arrived. To be honest, I wish I’d chosen a different project like building a classroom. [[3]]’\n\nD\nIt is important to consider whether the project you are working on will have a sustainable impact on the local community. [[4]] It also means that you should take environmental considerations into account. There are a number of voluntary organisations which are aware of the value of sustainable development and they will work out long-term objectives with the local people. ‘The organisation I chose had close ties with a village in central Africa,’ says Jon, 18. ‘They had worked out a five-year plan to improve the water supply using solar-powered water pumps. It made me proud that my work would have long-lasting benefits.’\n\nE\nWhen considering voluntary work abroad, think carefully before deciding what to do. [[5]] However, the people who need the most help are often not in the most exotic places and there might not be much to do in your free time. Therefore, if your intention is to make a real difference, you need to make your decision by thinking about what you can offer. You need to ask yourself what skills you can contribute and how much time you can give. Once you’ve decided what you can offer, look for a respected organisation which is committed to making a long-lasting contribution to the local community. If you do these things, volunteering abroad is sure to be a positive experience for everyone.",
-    "bank": {
-     "A": "It would have been finished when I left and the villagers would be using it now.",
-     "B": "This means asking yourself whether your contribution will continue to make a difference in the future.",
-     "C": "If you are, you might consider voluntary work abroad in the summer holidays.",
-     "D": "Despite being a worthwhile experience, it is not easy to find opportunities for voluntary work abroad.",
-     "E": "It can be tempting to choose a project based on its location or the opportunities for sightseeing.",
-     "F": "Many people who’ve had the chance to volunteer abroad will tell you how rewarding the experience was, both for them and the people they worked with."
+     "F": "These amateurs, who are fascinated by meteorological events, dedicate their free time to monitoring the weather from their homes and portable weather stations.",
+     "G": "However, what has changed is that most serious meteorologists now take digital measurements and for this you need to connect the equipment to a computer."
     },
     "a": {
      "1": "C",
      "2": "F",
      "3": "A",
-     "4": "B",
-     "5": "E"
+     "4": "G",
+     "5": "D",
+     "6": "B"
+    },
+    "w": {
+     "1": "<b>However</b> contrasts collecting with a different kind of hobby. The next sentence continues with <b>Hobbyists</b> investigating plants and robotics, which is what amateur scientists do.",
+     "2": "<b>These amateurs</b> refers back to the <b>amateur meteorologists</b> in the sentence before. The gap adds how they work, from home. The next paragraph then moves to one example, Pierre.",
+     "3": "<b>When he was starting out</b> follows the fact that he was interested <b>since he was six</b>. The next sentence says I still keep a record, so the gap must describe his early records and diary.",
+     "4": "<b>However, what has changed</b> contrasts with <b>changed very little</b> before the gap. In the next sentence, The result is that accurate equipment is available, which follows from digital measurements.",
+     "5": "<b>agree with him</b> follows Pierre’s opinion and his friends’ criticism. The next sentence begins <b>In fact</b> and gives proof that people are interested: he is famous and appears on TV.",
+     "6": "<b>Pierre even</b> adds one more example of using the internet, after <b>sharing their information</b> online. The words his website were already mentioned in paragraph C."
+    }
+   },
+   {
+    "id": "p27-64",
+    "title": "Free time forecasters · version 2",
+    "text": "[A] A quick internet search for ‘unusual hobbies’ turns up some interesting results. Collecting things has always been a popular hobby and you will find a huge range of weird and wonderful collections. [[1]] Hobbyists are now investigating everything from plants to robotics and one in particular has a huge number of followers – meteorology.\n\n[B] If you’re wondering what it is, meteorology is the study of weather patterns, and meteorologists are the people who bring us our daily weather forecasts. We all know the professional weathermen and women on local and national TV but there are another 200,000 amateur meteorologists in the United States alone who contribute to making our forecasts as accurate as possible. [[2]]\n\n[C] One such meteorologist is Pierre Alan, who, at 15 years old, has been interested in the weather since he was only six years old. [[3]] ‘I still keep a record of my readings but nowadays I upload the information to my weather website,’ says Pierre. ‘I’m also more interested in trying to predict the weather, so I publish my predictions on the website.’\n\n[D] The basic equipment for measuring the weather has really changed very little over the years; a thermometer for measuring temperature, a barometer for measuring humidity, a rain gauge measuring rainfall and an anemometer, which measures wind speed. [[4]] The result is that there are thousands of weather hobbyists with highly accurate equipment and the possibility of sharing their information with other meteorologists through the internet. [[5]]\n\n[E] One of the disadvantages of a hobby like this is that a lot of people don’t think it’s cool. ‘Some of my friends have made fun of what I do and they don’t understand why I like it,’ explains Pierre. ‘They think you have to be good at football or a great dancer to be interesting. I don’t agree with them though because I think you have to do the things that interest you. That’s what will make you happy and might even make a difference to the world.’ [[6]] In fact, Pierre has become famous for his often-accurate forecasts and he’s been invited to give the weather forecast on several TV channels.\n\n[F] For anyone who would like to follow Pierre’s example, getting started is easier than you might think. You don’t need to spend a fortune, because a simple thermometer and a rain gauge can be bought for the price of a pizza. The most important thing is to take your readings at the same time every day and to write them down carefully. Over a few months, you will begin to notice patterns, and that is when the hobby becomes really exciting. Before long, you might find that you can predict tomorrow’s weather better than the forecast on TV.",
+    "bank": {
+     "A": "However, what has changed is that most serious meteorologists now take digital measurements and for this you need to connect the equipment to a computer.",
+     "B": "However, another type of hobby which is becoming more popular is that of amateur scientist.",
+     "C": "Fortunately, a lot of people agree with him and some people do think that meteorology is cool.",
+     "D": "These amateurs, who are fascinated by meteorological events, give all their free time to observing the weather from their homes and mobile weather stations.",
+     "E": "He decided to stop studying the weather because the equipment was too expensive to maintain.",
+     "F": "Pierre even has a webcam on his roof so that users of his website can see for themselves what the weather is like!",
+     "G": "When he was starting out, he would measure the rain and snow fall in his garden with plastic cups and kept a diary of daily weather conditions."
+    },
+    "a": {
+     "1": "B",
+     "2": "D",
+     "3": "G",
+     "4": "A",
+     "5": "F",
+     "6": "C"
+    },
+    "w": {
+     "1": "<b>However</b> contrasts collecting with a different kind of hobby. The next sentence continues with <b>Hobbyists</b> investigating plants and robotics, which is what amateur scientists do.",
+     "2": "<b>These amateurs</b> refers back to the <b>amateur meteorologists</b> in the sentence before. The gap adds how they work, from home. The next paragraph then moves to one example, Pierre.",
+     "3": "<b>When he was starting out</b> follows the fact that he was interested <b>since he was six</b>. The next sentence says I still keep a record, so the gap must describe his early records and diary.",
+     "4": "<b>However, what has changed</b> contrasts with <b>changed very little</b> before the gap. In the next sentence, The result is that accurate equipment is available, which follows from digital measurements.",
+     "5": "<b>agree with him</b> follows Pierre’s opinion and his friends’ criticism. The next sentence begins <b>In fact</b> and gives proof that people are interested: he is famous and appears on TV.",
+     "6": "<b>Pierre even</b> adds one more example of using the internet, after <b>sharing their information</b> online. The words his website were already mentioned in paragraph C."
+    }
+   },
+   {
+    "id": "p36-75",
+    "title": "Board games versus computer games: who’s the winner? · version 1",
+    "text": "[A] Computer games are everywhere, with companies investing big money on advertising the latest titles. They are featured on TV and billboards and some even have their own TV series and films. [[1]] Traditional games like Scrabble and chess are still popular with all ages, while for kids there is a new generation of board games to accompany their favourite TV series, such as Game of Thrones and Star Wars. What is it that makes board games so special and why should we play them rather than computer games?\n\n[B] You can’t deny that computer games are a powerful form of entertainment. Despite spending hours in front of screens at school and at work, many of us rush home to play our favourite computer games. There is debate about whether computer games are harmful or not, but it’s clear that there are benefits such as developing attention span and helping your brain grow. However, anyone who’s spent much time in front of a screen will also be familiar with the negative side effects, like headaches and sore eyes. While board games have similar positive qualities to computer games, they don’t tend to have the same unwanted side effects. [[2]]\n\n[C] Nowadays, the makers of board games love to point out the positive qualities of their products for younger children. [[3]] All of these social skills are considered important for the healthy development of children. [[4]] There is nothing to say that we should stop developing these skills, and they may be even more important in adults. By participating in board games from time to time, we may be helping ourselves to become more sociable.\n\n[D] Another important benefit, which is related to developing social skills, is the positive effect board games have on family life. Everyone knows that family relationships can be difficult, even at the best of times. However, board games can bring families together, if only for a few hours each week. [[5]] When you’re playing Monopoly, the only thing that matters is winning, and the tensions of normal life disappear. Even if your annoying sister has beaten you again, you’ll probably leave the game with the feeling that you’ve had an enjoyable experience together.\n\n[E] So far, many of the benefits are common to both board and computer games. However, one advantage, which is not shared by computer games, is that board games are tactile. There are physical objects which you can touch. [[6]] After all, it is our sense of touch that helps us interact with the real world and this is currently missing from most computer games. I’m not against computer games, but there is something about playing a board game that’s far more rewarding. It’s a way to connect with your family and friends and, most importantly, the world around you.",
+    "bank": {
+     "A": "While there is much talk of computer game addiction, people rarely mention addiction to board games.",
+     "B": "They can teach us the value of taking time out from our routines and learning to enjoy the company of others.",
+     "C": "This may seem insignificant but in a world which is increasingly virtual, this sensation should be valued.",
+     "D": "They tell us that games help to develop turntaking skills, verbal communication, patience and perseverance.",
+     "E": "In spite of the negative effects, it’s clear that computer games are far more enjoyable than traditional board games.",
+     "F": "Nevertheless, board games, with their folding boards, dice and brightly coloured pieces, have been making a comeback in recent years.",
+     "G": "However, they should also consider putting these labels on their adult games."
+    },
+    "a": {
+     "1": "F",
+     "2": "A",
+     "3": "D",
+     "4": "G",
+     "5": "B",
+     "6": "C"
+    },
+    "w": {
+     "1": "<b>Nevertheless</b> introduces board games after the success of computer games. The next sentence continues with <b>Traditional games</b> which are still popular, supporting the idea of a comeback.",
+     "2": "<b>While</b> contrasts computer game addiction with board games, adding one more unwanted effect after the <b>headaches and sore eyes</b>. The next paragraph starts a new topic.",
+     "3": "<b>They</b> refers to the makers of board games. The next sentence says <b>All of these social skills</b>, so the gap must list them: turn-taking, communication and patience.",
+     "4": "<b>However</b> contrasts children with adult games, and <b>these labels</b> refers to the qualities that makers point out. The next sentence continues with these skills in adults.",
+     "5": "<b>They</b> refers to board games, and taking time out matches <b>a few hours each week</b>. The next sentence gives an example, Monopoly, of time without tension.",
+     "6": "<b>This</b> refers to the feeling of touching objects, which <b>may seem insignificant</b>. The next sentence begins After all and explains why touch is important."
+    }
+   },
+   {
+    "id": "p37-77",
+    "title": "Board games versus computer games: who’s the winner? · version 2",
+    "text": "[A] Computer games are everywhere, with companies investing big money on advertising the latest titles. [[1]] Nevertheless, board games, with their folding boards, dice and brightly coloured pieces, have been making a comeback in recent years. Traditional games like Scrabble and chess are still popular with all ages, while for kids there is a new generation of board games to accompany their favourite TV series, such as Game of Thrones and Star Wars. What is it that makes board games so special and why should we play them rather than computer games?\n\n[B] You can’t deny that computer games are a powerful form of entertainment. Despite spending hours in front of screens at school and at work, many of us rush home to play our favourite computer games. There is debate about whether computer games are harmful or not, but it’s clear that there are benefits such as developing attention span and helping your brain grow. [[2]] While board games have similar positive qualities to computer games, they don’t tend to have the same unwanted side effects. [[3]]\n\n[C] Nowadays, the makers of board games love to point out the positive qualities of their products for younger children. They tell us that games help to develop turn-taking skills, verbal communication, patience and perseverance. [[4]] However, they should also consider putting these labels on their adult games as well. There is nothing to say that we should stop developing these skills, and they may be even more important in adults. By participating in board games from time to time, we may be helping ourselves to become more sociable.\n\n[D] Another important benefit, which is related to developing social skills, is the positive effect board games have on family life. Everyone knows that family relationships can be difficult, even at the best of times. [[5]] They can teach us the value of taking time out from our routines and learning to enjoy the company of others. When you’re playing Monopoly, the only thing that matters is winning, and the tensions of normal life disappear. Even if your annoying sister has beaten you again, you’ll probably leave the game with the feeling that you’ve had an enjoyable experience together.\n\n[E] So far, many of the benefits are common to both board and computer games. However, one advantage, which is not shared by computer games, is that board games are tactile. There are physical objects which you can touch. [[6]] After all, it is our sense of touch that helps us interact with the real world and this is currently missing from most computer games. I’m not against computer games, but there is something about playing a board game that’s far more rewarding. It’s a way to connect with your family and friends and, most importantly, the world around you.",
+    "bank": {
+     "A": "However, anyone who’s spent much time in front of a screen will also be familiar with the negative side effects, like headaches and sore eyes.",
+     "B": "This may seem insignificant but in a world which is increasingly virtual, this sensation should be valued.",
+     "C": "All of these social skills are considered important for the healthy development of children.",
+     "D": "Although some adults play board games, they are only suitable for younger family members.",
+     "E": "While there is much talk of computer game addiction, people rarely mention addiction to board games.",
+     "F": "However, board games can bring families together, if only for a few hours each week.",
+     "G": "They are featured on TV and billboards and some even have their own TV series and films."
+    },
+    "a": {
+     "1": "G",
+     "2": "A",
+     "3": "E",
+     "4": "C",
+     "5": "F",
+     "6": "B"
+    },
+    "w": {
+     "1": "<b>They</b> refers to computer games and gives more examples of their fame. The next sentence begins <b>Nevertheless</b>, which contrasts this success with the comeback of board games.",
+     "2": "<b>However</b> contrasts the benefits with <b>negative side effects</b>. The next sentence talks about board games not having the same unwanted side effects, so the gap must introduce them.",
+     "3": "<b>While</b> contrasts <b>computer game addiction</b> with board games, adding a point about side effects. It follows the sentence about unwanted side effects, and the next paragraph starts a new topic.",
+     "4": "<b>All of these social skills</b> refers to the list in the sentence before. The next sentence begins <b>However</b>, which contrasts the benefits for children with the need for adults.",
+     "5": "<b>However</b> contrasts <b>family relationships can be difficult</b> with board games bringing families together. In the next sentence, They refers to board games.",
+     "6": "<b>This</b> refers to the physical objects you can touch, which <b>may seem insignificant</b>. The next sentence begins After all and explains why the sense of touch matters."
+    }
+   },
+   {
+    "id": "p42-83",
+    "title": "Banksy · version 1",
+    "text": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was a street artist from Bristol, a city in the west of England, [[1]]\n\n[A] Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, he realised that he had to work out a faster way of painting his murals. The idea he had was to prepare stencils, which [[2]] He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall.\n\n[B] Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple but they could have a very powerful effect. Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like Ronald MacDonald and Mickey Mouse, [[3]]\n\n[C] The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which was when his career really took off. Fans were delighted by [[4]] Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet.\n\n[D] Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius who was responsible for a whole new style of art. For others, he was just a graffiti artist, [[5]] Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from [[6]]\n\n[E] For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed.",
+    "bank": {
+     "A": "but they would be portrayed in unusual or ironic situations.",
+     "B": "selling pieces of walls with his paintings on them.",
+     "C": "whose work was little more than vandalism.",
+     "D": "where he had made a name for himself with his innovative street art.",
+     "E": "despite having spent many years working as a bus driver in London.",
+     "F": "are designs that are sketched onto card, a technique which is often used for painting signs.",
+     "G": "his unique style and he soon became well known in the alternative London art scene."
+    },
+    "a": {
+     "1": "D",
+     "2": "F",
+     "3": "A",
+     "4": "G",
+     "5": "C",
+     "6": "B"
+    },
+    "w": {
+     "1": "<b>where</b> continues the sentence and refers to <b>Bristol</b>. It explains why he was on the list: he was already known for his street art.",
+     "2": "<b>which</b> needs a verb to define <b>stencils</b>, and are designs that are sketched onto card does this. The next sentence continues with the stencils.",
+     "3": "<b>but</b> contrasts famous characters like Mickey Mouse with <b>unusual or ironic situations</b>. they refers to the cultural icons just mentioned.",
+     "4": "<b>delighted by</b> needs a noun phrase, and <b>his unique style</b> fits. This explains how his career took off. Apart from his street art then adds his other work.",
+     "5": "<b>For others</b> contrasts with <b>artistic genius</b>, and whose work gives a negative view of the graffiti artist. Nevertheless then shows that everyone still valued his pieces.",
+     "6": "<b>from</b> needs an -ing phrase. <b>selling pieces of walls</b> explains how people made a fortune, and it follows hunting for Banksy’s murals in the sentence before."
+    }
+   },
+   {
+    "id": "p43-85",
+    "title": "Banksy · version 2",
+    "text": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was a street artist from Bristol, a city in the west of England, [[1]]\n\n[A] Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, [[2]] The idea he had was to prepare stencils, which are designs that are sketched onto card, a technique which is often used for painting signs. He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall.\n\n[B] Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple [[3]] Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like famous cartoon figures, but they would be shown in unusual or amusing situations.\n\n[C] The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which [[4]] Fans were delighted by his unique style and he soon became well-known in the alternative London art scene. Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet.\n\n[D] Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius [[5]] For others, he was just a graffiti artist, whose work was little more than vandalism. Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from [[6]]\n\n[E] For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool where I’d spent many summers as a child. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed.",
+    "bank": {
+     "A": "was when his career really took off.",
+     "B": "where he had become well-known locally for his innovative street art.",
+     "C": "selling pieces of walls with his paintings on them.",
+     "D": "but they could have a very powerful effect.",
+     "E": "he realised that he would have to work a lot faster.",
+     "F": "although he never wanted to meet them.",
+     "G": "who was responsible for a whole new style of art."
+    },
+    "a": {
+     "1": "B",
+     "2": "E",
+     "3": "D",
+     "4": "A",
+     "5": "G",
+     "6": "C"
+    },
+    "w": {
+     "1": "<b>where</b> continues the sentence and refers to <b>Bristol</b>. It explains why he was on the list: he was already well known locally for his street art.",
+     "2": "<b>Afraid of being caught</b> needs a main clause with <b>he</b>. he realised that he would have to work a lot faster fits, and The idea he had then gives the solution.",
+     "3": "<b>simple</b> is followed by <b>but</b> to contrast it with a very powerful effect. The next sentence begins Although and gives the political messages in his work.",
+     "4": "<b>which</b> needs a verb phrase referring to the move to London in the 1990s. <b>Fans were delighted</b> in the next sentence shows how his career took off.",
+     "5": "<b>who</b> starts a clause that explains <b>artistic genius</b>. The next sentence begins For others, which contrasts with this positive view of Banksy.",
+     "6": "<b>from</b> needs an -ing phrase. <b>selling pieces of walls</b> explains how people made a fortune, and it follows hunting for Banksy’s murals in the sentence before."
+    }
+   },
+   {
+    "id": "p54-99",
+    "title": "Voluntary work abroad · version 1",
+    "text": "A\nAre you looking for a different experience before starting university? If you are, you might consider voluntary work abroad in the summer holidays. It is a great opportunity to experience a different culture while making a contribution to the community. [[1]] This will look great on your CV and help you decide if that career is really for you.\n\nB\nMany people who have had the chance to volunteer abroad will tell you how rewarding the experience was, both for them and the people they worked with. ‘I was building affordable homes for people in Nepal,’ explains Uma, 19. ‘I spent two weeks working in a small Nepalese village and I helped build homes for two families. I felt that we’d really made a difference to their day-to-day lives.’ Volunteering abroad, as in Uma’s case, can have a positive impact. [[2]]\n\nC\nHowever, before deciding to enrol on an overseas volunteer programme it is important to weigh up the benefits for you and the local community. [[3]] If you can only spare a few weeks, you need to be realistic about what you can achieve. [[4]] ‘I was teaching English to primary school kids in Ecuador,’ explains Connie, 19. ‘At the end of the two weeks, I was disappointed because they couldn’t speak much more English than when I arrived. To be honest, I wish I’d chosen a different project like building a classroom. It would have been finished when I left and the villagers would be using it now.’\n\nD\nIt is important to consider whether the project you are working on will have a sustainable impact on the local community. This means asking yourself whether your contribution will continue to make a difference in the future. It also means that you should take environmental considerations into account. There are a number of voluntary organisations which are aware of the value of sustainable development and they will work out long-term objectives with the local people. ‘The organisation I chose had close ties with a village in central Africa,’ says Jon, 18. ‘ [[5]] It made me proud that my work would have long-lasting benefits.’\n\nE\nWhen considering voluntary work abroad, think carefully before deciding what to do. It can be tempting to choose a project based on its location or the opportunities for sightseeing. However, the people who need most help are often not in the most exotic places and there might not be much to do in your free time. Therefore, if your intention is to make a real difference, you need to make your decision by thinking about what you can offer. You need to ask yourself what skills you can contribute and how much time can you give. [[6]] If you do these things, volunteering abroad is sure to be a positive experience for everyone.",
+    "bank": {
+     "A": "This is especially true when the volunteer leaves something useful behind when they go, such as housing, school buildings, better health conditions or language skills.",
+     "B": "Once you’ve decided what you can offer, look for a respected organisation which is committed to making a long-lasting contribution to the local community.",
+     "C": "Not only that, but there’s the added bonus that you can get valuable experience in jobs such as teaching, nursing and engineering.",
+     "D": "For example, if you are planning on teaching English to school pupils, you will probably need to spend several months working with them in order to see real progress.",
+     "E": "Even when you add the price of the flights on, these organisations generally offer a very good deal.",
+     "F": "An important consideration, which is easy to overlook, is how much time you can dedicate.",
+     "G": "They had worked out a five-year plan to improve the water supply in the village using solar-powered water pumps."
+    },
+    "a": {
+     "1": "C",
+     "2": "A",
+     "3": "F",
+     "4": "D",
+     "5": "G",
+     "6": "B"
+    },
+    "w": {
+     "1": "<b>Not only that</b> adds a second benefit after culture and community. <b>that career</b> in the next sentence refers to jobs such as teaching, nursing and engineering.",
+     "2": "<b>This is especially true</b> develops the <b>positive impact</b> in the sentence before and gives examples like Uma’s homes. Paragraph C then begins with However and moves to problems.",
+     "3": "<b>how much time you can dedicate</b> introduces a consideration that the next sentence develops: <b>If you can only spare a few weeks</b>. The idea of time links both sentences.",
+     "4": "<b>For example</b> illustrates being realistic about a few weeks. Next, Connie’s words about <b>teaching English to primary school kids</b> match the example and show the problem.",
+     "5": "<b>They</b> refers to <b>The organisation</b> and its village. A five-year plan is a long-term objective, linked to long-lasting benefits in the next sentence.",
+     "6": "<b>Once you’ve decided what you can offer</b> follows the questions about skills and time. <b>these things</b> in the next sentence refers to this advice, so the gap comes first."
+    }
+   },
+   {
+    "id": "p56-101",
+    "title": "Voluntary work abroad · version 2",
+    "text": "A\nAre you looking for a different experience before starting university? [[1]] It is a great opportunity to experience a different culture while making a contribution to the community. [[2]] This will look great on your CV and help you decide if that career is really for you.\n\nB\n[[3]] ‘I was building affordable homes for people in Nepal,’ explains Uma, 19. ‘I spent two weeks working in a small Nepalese village and I helped build homes for two families. I felt that we’d really made a difference to their day-to-day lives.’ Volunteering abroad, as in Uma’s case, can have a positive impact. This is especially true when volunteers leave something useful behind when they go, such as housing, school buildings, better health conditions or language skills.\n\nC\nHowever, before deciding to enrol on an overseas volunteer programme it is important to weigh up the benefits for you and the local community. An important consideration, which is easy to overlook, is how much time you can offer. If you can only spare a few weeks, you need to be realistic about what you can achieve. For example, if you are planning on teaching English to school pupils, you will probably need to spend several months working with them in order to see real progress. ‘I was teaching English to primary school kids in Ecuador,’ explains Connie, 19. ‘At the end of the two weeks, I was disappointed because they couldn’t speak much more English than when I arrived. To be honest, I wish I’d chosen a different project like building a classroom. [[4]]’\n\nD\nIt is important to consider whether the project you are working on will have a sustainable impact on the local community. [[5]] It also means that you should take environmental considerations into account. There are a number of voluntary organisations which are aware of the value of sustainable development and they will work out long-term objectives with the local people. ‘The organisation I chose had close ties with a village in central Africa,’ says Jon, 18. ‘They had worked out a five-year plan to improve the water supply using solar-powered water pumps. It made me proud that my work would have long-lasting benefits.’\n\nE\nWhen considering voluntary work abroad, think carefully before deciding what to do. [[6]] However, the people who need the most help are often not in the most exotic places and there might not be much to do in your free time. Therefore, if your intention is to make a real difference, you need to make your decision by thinking about what you can offer. You need to ask yourself what skills you can contribute and how much time you can give. Once you’ve decided what you can offer, look for a respected organisation which is committed to making a long-lasting contribution to the local community. If you do these things, volunteering abroad is sure to be a positive experience for everyone.",
+    "bank": {
+     "A": "Many people who’ve had the chance to volunteer abroad will tell you how rewarding the experience was, both for them and the people they worked with.",
+     "B": "It can be tempting to choose a project based on its location or the opportunities for sightseeing.",
+     "C": "Not only that, but there is the added bonus that you can get valuable experience in jobs such as teaching, nursing and engineering.",
+     "D": "Despite being a worthwhile experience, it is not easy to find opportunities for voluntary work abroad.",
+     "E": "It would have been finished when I left and the villagers would be using it now.",
+     "F": "If you are, you might consider voluntary work abroad in the summer holidays.",
+     "G": "This means asking yourself whether your contribution will continue to make a difference in the future."
+    },
+    "a": {
+     "1": "F",
+     "2": "C",
+     "3": "A",
+     "4": "E",
+     "5": "G",
+     "6": "B"
+    },
+    "w": {
+     "1": "<b>If you are</b> answers the question before the gap. <b>It</b> in the next sentence refers to the voluntary work abroad suggested in the gap.",
+     "2": "<b>Not only that</b> adds a second benefit after culture and community. <b>that career</b> in the next sentence refers to jobs such as teaching, nursing and engineering.",
+     "3": "The paragraph needs a general opening about volunteers’ opinions. <b>explains Uma</b> after the gap gives an example of someone who found the experience <b>rewarding</b>.",
+     "4": "<b>It</b> refers to <b>a classroom</b>. The sentence contrasts a finished building with the English teaching, where the children couldn’t speak much more English after two weeks.",
+     "5": "<b>This means</b> explains <b>sustainable impact</b> in the sentence before. It also means in the next sentence adds a second meaning, so this must be the first one.",
+     "6": "<b>tempting</b> warns about a wrong way to choose. <b>However</b> in the next sentence contrasts it with the people who need most help, and exotic places links to location."
     }
    },
    {
@@ -5881,21 +7365,29 @@ window.RUOE_B2 = {
     "title": "The long, hard road to success · version 1",
     "text": "1\nWhen we watch any prestigious sporting event, we see the exciting side of sport. [[1]] It is this vision of athletes performing at the height of their powers which inspires and amazes us, making competitions such as the Olympic Games so enjoyable to watch.\n\n2\nWhat we don’t see is how these champions were created. [[2]] Getting up at 5am to train when you’d rather have a couple more hours’ sleep, running wet from head to toe in the pouring rain, pushing yourself just that little bit harder every day for months on end. This is the real story behind the so-called super-talented.\n\n3\nWhat’s more, being at the peak of physical fitness doesn’t necessarily lead to success in the world of competitive sport. You also have to have the tools to deal with the huge psychological pressure of competing against other opponents, watched by thousands of people. A failure to pay sufficient attention to mental preparation will mean all the months of physical preparation have been wiped out. [[3]]\n\n4\nIn today’s culture, very little attention is given to the struggle that is involved in getting to the top in any area, be it sport, music or the arts. [[4]] If we are blessed with genius, it seems, then all we have to do is wait for it to be discovered.\n\n5\n[[5]] In his book, Bounce: the Myth of Talent and the Power of Practice, he attempts to disprove the theory that being born with talent is the key to excellence in any area. In it, he describes how several factors combined to make him one of the best table tennis players of his generation and insists that natural ability was only one of them. He argues that the number of hours he practised was what really made him better than his peers and the main reason why he became the English number one player.\n\n6\nEven though we may not all aspire to be Olympic champions, Syed believes there are some lessons we can all learn from them in the way we approach our lives. [[6]] We must also develop ways of dealing with the inevitable setbacks, problems and failures we will face, so that we don’t give up when things go wrong. Unless we can do this, he argues, we will never be able to reach our goals or full potential.",
     "bank": {
-     "A": "In a world where ‘stars’ are regularly discovered on TV talent shows, we are encouraged to believe in the idea of instant success.",
-     "B": "Most people are fairly oblivious to the commitment and discipline that goes into preparing for a few brief moments in the spotlight.",
-     "C": "In the first place, in order to get the most out of life, we have to be prepared to put in a lot of hard work.",
-     "D": "We watch in disbelief as tennis players deliver shots of unbelievable accuracy, gymnasts seem to fly through the air and runners push themselves to the limit to reach incredible speeds.",
-     "E": "Chance, or luck, also plays a role in success to some extent.",
-     "F": "According to Matthew Syed, a British former table tennis champion, nothing could be further from the truth.",
-     "G": "Many sporting superstars have failed to deliver when it really mattered for this reason."
+     "A": "According to Matthew Syed, a British former table tennis champion, nothing could be further from the truth.",
+     "B": "We watch in disbelief as tennis players deliver shots of unbelievable accuracy, gymnasts seem to fly through the air and runners push themselves to the limit to reach incredible speeds.",
+     "C": "Many sporting superstars have failed to deliver when it really mattered for this reason.",
+     "D": "In the first place, in order to get the most out of life, we have to be prepared to put in a lot of hard work.",
+     "E": "Most people are fairly oblivious to the commitment and discipline that goes into preparing for a few brief moments in the spotlight.",
+     "F": "Chance, or luck, also plays a role in success to some extent.",
+     "G": "In a world where ‘stars’ are regularly discovered on TV talent shows, we are encouraged to believe in the idea of instant success."
     },
     "a": {
-     "1": "D",
-     "2": "B",
-     "3": "G",
-     "4": "A",
-     "5": "F",
-     "6": "C"
+     "1": "B",
+     "2": "E",
+     "3": "C",
+     "4": "G",
+     "5": "A",
+     "6": "D"
+    },
+    "w": {
+     "1": "The gap gives examples of the <b>exciting side of sport</b>. <b>this vision</b> in the next sentence refers to the images of tennis shots, flying gymnasts and fast runners.",
+     "2": "<b>What we don’t see</b> leads to people not knowing about the hard work. The next sentences list examples such as <b>Getting up at 5am</b>, which show commitment and discipline.",
+     "3": "<b>for this reason</b> refers to the failure to prepare mentally in the sentence before. It gives real cases of the <b>preparation wiped out</b>. Paragraph 4 starts a new idea.",
+     "4": "<b>very little attention is given to the struggle</b> leads to the idea of <b>instant success</b>. discovered in the next sentence repeats discovered on TV talent shows.",
+     "5": "<b>nothing could be further from the truth</b> rejects the idea that talent is simply discovered. It introduces <b>Syed</b>, and the next sentence continues with In his book.",
+     "6": "<b>In the first place</b> gives the first lesson Syed means. <b>We must also</b> in the next sentence adds a second one, so the gap must come first."
     }
    },
    {
@@ -5903,21 +7395,29 @@ window.RUOE_B2 = {
     "title": "The long, hard road to success · version 2",
     "text": "1\nWhen we watch any prestigious sporting event, we see the exciting side of sport. [[1]] It is this vision of athletes performing at the height of their powers which inspires and amazes us, making competitions such as the Olympic Games so enjoyable to watch.\n\n2\nWhat we don’t see is how these champions were created. Most people have no idea of the commitment and discipline that goes into preparing for a few brief moments of fame. Getting up at 5 am to train when you’d rather have a couple more hours’ sleep, running wet from head to toe in the pouring rain, pushing yourself just that little bit harder every day for months on end. [[2]]\n\n3\nWhat’s more, being at the peak of physical fitness doesn’t necessarily lead to success in the world of competitive sport. You also have to have the tools to deal with the huge psychological pressure of competing against other opponents, watched by thousands of people. [[3]] Many sporting superstars have failed to deliver when it really mattered for this reason.\n\n4\nIn today’s culture, very little attention is given to the struggle that is involved in getting to the top in any area, be it sport, music or the arts. In a world where ‘stars’ are regularly discovered on TV talent shows, we are encouraged to believe in the idea of instant success. [[4]]\n\n5\nAccording to Matthew Syed, a British former table tennis champion, nothing could be further from the truth. In his book, Bounce: the Myth of Talent and the Power of Practice, he attempts to disprove the theory that being born with talent is the key to excellence in any area. [[5]] He argues that the incredible number of hours he practised was what really made him better than his peers and the main reason why he became the English number one player.\n\n6\n[[6]] In the first place, in order to get the most out of life, we have to be prepared to put in a lot of hard work. We must also develop ways of dealing with life’s problems, so that we don’t give up when things go wrong. Unless we can do this, he argues, we will never be able to reach our goals or full potential.",
     "bank": {
-     "A": "If we are blessed with genius, it seems, then all we have to do is wait for it to be discovered.",
-     "B": "This is the real story behind the so-called super-talented.",
+     "A": "This is the real story behind the so-called super-talented.",
+     "B": "If we are blessed with genius, it seems, then all we have to do is wait for it to be discovered.",
      "C": "Even though we may not all aspire to be Olympic champions, Syed believes there are some lessons we can all learn from them in the way we approach our lives.",
-     "D": "We watch in disbelief as tennis players deliver shots of unbelievable accuracy, gymnasts seem to fly through the air and runners push themselves to the limit to reach incredible speeds.",
+     "D": "A failure to pay sufficient attention to mental preparation will mean all the months of physical preparation have been wiped out.",
      "E": "Chance, or luck, also plays a role in success to some extent.",
-     "F": "In it, he describes how several factors combined to make him one of the best table tennis players of his generation and insists that natural ability was only one of them.",
-     "G": "A failure to pay sufficient attention to mental preparation will mean all the months of physical preparation have been wiped out."
+     "F": "We watch in disbelief as tennis players deliver shots of unbelievable accuracy, gymnasts seem to fly through the air and runners push themselves to the limit to reach incredible speeds.",
+     "G": "In it, he describes how several factors combined to make him one of the best table tennis players of his generation and insists that natural ability was only one of them."
     },
     "a": {
-     "1": "D",
-     "2": "B",
-     "3": "G",
-     "4": "A",
-     "5": "F",
+     "1": "F",
+     "2": "A",
+     "3": "D",
+     "4": "B",
+     "5": "G",
      "6": "C"
+    },
+    "w": {
+     "1": "The gap gives examples of the <b>exciting side of sport</b>. <b>this vision</b> in the next sentence refers to the images of tennis shots, flying gymnasts and fast runners.",
+     "2": "<b>This</b> refers to the list of early starts, wet runs and extra effort. <b>the real story</b> echoes What we don’t see at the beginning. Paragraph 3 then adds What’s more.",
+     "3": "<b>for this reason</b> in the next sentence refers to the failure to prepare mentally. The gap names the reason and links to <b>psychological pressure</b> before it.",
+     "4": "<b>it seems</b> sums up the idea of <b>instant success</b>: genius just needs discovering. The next paragraph answers it with nothing could be further from the truth.",
+     "5": "<b>In it</b> refers to the book. <b>natural ability was only one of them</b> leads to He argues that hours of practice were the main factor.",
+     "6": "The paragraph needs an opening that introduces <b>Syed</b> and his <b>lessons</b>. In the first place then gives the first lesson, so the gap comes first."
     }
    }
   ]
@@ -5954,33 +7454,63 @@ window.RUOE_B2 = {
     "qs": [
      {
       "n": 1,
-      "s": "thinks that an innovation will enable professionals to focus on the more important parts of their job.",
-      "a": "C"
+      "s": "B has an interest outside medicine which led to their choice of innovation.",
+      "a": "B",
+      "w": "Hector says <b>\"I’ve always been interested in fashion\"</b>, and this is why wearable technology interests him. The other students link their choice to their studies."
      },
      {
       "n": 2,
-      "s": "has had the opportunity to take advantage of a new piece of technology.",
-      "a": "A"
+      "s": "C explains how their profession has been essential in understanding medical information.",
+      "a": "C",
+      "w": "X-rays <b>\"have always depended on radiologists to interpret the information\"</b>. This means the profession has been essential in understanding the information."
      },
      {
       "n": 3,
-      "s": "is of the opinion that an innovation could stop some people becoming unwell.",
-      "a": "D"
+      "s": "D says that an innovation has only recently become available to ordinary people.",
+      "a": "D",
+      "w": "Martina says food scanners have <b>\"only just been made available to the general public\"</b>. Ordinary people means the general public, and recently means in the last year or two."
      },
      {
       "n": 4,
-      "s": "explains how their profession has been essential in understanding medical information.",
-      "a": "C"
+      "s": "A has had the opportunity to take advantage of a new piece of technology.",
+      "a": "A",
+      "w": "Aminah says <b>\"we’ve started using VR\"</b> headsets, so she has already used the new technology herself. Hector and Martina describe other innovations."
      },
      {
       "n": 5,
-      "s": "believes that an innovation will improve the working environment for some medical practitioners",
-      "a": "B"
+      "s": "D mentions that an innovation can be used for more than one purpose.",
+      "a": "D",
+      "w": "Martina says the scanners are <b>\"not limited to telling you about the properties of your food\"</b>. You can also check how healthy plants are or how clean water is."
      },
      {
       "n": 6,
-      "s": "says that you have to overcome feelings of concern in order to benefit from the innovation.",
-      "a": "A"
+      "s": "B believes that an innovation will improve the working environment for some medical practitioners.",
+      "a": "B",
+      "w": "Hector says patients will not be connected to lots of machines, so <b>\"the operating theatre will be much easier to work in\"</b>. That is a better working environment for doctors and nurses."
+     },
+     {
+      "n": 7,
+      "s": "D is of the opinion that an innovation could stop some people becoming unwell.",
+      "a": "D",
+      "w": "Martina says <b>\"this could really help promote the prevention of illnesses\"</b>. Stopping people becoming unwell is a paraphrase of prevention of illnesses."
+     },
+     {
+      "n": 8,
+      "s": "A says that you have to overcome feelings of concern in order to benefit from the innovation.",
+      "a": "A",
+      "w": "Aminah says it is so realistic that <b>\"you worry\"</b> about doing something wrong, but <b>\"once you get over that fear\"</b> you can practise. Concern means worry or fear."
+     },
+     {
+      "n": 9,
+      "s": "C thinks that an innovation will enable professionals to focus on the more important parts of their job.",
+      "a": "C",
+      "w": "Chuntao says <b>\"we’ll be able to spend more time dealing with serious illnesses and injuries\"</b>. The supercomputers do the analysis, so radiologists can concentrate on the more important work."
+     },
+     {
+      "n": 10,
+      "s": "B says that an innovation will let people do everyday tasks with a simple touch.",
+      "a": "B",
+      "w": "Hector says <b>\"you can call someone or get directions just by touching a specific part of your clothing\"</b>. Calling and getting directions are everyday tasks."
      }
     ]
    },
@@ -6014,153 +7544,253 @@ window.RUOE_B2 = {
     "qs": [
      {
       "n": 1,
-      "s": "says this innovation is the result of a collaboration between two companies?",
-      "a": "B"
+      "s": "B thinks patients will be more comfortable because of this innovation?",
+      "a": "B",
+      "w": "Hector says patients <b>\"won’t need to be connected to lots of machines\"</b>. Fewer machines around them means they will be more comfortable."
      },
      {
       "n": 2,
-      "s": "thinks patients will be more comfortable because of this innovation?",
-      "a": "B"
+      "s": "A thinks this innovation provides a more believable experience for students?",
+      "a": "A",
+      "w": "Aminah says VR <b>\"makes you feel like you’re actually in an operating room\"</b>, and the bodies are <b>\"really convincing\"</b>, unlike plastic dummies."
      },
      {
       "n": 3,
-      "s": "says this innovation was only used by professionals until recently?",
-      "a": "D"
+      "s": "C says that a job will still exist in spite of the new technology?",
+      "a": "C",
+      "w": "Chuntao says it <b>\"doesn’t necessarily mean the end of radiologists\"</b>. The job will continue to exist even with the new supercomputers."
      },
      {
       "n": 4,
-      "s": "will be able to spend their time more usefully because of this innovation?",
-      "a": "C"
+      "s": "D believes this innovation may help people lead healthier lives?",
+      "a": "D",
+      "w": "Martina says <b>\"the key to good health is healthy eating\"</b>, and scanners show the fat, sugar and calories in food. Healthier lives is a paraphrase of good health."
      },
      {
       "n": 5,
-      "s": "thinks this innovation provides a more believable experience for students?",
-      "a": "A"
+      "s": "B says that more than one company is working on the same innovation?",
+      "a": "B",
+      "w": "Hector says <b>\"Some brands are currently working on a project\"</b>, so several companies are involved. Chuntao mentions only IBM, which is a single company."
      },
      {
       "n": 6,
-      "s": "believes this innovation may help people lead healthier lives?",
-      "a": "D"
+      "s": "A admits to feeling nervous about making mistakes when using this innovation?",
+      "a": "A",
+      "w": "Aminah says <b>\"you worry about what will happen if you do something wrong\"</b>. Feeling nervous about mistakes paraphrases worrying about doing something wrong."
+     },
+     {
+      "n": 7,
+      "s": "C will be able to spend their time more usefully because of this innovation?",
+      "a": "C",
+      "w": "Chuntao says <b>\"we’ll be able to spend more time dealing with serious illnesses and injuries\"</b>. More useful time means time spent on more serious cases."
+     },
+     {
+      "n": 8,
+      "s": "A says users can repeat a task as many times as they need?",
+      "a": "A",
+      "w": "Aminah says <b>\"you can keep practising a procedure until you feel completely comfortable\"</b>. Repeating a task as many times as needed paraphrases keep practising until comfortable."
+     },
+     {
+      "n": 9,
+      "s": "D says this innovation was only used by professionals until recently?",
+      "a": "D",
+      "w": "Martina says scanners have <b>\"only just been made available to the general public\"</b>. Before that, ordinary people could not use them."
+     },
+     {
+      "n": 10,
+      "s": "C mentions a type of equipment that has existed for over a hundred years?",
+      "a": "C",
+      "w": "Chuntao says <b>\"x-rays were discovered in the nineteenth century\"</b>, so they are more than a hundred years old. The other innovations are much newer."
      }
     ]
    },
    {
     "id": "p42-82",
     "title": "Banksy · version 1",
-    "intro": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was street artist from Bristol, a city in the west of England, [[1]].",
+    "intro": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was a street artist from Bristol, a city in the west of England, and his clever, funny pictures had made him famous around the world..",
     "stem": "In which section is the following mentioned?",
     "sections": [
      {
       "l": "A",
       "h": "",
-      "t": "Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, he realised that he had to work out a faster way of painting his murals. The idea he had was to prepare stencils, which [[2]] He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall."
+      "t": "Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, he realised that he had to work out a faster way of painting his murals. The idea he had was to prepare stencils, which are designs that are sketched onto card, a technique which is often used for painting signs. He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall. A stencil meant he could finish a picture in a few seconds and be gone before anybody noticed him. I still remember seeing his early pictures on my way to school."
      },
      {
       "l": "B",
       "h": "",
-      "t": "Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple but they could have a very powerful effect. Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like Ronald MacDonald and Mickey Mouse, [[3]]."
+      "t": "Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple but they could have a very powerful effect. Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like Ronald MacDonald and Mickey Mouse, but they would be shown in unusual or amusing situations. Passers-by would often stop to study a new picture on their way to work and wonder what it was trying to say. Soon the same style was copied by other artists in many cities."
      },
      {
       "l": "C",
       "h": "",
-      "t": "The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which was when his career really took off. Fans were delighted by [[4]] Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet."
+      "t": "The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which was when his career really took off. Fans were delighted by his unique style and he soon became well-known in the alternative London art scene. Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet. He kept his face hidden in every interview, which only added to the mystery. Nobody could be sure whether he worked alone or with a team of helpers."
      },
      {
       "l": "D",
       "h": "",
-      "t": "Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius who was responsible for a whole new style of art. For others, he was just a graffiti artist, [[5]] Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from selling pieces of walls with his paintings on them."
+      "t": "Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius who was responsible for a whole new style of art. For others, he was just a graffiti artist, whose work was little more than vandalism. Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from selling pieces of walls with his paintings on them. Wealthy buyers, including a few famous film stars, began to compete for his pictures. Prices rose so fast that dealers could hardly keep up."
      },
      {
       "l": "E",
       "h": "",
-      "t": "For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed."
+      "t": "For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed. I had spent many summers there as a child, so seeing it transformed felt very strange. Visitors queued for hours to get in, and the place was packed all summer."
      }
     ],
     "qs": [
      {
       "n": 1,
-      "s": "Banksy discovers a new way of producing street art.",
-      "a": "B"
+      "s": "The writer explains that he has something in common with Banksy.",
+      "a": "A",
+      "w": "Section A starts <b>\"Having gone to school in Bristol and being of a similar age\"</b>. The writer shares Banksy’s city and age."
      },
      {
       "n": 2,
-      "s": "The artist catches the eye of art investors and the value of his work increases.",
-      "a": "D"
+      "s": "Something looks like one kind of place but is not what visitors expect.",
+      "a": "E",
+      "w": "Section E says the show was <b>\"designed to feel like a theme park\"</b> but <b>\"nothing was quite what it seemed\"</b>. It looked like a theme park but was not what visitors expected."
      },
      {
       "n": 3,
-      "s": "Banksy returns to the area where he had grown up for an unusual exhibition.",
-      "a": "E"
+      "s": "Banksy’s pictures often carry a serious message.",
+      "a": "B",
+      "w": "Section B says there was often <b>\"a political or philosophical message\"</b> in his work. A serious message paraphrases a political or philosophical one."
      },
      {
       "n": 4,
-      "s": "The writer explains that he has something in common with Banksy.",
-      "a": "A"
+      "s": "Banksy becomes more successful after relocating to a different city.",
+      "a": "C",
+      "w": "Section C says <b>\"he moved to London\"</b>, <b>\"which was when his career really took off\"</b>. Relocating means moving, and took off means became more successful."
      },
      {
       "n": 5,
-      "s": "Banksy becomes more successful after relocating to a different city.",
-      "a": "C"
+      "s": "Banksy is nervous that the police might catch him.",
+      "a": "A",
+      "w": "Section A says <b>\"Afraid of being caught by the police\"</b>. Nervous means afraid, and catch him means caught. This fear made him look for a faster way to paint."
+     },
+     {
+      "n": 6,
+      "s": "Banksy makes an object that people understand as a comment on modern life.",
+      "a": "C",
+      "w": "Section C says some people saw the telephone box as <b>\"a statement about the way the world had changed\"</b>. A comment on modern life paraphrases that statement."
+     },
+     {
+      "n": 7,
+      "s": "The artist catches the eye of art investors and the value of his work increases.",
+      "a": "D",
+      "w": "Section D says <b>\"the attention of art collectors\"</b> and that his paintings <b>\"sold for thousands\"</b>. Collectors are investors, and high prices mean the value rose."
+     },
+     {
+      "n": 8,
+      "s": "Banksy produces street art that is more original than anything seen before.",
+      "a": "B",
+      "w": "Section B says <b>\"much more original street art than had been seen before\"</b>. Section A explains a faster way of painting, not how original the work was."
+     },
+     {
+      "n": 9,
+      "s": "Banksy returns to the area where he had grown up for an unusual exhibition.",
+      "a": "E",
+      "w": "Section E says he <b>\"returned to the west of England\"</b> to put on a show in a swimming pool, designed like a theme park. That is the unusual exhibition."
+     },
+     {
+      "n": 10,
+      "s": "Opinions are divided about how good Banksy’s art really is.",
+      "a": "D",
+      "w": "Section D says some saw <b>\"an artistic genius\"</b> while for others he was <b>\"just a graffiti artist\"</b>. Different views on his art means opinions are divided."
      }
     ]
    },
    {
     "id": "p43-84",
     "title": "Banksy · version 2",
-    "intro": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was a street artist from Bristol, a city in the west of England, [[1]]",
+    "intro": "In 2010, Time magazine published a list of the 100 most important people in the world. Among those you might expect to see, like Steve Jobs and Barack Obama, there was also a very unlikely candidate. His name was Banksy and he was a street artist from Bristol, a city in the west of England, and his clever, funny pictures had made him famous around the world.",
     "stem": "In which section is the following mentioned?",
     "sections": [
      {
       "l": "A",
       "h": "",
-      "t": "Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, [[2]] The idea he had was to prepare stencils, which are designs that are sketched onto card, a technique which is often used for painting signs. He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall."
+      "t": "Having gone to school in Bristol and being of a similar age, I’ve always been interested in Banksy’s story. While I was going to school and preparing to go to university, he was out spraying graffiti on the city’s walls and trains. Afraid of being caught by the police, he realised that he had to work out a faster way of painting his murals. The idea he had was to prepare stencils, which are designs that are sketched onto card, a technique which is often used for painting signs. He would cut out the stencils and simply spray paint over the top of them, leaving the design on the wall. A stencil meant he could finish a picture in a few seconds and be gone before anybody noticed him. I still remember seeing his early pictures on my way to school."
      },
      {
       "l": "B",
       "h": "",
-      "t": "Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple [[3]] Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like famous cartoon figures, but they would be shown in unusual or amusing situations."
+      "t": "Banksy’s new approach to graffiti meant that he could produce much more original street art than had been seen before. His pieces were usually simple but they could have a very powerful effect. Although his stencils frequently featured rats and monkeys, there was often a political or philosophical message in his work, which made it unique. Later on, his work started to include images of cultural icons, like famous cartoon figures, but they would be shown in unusual or amusing situations. Passers-by would often stop to study a new picture on their way to work and wonder what it was trying to say. Soon the same style was copied by other artists in many cities."
      },
      {
       "l": "C",
       "h": "",
-      "t": "The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which [[4]] Fans were delighted by his unique style and he soon became well-known in the alternative London art scene. Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet."
+      "t": "The story of Banksy is a mysterious one and for many years his identity was unknown. However, it appears that he moved to London in the late 1990s, which was when his career really took off. Fans were delighted by his unique style and he soon became well-known in the alternative London art scene. Apart from his street art, Banksy started to produce some unusual installations, such as his famous red telephone box. It looked like someone had broken it in half, pushed it over and left it in a London street. Some people thought it was a statement about the way the world had changed; traditional red telephone boxes being replaced by mobile phones and the internet. He kept his face hidden in every interview, which only added to the mystery. Nobody could be sure whether he worked alone or with a team of helpers."
      },
      {
       "l": "D",
       "h": "",
-      "t": "Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius who was responsible for a whole new style of art. For others, he was just a graffiti artist, whose work was little more than vandalism. Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from [[5]]"
+      "t": "Banksy started to attract the attention of art collectors and his paintings sold for thousands in auctions. Suddenly, Banksy was a household name and he was being talked about in the newspapers and on the TV. For some people, he was an artistic genius who was responsible for a whole new style of art. For others, he was just a graffiti artist, whose work was little more than vandalism. Nevertheless, everyone seemed to be aware of the value of his pieces and they were soon out hunting for Banksy’s murals. It’s been said that some people made a fortune from selling pieces of walls with his paintings on them. Wealthy buyers, including a few famous film stars, began to compete for his pictures. Prices rose so fast that dealers could hardly keep up."
      },
      {
       "l": "E",
       "h": "",
-      "t": "For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool where I’d spent many summers as a child. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed."
+      "t": "For me, the highlight of Banksy’s career was when he returned to the west of England and put on a show in my home town of Weston-super-Mare. Named ‘Dismaland’, it was set in an old open-air swimming pool where I’d spent many summers as a child. The show featured a series of installations by Banksy and other well-known artists and it was designed to feel like a theme park. However, thanks to Banksy’s sense of humour, nothing was quite what it seemed. Visitors queued for hours to get in, and the place was packed all summer."
      }
     ],
     "qs": [
      {
       "n": 1,
-      "s": "why Banksy’s art was different",
-      "a": "B"
+      "s": "an unusual outdoor exhibition",
+      "a": "E",
+      "w": "Section E describes a show in <b>\"an old open-air swimming pool\"</b>, designed to feel like a theme park. Outdoor means open-air, and unusual fits the strange theme-park idea."
      },
      {
       "n": 2,
-      "s": "Banksy was frequently mentioned in the media",
-      "a": "D"
+      "s": "differing opinions about Banksy’s art",
+      "a": "D",
+      "w": "Section D says <b>\"For some people\"</b> he was a genius, but <b>\"For others\"</b> just a graffiti artist. Differing opinions paraphrases some and others disagreeing."
      },
      {
       "n": 3,
-      "s": "an unusual outdoor exhibition",
-      "a": "E"
+      "s": "a way of working that is also used by sign painters",
+      "a": "A",
+      "w": "Section A says stencils are a technique <b>\"often used for painting signs\"</b>. Sign painters paraphrases painting signs."
      },
      {
       "n": 4,
-      "s": "Banksy’s technique for creating graffiti",
-      "a": "A"
+      "s": "fans in a new city",
+      "a": "C",
+      "w": "Section C says he <b>\"moved to London\"</b> and then <b>\"Fans were delighted by his unique style\"</b>. London was the new city."
      },
      {
       "n": 5,
-      "s": "fans in a new city",
-      "a": "C"
+      "s": "Banksy was frequently mentioned in the media",
+      "a": "D",
+      "w": "Section D says he was <b>\"talked about in the newspapers and on the TV\"</b>. Frequently mentioned in the media paraphrases being talked about in newspapers and on TV."
+     },
+     {
+      "n": 6,
+      "s": "the writer’s holiday memories of a place",
+      "a": "E",
+      "w": "Section E says the pool was somewhere <b>\"I’d spent many summers as a child\"</b>. Holiday memories paraphrases summers as a child."
+     },
+     {
+      "n": 7,
+      "s": "famous characters shown in surprising situations",
+      "a": "B",
+      "w": "Section B says his work included <b>\"famous cartoon figures\"</b> <b>\"shown in unusual or amusing situations\"</b>. Surprising paraphrases unusual or amusing."
+     },
+     {
+      "n": 8,
+      "s": "a quicker method of painting on walls",
+      "a": "A",
+      "w": "Section A says he needed <b>\"a faster way of painting his murals\"</b>. Quicker method paraphrases faster way. The stencils were cut out and sprayed over."
+     },
+     {
+      "n": 9,
+      "s": "why Banksy’s art was different",
+      "a": "B",
+      "w": "Section B says he made <b>\"much more original street art than had been seen before\"</b>, with a message that <b>\"made it unique\"</b>. Different means original and unique."
+     },
+     {
+      "n": 10,
+      "s": "a broken object left in a public place",
+      "a": "C",
+      "w": "Section C describes a telephone box that looked <b>\"broken in half, pushed over and left\"</b> in a London street. A public place means a street."
      }
     ]
    },
@@ -6178,12 +7808,12 @@ window.RUOE_B2 = {
      {
       "l": "B",
       "h": "Cameron Riley",
-      "t": "In my school, we decided to do an audit of our waste, which means we sorted out and measured the waste produced in our school. At first, I thought it was a waste of time because we all know how important it is to recycle. However, it’s a good thing we did that audit because if we hadn’t, we wouldn’t have known just how much waste we were creating. It was unbelievable. We were throwing away packaging, clean paper and even pencils that had hardly been used. As you might expect, we realised we had to do something to solve this problem, so we worked out an action plan to reduce our waste and recycle as much as possible. Our aim is to reduce our waste by 75% by the next World Environment Day."
+      "t": "In my school, we decided to do an audit of our waste, which means we sorted out and measured the waste produced in our school. At first, I thought it was a waste of time because we all know how important it is to recycle. However, it’s a good thing we did that audit because if we hadn’t, we wouldn’t have known just how much waste we were creating. It was unbelievable. We were throwing away packaging, clean paper and even pencils that had hardly been used. As you might expect, we realised we had to do something to solve this problem, so we worked out an action plan to reduce our waste and recycle as much as possible. Our aim is to reduce our waste by 75% by the next World Environment Day. We displayed the results on a poster in the school hall so that nobody could ignore them."
      },
      {
       "l": "C",
       "h": "Morgan Tamura",
-      "t": "We’re very lucky in that we have a lot of land surrounding our school. Someone put forward the idea of using the land to benefit the environment. One boy suggested growing a wood. He explained that it wouldn’t just happen overnight. It would be a long-term project to create new wood with flowers, birds and insects. He also thought it would be good for the environment as a whole because even if we only planted a hundred trees, it would help in the fight against climate change. I think we were all convinced by his argument, so we decided to give it a go. We contacted some charities that provide young trees and we’ve just had our first hundred delivered. If you come back in a few years, the place will be completely different!"
+      "t": "We’re very lucky in that we have a lot of land surrounding our school. Someone put forward the idea of using the land to benefit the environment. One boy suggested growing a wood. He explained that it wouldn’t just happen overnight. It would be a long-term project to create new wood with flowers, birds and insects. He also thought it would be good for the environment as a whole because even if we only planted a hundred trees, it would help in the fight against climate change. I think we were all convinced by his argument, so we decided to give it a go. We contacted some charities that provide young trees and we’ve just had our first hundred delivered. If you come back in a few years, the place will be completely different! Our teachers have promised to look after the young trees during the holidays."
      },
      {
       "l": "D",
@@ -6194,33 +7824,63 @@ window.RUOE_B2 = {
     "qs": [
      {
       "n": 1,
-      "s": "was involved in taking environmental action as a result of a study they had done?",
-      "a": "B"
+      "s": "D says there are now fewer vehicles near their school?",
+      "a": "D",
+      "w": "Nathan says <b>\"there’s much less traffic outside the school\"</b>. Fewer vehicles paraphrases less traffic."
      },
      {
       "n": 2,
-      "s": "was persuaded to get involved in another student’s project?",
-      "a": "C"
+      "s": "A thought that students of all ages would benefit from taking responsibility for an environmental project?",
+      "a": "A",
+      "w": "Alyssa says <b>\"all the children from year 1 up to year 5\"</b> would help maintain the garden. All ages paraphrases year 1 to year 5."
      },
      {
       "n": 3,
-      "s": "felt that some people’s habits had to change in order to improve the area surrounding their school?",
-      "a": "D"
+      "s": "C believes that even a small contribution to improving the environment could be important?",
+      "a": "C",
+      "w": "Morgan says <b>\"even if we only planted a hundred trees\"</b> it would help fight climate change. A small contribution paraphrases only a hundred trees."
      },
      {
       "n": 4,
-      "s": "thought that students of all ages would benefit from taking responsibility for an environmental project?",
-      "a": "A"
+      "s": "D felt that some people’s habits had to change in order to improve the area surrounding their school?",
+      "a": "D",
+      "w": "Nathan says <b>\"We therefore tried to encourage students to find alternative ways of getting to school\"</b>. Changing how people travel improved the area outside the school."
      },
      {
       "n": 5,
-      "s": "believes that even a small contribution to improving the environment could be important?",
-      "a": "C"
+      "s": "A says their school is fortunate not to have a problem that affects many other people?",
+      "a": "A",
+      "w": "Alyssa says <b>\"we’re fortunate that hunger is not something we have to face\"</b>, although it is a reality for many. Lucky not to have the problem paraphrases fortunate."
      },
      {
       "n": 6,
-      "s": "was not convinced by their project when it was initially proposed to them?",
-      "a": "B"
+      "s": "D noticed a risk to health caused by something happening outside their school gates?",
+      "a": "D",
+      "w": "Nathan says pollution from cars and buses is <b>\"awful for the environment and our students’ health\"</b>. This happens at the school gates."
+     },
+     {
+      "n": 7,
+      "s": "B was not convinced by their project when it was initially proposed to them?",
+      "a": "B",
+      "w": "Cameron says <b>\"At first, I thought it was a waste of time\"</b>. Not convinced at first paraphrases that opinion."
+     },
+     {
+      "n": 8,
+      "s": "A says students gained practical experience from the project?",
+      "a": "A",
+      "w": "Alyssa says pupils would get <b>\"hands-on experience of producing healthy food\"</b>. Practical experience paraphrases hands-on experience."
+     },
+     {
+      "n": 9,
+      "s": "C was persuaded to get involved in another student’s project?",
+      "a": "C",
+      "w": "One boy suggested growing a wood, and Morgan says <b>\"we were all convinced by his argument\"</b>. Persuaded paraphrases convinced."
+     },
+     {
+      "n": 10,
+      "s": "B was involved in taking environmental action as a result of a study they had done?",
+      "a": "B",
+      "w": "Cameron did <b>\"an audit of our waste\"</b> and then <b>\"worked out an action plan\"</b>. The study (audit) led to the action."
      }
     ]
    },
@@ -6238,12 +7898,12 @@ window.RUOE_B2 = {
      {
       "l": "B",
       "h": "Cameron Riley",
-      "t": "In my school, we decided to do an audit of our waste, which means we sorted out and measured the waste produced in our school. At first, I thought it was a waste of time because we all know how important it is to recycle. However, it’s a good thing we did that audit because if we hadn’t, we wouldn’t have known just how much waste we were creating. It was unbelievable. We were throwing away packaging, clean paper and even pencils that had hardly been used. As you might expect, we realised we had to do something to solve this problem, so we worked out an action plan to reduce our waste and recycle as much as possible. Our aim is to reduce our waste by 75% by the next World Environment Day."
+      "t": "In my school, we decided to do an audit of our waste, which means we sorted out and measured the waste produced in our school. At first, I thought it was a waste of time because we all know how important it is to recycle. However, it’s a good thing we did that audit because if we hadn’t, we wouldn’t have known just how much waste we were creating. It was unbelievable. We were throwing away packaging, clean paper and even pencils that had hardly been used. As you might expect, we realised we had to do something to solve this problem, so we worked out an action plan to reduce our waste and recycle as much as possible. Our aim is to reduce our waste by 75% by the next World Environment Day. We displayed the results on a poster in the school hall so that nobody could ignore them."
      },
      {
       "l": "C",
       "h": "Morgan Tamura",
-      "t": "We’re very lucky in that we have a lot of land surrounding our school. Someone put forward the idea of using the land to benefit the environment. One boy suggested growing a wood. He explained that it wouldn’t just happen overnight. It would be a long-term project to create new wood with flowers, birds and insects. He also thought it would be good for the environment as a whole because even if we only planted a hundred trees, it would help in the fight against climate change. I think we were all convinced by his argument, so we decided to give it a go. We contacted some charities that provide young trees and we’ve just had our first hundred delivered. If you come back in a few years, the place will be completely different!"
+      "t": "We’re very lucky in that we have a lot of land surrounding our school. Someone put forward the idea of using the land to benefit the environment. One boy suggested growing a wood. He explained that it wouldn’t just happen overnight. It would be a long-term project to create new wood with flowers, birds and insects. He also thought it would be good for the environment as a whole because even if we only planted a hundred trees, it would help in the fight against climate change. I think we were all convinced by his argument, so we decided to give it a go. We contacted some charities that provide young trees and we’ve just had our first hundred delivered. If you come back in a few years, the place will be completely different! Our teachers have promised to look after the young trees during the holidays."
      },
      {
       "l": "D",
@@ -6254,33 +7914,63 @@ window.RUOE_B2 = {
     "qs": [
      {
       "n": 1,
-      "s": "feels fortunate to have a lot of open space around their school?",
-      "a": "C"
+      "s": "B was surprised by how bad a problem was?",
+      "a": "B",
+      "w": "Cameron says the amount of waste was <b>\"unbelievable\"</b>. They would not have known <b>\"just how much waste\"</b> they were creating without the audit."
      },
      {
       "n": 2,
-      "s": "believes that people aren’t taught enough about certain things?",
-      "a": "A"
+      "s": "A thought the project would be a good opportunity for students?",
+      "a": "A",
+      "w": "Alyssa says it would be <b>\"the perfect way for students to find out\"</b> about sustainable food. A good opportunity paraphrases the perfect way to find out."
      },
      {
       "n": 3,
-      "s": "thinks the problem at their school was obvious to many people?",
-      "a": "D"
+      "s": "C wanted to take on a project after listening to another student?",
+      "a": "C",
+      "w": "After one boy explained his idea, Morgan says <b>\"we were all convinced by his argument, so we decided to give it a go\"</b>."
      },
      {
       "n": 4,
-      "s": "wanted to take on a project after listening to another student?",
-      "a": "C"
+      "s": "D asked some workers to change what they do?",
+      "a": "D",
+      "w": "Nathan says <b>\"We also asked the bus drivers to switch off their engines\"</b>. Workers means bus drivers."
      },
      {
       "n": 5,
-      "s": "was surprised by how bad a problem was?",
-      "a": "B"
+      "s": "B had doubts at first about whether an activity was worth doing?",
+      "a": "B",
+      "w": "Cameron says <b>\"I thought it was a waste of time\"</b>. Having doubts about whether it was worth doing paraphrases that."
      },
      {
       "n": 6,
-      "s": "thought the project would be a good opportunity for students?",
-      "a": "A"
+      "s": "A believes that people aren’t taught enough about certain things?",
+      "a": "A",
+      "w": "Alyssa says <b>\"there’s a lack of education about the issues surrounding food and diet\"</b>. Not taught enough paraphrases a lack of education."
+     },
+     {
+      "n": 7,
+      "s": "D is certain that the environment around the school is now better?",
+      "a": "D",
+      "w": "Nathan says <b>\"the air is undoubtedly cleaner\"</b>. Certain paraphrases undoubtedly, and better environment means cleaner air."
+     },
+     {
+      "n": 8,
+      "s": "B has set a target to make a problem smaller by a fixed amount?",
+      "a": "B",
+      "w": "Cameron says <b>\"Our aim is to reduce our waste by 75%\"</b>. Target paraphrases aim, and a fixed amount is 75%."
+     },
+     {
+      "n": 9,
+      "s": "C feels fortunate to have a lot of open space around their school?",
+      "a": "C",
+      "w": "Morgan says <b>\"We’re very lucky in that we have a lot of land surrounding our school\"</b>. Open space paraphrases land, and fortunate paraphrases lucky."
+     },
+     {
+      "n": 10,
+      "s": "D thinks the problem at their school was obvious to many people?",
+      "a": "D",
+      "w": "Nathan says <b>\"You only had to stand outside the school gates in the morning to realise\"</b> there was a problem. Anyone could see it."
      }
     ]
    },
@@ -6314,33 +8004,63 @@ window.RUOE_B2 = {
     "qs": [
      {
       "n": 1,
-      "s": "became accomplished in their field despite suffering criticism?",
-      "a": "C"
+      "s": "A grew up in a family with very little money?",
+      "a": "A",
+      "w": "Pelé <b>\"was raised in poverty\"</b>. Very little money paraphrases poverty."
      },
      {
       "n": 2,
-      "s": "had their challenge made more difficult because of their age?",
-      "a": "D"
+      "s": "B started to develop their talent as a way of passing the time?",
+      "a": "B",
+      "w": "Shelley <b>\"amused herself by writing stories and poems\"</b>. Amused herself paraphrases passing the time."
      },
      {
       "n": 3,
-      "s": "inspired a professional to support them in their career?",
-      "a": "A"
+      "s": "D had their challenge made more difficult because of their age?",
+      "a": "D",
+      "w": "Jordan was too young for Nepal because <b>\"under-sixteens aren’t allowed\"</b>, so <b>\"he chose to take the more difficult Chinese route\"</b>."
      },
      {
       "n": 4,
-      "s": "had already impressed many people with their skills before they were a teenager?",
-      "a": "C"
+      "s": "A inspired a professional to support them in their career?",
+      "a": "A",
+      "w": "Brito was <b>\"convinced that Pelé was destined for greatness\"</b> and <b>\"took him to Santos FC\"</b>. A professional footballer helped Pelé’s career."
      },
      {
       "n": 5,
-      "s": "was no longer a teenager when they became known to the general public?",
-      "a": "B"
+      "s": "C had already impressed many people with their skills before they were a teenager?",
+      "a": "C",
+      "w": "Mozart played <b>\"for the royal courts\"</b> during his early years and by five could play several instruments. Many people saw his skill before he was thirteen."
      },
      {
       "n": 6,
-      "s": "started to develop their talent as a way of passing the time?",
-      "a": "B"
+      "s": "D was part of a larger challenge when doing something difficult?",
+      "a": "D",
+      "w": "Jordan was climbing Everest <b>\"as part of the Seven Summits challenge\"</b>. A larger challenge paraphrases the Seven Summits."
+     },
+     {
+      "n": 7,
+      "s": "C became accomplished in their field despite suffering criticism?",
+      "a": "C",
+      "w": "Some people <b>\"accused him of being too inexperienced\"</b>, but Mozart <b>\"went on to become one of the greatest composers\"</b>. Accomplished despite criticism."
+     },
+     {
+      "n": 8,
+      "s": "D did something dangerous together with relatives who do it for a living?",
+      "a": "D",
+      "w": "Jordan climbed <b>\"with his father and step-mother, professional adventure racers\"</b>. Relatives who do it for a living paraphrases professional."
+     },
+     {
+      "n": 9,
+      "s": "A was chosen to represent their country soon after becoming a professional?",
+      "a": "A",
+      "w": "Pelé signed at 16, and <b>\"Within a year\"</b> he was <b>\"chosen to represent Brazil in the 1958 World Cup\"</b>. Soon after means within a year."
+     },
+     {
+      "n": 10,
+      "s": "B was no longer a teenager when they became known to the general public?",
+      "a": "B",
+      "w": "Shelley <b>\"was twenty when the book was published\"</b>. She was already past her teens when the public first knew her work."
      }
     ]
    },
@@ -6374,33 +8094,63 @@ window.RUOE_B2 = {
     "qs": [
      {
       "n": 1,
-      "s": "became famous in a very short period of time?",
-      "a": "A"
+      "s": "C could already play several instruments in early childhood?",
+      "a": "C",
+      "w": "<b>\"By the age of five, he could play several instruments\"</b>. Early childhood paraphrases the age of five."
      },
      {
       "n": 2,
-      "s": "was brought up by only one of their parents?",
-      "a": "B"
+      "s": "D could not take an easier option because of a rule?",
+      "a": "D",
+      "w": "Nepal is easier, but <b>\"under-sixteens aren’t allowed\"</b> there. Jordan had to take the harder Chinese route because of the rule."
      },
      {
       "n": 3,
-      "s": "spent a decade travelling and entertaining people in Europe?",
-      "a": "C"
+      "s": "B did not have the chance to study formally but still developed a skill?",
+      "a": "B",
+      "w": "Shelley <b>\"didn’t have the privilege of a formal education\"</b> but was a keen reader who wrote stories and poems."
      },
      {
       "n": 4,
-      "s": "was given a professional contract when they were a teenager?",
-      "a": "A"
+      "s": "C had a parent who gave up work in order to help them develop?",
+      "a": "C",
+      "w": "Mozart’s father <b>\"quit his job\"</b> to <b>\"give Mozart personalised musical training\"</b>. Gave up work paraphrases quit his job."
      },
      {
       "n": 5,
-      "s": "had a parent who was a famous public figure?",
-      "a": "B"
+      "s": "A was given a professional contract when they were a teenager?",
+      "a": "A",
+      "w": "Pelé <b>\"was signed up at the age of 16\"</b> by Santos FC, <b>\"a professional football club\"</b>. Signed up means given a contract."
      },
      {
       "n": 6,
-      "s": "broke more than one record at a young age?",
-      "a": "D"
+      "s": "C spent a decade travelling and entertaining people in Europe?",
+      "a": "C",
+      "w": "<b>\"Over the next ten years or so\"</b> Mozart’s father took him around Europe to play for royal courts. A decade is ten years."
+     },
+     {
+      "n": 7,
+      "s": "A became famous in a very short period of time?",
+      "a": "A",
+      "w": "<b>\"Within a year\"</b> Pelé was the top goal scorer and chosen for the World Cup. Famous in a short period paraphrases the quick rise."
+     },
+     {
+      "n": 8,
+      "s": "B had a parent who was a famous public figure?",
+      "a": "B",
+      "w": "Shelley was the daughter of <b>\"the well-known feminist Mary Wollstonecraft\"</b>. Well-known means famous."
+     },
+     {
+      "n": 9,
+      "s": "D broke more than one record at a young age?",
+      "a": "D",
+      "w": "Jordan was <b>\"the youngest person ever\"</b> on Everest and then <b>\"the youngest person ever to complete the Seven Summits\"</b>. That is two records."
+     },
+     {
+      "n": 10,
+      "s": "B was brought up by only one of their parents?",
+      "a": "B",
+      "w": "Shelley’s mother died, but <b>\"she was raised by her father\"</b>. Only one parent paraphrases that."
      }
     ]
    },
@@ -6413,64 +8163,84 @@ window.RUOE_B2 = {
      {
       "l": "A",
       "h": "George",
-      "t": "My dad is originally from the Greek island of Naxos, but moved to New York, where I was born, when he was 18. It was his descriptions of growing up in a close-knit community surrounded by stunning scenery that inspired my desire to go to Naxos. Not only are there lots of beautiful beaches, but the warm climate means you can swim in the sea nearly all year round. The local people have a very relaxed lifestyle too, staying up late at night and getting up late, which would definitely suit me! It sounds like the kind of place where you can lose track of time. As perfect as it might sound, though, I suppose I might get fed up with being in such a remote place after a while and miss city life."
+      "t": "My dad is originally from the Greek island of Naxos, but moved to New York, where I was born, when he was 18. It was his descriptions of growing up in a close-knit community surrounded by stunning scenery that inspired my desire to go to Naxos. Not only are there lots of beautiful beaches, but the warm climate means you can swim in the sea nearly all year round. The local people have a very relaxed lifestyle too, staying up late at night and getting up late, which would definitely suit me! It sounds like the kind of place where you can lose track of time. As perfect as it might sound, though, I suppose I might get fed up with being in such a remote place after a while and miss city life. My cousins still live there, and the photos they send me make the island look like paradise."
      },
      {
       "l": "B",
       "h": "Sophia",
-      "t": "My friends love chilling out on a beach and getting a suntan on holiday, but personally I find that really tedious. What I want are the kind of experiences I’d never have at home in England. That’s why Norway appeals to me and, in particular, a town called Tromso, which is a cold and windswept place two hundred miles north of the Arctic Circle. I saw a nature documentary about it recently and I’d really love to visit it in January when temperatures are below zero and there is hardly any sunlight. I’m not a huge fan of the cold and the dark, but apparently this is the best time for whale-watching. There are boat trips you can do from a little island near Tromso which give you the chance to get close to these awesome creatures. I think the sight of them in their natural environment would be truly spectacular."
+      "t": "My friends love chilling out on a beach and getting a suntan on holiday, but personally I find that really tedious. What I want are the kind of experiences I’d never have at home in England. That’s why Norway appeals to me and, in particular, a town called Tromso, which is a cold and windswept place two hundred miles north of the Arctic Circle. I saw a nature documentary about it recently and I’d really love to visit it in January when temperatures are below zero and there is hardly any sunlight. I’m not a huge fan of the cold and the dark, but apparently this is the best time for whale-watching. There are boat trips you can do from a little island near Tromso which give you the chance to get close to these awesome creatures. I think the sight of them in their natural environment would be truly spectacular. I’d also love to see the northern lights, which can sometimes be seen over the town on clear nights."
      },
      {
       "l": "C",
       "h": "Hans",
-      "t": "I’m saving up at the moment to go to Seoul, the capital of South Korea. My love of Korean cinema has given me an insight into Korean culture so I think I would feel at home there. You get the impression that the city is super modern because it’s dominated by huge skyscrapers and shopping malls, but apparently you can also find areas where traditional Korean buildings have been preserved. It’s this diversity which really appeals to me. Apart from sightseeing, I’m looking forward to trying some of the street food, which sounds delicious, and going shopping. Young South Koreans are aware of all the latest trends and since it’s a relatively cheap city, I’m determined to get some bargains!"
+      "t": "I’m saving up at the moment to go to Seoul, the capital of South Korea. My love of Korean cinema has given me an insight into Korean culture so I think I would feel at home there. You get the impression that the city is super modern because it’s dominated by huge skyscrapers and shopping malls, but apparently you can also find areas where traditional Korean buildings have been preserved. It’s this diversity which really appeals to me. Apart from sightseeing, I’m looking forward to trying some of the street food, which sounds delicious, and going shopping. Young South Koreans are aware of all the latest trends and since it’s a relatively cheap city, I’m determined to get some bargains! I’ve even started learning a few Korean words online so that I can chat to local people."
      },
      {
       "l": "D",
       "h": "Daphne",
-      "t": "When most people think of Holland, they think of Amsterdam, which I’m sure is a beautiful city if you don’t mind the hordes of visitors it attracts. I’m drawn towards less obvious destinations and given the chance, the place I’d choose to visit is Rotterdam. Rotterdam has been called the ‘city of the future’ because of its striking modern architecture. It’s also a truly green city with unusual features such as a floating park made from recycled rubbish which people have thrown into the river! If you’re a keen surfer, like I am, you’ll be impressed to learn that Rotterdam has got the world’s only surfing centre to be built in the middle of a city on a canal! The only potential disadvantage about visiting Holland is that I don’t speak Dutch, but fortunately English is widely spoken there."
+      "t": "When most people think of Holland, they think of Amsterdam, which I’m sure is a beautiful city if you don’t mind the hordes of visitors it attracts. I’m drawn towards less obvious destinations and given the chance, the place I’d choose to visit is Rotterdam. Rotterdam has been called the ‘city of the future’ because of its striking modern architecture. It’s also a truly green city with unusual features such as a floating park made from recycled rubbish which people have thrown into the river! If you’re a keen surfer, like I am, you’ll be impressed to learn that Rotterdam has got the world’s only surfing centre to be built in the middle of a city on a canal! The only potential disadvantage about visiting Holland is that I don’t speak Dutch, but fortunately English is widely spoken there. I’d also love to cycle around the harbour area and see how the old docks have been rebuilt."
      }
     ],
     "qs": [
      {
       "n": 1,
-      "s": "prefers to stay away from tourist traps?",
-      "a": "D"
+      "s": "C hopes to find things at low prices in this place?",
+      "a": "C",
+      "w": "Hans says the city is <b>\"relatively cheap\"</b> and he is <b>\"determined to get some bargains\"</b>. Low prices paraphrases cheap and bargains."
      },
      {
       "n": 2,
-      "s": "wants to visit a place that has two very different architectural styles?",
-      "a": "C"
+      "s": "A does not expect this place to be ideal?",
+      "a": "A",
+      "w": "George says <b>\"As perfect as it might sound\"</b>, he might get fed up in such a remote place. He knows it may not be ideal."
      },
      {
       "n": 3,
-      "s": "has been influenced by someone who knows this place well?",
-      "a": "A"
+      "s": "C is interested in tasting local specialities?",
+      "a": "C",
+      "w": "Hans says <b>\"I’m looking forward to trying some of the street food\"</b>. Local specialities paraphrases Korean street food."
      },
      {
       "n": 4,
-      "s": "foresees a possible problem if he/she went to this place, but thinks it can be overcome?",
-      "a": "D"
+      "s": "A has been influenced by someone who knows this place well?",
+      "a": "A",
+      "w": "George says his dad’s <b>\"descriptions of growing up\"</b> on Naxos <b>\"inspired my desire\"</b> to go there. His father knows the island well."
      },
      {
       "n": 5,
-      "s": "would welcome the opportunity to do something unusual?",
-      "a": "B"
+      "s": "D foresees a possible problem if he/she went to this place, but thinks it can be overcome?",
+      "a": "D",
+      "w": "Daphne says <b>\"I don’t speak Dutch, but fortunately English is widely spoken\"</b>. She sees the problem and its solution."
      },
      {
       "n": 6,
-      "s": "is interested in tasting local specialities?",
-      "a": "C"
+      "s": "B would welcome the opportunity to do something unusual?",
+      "a": "B",
+      "w": "Sophia wants <b>\"experiences I’d never have at home\"</b>, such as whale-watching trips. The other students describe more familiar holiday activities."
      },
      {
       "n": 7,
-      "s": "wouldn’t be put off a place by harsh conditions?",
-      "a": "B"
+      "s": "A likes the thought of the climate in this place?",
+      "a": "A",
+      "w": "George says <b>\"the warm climate means you can swim in the sea nearly all year round\"</b>. Likes the climate paraphrases that."
      },
      {
       "n": 8,
-      "s": "does not expect this place to be ideal?",
-      "a": "A"
+      "s": "C wants to visit a place that has two very different architectural styles?",
+      "a": "C",
+      "w": "Hans describes <b>\"huge skyscrapers\"</b> as well as <b>\"traditional Korean buildings\"</b>, and says this diversity appeals. Rotterdam has only modern architecture."
+     },
+     {
+      "n": 9,
+      "s": "B wouldn’t be put off a place by harsh conditions?",
+      "a": "B",
+      "w": "Sophia says <b>\"I’m not a huge fan of the cold and the dark\"</b>, but she still wants to go in January. Cold and dark do not stop her."
+     },
+     {
+      "n": 10,
+      "s": "D prefers to stay away from tourist traps?",
+      "a": "D",
+      "w": "Daphne mentions <b>\"the hordes of visitors\"</b> in Amsterdam and says <b>\"I’m drawn towards less obvious destinations\"</b>. She avoids crowded tourist places."
      }
     ]
    },
@@ -6483,64 +8253,84 @@ window.RUOE_B2 = {
      {
       "l": "A",
       "h": "George",
-      "t": "My dad is originally from the Greek island of Naxos, but moved to New York, where I was born, when he was 18. It was his descriptions of growing up in a close-knit community surrounded by stunning scenery that inspired my desire to go to Naxos. Not only are there lots of beautiful beaches, but the warm climate means you can swim in the sea nearly all year round. The local people have a very relaxed lifestyle too, staying up late at night and getting up late, which would definitely suit me! It sounds like the kind of place where you can lose track of time. As perfect as it might sound, though, I suppose I might get fed up with being in such a remote place after a while and miss city life."
+      "t": "My dad is originally from the Greek island of Naxos, but moved to New York, where I was born, when he was 18. It was his descriptions of growing up in a close-knit community surrounded by stunning scenery that inspired my desire to go to Naxos. Not only are there lots of beautiful beaches, but the warm climate means you can swim in the sea nearly all year round. The local people have a very relaxed lifestyle too, staying up late at night and getting up late, which would definitely suit me! It sounds like the kind of place where you can lose track of time. As perfect as it might sound, though, I suppose I might get fed up with being in such a remote place after a while and miss city life. My cousins still live there, and the photos they send me make the island look like paradise."
      },
      {
       "l": "B",
       "h": "Sophia",
-      "t": "My friends love chilling out on a beach and getting a suntan on holiday, but personally I find that really tedious. What I want are the kind of experiences I’d never have at home in England. That’s why Norway appeals to me and, in particular, a town called Tromso, which is a cold and windswept place two hundred miles north of the Arctic Circle. I saw a nature documentary about it recently and I’d really love to visit it in January when temperatures are below zero and there is hardly any sunlight. I’m not a huge fan of the cold and the dark, but apparently this is the best time for whale-watching. There are boat trips you can do from a little island near Tromso which give you the chance to get close to these awesome creatures. I think the sight of them in their natural environment would be truly spectacular."
+      "t": "My friends love chilling out on a beach and getting a suntan on holiday, but personally I find that really tedious. What I want are the kind of experiences I’d never have at home in England. That’s why Norway appeals to me and, in particular, a town called Tromso, which is a cold and windswept place two hundred miles north of the Arctic Circle. I saw a nature documentary about it recently and I’d really love to visit it in January when temperatures are below zero and there is hardly any sunlight. I’m not a huge fan of the cold and the dark, but apparently this is the best time for whale-watching. There are boat trips you can do from a little island near Tromso which give you the chance to get close to these awesome creatures. I think the sight of them in their natural environment would be truly spectacular. I’d also love to see the northern lights, which can sometimes be seen over the town on clear nights."
      },
      {
       "l": "C",
       "h": "Hans",
-      "t": "I’m saving up at the moment to go to Seoul, the capital of South Korea. My love of Korean cinema has given me an insight into Korean culture so I think I would feel at home there. You get the impression that the city is super modern because it’s dominated by huge skyscrapers and shopping malls, but apparently you can also find areas where traditional Korean buildings have been preserved. It’s this diversity which really appeals to me. Apart from sightseeing, I’m looking forward to trying some of the street food, which sounds delicious, and going shopping. Young South Koreans are aware of all the latest trends and since it’s a relatively cheap city, I’m determined to get some bargains!"
+      "t": "I’m saving up at the moment to go to Seoul, the capital of South Korea. My love of Korean cinema has given me an insight into Korean culture so I think I would feel at home there. You get the impression that the city is super modern because it’s dominated by huge skyscrapers and shopping malls, but apparently you can also find areas where traditional Korean buildings have been preserved. It’s this diversity which really appeals to me. Apart from sightseeing, I’m looking forward to trying some of the street food, which sounds delicious, and going shopping. Young South Koreans are aware of all the latest trends and since it’s a relatively cheap city, I’m determined to get some bargains! I’ve even started learning a few Korean words online so that I can chat to local people."
      },
      {
       "l": "D",
       "h": "Daphne",
-      "t": "When most people think of Holland, they think of Amsterdam, which I’m sure is a beautiful city if you don’t mind the hordes of visitors it attracts. I’m drawn towards less obvious destinations and given the chance, the place I’d choose to visit is Rotterdam. Rotterdam has been called the ‘city of the future’ because of its striking modern architecture. It’s also a truly green city with unusual features such as a floating park made from recycled rubbish which people have thrown into the river! If you’re a keen surfer, like I am, you’ll be impressed to learn that Rotterdam has got the world’s only surfing centre to be built in the middle of a city on a canal! The only potential disadvantage about visiting Holland is that I don’t speak Dutch, but fortunately English is widely spoken there."
+      "t": "When most people think of Holland, they think of Amsterdam, which I’m sure is a beautiful city if you don’t mind the hordes of visitors it attracts. I’m drawn towards less obvious destinations and given the chance, the place I’d choose to visit is Rotterdam. Rotterdam has been called the ‘city of the future’ because of its striking modern architecture. It’s also a truly green city with unusual features such as a floating park made from recycled rubbish which people have thrown into the river! If you’re a keen surfer, like I am, you’ll be impressed to learn that Rotterdam has got the world’s only surfing centre to be built in the middle of a city on a canal! The only potential disadvantage about visiting Holland is that I don’t speak Dutch, but fortunately English is widely spoken there. I’d also love to cycle around the harbour area and see how the old docks have been rebuilt."
      }
     ],
     "qs": [
      {
       "n": 1,
-      "s": "could pursue his/her hobby in the place he/she describes?",
-      "a": "D"
+      "s": "C is planning a trip to this place?",
+      "a": "C",
+      "w": "Hans says <b>\"I’m saving up at the moment to go to Seoul\"</b>. Saving up shows he is planning the trip."
      },
      {
       "n": 2,
-      "s": "intends to spend some money in his/her chosen place?",
-      "a": "C"
+      "s": "A is attracted to the way of life in his/her chosen place?",
+      "a": "A",
+      "w": "George likes the locals’ <b>\"very relaxed lifestyle\"</b>, which <b>\"would definitely suit me\"</b>. Way of life paraphrases lifestyle."
      },
      {
       "n": 3,
-      "s": "is attracted to the way of life in his/her chosen place?",
-      "a": "A"
+      "s": "B was inspired to visit this place by a TV programme?",
+      "a": "B",
+      "w": "Sophia says <b>\"I saw a nature documentary about it recently\"</b>. A TV programme paraphrases a nature documentary."
      },
      {
       "n": 4,
-      "s": "doesn’t like going to popular places?",
-      "a": "D"
+      "s": "D doesn’t like going to popular places?",
+      "a": "D",
+      "w": "Daphne says <b>\"I’m drawn towards less obvious destinations\"</b> and mentions the <b>\"hordes of visitors\"</b> in Amsterdam. She avoids popular places."
      },
      {
       "n": 5,
-      "s": "likes doing unusual things on holiday?",
-      "a": "B"
+      "s": "C intends to spend some money in his/her chosen place?",
+      "a": "C",
+      "w": "Hans looks forward to <b>\"going shopping\"</b> and says he is <b>\"determined to get some bargains\"</b>. Spending money paraphrases shopping."
      },
      {
       "n": 6,
-      "s": "is planning a trip to this place?",
-      "a": "C"
+      "s": "D could pursue his/her hobby in the place he/she describes?",
+      "a": "D",
+      "w": "Daphne is <b>\"a keen surfer\"</b> and Rotterdam has <b>\"the world’s only surfing centre\"</b> in a city. Hobby paraphrases surfing."
      },
      {
       "n": 7,
-      "s": "was inspired to visit this place by a TV programme?",
-      "a": "B"
+      "s": "A wouldn’t want to stay in this place too long?",
+      "a": "A",
+      "w": "George says he <b>\"might get fed up with being in such a remote place after a while\"</b>. Wouldn’t want to stay too long paraphrases that."
      },
      {
       "n": 8,
-      "s": "wouldn’t want to stay in this place too long?",
-      "a": "A"
+      "s": "B likes doing unusual things on holiday?",
+      "a": "B",
+      "w": "Sophia wants <b>\"experiences I’d never have at home\"</b> and is excited about whale-watching. Unusual things paraphrases experiences she would never have at home."
+     },
+     {
+      "n": 9,
+      "s": "D is interested in a place’s environmentally friendly features?",
+      "a": "D",
+      "w": "Daphne calls Rotterdam <b>\"a truly green city\"</b>, with a park made from recycled rubbish. Environmentally friendly paraphrases green."
+     },
+     {
+      "n": 10,
+      "s": "B thinks lying on a beach is dull?",
+      "a": "B",
+      "w": "Sophia says that relaxing on a beach is <b>\"really tedious\"</b>. Dull paraphrases tedious."
      }
     ]
    }

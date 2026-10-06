@@ -206,7 +206,7 @@
 <script src="nis-nav.js?v=c6e39903"></script>
 <script src="activity-save.js?v=1c38a81d"></script>
 <script src="reading-use-of-english.data.js?v=7f5a2d3e"></script>
-<script src="reading-use-of-english.b2.js?v=f7bbbd71"></script>
+<script src="reading-use-of-english.b2.js?v=16b5ea06"></script>
 <script src="reading-use-of-english.why.js?v=69ad4c57"></script>
 </head>
 <body>
@@ -845,21 +845,23 @@ function reviewItem(it, i, L){
   }
   if(p === 2 || p === 3){
     const head = p === 3 ? `Word given: <b>${esc(it.r)}</b>` : `Gap ${num}`;
-    const note = p === 3 ? (it.x ? `<div class="gnote"><span>📘 Word formation</span>${esc(it.r)} → <b>${esc(it.a[0])}</b> · ${esc(it.x)}</div>` : '')
+    const note = p === 3 ? `<div class="gnote"><span>📘 Word formation${it.x ? ' · ' + esc(it.x) : ''}</span>${it.w || `${esc(it.r)} → <b>${esc(it.a[0])}</b>`}</div>`
                          : gapNote(it);
     return q(head, yours(ok, has && esc(v)) + `<div class="model"><span>Answer:</span> <b>${esc(it.a[0])}</b></div>` +
       (it.a.length > 1 ? `<div class="alt">Also accepted: ${it.a.slice(1).map(esc).join(' · ')}</div>` : '') + note);
   }
+  /* Parts 5-7: la nota dice dónde está la respuesta en el texto. */
+  const readNote = w => w ? `<div class="gnote"><span>📘 Why</span>${w}</div>` : '';
   if(p === 5){
     const L4 = j => String.fromCharCode(65 + j);
-    return q(esc(it.s), yours(ok, has && `${L4(+v)}) ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)}) ${esc(it.o[it.a])}</b></div>`);
+    return q(esc(it.s), yours(ok, has && `${L4(+v)}) ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)}) ${esc(it.o[it.a])}</b></div>` + readNote(it.w));
   }
   if(p === 6){
-    const bank = cur.x.bank;
-    return q(`Gap ${num}`, yours(ok, has && `${esc(v)} — ${esc(bank[v] || '')}`) + `<div class="model"><span>Answer:</span> <b>${esc(it.a)}</b> — ${esc(bank[it.a] || '')}</div>`);
+    const bank = cur.x.bank, w = (cur.x.w || {})[String(i + 1)] || (cur.x.w || {})[String(it.n)];
+    return q(`Gap ${num}`, yours(ok, has && `${esc(v)} — ${esc(bank[v] || '')}`) + `<div class="model"><span>Answer:</span> <b>${esc(it.a)}</b> — ${esc(bank[it.a] || '')}</div>` + readNote(w));
   }
   const sec = l => { const s = cur.x.sections.find(z => z.l === l); return s ? `${l}${s.h ? ' — ' + esc(s.h) : ''}` : esc(l); };
-  return q(esc(it.s), yours(ok, has && sec(v)) + `<div class="model"><span>Answer:</span> <b>${sec(it.a)}</b></div>`);
+  return q(esc(it.s), yours(ok, has && sec(v)) + `<div class="model"><span>Answer:</span> <b>${sec(it.a)}</b></div>` + readNote(it.w));
 }
 function reviewKwt(it, i, L){
   const st = cur.st, v = (st.a[i]||'').trim(), ok = v && isRight(it, v), a = answersOf(it);
