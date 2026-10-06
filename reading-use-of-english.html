@@ -163,6 +163,42 @@
     .inspera-content{padding:16px 18px}
     .part-tab{min-width:70px;padding:6px 10px}
   }
+  /* Partes de texto (1-3, 5-7): mismas reglas que mocks-cambridge/reading-quiz.html */
+  .chips{margin:4px 0 2px}
+  .chip{display:inline-block;font-size:.7rem;font-weight:700;background:#e0f2fe;color:#075985;border-radius:999px;padding:2px 8px;margin:2px 3px 0 0}
+  .inspera-content h3{font-family:"Montserrat","Segoe UI",sans-serif;font-size:1.18rem;margin:0 0 14px;font-weight:700;color:var(--ink)}
+  .inspera-content .passage{color:var(--ink);font-family:Georgia,"Times New Roman",serif;font-size:var(--exam-fs,1rem);line-height:1.85;white-space:pre-line;margin:0 0 18px}
+  .inspera-content .passage p{margin:0 0 12px;white-space:normal}
+  .inspera-content .notice{background:var(--bg);border:1px solid var(--line);color:var(--muted);padding:10px 14px;border-radius:8px;font-style:italic;margin-bottom:12px;font-size:.92rem;font-family:"Montserrat","Segoe UI",sans-serif}
+  .inspera-content.two-col{padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;overflow:hidden}
+  .inspera-content.two-col > .col-left{padding:22px 24px;border-right:1px solid var(--line);overflow-y:auto;max-height:calc(100vh - 290px)}
+  .inspera-content.two-col > .col-right{padding:22px 24px;overflow-y:auto;max-height:calc(100vh - 290px);background:var(--bg)}
+  @media(max-width:780px){.inspera-content.two-col{display:block}.inspera-content.two-col > .col-left{border-right:none;border-bottom:1px solid var(--line);max-height:none}.inspera-content.two-col > .col-right{max-height:none}}
+  .inspera-content .opt{display:block;background:var(--card);border:1.5px solid var(--line);border-radius:8px;padding:9px 14px;margin:6px 0;cursor:pointer;color:var(--ink);font-size:.95rem;transition:.15s}
+  .inspera-content .opt:hover{border-color:#4987c6;background:var(--bg)}
+  .inspera-content .opt input[type="radio"]{margin-right:10px;accent-color:#4987c6}
+  .gap-pill{display:inline-flex;align-items:center;justify-content:center;background:var(--card);color:var(--ink);border:1.5px solid #94a3b8;border-radius:6px;padding:0 10px;height:26px;min-width:26px;font-family:"Montserrat","Segoe UI",sans-serif;font-size:.92rem;font-weight:600;margin:0 3px;cursor:pointer;vertical-align:baseline;white-space:nowrap;transition:.12s}
+  .gap-pill:hover{border-color:#4987c6}
+  .gap-pill.answered{background:#2f5f93;color:#fff;border-color:#2f5f93}
+  .gap-popup{position:fixed;background:#0f172a;color:#fff;border-radius:10px;padding:5px;display:flex;flex-direction:row;gap:3px;box-shadow:0 12px 32px rgba(0,0,0,.45);z-index:3000;align-items:center;flex-wrap:wrap;max-width:520px}
+  .gap-popup button{background:#1e293b;color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;font-size:.92rem;font-family:"Montserrat","Segoe UI",sans-serif;font-weight:500;white-space:nowrap}
+  .gap-popup button:hover{background:#4987c6}
+  .gap-popup .close-x{background:transparent;color:#94a3b8;padding:6px 8px;font-weight:700;border-right:1px solid #334155;border-radius:0;margin-right:2px}
+  .gapped-select{display:inline-block;background:var(--card);color:var(--ink);border:1.5px solid #94a3b8;border-radius:6px;padding:2px 6px 2px 10px;font-family:"Montserrat","Segoe UI",sans-serif;font-size:.92rem;font-weight:600;margin:0 3px;cursor:pointer;vertical-align:baseline}
+  .gapped-select.answered{background:#2f5f93;color:#fff;border-color:#2f5f93}
+  .cloze-input{display:inline-block;background:var(--card);color:var(--ink);border:none;border-bottom:1.5px solid #94a3b8;padding:2px 6px;font-family:"Montserrat","Segoe UI",sans-serif;font-size:.95rem;margin:0 3px;width:110px;text-align:center;font-weight:500}
+  .cloze-input:focus{outline:none;border-bottom-color:#4987c6;border-bottom-width:2px}
+  .inspera-content .bank{background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:"Montserrat","Segoe UI",sans-serif;font-size:.92rem;border-radius:8px;padding:12px;margin:0 0 14px}
+  .inspera-content .bank ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}
+  .inspera-content select{background:var(--card);color:var(--ink);border:1.5px solid #94a3b8;border-radius:6px;padding:6px 10px;font-family:"Montserrat","Segoe UI",sans-serif;font-size:.95rem;max-width:100%}
+  .wordform-grid{display:grid;grid-template-columns:auto max-content;justify-content:start;gap:2px 14px;background:var(--bg);border:1px solid var(--line);border-left:4px solid #4987c6;padding:18px 22px;border-radius:8px;margin:8px 0;font-family:Georgia,"Times New Roman",serif;line-height:1.85;align-items:baseline;color:var(--ink);font-size:var(--exam-fs,1rem)}
+  .wordform-grid > .wf-text{min-height:1.6em}
+  .wordform-grid > .wf-root{text-align:left;font-weight:700;color:var(--blue);font-family:"Montserrat","Segoe UI",sans-serif;letter-spacing:1.2px;font-size:.92rem;white-space:nowrap}
+  .wordform-grid input.gap-inline{display:inline-block;width:150px;margin:0 4px;padding:2px 8px;border:none;border-bottom:1.5px dashed #94a3b8;background:var(--card);color:var(--ink);font-family:inherit;font-size:1rem;text-align:center}
+  .wordform-grid input.gap-inline:focus{outline:none;border-bottom-color:#4987c6}
+  @media(max-width:560px){.wordform-grid{grid-template-columns:1fr;gap:0 10px}.wordform-grid > .wf-root{margin-bottom:8px}.wordform-grid input.gap-inline{width:120px}}
+  .q-flash{animation:qflash 1.2s ease}
+  @keyframes qflash{0%{box-shadow:0 0 0 3px #fcd34d}100%{box-shadow:0 0 0 3px transparent}}
 </style>
   <meta name="google" content="notranslate">
   <script src="config.js?v=720edc7d"></script>
@@ -170,6 +206,7 @@
 <script src="nis-nav.js?v=c6e39903"></script>
 <script src="activity-save.js?v=1c38a81d"></script>
 <script src="reading-use-of-english.data.js?v=7f5a2d3e"></script>
+<script src="reading-use-of-english.b2.js?v=0d60a279"></script>
 <script src="reading-use-of-english.why.js?v=69ad4c57"></script>
 </head>
 <body>
@@ -192,7 +229,7 @@
 
   <!-- 2 · Gramática explicada (antes de los ejercicios) -->
   <div id="grammar" class="hidden">
-    <button type="button" class="backbtn" onclick="goMenu()">← Back to grammar points</button>
+    <button type="button" class="backbtn" onclick="goMenu()">← <span class="backlbl">Back to grammar points</span></button>
     <div class="card focus" id="focus"></div>
     <div class="card">
       <div class="rule" id="gRule"></div>
@@ -205,13 +242,13 @@
 
   <!-- 4 · Corrección -->
   <div id="review" class="hidden">
-    <button type="button" class="backbtn" onclick="goMenu()">← Back to grammar points</button>
+    <button type="button" class="backbtn" onclick="goMenu()">← <span class="backlbl">Back to grammar points</span></button>
     <div class="card">
       <div id="rvHead"></div>
       <div class="startrow" style="margin-top:12px">
-        <button type="button" class="btn ghost" onclick="openGrammar()">📖 Grammar explanation</button>
+        <button type="button" class="btn ghost" id="rvGrammarBtn" onclick="openGrammar()">📖 Grammar explanation</button>
         <button type="button" class="btn ghost" onclick="retry()">↻ Try again</button>
-        <button type="button" class="btn primary" onclick="goMenu()">← Back to grammar points</button>
+        <button type="button" class="btn primary" onclick="goMenu()">← <span class="backlbl">Back to grammar points</span></button>
       </div>
     </div>
     <div class="card" id="rvList"></div>
@@ -299,9 +336,80 @@ function hasKey(it, txt){
   return forms(txt).some(f => (' ' + f + ' ').includes(k));
 }
 
+/* ---- Contenido de B2 (Parts 1-3 y 5-7) ----------------------------------
+   RUOE_B2 viene de reading-use-of-english.b2.js. Las transformaciones extra del
+   test B2 del colegio se suman al final de sus temas de Part 4 (así no se
+   mueven los índices de las notas gramaticales que ya existen). */
+const B2X = window.RUOE_B2 || {};
+(function mergeP4(){
+  const extra = B2X.p4extra || {};
+  Object.keys(extra).forEach(id => {
+    let t = RUOE_P4.find(x => x.id === id);
+    if(!t){
+      t = {id, emoji:'🧮', title:'Mixed Transformations', b2:[],
+        focus:'Mixed key word transformations from the B2 tests: quantifiers, pronouns, word choice, fixed phrases and inversion. Each one changes the structure of the sentence while keeping its meaning — look carefully at the key word and decide which structure it belongs to.',
+        patterns:[['Quantifiers','<b>few / a few</b> · <b>little / a little</b> · <b>hardly any</b> · <b>none of</b> · <b>neither of</b>'],
+          ['Word choice','<b>it’s worth</b> doing · <b>it’s no good</b> doing · <b>there’s no need</b> to · <b>be on the point of</b>'],
+          ['Inversion and emphasis','<b>Not only</b> … <b>but also</b> · <b>No sooner</b> … <b>than</b> · <b>What</b> I need <b>is</b> …']]};
+      RUOE_P4.push(t);
+    }
+    t.b2 = (t.b2 || []).concat(extra[id]);
+  });
+  RUOE_PARTS.forEach(p => { p.b2 = p.n === 4 || !!B2X['p' + p.n]; p.c1 = p.n === 4; });
+})();
+const START = {1:1, 2:9, 3:17, 4:25, 5:31, 6:37, 7:43};   // numeración del examen B2
+const PART_NAME = {1:'Multiple-choice cloze', 2:'Open cloze', 3:'Word formation', 4:'Key word transformations', 5:'Multiple choice', 6:'Gapped text', 7:'Multiple matching'};
+const INSTR = {
+  1:'For each question, choose the correct answer for each gap.',
+  2:'For each question, write the correct answer. Write <b>one word</b> for each gap.',
+  3:'For each question, use the word in CAPITALS on the right to form a word that fits in the gap.',
+  5:'Read the text below. For each question, choose the correct answer.',
+  6:'Sentences have been removed from the text below. For each question, choose the correct answer. There is one extra sentence which you do not need to use.',
+  7:'Read the text below. For each question, choose the correct section. Each section may be chosen more than once.'
+};
+const GUIDE57 = {
+  5:{focus:'Part 5 is a long text followed by <b>multiple-choice questions</b> (A, B, C or D). The questions follow the order of the text. They test <b>detail</b>, <b>opinion and attitude</b>, the <b>purpose</b> of a paragraph, the meaning of a <b>word or phrase in context</b> and what a <b>reference word</b> (it, this, they) refers to.',
+     patterns:[['Strategy','Read the text quickly first. Then, for each question, find the part of the text it refers to and read it carefully <b>before</b> you look at the options.'],
+       ['Distractors','Wrong options often repeat <b>words from the text</b> but change the meaning, or say something that is true but does not answer the question.'],
+       ['Attitude and purpose','Look for adjectives and adverbs that show the writer’s feelings (<i>surprisingly, unfortunately</i>) and for linkers that show contrast (<i>however, yet</i>).']]},
+  6:{focus:'Part 6 is a text with <b>sentences removed</b>. You choose the sentence (A, B, C…) that fits each gap; there is one extra sentence you do not need. The answer depends on the <b>links</b> between the sentence and the text before <b>and after</b> the gap.',
+     patterns:[['Reference words','Pronouns and words like <b>this, these, such, they, him, there</b> must refer to something mentioned just before the gap.'],
+       ['Linkers','<b>However</b> introduces a contrast · <b>Fortunately</b> follows a problem · <b>As a result</b> follows a cause · <b>also / another</b> add a similar idea.'],
+       ['Strategy','Read the whole text first. After choosing, read the paragraph again with the sentence in place: it must make sense <b>both</b> with what comes before and with what comes after.']]},
+  7:{focus:'Part 7 is one long text divided into sections, or several short texts (often by different people). You read the questions and decide <b>which section or person</b> each one refers to. Sections can be chosen more than once.',
+     patterns:[['Paraphrase','The questions never repeat the words of the text: they <b>paraphrase</b> them. “was helped by a relative” = “my uncle gave me my first job”.'],
+       ['Strategy','Read the questions first and underline the key idea. Then read each section and note which questions it answers. Check that the <b>whole</b> question matches, not just one word.'],
+       ['Traps','Two sections may mention the same topic; only one will match the exact idea (e.g. someone who <b>wanted</b> to do something vs. someone who <b>did</b> it).']]}
+};
+/* Nota por categoría para la corrección de las Parts 1 y 2. */
+const TAGNOTE = {
+  prepositions:'<b>Preposition.</b> Check the word before the gap: many verbs, adjectives and nouns take a fixed preposition (<i>interested in, depend on, the reason for</i>), and time/place expressions have fixed ones too.',
+  collocations:'<b>Collocation.</b> The word that fits is the one that naturally goes with the word next to it (<i>make an effort, pay attention, take part</i>). Other options may have a similar meaning but do not combine with it.',
+  phrasal:'<b>Phrasal verb.</b> The particle or verb must form the phrasal verb with the right meaning (<i>come up with, set up, take up</i>). Learn phrasal verbs as whole units.',
+  verbpatterns:'<b>Verb pattern.</b> Look at what follows the gap: some verbs take <i>to + infinitive</i>, others <i>-ing</i>, an object + infinitive, or a preposition.',
+  'word-choice':'<b>Word choice.</b> The options have similar meanings, but only one fits the exact meaning and grammar of the sentence. Read the words around the gap carefully.',
+  tenses:'<b>Tense / auxiliary.</b> Check the time expressions and the other verbs in the sentence to decide which tense or auxiliary is needed.',
+  relatives:'<b>Relative pronoun.</b> <i>who</i> for people, <i>which</i> for things, <i>whose</i> for possession, <i>where</i> for places, <i>when</i> for time, <i>what</i> = the thing that.',
+  linkers:'<b>Linker.</b> Decide the logical relation between the two ideas: contrast (<i>although, despite</i>), cause (<i>because of</i>), condition (<i>unless</i>), addition (<i>as well as</i>).',
+  passive:'<b>Passive.</b> The subject receives the action, so you need a form of <i>be</i> + past participle.',
+  inversion:'<b>Inversion / emphasis.</b> After a negative adverbial (<i>Not only, Never, Hardly</i>) the auxiliary comes before the subject.',
+  quantifiers:'<b>Quantifier.</b> Check whether the noun is countable or uncountable, singular or plural (<i>few/little, many/much, each/every, both/either</i>).',
+  reported:'<b>Reported speech.</b> Reporting verbs take specific patterns (<i>suggest doing, advise sb to do, accuse sb of doing</i>).',
+  comparatives:'<b>Comparison.</b> Look for <i>as … as, than, the … the</i>, or <i>so / such</i>.',
+  conditionals:'<b>Conditional.</b> Check the tense in the other clause to choose the right conditional form, or a linker like <i>unless, provided, as long as</i>.',
+  future:'<b>Future form.</b> Choose the form that matches the meaning: plan, prediction, schedule or arrangement.',
+  modals:'<b>Modal verb.</b> Decide the meaning: ability, obligation, possibility, deduction or advice.',
+  fixedphrases:'<b>Fixed phrase.</b> This word is part of an expression that must be learnt as a whole (<i>in fact, by mistake, on purpose, as well as</i>).',
+  articles:'<b>Article.</b> <i>a/an</i> for one of many or first mention, <i>the</i> for something specific or already known, no article for general plural/uncountable nouns.',
+  auxiliaries:'<b>Auxiliary verb.</b> The gap needs <i>be, have</i> or <i>do</i> to form the tense, passive, question or emphasis.',
+  pronouns:'<b>Pronoun.</b> Check what the pronoun refers to and whether it must be reflexive (<i>themselves</i>), reciprocal (<i>each other</i>) or impersonal (<i>it, there</i>).'
+};
+const TAGLABEL = {prepositions:'Prepositions', collocations:'Collocations', phrasal:'Phrasal verbs', verbpatterns:'Verb patterns', 'word-choice':'Word choice', tenses:'Tenses', relatives:'Relative pronouns', linkers:'Linkers', passive:'Passive', inversion:'Inversion', quantifiers:'Quantifiers', reported:'Reported speech', comparatives:'Comparatives', conditionals:'Conditionals', future:'Future', modals:'Modals', fixedphrases:'Fixed phrases', articles:'Articles', auxiliaries:'Auxiliaries', pronouns:'Pronouns'};
+
 /* ---- Vistas --------------------------------------------------------------
-   El hash manda: #b2 (menú) · #b2/passive (gramática) · #b2/passive/exam ·
-   #b2/passive/review. Así el «atrás» del navegador también funciona. */
+   El hash manda: #b2/part-3 (menú en esa parte) · #b2/<tema> (Part 4) ·
+   #b2/m-<módulo> (Part 3 por afijo) · #b2/x-<ejercicio> (texto de examen);
+   cada uno con /exam y /review. El «atrás» del navegador también funciona. */
 function show(v){
   view = v;
   ['menu','grammar','review'].forEach(id => $(id).classList.toggle('hidden', id !== v));
@@ -309,18 +417,33 @@ function show(v){
   document.body.style.overflow = v === 'exam' ? 'hidden' : '';
   // La barra Save / Submit del portal va fija abajo: el examen termina encima.
   if(v === 'exam'){ const bar = document.querySelector('.nisw'); $('exam').style.bottom = bar ? bar.offsetHeight + 'px' : '0'; }
+  document.querySelectorAll('.backlbl').forEach(s => s.textContent = cur && cur.k === 'kwt' ? 'Back to grammar points' : 'Back to Part ' + part);
+  document.querySelectorAll('.gap-popup').forEach(p => p.remove());
   window.scrollTo({top:0});
 }
 function setHash(h){ if(location.hash !== h) location.hash = h; else route(); }
+function findItem(lv, id){
+  if(!id) return null;
+  if(id.startsWith('m-')){ const m = ((B2X.p3||{}).modules||[]).find(x => 'm-' + x.id === id); return lv === 'b2' && m ? {k:'wfm', p:3, m, title:m.title} : null; }
+  if(id.startsWith('x-')){
+    for(const p of [1,2,3,5,6,7]){ const x = ((B2X['p'+p]||{}).ex||[]).find(e => 'x-' + e.id === id); if(x && lv === 'b2') return {k:'text', p, x, title:x.title}; }
+    return null;
+  }
+  const t = RUOE_P4.find(x => x.id === id && x[lv]);
+  return t ? {k:'kwt', p:4, t, title:t.title} : null;
+}
 function route(){
-  const m = location.hash.match(/^#(b2|c1)(?:\/(\w+))?(?:\/(exam|review))?$/);
+  const m = location.hash.match(/^#(b2|c1)(?:\/([\w-]+))?(?:\/(exam|review))?$/);
   if(m) level = m[1];
-  const t = m && m[2] && RUOE_P4.find(x => x.id === m[2] && x[level]);
-  if(!t){ cur = null; renderLevels(); renderParts(); show('menu'); return; }
-  if(!cur || cur.t !== t || cur.level !== level) cur = {t, level, st: stateOf(level, t.id)};
-  const sub = m[3];
-  if(sub === 'exam'){ if(cur.st.checked){ setHash('#'+level+'/'+t.id+'/review'); return; } renderExam(); show('exam'); setTimeout(focusInput, 30); }
-  else if(sub === 'review'){ if(!cur.st.checked){ setHash('#'+level+'/'+t.id+'/exam'); return; } renderReview(); show('review'); }
+  const id = m && m[2];
+  if(id && /^part-[1-7]$/.test(id)) part = +id.slice(5);
+  const f = findItem(level, id);
+  if(!f){ cur = null; renderLevels(); renderParts(); show('menu'); return; }
+  if(!cur || cur.id !== id || cur.level !== level) cur = Object.assign(f, {id, level, st: stateOf(level, id)});
+  part = cur.p;
+  const sub = m[3], base_ = '#' + level + '/' + id;
+  if(sub === 'exam'){ if(cur.st.checked){ setHash(base_ + '/review'); return; } renderExam(); show('exam'); setTimeout(focusInput, 30); }
+  else if(sub === 'review'){ if(!cur.st.checked){ setHash(base_ + '/exam'); return; } renderReview(); show('review'); }
   else { renderGrammar(); show('grammar'); }
 }
 window.addEventListener('hashchange', route);
@@ -330,9 +453,9 @@ function stateOf(lv, id){
   const s = STORE[k]; s.a = s.a || {}; s.f = s.f || {}; s.q = s.q || 0;
   return s;
 }
-window.goMenu = () => setHash('#' + level);
-window.openGrammar = () => cur && setHash('#' + cur.level + '/' + cur.t.id);
-window.startExam = () => cur && setHash('#' + cur.level + '/' + cur.t.id + '/exam');
+window.goMenu = () => setHash('#' + level + '/part-' + part);
+window.openGrammar = () => cur && setHash('#' + cur.level + '/' + cur.id);
+window.startExam = () => cur && setHash('#' + cur.level + '/' + cur.id + '/exam');
 
 /* ---- 1 · Menú ------------------------------------------------------------ */
 function topicsFor(lv){ return RUOE_P4.filter(t => t[lv] && t[lv].length); }
@@ -343,55 +466,115 @@ function renderLevels(){
       <b>${L.name}</b><span>${L.sub} · Part 4 answers: ${L.min}–${L.max} words</span></button>`;
   }).join('');
 }
+function progressOf(id, n){
+  const g = STORE[keyOf(level, id)], done = g && g.checked ? g.score : null;
+  const ans = g ? Object.values(g.a||{}).filter(v => String(v==null?'':v).trim()).length : 0;
+  const pct = Math.round((done == null ? ans : done) / n * 100);
+  const meta = done != null ? ` · score <b>${done}/${n}</b>` : (ans ? ` · ${ans} answered` : '');
+  return {meta, bar:`<div class="prog"><i style="width:${pct}%;${done == null ? 'background:var(--blue)' : ''}"></i></div>`};
+}
+function card(id, emoji, title, n, sub){
+  const pr = progressOf(id, n);
+  return `<button type="button" class="topic" onclick="openTopic('${id}')">
+    <div class="em">${emoji}</div><h3>${esc(title)}</h3>
+    ${sub ? `<div class="chips">${sub}</div>` : ''}
+    <div class="meta">${n} question${n===1?'':'s'}${pr.meta}</div>${pr.bar}</button>`;
+}
+function exCount(p, x){ return p === 6 ? Object.keys(x.a).length : (x.items || x.qs).length; }
+const PART_EMOJI = {1:'🔘', 2:'✏️', 3:'🧱', 5:'📰', 6:'🧩', 7:'🔎'};
 function renderParts(){
-  $('parts').innerHTML = RUOE_PARTS.map(p => p.ready
-    ? `<button type="button" class="part ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div></button>`
-    : `<button type="button" class="part soon ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div><span class="soon-tag">🚧 Under construction</span></button>`
-  ).join('');
-  const P = RUOE_PARTS.find(p => p.n === part);
-  if(!P.ready){
-    $('partBody').innerHTML = `<div class="rule">🚧 <b>Part ${P.n} · ${P.name}</b> is under construction. It will be available soon. Meanwhile, practise <b>Part 4 · Key word transformations</b>.</div>`;
+  $('parts').innerHTML = RUOE_PARTS.map(p => {
+    const ok = p[level];
+    return `<button type="button" class="part ${ok?'':'soon'} ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div>${ok ? '' : '<span class="soon-tag">🚧 Under construction</span>'}</button>`;
+  }).join('');
+  const P = RUOE_PARTS.find(p => p.n === part), L = LEVELS[level];
+  if(!P[level]){
+    $('partBody').innerHTML = `<div class="rule ${level}">🚧 <b>${L.name} · Part ${P.n} · ${P.name}</b> is under construction. It will be available soon.${level === 'c1' ? ' Meanwhile, practise <b>Part 4</b>, or the B2 First parts.' : ''}</div>`;
     return;
   }
-  const L = LEVELS[level], list = topicsFor(level);
-  $('partBody').innerHTML = `<div class="rule ${level}">
-      <b>${L.name} · Part 4 — Key word transformations.</b> Complete the second sentence so that it means the same as the first. <b>Do not change the word given.</b> You must use between <b>${L.minW} and ${L.maxW} words</b>, including the word given. Contractions count as two words (<i>don't</i> = do not).
-    </div>
-    <div class="sec-title">3 · Choose a grammar point (${list.length})</div>
-    <div class="topics">${list.map(t => {
-      const n = t[level].length, g = STORE[keyOf(level,t.id)], done = g && g.checked ? g.score : null;
-      const ans = g ? Object.values(g.a||{}).filter(v => (v||'').trim()).length : 0;
-      const pct = done == null ? Math.round(ans / n * 100) : Math.round(done / n * 100);
-      const meta = done != null ? ` · score <b>${done}/${n}</b>` : (ans ? ` · ${ans} answered` : '');
-      return `<button type="button" class="topic" onclick="openTopic('${t.id}')">
-        <div class="em">${t.emoji}</div><h3>${t.title}</h3>
-        <div class="meta">${n} questions${meta}</div>
-        <div class="prog"><i style="width:${pct}%;${done == null ? 'background:var(--blue)' : ''}"></i></div></button>`;
-    }).join('')}</div>`;
+  if(part === 4){
+    const list = topicsFor(level);
+    $('partBody').innerHTML = `<div class="rule ${level}">
+        <b>${L.name} · Part 4 — Key word transformations.</b> Complete the second sentence so that it means the same as the first. <b>Do not change the word given.</b> You must use between <b>${L.minW} and ${L.maxW} words</b>, including the word given. Contractions count as two words (<i>don't</i> = do not).
+      </div>
+      <div class="sec-title">3 · Choose a grammar point (${list.length})</div>
+      <div class="topics">${list.map(t => card(t.id, t.emoji, t.title, t[level].length)).join('')}</div>`;
+    return;
+  }
+  const D = B2X['p' + part], G = D.guide || GUIDE57[part];
+  const intro = `<div class="rule ${level}"><b>${L.name} · Part ${part} — ${PART_NAME[part]}.</b> ${G.focus}</div>`;
+  const chips = x => (x.tags||[]).map(t => `<span class="chip">${TAGLABEL[t] || t}</span>`).join('');
+  const exCards = D.ex.map(x => card('x-' + x.id, PART_EMOJI[part], x.title, exCount(part, x), part <= 2 ? chips(x) : '')).join('');
+  if(part === 3){
+    $('partBody').innerHTML = intro +
+      `<div class="sec-title">Step 1 · Practise by prefix and suffix (${D.modules.length})</div>
+       <div class="topics">${D.modules.map(m => card('m-' + m.id, m.emoji, m.title, m.items.length)).join('')}</div>
+       <div class="sec-title" style="margin-top:18px">Step 2 · Mixed tests — all the affixes together (${D.ex.length})</div>
+       <div class="topics">${exCards}</div>`;
+  } else {
+    $('partBody').innerHTML = intro + `<div class="sec-title">3 · Choose a text (${D.ex.length})</div><div class="topics">${exCards}</div>`;
+  }
 }
-window.setLevel = lv => { level = lv; history.replaceState(null, '', '#' + lv); renderLevels(); renderParts(); };
-window.setPart = n => { part = n; renderParts(); };
+window.setLevel = lv => { level = lv; if(!RUOE_PARTS.find(p => p.n === part)[lv]) part = 4; history.replaceState(null, '', '#' + lv + '/part-' + part); renderLevels(); renderParts(); };
+window.setPart = n => { part = n; history.replaceState(null, '', '#' + level + '/part-' + n); renderParts(); };
 window.openTopic = id => setHash('#' + level + '/' + id);
 
-/* ---- 2 · Gramática ------------------------------------------------------- */
+/* ---- 2 · Gramática / guía de la parte ------------------------------------ */
 function renderGrammar(){
-  const {t, level:lv} = cur, L = LEVELS[lv], n = t[lv].length;
-  $('focus').innerHTML = `<h2>${t.emoji} ${t.title}<span class="badge ${lv}">${L.name}</span></h2>
-    <p><b>Grammar focus.</b> ${t.focus}</p>
-    <table class="pat">${t.patterns.map(p => `<tr><td>${p[0]}</td><td>${p[1]}</td></tr>`).join('')}</table>`;
-  $('gRule').className = 'rule ' + lv;
-  $('gRule').innerHTML = `<b>How the exercises work.</b> They follow the digital exam: one question per screen. Read the first sentence, use the <b>KEY WORD</b> without changing it and type between <b>${L.minW} and ${L.maxW} words</b> in the box. Move with ◀ ▶ or the question numbers at the bottom, flag any question you want to come back to, and press <b>Submit ✓</b> to see your score.`;
-  const st = cur.st, ans = Object.values(st.a).filter(v => (v||'').trim()).length;
-  $('gInfo').innerHTML = `${n} questions · ${Math.ceil(n / SET)} set${n > SET ? 's' : ''} of up to ${SET}` +
+  const L = LEVELS[cur.level], st = cur.st, n = count();
+  const ans = Object.values(st.a).filter(v => String(v==null?'':v).trim()).length;
+  let head, rule;
+  if(cur.k === 'kwt'){
+    const t = cur.t;
+    head = `<h2>${t.emoji} ${t.title}<span class="badge ${cur.level}">${L.name}</span></h2><p><b>Grammar focus.</b> ${t.focus}</p>` + patTable(t.patterns);
+    rule = `<b>How the exercises work.</b> They follow the digital exam: one question per screen. Read the first sentence, use the <b>KEY WORD</b> without changing it and type between <b>${L.minW} and ${L.maxW} words</b> in the box. Move with ◀ ▶ or the question numbers at the bottom, flag any question you want to come back to, and press <b>Submit ✓</b> to see your score.`;
+  } else if(cur.k === 'wfm'){
+    const m = cur.m;
+    head = `<h2>${m.emoji} ${m.title}<span class="badge ${cur.level}">Part 3 · Word formation</span></h2><p><b>Focus.</b> ${m.focus}</p>` + patTable(m.patterns);
+    rule = `<b>How the exercises work.</b> One sentence per screen, as in the digital exam. Use the word in <b>CAPITALS</b> on the right to form a word that fits the gap. Spelling must be correct. Questions come in sets of 8; press <b>Submit ✓</b> to see your score.`;
+  } else {
+    const D = B2X['p' + cur.p], G = D.guide || GUIDE57[cur.p];
+    head = `<h2>${PART_EMOJI[cur.p]} ${esc(cur.x.title)}<span class="badge ${cur.level}">Part ${cur.p} · ${PART_NAME[cur.p]}</span></h2>
+      <p><b>What this part tests.</b> ${G.focus}</p>` + patTable(G.patterns) +
+      ((cur.x.tags||[]).length ? `<p style="margin-top:12px"><b>This text practises:</b> ${cur.x.tags.map(t => `<span class="chip">${TAGLABEL[t]||t}</span>`).join(' ')}</p>` : '');
+    rule = `<b>How it works.</b> The whole text is on one screen, as in the digital exam (questions ${START[cur.p]}–${START[cur.p] + n - 1}). ${INSTR[cur.p]} Use the question numbers at the bottom to move between gaps, flag any question you want to come back to, and press <b>Submit ✓</b> to see your score.`;
+  }
+  $('focus').innerHTML = head;
+  $('gRule').className = 'rule ' + cur.level;
+  $('gRule').innerHTML = rule;
+  const per = setSize();
+  $('gInfo').innerHTML = `${n} questions` + (cur.k !== 'text' ? ` · ${Math.ceil(n / per)} set${n > per ? 's' : ''} of up to ${per}` : '') +
     (st.checked ? ` · last score <b>${st.score}/${n}</b>` : (ans ? ` · ${ans} answered so far` : ''));
 }
+function patTable(p){ return p && p.length ? `<table class="pat">${p.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table>` : ''; }
 
 /* ---- 3 · Examen ----------------------------------------------------------
-   Mismo marco y mismo comportamiento que la Part 4 de los Practice Tests: una
-   transformación por pantalla, números abajo por bloque de 6 (la Part 4 del
-   examen tiene 6 preguntas), banderita, flechas y página de entrega. */
-function items(){ return cur.t[cur.level]; }
-function setOf(i){ return Math.floor(i / SET); }
+   El mismo marco de los Practice Tests. Part 4 y los módulos de Part 3: una
+   pregunta por pantalla, en bloques. El resto: el texto entero en una
+   pantalla, con los huecos del examen (botones con opciones en la Part 1,
+   casillas en las Parts 2 y 3, desplegables en las 6 y 7). */
+function items(){ return cur.k === 'kwt' ? cur.t[cur.level] : cur.k === 'wfm' ? cur.m.items : textItems(); }
+function textItems(){
+  const x = cur.x;
+  if(cur.p === 6) return Object.keys(x.a).sort((a,b) => a - b).map(n => ({n:+n, a:x.a[n]}));
+  return x.items || x.qs;
+}
+function count(){ return items().length; }
+function setSize(){ return cur.k === 'kwt' ? SET : cur.k === 'wfm' ? 8 : count(); }
+function setOf(i){ return Math.floor(i / setSize()); }
+function startNum(){ return cur.k === 'text' ? START[cur.p] : 1; }
+function numOf(i){ return startNum() + i; }
+function filled(i){ const v = cur.st.a[i]; return v != null && String(v).trim() !== ''; }
+function sameWord(list, v){ const b = base(v); return list.some(a => base(a) === b); }
+function correctAt(i){
+  const it = items()[i], v = cur.st.a[i];
+  if(!filled(i)) return false;
+  if(cur.k === 'kwt') return isRight(it, v);
+  if(cur.k === 'wfm') return sameWord(it[2].split('|'), v);
+  if(cur.p === 1 || cur.p === 5) return String(it.a) === String(v);
+  if(cur.p === 2 || cur.p === 3) return sameWord(it.a, v);
+  return String(v) === String(it.a);
+}
 let fsPct = 100, timer = null;
 window.fontSize = d => { fsPct = Math.max(80, Math.min(160, fsPct + d * 10)); $('exam').style.setProperty('--exam-fs', (fsPct/100) + 'rem'); $('fsLabel').textContent = fsPct + '%'; };
 function startTimer(){
@@ -402,129 +585,308 @@ function startTimer(){
 }
 function renderExam(){
   const L = LEVELS[cur.level];
-  $('exCand').innerHTML = `${esc(cur.t.title)} · <strong>${L.name}</strong>`;
+  $('exCand').innerHTML = `${esc(cur.title)} · <strong>${L.name}</strong>`;
   $('submitPage').hidden = true; $('exInner').hidden = false;
+  if(cur.k === 'text') renderTextPart();
   renderQuestion(); startTimer();
+}
+function flagLabel(i){ return (cur.st.f[i] ? '⚑ Flagged question ' : '⚐ Flag question ') + numOf(i); }
+function chrome(){
+  const st = cur.st, i = st.q, n = count();
+  $('flagBtn').textContent = flagLabel(i);
+  $('flagBtn').classList.toggle('active', !!st.f[i]);
+  $('prevBtn').disabled = i === 0;
+  $('nextBtn').disabled = i === n - 1;
+  renderTabs();
 }
 function renderQuestion(){
   const its = items(), st = cur.st, L = LEVELS[cur.level];
   if(st.q >= its.length) st.q = 0;
-  const i = st.q, it = its[i], s = setOf(i), first = s * SET + 1, last = Math.min(its.length, (s + 1) * SET);
-  const wr = L.min + '–' + L.max;
-  $('exInner').innerHTML = `<div class="inspera-title"><h1>Reading and Use of English — Part 4</h1></div>
-    <div class="inspera-instruction"><strong>Questions ${first}–${last}</strong>
-      <p>For each question, complete the second sentence so that it means the same as the first. <b>Do not change the word given.</b> You must use between <b>${L.minW}</b> and <b>${L.maxW}</b> words, including the word given.</p></div>
-    <div class="inspera-content">
-      <div class="paged-counter">Question ${i - s * SET + 1} of ${last - first + 1}</div>
-      <div class="q transform-q">
-        <div class="stem">${i+1}. ${esc(it[0])}</div>
-        <div class="kw-line">${esc(it[1])}</div>
-        <div class="transform-second">${it[2] ? esc(it[2]) : ''}<input class="gap-inline-wide" id="exInput" type="text" placeholder="${wr} words" aria-label="Question ${i+1}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(st.a[i]||'')}">${it[3] && it[3] !== '.' ? esc(it[3]) : '.'}</div>
-        <div class="transform-hint">Write ${wr} words, including the key word.</div>
-        <button type="button" class="q-flag ${st.f[i]?'on':''}" onclick="toggleFlag()" aria-pressed="${!!st.f[i]}">${st.f[i] ? '⚑ Flagged question ' : '⚐ Flag question '}${i+1}</button>
-      </div>
-    </div>`;
+  if(cur.k === 'text'){ markCurrent(); chrome(); return; }
+  const i = st.q, it = its[i], per = setSize(), s = setOf(i), first = s * per + 1, last = Math.min(its.length, (s + 1) * per);
+  const flag = `<button type="button" class="q-flag ${st.f[i]?'on':''}" onclick="toggleFlag()" aria-pressed="${!!st.f[i]}">${flagLabel(i)}</button>`;
+  const inputAttrs = `id="exInput" type="text" aria-label="Question ${i+1}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(st.a[i]||'')}"`;
+  if(cur.k === 'kwt'){
+    const wr = L.min + '–' + L.max;
+    $('exInner').innerHTML = `<div class="inspera-title"><h1>Reading and Use of English — Part 4</h1></div>
+      <div class="inspera-instruction"><strong>Questions ${first}–${last}</strong>
+        <p>For each question, complete the second sentence so that it means the same as the first. <b>Do not change the word given.</b> You must use between <b>${L.minW}</b> and <b>${L.maxW}</b> words, including the word given.</p></div>
+      <div class="inspera-content">
+        <div class="paged-counter">Question ${i - s * per + 1} of ${last - first + 1}</div>
+        <div class="q transform-q">
+          <div class="stem">${i+1}. ${esc(it[0])}</div>
+          <div class="kw-line">${esc(it[1])}</div>
+          <div class="transform-second">${it[2] ? esc(it[2]) : ''}<input class="gap-inline-wide" placeholder="${wr} words" ${inputAttrs}>${it[3] && it[3] !== '.' ? esc(it[3]) : '.'}</div>
+          <div class="transform-hint">Write ${wr} words, including the key word.</div>
+          ${flag}
+        </div>
+      </div>`;
+  } else {
+    const parts = esc(it[0]).split('___');
+    $('exInner').innerHTML = `<div class="inspera-title"><h1>Reading and Use of English — Part 3</h1></div>
+      <div class="inspera-instruction"><strong>Questions ${first}–${last}</strong><p>${INSTR[3]}</p></div>
+      <div class="inspera-content">
+        <div class="paged-counter">Question ${i - s * per + 1} of ${last - first + 1}</div>
+        <div class="wordform-grid">
+          <div class="wf-text">${i+1}. ${parts[0]}<input class="gap-inline" ${inputAttrs}>${parts.slice(1).join('___')}</div>
+          <div class="wf-root">${esc(it[1])}</div>
+        </div>
+        ${flag}
+      </div>`;
+  }
   const inp = $('exInput');
   inp.addEventListener('input', () => { st.a[i] = inp.value; renderTabs(); touch(); });
   inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); move(1); } });
-  $('flagBtn').textContent = (st.f[i] ? '⚑ Flagged question ' : '⚐ Flag question ') + (i+1);
-  $('flagBtn').classList.toggle('active', !!st.f[i]);
-  $('prevBtn').disabled = i === 0;
-  $('nextBtn').disabled = i === its.length - 1;
-  renderTabs();
+  chrome();
+}
+/* Texto de examen entero. Cada hueco lleva data-i = índice de la pregunta. */
+function paras(t){ return String(t).split(/\n\s*\n/).map(p => p.trim()).filter(Boolean); }
+function gapsHtml(text, build){
+  let k = 0;
+  return esc(text).replace(/\[\[(\d+)\]\]/g, (m, n) => n === '0' ? m : build(k++, +n));
+}
+function renderTextPart(){
+  const p = cur.p, x = cur.x, st = cur.st, its = items(), n = its.length, s0 = START[p];
+  const head = `<div class="inspera-title"><h1>Reading and Use of English — Part ${p}</h1></div>
+    <div class="inspera-instruction"><strong>Questions ${s0}–${s0 + n - 1}</strong><p>${INSTR[p]}</p></div>`;
+  const ex0 = (txt, it0) => txt.replace(/\[\[0\]\]/g, `<b><u>${esc(it0 || '')}</u></b>`);
+  let body = '';
+  const qFlag = i => `<button type="button" class="q-flag ${st.f[i]?'on':''}" data-flag="${i}" onclick="toggleFlag(${i})">${flagLabel(i)}</button>`;
+  if(p === 1){
+    const html = paras(x.text).map(par => `<p>${gapsHtml(par, i => {
+      const v = st.a[i], it = its[i], on = v != null && v !== '';
+      return `<button type="button" class="gap-pill${on?' answered':''}" data-i="${i}" onclick="showGap(this,${i})">${on ? esc(it.o[+v]) : s0 + i}</button>`;
+    })}</p>`).join('');
+    body = `<h3>${esc(x.title)}</h3><div class="passage">${html}</div>`;
+  } else if(p === 2){
+    const html = paras(x.text).map(par => `<p>${gapsHtml(par, i =>
+      `<b>(${s0 + i})</b> <input class="cloze-input" data-i="${i}" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(st.a[i]||'')}">`)}</p>`).join('');
+    body = `<h3>${esc(x.title)}</h3><div class="passage">${html}</div>`;
+  } else if(p === 3){
+    // Como en el examen: el texto por líneas y la palabra en mayúsculas a la derecha.
+    // Sin lookbehind: Safari antiguo no lo entiende y tumbaría la página entera.
+    const sents = String(x.text).replace(/\n+/g, ' ').replace(/([.!?’”])\s+(?=[A-Z‘“(])/g, '$1\u0001').split('\u0001');
+    let k = 0, rows = '';
+    sents.forEach(sn => {
+      const roots = [];
+      const h = esc(sn).replace(/\[\[(\d+)\]\]/g, (m, nn) => {
+        const i = k++; roots.push(its[i].r);
+        return `<b>(${s0 + i})</b> <input class="gap-inline" data-i="${i}" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(st.a[i]||'')}">`;
+      });
+      rows += `<div class="wf-text">${h}</div><div class="wf-root">${roots.map(esc).join(' / ')}</div>`;
+    });
+    body = `<h3>${esc(x.title)}</h3><div class="wordform-grid">${rows}</div>`;
+  } else if(p === 5){
+    const left = `<h3>${esc(x.title)}</h3>` + paras(x.text).map(par => `<div class="passage">${esc(par)}</div>`).join('');
+    const right = its.map((q, i) => `<div class="q" data-q="${i}"><div class="stem">${s0 + i}. ${esc(q.s)}</div>` +
+      q.o.map((o, j) => `<label class="opt"><input type="radio" name="r${i}" data-i="${i}" value="${j}" ${String(st.a[i]) === String(j) ? 'checked' : ''}> ${String.fromCharCode(65 + j)}) ${esc(o)}</label>`).join('') +
+      qFlag(i) + `</div>`).join('');
+    body = `<div class="inspera-content two-col"><div class="col-left">${left}</div><div class="col-right">${right}</div></div>`;
+  } else if(p === 6){
+    const letters = Object.keys(x.bank).sort();
+    const opts = letters.map(l => `<option value="${l}">${l}</option>`).join('');
+    const left = `<h3>${esc(x.title)}</h3>` + paras(x.text).map(par => `<div class="passage">${gapsHtml(par, (i, nn) => {
+      const idx = its.findIndex(q => q.n === nn); const ii = idx < 0 ? i : idx;
+      return `<select class="gapped-select${st.a[ii]?' answered':''}" data-i="${ii}"><option value="">${s0 + ii}</option>${opts.replace(`value="${st.a[ii]}"`, `value="${st.a[ii]}" selected`)}</select>`;
+    })}</div>`).join('');
+    const right = `<div class="bank"><strong>Options:</strong><ul>${letters.map(l => `<li><strong>${l}</strong> — ${esc(x.bank[l])}</li>`).join('')}</ul></div>`;
+    body = `<div class="inspera-content two-col"><div class="col-left">${left}</div><div class="col-right">${right}</div></div>`;
+  } else if(p === 7){
+    const left = `<h3>${esc(x.title)}</h3>` + (x.intro ? `<div class="notice">${esc(x.intro)}</div>` : '') +
+      x.sections.map(sc => `<div class="passage"><strong>${esc(sc.l)}${sc.h ? ' — ' + esc(sc.h) : ''}</strong>\n${esc(sc.t)}</div>`).join('');
+    const opts = x.sections.map(sc => `<option value="${sc.l}">${sc.l}${sc.h ? ' — ' + esc(sc.h) : ''}</option>`).join('');
+    const right = `<p style="font-family:Montserrat,sans-serif;font-weight:700;margin:0 0 6px">${esc(x.stem || 'Which section …')}</p>` +
+      its.map((q, i) => `<div class="q" data-q="${i}"><div class="stem">${s0 + i}. ${esc(q.s)}</div>
+        <select data-i="${i}"><option value="">— choose —</option>${opts.replace(`value="${st.a[i]}"`, `value="${st.a[i]}" selected`)}</select> ${qFlag(i)}</div>`).join('');
+    body = `<div class="inspera-content two-col"><div class="col-left">${left}</div><div class="col-right">${right}</div></div>`;
+  }
+  const wrap = (p <= 3) ? `<div class="inspera-content">${body}</div>` : body;
+  $('exInner').innerHTML = head + wrap;
+  $('exInner').querySelectorAll('[data-i]').forEach(el => {
+    const i = +el.dataset.i;
+    const save = () => { st.a[i] = el.value; if(el.tagName === 'SELECT') el.classList.toggle('answered', !!el.value); renderTabs(); touch(); };
+    if(el.tagName === 'INPUT' && el.type === 'text'){ el.addEventListener('input', save); el.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); move(1); } }); }
+    else if(el.tagName === 'SELECT' || el.type === 'radio') el.addEventListener('change', save);
+    el.addEventListener('focus', () => { st.q = i; chrome(); });
+  });
+}
+/* Popup de opciones de la Part 1: el mismo de los Practice Tests. */
+window.showGap = function(btn, i){
+  document.querySelectorAll('.gap-popup').forEach(p => p.remove());
+  cur.st.q = i; chrome();
+  const opts = items()[i].o;
+  const popup = document.createElement('div'); popup.className = 'gap-popup';
+  const x = document.createElement('button'); x.type = 'button'; x.className = 'close-x'; x.textContent = '✕';
+  x.onclick = () => popup.remove(); popup.appendChild(x);
+  opts.forEach((opt, j) => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = opt;
+    b.onclick = ev => { ev.stopPropagation(); cur.st.a[i] = String(j); btn.textContent = opt; btn.classList.add('answered'); popup.remove(); renderTabs(); touch(); };
+    popup.appendChild(b);
+  });
+  document.body.appendChild(popup);
+  const r = btn.getBoundingClientRect(); let left = r.left, top = r.bottom + 6; const pr = popup.getBoundingClientRect();
+  if(left + pr.width > innerWidth - 10) left = Math.max(10, innerWidth - pr.width - 10);
+  if(top + pr.height > innerHeight - 10) top = Math.max(10, r.top - pr.height - 6);
+  popup.style.left = left + 'px'; popup.style.top = top + 'px';
+  setTimeout(() => {
+    function out(e){ if(!popup.contains(e.target) && e.target !== btn){ popup.remove(); document.removeEventListener('mousedown', out); } }
+    document.addEventListener('mousedown', out);
+  }, 0);
+};
+/* En los textos, «ir a la pregunta» = llevar el hueco a la vista y enfocarlo. */
+function markCurrent(){
+  const i = cur.st.q, el = $('exInner').querySelector(`[data-i="${i}"]`);
+  if(!el) return;
+  const box = el.closest('.q') || el;
+  box.scrollIntoView({block:'center', behavior:'smooth'});
+  box.classList.remove('q-flash'); void box.offsetWidth; box.classList.add('q-flash');
 }
 function renderTabs(){
-  const its = items(), st = cur.st, cs = setOf(st.q), nSets = Math.ceil(its.length / SET);
+  const its = items(), st = cur.st, per = setSize(), cs = setOf(st.q), nSets = Math.ceil(its.length / per);
+  const label = s => nSets > 1 ? 'Set ' + (s+1) : 'Part ' + cur.p;
   let h = '';
   for(let s = 0; s < nSets; s++){
-    const a = s * SET, b = Math.min(its.length, a + SET);
+    const a = s * per, b = Math.min(its.length, a + per);
     let qs = '', done = 0;
     for(let i = a; i < b; i++){
-      const ans = !!(st.a[i]||'').trim(); if(ans) done++;
-      qs += `<button type="button" class="qnum${ans?' answered':''}${st.f[i]?' flagged':''}${i===st.q?' current':''}" onclick="event.stopPropagation();goQ(${i})">${i+1}</button>`;
+      const ans = filled(i); if(ans) done++;
+      qs += `<button type="button" class="qnum${ans?' answered':''}${st.f[i]?' flagged':''}${i===st.q?' current':''}" onclick="event.stopPropagation();goQ(${i})">${numOf(i)}</button>`;
     }
     h += `<div class="part-tab${s===cs?' active':''}" onclick="goQ(${a})">
-      <div class="pname">${nSets > 1 ? 'Set ' + (s+1) : 'Part 4'}</div>
+      <div class="pname">${label(s)}</div>
       <div class="pprog">${done} of ${b - a}</div>
       <div class="qnums">${qs}</div></div>`;
   }
   $('exTabs').innerHTML = h;
 }
-function focusInput(){ const i = $('exInput'); if(i && window.innerWidth > 700) i.focus(); }
-window.goQ = i => { $('submitPage').hidden = true; $('exInner').hidden = false; cur.st.q = i; renderQuestion(); focusInput(); touch(); };
-window.move = d => { const n = cur.st.q + d; if(n >= 0 && n < items().length) goQ(n); };
-window.toggleFlag = () => { const st = cur.st, i = st.q; if(st.f[i]) delete st.f[i]; else st.f[i] = true; renderQuestion(); touch(); };
+function focusInput(){
+  if(window.innerWidth <= 700) return;
+  const i = cur && cur.k === 'text' ? $('exInner').querySelector(`input[type=text][data-i="${cur.st.q}"]`) : $('exInput');
+  if(i) i.focus({preventScroll: cur.k === 'text'});
+}
+window.goQ = i => {
+  $('submitPage').hidden = true; $('exInner').hidden = false; cur.st.q = i;
+  renderQuestion(); focusInput(); touch();
+};
+window.move = d => { const n = cur.st.q + d; if(n >= 0 && n < count()) goQ(n); };
+window.toggleFlag = (j) => {
+  const st = cur.st, i = (typeof j === 'number') ? j : st.q;
+  if(st.f[i]) delete st.f[i]; else st.f[i] = true;
+  if(cur.k === 'text'){ st.q = i; const b = $('exInner').querySelector(`[data-flag="${i}"]`); if(b){ b.classList.toggle('on', !!st.f[i]); b.textContent = flagLabel(i); } chrome(); }
+  else renderQuestion();
+  touch();
+};
 /* Página de entrega: qué falta y qué está marcado, por bloque, antes de enviar. */
 window.openSubmitPage = () => {
-  const its = items(), st = cur.st, nSets = Math.ceil(its.length / SET);
+  const n = count(), st = cur.st, per = setSize(), nSets = Math.ceil(n / per);
   let rows = '', answered = 0, flagged = 0;
   for(let s = 0; s < nSets; s++){
-    const a = s * SET, b = Math.min(its.length, a + SET);
+    const a = s * per, b = Math.min(n, a + per);
     let done = 0, miss = '', flg = '';
     for(let i = a; i < b; i++){
-      const isDone = !!(st.a[i]||'').trim(), isFlag = !!st.f[i];
-      if(isDone) done++; else miss += `<button type="button" class="sp-num${isFlag?' flagged':''}" onclick="goQ(${i})">${i+1}</button>`;
-      if(isFlag){ flagged++; flg += `<button type="button" class="sp-num flagged" onclick="goQ(${i})">${i+1}</button>`; }
+      const isDone = filled(i), isFlag = !!st.f[i];
+      if(isDone) done++; else miss += `<button type="button" class="sp-num${isFlag?' flagged':''}" onclick="goQ(${i})">${numOf(i)}</button>`;
+      if(isFlag){ flagged++; flg += `<button type="button" class="sp-num flagged" onclick="goQ(${i})">${numOf(i)}</button>`; }
     }
     answered += done;
-    rows += `<tr><td class="sp-part">${nSets > 1 ? 'Set ' + (s+1) : 'Part 4'}</td><td>${done} of ${b - a}</td><td>${miss || '<span class="sp-ok">—</span>'}</td><td>${flg || '<span class="sp-ok">—</span>'}</td></tr>`;
+    rows += `<tr><td class="sp-part">${nSets > 1 ? 'Set ' + (s+1) : 'Part ' + cur.p}</td><td>${done} of ${b - a}</td><td>${miss || '<span class="sp-ok">—</span>'}</td><td>${flg || '<span class="sp-ok">—</span>'}</td></tr>`;
   }
-  const missing = its.length - answered, bits = [];
+  const missing = n - answered, bits = [];
   if(missing) bits.push(`<strong>${missing}</strong> question${missing === 1 ? '' : 's'} not answered`);
   if(flagged) bits.push(`<strong>${flagged}</strong> flagged`);
   $('submitPage').innerHTML = `<h2>Submission page</h2>
-    <p class="submit-summary">You have attempted <strong>${answered} of ${its.length}</strong> questions. Check the table, then press <strong>Submit test</strong>. You will not be able to change your answers after that.</p>
+    <p class="submit-summary">You have attempted <strong>${answered} of ${n}</strong> questions. Check the table, then press <strong>Submit test</strong>. You will not be able to change your answers after that.</p>
     ${bits.length ? `<div class="submit-warn">⚠ You still have ${bits.join(' and ')}. Click a number to go back to that question.</div>` : ''}
     <table class="submit-table"><thead><tr><th>Part</th><th>Attempted</th><th>Not answered</th><th>Flagged</th></tr></thead><tbody>${rows}</tbody></table>
     <div class="submit-actions"><button type="button" class="sp-back" onclick="goQ(cur.st.q)">◀ Back to the questions</button><button type="button" class="sp-final" onclick="submitExam()">Submit test ✓</button></div>`;
   $('exInner').hidden = true; $('submitPage').hidden = false;
+  document.querySelectorAll('.gap-popup').forEach(p => p.remove());
 };
 window.submitExam = () => {
-  const its = items(), st = cur.st;
-  st.score = its.filter((it, i) => (st.a[i]||'').trim() && isRight(it, st.a[i])).length;
-  st.checked = true; clearInterval(timer); touch();
-  setHash('#' + cur.level + '/' + cur.t.id + '/review');
+  const st = cur.st; let sc = 0;
+  for(let i = 0; i < count(); i++) if(correctAt(i)) sc++;
+  st.score = sc; st.checked = true; clearInterval(timer); touch();
+  setHash('#' + cur.level + '/' + cur.id + '/review');
 };
 
 /* ---- 4 · Corrección ------------------------------------------------------ */
 function renderReview(){
   const its = items(), st = cur.st, L = LEVELS[cur.level], n = its.length;
   const pct = Math.round(st.score / n * 100);
-  $('rvHead').innerHTML = `<div class="sec-title">${esc(cur.t.title)} · ${L.name}</div>
+  $('rvHead').innerHTML = `<div class="sec-title">${esc(cur.title)} · ${L.name}${cur.k !== 'kwt' ? ' · Part ' + cur.p : ''}</div>
     <div class="bigscore">${st.score} / ${n} <span style="font-size:1rem;color:var(--muted)">(${pct}%)</span></div>
-    <div style="font-size:.88rem;color:var(--muted)">${pct >= 80 ? 'Excellent — you are ready for this grammar point.' : pct >= 60 ? 'Good work. Review the answers marked in red.' : 'Read the grammar explanation again and try once more.'}</div>`;
-  $('rvList').innerHTML = its.map((it, i) => {
-    const v = (st.a[i]||'').trim(), ok = v && isRight(it, v), a = answersOf(it);
-    /* Diagnóstico de la respuesta (lo que falló en concreto) + la explicación
-       gramatical del ítem (RUOE_WHY), que se muestra siempre, también si acertó. */
-    const why = [];
-    if(!ok && v){
-      const w = words(v), mine = forms(v)[0].split(' ');
-      const pre = base(it[2]).split(' ').filter(Boolean), post = base(it[3]).split(' ').filter(Boolean);
-      if(!hasKey(it, v)) why.push(`The key word <b>${esc(it[1])}</b> is missing or has been changed. In Part 4 you must use it exactly as it is given.`);
-      if(w < L.min || w > L.max) why.push(`Your answer has ${w} word${w===1?'':'s'}; at ${L.name} it must have ${L.min}–${L.max} (contractions count as two words).`);
-      const preW = String(it[2]).trim().split(/\s+/).pop(), postW = String(it[3]).trim().split(/\s+/)[0].replace(/[.,!?]$/,'');
-      if(pre.length && mine[0] === pre[pre.length-1]) why.push(`Don’t repeat <b>“${esc(preW)}”</b> — it is already written before the gap.`);
-      if(post.length && mine[mine.length-1] === post[0]) why.push(`Don’t repeat <b>“${esc(postW)}”</b> — it is already written after the gap.`);
-      if(!why.length) why.push('You used the key word and the right number of words, but the structure does not keep the meaning of the first sentence. Compare it with the model answer and read the grammar note.');
-    }
-    const note = (window.RUOE_WHY || {})[cur.t.id + ':' + cur.level + ':' + i];
-    const full = s => `${it[2] ? esc(it[2]) + ' ' : ''}<b>${esc(s)}</b>${it[3] && it[3] !== '.' ? ' ' + esc(it[3]) : '.'}`;
-    return `<div class="q">
-      <div class="qhead"><span class="qnum">${i+1}</span><div>${esc(it[0])} <b>(${esc(it[1])})</b></div></div>
-      <div class="rv">
-        <span class="yours ${ok?'ok':'bad'}">${ok ? '✓' : '✗'} ${v ? esc(v) : '<i>no answer</i>'}</span>
-        ${why.map(x => `<div class="why">⚠ ${x}</div>`).join('')}
-        <div class="model"><span>Model answer:</span> ${full(a[0])}</div>
-        ${a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : ''}
-        ${note ? `<div class="gnote"><span>📘 Grammar</span>${note}</div>` : ''}
-      </div></div>`;
-  }).join('');
+    <div style="font-size:.88rem;color:var(--muted)">${pct >= 80 ? 'Excellent — well done.' : pct >= 60 ? 'Good work. Review the answers marked in red.' : 'Read the explanation again and try once more.'}</div>`;
+  $('rvGrammarBtn').textContent = cur.k === 'kwt' ? '📖 Grammar explanation' : '📖 How this part works';
+  $('rvList').innerHTML = its.map((it, i) => reviewItem(it, i, L)).join('');
+}
+function yours(ok, txt){ return `<span class="yours ${ok?'ok':'bad'}">${ok ? '✓' : '✗'} ${txt ? txt : '<i>no answer</i>'}</span>`; }
+function reviewItem(it, i, L){
+  const st = cur.st, v = st.a[i], has = filled(i), ok = correctAt(i), num = numOf(i);
+  const q = (head, inner) => `<div class="q"><div class="qhead"><span class="qnum">${num}</span><div>${head}</div></div><div class="rv">${inner}</div></div>`;
+  if(cur.k === 'kwt') return reviewKwt(it, i, L);
+  if(cur.k === 'wfm'){
+    const a = it[2].split('|'), full = esc(it[0]).replace('___', `<b>${esc(a[0])}</b>`);
+    return q(`${esc(it[0]).replace('___', '______')} <b>(${esc(it[1])})</b>`,
+      yours(ok, has && esc(v)) + `<div class="model"><span>Answer:</span> ${full}</div>` +
+      (a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : '') +
+      `<div class="gnote"><span>📘 ${esc(cur.m.title.split(':')[0])}</span>${esc(it[1])} → <b>${esc(a[0])}</b></div>`);
+  }
+  const p = cur.p;
+  if(p === 1){
+    const L4 = j => String.fromCharCode(65 + j);
+    return q(`Options: ${it.o.map((o, j) => `${L4(j)} ${esc(o)}`).join(' · ')}`,
+      yours(ok, has && `${L4(+v)} ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)} ${esc(it.o[it.a])}</b></div>` +
+      (TAGNOTE[it.t] ? `<div class="gnote"><span>📘 ${TAGLABEL[it.t] || it.t}</span>${TAGNOTE[it.t]}</div>` : ''));
+  }
+  if(p === 2 || p === 3){
+    const head = p === 3 ? `Word given: <b>${esc(it.r)}</b>` : `Gap ${num}`;
+    const note = p === 3 ? (it.x ? `<div class="gnote"><span>📘 Word formation</span>${esc(it.r)} → <b>${esc(it.a[0])}</b> · ${esc(it.x)}</div>` : '')
+                         : (TAGNOTE[it.t] ? `<div class="gnote"><span>📘 ${TAGLABEL[it.t] || it.t}</span>${TAGNOTE[it.t]}</div>` : '');
+    return q(head, yours(ok, has && esc(v)) + `<div class="model"><span>Answer:</span> <b>${esc(it.a[0])}</b></div>` +
+      (it.a.length > 1 ? `<div class="alt">Also accepted: ${it.a.slice(1).map(esc).join(' · ')}</div>` : '') + note);
+  }
+  if(p === 5){
+    const L4 = j => String.fromCharCode(65 + j);
+    return q(esc(it.s), yours(ok, has && `${L4(+v)}) ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)}) ${esc(it.o[it.a])}</b></div>`);
+  }
+  if(p === 6){
+    const bank = cur.x.bank;
+    return q(`Gap ${num}`, yours(ok, has && `${esc(v)} — ${esc(bank[v] || '')}`) + `<div class="model"><span>Answer:</span> <b>${esc(it.a)}</b> — ${esc(bank[it.a] || '')}</div>`);
+  }
+  const sec = l => { const s = cur.x.sections.find(z => z.l === l); return s ? `${l}${s.h ? ' — ' + esc(s.h) : ''}` : esc(l); };
+  return q(esc(it.s), yours(ok, has && sec(v)) + `<div class="model"><span>Answer:</span> <b>${sec(it.a)}</b></div>`);
+}
+function reviewKwt(it, i, L){
+  const st = cur.st, v = (st.a[i]||'').trim(), ok = v && isRight(it, v), a = answersOf(it);
+  /* Diagnóstico de la respuesta (lo que falló en concreto) + la explicación
+     gramatical del ítem (RUOE_WHY), que se muestra siempre, también si acertó. */
+  const why = [];
+  if(!ok && v){
+    const w = words(v), mine = forms(v)[0].split(' ');
+    const pre = base(it[2]).split(' ').filter(Boolean), post = base(it[3]).split(' ').filter(Boolean);
+    if(!hasKey(it, v)) why.push(`The key word <b>${esc(it[1])}</b> is missing or has been changed. In Part 4 you must use it exactly as it is given.`);
+    if(w < L.min || w > L.max) why.push(`Your answer has ${w} word${w===1?'':'s'}; at ${L.name} it must have ${L.min}–${L.max} (contractions count as two words).`);
+    const preW = String(it[2]).trim().split(/\s+/).pop(), postW = String(it[3]).trim().split(/\s+/)[0].replace(/[.,!?]$/,'');
+    if(pre.length && mine[0] === pre[pre.length-1]) why.push(`Don’t repeat <b>“${esc(preW)}”</b> — it is already written before the gap.`);
+    if(post.length && mine[mine.length-1] === post[0]) why.push(`Don’t repeat <b>“${esc(postW)}”</b> — it is already written after the gap.`);
+    if(!why.length) why.push('You used the key word and the right number of words, but the structure does not keep the meaning of the first sentence. Compare it with the model answer and read the grammar note.');
+  }
+  const note = (window.RUOE_WHY || {})[cur.t.id + ':' + cur.level + ':' + i];
+  const full = s => `${it[2] ? esc(it[2]) + ' ' : ''}<b>${esc(s)}</b>${it[3] && it[3] !== '.' ? ' ' + esc(it[3]) : '.'}`;
+  return `<div class="q">
+    <div class="qhead"><span class="qnum">${i+1}</span><div>${esc(it[0])} <b>(${esc(it[1])})</b></div></div>
+    <div class="rv">
+      <span class="yours ${ok?'ok':'bad'}">${ok ? '✓' : '✗'} ${v ? esc(v) : '<i>no answer</i>'}</span>
+      ${why.map(x => `<div class="why">⚠ ${x}</div>`).join('')}
+      <div class="model"><span>Model answer:</span> ${full(a[0])}</div>
+      ${a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : ''}
+      ${note ? `<div class="gnote"><span>📘 Grammar</span>${note}</div>` : ''}
+    </div></div>`;
 }
 window.retry = () => {
-  const k = keyOf(cur.level, cur.t.id);
+  const k = keyOf(cur.level, cur.id);
   STORE[k] = {a:{}, f:{}, q:0, secs:0, checked:false, score:null}; cur.st = STORE[k]; touch();
-  setHash('#' + cur.level + '/' + cur.t.id + '/exam');
+  setHash('#' + cur.level + '/' + cur.id + '/exam');
 };
 
 /* ◀ Back del portal: un paso atrás dentro de la página antes de salir. */
