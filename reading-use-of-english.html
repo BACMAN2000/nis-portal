@@ -207,6 +207,7 @@
 <script src="activity-save.js?v=1c38a81d"></script>
 <script src="reading-use-of-english.data.js?v=7f5a2d3e"></script>
 <script src="reading-use-of-english.b2.js?v=16b5ea06"></script>
+<script src="reading-use-of-english.c1.js?v=81b1702c"></script>
 <script src="reading-use-of-english.why.js?v=69ad4c57"></script>
 </head>
 <body>
@@ -341,6 +342,13 @@ function hasKey(it, txt){
    test B2 del colegio se suman al final de sus temas de Part 4 (así no se
    mueven los índices de las notas gramaticales que ya existen). */
 const B2X = window.RUOE_B2 || {};
+/* C1 Advanced: RUOE_C1 (reading-use-of-english.c1.js), mismo formato. El examen
+   C1 tiene 8 partes: la 6 es de cruce entre cuatro textos, la 7 de párrafos
+   quitados y la 8 de emparejamiento. Cada una se pinta con el motor B2 que le
+   corresponde (KIND): 6 → el de emparejamiento, 7 → el de huecos, 8 → emparejamiento. */
+const C1X = window.RUOE_C1 || {};
+const DX = lv => lv === 'c1' ? C1X : B2X;
+const KIND = (lv, p) => lv === 'c1' ? ({6:7, 7:6, 8:7}[p] || p) : p;
 (function mergeP4(){
   const extra = B2X.p4extra || {};
   Object.keys(extra).forEach(id => {
@@ -355,10 +363,21 @@ const B2X = window.RUOE_B2 || {};
     }
     t.b2 = (t.b2 || []).concat(extra[id]);
   });
-  RUOE_PARTS.forEach(p => { p.b2 = p.n === 4 || !!B2X['p' + p.n]; p.c1 = p.n === 4; });
+  if(!RUOE_PARTS.find(p => p.n === 8)) RUOE_PARTS.push({n:8, name:'Multiple matching', desc:'One text in sections · 10 questions'});
+  RUOE_PARTS.forEach(p => { p.b2 = p.n === 4 || !!B2X['p' + p.n]; p.c1 = p.n === 4 || !!C1X['p' + p.n]; });
 })();
-const START = {1:1, 2:9, 3:17, 4:25, 5:31, 6:37, 7:43};   // numeración del examen B2
-const PART_NAME = {1:'Multiple-choice cloze', 2:'Open cloze', 3:'Word formation', 4:'Key word transformations', 5:'Multiple choice', 6:'Gapped text', 7:'Multiple matching'};
+const STARTS = {b2:{1:1, 2:9, 3:17, 4:25, 5:31, 6:37, 7:43},          // numeración del examen
+                c1:{1:1, 2:9, 3:17, 4:25, 5:31, 6:37, 7:41, 8:47}};
+const st0 = (lv, p) => STARTS[lv][p];
+const PART_NAMES = {b2:{1:'Multiple-choice cloze', 2:'Open cloze', 3:'Word formation', 4:'Key word transformations', 5:'Multiple choice', 6:'Gapped text', 7:'Multiple matching'},
+                    c1:{1:'Multiple-choice cloze', 2:'Open cloze', 3:'Word formation', 4:'Key word transformations', 5:'Multiple choice', 6:'Cross-text multiple matching', 7:'Gapped text', 8:'Multiple matching'}};
+const pName = (lv, p) => PART_NAMES[lv][p];
+const INSTR_C1 = {
+  6:'Read the four extracts below. For each question, choose from the extracts (A, B, C or D). The extracts may be chosen more than once.',
+  7:'Six paragraphs have been removed from the text below. For each question, choose the paragraph (A–G) which fits each gap. There is one extra paragraph which you do not need to use.',
+  8:'Read the text below. For each question, choose the correct section. The sections may be chosen more than once.'
+};
+const instr = (lv, p) => (lv === 'c1' && INSTR_C1[p]) || INSTR[p];
 const INSTR = {
   1:'For each question, choose the correct answer for each gap.',
   2:'For each question, write the correct answer. Write <b>one word</b> for each gap.',
@@ -381,6 +400,32 @@ const GUIDE57 = {
        ['Strategy','Read the questions first and underline the key idea. Then read each section and note which questions it answers. Check that the <b>whole</b> question matches, not just one word.'],
        ['Traps','Two sections may mention the same topic; only one will match the exact idea (e.g. someone who <b>wanted</b> to do something vs. someone who <b>did</b> it).']]}
 };
+const GUIDE_C1 = {
+  6:{focus:'Part 6 has <b>four short texts</b> (A–D) by different writers on the same topic, and <b>4 questions</b>. You do not look for a fact in one text: you <b>compare opinions</b> across the four. Typical questions: <i>Which writer has a different view from the others on…? · Which writer shares A’s opinion about…? · Which writer expresses a similar view to C regarding…?</i>',
+     patterns:[['Strategy','First read all four texts and, for each one, note in a few words the writer’s view on every sub-topic. Then answer from your notes and check in the texts.'],
+       ['Different view','Find what <b>three</b> writers agree on and the one who disagrees. Watch for contrast signals: <i>however, far from, I remain unconvinced, overstated</i>.'],
+       ['Shares / similar view','The opinion is the same but the <b>words are different</b>: paraphrase is the rule. A writer who mentions the same topic but evaluates it differently is a trap.']]},
+  7:{focus:'Part 7 is a long text with <b>six paragraphs removed</b>. You choose the paragraph (A–G) that fits each gap; one paragraph is extra. It tests how a text <b>holds together</b>: the paragraph must connect with the text before the gap <b>and</b> after it.',
+     patterns:[['Reference','<b>this, such, the latter, she, there, these figures</b> must point back to something just mentioned. If nothing before the gap matches, the paragraph does not belong there.'],
+       ['Lexical chains','The same idea comes back with <b>synonyms</b> (the vessel → the boat → the wreck) or a summary noun (<i>this decision, the setback</i>).'],
+       ['Time and argument','Follow the <b>chronology</b> (later, by then, a year on) and the argument (problem → attempt → result). Linkers like <b>yet, instead, even so</b> show contrast.'],
+       ['Strategy','Read the whole text first, without the options. Do the easiest gaps first. When you finish, read the whole text again with your choices in place; check the extra paragraph really fits nowhere.']]},
+  8:{focus:'Part 8 is one text in sections, or several short texts, with <b>10 questions</b>. You decide which section each question refers to. Questions are <b>paraphrases</b> of ideas, feelings and attitudes, so you need to understand the meaning, not match words.',
+     patterns:[['Strategy','Read the questions first and underline the key idea (e.g. <i>admits</i>, <i>initially</i>, <i>surprised</i>). Then read section by section and note which questions each one answers.'],
+       ['Paraphrase','“admits to underestimating a difficulty” = “I had no idea how hard it would be”. Look for the meaning behind the words.'],
+       ['Traps','Several sections often mention the same topic; only one matches the <b>exact</b> idea: who did it, when, and how they felt about it.']]}
+};
+const guideOf = (lv, p) => (DX(lv)['p' + p] || {}).guide || (lv === 'c1' && GUIDE_C1[p]) || GUIDE57[p];
+/* Palabras de las apps de vocabulario del portal que salen en un texto (lx). */
+const LXAPP = {phrasal:'Phrasal Verbs', collocation:'Collocations', idiom:'Idioms', 'word-formation':'Word Formation'};
+function lxChips(x){
+  const l = (x && x.lx) || [];
+  return l.length ? `<p style="margin-top:12px"><b>📚 Words from the portal vocabulary apps in this text:</b> ${l.map(e => `<span class="chip" title="${esc(LXAPP[e.app] || '')} app${e.level ? ' · ' + e.level : ''}">${esc(e.t)}</span>`).join(' ')}</p>` : '';
+}
+function lxNote(it){
+  const e = it && it.lx;
+  return e && e.t ? `<div class="gnote"><span>📚 ${esc(LXAPP[e.app] || 'Vocabulary')} app${e.level ? ' · ' + esc(e.level) : ''}</span><b>${esc(e.t)}</b> is in the ${esc(LXAPP[e.app] || 'vocabulary')} app of the portal: practise it there too.</div>` : '';
+}
 /* Nota por categoría para la corrección de las Parts 1 y 2. */
 const TAGNOTE = {
   prepositions:'<b>Preposition.</b> Check the word before the gap: many verbs, adjectives and nouns take a fixed preposition (<i>interested in, depend on, the reason for</i>), and time/place expressions have fixed ones too.',
@@ -424,9 +469,9 @@ function show(v){
 function setHash(h){ if(location.hash !== h) location.hash = h; else route(); }
 function findItem(lv, id){
   if(!id) return null;
-  if(id.startsWith('m-')){ const m = ((B2X.p3||{}).modules||[]).find(x => 'm-' + x.id === id); return lv === 'b2' && m ? {k:'wfm', p:3, m, title:m.title} : null; }
+  if(id.startsWith('m-')){ const m = ((DX(lv).p3||{}).modules||[]).find(x => 'm-' + x.id === id); return m ? {k:'wfm', p:3, r:3, m, title:m.title} : null; }
   if(id.startsWith('x-')){
-    for(const p of [1,2,3,5,6,7]){ const x = ((B2X['p'+p]||{}).ex||[]).find(e => 'x-' + e.id === id); if(x && lv === 'b2') return {k:'text', p, x, title:x.title}; }
+    for(const p of [1,2,3,5,6,7,8]){ const x = ((DX(lv)['p'+p]||{}).ex||[]).find(e => 'x-' + e.id === id); if(x) return {k:'text', p, r:KIND(lv, p), x, title:x.title}; }
     return null;
   }
   const t = RUOE_P4.find(x => x.id === id && x[lv]);
@@ -436,7 +481,8 @@ function route(){
   const m = location.hash.match(/^#(b2|c1)(?:\/([\w-]+))?(?:\/(exam|review))?$/);
   if(m) level = m[1];
   const id = m && m[2];
-  if(id && /^part-[1-7]$/.test(id)) part = +id.slice(5);
+  if(id && /^part-[1-8]$/.test(id)) part = +id.slice(5);
+  if(level === 'b2' && part === 8) part = 4;
   const f = findItem(level, id);
   if(!f){ cur = null; renderLevels(); renderParts(); show('menu'); return; }
   if(!cur || cur.id !== id || cur.level !== level) cur = Object.assign(f, {id, level, st: stateOf(level, id)});
@@ -480,16 +526,17 @@ function card(id, emoji, title, n, sub){
     ${sub ? `<div class="chips">${sub}</div>` : ''}
     <div class="meta">${n} question${n===1?'':'s'}${pr.meta}</div>${pr.bar}</button>`;
 }
-function exCount(p, x){ return p === 6 ? Object.keys(x.a).length : (x.items || x.qs).length; }
+function exCount(p, x){ return KIND(level, p) === 6 ? Object.keys(x.a).length : (x.items || x.qs).length; }
 const PART_EMOJI = {1:'🔘', 2:'✏️', 3:'🧱', 5:'📰', 6:'🧩', 7:'🔎'};
+const pEmoji = (lv, p) => lv === 'c1' ? ({6:'⚖️', 7:'🧩', 8:'🔎'}[p] || PART_EMOJI[p]) : PART_EMOJI[p];
 function renderParts(){
-  $('parts').innerHTML = RUOE_PARTS.map(p => {
+  $('parts').innerHTML = RUOE_PARTS.filter(p => p.n !== 8 || level === 'c1').map(p => {
     const ok = p[level];
-    return `<button type="button" class="part ${ok?'':'soon'} ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${p.name}</div>${ok ? '' : '<span class="soon-tag">🚧 Under construction</span>'}</button>`;
+    return `<button type="button" class="part ${ok?'':'soon'} ${p.n===part?'on':''}" onclick="setPart(${p.n})"><div class="pn">Part ${p.n}</div><div class="pd">${pName(level, p.n)}</div>${ok ? '' : '<span class="soon-tag">🚧 Under construction</span>'}</button>`;
   }).join('');
   const P = RUOE_PARTS.find(p => p.n === part), L = LEVELS[level];
   if(!P[level]){
-    $('partBody').innerHTML = `<div class="rule ${level}">🚧 <b>${L.name} · Part ${P.n} · ${P.name}</b> is under construction. It will be available soon.${level === 'c1' ? ' Meanwhile, practise <b>Part 4</b>, or the B2 First parts.' : ''}</div>`;
+    $('partBody').innerHTML = `<div class="rule ${level}">🚧 <b>${L.name} · Part ${P.n} · ${P.name}</b> is under construction. It will be available soon.</div>`;
     return;
   }
   if(part === 4){
@@ -501,10 +548,10 @@ function renderParts(){
       <div class="topics">${list.map(t => card(t.id, t.emoji, t.title, t[level].length)).join('')}</div>`;
     return;
   }
-  const D = B2X['p' + part], G = D.guide || GUIDE57[part];
-  const intro = `<div class="rule ${level}"><b>${L.name} · Part ${part} — ${PART_NAME[part]}.</b> ${G.focus}</div>`;
+  const D = DX(level)['p' + part], G = guideOf(level, part);
+  const intro = `<div class="rule ${level}"><b>${L.name} · Part ${part} — ${pName(level, part)}.</b> ${G.focus}</div>`;
   const chips = x => (x.tags||[]).map(t => `<span class="chip">${TAGLABEL[t] || t}</span>`).join('');
-  const exCards = D.ex.map(x => card('x-' + x.id, PART_EMOJI[part], x.title, exCount(part, x), part <= 2 ? chips(x) : '')).join('');
+  const exCards = D.ex.map(x => card('x-' + x.id, pEmoji(level, part), x.title, exCount(part, x), part <= 2 ? chips(x) : '')).join('');
   if(part === 3){
     $('partBody').innerHTML = intro +
       `<div class="sec-title">Step 1 · Practise by prefix and suffix (${D.modules.length})</div>
@@ -515,7 +562,7 @@ function renderParts(){
     $('partBody').innerHTML = intro + `<div class="sec-title">3 · Choose a text (${D.ex.length})</div><div class="topics">${exCards}</div>`;
   }
 }
-window.setLevel = lv => { level = lv; if(!RUOE_PARTS.find(p => p.n === part)[lv]) part = 4; history.replaceState(null, '', '#' + lv + '/part-' + part); renderLevels(); renderParts(); };
+window.setLevel = lv => { level = lv; const P0 = RUOE_PARTS.find(p => p.n === part); if(!P0 || !P0[lv] || (lv === 'b2' && part === 8)) part = 4; history.replaceState(null, '', '#' + lv + '/part-' + part); renderLevels(); renderParts(); };
 window.setPart = n => { part = n; history.replaceState(null, '', '#' + level + '/part-' + n); renderParts(); };
 window.openTopic = id => setHash('#' + level + '/' + id);
 
@@ -533,11 +580,11 @@ function renderGrammar(){
     head = `<h2>${m.emoji} ${m.title}<span class="badge ${cur.level}">Part 3 · Word formation</span></h2><p><b>Focus.</b> ${m.focus}</p>` + patTable(m.patterns);
     rule = `<b>How the exercises work.</b> One sentence per screen, as in the digital exam. Use the word in <b>CAPITALS</b> on the right to form a word that fits the gap. Spelling must be correct. Questions come in sets of 8; press <b>Submit ✓</b> to see your score.`;
   } else {
-    const D = B2X['p' + cur.p], G = D.guide || GUIDE57[cur.p];
-    head = `<h2>${PART_EMOJI[cur.p]} ${esc(cur.x.title)}<span class="badge ${cur.level}">Part ${cur.p} · ${PART_NAME[cur.p]}</span></h2>
+    const G = guideOf(cur.level, cur.p);
+    head = `<h2>${pEmoji(cur.level, cur.p)} ${esc(cur.x.title)}<span class="badge ${cur.level}">Part ${cur.p} · ${pName(cur.level, cur.p)}</span></h2>
       <p><b>What this part tests.</b> ${G.focus}</p>` + patTable(G.patterns) +
-      ((cur.x.tags||[]).length ? `<p style="margin-top:12px"><b>This text practises:</b> ${cur.x.tags.map(t => `<span class="chip">${TAGLABEL[t]||t}</span>`).join(' ')}</p>` : '');
-    rule = `<b>How it works.</b> The whole text is on one screen, as in the digital exam (questions ${START[cur.p]}–${START[cur.p] + n - 1}). ${INSTR[cur.p]} Use the question numbers at the bottom to move between gaps, flag any question you want to come back to, and press <b>Submit ✓</b> to see your score.`;
+      ((cur.x.tags||[]).length ? `<p style="margin-top:12px"><b>This text practises:</b> ${cur.x.tags.map(t => `<span class="chip">${TAGLABEL[t]||t}</span>`).join(' ')}</p>` : '') + lxChips(cur.x);
+    rule = `<b>How it works.</b> The whole text is on one screen, as in the digital exam (questions ${st0(cur.level, cur.p)}–${st0(cur.level, cur.p) + n - 1}). ${instr(cur.level, cur.p)} Use the question numbers at the bottom to move between gaps, flag any question you want to come back to, and press <b>Submit ✓</b> to see your score.`;
   }
   $('focus').innerHTML = head;
   $('gRule').className = 'rule ' + cur.level;
@@ -556,13 +603,13 @@ function patTable(p){ return p && p.length ? `<table class="pat">${p.map(r => `<
 function items(){ return cur.k === 'kwt' ? cur.t[cur.level] : cur.k === 'wfm' ? cur.m.items : textItems(); }
 function textItems(){
   const x = cur.x;
-  if(cur.p === 6) return Object.keys(x.a).sort((a,b) => a - b).map(n => ({n:+n, a:x.a[n]}));
+  if(cur.r === 6) return Object.keys(x.a).sort((a,b) => a - b).map(n => ({n:+n, a:x.a[n]}));
   return x.items || x.qs;
 }
 function count(){ return items().length; }
 function setSize(){ return cur.k === 'kwt' ? SET : cur.k === 'wfm' ? 8 : count(); }
 function setOf(i){ return Math.floor(i / setSize()); }
-function startNum(){ return cur.k === 'text' ? START[cur.p] : 1; }
+function startNum(){ return cur.k === 'text' ? st0(cur.level, cur.p) : 1; }
 function numOf(i){ return startNum() + i; }
 function filled(i){ const v = cur.st.a[i]; return v != null && String(v).trim() !== ''; }
 function sameWord(list, v){ const b = base(v); return list.some(a => base(a) === b); }
@@ -571,8 +618,8 @@ function correctAt(i){
   if(!filled(i)) return false;
   if(cur.k === 'kwt') return isRight(it, v);
   if(cur.k === 'wfm') return sameWord(it[2].split('|'), v);
-  if(cur.p === 1 || cur.p === 5) return String(it.a) === String(v);
-  if(cur.p === 2 || cur.p === 3) return sameWord(it.a, v);
+  if(cur.r === 1 || cur.r === 5) return String(it.a) === String(v);
+  if(cur.r === 2 || cur.r === 3) return sameWord(it.a, v);
   return String(v) === String(it.a);
 }
 let fsPct = 100, timer = null;
@@ -646,9 +693,9 @@ function gapsHtml(text, build){
   return esc(text).replace(/\[\[(\d+)\]\]/g, (m, n) => n === '0' ? m : build(k++, +n));
 }
 function renderTextPart(){
-  const p = cur.p, x = cur.x, st = cur.st, its = items(), n = its.length, s0 = START[p];
-  const head = `<div class="inspera-title"><h1>Reading and Use of English — Part ${p}</h1></div>
-    <div class="inspera-instruction"><strong>Questions ${s0}–${s0 + n - 1}</strong><p>${INSTR[p]}</p></div>`;
+  const p = cur.r, x = cur.x, st = cur.st, its = items(), n = its.length, s0 = st0(cur.level, cur.p);
+  const head = `<div class="inspera-title"><h1>Reading and Use of English — Part ${cur.p}</h1></div>
+    <div class="inspera-instruction"><strong>Questions ${s0}–${s0 + n - 1}</strong><p>${instr(cur.level, cur.p)}</p></div>`;
   const ex0 = (txt, it0) => txt.replace(/\[\[0\]\]/g, `<b><u>${esc(it0 || '')}</u></b>`);
   let body = '';
   const qFlag = i => `<button type="button" class="q-flag ${st.f[i]?'on':''}" data-flag="${i}" onclick="toggleFlag(${i})">${flagLabel(i)}</button>`;
@@ -836,25 +883,25 @@ function reviewItem(it, i, L){
       (a.length > 1 ? `<div class="alt">Also accepted: ${a.slice(1).map(esc).join(' · ')}</div>` : '') +
       `<div class="gnote"><span>📘 ${esc(cur.m.title.split(':')[0])}</span>${esc(it[1])} → <b>${esc(a[0])}</b></div>`);
   }
-  const p = cur.p;
+  const p = cur.r, lx = lxNote(it);
   if(p === 1){
     const L4 = j => String.fromCharCode(65 + j);
     return q(`Options: ${it.o.map((o, j) => `${L4(j)} ${esc(o)}`).join(' · ')}`,
       yours(ok, has && `${L4(+v)} ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)} ${esc(it.o[it.a])}</b></div>` +
-      gapNote(it));
+      gapNote(it) + lx);
   }
   if(p === 2 || p === 3){
     const head = p === 3 ? `Word given: <b>${esc(it.r)}</b>` : `Gap ${num}`;
     const note = p === 3 ? `<div class="gnote"><span>📘 Word formation${it.x ? ' · ' + esc(it.x) : ''}</span>${it.w || `${esc(it.r)} → <b>${esc(it.a[0])}</b>`}</div>`
                          : gapNote(it);
     return q(head, yours(ok, has && esc(v)) + `<div class="model"><span>Answer:</span> <b>${esc(it.a[0])}</b></div>` +
-      (it.a.length > 1 ? `<div class="alt">Also accepted: ${it.a.slice(1).map(esc).join(' · ')}</div>` : '') + note);
+      (it.a.length > 1 ? `<div class="alt">Also accepted: ${it.a.slice(1).map(esc).join(' · ')}</div>` : '') + note + lx);
   }
   /* Parts 5-7: la nota dice dónde está la respuesta en el texto. */
   const readNote = w => w ? `<div class="gnote"><span>📘 Why</span>${w}</div>` : '';
   if(p === 5){
     const L4 = j => String.fromCharCode(65 + j);
-    return q(esc(it.s), yours(ok, has && `${L4(+v)}) ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)}) ${esc(it.o[it.a])}</b></div>` + readNote(it.w));
+    return q(esc(it.s), yours(ok, has && `${L4(+v)}) ${esc(it.o[+v])}`) + `<div class="model"><span>Answer:</span> <b>${L4(it.a)}) ${esc(it.o[it.a])}</b></div>` + readNote(it.w) + lx);
   }
   if(p === 6){
     const bank = cur.x.bank, w = (cur.x.w || {})[String(i + 1)] || (cur.x.w || {})[String(it.n)];
