@@ -879,17 +879,18 @@ async function studentCambridgePortal(){
         <span class="cam-cta">Open Practice Test →</span>
       </div>
     </a>` : '';
-  /* Reading and Use of English (B2 First / C1 Advanced): práctica por punto
-     gramatical. Va con el candado de la rama Main Suite. */
-  const ruoe = nodeVisible(CAMBRIDGE_TRACKS.main.node) ? `
+  /* Reading and Use of English (B1 Preliminary / B2 First / C1 Advanced): las
+     partes del examen una a una. Va con el candado de la rama Main Suite y con
+     la pieza practice.ruoe del colegio (Cohasset Schools). */
+  const ruoe = nodeVisible(CAMBRIDGE_TRACKS.main.node) && schoolContentOK('practice.ruoe') ? `
     <a class="cam-practice cam-ruoe" href="${_withBack('reading-use-of-english.html',route)}">
       <div class="cam-pwrap">
         ${_camIco('uoe', 84)}
         <div class="cam-ptxt">
-          <div class="cam-kicker">🧩 B2 First · C1 Advanced</div>
+          <div class="cam-kicker">🧩 B1 Preliminary · B2 First · C1 Advanced</div>
           <h2>Reading and Use of English</h2>
-          <p>Exam-style practice <b>by grammar point</b>: passive, conditionals, reported speech, modals, verb patterns, linkers, phrasal verbs and more, with explanations and automatic marking.</p>
-          <div class="cam-skills"><span>Part 4 · Key word transformations</span><span>B2 · C1</span></div>
+          <p>Every part of the exam, one by one: a short guide first, then exam-style texts in the digital format, with an explanation for each answer. The texts use the words of the <b>Phrasal Verbs, Collocations, Idioms</b> and <b>Word Formation</b> apps.</p>
+          <div class="cam-skills"><span>B1 · 6 parts</span><span>B2 · 7 parts</span><span>C1 · 8 parts</span></div>
         </div>
         <span class="cam-cta">Open Reading &amp; UoE →</span>
       </div>
