@@ -21,7 +21,7 @@ let newsMk = { vista:'writings', estado:'pending', nivel:'', fecha:'', sel:null,
    las preguntas (newspaper/results.js, el mismo componente que cohasset.pe). */
 function _newsTabs(){
   const b = (k, lab) => `<button class="btn sm ${newsMk.vista===k?'':'ghost'}" onclick="window._newsMkVista('${k}')">${lab}</button>`;
-  return `<div style="display:flex;gap:8px;margin:0 0 12px">${b('writings','✍️ Writings')}${b('questions','📊 Questions')}</div>`;
+  return `<div style="display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap">${b('writings','✍️ Writings')}${b('questions','📊 Questions')}${b('students','👤 Students')}</div>`;
 }
 window._newsMkVista = k => { newsMk.vista = k; newsMk.sel = null; newsMarkingPanel(); };
 
@@ -43,8 +43,37 @@ async function newsQuestionsPanel(){
   NewsResults.render(box, { rows, loadIssue: d => fetch('newspaper/issues/' + d + '.json', { cache:'no-cache' }).then(x => x.json()) });
 }
 
+/* Progreso de cada alumno (newspaper/progress.js): la clase en una tabla y, al
+   pulsar un alumno, la misma ficha que él ve en «My progress». */
+async function newsStudentsPanel(){
+  const main = $('#main');
+  main.innerHTML = `<div class="card"><h2>📰 Newspaper</h2>${_newsTabs()}<div id="news-al"><p class="muted">Loading students…</p></div></div>`;
+  const { data, error } = await sb.from('news_responses')
+    .select('student_id,issue_date,article_id,level,headline,score,total,checked_at,writing_words,submitted_at,grade,reviewed_at')
+    .order('issue_date', { ascending:false }).limit(10000);
+  const box = document.getElementById('news-al');
+  if (error){ box.innerHTML = `<p class="err">Could not load the students: ${esc(error.message)}</p>`; return; }
+  const ids = [...new Set((data || []).map(r => r.student_id))];
+  if (ids.length){
+    const { data: ps } = await sb.from('profiles').select('id,full_name,first_name,section,grade_id,grades(name)').in('id', ids);
+    (ps || []).forEach(p => { newsMk.perfiles[p.id] = p; });
+  }
+  if (!window.NewsProgress){ box.innerHTML = '<p class="err">The progress module did not load. Reload the page.</p>'; return; }
+  const porAlumno = {};
+  (data || []).forEach(r => { (porAlumno[r.student_id] = porAlumno[r.student_id] || []).push(r); });
+  const alumnos = Object.keys(porAlumno).map(id => { const a = _newsAlumno(id); return { id, name:a.nombre, group:a.curso, rows:porAlumno[id] }; });
+  const tabla = () => NewsProgress.table(box, alumnos, { open: id => {
+    const a = alumnos.find(x => x.id === id); if (!a) return;
+    NewsProgress.render(box, a.rows, { teacher:true, title:a.name, sub:a.group, back:{ label:'← All students', go:tabla },
+      link: r => 'newspaper/?d=' + r.issue_date + '#a=' + r.article_id });
+    window.scrollTo(0, 0);
+  }});
+  tabla();
+}
+
 async function newsMarkingPanel(){
   if (newsMk.vista === 'questions') return newsQuestionsPanel();
+  if (newsMk.vista === 'students') return newsStudentsPanel();
   const main = $('#main');
   main.innerHTML = '<div class="card"><p class="muted">Loading writings…</p></div>';
   const COLS = 'id,student_id,issue_date,article_id,level,headline,score,total,writing,writing_words,submitted_at,criteria,grade,feedback,reviewed_text,reviewed_at,marks,student_note';
