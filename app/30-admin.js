@@ -90,7 +90,7 @@ async function renderAdmin(tab='users'){
       {key:'unitexams',label:'📋 Unit exams'},
       {key:'readers',label:'📖 Reading checks'},
       {key:'funnordic',label:`🧸 ${schoolTerm('fun')}`},
-      ...(schoolContentOK('news.daily') ? [{key:'newsmark',label:'📰 Newspaper writings'}] : []),
+      ...(schoolContentOK('news.daily') ? [{key:'newsmark',label:'📰 Newspaper'}] : []),
       {key:'mock2',label:'📝 MOCK 2'},
       {key:'speaktest',label:'🗣️ Speaking test'},
     ]},

@@ -21,7 +21,7 @@ async function renderTeacher(tab){
     correccion.push({key:'unitexams',label:'📋 Unit exams'});
     correccion.push({key:'readers',label:'📖 Reading checks'});
     correccion.push({key:'funnordic',label:`🧸 ${schoolTerm('fun')}`});
-    if(schoolContentOK('news.daily')) correccion.push({key:'newsmark',label:'📰 Newspaper writings'});
+    if(schoolContentOK('news.daily')) correccion.push({key:'newsmark',label:'📰 Newspaper'});
     correccion.push({key:'mock2',label:'📝 MOCK 2'});
     correccion.push({key:'speaktest',label:'🗣️ Speaking test'});
     seguimiento.push({key:'results',label:'📝 Results'});

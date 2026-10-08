@@ -40,6 +40,7 @@ def main():
     distintos = []
     objetivo = {COH / 'index.html': pagina_cohasset((NIS / 'index.html').read_text(encoding='utf-8')).encode('utf-8')}
     objetivo[COH / 'marks.js'] = (NIS / 'marks.js').read_bytes()     # tachaduras del Writing
+    objetivo[COH / 'results.js'] = (NIS / 'results.js').read_bytes() # resultados para el staff (results.html)
     for f in sorted((NIS / 'issues').glob('*.json')):
         objetivo[COH / 'issues' / f.name] = f.read_bytes()
     for f in sorted((NIS / 'img').rglob('*')):        # imágenes de Commons de cada número

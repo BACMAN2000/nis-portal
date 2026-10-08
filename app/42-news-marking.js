@@ -15,15 +15,42 @@ const NEWS_CRIT = [
   ['organisation','Organisation','Paragraphs, linking words and a clear order of ideas.'],
   ['language','Language','Range and accuracy of vocabulary and grammar for the level.'],
 ];
-let newsMk = { estado:'pending', nivel:'', fecha:'', sel:null, filas:[], perfiles:{}, consignas:{} };
+let newsMk = { vista:'writings', estado:'pending', nivel:'', fecha:'', sel:null, filas:[], perfiles:{}, consignas:{} };
+
+/* Las dos pestañas de la pantalla: corregir Writings y ver los resultados de
+   las preguntas (newspaper/results.js, el mismo componente que cohasset.pe). */
+function _newsTabs(){
+  const b = (k, lab) => `<button class="btn sm ${newsMk.vista===k?'':'ghost'}" onclick="window._newsMkVista('${k}')">${lab}</button>`;
+  return `<div style="display:flex;gap:8px;margin:0 0 12px">${b('writings','✍️ Writings')}${b('questions','📊 Questions')}</div>`;
+}
+window._newsMkVista = k => { newsMk.vista = k; newsMk.sel = null; newsMarkingPanel(); };
+
+async function newsQuestionsPanel(){
+  const main = $('#main');
+  main.innerHTML = `<div class="card"><h2>📰 Newspaper</h2>${_newsTabs()}<div id="news-res"><p class="muted">Loading results…</p></div></div>`;
+  const { data, error } = await sb.from('news_responses')
+    .select('student_id,issue_date,article_id,level,answers,score,total,checked_at')
+    .not('checked_at', 'is', null).order('issue_date', { ascending:false }).limit(5000);
+  const box = document.getElementById('news-res');
+  if (error){ box.innerHTML = `<p class="err">Could not load the results: ${esc(error.message)}</p>`; return; }
+  const ids = [...new Set((data || []).map(r => r.student_id))];
+  if (ids.length){
+    const { data: ps } = await sb.from('profiles').select('id,full_name,first_name,section,grade_id,grades(name)').in('id', ids);
+    (ps || []).forEach(p => { newsMk.perfiles[p.id] = p; });
+  }
+  const rows = (data || []).map(r => { const a = _newsAlumno(r.student_id); return Object.assign({}, r, { student:a.nombre, group:a.curso }); });
+  if (!window.NewsResults){ box.innerHTML = '<p class="err">The results module did not load. Reload the page.</p>'; return; }
+  NewsResults.render(box, { rows, loadIssue: d => fetch('newspaper/issues/' + d + '.json', { cache:'no-cache' }).then(x => x.json()) });
+}
 
 async function newsMarkingPanel(){
+  if (newsMk.vista === 'questions') return newsQuestionsPanel();
   const main = $('#main');
   main.innerHTML = '<div class="card"><p class="muted">Loading writings…</p></div>';
   const COLS = 'id,student_id,issue_date,article_id,level,headline,score,total,writing,writing_words,submitted_at,criteria,grade,feedback,reviewed_text,reviewed_at,marks,student_note';
   const { data, error } = await sb.from('news_responses').select(COLS)
     .not('submitted_at', 'is', null).order('submitted_at', { ascending:false }).limit(500);
-  if (error){ main.innerHTML = `<div class="card"><h2>📰 Newspaper writings</h2><p class="err">Could not load the writings: ${esc(error.message)}</p></div>`; return; }
+  if (error){ main.innerHTML = `<div class="card"><h2>📰 Newspaper</h2>${_newsTabs()}<p class="err">Could not load the writings: ${esc(error.message)}</p></div>`; return; }
   newsMk.filas = data || [];
   const ids = [...new Set(newsMk.filas.map(r => r.student_id))];
   if (ids.length){
@@ -70,7 +97,7 @@ function newsMarkingDraw(){
       @media (max-width:1100px){.newsmk{grid-template-columns:minmax(0,1fr)}.newsmk-list{max-height:320px}}
     </style>
     <div class="card">
-      <h2>📰 Newspaper writings</h2>
+      <h2>📰 Newspaper</h2>${_newsTabs()}
       <p class="muted">Writings that students submitted from the daily newspaper (${esc(typeof newsName==='function'?newsName():'The Nordic Times')}).
         Read the task and the text, give 0–5 for each Cambridge criterion, an overall grade and a short comment. The student sees it under the article.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 14px">
