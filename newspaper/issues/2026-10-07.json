@@ -1,0 +1,888 @@
+{
+  "date": "2026-10-07",
+  "issue": 1,
+  "breaking": [
+    "Science: two chemists share the 2026 Nobel Prize for explaining life's 'left and right hands'.",
+    "Peru: Machu Picchu tickets can no longer be reserved, only bought.",
+    "Asia: smoke from Indonesian forest fires covers Singapore and Malaysia.",
+    "Sport: an influencer loses her sponsor after riding a bike in the Berlin Marathon."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-07-marathon-bike",
+      "section": "Sport",
+      "country": "Germany · China",
+      "flag": "🇩🇪",
+      "level": "A2",
+      "topic": "Sport and fair play",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Runner rides a bike in a marathon",
+      "standfirst": "A Chinese influencer said sorry after a photo showed her on a bicycle in the Berlin Marathon.",
+      "body": [
+        "Sun Yuanyuan is a fitness influencer from China. More than 500,000 people follow her on the social media app Rednote. At the end of September she ran in the Berlin Marathon in Germany. A marathon is a race of 42 kilometres.",
+        "After the race, Sun said she had her best time ever. But then an Instagram page posted a photo. In the photo, Sun is sitting on the back of a bicycle. Another person is riding it. This happened between the 35th and the 40th kilometre of the race.",
+        "The page also showed her times for every 5 kilometres. She was much faster in that part of the race.",
+        "Sun wrote a message on Rednote. 'I felt ill during the race, but that is not an excuse,' she said. 'I broke the rules.' The race organisers took away her time. Her sponsor, the sports shoe company Brooks, also stopped working with her."
+      ],
+      "glossary": [
+        {
+          "w": "influencer",
+          "d": "a person who has many followers on social media and can change what they buy or think"
+        },
+        {
+          "w": "sponsor",
+          "d": "a company that gives money to a person or team, usually to advertise its products"
+        },
+        {
+          "w": "excuse",
+          "d": "a reason you give to explain why you did something wrong"
+        },
+        {
+          "w": "organiser",
+          "d": "a person who plans and runs an event"
+        },
+        {
+          "w": "rules",
+          "d": "what you must and must not do in a game or a place"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "How long is a marathon?",
+          "options": [
+            "35 kilometres",
+            "40 kilometres",
+            "42 kilometres"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Who showed the photo of Sun on a bicycle?",
+          "options": [
+            "the race organisers",
+            "an Instagram page",
+            "Brooks"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why was Sun faster between kilometres 35 and 40?",
+          "options": [
+            "She was on a bike.",
+            "She felt very well.",
+            "The road went down a hill."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What did Sun say in her message?",
+          "options": [
+            "The photo was not real.",
+            "Being ill was a good reason.",
+            "She broke the rules."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What did Brooks do?",
+          "options": [
+            "It stopped working with Sun.",
+            "It gave Sun new shoes.",
+            "It took away her time."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your friend wants to run a race next month. Write an email to your friend (25 words or more). Say: which race you would like to run, how you will practise, and why it is important to follow the rules."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c3y0enr9e078o"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-machu-picchu-tickets",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Travel and tourism",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Machu Picchu: no more ticket problems?",
+      "standfirst": "Peru has changed the rules for buying tickets to visit the famous Inca city.",
+      "body": [
+        "Machu Picchu is the most famous place to visit in Peru. Every year, thousands of tourists from all over the world go there. But for many weeks it was very difficult to get a ticket.",
+        "Why? Some people reserved many tickets but did not pay for them. Later, they sold the tickets again for more money. So other visitors could not find any tickets.",
+        "Now the Ministry of Culture has changed the rules. You cannot reserve a ticket any more. You must buy it immediately. On the website, you write your ID number and your name, and then you pay. You can also buy tickets in Machu Picchu Pueblo, the town near the Inca city.",
+        "The Culture Minister, Alberto Beingolea, says the problem is now over. At the start of October there were more than 1,000 tickets for October, 29,000 for November and more than 60,000 for December. The new rules are in a test period until 22 October."
+      ],
+      "glossary": [
+        {
+          "w": "reserve",
+          "d": "to ask for something to be kept for you to use or buy later"
+        },
+        {
+          "w": "ticket",
+          "d": "a piece of paper or a code that shows you have paid to enter a place"
+        },
+        {
+          "w": "ministry",
+          "d": "a part of the government that is responsible for one area, like health or culture"
+        },
+        {
+          "w": "immediately",
+          "d": "now, without waiting"
+        },
+        {
+          "w": "test period",
+          "d": "a time when people try something new to see if it works"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "It was easy to get a Machu Picchu ticket in September.",
+          "answer": "F"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "Some people sold tickets again for more money.",
+          "answer": "T"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Now you can reserve a ticket and pay later.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "Tickets are cheaper for students.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "There were more tickets for December than for November.",
+          "answer": "T"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You are going to visit Machu Picchu with your family. Write a message to your English friend (25 words or more). Say: when you are going, how you bought the tickets, and what you want to see there."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-perus-culture-min-the-issue-of-mafias-in-machu-picchu-ticket-sales-is-over-1094876.aspx"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-platypus-fossil",
+      "section": "Science",
+      "country": "China",
+      "flag": "🇨🇳",
+      "level": "B1",
+      "topic": "Animals and evolution",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "A swimming 'platypus' from the time of the dinosaurs",
+      "standfirst": "Scientists have described a fossil of a small furry animal that lived both in water and on land 165 million years ago.",
+      "body": [
+        "About 165 million years ago, in the middle of the Jurassic period, huge dinosaurs were walking across the Earth. But in the rivers and lakes of what is now northern China, a much smaller animal was swimming and hunting. Scientists have now given it a name: Megacauda sungei.",
+        "Its fossil was found in 2015 in Inner Mongolia, but the full study has only just been published in the science journal Nature. The animal was not a true mammal but an early 'cousin' of mammals. It weighed between one and two kilograms – about the same as a modern platypus – which makes it the largest animal of its kind from that time.",
+        "Megacauda had webbed feet, a flat tail like an otter, very thick fur and a head similar to a dog's. These features suggest that it spent a lot of time in water. Unlike a platypus, however, it had strong, sharp teeth, so it probably ate small fish and salamanders. The rocks where it was found are full of salamander fossils.",
+        "Professor Zhe-Xi Luo of the University of Chicago, who led the study, said the fossil was 'stunningly complete', with almost all of its bones in place. According to the researchers, it shows that the ability to swim appeared very early in the history of mammals."
+      ],
+      "glossary": [
+        {
+          "w": "fossil",
+          "d": "the remains of an animal or plant from a very long time ago, kept in rock"
+        },
+        {
+          "w": "webbed feet",
+          "d": "feet with skin between the toes, which help an animal to swim"
+        },
+        {
+          "w": "feature",
+          "d": "a typical part or quality of something"
+        },
+        {
+          "w": "journal",
+          "d": "a serious magazine where scientists publish their research"
+        },
+        {
+          "w": "complete",
+          "d": "with all its parts; nothing is missing"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is new about Megacauda sungei?",
+          "options": [
+            "It was discovered last month.",
+            "Scientists have now published a full study of it.",
+            "It is the first fossil found in Inner Mongolia.",
+            "It is the oldest dinosaur ever found."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does the writer say about the animal's size?",
+          "options": [
+            "It was as big as a small dinosaur.",
+            "It was smaller than most animals of its kind.",
+            "It was similar in weight to a platypus today.",
+            "Scientists are not sure how heavy it was."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why do scientists think Megacauda spent time in water?",
+          "options": [
+            "because of the shape of its feet and tail",
+            "because it was found in a lake",
+            "because it had no fur",
+            "because it ate plants that grow in rivers"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "How was Megacauda different from a platypus?",
+          "options": [
+            "It could not swim.",
+            "It was much heavier.",
+            "It had strong teeth for eating meat.",
+            "It lived only on land."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does the discovery show, according to the researchers?",
+          "options": [
+            "Dinosaurs could also swim.",
+            "Swimming developed early in mammal history.",
+            "Platypuses first lived in China.",
+            "Salamanders ate early mammals."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language school magazine: 'Articles wanted! Which animal, alive today or from the past, do you find most interesting, and why? What would you like to ask a scientist about it?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/science/2026-10-08/fossil-of-platypus-like-mammal-relative-found-in-china/107234186"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-el-nino-satellites",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Weather, disasters and technology",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Peru's satellite watches out for El Niño",
+      "standfirst": "The Peruvian Space Agency wants its satellite images to help the country prepare for heavy rain and floods.",
+      "body": [
+        "Every few years, the water of the Pacific Ocean near Peru becomes warmer than usual. This is called El Niño, and it can bring very heavy rain, floods and landslides to the north of the country. Experts think another El Niño could arrive soon, so Peru is starting to prepare.",
+        "At the beginning of October, the Peruvian Space Agency, CONIDA, invited the organisations that deal with emergencies to a meeting at its satellite centre in Pucusana, south of Lima. Among the visitors were the heads of INDECI, the national civil defence institute, and CENEPRED, which studies disaster risks.",
+        "The aim of the meeting was to make sure that everyone can use the pictures taken by Peru's own satellite. With these images, the authorities can watch rivers and towns from space and find the areas that are most likely to flood. This information helps them decide where to act first and how to organise help more quickly.",
+        "'Space technology should be at the service of people,' is the message from CONIDA. If the authorities work together, they hope that the next El Niño will cause less damage than the ones in the past."
+      ],
+      "glossary": [
+        {
+          "w": "landslide",
+          "d": "a large amount of earth and rock that falls down the side of a hill"
+        },
+        {
+          "w": "satellite",
+          "d": "a machine sent into space that goes around the Earth and sends back information or pictures"
+        },
+        {
+          "w": "authorities",
+          "d": "the people or organisations that have the power to make decisions for a country or area"
+        },
+        {
+          "w": "risk",
+          "d": "the possibility that something bad will happen"
+        },
+        {
+          "w": "prepare",
+          "d": "to get ready for something that will happen"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Every few years the ocean near Peru becomes ___ than usual.",
+          "options": [
+            "warmer",
+            "hotter",
+            "colder",
+            "wetter"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "El Niño can ___ heavy rain and floods to the north of Peru.",
+          "options": [
+            "make",
+            "bring",
+            "take",
+            "carry"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "CONIDA ___ the emergency organisations to a meeting.",
+          "options": [
+            "told",
+            "asked",
+            "invited",
+            "called"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "The images help authorities find the areas most ___ to flood.",
+          "options": [
+            "possible",
+            "likely",
+            "probable",
+            "sure"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "They hope the next El Niño will ___ less damage.",
+          "options": [
+            "do",
+            "make",
+            "cause",
+            "give"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English teacher has written to you: 'Our class is preparing a poster about how families can get ready for El Niño. Can you send me three ideas, and say which one you think is the most important?' Write your email in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-space-agency-strengthens-satellite-imagery-use-ahead-of-nino-phenomenon-1094271.aspx"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-golden-week-australia",
+      "section": "World",
+      "country": "China · Australia",
+      "flag": "🇦🇺",
+      "level": "B2",
+      "topic": "Travel, holidays and statistics",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "Golden Week: Chinese holidaymakers head south",
+      "standfirst": "A 13-day break at the start of October sent record numbers of Chinese travellers abroad – and Australia was one of their favourite destinations.",
+      "body": [
+        "A. This year the calendar was kind to workers in China. The Mid-Autumn Festival fell right next to Golden Week, the national holiday that runs from 1 to 7 October, which gave many people a 13-day break. According to official immigration figures, more than 2.2 million passengers crossed China's borders during the festival, an increase of almost 17 per cent on last year.",
+        "B. One of the most popular destinations was Australia. Data from the International Air Transport Association showed that flight bookings from China to Australia for October were 19 per cent higher than twelve months earlier, and the booking platform Trip.com reported that travellers were choosing 'longer and further trips beyond the region'.",
+        "C. Fei Chang, who spent the holiday in Queensland's Whitsunday Islands with her husband, was surprised by how many fellow travellers she met. 'At some tourist spots, it felt like I could almost speak Mandarin to everyone,' she told the ABC.",
+        "D. The way people travel is also changing. Zhang Cheng, who runs a travel agency in Melbourne, says that many Chinese visitors are no longer interested in large coach tours that rush from one sight to the next. Instead, they prefer what she calls 'quality trips': small groups, or a road trip in a hired car where they can choose their own route.",
+        "E. Even so, the industry has not completely recovered. The number of Chinese visitors to Australia is still below the levels seen before the COVID-19 pandemic, and travel agents admit that it is hard to know exactly how many of their new customers come from China and how many are Chinese-speaking people who already live abroad."
+      ],
+      "glossary": [
+        {
+          "w": "destination",
+          "d": "the place where someone is going"
+        },
+        {
+          "w": "booking",
+          "d": "an arrangement to have a seat, room or ticket at a particular time"
+        },
+        {
+          "w": "fellow (traveller)",
+          "d": "someone who is in the same situation as you"
+        },
+        {
+          "w": "recover",
+          "d": "to return to a normal or healthy state after a difficult period"
+        },
+        {
+          "w": "rush",
+          "d": "to move or do something very quickly"
+        }
+      ],
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph mentions a personal experience of a tourist?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph explains why the holiday was unusually long?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph says that tourism has not yet returned to its earlier level?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph describes a change in the style of travelling?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph compares this year's flight bookings with last year's?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You have seen this announcement on an international travel website: 'Group tour or independent trip? Tell us which way of travelling you prefer and why. Describe a trip that shows what you mean.' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-07/chinese-tourist-visit-australia-in-golden-week/107236690"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-indonesia-haze",
+      "section": "Environment",
+      "country": "Indonesia",
+      "flag": "🇮🇩",
+      "level": "B2",
+      "topic": "Environment, health and the law",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Citizens take Indonesia's government to court over choking haze",
+      "standfirst": "As forest fires burn for a fourth month, a group in West Kalimantan says the disaster could have been prevented.",
+      "body": [
+        "For three months, a thick grey haze has hung over large parts of South-East Asia. It comes from fires burning in the peatlands of Indonesia – wet, carbon-rich ground that, once dry, can smoulder for weeks. The smoke has drifted across borders, forcing millions of people in Indonesia, Malaysia and Singapore to wear masks, and at times even hiding Singapore's best-known landmarks from view.",
+        "Now some of those affected have decided to fight back in court. This week a group of civil society organisations in West Kalimantan, on the island of Borneo, began a class action against the national government in the regional capital, Pontianak. The plaintiffs, who include Indigenous communities and youth groups, argue that the fires happen almost every year and that the authorities should have seen this season coming. 'El Niño had been predicted well before this dry season began,' said Glorio Sanen, the legal coordinator of the group Nafas Kalbar. 'Yet it seems we were not prepared.'",
+        "The group is asking the government to declare a national emergency, invest more in fire prevention, offer free health care to vulnerable people and prosecute those responsible for starting the fires. Their list of defendants is long: it includes the president, the vice-president, several ministers and the national police chief.",
+        "The health consequences are already serious. Indonesia's Health Ministry has recorded at least 175,000 cases of respiratory infection linked to the fires since August, and more than 200 fire spots were still burning this week. Relief is not expected soon: in most of the country, the rainy season will not arrive until November. The government, for its part, says it respects citizens' right to go to court and will respond through the legal process."
+      ],
+      "glossary": [
+        {
+          "w": "haze",
+          "d": "air that is difficult to see through because it contains smoke or dust"
+        },
+        {
+          "w": "peatland",
+          "d": "wet land made of old, partly decayed plants, which burns easily when it dries"
+        },
+        {
+          "w": "class action",
+          "d": "a court case brought by a group of people who have all been affected in the same way"
+        },
+        {
+          "w": "plaintiff",
+          "d": "a person or group who starts a case against someone in court"
+        },
+        {
+          "w": "vulnerable",
+          "d": "easily hurt or affected, e.g. children, old or sick people"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "In the first paragraph, the writer explains",
+          "options": [
+            "why peat fires are especially difficult to stop.",
+            "how Singapore has reacted to the haze.",
+            "which country started the fires.",
+            "why masks do not protect people from smoke."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What is the main complaint of the people who went to court?",
+          "options": [
+            "The government started the fires.",
+            "The government ignored warnings and was not ready.",
+            "The fires were caused by El Niño alone.",
+            "Nobody told them about the haze."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the phrase 'fight back' in paragraph 2 suggest about the plaintiffs?",
+          "options": [
+            "They want to use violence.",
+            "They are tired of accepting the situation.",
+            "They have lost hope.",
+            "They are working for the government."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Which of these is NOT one of the group's demands?",
+          "options": [
+            "free health care for some people",
+            "more money for fire prevention",
+            "a national emergency",
+            "compensation for every family"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "How does the government respond, according to the article?",
+          "options": [
+            "It refuses to take part in the case.",
+            "It blames the plaintiffs for the fires.",
+            "It accepts the case and will answer in court.",
+            "It promises to end the fires before November."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about the environment. Now your teacher has asked you to write an essay. 'Should governments be responsible for preventing natural disasters, or are some disasters impossible to prevent?' Notes — write about: 1. warnings and planning, 2. the cost of prevention, 3. (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-08/indonesian-government-sued-over-worsening-wildfire/107237412"
+        },
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/world"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-nobel-chemistry",
+      "section": "Science",
+      "country": "France · Japan",
+      "flag": "🇸🇪",
+      "level": "C1",
+      "topic": "Chemistry, medicine and scientific discovery",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Nobel Prize rewards the solution to life's mirror-image puzzle",
+      "standfirst": "Henri Kagan and Kenso Soai share the 2026 Nobel Prize in Chemistry for explaining how nature – and chemists – can make just one 'hand' of a molecule.",
+      "body": [
+        "Hold up your hands and look at them. They are mirror images of each other, yet no matter how you turn them, you cannot place one exactly on top of the other. Many of the molecules that make up living things share this curious property, which chemists call chirality. Amino acids, the building blocks of proteins, exist in both a 'left-handed' and a 'right-handed' form – but life on Earth uses almost exclusively one of them. Why nature should favour one hand so consistently has puzzled scientists for well over a century.",
+        "This year's Nobel Prize in Chemistry goes to two researchers who helped to solve that puzzle: the French chemist Henri B. Kagan, of Université Paris-Sud, and Kenso Soai, of the Tokyo University of Science. Together they will share the 12 million Swedish kronor that accompanies the award. 'This is one of the most exciting days of my life,' Professor Soai told the Nobel press conference by phone.",
+        "Their work unfolded over almost two decades. In 1986, Kagan found a way of steering chemical reactions so that they produced a far greater excess of one mirror form than anyone had believed possible. Soai took the idea further: in 1995 he described in the journal Nature a reaction that could, in principle, generate only the desired form, and by 2003 he had succeeded in controlling a reaction in which just one of the two mirror images appeared. In other words, they showed how 'homochirality' – a world of single-handed molecules – can emerge spontaneously.",
+        "The discovery is far from academic. In a laboratory, ordinary reactions tend to yield a 50–50 mixture of both forms, and in medicine the difference can be crucial: one version of a drug may cure a disease while its mirror image does nothing, or even causes harm. The tragedy of thalidomide in the 1950s and 1960s, when one form of the drug was effective but the other was toxic, remains the most painful reminder. Reactions that deliver only the right 'hand' therefore matter not only for our understanding of how life began, but for the safety of the medicines we take today."
+      ],
+      "glossary": [
+        {
+          "w": "chirality",
+          "d": "the property of an object or molecule that is not identical to its mirror image, like a pair of hands"
+        },
+        {
+          "w": "exclusively",
+          "d": "only; not including anything else"
+        },
+        {
+          "w": "excess",
+          "d": "an amount that is more than another amount, or more than expected"
+        },
+        {
+          "w": "emerge spontaneously",
+          "d": "to appear or develop naturally, without being caused from outside"
+        },
+        {
+          "w": "far from academic",
+          "d": "having real, practical importance rather than being of theoretical interest only"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer begin by asking readers to look at their hands?",
+          "options": [
+            "to show that chirality only affects the human body",
+            "to make an abstract idea easier to picture",
+            "to suggest that most people are right-handed",
+            "to explain why amino acids are important"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What has 'puzzled scientists for well over a century'?",
+          "options": [
+            "how to make a 50–50 mixture of molecules",
+            "whether amino acids exist in two forms",
+            "why living things almost always use only one form",
+            "how proteins are built from amino acids"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What was Kagan's main contribution, according to the third paragraph?",
+          "options": [
+            "He showed that reactions could favour one form much more than expected.",
+            "He produced the first completely single-handed reaction.",
+            "He published the key paper in Nature in 1995.",
+            "He proved that chirality exists in amino acids."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "The phrase 'in other words' in paragraph 3 introduces",
+          "options": [
+            "a contrast with Kagan's work.",
+            "a summary of what the two scientists achieved.",
+            "a criticism of Soai's results.",
+            "an example from medicine."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why does the writer mention thalidomide?",
+          "options": [
+            "to criticise the drug companies of the 1950s",
+            "to show that the prize could have been given earlier",
+            "to illustrate why producing a single form of a molecule matters",
+            "to explain how life began on Earth"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's overall attitude to the discovery?",
+          "options": [
+            "It is interesting but has little practical value.",
+            "It is important both scientifically and for public health.",
+            "It is controversial among other chemists.",
+            "It is less impressive than previous Nobel prizes."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a panel discussion on how governments should spend money on science. The speakers talked about three areas: basic research (questions such as how life began), medicine safety, and space technology. Write an essay discussing TWO of these areas, explaining which one should receive more money and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c6ly038jg0d4o"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-07-ai-digital-humans",
+      "section": "Technology",
+      "country": "China",
+      "flag": "🇨🇳",
+      "level": "C1",
+      "topic": "Artificial intelligence, identity and regulation",
+      "exam": "C1 Advanced · Reading Part 6 (cross-text) / Use of English discussion",
+      "headline": "An ID card for someone who doesn't exist",
+      "standfirst": "China has begun issuing official identification to AI-generated 'digital humans' – a step that supporters call protection and critics call surveillance.",
+      "body": [
+        "Yuri was barely a year old when thousands of fans packed a concert hall on Shanghai's Bund to watch her perform. Projected on to a 100-metre screen, she sang in Mandarin and English and changed outfits in the blink of an eye. Yuri, however, is not a person. She is a virtual idol created by artificial intelligence – and, as of this year, she is also the first digital human in China to hold a government-backed identity card.",
+        "The card, issued under a pilot programme in Beijing, records her name, date of 'birth', address and facial features. Far from being a novelty, it has practical consequences: it allows her operators to open a digital-currency wallet in her name and to sign commercial deals in sectors ranging from fashion to gaming and cars. The same scheme has made her the country's first licensed AI artist.",
+        "The move reflects the sheer scale of the industry. A 2025 report from the Communication University of China counted at least 1.3 million firms linked to the digital-human sector, whose market was valued at around 48 billion yuan (US$10 billion) that year. Avatars that began as a way for streamers to remain anonymous have evolved into AI influencers capable of chatting with users in real time, and they now appear everywhere from news broadcasts and online shopping to short dramas. Last month, Beijing urged broadcasters and video platforms to register the digital humans they use.",
+        "Whether this is a sensible precaution or something more troubling depends on whom you ask. Supporters argue that registration protects intellectual property and makes it harder for criminals to use fake personas in online scams. Critics counter that giving the state a record of every virtual character extends surveillance into the metaverse. What is beyond dispute is that the line between a person and a product is becoming harder to draw – and that the rest of the world will soon have to decide where it stands."
+      ],
+      "glossary": [
+        {
+          "w": "pilot programme",
+          "d": "a small-scale trial carried out before a plan is introduced more widely"
+        },
+        {
+          "w": "novelty",
+          "d": "something new and unusual that attracts interest, often only for a short time"
+        },
+        {
+          "w": "sheer (scale)",
+          "d": "used to emphasise how very large something is"
+        },
+        {
+          "w": "persona",
+          "d": "the character or identity that someone presents to others"
+        },
+        {
+          "w": "counter",
+          "d": "to reply to an argument by giving an opposing one"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "The description of Yuri's concert in the first paragraph mainly serves to",
+          "options": [
+            "create a surprise when her true nature is revealed.",
+            "criticise the fans who attended it.",
+            "show that live music is becoming less popular.",
+            "compare Chinese and English-speaking singers."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to the second paragraph, the ID card is important because",
+          "options": [
+            "it makes Yuri legally human.",
+            "it is the first ID card ever issued in Beijing.",
+            "it lets Yuri's operators do business in her name.",
+            "it stops other companies copying Yuri."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "How did digital humans originally start, according to the article?",
+          "options": [
+            "as tools for government propaganda",
+            "as characters in video games",
+            "as replacements for newsreaders",
+            "as a way for people to hide their identity online"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "In the final paragraph, the writer",
+          "options": [
+            "argues strongly in favour of registration.",
+            "presents both sides and identifies one clear certainty.",
+            "suggests that critics have misunderstood the law.",
+            "predicts that other countries will copy China."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Which word could replace 'counter' in the final paragraph with the closest meaning?",
+          "options": [
+            "respond",
+            "calculate",
+            "agree",
+            "admit"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (proposal / report)",
+        "task": "Your school is preparing guidelines on the use of AI-generated characters and avatars in student projects and on social media. The head teacher has asked students to write a proposal suggesting what rules should be introduced and explaining how they would protect students. Write your proposal in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-07/china-trials-identity-card-for-ai-digital-humans/107232848"
+        }
+      ]
+    }
+  ]
+}

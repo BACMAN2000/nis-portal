@@ -82,9 +82,29 @@ function studentGeneral(){
   const mun = nodeVisible('general.mun')
     ? _hubCard('🌐','MUN Academy','Model United Nations: debate, public speaking and diplomacy.',"window._nav('mun')")
     : _lockedCard('🌐','MUN Academy','Model United Nations.');
+  const news = schoolContentOK('news.daily') ? _hubCard('📰',newsName(),'Daily news in English at your level: A2, B1, B2 and C1.',"window._nav('news')") : '';
   $('#main').innerHTML=`<h1>🗂️ General</h1>
     <p class="muted" style="margin-top:-6px">General portal resources.</p>
-    <div class="grid cols-3" style="margin-top:12px">${lib}${mun}</div>`;
+    <div class="grid cols-3" style="margin-top:12px">${lib}${news}${mun}</div>`;
+}
+
+/* ---------- Periódico por niveles (newspaper/) ----------
+   Un número por día escrito a partir de noticias de varios países, cada
+   artículo en A2/B1/B2/C1 con preguntas de formato Cambridge. NIS lo ve como
+   The Nordic Times; los demás colegios de Cohasset Schools con su nombre.
+   Lo usan el alumno, el profesor y el admin: la página va embebida. */
+function newsName(){
+  const S = window.NIS_SCHOOL;
+  if(!S || !S.slug || S.slug==='nis') return 'The Nordic Times';
+  return 'The ' + String(S.short || S.name || 'School').replace(/\s+Schools?$/i, '') + ' Times';
+}
+function newsBody(){
+  return `<iframe src="newspaper/?embed=1" title="${esc(newsName())}" style="width:100%;height:calc(100vh - 110px);min-height:520px;border:0;border-radius:14px;background:#ece7dc"></iframe>
+    <p class="muted" style="margin:6px 0 0;font-size:13px"><a href="newspaper/" target="_blank" rel="noopener">Open in a new tab ↗</a></p>`;
+}
+function studentNews(){
+  _setNav('news');
+  $('#main').innerHTML = newsBody();
 }
 
 /* Resultado final del alumno = reporte CEFR que se entrega a los padres + PDF.
@@ -598,7 +618,7 @@ function _navRender(k){
   // viejos de las paginas de actividades siguen cayendo en un sitio con
   // sentido. 'myclasses' y 'tools' son las dos claves nuevas de la barra.
   const fn={english:studentHub,french:()=>studentSubject('french'),general:studentGeneral,
-    mocks:studentMocks,practice:studentPractice,cambridge:studentCambridgePortal,library:studentLibrary,mun:studentMun,classes:studentClasses,
+    mocks:studentMocks,practice:studentPractice,cambridge:studentCambridgePortal,library:studentLibrary,news:studentNews,mun:studentMun,classes:studentClasses,
     myclasses:studentMyClasses,tools:studentTools,
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
     phrasal:studentPhrasal,collocations:studentCollocations,idioms:studentIdioms,wordform:studentWordform,dict:studentDict,

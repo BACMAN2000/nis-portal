@@ -46,6 +46,7 @@ async function renderAdmin(tab='users'){
       {key:'pizarra',label:'📝 Whiteboard'},
       {key:'corrector',label:'✍️ Material corrector'},
       {key:'library',label:'📚 Library'},
+      {key:'news',label:'📰 Newspaper'},
     ]},
     /* Cambridge, en el mismo orden que la pista del alumno (17-sep-2026, menu
        espejo pedido por Paolo): primero los cursos que preparan el examen
@@ -164,6 +165,7 @@ async function renderAdmin(tab='users'){
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(tab==='pizarra') return $('#main').innerHTML = pizarraBody();
+  if(tab==='news') return $('#main').innerHTML = newsBody();
   if(tab==='corrector') return $('#main').innerHTML = correctorBody();
   if(tab==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   if(tab==='cambridgehub') return studentCambridgePortal();

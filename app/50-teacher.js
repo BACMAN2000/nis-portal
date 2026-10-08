@@ -40,6 +40,7 @@ async function renderTeacher(tab){
   clases.push({key:'fr',label:'🇫🇷 Cap sur le français'});
   clases.push({key:'pizarra',label:'📝 Whiteboard'});
   clases.push({key:'corrector',label:'✍️ Material corrector'});
+  if(schoolContentOK('news.daily')) clases.push({key:'news',label:'📰 Newspaper'});
   /* Cambridge en el orden de la pista del alumno: primero los tres cursos
      de primaria (van sin candado, como Little Readers: son material de
      consulta, no datos de alumnos; sus entregas se corrigen en Correccion >
@@ -140,6 +141,7 @@ async function renderTeacher(tab){
   if(active==='cambridgehub') return studentCambridgePortal();
   if(active==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(active==='pizarra') return $('#main').innerHTML = pizarraBody();
+  if(active==='news') return $('#main').innerHTML = newsBody();
   if(active==='corrector') return $('#main').innerHTML = correctorBody();
   if(active==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   $('#main').innerHTML = `<div class="card">The administrator has not assigned you any access yet. Message them so they can enable <b>Results</b> or <b>Students</b> for you.</div>`;

@@ -281,6 +281,7 @@ function studentHub(){
     <div class="grid cols-3">
       ${_hubCard('🧰','Practice tools','Sounds, grammar and vocabulary games to train on your own.',"window._nav('tools')")}
       ${nodeVisible('general.library') ? _hubCard('📚','Library','NIS Library: search and explore the school library.',"window._nav('library')") : ''}
+      ${schoolContentOK('news.daily') ? _hubCard('📰',newsName(),'Daily news in English at your level: A2, B1, B2 and C1.',"window._nav('news')") : ''}
       ${nodeVisible('general.mun') ? _hubCard('🌐','MUN Academy','Model United Nations: debate, public speaking and diplomacy.',"window._nav('mun')") : ''}
       ${_hubCard('📊','My progress','Your results in mocks, practice tests and activities.',"window._nav('results')")}
       ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes and more.',"window._nav('french')") : ''}
