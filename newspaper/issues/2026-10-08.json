@@ -1,0 +1,975 @@
+{
+  "date": "2026-10-08",
+  "issue": 2,
+  "breaking": [
+    "Science: Jonathan the tortoise is 194 — and his DNA may help explain why.",
+    "Peru: Cusco puts its archaeological sites on alert because of forest fires.",
+    "Sport: a New Zealand rugby team goes to court to protect its name.",
+    "Space: Margaret Hamilton, who wrote software for the first Moon landing, dies at 90."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-08-jonathan-tortoise",
+      "section": "Science",
+      "country": "Saint Helena (UK)",
+      "flag": "🇸🇭",
+      "level": "A2",
+      "topic": "Animals and science",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Jonathan the tortoise: 194 years old and still going",
+      "standfirst": "Scientists have studied the DNA of the oldest land animal in the world.",
+      "body": [
+        "Jonathan is a giant tortoise. He lives on Saint Helena, a small island in the South Atlantic Ocean. Scientists think he is 194 years old, so he is the oldest land animal in the world! He arrived on the island in 1882. Today he lives in the garden of the governor's house.",
+        "Now a team of scientists has studied Jonathan's DNA. DNA is like a book of instructions inside every living thing. Many parts of his DNA look old, like the DNA of other old tortoises. But some parts look young. These parts help very small 'batteries' inside each cell to work well.",
+        "Is this the secret of his long life? The scientists do not know yet. Their next job is to test the idea.",
+        "Life was not always easy for Jonathan. In 2009 he was blind and could not smell well, so a vet, Joe Hollis, started to feed him by hand. Soon he was strong again."
+      ],
+      "glossary": [
+        {
+          "w": "tortoise",
+          "d": "an animal with a hard shell on its back that moves very slowly and lives on land"
+        },
+        {
+          "w": "island",
+          "d": "a piece of land with water all around it"
+        },
+        {
+          "w": "DNA",
+          "d": "the very small information inside every living thing that decides what it is like"
+        },
+        {
+          "w": "cell",
+          "d": "the smallest part of a plant or animal"
+        },
+        {
+          "w": "blind",
+          "d": "not able to see"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where does Jonathan live?",
+          "options": [
+            "on an island in the South Atlantic",
+            "in a zoo in a big city",
+            "on a farm in Africa"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "When did Jonathan arrive on Saint Helena?",
+          "options": [
+            "in 2009",
+            "in 1882",
+            "194 years ago"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What did the scientists study?",
+          "options": [
+            "his food",
+            "his shell",
+            "his DNA"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is surprising about some parts of Jonathan's DNA?",
+          "options": [
+            "They look like the DNA of a young animal.",
+            "They look like the DNA of other old tortoises.",
+            "They are the same as human DNA."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why did Joe Hollis start to feed Jonathan by hand?",
+          "options": [
+            "Jonathan was too fat.",
+            "Jonathan could not see and was not well.",
+            "Jonathan did not like his food."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend loves animals. Write an email to your friend (25 words or more). Tell them about Jonathan, say how old he is, and say which animal you would like to see one day."
+      },
+      "sources": [
+        {
+          "name": "The Guardian (UK)",
+          "url": "https://www.theguardian.com/science/2026/oct/07/jonathan-the-giant-tortoise-194-offers-up-insight-into-secrets-of-longevity"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/jonathan-tortoise.jpg",
+        "alt": "A very large old tortoise walking on green grass",
+        "caption": "Jonathan at Plantation House, Saint Helena, in 2020.",
+        "credit": "Kevstan",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Tortoise_Jonathan_at_Plantation_House_Saint_Helena_March_2020.jpg"
+      }
+    },
+    {
+      "id": "2026-10-08-cusco-fires-heritage",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Environment and heritage",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Fires near Cusco: protect our old places!",
+      "standfirst": "Cusco's culture office asks people not to burn dry grass near archaeological sites.",
+      "body": [
+        "The number of forest fires in the Cusco region is going up. Because of this, the region's culture office, the DDC, has put all its archaeological parks and sites on alert.",
+        "This means that teams of workers and guards are always ready. If there is a fire near or inside an old site, they can act quickly.",
+        "Ursula Paz is the head of the DDC. She says that fire is a big danger at this time of year, because a lot of plants are very dry. \"Fire can destroy in a matter of hours what has stood for centuries,\" she says. When fire damages an old building, nobody can make it the same as before.",
+        "The DDC is asking farmers and other people not to burn grass or old plants from their fields, because these fires can grow very fast. It also asks everyone to tell the authorities immediately about any fire near an old site."
+      ],
+      "glossary": [
+        {
+          "w": "forest fire",
+          "d": "a big fire that burns trees and plants in the countryside"
+        },
+        {
+          "w": "alert",
+          "d": "ready to act quickly if something dangerous happens"
+        },
+        {
+          "w": "guard",
+          "d": "a person whose job is to protect a place"
+        },
+        {
+          "w": "dry",
+          "d": "with no water in it"
+        },
+        {
+          "w": "burn",
+          "d": "to destroy something with fire"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "There are more forest fires in the Cusco region now.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "Tourists cannot visit the archaeological sites at the moment.",
+          "answer": "NS"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Ursula Paz says it is easy to repair an old building after a fire.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "Many plants are very dry at this time of year.",
+          "answer": "T"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The DDC wants farmers to burn old plants in their fields.",
+          "answer": "F"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend is coming to Peru and wants to visit an old Inca site with you. Write an email to your friend (25 words or more). Say which site you want to visit, when you can go, and what you must not do there."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-cusco-culture-activates-alert-at-archaeological-sites-as-forest-blazes-increase-1094791.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/cusco-fires-heritage.jpg",
+        "alt": "Huge ancient stone walls on a green hill near Cusco",
+        "caption": "Sacsayhuamán, one of the archaeological sites of the Cusco region (photo from 2015).",
+        "credit": "Diego Delso",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Sacsayhuam%C3%A1n,_Cusco,_Per%C3%BA,_2015-07-31,_DD_27.JPG"
+      }
+    },
+    {
+      "id": "2026-10-08-chiefs-rugby-name",
+      "section": "Sport",
+      "country": "New Zealand · Papua New Guinea",
+      "flag": "🇳🇿",
+      "level": "B1",
+      "topic": "Sport and team identity",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Two teams, one name: the fight over the 'Chiefs'",
+      "standfirst": "New Zealand Rugby has gone to court to stop a new team from Papua New Guinea using the name of one of its best-known teams.",
+      "body": [
+        "What's in a name? For two rugby teams, quite a lot. New Zealand Rugby (NZR) has gone to the High Court in New Zealand because it wants to stop a new team from Papua New Guinea (PNG) using the name 'Chiefs' in New Zealand.",
+        "The Chiefs, from the Waikato region of New Zealand, play rugby union. They have played in the Super Rugby competition for 30 years, since 1996. The new team from PNG will play rugby league, a different kind of rugby, in Australia's National Rugby League (NRL). The NRL decided in 2024 to add a team from Papua New Guinea, and the country's Prime Minister, James Marape, announced the name 'Chiefs' the next year. The new team will officially start later this month.",
+        "NZR's chief executive, Steve Lancaster, says that the Chiefs and their players have built a very strong identity over 30 years and that fans love the team. NZR says it has tried to talk to the Australian Rugby League Commission (ARLC) about the problem for a year, but they could not find an answer.",
+        "The ARLC says it will fight the case. Its chairman, Peter V'landys, says New Zealand rugby union did the same thing in 1996, when the Auckland Blues took the name 'Blues'. A rugby league team from New South Wales had used that name for more than 50 years. He called the complaint 'hypocritical'."
+      ],
+      "glossary": [
+        {
+          "w": "court",
+          "d": "the place where a judge decides if someone has broken the law or who is right in a disagreement"
+        },
+        {
+          "w": "competition",
+          "d": "a series of games in which teams try to win"
+        },
+        {
+          "w": "chief executive",
+          "d": "the person with the most important job in a company or organisation"
+        },
+        {
+          "w": "identity",
+          "d": "the things that make a person or group different from others"
+        },
+        {
+          "w": "hypocritical",
+          "d": "saying that other people should not do something that you have done yourself"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why has NZR gone to court?",
+          "options": [
+            "to get money from the NRL",
+            "to stop a new team using the name 'Chiefs' in New Zealand",
+            "to let the Chiefs play in Australia",
+            "to change the rules of rugby league"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What is true about the two teams?",
+          "options": [
+            "Both play rugby union.",
+            "Both are from New Zealand.",
+            "They play different kinds of rugby.",
+            "They play in the same competition."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Who announced the name of the new team?",
+          "options": [
+            "Steve Lancaster",
+            "Peter V'landys",
+            "the Chiefs' fans",
+            "James Marape"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does NZR say about the last year?",
+          "options": [
+            "It tried to talk to the ARLC but they did not find an answer.",
+            "It did not know about the new team.",
+            "It agreed to share the name.",
+            "It asked fans to choose a new name."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why does Peter V'landys think the complaint is unfair?",
+          "options": [
+            "The PNG team chose the name first.",
+            "A rugby union team took a rugby league name in 1996.",
+            "The Chiefs are not a famous team.",
+            "The NRL already has a team called the Chiefs."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for teenagers: 'Articles wanted! What makes a good name for a sports team? Invent a name for a team from your town and explain why you chose it.' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-08/nz-rugby-goes-to-high-court-to-protect-chiefs-name/107243626"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/chiefs-rugby-name.jpg",
+        "alt": "Rugby players on a green field in a stadium at night",
+        "caption": "The Chiefs play a Super Rugby game in Waikato, New Zealand (earlier photo).",
+        "credit": "Pam from near Matamata, New Zealand",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:The_Chiefs_(Waikato)_v_The_Hurricanes_(Wellington).jpg"
+      }
+    },
+    {
+      "id": "2026-10-08-trujillo-museum",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Culture and archaeology",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Ancient treasures in Trujillo get a new life",
+      "standfirst": "A university museum in northern Peru will look after 2,500 ancient objects, with help from the United States.",
+      "body": [
+        "The National University of Trujillo (UNT), in the La Libertad region, has an important museum of archaeology, anthropology and history. It keeps objects from Chan Chan and other ancient sites on Peru's north coast. It also has old books, drawings and photos from the first archaeologists who worked in the area more than a century ago. Many of them came from the United States.",
+        "Now the museum has received US$245,000 from the United States' 2026 Ambassadors Fund for Cultural Preservation. The project was prepared by Alejandro Yepjen, from UNT, and Gabriel Prieto, from the University of Florida. It will last 24 months, and during that time experts will clean and protect 2,500 objects, including pots, textiles and objects made of stone and metal.",
+        "The aim is to keep every object as it was when it was found. For example, the team will use natural products to clean pots and protect their painted colours, and they will use X-rays to study the threads of the textiles. Archaeologist Arabel Fernandez, an expert in old textiles, will look after them.",
+        "The museum will also get modern shelves to keep the objects safe. Students and teachers from both universities will share what they know. When the work finishes, Yepjen hopes that some of the objects can go on display for visitors."
+      ],
+      "glossary": [
+        {
+          "w": "archaeologist",
+          "d": "a person who studies very old objects and places to learn how people lived in the past"
+        },
+        {
+          "w": "ancient",
+          "d": "very, very old; from a time thousands or hundreds of years ago"
+        },
+        {
+          "w": "textiles",
+          "d": "cloth or things made by weaving threads, like blankets or clothes"
+        },
+        {
+          "w": "shelves",
+          "d": "long flat boards on a wall or in a cupboard where you put things"
+        },
+        {
+          "w": "on display",
+          "d": "put in a place where people can see it, for example in a museum"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "The museum keeps objects from Chan Chan and other ___ sites.",
+          "options": [
+            "ancient",
+            "antique",
+            "elderly",
+            "aged"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "The project will ___ 24 months.",
+          "options": [
+            "spend",
+            "last",
+            "stay",
+            "pass"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "Experts will clean and ___ 2,500 objects.",
+          "options": [
+            "attack",
+            "prevent",
+            "protect",
+            "avoid"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "Arabel Fernandez will ___ after the textiles.",
+          "options": [
+            "see",
+            "care",
+            "look",
+            "take"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Yepjen hopes that some objects can go ___ display.",
+          "options": [
+            "on",
+            "in",
+            "at",
+            "for"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "The team will use X-rays to ___ the threads of the textiles.",
+          "options": [
+            "learn",
+            "study",
+            "teach",
+            "know"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English-speaking friend Alex has sent you this email: 'I'm visiting Trujillo next month! Is the university museum worth seeing? What else should I visit there, and what's the weather like?' Write your email to Alex in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-unt-museum-to-conserve-2500-archaeological-artifacts-with-us-support-1094033.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/trujillo-museum.jpg",
+        "alt": "Long walls made of mud bricks in the ancient city of Chan Chan",
+        "caption": "Chan Chan, the ancient adobe city near Trujillo whose first finds are kept at the museum.",
+        "credit": "Håkan Svensson",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Chan_chan_view1.jpg"
+      }
+    },
+    {
+      "id": "2026-10-08-margaret-hamilton",
+      "section": "Technology",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B2",
+      "topic": "Computing, space and women in science",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "The woman whose code helped land Apollo 11 dies at 90",
+      "standfirst": "Margaret Hamilton led the software work for the first Moon landing — at a time when 'software engineer' was not even a job title.",
+      "body": [
+        "A. Margaret Hamilton, the computer scientist whose software guided the first Moon landing, has died at the age of 90. The Massachusetts Institute of Technology (MIT), where she did her most famous work, announced the news on Wednesday; she had died on 30 September. She leaves a daughter, two grandsons and four great-grandchildren.",
+        "B. Hamilton began her career long before job titles such as 'software engineer' or 'computer scientist' became common. She learned to program under the guidance of a well-known MIT meteorologist, and later developed her skills in an MIT laboratory, writing programs designed to detect enemy aircraft.",
+        "C. When MIT won a contract from NASA to develop the software that would fly on board the Apollo spacecraft, she jumped at the chance. In a 2019 interview she explained that she had been attracted by the fact that nobody had ever done anything like it before. She was the first programmer to join the project, and the first woman the team hired.",
+        "D. Her team's work was put to the test in 1969. Just minutes before Apollo 11 was due to land on the Moon, an alarm went off on board, warning of an emergency. The mission could have been called off, but the software did exactly what it had been designed to do: it recognised that there was a problem with the hardware, restarted, and concentrated on the most important tasks. The spacecraft continued, and the landing went ahead.",
+        "E. Her achievement was officially recognised in 2016, when US President Barack Obama presented her with the Presidential Medal of Freedom. 'Our astronauts didn't have much time, but thankfully they had Margaret Hamilton,' he said. Looking back, Hamilton described her team as people who had 'no time to be beginners'."
+      ],
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "glossary": [
+        {
+          "w": "software",
+          "d": "the programs that tell a computer what to do"
+        },
+        {
+          "w": "meteorologist",
+          "d": "a scientist who studies the weather"
+        },
+        {
+          "w": "contract",
+          "d": "a written agreement to do a job, usually for money"
+        },
+        {
+          "w": "hardware",
+          "d": "the physical parts of a computer or machine, not the programs"
+        },
+        {
+          "w": "achievement",
+          "d": "something important that you succeed in doing after a lot of effort"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes how a problem during a mission was solved?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph explains how she first learned the skills she needed?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph mentions an award she received?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains why she wanted to work on the space project?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph gives information about her family?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about famous people in science. Your teacher has asked you to write an essay: 'People who work behind the scenes, such as programmers and engineers, deserve as much recognition as astronauts or sports stars. Do you agree?' Write about: 1. teamwork, 2. the media, 3. your own idea. Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian (UK)",
+          "url": "https://www.theguardian.com/science/2026/oct/07/margaret-hamilton-moon-computer-software"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/margaret-hamilton.jpg",
+        "alt": "A young woman standing next to a pile of printed computer code as tall as she is",
+        "caption": "Margaret Hamilton in 1969 with printouts of the Apollo software written by her team at MIT.",
+        "credit": "Adam Cuerden",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_-_restoration.jpg"
+      }
+    },
+    {
+      "id": "2026-10-08-world-bank-peru-growth",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B2",
+      "topic": "Economy and investment",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "World Bank: Peru's economy is growing faster than expected",
+      "standfirst": "A new report puts Peru second in Latin America for economic growth this year, thanks largely to copper and investment.",
+      "body": [
+        "The World Bank has become more optimistic about Peru's economy. In its latest report on Latin America and the Caribbean, published this month, it says Peru's gross domestic product (GDP) – the total value of everything the country produces – will grow by 3.2% this year. Back in April, the bank had predicted only 2.7%. For 2027, it expects growth of 3%.",
+        "If the forecast is correct, only one country in the region will grow faster than Peru this year: Paraguay, at 4.7%. Peru would be ahead of Ecuador (2.8%), Colombia (2.3%), Brazil and Argentina (both 2.1%), Mexico (1.4%) and Chile (0.8%).",
+        "According to the report, Peru is benefiting from private investment in copper and infrastructure, while spending by ordinary people is recovering steadily. Since its economy shrank in 2023, the country has kept growing by more than 3% a year, supported by copper exports. In most Latin American and Caribbean countries, people spending money in shops and on services is still the main force behind the economy this year. Peru and El Salvador are the notable exceptions: there, private investment is expected to play the leading role.",
+        "Across the region as a whole, the report describes 2026 as a year of steady resilience, with consumer spending acting as a reliable floor for economic activity. It also notes that, because the US dollar is no longer rising steadily as it did in 2024, central banks have more freedom to be patient and wait for data before changing their policies.",
+        "However, the good news comes with a warning. The World Bank says that Peru's progress in the medium term will depend on keeping its mining projects moving and on solving long-standing problems that hold the economy back. It also points to risks for the whole region, including tensions in global trade, unpredictable energy prices and the cost of services, which has been slow to come down."
+      ],
+      "glossary": [
+        {
+          "w": "optimistic",
+          "d": "expecting good things to happen"
+        },
+        {
+          "w": "forecast",
+          "d": "a statement about what is expected to happen in the future"
+        },
+        {
+          "w": "investment",
+          "d": "money that is put into a business or project to make a profit later"
+        },
+        {
+          "w": "infrastructure",
+          "d": "the basic systems a country needs, such as roads, ports, power and water"
+        },
+        {
+          "w": "exports",
+          "d": "goods that are sold to other countries"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "How has the World Bank's forecast for Peru changed since April?",
+          "options": [
+            "It has gone down from 3.2% to 2.7%.",
+            "It has stayed the same.",
+            "It has gone up from 2.7% to 3.2%.",
+            "It has gone up to 4.7%."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Which country is expected to grow faster than Peru this year?",
+          "options": [
+            "Chile",
+            "Ecuador",
+            "Brazil",
+            "Paraguay"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What makes Peru different from most countries in the region?",
+          "options": [
+            "Private investment is expected to be the main driver of its economy.",
+            "Spending in shops is falling quickly.",
+            "It no longer exports copper.",
+            "Its economy shrank this year."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "According to the report, what will Peru's progress in the medium term depend on?",
+          "options": [
+            "more spending in shops",
+            "finding new copper in the ground",
+            "selling more to Paraguay",
+            "its mining projects and solving long-standing problems"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Which of these is mentioned as a risk for the whole region?",
+          "options": [
+            "unpredictable energy prices",
+            "too many copper exports",
+            "faster growth in Paraguay",
+            "falling prices for services"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement in an international students' magazine: 'Jobs of the future in your country. Which industry will be most important in your country in ten years' time? Why should young people think about working in it?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-world-bank-raises-perus-economic-growth-forecast-to-32-for-this-year-1095042.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/world-bank-peru-growth.jpg",
+        "alt": "Big ships and cranes at a busy port on the coast of Peru",
+        "caption": "The port of Callao, near Lima, through which many of Peru's exports leave the country (earlier photo).",
+        "credit": "Quado678",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Puerto_de_Callao.jpg"
+      }
+    },
+    {
+      "id": "2026-10-08-gene-therapy-sight",
+      "section": "Health",
+      "country": "Switzerland · United States",
+      "flag": "🇨🇭",
+      "level": "C1",
+      "topic": "Medicine and genetics",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Light-sensitive cells give blind patients a glimpse of the world",
+      "standfirst": "A small trial suggests that a gene therapy built on this year's Nobel-winning science is safe — and can partly restore sight.",
+      "body": [
+        "Earlier this month, the Nobel Prize in Physiology or Medicine was awarded for a technique that switches nerve cells on and off using light. Now researchers have published evidence that the same idea can help blind people to see again, at least in part. The approach, known as optogenetic therapy, was first shown to work in a single patient in 2021; the new study, published in the New England Journal of Medicine, follows that patient and nine others.",
+        "All ten participants had advanced retinitis pigmentosa, a group of inherited disorders thought to affect more than 1.5 million people worldwide. In these conditions, the light-sensitive cells of the retina gradually stop working, but the ganglion cells, which carry visual information to the brain, decline more slowly. That makes them, in the words of co-author Dr José-Alain Sahel of the University of Pittsburgh Medical Center, \"good candidates for the therapy\".",
+        "The treatment consists of a single injection into the eye. A harmless, synthetic virus carries genetic instructions into a ring of surviving ganglion cells, which then begin to produce a protein that reacts to light. Patients wear special goggles that turn images of their surroundings into pulses of light; these activate the modified cells and allow the wearer to perceive a monochrome image. Crucially, the method works regardless of the exact genetic cause of a patient's sight loss.",
+        "The results are encouraging rather than miraculous. Only the eye with the worst vision was treated, and patients were followed for up to five years. There was a single severe eye-related side effect, which cleared up within minutes. Six of the ten showed meaningful gains in light sensitivity, and some, while wearing the goggles, could locate a door, find and touch a notebook or walk along a line; those who trained more tended to do better. They cannot yet recognise faces, however, because the treated cells form a ring around the fovea, the tiny pit responsible for sharp central vision.",
+        "Prof Botond Roska of the Institute of Molecular and Clinical Ophthalmology Basel, a lead author, hopes that high-resolution vision may be achievable within five to ten years. Prof Mark Hankins of the University of Oxford, who was not involved, summed up the progress: \"They're baby steps, but they're critical.\""
+      ],
+      "glossary": [
+        {
+          "w": "retina",
+          "d": "the layer at the back of the eye that receives light and sends signals to the brain"
+        },
+        {
+          "w": "inherited",
+          "d": "passed from parents to their children through their genes"
+        },
+        {
+          "w": "synthetic",
+          "d": "made by people in a laboratory, not found in nature"
+        },
+        {
+          "w": "side effect",
+          "d": "an extra, usually unpleasant, result of a medical treatment"
+        },
+        {
+          "w": "regardless of",
+          "d": "without being affected by something; whatever that thing is"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer mention the Nobel Prize at the start of the article?",
+          "options": [
+            "to suggest that the prize was awarded too early",
+            "to show that the therapy is based on science that has just been honoured",
+            "to explain why the trial was so large",
+            "to criticise the scientists who won it"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to the article, why are ganglion cells suitable for this therapy?",
+          "options": [
+            "They are the first cells the disease destroys.",
+            "They can produce light on their own.",
+            "They lose their function more slowly than the light-sensitive cells.",
+            "They are located in the brain, not in the eye."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the word 'Crucially' in paragraph 3 emphasise?",
+          "options": [
+            "that the treatment may help people whatever genetic fault caused their blindness",
+            "that the goggles are the most expensive part of the treatment",
+            "that the virus used is potentially dangerous",
+            "that only one eye can ever be treated"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "The phrase 'encouraging rather than miraculous' suggests that the writer",
+          "options": [
+            "is disappointed that the trial failed.",
+            "believes the patients can now see normally.",
+            "has doubts about the safety of the treatment.",
+            "regards the results as positive but limited."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why are the patients not yet able to recognise faces?",
+          "options": [
+            "They have not trained with the goggles for long enough.",
+            "The goggles can only show colours, not shapes.",
+            "The treated cells surround, rather than cover, the area that gives sharp central vision.",
+            "The injection damaged the fovea."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "How would you describe Prof Hankins' attitude to the study?",
+          "options": [
+            "dismissive",
+            "cautiously positive",
+            "wildly enthusiastic",
+            "openly confused"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a lecture on how money for medical research should be spent. The speaker discussed three areas: rare diseases, common diseases, and prevention. Write an essay discussing TWO of these areas, explaining which one should be given priority and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian (UK)",
+          "url": "https://www.theguardian.com/society/2026/oct/07/gene-therapy-can-partly-restore-sight-in-blind-people-researchers-reveal"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/gene-therapy-sight.jpg",
+        "alt": "A medical photo of the back of a human eye, orange with red blood vessels",
+        "caption": "A healthy retina, the layer at the back of the eye that the therapy works on.",
+        "credit": "Unknown author",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Fundus_photograph-normal_retina_EDA06.JPG"
+      }
+    },
+    {
+      "id": "2026-10-08-deep-sea-mining",
+      "section": "Environment",
+      "country": "Pacific Ocean",
+      "flag": "🌊",
+      "level": "C1",
+      "topic": "Oceans, minerals and technology",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Treasure on the seabed — or too good to be true?",
+      "standfirst": "Governments and companies are betting billions on mining the deep ocean. Some of the few people who have actually been down there have their doubts.",
+      "body": [
+        "Lying on the floor of the Pacific, around four kilometres below the surface, are countless black lumps somewhere between the size of a potato and a baseball. Known as polymetallic nodules, they have formed over millions of years in places such as the Clarion–Clipperton Zone, a vast area of the ocean that has been identified for possible mining. They contain nickel, cobalt, copper and manganese — critical minerals used to make batteries for phones and cars.",
+        "Unsurprisingly, the nodules have attracted enormous interest. Billions have been invested in exploration and research, partly because governments want supplies of critical minerals that do not depend on foreign suppliers, mainly China. The United States has moved to speed up seabed mining and, in August, announced plans to sell mining leases in waters it controls around the Marianas and American Samoa. Mining companies, meanwhile, argue that Pacific nations willing to open their waters could receive royalties worth billions.",
+        "Yet some of the very few people who have worked at such depths are sceptical. Rob McCallum, a divemaster who has explored all five oceans, including the Mariana Trench and the wreck of the Titanic, admits he is \"always worried when the message sounds too good to be true\". The difficulty, he explains, is pressure: hundreds of times greater than at the surface, it makes deep-sea engineering far more complicated and far more expensive.",
+        "The figures appear to support the doubters. Commercial deep-sea mining is not yet legal, as the International Seabed Authority is still finalising its rules, and no commercial-scale system exists. In 2022 the industry leader, The Metals Company, successfully tested a prototype that lifted more than 3,000 wet tonnes of nodules to the surface — only a fraction of the 1.5 million wet tonnes a year it has forecast as its initial production.",
+        "Victor Vescovo, an American investor who has piloted submersibles to the deepest points of all five oceans, considers such targets unrealistic. Offshore oil and gas operations, he points out, do not generally take place below four kilometres, so comparing the two industries is misleading. The Metals Company disagrees: offshore drilling, it says, has already reached about 3,600 metres, so deep-sea mining is not pushing technology much further."
+      ],
+      "glossary": [
+        {
+          "w": "critical minerals",
+          "d": "minerals that are very important for modern technology and whose supply could be at risk"
+        },
+        {
+          "w": "royalties",
+          "d": "payments made to the owner of something, such as land or water, for the right to use it"
+        },
+        {
+          "w": "sceptical",
+          "d": "having doubts about whether something is true or will work"
+        },
+        {
+          "w": "prototype",
+          "d": "the first model of a machine, made to test whether the design works"
+        },
+        {
+          "w": "fraction",
+          "d": "a very small part or amount of something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the main purpose of the article?",
+          "options": [
+            "to explain in detail how nodules are formed",
+            "to question whether deep-sea mining can deliver what is promised",
+            "to persuade readers to invest in mining companies",
+            "to describe the history of deep-sea exploration"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to paragraph 2, why are governments interested in the nodules?",
+          "options": [
+            "to reduce their dependence on foreign suppliers of minerals",
+            "to protect the ocean floor from damage",
+            "to build a new generation of submarines",
+            "to create jobs for professional divers"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Who are 'the doubters' in paragraph 4?",
+          "options": [
+            "The Metals Company and its investors",
+            "the governments of Pacific nations",
+            "people who, like McCallum, are sceptical about the industry",
+            "the International Seabed Authority"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What point does the writer make with the example of the 2022 test?",
+          "options": [
+            "It proves that deep-sea mining is already legal.",
+            "It shows that the company produced more than it had forecast.",
+            "It shows that the nodules have no commercial value.",
+            "The amount lifted was tiny compared with the planned production."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why does Vescovo think comparisons with oil and gas are misleading?",
+          "options": [
+            "Oil companies refuse to share their technology.",
+            "Oil and gas operations do not usually go as deep.",
+            "Oil and gas are worth more than nodules.",
+            "Oil platforms are not affected by water pressure."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "How does The Metals Company respond to its critics?",
+          "options": [
+            "It accepts that its targets are unrealistic.",
+            "It claims commercial-scale systems already exist.",
+            "It refuses to comment at all.",
+            "It argues that deep-sea mining is not much deeper than offshore drilling has already gone."
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (letter)",
+        "task": "An international environmental magazine has published an article in favour of mining the deep sea for the minerals needed for batteries. Write a letter to the editor responding to the article. Give your opinion on whether deep-sea mining should be allowed, and explain what you think should happen before any decision is made. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-07/is-the-deep-sea-mining-gold-rush-viable/107130150"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-08/deep-sea-mining.png",
+        "alt": "Dark round stones covering the sea floor, lit by an underwater robot",
+        "caption": "Metal-rich nodules on the deep seabed, seen by a NOAA underwater robot in the North Atlantic in 2021.",
+        "credit": "Unidentified NOAA photographer",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Deep_Discoverer_ferromanganese_nodules_North_Atlantic_2021.png"
+      }
+    }
+  ]
+}
