@@ -105,13 +105,30 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 .rev h4 { margin: 0 0 6px; font: 700 15px 'Source Sans 3', sans-serif; }
 .rev .g { display: inline-block; background: #2f9268; color: #fff; border-radius: 6px; padding: 0 8px; margin-left: 6px; }
 .rev ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; }
+.topr { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+#progView { padding: 18px 16px 40px; }
+.prog h2 { font-size: clamp(26px, 4vw, 34px); margin: 6px 0 4px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 14px 0; }
+.kpi { background: var(--paper); border-radius: 14px; padding: 14px 16px; box-shadow: 0 6px 18px rgba(60,40,10,.06); }
+.kpi b { display: block; font: 800 28px 'Literata', serif; }
+.kpi span { color: var(--soft); font-size: 13.5px; }
+.lvls { display: grid; gap: 10px; margin: 8px 0 18px; }
+.lvrow { display: grid; grid-template-columns: 54px minmax(0,1fr) 120px; gap: 10px; align-items: center; background: var(--paper); border-radius: 12px; padding: 10px 14px; }
+.lvrow .track { height: 12px; background: #e5e0d4; border-radius: 99px; overflow: hidden; }
+.lvrow .fill { height: 100%; background: var(--c); border-radius: 99px; }
+.lvrow small { color: var(--soft); text-align: right; }
+.tip2 { background: #fff8e6; border-left: 4px solid #d97d0d; border-radius: 10px; padding: 10px 14px; margin: 0 0 18px; }
+.hist { width: 100%; border-collapse: collapse; background: var(--paper); border-radius: 12px; overflow: hidden; font-size: 14.5px; }
+.hist th, .hist td { padding: 9px 10px; border-bottom: 1px solid #e5e0d4; text-align: left; vertical-align: top; }
+.hist th { font-size: 12.5px; color: var(--soft); }
+.histwrap { overflow-x: auto; }
 .foot { text-align: center; font-size: 13px; color: var(--soft); padding: 0 16px 40px; }
 </style>
 </head>
 <body>
 <header class="mast">
   <div class="wrap">
-    <div class="top"><a href="../" id="home">← Portal</a><label class="archive">Edition <select id="arch" aria-label="Choose edition"></select></label></div>
+    <div class="top"><a href="../" id="home">← Portal</a><span class="topr"><a href="#progress" id="progLink" hidden>📈 My progress</a><label class="archive">Edition <select id="arch" aria-label="Choose edition"></select></label></span></div>
     <h1 id="mast">The Nordic Times</h1>
     <div class="sub"><span id="dateTxt"></span><span id="issueTxt"></span><span>News for learners · A2 to C1</span><span id="sync" hidden></span></div>
   </div>
@@ -123,6 +140,7 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
   <div class="grid" id="grid"></div>
 </main>
 <main id="artView" hidden></main>
+<main id="progView" class="wrap" hidden></main>
 <p class="foot">Original articles written for our students from facts reported by news organisations around the world. Sources are listed under each story.</p>
 
 <script src="../school.js?v=d5a47dc5"></script>
@@ -205,7 +223,16 @@ var SYNC = (function(){
         .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error((d && d.detail) || r.status); return {marks:d.marks, student_note:d.student_note}; }); });
     });
   }
-  return {mode:mode, init:init, load:load, save:save, extra:extra};
+  /* Todo lo del alumno, de todas las ediciones (para «My progress»). */
+  function all(){
+    return init().then(function(ok){
+      if(!ok) return null;
+      if(mode === 'nis') return client.from('news_responses').select('issue_date,article_id,level,headline,score,total,checked_at,writing_words,submitted_at,grade,feedback,reviewed_at')
+        .eq('student_id', me.id).order('issue_date', {ascending:false}).then(function(r){ if(r.error) throw r.error; return r.data; });
+      return fetch(base() + '/news/mine', {headers:{Authorization:'Bearer ' + tok()}}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
+    });
+  }
+  return {mode:mode, init:init, load:load, save:save, extra:extra, all:all};
 })();
 function setSync(st){
   var el = $('sync'); if(SYNC.mode === 'none') return;
@@ -285,6 +312,7 @@ function start(){
     $('breaking').hidden = false;
     $('ticker').innerHTML = issue.breaking.map(esc).join('<i>●</i>');
   }
+  $('progLink').hidden = SYNC.mode === 'none';
   drawFilters(); route();
   window.addEventListener('hashchange', route);
   syncIssue();
@@ -322,10 +350,73 @@ function drawGrid(){
 }
 
 function route(){
-  var m = location.hash.match(/a=([\w-]+)/);
+  var prog = location.hash === '#progress';
+  var m = !prog && location.hash.match(/a=([\w-]+)/);
   var a = m && issue.articles.find(function(x){ return x.id === m[1]; });
-  $('front').hidden = !!a; $('artView').hidden = !a;
-  if(a){ drawArticle(a); window.scrollTo(0, 0); } else drawGrid();
+  $('front').hidden = !!a || prog; $('artView').hidden = !a; $('progView').hidden = !prog;
+  if(prog){ drawProgress(); window.scrollTo(0, 0); }
+  else if(a){ drawArticle(a); window.scrollTo(0, 0); } else drawGrid();
+}
+
+/* ---------- «My progress»: todo lo que el alumno ha hecho en el periódico ----------
+   Sale de su cuenta (news_responses / backend), no de este navegador. */
+function drawProgress(){
+  var v = $('progView');
+  v.innerHTML = '<div class="prog"><button class="back" onclick="location.hash=\'\'">← Back to the newspaper</button><p>Loading your progress…</p></div>';
+  SYNC.all().then(function(rows){
+    if(rows === null){ v.innerHTML = '<div class="prog"><button class="back" onclick="location.hash=\'\'">← Back to the newspaper</button><h2>My progress</h2><p>Sign in to your portal to see your progress. Your answers and writings are saved in your account.</p></div>'; return; }
+    rows = rows || [];
+    var hechas = rows.filter(function(r){ return r.checked_at && r.total; });
+    var media = hechas.length ? Math.round(hechas.reduce(function(s, r){ return s + r.score / r.total; }, 0) / hechas.length * 100) : null;
+    var escritos = rows.filter(function(r){ return r.submitted_at; });
+    var corregidos = escritos.filter(function(r){ return r.reviewed_at; });
+    var palabras = escritos.reduce(function(s, r){ return s + (r.writing_words || 0); }, 0);
+    /* Racha: días seguidos (hasta hoy o ayer) en que comprobó o entregó algo. */
+    var dias = {};
+    rows.forEach(function(r){ [r.checked_at, r.submitted_at].forEach(function(t){ if(t){ var d = new Date(t); dias[d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()] = 1; } }); });
+    var racha = 0, d = new Date();
+    var clave = function(x){ return x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate(); };
+    if(!dias[clave(d)]) d.setDate(d.getDate() - 1);
+    while(dias[clave(d)]){ racha++; d.setDate(d.getDate() - 1); }
+
+    var porNivel = LV.map(function(l){
+      var xs = hechas.filter(function(r){ return r.level === l; });
+      var p = xs.length ? Math.round(xs.reduce(function(s, r){ return s + r.score / r.total; }, 0) / xs.length * 100) : null;
+      return {l:l, n:xs.length, p:p};
+    });
+    /* Consejo: el nivel más alto con 3 o más artículos y media ≥ 80 % invita al siguiente;
+       por debajo del 60 % conviene afianzar ese nivel. */
+    var consejo = '';
+    for(var i = porNivel.length - 1; i >= 0; i--){
+      var x = porNivel[i];
+      if(x.n >= 3 && x.p >= 80 && i < LV.length - 1){ consejo = 'Great work at ' + x.l + ' (' + x.p + '% on ' + x.n + ' articles). Try the <b>' + LV[i + 1] + '</b> stories next!'; break; }
+      if(x.n >= 3 && x.p < 60){ consejo = 'At ' + x.l + ' your average is ' + x.p + '%. Read a few more ' + x.l + ' stories carefully before moving up.'; break; }
+    }
+    if(!hechas.length) consejo = 'Read a story at your level and press <b>Check answers</b>: your results will appear here.';
+
+    var hist = rows.slice().sort(function(a, b){ return a.issue_date < b.issue_date ? 1 : -1; }).map(function(r){
+      var p = r.checked_at && r.total ? Math.round(r.score / r.total * 100) : null;
+      var w = r.reviewed_at ? '✓ Marked' + (r.grade ? ' · <b>' + esc(r.grade) + '</b>' : '') : r.submitted_at ? 'Submitted · waiting for your teacher' : '';
+      return '<tr><td style="white-space:nowrap">' + esc(r.issue_date) + '</td><td><span class="lvl" style="background:' + (LVCOL[r.level] || 'var(--ink)') + ';color:#fff;padding:1px 7px;border-radius:5px;font-weight:700;font-size:12px">' + esc(r.level || '') + '</span></td>' +
+        '<td><a href="?d=' + esc(r.issue_date) + (new URLSearchParams(location.search).get('embed') === '1' ? '&embed=1' : '') + '#a=' + esc(r.article_id) + '">' + esc(r.headline || r.article_id) + '</a></td>' +
+        '<td>' + (p == null ? '<span style="color:var(--soft)">–</span>' : r.score + '/' + r.total + ' (' + p + '%)') + '</td><td>' + w + '</td></tr>';
+    }).join('');
+
+    v.innerHTML = '<div class="prog"><button class="back" onclick="location.hash=\'\'">← Back to the newspaper</button><h2>My progress</h2>' +
+      '<div class="kpis"><div class="kpi"><b>' + hechas.length + '</b><span>articles with checked answers</span></div>' +
+      '<div class="kpi"><b>' + (media == null ? '–' : media + '%') + '</b><span>average score</span></div>' +
+      '<div class="kpi"><b>' + escritos.length + '</b><span>writings submitted (' + palabras + ' words)</span></div>' +
+      '<div class="kpi"><b>' + corregidos.length + '</b><span>writings marked by your teacher</span></div>' +
+      '<div class="kpi"><b>' + racha + ' 🔥</b><span>day' + (racha === 1 ? '' : 's') + ' in a row</span></div></div>' +
+      (consejo ? '<div class="tip2">' + consejo + '</div>' : '') +
+      '<h3 style="margin:0 0 6px">By level</h3><div class="lvls">' + porNivel.map(function(x){
+        return '<div class="lvrow" style="--c:' + LVCOL[x.l] + '"><span class="lvl" style="background:' + LVCOL[x.l] + ';color:#fff;text-align:center;border-radius:5px;font-weight:700">' + x.l + '</span>' +
+          '<div class="track"><div class="fill" style="width:' + (x.p || 0) + '%"></div></div><small>' + (x.n ? x.p + '% · ' + x.n + ' article' + (x.n === 1 ? '' : 's') : 'not yet') + '</small></div>';
+      }).join('') + '</div>' +
+      '<h3 style="margin:0 0 6px">Everything you have done</h3>' +
+      (hist ? '<div class="histwrap"><table class="hist"><tr><th>Edition</th><th>Level</th><th>Story</th><th>Questions</th><th>Writing</th></tr>' + hist + '</table></div>'
+            : '<p style="color:var(--soft)">Nothing yet. Open a story, answer the questions and press Check answers.</p>') + '</div>';
+  }).catch(function(){ v.innerHTML = '<div class="prog"><button class="back" onclick="location.hash=\'\'">← Back to the newspaper</button><p>Your progress could not be loaded. Check your connection and try again.</p></div>'; });
 }
 
 /* ---------- artículo ---------- */
