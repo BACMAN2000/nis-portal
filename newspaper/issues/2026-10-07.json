@@ -112,7 +112,15 @@
           "name": "BBC News",
           "url": "https://www.bbc.com/news/articles/c3y0enr9e078o"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/marathon-bike.jpg",
+        "alt": "Runners on a street during the Berlin Marathon",
+        "caption": "Runners in the Berlin Marathon (2015).",
+        "credit": "Denis Barthel",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Berlin-Marathon_2015_Runners_14.jpg"
+      }
     },
     {
       "id": "2026-10-07-machu-picchu-tickets",
@@ -193,7 +201,15 @@
           "name": "Andina (Peru)",
           "url": "https://andina.pe/ingles/noticia-perus-culture-min-the-issue-of-mafias-in-machu-picchu-ticket-sales-is-over-1094876.aspx"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/machu-picchu-tickets.jpg",
+        "alt": "The ancient stone houses of Machu Picchu with green mountains behind",
+        "caption": "Machu Picchu, the Inca city near Cusco.",
+        "credit": "Diego Delso",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_Per%C3%BA,_2015-07-30,_DD_47.JPG"
+      }
     },
     {
       "id": "2026-10-07-platypus-fossil",
@@ -304,7 +320,15 @@
           "name": "ABC News (Australia)",
           "url": "https://www.abc.net.au/news/science/2026-10-08/fossil-of-platypus-like-mammal-relative-found-in-china/107234186"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/platypus-fossil.jpg",
+        "alt": "A platypus swimming in a mountain stream",
+        "caption": "A modern platypus. Megacauda was about the same size.",
+        "credit": "Maria Grist",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Platypus_swimming.jpg"
+      }
     },
     {
       "id": "2026-10-07-el-nino-satellites",
@@ -415,7 +439,15 @@
           "name": "Andina (Peru)",
           "url": "https://andina.pe/ingles/noticia-peru-space-agency-strengthens-satellite-imagery-use-ahead-of-nino-phenomenon-1094271.aspx"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/el-nino-satellites.png",
+        "alt": "World map showing warm water in the Pacific Ocean near South America",
+        "caption": "Satellite data: warmer-than-usual water (red) in the Pacific during the 2015 El Niño.",
+        "credit": "NOAA",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:El_Ni%C3%B1o_in_November_2015.png"
+      }
     },
     {
       "id": "2026-10-07-golden-week-australia",
@@ -533,7 +565,15 @@
           "name": "ABC News (Australia)",
           "url": "https://www.abc.net.au/news/2026-10-07/chinese-tourist-visit-australia-in-golden-week/107236690"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/golden-week-australia.jpg",
+        "alt": "A white sand beach with turquoise water in the Whitsunday Islands",
+        "caption": "Whitehaven Beach in the Whitsunday Islands, Queensland, Australia.",
+        "credit": "Slug69",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Whitehaven_Beach,_Whitsunday_Island,_Queensland.jpg"
+      }
     },
     {
       "id": "2026-10-07-indonesia-haze",
@@ -648,7 +688,15 @@
           "name": "BBC News",
           "url": "https://www.bbc.com/news/world"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/indonesia-haze.jpg",
+        "alt": "Satellite photo of grey smoke covering the island of Borneo",
+        "caption": "Smoke from peat fires over Borneo, seen from space during an earlier fire season (2019).",
+        "credit": "NASA image by Joshua Stevens (LANCE MODIS Rapid Response)",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_2019_Southeast_Asian_haze_in_Borneo_-_20190915.jpg"
+      }
     },
     {
       "id": "2026-10-07-nobel-chemistry",
@@ -771,7 +819,15 @@
           "name": "BBC News",
           "url": "https://www.bbc.com/news/articles/c6ly038jg0d4o"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/nobel-chemistry.jpg",
+        "alt": "Diagram of a left-handed and a right-handed amino acid, mirror images like a pair of hands",
+        "caption": "Many amino acids exist in a left-handed and a right-handed form, like our hands.",
+        "credit": "NASA's Scientific Visualization Studio - NASA/Nicola Fox, Smithsonian Institution/Timothy McCoy, Natural History Museum,",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Discoveries_from_Asteroid_Bennu-_Media_Briefing_Graphics_(SVS14772_-_NASA_Chiral_Molecules_V2).jpg"
+      }
     },
     {
       "id": "2026-10-07-ai-digital-humans",
@@ -882,7 +938,15 @@
           "name": "ABC News (Australia)",
           "url": "https://www.abc.net.au/news/2026-10-07/china-trials-identity-card-for-ai-digital-humans/107232848"
         }
-      ]
+      ],
+      "image": {
+        "src": "img/2026-10-07/ai-digital-humans.jpg",
+        "alt": "The lit-up buildings of the Bund in Shanghai at night",
+        "caption": "The Bund in Shanghai, where Yuri performed in a concert hall.",
+        "credit": "A Chinese ID",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:The_Bund_at_night,_Shanghai,_Aug_10_2023.jpg"
+      }
     }
   ]
 }

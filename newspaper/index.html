@@ -91,6 +91,16 @@ a { color: var(--navy); }
 textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; resize: vertical; color: var(--ink); background: #fbfaf6; }
 .count { font-size: 13px; color: var(--soft); }
 .src { font-size: 13px; color: var(--soft); margin-top: 22px; }
+#sync { letter-spacing: .04em; }
+#sync.ok { color: #2f9268; } #sync.err { color: var(--red); }
+.subm { font-size: 13px; font-weight: 700; color: #2f9268; }
+.btn:disabled { opacity: .5; cursor: default; }
+.ph { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; background: #e2dccf; display: block; }
+.lead .ph { margin-top: 12px; }
+.fig { margin: 4px 0 18px; }
+.fig img { width: 100%; max-height: 440px; object-fit: cover; border-radius: 12px; display: block; background: #e2dccf; }
+.fig figcaption { font-size: 13.5px; color: var(--soft); margin-top: 6px; }
+.fig figcaption small { display: block; font-size: 12px; opacity: .85; }
 .foot { text-align: center; font-size: 13px; color: var(--soft); padding: 0 16px 40px; }
 </style>
 </head>
@@ -99,7 +109,7 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
   <div class="wrap">
     <div class="top"><a href="../" id="home">← Portal</a><label class="archive">Edition <select id="arch" aria-label="Choose edition"></select></label></div>
     <h1 id="mast">The Nordic Times</h1>
-    <div class="sub"><span id="dateTxt"></span><span id="issueTxt"></span><span>News for learners · A2 to C1</span></div>
+    <div class="sub"><span id="dateTxt"></span><span id="issueTxt"></span><span>News for learners · A2 to C1</span><span id="sync" hidden></span></div>
   </div>
 </header>
 <div class="breaking" id="breaking" hidden><div class="wrap"><b>BREAKING</b><div class="ticker"><span id="ticker"></span></div></div></div>
@@ -112,6 +122,8 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 <p class="foot">Original articles written for our students from facts reported by news organisations around the world. Sources are listed under each story.</p>
 
 <script src="../school.js?v=d5a47dc5"></script>
+<script src="../config.js?v=720edc7d"></script>
+<script>window.NEWS_BACKEND = 'nis';</script>
 <script>
 (function(){
 'use strict';
@@ -123,6 +135,107 @@ function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(
 function store(k, v){ try { if(v === undefined) return JSON.parse(localStorage.getItem('nisnews:' + k) || 'null'); localStorage.setItem('nisnews:' + k, JSON.stringify(v)); } catch(e){ return null; } }
 function fmtDate(d){ var p = d.split('-'); return new Date(+p[0], p[1]-1, +p[2]).toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long', year:'numeric'}); }
 function getJSON(u){ return fetch(u, {cache:'no-cache'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }); }
+
+/* ---------- guardado en la cuenta del alumno ----------
+   NIS y Cohasset Schools: tabla news_responses de Supabase (una fila por alumno
+   y artículo). cohasset.pe: backend /news (la copia cambia NEWS_BACKEND).
+   Embebido en el portal se usa el cliente de la ventana padre: config.js
+   memoriza createClient, así que dos clientes no renuevan el token a la vez. */
+var SYNC = (function(){
+  var mode = window.NEWS_BACKEND || 'none', ready = null, me = null, client = null;
+  function lib(){ try { if(window.parent !== window && window.parent.supabase && window.parent.supabase.createClient) return window.parent.supabase; } catch(e){} return window.supabase; }
+  function sdk(){ return new Promise(function(res){
+    if(lib() && lib().createClient) return res();
+    var s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4';
+    s.onload = s.onerror = function(){ res(); }; document.head.appendChild(s);
+  }); }
+  function base(){ var h = location.hostname; if(h === 'localhost' || h === '127.0.0.1') return 'http://localhost:8000'; try { return (localStorage.getItem('bm_url') || '/api').replace(/\/$/, ''); } catch(e){ return '/api'; } }
+  function tok(){ try { return localStorage.getItem('cohasset_token') || localStorage.getItem('bm_token') || ''; } catch(e){ return ''; } }
+  function init(){
+    if(ready) return ready;
+    if(mode === 'nis') ready = sdk().then(function(){
+      var L = lib(), cfg = window.NIS_CONFIG; if(!L || !L.createClient || !cfg) return false;
+      client = L.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
+      return client.auth.getSession().then(function(r){ me = r && r.data && r.data.session ? r.data.session.user : null; return !!me; }, function(){ return false; });
+    });
+    else if(mode === 'cohasset') ready = Promise.resolve(!!tok());
+    else ready = Promise.resolve(false);
+    return ready;
+  }
+  function load(date){
+    return init().then(function(ok){
+      if(!ok) return null;
+      if(mode === 'nis') return client.from('news_responses').select('article_id,answers,score,total,writing,submitted_at').eq('issue_date', date).eq('student_id', me.id)
+        .then(function(r){ if(r.error) throw r.error; return r.data; });
+      return fetch(base() + '/news/mine?issue_date=' + date, {headers:{Authorization:'Bearer ' + tok()}}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
+    });
+  }
+  function save(row){
+    return init().then(function(ok){
+      if(!ok) return {ok:false, why:'signin'};
+      if(mode === 'nis'){
+        var now = new Date().toISOString(), p = {student_id:me.id, issue_date:row.issue_date, article_id:row.article_id, level:row.level, headline:row.headline, updated_at:now};
+        if(row.answers) p.answers = row.answers;
+        if(row.checked){ p.score = row.score; p.total = row.total; p.checked_at = now; }
+        if(row.writing != null){ p.writing = row.writing; p.writing_words = (row.writing.trim().match(/\S+/g) || []).length; }
+        if(row.submit) p.submitted_at = now;
+        return client.from('news_responses').upsert(p, {onConflict:'student_id,article_id'}).select('submitted_at').maybeSingle()
+          .then(function(r){ return r.error ? {ok:false, why:r.error.message} : {ok:true, data:r.data}; });
+      }
+      return fetch(base() + '/news/responses', {method:'PUT', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + tok()}, body:JSON.stringify(row)})
+        .then(function(r){ return r.json().then(function(d){ return r.ok ? {ok:true, data:d} : {ok:false, why:(d && d.detail) || r.status}; }); });
+    }).catch(function(e){ return {ok:false, why:String(e && e.message || e)}; });
+  }
+  return {mode:mode, init:init, load:load, save:save};
+})();
+function setSync(st){
+  var el = $('sync'); if(SYNC.mode === 'none') return;
+  el.hidden = false;
+  el.className = st === 'saved' ? 'ok' : (st === 'error' ? 'err' : '');
+  el.textContent = {saving:'Saving…', saved:'✓ Saved to your account', signin:'Sign in to save your work', error:'Not saved — check your connection'}[st] || '';
+}
+var pend = {}, timers = {};
+/* Junta lo pendiente de un artículo y lo sube tras una pausa: marcar diez
+   opciones seguidas es una sola petición, y «checked»/«submit» no se pierden. */
+function push(a, extra, wait){
+  var k = a.id;
+  store('dirty:' + k, true); setSync('saving');
+  pend[k] = Object.assign(pend[k] || {issue_date:issue.date, article_id:k, level:a.level, headline:a.headline}, extra);
+  clearTimeout(timers[k]);
+  timers[k] = setTimeout(function(){
+    var p = pend[k]; delete pend[k];
+    SYNC.save(p).then(function(r){
+      if(r.ok){
+        if(!pend[k]) store('dirty:' + k, null);
+        if(r.data && r.data.submitted_at) store('sub:' + k, r.data.submitted_at);
+        setSync('saved');
+      } else setSync(r.why === 'signin' ? 'signin' : 'error');
+      if(window._newsAfterSave) window._newsAfterSave(k);
+    });
+  }, wait || 0);
+}
+/* Al abrir: lo de la cuenta rellena este equipo, salvo lo que aquí no se
+   llegó a subir, que se sube ahora. Nunca se tira nada. */
+function syncIssue(){
+  SYNC.load(issue.date).then(function(rows){
+    if(rows === null){ setSync('signin'); return; }
+    var byId = {}; (rows || []).forEach(function(r){ byId[r.article_id] = r; });
+    issue.articles.forEach(function(a){
+      var r = byId[a.id];
+      if(store('dirty:' + a.id)){
+        var x = {answers:store('ans:' + a.id) || {}, writing:store('wr:' + a.id) || ''}, sc = store('score:' + a.id);
+        if(sc){ x.score = sc.ok; x.total = sc.n; x.checked = true; }
+        push(a, x, 0);
+      } else if(r){
+        if(r.answers) store('ans:' + a.id, r.answers);
+        if(r.score != null) store('score:' + a.id, {ok:r.score, n:r.total});
+        if(r.writing != null) store('wr:' + a.id, r.writing);
+        store('sub:' + a.id, r.submitted_at || null);
+      }
+    });
+    setSync('saved'); route();
+  }).catch(function(){ setSync('error'); });
+}
 
 /* ---------- arranque: archivo de números ---------- */
 getJSON('issues/index.json').then(function(ix){
@@ -153,6 +266,7 @@ function start(){
   }
   drawFilters(); route();
   window.addEventListener('hashchange', route);
+  syncIssue();
 }
 
 /* ---------- portada ---------- */
@@ -171,6 +285,8 @@ function drawFilters(){
   };
   drawGrid();
 }
+function ph(a){ return a.image ? '<img class="ph" src="' + esc(a.image.src) + '" alt="' + esc(a.image.alt) + '" loading="lazy">' : ''; }
+function credit(im){ return 'Photo: ' + esc(im.credit) + ' · <a href="' + esc(im.link) + '" target="_blank" rel="noopener">' + esc(im.license) + ', Wikimedia Commons</a>'; }
 function done(a){ var s = store('score:' + a.id); return s ? ' · ✓ ' + s.ok + '/' + s.n : ''; }
 function drawGrid(){
   var arts = issue.articles.filter(function(a){ return (fLevel === 'All' || a.level === fLevel) && (fSec === 'All' || a.section === fSec); });
@@ -178,8 +294,8 @@ function drawGrid(){
   $('grid').innerHTML = arts.map(function(a, i){
     var lead = i === 0 && fLevel === 'All' && fSec === 'All';
     var meta = '<div class="meta"><span class="lvl">' + a.level + '</span><span class="sec">' + esc(a.section) + '</span><span>' + a.flag + ' ' + esc(a.country) + '</span><span class="sec">' + esc(done(a)) + '</span></div>';
-    if(lead) return '<button class="card lead" style="--c:' + LVCOL[a.level] + '" data-id="' + a.id + '"><div>' + meta + '<h2>' + esc(a.headline) + '</h2></div><div><p class="first">' + esc(a.standfirst) + '</p><p>' + esc(a.body[0]) + '</p><div class="exam">' + esc(a.topic) + ' · ' + esc(a.exam) + '</div></div></button>';
-    return '<button class="card" style="--c:' + LVCOL[a.level] + '" data-id="' + a.id + '">' + meta + '<h2>' + esc(a.headline) + '</h2><p>' + esc(a.standfirst) + '</p><div class="exam">' + esc(a.topic) + ' · ' + esc(a.exam) + '</div></button>';
+    if(lead) return '<button class="card lead" style="--c:' + LVCOL[a.level] + '" data-id="' + a.id + '"><div>' + meta + '<h2>' + esc(a.headline) + '</h2>' + ph(a) + '</div><div><p class="first">' + esc(a.standfirst) + '</p><p>' + esc(a.body[0]) + '</p><div class="exam">' + esc(a.topic) + ' · ' + esc(a.exam) + '</div></div></button>';
+    return '<button class="card" style="--c:' + LVCOL[a.level] + '" data-id="' + a.id + '">' + ph(a) + meta + '<h2>' + esc(a.headline) + '</h2><p>' + esc(a.standfirst) + '</p><div class="exam">' + esc(a.topic) + ' · ' + esc(a.exam) + '</div></button>';
   }).join('');
   $('grid').onclick = function(e){ var c = e.target.closest('.card'); if(c) location.hash = 'a=' + c.dataset.id; };
 }
@@ -216,11 +332,12 @@ function drawArticle(a){
     '<button class="back" id="back">← All stories</button>' +
     '<div class="meta"><span class="lvl">' + a.level + '</span><span class="sec">' + esc(a.section) + '</span><span>' + a.flag + ' ' + esc(a.country) + '</span><span class="sec">· ' + esc(a.topic) + '</span></div>' +
     '<h2>' + esc(a.headline) + '</h2><p class="stand">' + esc(a.standfirst) + '</p>' +
+    (a.image ? '<figure class="fig"><img src="' + esc(a.image.src) + '" alt="' + esc(a.image.alt) + '"><figcaption>' + esc(a.image.caption) + '<small>' + credit(a.image) + '</small></figcaption></figure>' : '') +
     '<div class="body">' + a.body.map(function(p){ return '<p>' + glossed(p, a.glossary) + '</p>'; }).join('') + '</div>' +
     '<section class="box"><h3>Key words</h3><ul class="words">' + a.glossary.map(function(g){ return '<li><b>' + esc(g.w) + '</b> — ' + esc(g.d) + '</li>'; }).join('') + '</ul></section>' +
     '<section class="box" id="quiz"><h3>Check your understanding</h3><div class="tag">' + esc(a.exam) + '</div>' + (a.instructions ? '<p>' + esc(a.instructions) + '</p>' : '') + qs +
       '<div class="actions"><button class="btn" id="check">Check answers</button><button class="btn ghost" id="reset">Try again</button><span class="score" id="score" aria-live="polite"></span></div></section>' +
-    (a.writing ? '<section class="box"><h3>Writing</h3><div class="tag">' + esc(a.writing.exam) + '</div><p>' + esc(a.writing.task) + '</p><textarea id="wr" aria-label="Your writing"></textarea><div class="count" id="wc"></div></section>' : '') +
+    (a.writing ? '<section class="box"><h3>Writing</h3><div class="tag">' + esc(a.writing.exam) + '</div><p>' + esc(a.writing.task) + '</p><textarea id="wr" aria-label="Your writing"></textarea><div class="actions"><span class="count" id="wc"></span><button class="btn" id="hand">Submit writing</button><span class="subm" id="subm" aria-live="polite"></span></div></section>' : '') +
     '<p class="src">Sources: ' + a.sources.map(function(s){ return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>'; }).join(' · ') + '</p>';
 
   $('back').onclick = function(){ location.hash = ''; };
@@ -229,6 +346,7 @@ function drawArticle(a){
       var b = e.target.closest('.opt'); if(!b) return;
       qe.querySelectorAll('.opt').forEach(function(o){ o.setAttribute('aria-pressed', o === b); o.classList.remove('ok', 'ko'); });
       var q = a.questions[+qe.dataset.i]; saved[q.id] = b.dataset.v; store('ans:' + a.id, saved);
+      push(a, {answers:saved}, 800);
     };
   });
   $('check').onclick = function(){
@@ -244,13 +362,18 @@ function drawArticle(a){
     });
     $('score').textContent = ok + ' / ' + a.questions.length;
     store('score:' + a.id, {ok: ok, n: a.questions.length});
+    push(a, {answers:saved, score:ok, total:a.questions.length, checked:true}, 0);
   };
-  $('reset').onclick = function(){ saved = {}; store('ans:' + a.id, saved); store('score:' + a.id, null); drawArticle(a); };
+  $('reset').onclick = function(){ saved = {}; store('ans:' + a.id, saved); store('score:' + a.id, null); push(a, {answers:{}}, 0); drawArticle(a); };
   var wr = $('wr');
   if(wr){
-    var wc = function(){ var n = (wr.value.trim().match(/\S+/g) || []).length; $('wc').textContent = n + ' words'; };
-    wr.value = store('wr:' + a.id) || ''; wc();
-    wr.oninput = function(){ store('wr:' + a.id, wr.value); wc(); };
+    var showSub = function(){ var t = store('sub:' + a.id); $('subm').textContent = t ? '✓ Submitted ' + new Date(t).toLocaleString('en-GB', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'}) : ''; $('hand').textContent = t ? 'Submit again' : 'Submit writing'; };
+    var wc = function(){ var n = (wr.value.trim().match(/\S+/g) || []).length; $('wc').textContent = n + ' words'; $('hand').disabled = !n; };
+    wr.value = store('wr:' + a.id) || ''; wc(); showSub();
+    wr.oninput = function(){ store('wr:' + a.id, wr.value); wc(); push(a, {writing:wr.value}, 1500); };
+    $('hand').hidden = SYNC.mode === 'none';
+    $('hand').onclick = function(){ $('subm').textContent = 'Sending…'; push(a, {writing:wr.value, submit:true}, 0); };
+    window._newsAfterSave = function(k){ if(k === a.id && $('subm')) showSub(); };
   }
   /* definiciones al pulsar la palabra subrayada */
   var tip = null;

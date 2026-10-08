@@ -18,6 +18,8 @@ COH = pathlib.Path(r'C:\Projects\cohasset-community\repo\newspaper')
 def pagina_cohasset(html):
     cambios = [
         ('<script src="../school.js?v=', None),            # se quita la línea entera
+        ('<script src="../config.js?v=', None),            # la Supabase de NIS no va en cohasset.pe
+        ("window.NEWS_BACKEND = 'nis';", "window.NEWS_BACKEND = 'cohasset';"),   # guarda en el backend /news
         ("'The Nordic Times'", "'The Cohasset Times'"),
         ('<title>The Nordic Times</title>', '<title>The Cohasset Times</title>'),
         ('<h1 id="mast">The Nordic Times</h1>', '<h1 id="mast">The Cohasset Times</h1>'),
@@ -39,6 +41,9 @@ def main():
     objetivo = {COH / 'index.html': pagina_cohasset((NIS / 'index.html').read_text(encoding='utf-8')).encode('utf-8')}
     for f in sorted((NIS / 'issues').glob('*.json')):
         objetivo[COH / 'issues' / f.name] = f.read_bytes()
+    for f in sorted((NIS / 'img').rglob('*')):        # imágenes de Commons de cada número
+        if f.is_file():
+            objetivo[COH / f.relative_to(NIS)] = f.read_bytes()
     for destino, contenido in objetivo.items():
         if destino.exists() and destino.read_bytes() == contenido:
             continue
