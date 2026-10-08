@@ -127,6 +127,7 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 
 <script src="../school.js?v=d5a47dc5"></script>
 <script src="../config.js?v=720edc7d"></script>
+<script src="marks.js?v=d782d633"></script>
 <script>window.NEWS_BACKEND = 'nis';</script>
 <script>
 (function(){
@@ -169,7 +170,7 @@ var SYNC = (function(){
   function load(date){
     return init().then(function(ok){
       if(!ok) return null;
-      if(mode === 'nis') return client.from('news_responses').select('article_id,answers,score,total,writing,submitted_at,grade,feedback,criteria,reviewed_at').eq('issue_date', date).eq('student_id', me.id)
+      if(mode === 'nis') return client.from('news_responses').select('id,article_id,answers,score,total,writing,submitted_at,grade,feedback,criteria,reviewed_at,marks,student_note').eq('issue_date', date).eq('student_id', me.id)
         .then(function(r){ if(r.error) throw r.error; return r.data; });
       return fetch(base() + '/news/mine?issue_date=' + date, {headers:{Authorization:'Bearer ' + tok()}}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
     });
@@ -183,14 +184,28 @@ var SYNC = (function(){
         if(row.checked){ p.score = row.score; p.total = row.total; p.checked_at = now; }
         if(row.writing != null){ p.writing = row.writing; p.writing_words = (row.writing.trim().match(/\S+/g) || []).length; }
         if(row.submit) p.submitted_at = now;
-        return client.from('news_responses').upsert(p, {onConflict:'student_id,article_id'}).select('submitted_at').maybeSingle()
+        return client.from('news_responses').upsert(p, {onConflict:'student_id,article_id'}).select('id,submitted_at').maybeSingle()
           .then(function(r){ return r.error ? {ok:false, why:r.error.message} : {ok:true, data:r.data}; });
       }
       return fetch(base() + '/news/responses', {method:'PUT', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + tok()}, body:JSON.stringify(row)})
         .then(function(r){ return r.json().then(function(d){ return r.ok ? {ok:true, data:d} : {ok:false, why:(d && d.detail) || r.status}; }); });
     }).catch(function(e){ return {ok:false, why:String(e && e.message || e)}; });
   }
-  return {mode:mode, init:init, load:load, save:save};
+  /* Tachaduras y reflexión: van por RPC en NIS (el alumno no escribe esas
+     columnas directamente) y por /writing/pieces/n<id> en cohasset.pe. */
+  function extra(rowId, kind, value){
+    return init().then(function(ok){
+      if(!ok) return Promise.reject(new Error('Sign in to save'));
+      if(mode === 'nis'){
+        var call = kind === 'marks' ? client.rpc('news_marks', {p_id:rowId, p_marks:value}) : client.rpc('news_note', {p_id:rowId, p_note:value});
+        return call.then(function(r){ if(r.error) throw r.error; return r.data; });
+      }
+      return fetch(base() + '/writing/pieces/n' + rowId + '/' + (kind === 'marks' ? 'marks' : 'note'), {method:'PUT', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + tok()},
+        body:JSON.stringify(kind === 'marks' ? {marks:value} : {note:value})})
+        .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error((d && d.detail) || r.status); return {marks:d.marks, student_note:d.student_note}; }); });
+    });
+  }
+  return {mode:mode, init:init, load:load, save:save, extra:extra};
 })();
 function setSync(st){
   var el = $('sync'); if(SYNC.mode === 'none') return;
@@ -211,7 +226,7 @@ function push(a, extra, wait){
     SYNC.save(p).then(function(r){
       if(r.ok){
         if(!pend[k]) store('dirty:' + k, null);
-        if(r.data && r.data.submitted_at) store('sub:' + k, r.data.submitted_at);
+        if(r.data && r.data.submitted_at){ store('sub:' + k, r.data.submitted_at); if(p.submit){ store('wrsub:' + k, p.writing); if(r.data.id) store('rid:' + k, r.data.id); } }
         setSync('saved');
       } else setSync(r.why === 'signin' ? 'signin' : 'error');
       if(window._newsAfterSave) window._newsAfterSave(k);
@@ -236,6 +251,7 @@ function syncIssue(){
         if(r.writing != null) store('wr:' + a.id, r.writing);
         store('sub:' + a.id, r.submitted_at || null);
       }
+      if(r){ store('rid:' + a.id, r.id); store('wrsub:' + a.id, r.submitted_at ? r.writing : null); store('marks:' + a.id, r.marks || []); store('note:' + a.id, r.student_note || ''); }
       store('rev:' + a.id, r && r.reviewed_at ? {grade:r.grade, feedback:r.feedback, criteria:r.criteria || {}, at:r.reviewed_at} : null);
     });
     setSync('saved'); route();
@@ -322,6 +338,29 @@ function glossed(text, gl){
   });
   return out;
 }
+/* El texto entregado con las tachaduras del profesor (y las del alumno), y su
+   reflexión sobre la corrección. Solo cuando hay algo entregado y guardado en
+   su cuenta. */
+function drawMarks(a, rv){
+  var box = $('markBox'), rid = store('rid:' + a.id), txt = store('wrsub:' + a.id), marks = store('marks:' + a.id) || [];
+  if(!box) return;
+  if(!rid || !txt || !window.NewsMarks || (!rv && !marks.length)){ box.innerHTML = ''; return; }
+  box.innerHTML = '<h4 style="margin:16px 0 6px;font:700 15px \'Source Sans 3\',sans-serif">Your submitted text, marked</h4><div id="markTxt"></div>' +
+    (rv ? '<label for="noteTx" style="display:block;margin-top:12px;font-weight:700">What will you do differently next time?</label>' +
+      '<textarea id="noteTx" maxlength="4000" style="min-height:80px" placeholder="Read the feedback and the marks, then write your reflection."></textarea>' +
+      '<div class="actions"><button class="btn ghost" id="noteSave">Save my reflection</button><span class="subm" id="noteMsg"></span></div>' : '');
+  NewsMarks.render($('markTxt'), txt, marks, {editable:true, by:'student', onSave:function(m){
+    return SYNC.extra(rid, 'marks', m).then(function(d){ store('marks:' + a.id, d.marks || m); });
+  }});
+  if(rv){
+    $('noteTx').value = store('note:' + a.id) || '';
+    $('noteSave').onclick = function(){
+      $('noteMsg').textContent = 'Saving…';
+      SYNC.extra(rid, 'note', $('noteTx').value.trim()).then(function(d){ store('note:' + a.id, d.student_note || ''); $('noteMsg').textContent = '✓ Saved'; },
+        function(e){ $('noteMsg').textContent = 'Not saved: ' + (e && e.message || e); });
+    };
+  }
+}
 function drawArticle(a){
   var v = $('artView'), saved = store('ans:' + a.id) || {};
   var tf = {T:'True', F:'False', NS:"Doesn't say"};
@@ -342,7 +381,7 @@ function drawArticle(a){
     '<section class="box"><h3>Key words</h3><ul class="words">' + a.glossary.map(function(g){ return '<li><b>' + esc(g.w) + '</b> — ' + esc(g.d) + '</li>'; }).join('') + '</ul></section>' +
     '<section class="box" id="quiz"><h3>Check your understanding</h3><div class="tag">' + esc(a.exam) + '</div>' + (a.instructions ? '<p>' + esc(a.instructions) + '</p>' : '') + qs +
       '<div class="actions"><button class="btn" id="check">Check answers</button><button class="btn ghost" id="reset">Try again</button><span class="score" id="score" aria-live="polite"></span></div></section>' +
-    (a.writing ? '<section class="box"><h3>Writing</h3><div class="tag">' + esc(a.writing.exam) + '</div><p>' + esc(a.writing.task) + '</p><textarea id="wr" aria-label="Your writing"></textarea><div class="actions"><span class="count" id="wc"></span><button class="btn" id="hand">Submit writing</button><span class="subm" id="subm" aria-live="polite"></span></div><div id="revBox"></div></section>' : '') +
+    (a.writing ? '<section class="box"><h3>Writing</h3><div class="tag">' + esc(a.writing.exam) + '</div><p>' + esc(a.writing.task) + '</p><textarea id="wr" aria-label="Your writing"></textarea><div class="actions"><span class="count" id="wc"></span><button class="btn" id="hand">Submit writing</button><span class="subm" id="subm" aria-live="polite"></span></div><div id="revBox"></div><div id="markBox"></div></section>' : '') +
     '<p class="src">Sources: ' + a.sources.map(function(s){ return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>'; }).join(' · ') + '</p>';
 
   $('back').onclick = function(){ location.hash = ''; };
@@ -380,6 +419,7 @@ function drawArticle(a){
     $('hand').onclick = function(){ $('subm').textContent = 'Sending…'; push(a, {writing:wr.value, submit:true, task:a.writing.exam + ' — ' + a.writing.task}, 0); };
     window._newsAfterSave = function(k){ if(k === a.id && $('subm')) showSub(); };
     var rv = store('rev:' + a.id), CRIT = {content:'Content', communicative:'Communicative achievement', organisation:'Organisation', language:'Language', task:'Task', grammar:'Grammar', vocab:'Vocabulary', clarity:'Clarity'};
+    drawMarks(a, rv);
     if(rv) $('revBox').innerHTML = '<div class="rev"><h4>Your teacher\'s feedback' + (rv.grade ? '<span class="g">' + esc(rv.grade) + '</span>' : '') + '</h4>' +
       (rv.feedback ? '<p style="margin:0">' + esc(rv.feedback) + '</p>' : '') +
       '<ul>' + Object.keys(CRIT).filter(function(k){ return rv.criteria[k] != null; }).map(function(k){ return '<li>' + CRIT[k] + ': <b>' + esc(rv.criteria[k]) + (typeof rv.criteria[k] === 'number' ? '/5' : '') + '</b></li>'; }).join('') + '</ul></div>';

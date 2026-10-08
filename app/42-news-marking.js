@@ -20,7 +20,7 @@ let newsMk = { estado:'pending', nivel:'', fecha:'', sel:null, filas:[], perfile
 async function newsMarkingPanel(){
   const main = $('#main');
   main.innerHTML = '<div class="card"><p class="muted">Loading writings…</p></div>';
-  const COLS = 'id,student_id,issue_date,article_id,level,headline,score,total,writing,writing_words,submitted_at,criteria,grade,feedback,reviewed_text,reviewed_at';
+  const COLS = 'id,student_id,issue_date,article_id,level,headline,score,total,writing,writing_words,submitted_at,criteria,grade,feedback,reviewed_text,reviewed_at,marks,student_note';
   const { data, error } = await sb.from('news_responses').select(COLS)
     .not('submitted_at', 'is', null).order('submitted_at', { ascending:false }).limit(500);
   if (error){ main.innerHTML = `<div class="card"><h2>📰 Newspaper writings</h2><p class="err">Could not load the writings: ${esc(error.message)}</p></div>`; return; }
@@ -107,7 +107,7 @@ async function _newsMkFicha(id){
       · Questions ${r.score!=null ? r.score+'/'+r.total : 'not checked'} · submitted ${new Date(r.submitted_at).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</p>
     ${art && art.writing ? `<div class="note info" style="margin-bottom:10px"><b>${esc(art.writing.exam)}</b><br>${esc(art.writing.task)}</div>` : ''}
     ${_newsCambiado(r) ? '<div class="note" style="margin-bottom:10px">The student changed the text after it was marked. The current version is below; save again to mark it.</div>' : ''}
-    <div class="newsmk-txt">${esc(r.writing || '')}</div>
+    <div id="nmk-marks"></div>
     <p class="muted" style="margin:6px 0 0;font-size:13px">${r.writing_words||0} words</p>
     <div class="newsmk-crit">
       ${NEWS_CRIT.map(([k,lab,ayuda]) => `<div><b>${lab}</b><br><span class="muted" style="font-size:12.5px">${ayuda}</span></div>${nota(k)}`).join('')}
@@ -119,9 +119,31 @@ async function _newsMkFicha(id){
     <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
       <button class="btn" onclick="window._newsMkSave(${r.id})">${_newsCorregido(r)?'Update marking':'Save and send to the student'}</button>
       <span id="nmk-msg" class="muted" aria-live="polite">${r.reviewed_at ? 'Marked '+new Date(r.reviewed_at).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : ''}</span>
-    </div>`;
+    </div>
+    ${r.reviewed_at ? `<div style="margin-top:16px">
+      <label for="nmk-note"><b>Student's reflection</b> <span class="muted" style="font-weight:400">— written by the student after reading the feedback (you can type it with the student beside you)</span></label>
+      <textarea id="nmk-note" rows="3" style="width:100%;margin-top:4px" maxlength="4000" placeholder="The student has not written a reflection yet.">${esc(r.student_note||'')}</textarea>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:6px"><button class="btn sm ghost" onclick="window._newsMkNote(${r.id})">Save reflection</button><span id="nmk-note-msg" class="muted"></span></div>
+    </div>` : ''}`;
+  /* Tachaduras sobre el texto (newspaper/marks.js): se guardan solas en cada cambio. */
+  if (window.NewsMarks) NewsMarks.render(document.getElementById('nmk-marks'), r.writing || '', r.marks || [], {
+    editable:true, by:'tutor',
+    onSave: marks => sb.rpc('news_marks', { p_id:r.id, p_marks:marks }).then(({ data, error }) => {
+      if (error) throw error;
+      r.marks = data.marks;
+    })
+  });
+  else document.getElementById('nmk-marks').innerHTML = `<div class="newsmk-txt">${esc(r.writing || '')}</div>`;
 }
 
+window._newsMkNote = async id => {
+  const r = newsMk.filas.find(x => x.id === id), m = document.getElementById('nmk-note-msg');
+  m.textContent = 'Saving…';
+  const { data, error } = await sb.rpc('news_note', { p_id:id, p_note:(document.getElementById('nmk-note').value || '').trim() });
+  if (error){ m.textContent = 'Not saved: ' + error.message; return; }
+  if (r) r.student_note = data.student_note;
+  m.textContent = '✓ Saved';
+};
 window._newsMkF = (grupo, val) => { newsMk[grupo] = val; newsMk.sel = null; newsMarkingDraw(); };
 window._newsMkSel = id => { newsMk.sel = id; newsMarkingDraw(); };
 window._newsMkSave = async id => {
