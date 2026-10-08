@@ -90,6 +90,7 @@ async function renderAdmin(tab='users'){
       {key:'unitexams',label:'📋 Unit exams'},
       {key:'readers',label:'📖 Reading checks'},
       {key:'funnordic',label:`🧸 ${schoolTerm('fun')}`},
+      ...(schoolContentOK('news.daily') ? [{key:'newsmark',label:'📰 Newspaper writings'}] : []),
       {key:'mock2',label:'📝 MOCK 2'},
       {key:'speaktest',label:'🗣️ Speaking test'},
     ]},
@@ -147,6 +148,7 @@ async function renderAdmin(tab='users'){
   if(tab==='unitexams') return unitExamPanel();
   if(tab==='levels') return levelsPanel();
   if(tab==='funnordic') return funNordicPanel();
+  if(tab==='newsmark') return newsMarkingPanel();
   if(tab==='funaccess') return funAccessPanel(GRADES);
   if(tab==='yle') return window.ylePanel(GRADES, {admin:true});
   if(tab==='funyle') return $('#main').innerHTML = funYleBody('renderAdmin');

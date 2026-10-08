@@ -101,6 +101,10 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 .fig img { width: 100%; max-height: 440px; object-fit: cover; border-radius: 12px; display: block; background: #e2dccf; }
 .fig figcaption { font-size: 13.5px; color: var(--soft); margin-top: 6px; }
 .fig figcaption small { display: block; font-size: 12px; opacity: .85; }
+.rev { margin-top: 14px; border-left: 4px solid #2f9268; background: #f1faf5; border-radius: 10px; padding: 12px 14px; }
+.rev h4 { margin: 0 0 6px; font: 700 15px 'Source Sans 3', sans-serif; }
+.rev .g { display: inline-block; background: #2f9268; color: #fff; border-radius: 6px; padding: 0 8px; margin-left: 6px; }
+.rev ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; }
 .foot { text-align: center; font-size: 13px; color: var(--soft); padding: 0 16px 40px; }
 </style>
 </head>
@@ -165,7 +169,7 @@ var SYNC = (function(){
   function load(date){
     return init().then(function(ok){
       if(!ok) return null;
-      if(mode === 'nis') return client.from('news_responses').select('article_id,answers,score,total,writing,submitted_at').eq('issue_date', date).eq('student_id', me.id)
+      if(mode === 'nis') return client.from('news_responses').select('article_id,answers,score,total,writing,submitted_at,grade,feedback,criteria,reviewed_at').eq('issue_date', date).eq('student_id', me.id)
         .then(function(r){ if(r.error) throw r.error; return r.data; });
       return fetch(base() + '/news/mine?issue_date=' + date, {headers:{Authorization:'Bearer ' + tok()}}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
     });
@@ -232,6 +236,7 @@ function syncIssue(){
         if(r.writing != null) store('wr:' + a.id, r.writing);
         store('sub:' + a.id, r.submitted_at || null);
       }
+      store('rev:' + a.id, r && r.reviewed_at ? {grade:r.grade, feedback:r.feedback, criteria:r.criteria || {}, at:r.reviewed_at} : null);
     });
     setSync('saved'); route();
   }).catch(function(){ setSync('error'); });
@@ -337,7 +342,7 @@ function drawArticle(a){
     '<section class="box"><h3>Key words</h3><ul class="words">' + a.glossary.map(function(g){ return '<li><b>' + esc(g.w) + '</b> — ' + esc(g.d) + '</li>'; }).join('') + '</ul></section>' +
     '<section class="box" id="quiz"><h3>Check your understanding</h3><div class="tag">' + esc(a.exam) + '</div>' + (a.instructions ? '<p>' + esc(a.instructions) + '</p>' : '') + qs +
       '<div class="actions"><button class="btn" id="check">Check answers</button><button class="btn ghost" id="reset">Try again</button><span class="score" id="score" aria-live="polite"></span></div></section>' +
-    (a.writing ? '<section class="box"><h3>Writing</h3><div class="tag">' + esc(a.writing.exam) + '</div><p>' + esc(a.writing.task) + '</p><textarea id="wr" aria-label="Your writing"></textarea><div class="actions"><span class="count" id="wc"></span><button class="btn" id="hand">Submit writing</button><span class="subm" id="subm" aria-live="polite"></span></div></section>' : '') +
+    (a.writing ? '<section class="box"><h3>Writing</h3><div class="tag">' + esc(a.writing.exam) + '</div><p>' + esc(a.writing.task) + '</p><textarea id="wr" aria-label="Your writing"></textarea><div class="actions"><span class="count" id="wc"></span><button class="btn" id="hand">Submit writing</button><span class="subm" id="subm" aria-live="polite"></span></div><div id="revBox"></div></section>' : '') +
     '<p class="src">Sources: ' + a.sources.map(function(s){ return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>'; }).join(' · ') + '</p>';
 
   $('back').onclick = function(){ location.hash = ''; };
@@ -372,8 +377,12 @@ function drawArticle(a){
     wr.value = store('wr:' + a.id) || ''; wc(); showSub();
     wr.oninput = function(){ store('wr:' + a.id, wr.value); wc(); push(a, {writing:wr.value}, 1500); };
     $('hand').hidden = SYNC.mode === 'none';
-    $('hand').onclick = function(){ $('subm').textContent = 'Sending…'; push(a, {writing:wr.value, submit:true}, 0); };
+    $('hand').onclick = function(){ $('subm').textContent = 'Sending…'; push(a, {writing:wr.value, submit:true, task:a.writing.exam + ' — ' + a.writing.task}, 0); };
     window._newsAfterSave = function(k){ if(k === a.id && $('subm')) showSub(); };
+    var rv = store('rev:' + a.id), CRIT = {content:'Content', communicative:'Communicative achievement', organisation:'Organisation', language:'Language', task:'Task', grammar:'Grammar', vocab:'Vocabulary', clarity:'Clarity'};
+    if(rv) $('revBox').innerHTML = '<div class="rev"><h4>Your teacher\'s feedback' + (rv.grade ? '<span class="g">' + esc(rv.grade) + '</span>' : '') + '</h4>' +
+      (rv.feedback ? '<p style="margin:0">' + esc(rv.feedback) + '</p>' : '') +
+      '<ul>' + Object.keys(CRIT).filter(function(k){ return rv.criteria[k] != null; }).map(function(k){ return '<li>' + CRIT[k] + ': <b>' + esc(rv.criteria[k]) + (typeof rv.criteria[k] === 'number' ? '/5' : '') + '</b></li>'; }).join('') + '</ul></div>';
   }
   /* definiciones al pulsar la palabra subrayada */
   var tip = null;

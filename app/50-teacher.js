@@ -21,6 +21,7 @@ async function renderTeacher(tab){
     correccion.push({key:'unitexams',label:'📋 Unit exams'});
     correccion.push({key:'readers',label:'📖 Reading checks'});
     correccion.push({key:'funnordic',label:`🧸 ${schoolTerm('fun')}`});
+    if(schoolContentOK('news.daily')) correccion.push({key:'newsmark',label:'📰 Newspaper writings'});
     correccion.push({key:'mock2',label:'📝 MOCK 2'});
     correccion.push({key:'speaktest',label:'🗣️ Speaking test'});
     seguimiento.push({key:'results',label:'📝 Results'});
@@ -130,6 +131,7 @@ async function renderTeacher(tab){
   if(active==='frflyers') return $('#main').innerHTML = funFrCursoBody('flyers');
   if(active==='frmetricas') return funFrMetricas();
   if(active==='funnordic') return funNordicPanel();
+  if(active==='newsmark') return newsMarkingPanel();
   if(active==='scope') return scopePanel();
   if(active==='littlereaders') return littleReadersPanel();
   if(active==='funaccess') return funAccessPanel(teacherAllowedGrades());
