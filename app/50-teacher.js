@@ -476,10 +476,30 @@ function _gradeWritingAfterSave(){
 }
 
 /* Builds the rubric card grid for one task (taskIdx = 0 or 1). */
+/* Corrección de IA guardada en el intento (Practice Tests: r.tasks[i].ai, de /cambridge/writing/feedback).
+   Las claves de la IA van sin espacio; la rúbrica las nombra con espacio. */
+const _AI_KEY = { 'Content':'Content', 'Communicative Achievement':'CommunicativeAchievement', 'Organisation':'Organisation', 'Language':'Language' };
+function _aiOf(taskIdx){ const a=gradeState&&gradeState.attempt; const t=Array.isArray(a&&a.answers)?a.answers[taskIdx]:null; return (t&&t.ai&&!t.ai.error&&t.ai.marks)?t.ai:null; }
+window._useAiMarks = (taskIdx)=>{
+  const ai=_aiOf(taskIdx); if(!ai) return;
+  const sel = taskIdx===0 ? gradeState.sel_t1 : gradeState.sel_t2;
+  gradeState.rubric.subs.forEach(s=>{ const v=ai.marks[_AI_KEY[s]||s]; if(v!=null) sel[s]=+v; });
+  gradeState.dirty=true;
+  const y=window.scrollY; renderGradeWriting(); window.scrollTo(0,y);
+};
+function _aiPanelHtml(t){
+  const ai=t&&t.ai; if(!ai) return '';
+  if(ai.error) return `<div class="muted" style="font-size:.82rem;margin-top:6px">🤖 AI examiner: ${esc(ai.error)}</div>`;
+  return `<div style="margin-top:8px;border:1px dashed #94a3b8;border-radius:8px;padding:8px 10px;background:#f8fafc;font-size:.86rem">
+    <b>🤖 AI examiner (suggestion): ${ai.total}/${ai.max}</b> — ${esc(ai.summary||'')}
+    ${(ai.fixes||[]).map(x=>`<div style="margin-top:4px"><s style="color:#b91c1c">${esc(x.quote)}</s> → <b style="color:#15803d">${esc(x.better)}</b> <span class="muted">${esc(x.why)}</span></div>`).join('')}
+  </div>`;
+}
 function _taskRubricHtml(taskLabel, taskIdx){
   const rubric = gradeState.rubric;
   const sel = taskIdx === 0 ? gradeState.sel_t1 : gradeState.sel_t2;
   const taskMax = rubric.subs.length * rubric.bandMax;
+  const ai = _aiOf(taskIdx);
   const subsHtml = rubric.subs.map((s,si)=>{
     const desc = WRITING_SUBSCALE[s] || [];
     const cards = desc.map((d,band)=>{
@@ -488,11 +508,13 @@ function _taskRubricHtml(taskLabel, taskIdx){
         <span style="flex:0 0 auto;font-weight:700;color:${on?'#2d5a8d':'#94a3b8'};min-width:46px">Band ${band}</span>
         <span style="font-size:.88rem">${esc(d)}</span></div>`;
     }).join('');
-    return `<div class="card" style="margin-bottom:6px"><h3 style="margin:0 0 6px">${esc(s)} <span class="muted" style="font-weight:400">/ ${rubric.bandMax}</span> <b style="float:right;color:#2d5a8d">${sel[s]!=null?sel[s]:'—'}</b></h3>${cards}</div>`;
+    const aiv = ai ? ai.marks[_AI_KEY[s]||s] : null;
+    return `<div class="card" style="margin-bottom:6px"><h3 style="margin:0 0 6px">${esc(s)} <span class="muted" style="font-weight:400">/ ${rubric.bandMax}</span>${aiv!=null?` <span style="font-size:.75rem;font-weight:600;background:#f1f5f9;border-radius:6px;padding:1px 6px;color:#475569">AI: ${aiv}</span>`:''} <b style="float:right;color:#2d5a8d">${sel[s]!=null?sel[s]:'—'}</b></h3>${cards}</div>`;
   }).join('');
   return `<div style="border:2px solid #4987c6;border-radius:14px;padding:12px 14px;margin-bottom:14px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap">
       <h3 style="margin:0;color:#2d5a8d">✏️ ${esc(taskLabel)}</h3>
+      ${ai?`<button class="btn sm ghost" onclick="window._useAiMarks(${taskIdx})" title="Fills the bands with the AI examiner's suggestion; you can change any of them before saving">🤖 Use AI marks (${ai.total}/${ai.max})</button>`:''}
       <span style="font-size:1.1rem;font-weight:800;color:#2d5a8d" id="gw-sub${taskIdx+1}">—&nbsp;/&nbsp;${taskMax}</span>
     </div>
     ${subsHtml}
@@ -510,7 +532,7 @@ function renderGradeWriting(){
     ? answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px">
         <div class="row" style="justify-content:space-between"><b>${esc(t.label||'Task')}</b><span class="muted" style="font-size:.82rem">${t.wordCount!=null?t.wordCount+' words':''}</span></div>
         ${t.prompt?`<div class="muted" style="white-space:pre-wrap;margin-top:6px;font-size:.82rem;line-height:1.45;border-left:3px solid var(--line);padding-left:8px">${esc(t.prompt)}</div>`:''}
-        <div style="white-space:pre-wrap;margin-top:6px;font-size:.93rem;line-height:1.6">${esc((t.text||'').trim()||'(no answer)')}</div></div>`).join('')
+        <div style="white-space:pre-wrap;margin-top:6px;font-size:.93rem;line-height:1.6">${esc((t.text||'').trim()||'(no answer)')}</div>${_aiPanelHtml(t)}</div>`).join('')
     : `<p class="muted">This attempt did not save the text submitted by the student.</p>`;
 
   // Right column: Task 1 rubrics + Task 2 rubrics
