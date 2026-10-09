@@ -1,0 +1,959 @@
+{
+  "date": "2026-10-09",
+  "issue": 3,
+  "breaking": [
+    "Peru: BTS leader RM visits Huaca Pucllana in a colourful chullo.",
+    "France: police find two stolen Renoir paintings.",
+    "Peru gets back 342 pieces of its history from other countries.",
+    "The Nobel Peace Prize goes to South African judge Navi Pillay."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-09-rm-huaca-pucllana",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Music and history",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "A BTS star visits an old pyramid in Lima",
+      "standfirst": "After a big concert, the leader of the band went to see a very old place in Miraflores.",
+      "body": [
+        "BTS, the famous band from South Korea, is in Lima this week. On Wednesday, the band played a big concert at San Marcos Stadium. Thousands of fans came to see them. BTS fans call themselves 'ARMY'.",
+        "On Thursday, the band's leader, RM, shared some photos on Instagram. In them, he is visiting Huaca Pucllana, an old pyramid in the Miraflores district of Lima. His real name is Kim Nam-joon.",
+        "Huaca Pucllana is very, very old. People from the Lima culture built it between about 200 and 700 AD, before the time of the Incas. They made it from adobe and clay.",
+        "In one photo, RM is wearing a colourful chullo. This is a traditional Peruvian hat made of wool. Fans in Peru loved the photos and shared them on social media.",
+        "BTS has two more concerts in Lima, on 9 and 10 October. On Thursday, fans could buy some extra tickets online."
+      ],
+      "glossary": [
+        {
+          "w": "band",
+          "d": "a group of people who play music together"
+        },
+        {
+          "w": "concert",
+          "d": "a show where people play music for an audience"
+        },
+        {
+          "w": "pyramid",
+          "d": "a very big building with a square base and sides that get smaller at the top"
+        },
+        {
+          "w": "clay",
+          "d": "a kind of heavy earth that becomes hard when it is dry"
+        },
+        {
+          "w": "traditional",
+          "d": "made or done in the same way for a very long time"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where did BTS play on Wednesday?",
+          "options": [
+            "at Huaca Pucllana",
+            "at San Marcos Stadium",
+            "in a park in Miraflores"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "How did RM share his photos?",
+          "options": [
+            "on Instagram",
+            "on TV",
+            "in a newspaper"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Who built Huaca Pucllana?",
+          "options": [
+            "the Incas",
+            "people from South Korea",
+            "people from the Lima culture"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is a chullo?",
+          "options": [
+            "a kind of Peruvian food",
+            "a wool hat",
+            "a musical instrument"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "When could fans buy extra tickets?",
+          "options": [
+            "on Wednesday",
+            "on 10 October",
+            "on Thursday"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend loves music. Write an email to your friend (25 words or more). Tell them about RM's visit to Huaca Pucllana, say which band or singer you like, and say which old place in your country you would like to show them."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-bts-fever-continues-as-band-leader-visits-huaca-pucllana-in-colorful-chullo-1095238.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/rm-huaca-pucllana.jpg",
+        "alt": "A large old pyramid made of small adobe bricks in a city",
+        "caption": "Huaca Pucllana in Miraflores, Lima, photographed in 2015.",
+        "credit": "Diego Delso",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Huaca_Pucllana,_Lima,_Per%C3%BA,_2015-07-28,_DD_128.JPG"
+      }
+    },
+    {
+      "id": "2026-10-09-renoir-paintings-found",
+      "section": "Culture",
+      "country": "France",
+      "flag": "🇫🇷",
+      "level": "A2",
+      "topic": "Art and museums",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Police find two stolen Renoir paintings",
+      "standfirst": "The paintings disappeared from a museum in France last month. Now six people have been arrested.",
+      "body": [
+        "Pierre-Auguste Renoir was a famous French painter. There is a museum about him in Cagnes-sur-Mer, a town in the south of France.",
+        "Last month, thieves went into the museum early in the morning. They cut a fence and climbed through a window. They took four paintings, but they left two of them when they ran away. The thieves were very fast: everything took less than three minutes!",
+        "The two missing paintings were 'Portrait of Madame Colonna Romano' and 'Young Woman at the Well'. Police all over France looked for them.",
+        "On Friday, the town said that the police had found the two paintings and arrested six people. The town's mayor, Bryan Masson, was very happy. He said that the paintings are part of the town's history."
+      ],
+      "glossary": [
+        {
+          "w": "painter",
+          "d": "a person who makes pictures with paint"
+        },
+        {
+          "w": "museum",
+          "d": "a building where people can look at old or important things, like art"
+        },
+        {
+          "w": "thieves",
+          "d": "people who take things that are not theirs"
+        },
+        {
+          "w": "fence",
+          "d": "a kind of wall made of wood or metal around a garden or building"
+        },
+        {
+          "w": "mayor",
+          "d": "the most important person in the government of a town or city"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "The Renoir Museum is in Paris.",
+          "answer": "F"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The thieves took four paintings from the museum.",
+          "answer": "T"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "The thieves came into the museum through the front door.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The police found the paintings in another country.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The thieves were in the museum for more than an hour.",
+          "answer": "F"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "The mayor was happy that the paintings were found.",
+          "answer": "T"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You visited a museum last weekend. Write an email to your English friend Sam (25 words or more). Say which museum you visited, what you saw there, and what you liked best."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-09/stolen-renoirs-found-french-museum-six-arrested/107250236"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/renoir-paintings-found.jpg",
+        "alt": "A large stone house with white shutters and a green garden",
+        "caption": "The Renoir Museum in Cagnes-sur-Mer, in an earlier photo.",
+        "credit": "MOSSOT",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Cagnes-sur-Mer_-_Mus%C3%A9e_Renoir_-_Maison_-1.JPG"
+      }
+    },
+    {
+      "id": "2026-10-09-peru-heritage-returned",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "History and heritage",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "342 pieces of Peru's history come home",
+      "standfirst": "Objects that had left the country have been given back to the Ministry of Culture. It is the biggest return of the year so far.",
+      "body": [
+        "Peru has recovered 342 objects that are part of its cultural heritage. On Wednesday, the Foreign Affairs Minister, Carlos Espa, handed the items over to the Culture Minister, Alberto Beingolea, at a ceremony at Torre Tagle Palace in Lima. It was the third ceremony of this kind this year, and the largest return so far.",
+        "The objects were found abroad and brought back with the help of Peru's embassies in Germany, Argentina, Belgium, Brazil, the United States and the United Kingdom. Police in several countries, including the FBI in the US, also helped. Some people in other countries returned objects voluntarily.",
+        "Among the treasures is a large painting called 'The Transit of St. Joseph', which is important for both history and art. There is also a manuscript called 'Ancient Peruvian Art', a unique work with watercolour pictures that is very valuable for researchers.",
+        "Minister Espa said that bringing these objects home means they can be protected, studied and passed on to future generations. He explained that protecting heritage is a priority of Peru's foreign policy, and that the country will work with others to stop the illegal trade in cultural objects.",
+        "According to the Culture Minister, this work never stops. His team even checks social media, where people often offer these objects for sale. Soon, the public will be able to see the returned items at a special exhibition at the Ministry of Culture."
+      ],
+      "glossary": [
+        {
+          "w": "heritage",
+          "d": "the history, buildings, art and traditions that a country has from the past"
+        },
+        {
+          "w": "ceremony",
+          "d": "a formal public event to celebrate or mark something important"
+        },
+        {
+          "w": "manuscript",
+          "d": "a book or document written by hand, not printed"
+        },
+        {
+          "w": "generations",
+          "d": "all the people born at about the same time, for example children, parents and grandparents"
+        },
+        {
+          "w": "exhibition",
+          "d": "a public show of objects or art, for example in a museum"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Peru has recovered 342 objects that are part of its cultural ___.",
+          "options": [
+            "heritage",
+            "inheritance",
+            "custom",
+            "background"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "Some people in other countries returned objects ___.",
+          "options": [
+            "carefully",
+            "voluntarily",
+            "nervously",
+            "lately"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "The manuscript is very ___ for researchers.",
+          "options": [
+            "expensive",
+            "costly",
+            "valuable",
+            "wealthy"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "The objects can be protected, studied and ___ on to future generations.",
+          "options": [
+            "taken",
+            "passed",
+            "carried",
+            "moved"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "On social media, people often ___ these objects for sale.",
+          "options": [
+            "offer",
+            "propose",
+            "suggest",
+            "provide"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "The public will be able to see the items at a special ___.",
+          "options": [
+            "performance",
+            "gallery",
+            "programme",
+            "exhibition"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for teenagers: 'Articles wanted! Which object from your country's history should everyone see in a museum? Describe it and explain why it is important.' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-foreign-affairs-ministry-hands-over-342-items-to-culture-ministry-1095111.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/peru-heritage-returned.jpg",
+        "alt": "An old building with wooden balconies in Lima",
+        "caption": "Torre Tagle Palace in Lima, where the ceremony took place (earlier photo).",
+        "credit": "Miguel Francisco Rueda Ñañez",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Palacio_de_Torre_Tagle_Lima,_Peru.jpg"
+      }
+    },
+    {
+      "id": "2026-10-09-okavango-classroom",
+      "section": "Environment",
+      "country": "Botswana",
+      "flag": "🇧🇼",
+      "level": "B1",
+      "topic": "Nature and conservation",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "A classroom full of elephants",
+      "standfirst": "University students from four countries are learning how to protect one of Africa's greatest wetlands.",
+      "body": [
+        "Imagine a classroom where elephants play near the water and hippos swim past your boat. For a group of more than 20 university students from Australia, Botswana, the United States and the United Kingdom, this is real. They are taking part in a one-week course in the Okavango Delta, in Botswana.",
+        "The delta is a huge wetland of islands, woodlands and flood plains that covers more than two million hectares. It is on the UNESCO World Heritage list. Unusually, the Okavango River does not reach the sea. Its water starts as rain in the highlands of Angola, flows through Namibia and ends in the Kalahari Desert in Botswana, where it floods the land every winter.",
+        "The area is home to an amazing variety of wildlife, including more than 440 kinds of birds. Botswana has about 130,000 elephants. The students also learn about African wild dogs, which are endangered. Only about 7,000 of them remain.",
+        "But the delta has problems. Mpaphi Casper Bonyongo, who runs the Okavango Research Institute, says the biggest threat is farms upstream, which are growing very fast. The floods have also become smaller over the years, probably because of climate change. Because the river crosses three countries, Angola, Namibia and Botswana have to manage it together.",
+        "For Sophie Nguyen, a 20-year-old student from Australia, the course has been unlike anything she has done before. 'It feels magical being here,' she said."
+      ],
+      "glossary": [
+        {
+          "w": "wetland",
+          "d": "an area of land that is very wet and often covered with water"
+        },
+        {
+          "w": "hectares",
+          "d": "a hectare is a piece of land of 10,000 square metres"
+        },
+        {
+          "w": "wildlife",
+          "d": "animals and plants that live in nature, not with people"
+        },
+        {
+          "w": "endangered",
+          "d": "in danger of disappearing from the world for ever"
+        },
+        {
+          "w": "upstream",
+          "d": "in the direction the water of a river comes from"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Who is taking part in the course?",
+          "options": [
+            "schoolchildren from Botswana",
+            "more than 20 university students from four countries",
+            "a group of tourists from Australia",
+            "scientists from Angola and Namibia"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What is unusual about the Okavango River?",
+          "options": [
+            "It flows into the sea in Namibia.",
+            "It is the longest river in Africa.",
+            "It ends in a desert instead of the sea.",
+            "It only has water in the summer."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Where does the delta's water start?",
+          "options": [
+            "as rain in the highlands of Angola",
+            "as snow on the mountains of Botswana",
+            "in the Kalahari Desert",
+            "in the Indian Ocean"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "According to Mpaphi Casper Bonyongo, what is the biggest threat to the delta?",
+          "options": [
+            "too many tourists",
+            "hungry wild dogs",
+            "too many elephants",
+            "farms upstream that are growing fast"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "How does Sophie Nguyen feel about the course?",
+          "options": [
+            "She thinks it is too long.",
+            "She thinks it is a magical experience.",
+            "She is worried about the animals.",
+            "She would prefer to study in Australia."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English-speaking friend Jamie has sent you this email: 'Next year I can choose a one-week school trip: a nature trip to see wild animals, or a city trip with museums. Which one should I choose, and why? What should I take with me?' Write your email to Jamie in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-09/botswana-okavango-delta-young-conservationists/107185434"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/okavango-classroom.jpg",
+        "alt": "An African elephant standing in green grass",
+        "caption": "An elephant in the Okavango Delta, Botswana, in 2018.",
+        "credit": "Diego Delso",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Elefante_africano_de_sabana_(Loxodonta_africana),_delta_del_Okavango,_Botsuana,_2018-07-31,_DD_02.jpg"
+      }
+    },
+    {
+      "id": "2026-10-09-alps-ice-ski",
+      "section": "Science",
+      "country": "Switzerland",
+      "flag": "🇨🇭",
+      "level": "B2",
+      "topic": "Archaeology and climate",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "headline": "A 2,500-year-old ski? Melting ice reveals the secrets of the Alps",
+      "standfirst": "As Switzerland's glaciers shrink, archaeologists are racing to collect objects that have been frozen for thousands of years.",
+      "body": [
+        "A. The Alps are losing their ice faster than almost anywhere else on Earth. Switzerland alone has lost almost a fifth of its ice in just five years. For climate scientists, these figures are alarming. For archaeologists, however, they have created an unexpected and urgent opportunity: objects that have been locked in the ice for thousands of years are now appearing on the surface.",
+        "B. One of these archaeologists is Romain Andenmatten, a 42-year-old who works for the Swiss canton of Valais. On a sunny morning recently, while exploring what remains of the ice at a mountain pass called Col de Barberine, he noticed a grey piece of wood, almost a metre long, lying between rocks at the edge of the ice.",
+        "C. It was not the first time the pass had surprised him. Three years earlier, at the same spot, about 2,300 metres above sea level, he had found a similar wooden plank. One end of it became narrower, which suggested that it might have been a ski or a snowshoe. Scientists used carbon dating, a method that measures how much of a certain type of carbon is left in old material, to work out its age. The result: it came from around the fifth century BC, during the Iron Age.",
+        "D. Nobody knows exactly what happened to its owner. One possibility is that someone crossing the Alps around 2,500 years ago slipped, lost it in the snow and left it behind. The ice then hid it until now.",
+        "E. Ice is an excellent protector of the past, because it stops wood, leather and other materials from rotting. But once these objects are exposed to air and sunlight, they can be damaged quickly. That is why archaeologists are now searching mountain passes before the ice, and the history inside it, disappears for good."
+      ],
+      "glossary": [
+        {
+          "w": "archaeologists",
+          "d": "scientists who study the past by finding and examining old objects and buildings"
+        },
+        {
+          "w": "pass",
+          "d": "a low place between mountains where people can cross from one side to the other"
+        },
+        {
+          "w": "plank",
+          "d": "a long, flat piece of wood"
+        },
+        {
+          "w": "carbon dating",
+          "d": "a scientific way of finding out how old something that was once alive is"
+        },
+        {
+          "w": "rotting",
+          "d": "slowly being destroyed by natural processes, like old food or wet wood"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph explains how scientists found out the age of an object?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph describes a discovery made recently at the edge of the ice?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph suggests a possible story behind an ancient object?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains why archaeologists need to work quickly?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph presents bad news for one group of experts as good news for another?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about climate change. Your teacher has asked you to write an essay: 'Young people can do more than governments to protect the environment. Do you agree?' Write about: 1. everyday habits, 2. social media, 3. your own idea. Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The New York Times (US)",
+          "url": "https://www.nytimes.com/2026/10/06/climate/glacier-archaeology-melting-alps.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/alps-ice-ski.jpg",
+        "alt": "A long river of ice between high mountains",
+        "caption": "The Aletsch Glacier in the canton of Valais, the largest glacier in the Alps (earlier photo).",
+        "credit": "Tobias Alt, Tobi 87",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Aletschgletscher-Eggishorn.jpg"
+      }
+    },
+    {
+      "id": "2026-10-09-navi-pillay-nobel",
+      "section": "World",
+      "country": "South Africa",
+      "flag": "🇿🇦",
+      "level": "B2",
+      "topic": "Human rights and law",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Nobel Peace Prize goes to a judge who fought for justice",
+      "standfirst": "Navi Pillay, a lawyer from South Africa, has been honoured for a lifetime of work defending international law.",
+      "body": [
+        "The 2026 Nobel Peace Prize has been awarded to Navi Pillay, a South African human rights lawyer and judge. The Norwegian Nobel Committee, which announced the decision in Oslo on Friday, said she had won the prize \"for her efforts to promote peace and international law\".",
+        "Ms Pillay was born in Durban, South Africa, at a time when the country was ruled under apartheid, a system that separated people by race. Her family is of Indian Tamil origin. As a young lawyer, she defended Nelson Mandela and other people who opposed apartheid.",
+        "Later, her career took her to the international stage. She served as a judge on the tribunal that investigated the 1994 genocide in Rwanda and at the International Criminal Court, and she was also the United Nations' top human rights official. More recently, she led a UN commission that investigated the war in Gaza. Israel's government strongly criticised the decision to give her the prize.",
+        "Surprisingly, Ms Pillay did not know she had won when the news was announced. She was attending a conference of human rights lawyers in Nuremberg, Germany, and the chair of the committee, Jørgen Watne Frydnes, joked that if she saw a Norwegian number calling, she should pick up. When the news reached the conference, about 120 people burst into applause.",
+        "Ms Pillay dedicated the award to the survivors of international crimes and to those who defend international justice. She said it seemed fitting to hear the news in Nuremberg, the city where trials after the Second World War helped to create the modern system of international justice. This year, 287 candidates were nominated. The prize, worth about 1.2 million US dollars, will be presented on 10 December."
+      ],
+      "glossary": [
+        {
+          "w": "apartheid",
+          "d": "a system in South Africa, until the early 1990s, that kept people of different races apart and treated them unequally"
+        },
+        {
+          "w": "tribunal",
+          "d": "a special court that is set up to judge a particular kind of case"
+        },
+        {
+          "w": "applause",
+          "d": "the sound of people clapping their hands to show they are pleased"
+        },
+        {
+          "w": "dedicated",
+          "d": "said that something you have done or won is in honour of a particular person or group"
+        },
+        {
+          "w": "nominated",
+          "d": "officially suggested as a possible winner of a prize"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why did the committee give Navi Pillay the prize?",
+          "options": [
+            "for writing about the history of South Africa",
+            "for her efforts to promote peace and international law",
+            "for her work as an ambassador in Norway",
+            "for organising a conference in Nuremberg"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What do we learn about Ms Pillay's early career?",
+          "options": [
+            "She worked for the Nobel Committee.",
+            "She taught law in Rwanda.",
+            "She defended people who opposed apartheid.",
+            "She was a judge at the International Criminal Court."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why did the chair of the committee make a joke about a Norwegian phone number?",
+          "options": [
+            "Ms Pillay had not yet been told that she had won.",
+            "Ms Pillay lives in Norway.",
+            "The phone lines in Oslo were not working.",
+            "Ms Pillay had refused to accept the prize."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why did Nuremberg seem a fitting place to hear the news?",
+          "options": [
+            "It is where Ms Pillay was born.",
+            "It is where the Nobel Committee meets.",
+            "Ms Pillay studied law there as a young woman.",
+            "Trials there after the Second World War helped to create modern international justice."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Which of these statements about the prize is true?",
+          "options": [
+            "It will be presented in December.",
+            "Only 120 candidates were nominated.",
+            "It is worth about 12 million US dollars.",
+            "It was announced in Nuremberg."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement in an international students' magazine: 'People who make the world fairer. Write about someone, famous or from your own life, who has worked to make life fairer for other people. What did they do, and what can we learn from them?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The New York Times (US)",
+          "url": "https://www.nytimes.com/live/2026/10/09/world/nobel-peace-prize-winner-2026"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/navi-pillay-nobel.jpg",
+        "alt": "A smiling woman with dark hair and glasses",
+        "caption": "Navi Pillay at the UN Human Rights Council in Geneva in 2014.",
+        "credit": "US Mission Geneva",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Navi_Pillay_June_2014.jpg"
+      }
+    },
+    {
+      "id": "2026-10-09-taiwan-nuclear-return",
+      "section": "Economy",
+      "country": "Taiwan",
+      "flag": "🇹🇼",
+      "level": "C1",
+      "topic": "Energy and technology",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Power-hungry chips push Taiwan to rethink nuclear energy",
+      "standfirst": "A decade after turning its back on nuclear power, the island is preparing to restart a reactor, and the debate is far from settled.",
+      "body": [
+        "For a decade, Taiwan steadily phased out nuclear power, filling the gap with natural gas and renewable energy. The last plant to close, Maanshan in the island's south, was shut down in May last year. Now, in a striking reversal, the government is preparing to bring it back. Last month, Taiwan's Nuclear Safety Commission said it had completed its review of plans to restart a reactor there, which, according to Taiwan's Central News Agency, could be generating electricity again as early as 2028.",
+        "What has changed? Above all, demand. Taiwan's semiconductor and artificial intelligence industries consume ever larger amounts of electricity, and the government expects demand to rise by about 2.5 per cent a year, driven partly by chips, data centres and AI. Several power cuts have also sharpened concern about energy security. The island imports around 96 per cent of its total energy supply. Last year, liquefied natural gas produced about 47 per cent of its electricity, coal 35 per cent and renewables just over 13 per cent, well short of the 20 per cent target that had been set for 2025.",
+        "Relying on imported gas has also proved costly. According to Tsung-Kuang Yeh, a dean of nuclear science at National Tsing Hua University, prices soared after Russia invaded Ukraine and spiked again this year with the conflict between the United States and Iran and the closure of the Strait of Hormuz.",
+        "Public opinion appears to be shifting too. After the Fukushima disaster in Japan in 2011, the debate focused on how quickly Taiwan, which lies in an earthquake-prone region, could abandon nuclear energy. Yet in a referendum last year, about 4.3 million people voted to reopen the plant, against 1.5 million who opposed it, although the result was rejected because overall turnout was too low. Another referendum, in November, will ask whether the government should abolish its 'Nuclear-Free Homeland' policy.",
+        "Not everyone is convinced. Critics argue that Maanshan is too small to make a real difference given the scale of the AI boom, and that radioactive waste and the risk of accidents remain serious concerns. Environmental campaigners would rather see investment in renewables and energy storage, while admitting that both require major upgrades to the grid. Taiwan's dilemma, in other words, is one that many countries now face: how to power a digital economy without sacrificing either security or safety."
+      ],
+      "glossary": [
+        {
+          "w": "phased out",
+          "d": "stopped using something gradually, step by step, over a period of time"
+        },
+        {
+          "w": "reversal",
+          "d": "a change to the opposite of what was happening or planned before"
+        },
+        {
+          "w": "semiconductor",
+          "d": "a material used to make the chips inside computers, phones and other electronic devices"
+        },
+        {
+          "w": "referendum",
+          "d": "a vote in which all the people of a country decide on one particular question"
+        },
+        {
+          "w": "dilemma",
+          "d": "a difficult situation in which you have to choose between options that all have disadvantages"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer mean by \"a striking reversal\" in paragraph 1?",
+          "options": [
+            "The Maanshan plant was damaged and must be rebuilt.",
+            "Taiwan is going back on a policy it followed for ten years.",
+            "Electricity prices in Taiwan have suddenly fallen.",
+            "The government has decided to close more power plants."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to paragraph 2, what is the main reason Taiwan is reconsidering nuclear power?",
+          "options": [
+            "rapidly growing demand for electricity from industry",
+            "pressure from Japan after the Fukushima disaster",
+            "a sharp fall in the cost of renewable energy",
+            "a decision by the Central News Agency"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What point does the writer make about the renewables target for 2025?",
+          "options": [
+            "It was reached earlier than expected.",
+            "It was officially abandoned in 2011.",
+            "It was almost reached.",
+            "It was missed by a considerable margin."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What happened to the result of last year's referendum?",
+          "options": [
+            "Most voters rejected reopening the plant.",
+            "It was not accepted because too few people voted.",
+            "It was cancelled because of an earthquake.",
+            "It led directly to the restart of the reactor."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the purpose of the final sentence of the article?",
+          "options": [
+            "to criticise environmental campaigners",
+            "to predict the result of the November referendum",
+            "to place Taiwan's situation in a wider international context",
+            "to argue that nuclear power is the only solution"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a panel discussion on how countries should meet the growing demand for electricity. The speakers discussed three options: nuclear power, renewable energy, and reducing consumption. Write an essay discussing TWO of these options, explaining which one should be given priority and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-09/taiwan-restart-nuclear-power-plants-locals-response/107229114"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/taiwan-nuclear-return.jpg",
+        "alt": "A power station with two round domes by the sea, with wind turbines nearby",
+        "caption": "The Maanshan Nuclear Power Plant in southern Taiwan, next to wind turbines, in 2017.",
+        "credit": "Taiwankengo",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Maanshan_Nuclear_Power_Plant_2017.jpg"
+      }
+    },
+    {
+      "id": "2026-10-09-distant-radio-burst",
+      "section": "Science",
+      "country": "Australia · South Africa",
+      "flag": "🇦🇺",
+      "level": "C1",
+      "topic": "Space and astronomy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "A flash from the early universe: the most distant radio burst ever detected",
+      "standfirst": "A pulse of radio waves that set off when the universe was young could help astronomers measure the matter nobody can see.",
+      "body": [
+        "More than ten billion years ago, long before the Earth or the Sun existed, something in a small, distant galaxy released a sudden flash of energy. That signal has only now been detected, and astronomers believe it is the most distant fast radio burst (FRB) ever recorded, more than twice as far away as the previous record holder.",
+        "FRBs are intense pulses of radio waves that last mere milliseconds, yet can release as much energy in that instant as the Sun does in months or even years. Since the first one was spotted in 2007, more than 10,000 have been detected. Some repeat constantly, some repeat for a while and then fall silent, and others appear once and are never seen again. Their cause remains a mystery. One leading theory links them to magnetars, a type of neutron star with an extremely powerful magnetic field, although some people have even speculated that they could be alien in origin.",
+        "The new burst, catalogued as FRB 20240304B and described in the journal Science, was picked up by the MeerKAT radio telescope in South Africa. Researchers then used NASA's James Webb Space Telescope to identify the galaxy it came from. The burst began its journey when the universe was only about three billion years old, which means it has crossed roughly 80 per cent of cosmic history. Its home, according to Dr Themiya Nanayakkara of the University of Sydney, one of the lead researchers, is a young, very small galaxy forming stars at great speed and containing few metals, a detail that any explanation of FRBs will now have to account for.",
+        "Remarkably, scientists do not need to know what causes FRBs in order to make use of them. As the waves travel, they are affected by the particles they pass through, so they act as a kind of cosmic measuring tape for matter that ordinary telescopes cannot see. Prof Matthew Bailes of Swinburne University, one of the astronomers who first discovered FRBs, described them as \"a very fundamental way of counting how many atoms there are in the universe\". Another Swinburne astrophysicist, Dr Sara Webb, who was not involved in the study, said the discovery suggests that FRBs might have been very common in the early universe."
+      ],
+      "glossary": [
+        {
+          "w": "milliseconds",
+          "d": "a millisecond is one thousandth of a second"
+        },
+        {
+          "w": "magnetars",
+          "d": "dead stars that are extremely dense and have an extraordinarily strong magnetic field"
+        },
+        {
+          "w": "catalogued",
+          "d": "officially recorded in a list with a name or number"
+        },
+        {
+          "w": "cosmic",
+          "d": "relating to the whole universe"
+        },
+        {
+          "w": "astrophysicist",
+          "d": "a scientist who studies the physical nature of stars, planets and the universe"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the writer's main purpose in the first paragraph?",
+          "options": [
+            "to explain how radio telescopes work",
+            "to criticise the previous distance record",
+            "to emphasise how old and distant the signal is",
+            "to compare the Earth with the Sun"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does the writer suggest about the cause of FRBs?",
+          "options": [
+            "It has finally been identified as magnetars.",
+            "It is still unknown, although there are several theories.",
+            "It has been shown to be alien.",
+            "It depends on how many FRBs repeat."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "In paragraph 3, what does \"it\" in \"the galaxy it came from\" refer to?",
+          "options": [
+            "the burst",
+            "the MeerKAT telescope",
+            "the universe",
+            "the journal Science"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why is the type of galaxy where the burst began significant?",
+          "options": [
+            "It proves that FRBs come from our own galaxy.",
+            "It shows that FRBs only happen in large, old galaxies.",
+            "It means that the burst will certainly repeat.",
+            "Any theory of FRBs must explain how they can occur in young galaxies with few metals."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "According to the article, what can FRBs be used for?",
+          "options": [
+            "sending messages to other galaxies",
+            "predicting where new stars will form",
+            "measuring matter that ordinary telescopes cannot detect",
+            "finding planets similar to the Earth"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (proposal)",
+        "task": "Your school or college has some money to spend on a science project for students. Write a proposal for the head teacher suggesting a project connected with astronomy or space, explaining what students would learn and why it would be a good use of the money. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian (UK)",
+          "url": "https://www.theguardian.com/science/2026/oct/09/astronomy-fast-radio-bursts-frb-radio-waves"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-09/distant-radio-burst.png",
+        "alt": "Large white dish antennas standing in a dry landscape",
+        "caption": "Dishes of the MeerKAT radio telescope in South Africa, which detected the burst (photo from 2018).",
+        "credit": "Square Kilometre Array Organisation (SKAO) / South African Radio Astronomy Observatory (SARAO)",
+        "license": "CC BY 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:2018-MeerKAT-4.png"
+      }
+    }
+  ]
+}
