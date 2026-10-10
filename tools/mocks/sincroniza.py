@@ -17,7 +17,7 @@ transforman. Lo que cada web tiene de suyo (el HTML con su piel, su bridge, su
 logo) no se toca.
 
 QUÉ ES COMPARTIDO (motor + bancos + vocabulario + avisos + versión):
-  reading-quiz.app-data.js · listening-quiz.app-data.js · writing-quiz.app-data.js
+  reading-quiz.app-data.js · listening-quiz.app-data.js · writing-quiz.app-data.js · speaking-quiz.app-data.js
   reading-quiz.exam-vocab.js · listening-quiz.exam-vocab.js · writing-rubric.js
   ui-mensajes.js · version.json · faces/* · images/*
 
@@ -43,11 +43,11 @@ COH_REPO = next((p for p in [r'C:\Projects\cohasset-community\repo'] if os.path.
 STD_REPO = next((p for p in [r'C:\Projects\mocks-cambridge'] if os.path.isdir(p)), None)
 COH = COH_REPO and os.path.join(COH_REPO, 'cambridge-mocks')
 
-COMPARTIDOS = ['reading-quiz.app-data.js', 'listening-quiz.app-data.js', 'writing-quiz.app-data.js',
+COMPARTIDOS = ['reading-quiz.app-data.js', 'listening-quiz.app-data.js', 'writing-quiz.app-data.js', 'speaking-quiz.app-data.js',
                'reading-quiz.exam-vocab.js', 'listening-quiz.exam-vocab.js', 'writing-rubric.js',
                'ui-mensajes.js', 'version.json']
 CARPETAS_COMPARTIDAS = ['faces', 'images']
-HTML = ['quizzes.html', 'reading-quiz.html', 'listening-quiz.html', 'writing-quiz.html']
+HTML = ['quizzes.html', 'reading-quiz.html', 'listening-quiz.html', 'writing-quiz.html', 'speaking-quiz.html']
 
 CHECK = '--check' in sys.argv
 PUBLICAR = '--publicar' in sys.argv
