@@ -42,6 +42,8 @@
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;
         box-shadow:0 1px 3px rgba(20,40,80,.05);break-inside:avoid}
   .card h2{margin:0 0 6px;font-size:1.02rem;color:var(--blue-d);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .song{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0}
+  .song video{width:100%;border-radius:10px;background:#000;aspect-ratio:16/9;display:block}
   .card h3{margin:14px 0 6px;font-size:.92rem;color:var(--blue-d)}
   .pill{display:inline-block;border-radius:999px;padding:2px 9px;font-size:.7rem;font-weight:700;
         background:var(--bg);color:var(--ink);border:1px solid var(--line);white-space:nowrap}
@@ -161,6 +163,7 @@
         <span class="pill">${esc(D.tipos[r.tipo] || r.tipo)}</span>
         <span class="pill">age ${esc(r.edad)}</span>
       </h2>
+      ${songBlock(r)}
       <div class="lyrics">${esc(r.letra)}</div>
       ${r.variante ? `<div class="lyrics var">${esc(r.variante)}</div>` : ''}
       ${r.coda ? `<p class="small"><b>Then:</b> ${esc(r.coda)}</p>` : ''}
@@ -174,6 +177,19 @@
         <button class="chip" type="button" data-learn="${esc(r.id)}" aria-pressed="${!!p.aprendida}">${p.aprendida ? '✓ Learned' : 'Mark as learned'}</button>
       </div>
     </article>`;
+  }
+
+  /* canción con música y video karaoke (Suno + personajes de Fun for Nordic);
+     solo sale en las rimas que ya la tienen (chants-musica.json) */
+  function songBlock(r) {
+    const m = D._mus[r.id];
+    if (!m) return '';
+    return `<div class="song">
+      <p class="small" style="margin:0 0 6px"><b>🎵 Sing along: ${esc(m.titulo)}</b> <span class="pill">${esc(m.genero)}</span></p>
+      <video controls playsinline preload="none" data-song="${esc(r.id)}" poster="${esc(m.poster)}" src="${esc(m.mp4)}"></video>
+      ${m.nueva_letra ? `<details class="small"><summary>The song uses new words with our characters — show them</summary><div class="lyrics">${esc(m.letra)}</div></details>` : ''}
+      <p class="small" style="margin:4px 0 0"><a href="${esc(m.mp3)}" download>⬇ Audio (mp3)</a></p>
+    </div>`;
   }
 
   function vistaRhymes() {
@@ -199,6 +215,7 @@
     main.querySelectorAll('[data-nivel]').forEach(b => b.onclick = () => { f.nivel = f.nivel === b.dataset.nivel ? 'all' : b.dataset.nivel; guarda(); vistaRhymes(); });
     main.querySelectorAll('[data-listen]').forEach(b => b.onclick = () => leeRima(b.dataset.listen));
     main.querySelectorAll('[data-learn]').forEach(b => b.onclick = () => marcaAprendida(b.dataset.learn));
+    main.querySelectorAll('video[data-song]').forEach(v => v.onended = () => { const id = v.dataset.song; P[id] = P[id] || {}; if (!P[id].escuchada) { P[id].escuchada = true; guardaP(); const b = main.querySelector(`[data-listen="${id}"]`); if (b) b.textContent = '✓ Listened'; } });
     const q$ = main.querySelector('#q');
     let t;
     q$.oninput = () => { f.q = q$.value; guarda(); clearTimeout(t); t = setTimeout(() => { const pos = q$.selectionStart; vistaRhymes(); const n = main.querySelector('#q'); n.focus(); n.setSelectionRange(pos, pos); }, 250); };
@@ -247,8 +264,10 @@
   Promise.all([
     fetch('nis-fun/songs/tradicionales.json?v=49197a7a', {cache: 'no-cache'}).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
     fetch('yle/wordlist-2025.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null),
-  ]).then(([d, yle]) => {
+    fetch('nis-fun/songs/chants-musica.json?v=50cbbc2d', {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null),
+  ]).then(([d, yle, mus]) => {
     D = d;
+    D._mus = (mus && mus.chants) || {};
     // nivel de cada palabra de la lista oficial: el más bajo gana
     D._yle = {};
     if (yle) LV.forEach(l => (yle[l] || []).forEach(e => {
