@@ -1,0 +1,987 @@
+{
+  "date": "2026-10-10",
+  "issue": 4,
+  "breaking": [
+    "Four astronauts come home after eight months in space.",
+    "Pope Leo XIV will visit Peru from 11 to 16 November.",
+    "Peru's exports grow by 34% in the first eight months of 2026.",
+    "Brazil: bridges in the trees help monkeys cross roads safely."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-10-astronauts-home",
+      "section": "Science",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "A2",
+      "topic": "Space",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Home at last: four astronauts come back from space",
+      "standfirst": "After eight months on the International Space Station, the crew landed in the sea near Los Angeles.",
+      "body": [
+        "Four astronauts came back to Earth on Thursday after eight months on the International Space Station (ISS). Their spacecraft, from the company SpaceX, landed in the Pacific Ocean near Los Angeles, in the United States.",
+        "The crew came from three countries. Jessica Meir and Jack Hathaway are from NASA in the US, Sophie Adenot is from France and Andrey Fedyaev is from Russia.",
+        "They flew to the ISS in February. They went there quickly because an astronaut on the station was ill, and he and his crew had to come home early.",
+        "In space, Meir went on four spacewalks and Adenot went on three. They worked outside the station to repair and improve it.",
+        "The astronauts were happy to see their families again. They also wanted to feel the wind on their faces and have a shower! Seven astronauts are still on the ISS."
+      ],
+      "glossary": [
+        {
+          "w": "astronauts",
+          "d": "people who travel into space"
+        },
+        {
+          "w": "spacecraft",
+          "d": "a vehicle that can travel in space"
+        },
+        {
+          "w": "crew",
+          "d": "a group of people who work together on a ship, plane or spacecraft"
+        },
+        {
+          "w": "spacewalks",
+          "d": "times when an astronaut goes outside a spacecraft in space"
+        },
+        {
+          "w": "repair",
+          "d": "to make something that is broken work again"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where did the spacecraft land?",
+          "options": [
+            "in Los Angeles",
+            "on a beach in France",
+            "in the Pacific Ocean"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "How long were the astronauts on the ISS?",
+          "options": [
+            "eight months",
+            "three weeks",
+            "four months"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why did the crew go to the ISS quickly?",
+          "options": [
+            "Their spacecraft was broken.",
+            "An astronaut on the station was ill.",
+            "The station needed someone from France."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "How many spacewalks did Sophie Adenot go on?",
+          "options": [
+            "four",
+            "seven",
+            "three"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "How many astronauts are on the ISS now?",
+          "options": [
+            "seven",
+            "four",
+            "eight"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Imagine you are an astronaut and you have just come home from space. Write an email to your English friend (25 words or more). Say where you were, what you did there and what you want to do first now that you are home."
+      },
+      "sources": [
+        {
+          "name": "The Guardian (Associated Press)",
+          "url": "https://www.theguardian.com/science/2026/oct/08/astronauts-return-iss-nasa-spacex"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/astronauts-home.jpg",
+        "alt": "A white space capsule floating in the sea after landing",
+        "caption": "A SpaceX capsule lands in the sea after an earlier mission in 2023.",
+        "credit": "Keegan Barber",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:NASA%E2%80%99s_SpaceX_Crew-5_Splashdown_(NHQ202303110003).jpg"
+      }
+    },
+    {
+      "id": "2026-10-10-pope-visit-peru",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Tourism",
+      "exam": "A2 Key · Reading Part 2 (right / wrong / doesn't say)",
+      "headline": "Pope Leo XIV is coming to Peru",
+      "standfirst": "More than 850,000 people may travel to cities around the country for his visit in November.",
+      "body": [
+        "Pope Leo XIV, the head of the Catholic Church, is going to visit Peru from 11 to 16 November. It will be a very big event for the country.",
+        "On Friday, Peru's Minister of Foreign Trade and Tourism, Rogers Valencia, said that more than 850,000 visitors will travel for the visit. About 50,000 of them will be tourists from other countries.",
+        "The main cities for visitors will be Lima, Cusco, Pucallpa and Chiclayo. Hotels, restaurants and transport companies in these places will get a lot of new customers.",
+        "The minister said that national, regional and local governments, the Church and private companies are working together to welcome the visitors.",
+        "He also talked about religious tourism. This is when people travel to visit places that are important for their religion. He thinks Peru can offer more of this kind of tourism in the future."
+      ],
+      "glossary": [
+        {
+          "w": "minister",
+          "d": "a person who is in charge of one part of a country's government"
+        },
+        {
+          "w": "tourists",
+          "d": "people who travel to a place for a holiday or to visit it"
+        },
+        {
+          "w": "customers",
+          "d": "people who buy things or use a service"
+        },
+        {
+          "w": "transport",
+          "d": "ways of moving people from one place to another, like buses, trains and planes"
+        },
+        {
+          "w": "religious",
+          "d": "connected with a belief in God or gods"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "The Pope will be in Peru for six days.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "Rogers Valencia talked about the visit on Friday.",
+          "answer": "T"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Most of the visitors will come from other countries.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The Pope will visit Arequipa.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "Only the national government is preparing for the visit.",
+          "answer": "F"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "Hotels in Cusco are already full.",
+          "answer": "NS"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "A famous person is coming to your city. Write a note to your English friend (25 words or more). Say who is coming and when, and say which place in your city you would like to show this person."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-pope-leo-xivs-visit-expected-to-mobilize-850000-visitors-boost-tourism-in-peru-1095315.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/pope-visit-peru.jpg",
+        "alt": "A large square with old buildings and a cathedral in Lima",
+        "caption": "The Plaza Mayor in Lima, one of the cities that will receive many visitors.",
+        "credit": "JulioKuLu",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Plaza_Mayor_de_Lima-1.jpg"
+      }
+    },
+    {
+      "id": "2026-10-10-amazon-canopy-bridges",
+      "section": "Environment",
+      "country": "Brazil",
+      "flag": "🇧🇷",
+      "level": "B1",
+      "topic": "Wildlife",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Bridges in the trees keep monkeys safe",
+      "standfirst": "In a small town in the Brazilian Amazon, simple bridges high above the road are saving the lives of rare animals.",
+      "body": [
+        "Roads are a big danger for wild animals. When a road cuts through a forest, animals that live in the trees, such as monkeys, often have to come down and cross on the ground. Many of them are hit by cars.",
+        "In 2024, a project called Reconecta and the local government put up eight canopy bridges over a road near Alta Floresta, a small town in Mato Grosso state, in the north of Brazil. The bridges are high above the traffic and connect two parts of the forest.",
+        "The results have been amazing. Cameras on the bridges showed that animals crossed safely 15,000 times in 15 months, and not one animal was killed on the road in that time. Spider monkeys, howler monkeys, capuchins and small monkeys called marmosets all use them.",
+        "Each bridge has two cameras. One films the animals that cross. The other points at the forest, so scientists can also see which animals arrive but decide not to use the bridge.",
+        "Biologist Fernanda Abra, who started Reconecta, says the bridges help animals move between areas of forest, and they also reduce the number of animals killed on roads. Eight more bridges are planned for the town itself. First, the electricity company must lower and cover the power lines, so that animals do not get hurt if they jump onto them."
+      ],
+      "glossary": [
+        {
+          "w": "canopy",
+          "d": "the top layer of a forest, made by the branches and leaves of tall trees"
+        },
+        {
+          "w": "traffic",
+          "d": "the cars, buses and lorries that are moving on a road"
+        },
+        {
+          "w": "connect",
+          "d": "to join two things or places together"
+        },
+        {
+          "w": "biologist",
+          "d": "a scientist who studies living things"
+        },
+        {
+          "w": "power lines",
+          "d": "long wires, usually high above the ground, that carry electricity"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why are roads dangerous for monkeys?",
+          "options": [
+            "They get lost near the road.",
+            "The noise of the cars frightens them.",
+            "The trees near roads are too small.",
+            "They have to come down to the ground to cross."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Who put up the first eight bridges?",
+          "options": [
+            "a group of tourists",
+            "a project and the local government",
+            "the electricity company",
+            "local schoolchildren"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What happened in the 15 months after the bridges went up?",
+          "options": [
+            "No animals were killed on the road.",
+            "15,000 animals moved to a new forest.",
+            "Only spider monkeys used the bridges.",
+            "Some of the bridges broke."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why does each bridge have a second camera?",
+          "options": [
+            "to watch the cars on the road",
+            "to film the people who visit",
+            "to see animals that come but don't cross",
+            "to check the weather"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What must happen before the new bridges in the town are put up?",
+          "options": [
+            "More cameras must be bought.",
+            "The power lines must be lowered and covered.",
+            "The road must be closed.",
+            "Some trees must be cut down."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for teenagers: 'Wild animals near you! Which wild animals live in or near your town? What problems do they have, and how can people help them? Write an article answering these questions.' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/09/animals-crossing-simple-solution-roadkill-amazon-brazil-alternatives"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/amazon-canopy-bridges.jpg",
+        "alt": "A black spider monkey with a dark face holding onto a tree",
+        "caption": "A black-faced black spider monkey, one of the animals that use the bridges.",
+        "credit": "Floro Ortiz Contreras",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Ateles_chamek_126223254.jpg"
+      }
+    },
+    {
+      "id": "2026-10-10-singapore-hawkers",
+      "section": "Culture",
+      "country": "Singapore",
+      "flag": "🇸🇬",
+      "level": "B1",
+      "topic": "Food and traditions",
+      "exam": "B1 Preliminary · Reading Part 5 (gap fill)",
+      "headline": "Singapore's famous cheap food is in danger",
+      "standfirst": "Hawker centres are known for delicious, low-cost meals. But many cooks say it is getting hard to make enough money.",
+      "body": [
+        "Debbie Yam works about 70 hours a week in front of a hot wok. Ten years ago, after finishing a business degree, she took over her great-grandfather's food stall in Singapore. He started selling food on the street in 1946, and today the stall serves fish-head noodles and stir-fried dishes.",
+        "Her stall is in a hawker centre. These are large public places, owned by the government, where many small stalls sell freshly made food at low prices. Friends and neighbours meet there to eat and talk. In 2020, UNESCO added Singapore's hawker culture to its list of Intangible Cultural Heritage.",
+        "But life is getting harder for hawkers. Customers expect meals to stay cheap, while the cost of ingredients, rent and workers keeps rising. At some centres, stalls must offer a basic meal for about 3.50 Singapore dollars.",
+        "Debbie pays an old, low rent of about 400 Singapore dollars a month. New stallholders often pay much more, and some people offer as much as 4,000 dollars a month for a stall. 'How can they price their food so low?' she asks.",
+        "Many young people start working as hawkers, but only a few stay. Debbie loves the food, but she says that if the business stops making sense, passion alone will not keep her going."
+      ],
+      "glossary": [
+        {
+          "w": "wok",
+          "d": "a large round pan used for cooking food quickly in hot oil"
+        },
+        {
+          "w": "stall",
+          "d": "a small shop or table where things such as food are sold"
+        },
+        {
+          "w": "ingredients",
+          "d": "the different foods you use to make a dish"
+        },
+        {
+          "w": "rent",
+          "d": "money you pay every month to use a place that belongs to someone else"
+        },
+        {
+          "w": "passion",
+          "d": "a very strong feeling of liking something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Ten years ago, Debbie took ___ her great-grandfather's stall.",
+          "options": [
+            "over",
+            "up",
+            "off",
+            "in"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "In hawker centres, people can buy food at low ___.",
+          "options": [
+            "money",
+            "prices",
+            "values",
+            "payments"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "In 2020, UNESCO ___ Singapore's hawker culture to a special list.",
+          "options": [
+            "put",
+            "gave",
+            "added",
+            "joined"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "The cost of ingredients and rent keeps ___.",
+          "options": [
+            "growing up",
+            "getting on",
+            "going over",
+            "rising"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Many young people become hawkers, but only a ___ stay.",
+          "options": [
+            "little",
+            "few",
+            "lot",
+            "many"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "Debbie says that passion alone will not ___ her going.",
+          "options": [
+            "let",
+            "stay",
+            "keep",
+            "make"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Sam has written to you: 'I'm coming to your city next month and I love trying street food! Which dishes should I try? Where is the best place to eat cheaply? Is there anything I shouldn't eat?' Write your email to Sam in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-10/singapore-hawker-stall-culture-cheap-food-heritage-preserve/107209692"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/singapore-hawkers.jpg",
+        "alt": "Tables and small food stalls inside a hawker centre",
+        "caption": "Inside Seah Im Food Centre, a hawker centre in Singapore.",
+        "credit": "Kbseah",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Seah_Im_Food_Centre,_interior.jpg"
+      }
+    },
+    {
+      "id": "2026-10-10-peru-exports-record",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B2",
+      "topic": "Trade",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Copper and gold push Peru's exports to new heights",
+      "standfirst": "Sales abroad rose by 34% in the first eight months of 2026. Mining led the way, but fruit and smaller firms also played a part.",
+      "body": [
+        "Peru's exports are booming. According to the Ministry of Foreign Trade and Tourism (Mincetur), the country sold goods worth US$74.122 billion abroad between January and August 2026, an increase of 34% compared with the same period last year. This means that exports have now grown for 28 months in a row without interruption.",
+        "Mining was by far the biggest driver. Sales of mining products reached almost US$53.9 billion, up 50.6%, largely because international copper prices have been high. Copper alone brought in more than US$25.5 billion, while gold earned nearly US$18.9 billion, a rise of almost 55%. Sales of lead and silver concentrates more than doubled, climbing by 103.3% to almost US$3.9 billion.",
+        "However, the story is not only about metals. Agricultural exports, part of what the government calls 'non-traditional' sectors, grew slightly, by 2.1%, to about US$7.6 billion. Fruit performed especially well: blueberry sales jumped by 46.5% to just over US$1 billion, and exports of grapes, avocados and pomegranates also increased, as did quinoa.",
+        "Peruvian products are also reaching more markets. China remains the biggest buyer by far, purchasing goods worth over US$28 billion, followed by the United States and the European Union. Exports to India doubled, and sales to Australia, Hong Kong, Malaysia and Singapore have already broken their annual records, even though the year is not over yet.",
+        "Another encouraging sign is that the number of exporting companies rose by 3% to 8,741. Around two thirds of them are micro, small or medium-sized businesses, which suggests that the benefits of trade are not limited to a few giant firms. Nevertheless, with such a large share of income coming from copper and gold, Peru's export success still depends heavily on prices set in world markets."
+      ],
+      "glossary": [
+        {
+          "w": "booming",
+          "d": "growing very quickly and becoming very successful"
+        },
+        {
+          "w": "in a row",
+          "d": "one after another, without a break"
+        },
+        {
+          "w": "driver",
+          "d": "the main thing that makes something happen or grow"
+        },
+        {
+          "w": "sectors",
+          "d": "parts of a country's economy, such as farming or mining"
+        },
+        {
+          "w": "encouraging",
+          "d": "making you feel hopeful that something will be good or successful"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer mean by '28 months in a row'?",
+          "options": [
+            "Exports fell only once in 2025.",
+            "Exports have been measured for 28 months.",
+            "Exports have grown every month for 28 months.",
+            "Exports grew by 28% this year."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to the second paragraph, why did mining sales rise so much?",
+          "options": [
+            "Copper was sold at high prices around the world.",
+            "Many new mines opened in Peru.",
+            "The price of gold fell.",
+            "Peru sold more metals to its neighbours."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the third paragraph say about farm exports?",
+          "options": [
+            "They earned more money than mining.",
+            "They fell for the first time in years.",
+            "Avocados were the only fruit that grew.",
+            "Blueberry sales grew by almost half."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is surprising about sales to Australia, Hong Kong, Malaysia and Singapore?",
+          "options": [
+            "They are now bigger than sales to China.",
+            "They have beaten their yearly records before the end of the year.",
+            "They only include copper and gold.",
+            "They have fallen since last year."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the writer's main concern in the last paragraph?",
+          "options": [
+            "There are too few small exporting companies.",
+            "China is buying too many Peruvian products.",
+            "Peru's export success depends a lot on metal prices.",
+            "The number of exporters is falling."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about your country's economy. Your teacher has asked you to write an essay: 'Is it a good idea for a country to depend on selling its natural resources, such as metals?' Write about: 1. jobs, 2. the environment, 3. your own idea. Write 140-190 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-exports-exceed-74-billion-from-jan-to-aug-2026-up-34-1095384.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/peru-exports-record.jpg",
+        "alt": "A satellite view of two huge open-pit mines in a dry landscape",
+        "caption": "Cerro Verde, a copper mine in southern Peru, seen from space by a NASA satellite.",
+        "credit": "NASA Operational Land Imager (OLI) on Landsat 8",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Cerro_Verde_mine_Peru.jpg"
+      }
+    },
+    {
+      "id": "2026-10-10-microscope-video-ai",
+      "section": "Technology",
+      "country": "China",
+      "flag": "🇨🇳",
+      "level": "B2",
+      "topic": "Science and AI",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "headline": "Winning microscope video disqualified for using AI",
+      "standfirst": "A famous competition for images of the tiny world has taken away its top prize after experts noticed that something was wrong.",
+      "body": [
+        "A. Every year, the camera company Nikon runs Small World In Motion, an international competition for the best videos filmed through a microscope. The contest, which first started in 1975, is open to anyone in the world with an interest in film or time-lapse photography through a microscope, and the winner receives a prize worth US$3,000.",
+        "B. This year's winning video appeared to show tiny hair-like structures called cilia moving inside the airways of a child with a rare genetic disease, primary ciliary dyskinesia (PCD). Normally, cilia help to clear mucus out of our airways. The video was made by Ning Xu, who was an optical engineering researcher at Tsinghua University in China at the time.",
+        "C. However, only a few days after the winner was announced, microscopy experts began to raise doubts on social media. One scientist, Edward Phelps, commented that the nuclei, the control centres of cells, did not behave like real nuclei, and that the cilia seemed to appear from nowhere and were the wrong size. A group of experts then wrote an open letter, warning that a misleading picture of PCD could shape how the public understands a disease that is already poorly understood.",
+        "D. Nikon then announced that the video had broken the competition's rules on generative AI, and it was disqualified. The company stressed that its decision was only about whether the entry was eligible, and was not a judgement of the researcher's professional reputation or scientific work.",
+        "E. First prize has now gone to Vietnamese researcher Nguyen Nam Nhat, whose video, which had originally come second, shows a microscopic roundworm meeting a single-celled organism called a Dileptus. The case is a reminder that, as AI tools improve, careful checking by experts matters more than ever."
+      ],
+      "glossary": [
+        {
+          "w": "disqualified",
+          "d": "stopped from taking part in or winning a competition because a rule was broken"
+        },
+        {
+          "w": "microscope",
+          "d": "a scientific instrument that makes very small things look much bigger"
+        },
+        {
+          "w": "genetic",
+          "d": "connected with genes, the information in our cells that we get from our parents"
+        },
+        {
+          "w": "misleading",
+          "d": "giving people the wrong idea about something"
+        },
+        {
+          "w": "eligible",
+          "d": "allowed to do or have something because you meet the rules"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes how experts first raised concerns about the video?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph gives basic information about the competition and its prize?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph names the person who received first prize in the end?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains what the disqualified video seemed to show?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph says the decision was not meant as a criticism of the researcher's career?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement on an English-language website for students: 'Should images made with AI be allowed in photo and video competitions? Tell us what you think and explain why. We will publish the best articles.' Write your article in 140-190 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-10/winner-of-nikon-small-world-in-motion-competition-ai-generated/107251164"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/microscope-video-ai.jpg",
+        "alt": "Several thin roundworms seen through a microscope",
+        "caption": "Tiny roundworms seen through a light microscope (not from the competition).",
+        "credit": "Gannu03",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Caenorhabditis_elegans_under_a_light_microscope_02.jpg"
+      }
+    },
+    {
+      "id": "2026-10-10-surf-breaks-climate",
+      "section": "Sport",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "C1",
+      "topic": "Surfing and climate",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Rising seas threaten some of the world's most famous waves",
+      "standfirst": "A new study warns that more than three-quarters of the surf breaks it examined are at high risk, with consequences that reach far beyond the surfing community.",
+      "body": [
+        "For surfers, a great wave is something close to a miracle. It depends on an intricate combination of the shape of the sea floor, the direction of the swell and the state of the tide. Change one ingredient and the wave may simply vanish. According to a study published in the journal Climatic Change, that is exactly what the climate crisis threatens to do to some of the most celebrated surf spots on the planet.",
+        "The researchers focused on world surfing reserves, a network of protected waves launched in 2009 by the organisation Save the Waves Coalition. Almost 200 local experts assessed 57 surf breaks in 11 of the 13 reserves, spread across eight countries. Their conclusion was stark: more than three-quarters of the breaks are at high risk because of changing tide levels, shifting sand and hardened shorelines.",
+        "The waves judged most vulnerable include Croyde in north Devon, often described as the best beach break in the UK, the point breaks of Noosa in Australia and Oriente Salvaje in El Salvador, and several reefs in Santa Cruz, California. Rising sea levels could drown some waves, while changing rainfall patterns alter the way sand moves along the coast, upsetting the delicate balance that creates others.",
+        "One of the study's key findings concerns human intervention. Where coastlines remain natural, beaches can adapt by moving inland and redistributing sand. Sea walls, jetties and groynes, by contrast, make beaches and their waves less resilient, so a well-intended defence may end up destroying the very thing that draws people to the shore.",
+        "The stakes are not merely recreational. Surfing supports a multibillion-dollar economy, often in places with few other sources of income; in Santa Cruz alone, it is estimated to bring in about US$200 million a year. In north Devon, local surfers say visitors fill pubs and car parks even in the depths of winter, when seaside towns without surf are deserted.",
+        "Encouragingly, the researchers argue that surfers' detailed local knowledge could become a powerful tool for protection. Some places already give waves legal recognition: the city of Gold Coast in Australia, for instance, has written surf protection into its planning law. As one of the authors put it, a changing wave is often 'a canary in the coalmine', a sign that the whole beach is changing too."
+      ],
+      "glossary": [
+        {
+          "w": "intricate",
+          "d": "having many small parts or details that fit together in a complicated way"
+        },
+        {
+          "w": "stark",
+          "d": "clear, simple and unpleasant, with no attempt to make it sound better"
+        },
+        {
+          "w": "vulnerable",
+          "d": "easily harmed or damaged"
+        },
+        {
+          "w": "resilient",
+          "d": "able to recover quickly or deal with difficult conditions"
+        },
+        {
+          "w": "recreational",
+          "d": "connected with activities people do for enjoyment in their free time"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer compare a great wave to 'a miracle' in the first paragraph?",
+          "options": [
+            "to suggest that surfers are superstitious",
+            "to emphasise how many rare conditions must combine to create it",
+            "to argue that waves cannot be studied scientifically",
+            "to criticise scientists for ignoring surfing"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does the word 'stark' suggest about the study's conclusion?",
+          "options": [
+            "It was uncertain and needs more research.",
+            "It was surprisingly positive.",
+            "It was based on very little data.",
+            "It was clear and worrying."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "According to the fourth paragraph, what is ironic about sea walls and jetties?",
+          "options": [
+            "They may damage the very waves that attract visitors.",
+            "They cost more than the beaches are worth.",
+            "They were designed by surfers.",
+            "They protect towns from floods."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why does the writer mention Santa Cruz and north Devon in the fifth paragraph?",
+          "options": [
+            "to show that surfing is most popular in winter",
+            "to compare British and American waves",
+            "to show how much surfing matters to local economies",
+            "to warn that pubs are threatened by rising seas"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does 'others' refer to at the end of the third paragraph?",
+          "options": [
+            "waves",
+            "reefs",
+            "surfers",
+            "countries"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "How would you describe the writer's attitude in the final paragraph?",
+          "options": [
+            "despairing",
+            "dismissive of surfers",
+            "completely neutral",
+            "cautiously hopeful"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a panel discussion about how to protect coastlines. You have made the notes below. Methods of protecting coastlines: building sea walls and other defences; leaving beaches in their natural state; giving popular places legal protection. Write an essay discussing two of the methods in your notes. You should explain which method you think is more effective, giving reasons to support your opinion. Write 220-260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/10/climate-crisis-putting-world-best-surf-breaks-at-risk"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/surf-breaks-climate.jpg",
+        "alt": "A surfer riding a wave at a beach in England",
+        "caption": "Surfing at Croyde in north Devon, one of the waves most at risk.",
+        "credit": "Miles Wolstenholme",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Surfing_at_Croyde,_Devon.jpg"
+      }
+    },
+    {
+      "id": "2026-10-10-delta-fuel-costs",
+      "section": "Economy",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "C1",
+      "topic": "Air travel and energy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Expensive fuel, full planes: the airline industry's strange year",
+      "standfirst": "Delta Air Lines has cut its profit forecast despite strong demand, offering a glimpse of how rising energy prices ripple through the economy.",
+      "body": [
+        "At first glance, Delta Air Lines' latest results look like a contradiction. Planes are full, holiday bookings are strong and the Atlanta-based carrier is opening new international routes. Yet on Friday the company cut its profit forecast for the year, and its shares fell. The explanation lies largely in one word: fuel.",
+        "Tensions between the United States and Iran have driven up fuel prices across the global aviation sector, and Delta now expects its annual fuel bill to rise by US$6 billion. The pressure is industry-wide: US airlines spent nearly US$43 billion on fuel in the first eight months of the year, US$13.2 billion more than in the same period a year earlier.",
+        "As a result, Delta lowered its forecast for adjusted earnings per share to between US$5.10 and US$5.60, down from the US$6.50 to US$7.50 it had predicted in July. Even so, the company is better shielded than most of its rivals, since it has owned an oil refinery in Pennsylvania since 2012, which makes it less exposed to sudden swings in prices.",
+        "Passengers, meanwhile, are paying more. Chief executive Ed Bastian said Delta had raised fares by roughly 20 per cent this year and suggested that those prices could be sustained even if fuel became cheaper. Demand has so far held up: 60 per cent of fourth-quarter flights are already booked, and revenue from premium seats rose by 18 per cent compared with the same quarter last year.",
+        "Beneath these figures, however, lies a more uneven picture. While wealthier travellers continue to pay for comfort, lower-income households are tightening their belts. A University of Michigan survey found that consumer sentiment had dropped steeply this month among people with lower incomes and smaller investments, and in May a report by the consulting firm Deloitte found that 51 per cent of Americans earning less than US$100,000 a year said travel would be one of the first expenses they would cut.",
+        "Delta's results therefore illustrate a wider trend. Higher energy costs do not simply disappear; they are passed along the chain to consumers, and those with the least room in their budgets are usually the first to feel the squeeze."
+      ],
+      "glossary": [
+        {
+          "w": "contradiction",
+          "d": "a situation in which two facts seem to be opposite and cannot both be true"
+        },
+        {
+          "w": "forecast",
+          "d": "a statement about what is expected to happen in the future"
+        },
+        {
+          "w": "refinery",
+          "d": "a factory where oil is made into products such as fuel"
+        },
+        {
+          "w": "sustained",
+          "d": "kept at the same level for a long period of time"
+        },
+        {
+          "w": "sentiment",
+          "d": "a general feeling or opinion about something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer describe Delta's results as 'a contradiction'?",
+          "options": [
+            "Delta lost passengers but made more money.",
+            "Its shares rose although its profits fell.",
+            "Demand is strong, yet the company expects lower profits.",
+            "It opened new routes but then cancelled them."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What is the main purpose of the second paragraph?",
+          "options": [
+            "to show that the fuel problem affects the whole industry",
+            "to compare Delta with airlines in Iran",
+            "to argue that fuel prices will soon fall",
+            "to criticise the US government"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why is Delta 'better shielded than most of its rivals'?",
+          "options": [
+            "It flies fewer international routes.",
+            "It charges higher fares than other airlines.",
+            "It sells more premium seats.",
+            "It owns its own oil refinery."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does Ed Bastian suggest about ticket prices?",
+          "options": [
+            "They will fall as soon as fuel gets cheaper.",
+            "They may stay high even if fuel prices go down.",
+            "They will rise by another 20 per cent.",
+            "They are now too high for premium passengers."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does 'tightening their belts' mean in the fifth paragraph?",
+          "options": [
+            "buying travel insurance",
+            "taking shorter trips",
+            "spending less money",
+            "travelling more often"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's main point in the final paragraph?",
+          "options": [
+            "Airlines should lower their fares.",
+            "Rising energy costs hit people with less money hardest.",
+            "Energy prices are now falling.",
+            "Delta will soon recover its profits."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has had a discussion about the rising cost of travel. You have made the notes below. Effects of more expensive air travel: on the environment; on families' budgets; on jobs in tourism. Write an essay discussing two of the effects in your notes. You should explain which effect is more important, giving reasons to support your opinion. Write 220-260 words."
+      },
+      "sources": [
+        {
+          "name": "Al Jazeera (with Reuters)",
+          "url": "https://www.aljazeera.com/economy/2026/10/9/rising-fuel-costs-slashed-deltas-profit-outlook-despite-strong-demand"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-10/delta-fuel-costs.jpg",
+        "alt": "Passenger planes parked at a large airport",
+        "caption": "Planes at Atlanta's airport. Delta Air Lines is based in Atlanta.",
+        "credit": "Harrison Keely",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Atlanta_Airport_%E2%80%93_Hartsfield-Jackson_Atlanta_International_Airport_in_Georgia_6.jpg"
+      }
+    }
+  ]
+}
