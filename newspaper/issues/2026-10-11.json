@@ -1,0 +1,947 @@
+{
+  "date": "2026-10-11",
+  "issue": 5,
+  "breaking": [
+    "The northern lights shine in the sky over the UK.",
+    "A photo on Instagram helps scientists find a new giant waterlily in Colombia.",
+    "Los Angeles has one of its worst years for mosquitoes.",
+    "Researchers sail to a Pacific island to look for Amelia Earhart's plane."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-11-northern-lights",
+      "section": "Science",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "A2",
+      "topic": "Space",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Magic in the sky: the northern lights shine over the UK",
+      "standfirst": "People in the south of England saw the colourful lights too – and they can maybe see them again until Tuesday.",
+      "body": [
+        "People across the United Kingdom had a big surprise on Friday and Saturday evening. The northern lights were in the sky!",
+        "The northern lights are also called the aurora borealis. People usually see them near the Arctic Circle and in the north of Scotland. But this time, people saw them in the south of England too, in places like Devon, Hampshire and Kent.",
+        "Where do the lights come from? The sun sends out very small pieces called particles. They travel very fast – about one million miles an hour. When they hit the gases in the air high above the Earth, they make light. Oxygen makes green light, and nitrogen makes blue and purple light.",
+        "The Met Office, the UK's weather service, says people can maybe see the lights again until Tuesday if the sky is clear. Scientists say 2026 is a very good year to see them, because the sun is very active now."
+      ],
+      "glossary": [
+        {
+          "w": "northern lights",
+          "d": "coloured lights that you can sometimes see in the night sky in the far north"
+        },
+        {
+          "w": "particles",
+          "d": "very, very small pieces of something"
+        },
+        {
+          "w": "gases",
+          "d": "things like air that are not solid or liquid"
+        },
+        {
+          "w": "clear",
+          "d": "with no clouds"
+        },
+        {
+          "w": "active",
+          "d": "busy; doing a lot"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "When did people in the UK see the northern lights?",
+          "options": [
+            "on Thursday and Friday",
+            "on Monday",
+            "on Friday and Saturday"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Where do people usually see the northern lights?",
+          "options": [
+            "near the Arctic Circle",
+            "in Kent",
+            "in the south of England"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What colour light does oxygen make?",
+          "options": [
+            "blue",
+            "green",
+            "purple"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is the Met Office?",
+          "options": [
+            "the UK's weather service",
+            "a group of scientists in Scotland",
+            "a space centre"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why is 2026 a good year to see the lights?",
+          "options": [
+            "The sky is always clear.",
+            "There are more gases in the air.",
+            "The sun is very active."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Last night you saw something beautiful in the sky (the moon, stars or the northern lights). Write an email to your English friend (25 words or more). Say what you saw, where you were and who you were with."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/10/skies-across-the-uk-illuminated-by-the-northern-lights"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/northern-lights.jpg",
+        "alt": "Green and pink northern lights in the night sky over the south-east of England",
+        "caption": "The northern lights over the south-east of England in May 2024, during an earlier solar storm.",
+        "credit": "Olivvybee",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Aurora_Borealis_seen_from_South_East_England,_May_2024.jpg"
+      }
+    },
+    {
+      "id": "2026-10-11-leave-the-leaves",
+      "section": "Environment",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "A2",
+      "topic": "Nature",
+      "exam": "A2 Key · Reading Part 2 (right / wrong / doesn't say)",
+      "headline": "Don't throw them away! Why fallen leaves are good for nature",
+      "standfirst": "October is 'Leave the Leaves' month in the United States. A famous place in New York shows why.",
+      "body": [
+        "In autumn, a lot of trees drop their leaves. Many people collect the leaves from their gardens and throw them away. But a campaign in the United States asks people to do something different: leave the leaves where they fall!",
+        "October is 'Leave the Leaves' month. The idea is simple. Fallen leaves are not rubbish. They are a home for many small animals, like insects.",
+        "Matthew Morrow works at Green-Wood Cemetery, a famous old place with lots of trees in Brooklyn, New York. It has 8,000 trees of 700 different kinds, and every year they drop 34 tons of leaves! Matthew loves the leaves, but sometimes there are too many of them.",
+        "Why do leaves change colour in autumn? The days get shorter and colder. The green colour in the leaves goes away, and then we can see other colours, like orange. After that, the leaves fall from the trees."
+      ],
+      "glossary": [
+        {
+          "w": "autumn",
+          "d": "the season after summer, when leaves fall from trees"
+        },
+        {
+          "w": "campaign",
+          "d": "a plan of activities to make people do or change something"
+        },
+        {
+          "w": "rubbish",
+          "d": "things that you throw away because you don't want them"
+        },
+        {
+          "w": "insects",
+          "d": "very small animals with six legs, like ants and bees"
+        },
+        {
+          "w": "tons",
+          "d": "a unit for measuring very heavy things; one ton is 1,000 kilos"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "'Leave the Leaves' month is in October.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The campaign asks people to collect all the leaves from their gardens.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Matthew Morrow has worked at Green-Wood Cemetery for twenty years.",
+          "answer": "NS"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "There are 700 trees at Green-Wood Cemetery.",
+          "answer": "F"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "Leaves can look orange when the green colour goes away.",
+          "answer": "T"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "Matthew Morrow has a big garden at his house.",
+          "answer": "NS"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "There are lots of leaves in your school garden. Write a note to your English friend (25 words or more). Ask your friend to help you, say what you want to do with the leaves and say when you want to meet."
+      },
+      "sources": [
+        {
+          "name": "The New York Times",
+          "url": "https://www.nytimes.com/2026/10/10/science/fallen-leaves.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/leave-the-leaves.jpg",
+        "alt": "Yellow ginkgo leaves on the ground in autumn",
+        "caption": "Ginkgo leaves at Green-Wood Cemetery in Brooklyn in an earlier autumn.",
+        "credit": "Rhododendrites",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Gingko_leaves_in_autumn_(23357).jpg"
+      }
+    },
+    {
+      "id": "2026-10-11-giant-waterlily",
+      "section": "Science",
+      "country": "Colombia",
+      "flag": "🇨🇴",
+      "level": "B1",
+      "topic": "Plants",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "An Instagram photo leads to a giant discovery in Colombia",
+      "standfirst": "Scientists have found a new kind of giant waterlily – a plant so big that it can be seen from space.",
+      "body": [
+        "A photo on Instagram has helped scientists find a new kind of giant waterlily in the jungle of Colombia. The plant is so big that it can even be seen from space.",
+        "Giant waterlilies can have leaves up to three metres wide, and the leaves are strong enough to hold the weight of a small child. They are among the oldest flowering plants on Earth that are still alive today.",
+        "Three years ago, Carlos Magdalena, a waterlily expert at the Royal Botanic Gardens, Kew, in the UK, was looking at Instagram when he saw a photo of someone swimming among giant waterlilies in the Inírida River in Guainía, Colombia. The photographer, Jeremiah Harris, thought the plants were a common type called Victoria amazonica. But Magdalena knew that this type does not normally grow in that river, so he became curious.",
+        "After studying satellite pictures for years, Magdalena travelled to Colombia with scientists from a botanic garden in Bogotá and members of local indigenous communities. For days they found nothing. Then, with only ten hours left before their flight home, their driver told them where to look. They sailed all night in the dark and finally found the plants in a small lake. \"It was so emotional I shed a tear,\" Magdalena said.",
+        "The new species is called Victoria colombiana. Scientists think there are only 30 to 50 of these plants in the wild, so it is in danger of disappearing, and the team now wants to protect it."
+      ],
+      "glossary": [
+        {
+          "w": "expert",
+          "d": "a person who knows a lot about a subject"
+        },
+        {
+          "w": "curious",
+          "d": "wanting to know or learn more about something"
+        },
+        {
+          "w": "satellite",
+          "d": "a machine that goes around the Earth and can take pictures of it"
+        },
+        {
+          "w": "indigenous",
+          "d": "belonging to the first people who lived in a place"
+        },
+        {
+          "w": "species",
+          "d": "a group of plants or animals of the same kind"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "How did Carlos Magdalena first learn about the plant?",
+          "options": [
+            "A scientist in Bogotá wrote to him.",
+            "He saw a photo on social media.",
+            "He found it in a satellite picture.",
+            "A driver told him about it."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why was Magdalena surprised when he saw the photo?",
+          "options": [
+            "The person in the photo was swimming.",
+            "The leaves were three metres wide.",
+            "The photo was very old.",
+            "That type of waterlily does not usually grow in that river."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What happened near the end of the trip?",
+          "options": [
+            "Their driver helped them find the plants.",
+            "They missed their flight home.",
+            "They found the plants in the river during the day.",
+            "They decided to stop looking."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Who went to the jungle with Magdalena?",
+          "options": [
+            "Jeremiah Harris and his friends",
+            "a team from Instagram",
+            "scientists from Bogotá and local indigenous people",
+            "nobody – he went alone"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why is the new waterlily in danger?",
+          "options": [
+            "People take its leaves.",
+            "There are very few of these plants in the wild.",
+            "The river is too dirty.",
+            "It can only grow in the UK."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice on an English-language website for teenagers: 'Amazing nature! Tell us about a plant or animal from your country that people should know about. Why is it special? What can we do to protect it?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/09/plant-selfie-jaw-dropping-giant-waterlily-discovery-colombia"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/giant-waterlily.jpg",
+        "alt": "Huge round green waterlily leaves floating on water",
+        "caption": "Leaves of Victoria amazonica, a close relative of the new giant waterlily, in a botanical garden.",
+        "credit": "ImagePerson",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Zagreb_Bot_Gdn_Victoria_Amazonica_1055.jpg"
+      }
+    },
+    {
+      "id": "2026-10-11-gran-pajaten",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "History",
+      "exam": "B1 Preliminary · Reading Part 5 (gap fill)",
+      "headline": "Gran Pajatén: the lost city hidden in Peru's cloud forest",
+      "standfirst": "It is more than 800 years old, but very few people have ever seen it.",
+      "body": [
+        "High in the cloud forest of northern Peru, there is an ancient city that very few people have ever seen. It is called Gran Pajatén, and both scientists and tourists are becoming more and more interested in it.",
+        "Gran Pajatén is in the Río Abiseo National Park, in the San Martín region, at an altitude of 2,895 metres. It is sometimes called the Lost City of the Chachapoya. A group of local people from Pataz, led by Carlos Tomás Torrealva, discovered it in 1963.",
+        "The site is more than 800 years old and covers about 20,000 square metres. It has round buildings, similar to the ones at Kuélap. Their walls are decorated with mosaics made of slate that show birds, people and geometric shapes. For centuries, thick plants and the difficult jungle kept the city hidden and protected it.",
+        "In 1992, UNESCO made Río Abiseo National Park a World Heritage Site because of both its nature and its history. In Peru, only Machu Picchu has the same double recognition.",
+        "But visiting Gran Pajatén is not easy. Today, the only way to reach it is through Pataz province, in the La Libertad region, and tourist visits are very limited. The buildings are fragile and could be damaged, so experts need to restore them before more visitors can come."
+      ],
+      "glossary": [
+        {
+          "w": "ancient",
+          "d": "very, very old"
+        },
+        {
+          "w": "altitude",
+          "d": "how high a place is above the sea"
+        },
+        {
+          "w": "mosaics",
+          "d": "pictures made with many small pieces of stone, glass or other material"
+        },
+        {
+          "w": "fragile",
+          "d": "easy to break or damage"
+        },
+        {
+          "w": "restore",
+          "d": "to repair something old so that it looks like it did before"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Very few people have ever ___ Gran Pajatén with their own eyes.",
+          "options": [
+            "seen",
+            "looked",
+            "watched",
+            "glanced"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "The city was ___ in 1963 by a group of local people.",
+          "options": [
+            "invented",
+            "discovered",
+            "created",
+            "opened"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "The walls are ___ with mosaics of birds and people.",
+          "options": [
+            "covered up",
+            "filled in",
+            "decorated",
+            "dressed"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "For centuries, thick plants kept the city ___.",
+          "options": [
+            "missed",
+            "covering",
+            "hidden",
+            "invisible to"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Tourist visits are very ___ because the buildings are fragile.",
+          "options": [
+            "narrow",
+            "thin",
+            "tight",
+            "limited"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Sam has written to you: 'I'm coming to Peru next year and I'd love to visit an ancient site. Which one should I visit? How do I get there? What should I take with me?' Write your email to Sam in about 100 words, answering all the questions."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-gran-pajaten-key-facts-about-perus-almost-hidden-archaeological-gem-in-jungle-1093940.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/gran-pajaten.jpg",
+        "alt": "The stone walls of a round building at Gran Pajaten",
+        "caption": "One of the round stone buildings at Gran Pajaten, photographed during an earlier visit.",
+        "credit": "Warren Church",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Gran_Pajat%C3%A9n.jpg"
+      }
+    },
+    {
+      "id": "2026-10-11-la-mosquitoes",
+      "section": "Health",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B2",
+      "topic": "Health",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Heat, humidity and a lot of bites: Los Angeles battles its mosquitoes",
+      "standfirst": "A mild winter and a humid summer have made 2026 one of the worst mosquito years the city can remember.",
+      "body": [
+        "Los Angeles is famous for sunshine, beaches and film stars, but in recent years it has earned a much less attractive title: the American city with the most mosquitoes. And this year has been one of the worst in recent memory.",
+        "The reason is a combination of heat and humidity. The winter was unusually mild, with heatwaves in February and March, so the insects never really stopped being active. Mosquitoes become far less active when night-time temperatures drop to around 10°C, but that rarely happened. Then a humid summer, linked to an exceptionally strong El Niño, gave them ideal conditions to breed.",
+        "The consequences are not only annoying. Los Angeles County has recorded more than 180 cases of West Nile virus this year, the highest number in nearly a decade. The disease is spread mainly by a local mosquito nicknamed 'quinx', which usually prefers to bite birds such as crows. When an infected quinx later bites a human, it can pass the virus on. In neighbouring Orange County, around 850 mosquito traps have tested positive for the virus.",
+        "However, the insect that bothers residents most is the Aedes mosquito, which first appeared in the region in 2014. Known locally as 'ankle biters', these mosquitoes prefer human blood and may bite the same person several times. They do not carry West Nile virus, but they can spread other diseases, including dengue, Zika and yellow fever. Because local people are not used to them, their bites can cause bigger swellings.",
+        "Experts say the cheapest and most effective weapon is surprisingly simple: get rid of standing water. Aedes mosquitoes can breed in as little as a tablespoon of water, so saucers under plant pots and pets' water bowls left outside can quickly become breeding grounds."
+      ],
+      "glossary": [
+        {
+          "w": "humidity",
+          "d": "the amount of water in the air"
+        },
+        {
+          "w": "mild",
+          "d": "not as cold as usual"
+        },
+        {
+          "w": "breed",
+          "d": "to produce young animals or insects"
+        },
+        {
+          "w": "infected",
+          "d": "carrying a disease that can spread to others"
+        },
+        {
+          "w": "swellings",
+          "d": "places on the body that become bigger than usual, for example after a bite"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer suggest in the first paragraph?",
+          "options": [
+            "Los Angeles has always had a mosquito problem.",
+            "Tourists are now avoiding Los Angeles.",
+            "Los Angeles has gained an unwelcome reputation.",
+            "Mosquitoes arrived in the city for the first time this year."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why did the mosquitoes stay active during the winter?",
+          "options": [
+            "Night-time temperatures stayed relatively high.",
+            "There was a lot of rain in February.",
+            "The insects moved inside people's homes.",
+            "El Niño brought cold winds."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "How do quinx mosquitoes pass West Nile virus to humans?",
+          "options": [
+            "They lay their eggs near people's homes.",
+            "They bring it from other countries.",
+            "They bite humans first and then birds.",
+            "They pick it up from birds and then bite people."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is true about Aedes mosquitoes?",
+          "options": [
+            "They are the main carriers of West Nile virus.",
+            "They are relatively new to the region.",
+            "They mostly bite birds.",
+            "They usually bite only once."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "According to the last paragraph, what can residents do to help?",
+          "options": [
+            "Spray chemicals in their gardens.",
+            "Keep their pets indoors.",
+            "Sleep with the windows open.",
+            "Remove small amounts of water around their homes."
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about how the weather affects our health. Your teacher has asked you to write an essay: 'Hotter weather will be one of the biggest health problems of the future. Do you agree?' Write about: 1. insects and diseases, 2. daily life in very hot weather, 3. your own idea. Write 140-190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/us-news/2026/oct/11/los-angeles-mosquitoes-west-nile-virus-el-nino"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/la-mosquitoes.jpg",
+        "alt": "A close-up of a black and white Aedes mosquito",
+        "caption": "An Aedes mosquito, the type known as an 'ankle biter' in Los Angeles.",
+        "credit": "James Gathany",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Aedes_aegypti_CDC-Gathany.jpg"
+      }
+    },
+    {
+      "id": "2026-10-11-amelia-earhart",
+      "section": "World",
+      "country": "Kiribati",
+      "flag": "🇰🇮",
+      "level": "B2",
+      "topic": "History",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "headline": "The search for Amelia Earhart's lost plane goes on",
+      "standfirst": "Almost 90 years after the famous pilot disappeared, a team is sailing to a remote Pacific island to check a mysterious object.",
+      "body": [
+        "A. A team of researchers is sailing across the Pacific Ocean in the hope of solving one of the twentieth century's greatest mysteries: what happened to the American pilot Amelia Earhart? The group, from the Archaeological Legacy Institute and Purdue University in the United States, left the capital of Kiribati on Wednesday and expected to reach the remote island of Nikumaroro by Monday, after a journey of 830 miles.",
+        "B. Earhart vanished in 1937 while trying to fly around the world. She had already crossed South America, Africa and Asia in her Electra plane when she landed in Lae, in Papua New Guinea, on 2 July. From there, she and her navigator, Fred Noonan, set off for tiny Howland Island to refuel, but they never arrived. The official explanation is that they had communication problems, could not find the island and crashed into the sea after running out of fuel. However, no physical evidence has ever been found.",
+        "C. The researchers are looking for something called the Taraia Object, which was first noticed in satellite images in 2020, lying at the edge of a lagoon. It can also be seen in aerial photographs taken in 1938. Some believe it could be what is left of a small plane, and the expedition leader, Richard Pettigrew, said that finding Earhart's aircraft would be \"the discovery of a lifetime\".",
+        "D. Not everyone is convinced, however. Ric Gillespie, who specialises in finding the wrecks of historic aircraft, thinks the object is most likely a tree that fell into the water. In his view, Earhart's plane broke into pieces long ago and was carried into the deep ocean.",
+        "E. Previous searches have also ended in disappointment. In 2019, an expedition led by the marine archaeologist who discovered the wreck of the Titanic found nothing near Nikumaroro. And in 2024, a shape detected by sonar deep under the sea near Howland Island turned out to be a rock formation."
+      ],
+      "glossary": [
+        {
+          "w": "vanished",
+          "d": "disappeared suddenly in a way that nobody can explain"
+        },
+        {
+          "w": "navigator",
+          "d": "the person on a plane or ship who plans and follows the route"
+        },
+        {
+          "w": "lagoon",
+          "d": "an area of sea water that is separated from the ocean by sand or coral"
+        },
+        {
+          "w": "convinced",
+          "d": "completely sure that something is true"
+        },
+        {
+          "w": "sonar",
+          "d": "a system that uses sound to find objects under water"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes an expert who doubts that the object is a plane?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph describes the route Earhart was flying before she disappeared?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph mentions earlier attempts that found nothing?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains who the researchers are and where they are going?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph says when the mysterious object was first noticed?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement in an international magazine for students: 'Unsolved mysteries! Tell us about a mystery from history or from your own country. What do people think happened? Why do you think it is still so interesting today?' Write your article in 140-190 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c3y0e871rk4vo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/amelia-earhart.jpg",
+        "alt": "A view from space of a small ring-shaped island in the ocean",
+        "caption": "Nikumaroro Island, seen from space in a NASA photo.",
+        "credit": "NASA",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Nikumaroro_Island.jpg"
+      }
+    },
+    {
+      "id": "2026-10-11-peru-inflation-target",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "C1",
+      "topic": "Economy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Why should Peru accept higher prices? The central banker who aims as low as the rich world",
+      "standfirst": "Peru's central bank governor defends the 2% inflation target that puts the country alongside the United States and Europe.",
+      "body": [
+        "When Julio Velarde, governor of Peru's Central Reserve Bank (BCR), received an honorary doctorate from Lima's National University of Engineering (UNI) this week, he used the occasion to defend one of the defining features of the country's economic policy: an inflation target of just 2%.",
+        "That figure places Peru alongside the United States, the United Kingdom and the eurozone, whereas several other Latin American countries aim for 3% or 4%. For Velarde, the comparison is a matter of principle rather than prestige. He asked why Peruvians should be expected to tolerate higher inflation than people in the developed world, arguing that people everywhere value prices that are low and stable. A lower target, in other words, is not a luxury reserved for wealthy nations but something that ordinary families in any country have good reason to want.",
+        "The framework, he recalled, was born out of difficulty. In 2000, Peru's gross domestic product shrank, and the economy needed a more expansionary monetary policy – in other words, cheaper borrowing to encourage spending. The challenge was to stimulate growth without convincing households and businesses that prices were about to rise sharply, since such expectations can become self-fulfilling. An explicit target was designed to anchor those expectations. Velarde said that he had proposed the idea, with the support of the then chairman of the bank's board, Richard Webb, and that by 2006 the target had already been set at 2%.",
+        "Velarde also took aim at a widely held belief: that keeping inflation down inevitably comes at the cost of economic growth. Many people, he acknowledged, genuinely think so, but he insisted that more than half a century of economic research shows that inflation has no impact on growth. In his view, the trade-off that many people fear simply does not exist, so a country does not have to choose between stable prices and a growing economy.",
+        "Finally, he stressed that price stability is the BCR's main objective and that the bank's autonomy is essential to achieving it. Without that independence, he suggested, decisions about interest rates and the money supply could end up following the rhythm of the political cycle rather than the needs of the economy."
+      ],
+      "glossary": [
+        {
+          "w": "target",
+          "d": "a level or result that you officially aim to reach"
+        },
+        {
+          "w": "expansionary",
+          "d": "(of economic policy) designed to make the economy grow, for example by making borrowing cheaper"
+        },
+        {
+          "w": "self-fulfilling",
+          "d": "happening because people expect it to happen and act in a way that causes it"
+        },
+        {
+          "w": "anchor",
+          "d": "to hold something firmly in one place so that it does not move"
+        },
+        {
+          "w": "autonomy",
+          "d": "the freedom of an organisation to make its own decisions without control from others"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "In the second paragraph, the writer presents Velarde's support for the 2% target as being based on",
+          "options": [
+            "a desire to compete with neighbouring countries.",
+            "advice from the United States.",
+            "a belief about fairness and what people want.",
+            "pressure from the university."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What problem was the inflation target originally intended to solve?",
+          "options": [
+            "Prices were falling too quickly.",
+            "Stimulating the economy risked creating expectations of higher prices.",
+            "Banks were refusing to lend money.",
+            "Inflation in Peru was already above 4%."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "The phrase 'anchor those expectations' in the third paragraph suggests",
+          "options": [
+            "keeping people's beliefs about future prices steady.",
+            "making prices rise slowly over time.",
+            "forcing businesses to cut their prices.",
+            "linking Peru's currency to the US dollar."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Which belief does Velarde reject in the fourth paragraph?",
+          "options": [
+            "Inflation targets only work in rich countries.",
+            "Research on inflation is out of date.",
+            "Central banks should publish their targets.",
+            "Controlling inflation necessarily slows growth."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the writer's main purpose in the article?",
+          "options": [
+            "to criticise the central bank's policy",
+            "to explain a policy and the arguments of the person who defends it",
+            "to show that Peru's economy is weaker than its neighbours'",
+            "to predict the future level of inflation in Peru"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a talk on how governments and central banks manage the economy. You have made the notes below: Which is more important for ordinary people? • stable prices • fast economic growth • jobs. Some opinions expressed in the talk: 'Low inflation protects the poorest families.' 'People care more about jobs than prices.' Write an essay discussing two of the points in your notes. Explain which is more important, giving reasons. You may use the opinions, but use your own words. Write 220-260 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-bcr-governor-peru-has-inflation-target-similar-to-that-of-developed-countries-1095240.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/peru-inflation-target.jpg",
+        "alt": "A blue and white colonial building with a Peruvian flag on the roof",
+        "caption": "An office of Peru's Central Reserve Bank in Trujillo.",
+        "credit": "Bernard Gagnon",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Central_Reserve_Bank_of_Peru,_Trujillo.jpg"
+      }
+    },
+    {
+      "id": "2026-10-11-neurotechnology-un",
+      "section": "Technology",
+      "country": "United Nations",
+      "flag": "🇺🇳",
+      "level": "C1",
+      "topic": "Technology",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Who holds the key to your thoughts? The UN warns about brain technology",
+      "standfirst": "For the first time, the UN Secretary-General says devices that read the brain could threaten basic human rights if they are misused.",
+      "body": [
+        "It sounds like the plot of a science-fiction film: police officers extracting information directly from a suspect's brain, or software that claims to predict whether someone will commit a crime in the future. Yet this week, for the first time, the Secretary-General of the United Nations, António Guterres, warned that such scenarios can no longer be dismissed as pure fantasy.",
+        "In a report published on Thursday, Guterres argued that neurotechnology – devices that record, interpret or influence the activity of the brain – is advancing so rapidly that governments may one day be able to access and even manipulate people's minds. Such tools range from caps that measure electrical signals through the scalp to implants placed directly in the brain. If they were abused, he warned, the consequences could include arbitrary detention, the alteration of people's mental states and serious violations of privacy.",
+        "The report does not condemn the technology itself. Neurotechnologies have already become powerful medical tools for patients with brain injuries, and the Secretary-General acknowledged that they bring potential benefits as well as significant risks. The concern lies in their expansion beyond hospitals and clinics into police investigations, courts and prisons, where the stakes for individual freedom are especially high. In such settings, a person may have little real choice about whether to cooperate, which makes the usual protections of medical ethics far harder to guarantee.",
+        "To prevent abuse, the report sets out a series of recommendations. Countries are urged to create regulations consistent with international law, to recognise thoughts as \"highly sensitive personal data\", and to require explicit consent before neurotechnology is used in any criminal justice setting. The aim, in short, is to set clear limits now, while the most invasive uses remain largely hypothetical, rather than trying to repair the damage once they have become routine.",
+        "Human rights officials welcomed the document as an important step towards raising global awareness of the issue, adding that it could help countries develop laws to prevent such abuse. The underlying question, however, is a profound one: if the last truly private space – the inside of our own heads – can be opened, who should be allowed to hold the key?"
+      ],
+      "glossary": [
+        {
+          "w": "dismissed",
+          "d": "treated as not important or not worth considering"
+        },
+        {
+          "w": "manipulate",
+          "d": "to control or influence someone or something in a clever, often unfair way"
+        },
+        {
+          "w": "arbitrary",
+          "d": "based on chance or personal decisions rather than on fair rules"
+        },
+        {
+          "w": "stakes",
+          "d": "what can be gained or lost in a situation"
+        },
+        {
+          "w": "consent",
+          "d": "permission given by a person for something to happen to them"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer begin by describing police reading a suspect's brain?",
+          "options": [
+            "to show that this is already common practice",
+            "to suggest that the UN report is exaggerated",
+            "to illustrate how unlikely such scenarios once seemed",
+            "to criticise science-fiction films"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to the report, what is the main cause for concern?",
+          "options": [
+            "the use of neurotechnology in hospitals",
+            "its spread into the justice system",
+            "its high cost",
+            "a lack of trained doctors"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does 'they' refer to in 'they bring potential benefits' in the third paragraph?",
+          "options": [
+            "neurotechnologies",
+            "patients",
+            "brain injuries",
+            "hospitals and clinics"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Which of these is NOT one of the report's recommendations?",
+          "options": [
+            "treating thoughts as sensitive personal data",
+            "requiring explicit consent",
+            "making rules that respect international law",
+            "banning neurotechnology in medicine"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the writer's attitude in the final paragraph?",
+          "options": [
+            "reflective about a deep ethical question",
+            "dismissive of the officials' reaction",
+            "convinced that the problem has been solved",
+            "angry with governments"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (proposal)",
+        "task": "Your school or college is preparing a guide to new technology for students. You have been asked to write a proposal explaining one new technology that could change our lives, the benefits it could bring, the risks it creates, and the rules you think should control its use. Write your proposal in 220-260 words."
+      },
+      "sources": [
+        {
+          "name": "The New York Times",
+          "url": "https://www.nytimes.com/2026/10/08/world/europe/united-nations-technology-warning.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-11/neurotechnology-un.jpg",
+        "alt": "A cap covered with small electrodes used to record brain activity",
+        "caption": "A cap with electrodes that records the brain's electrical signals (EEG).",
+        "credit": "Chris Hope",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:EEG_Recording_Cap.jpg"
+      }
+    }
+  ]
+}
