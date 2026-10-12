@@ -4363,7 +4363,7 @@ window.UNIT_PLANS = {
                model:'As technique, the split makes the future visible; as a problem of justice, it asks who pays for the machine.'}}}
      ]},
     {n:7,title:'Should we be measuring this? If we had known…',dates:'2–6 November',
- desc:'The instrument has been running for three weeks, so we measure again: has the number moved? Then the other half of the project begins: argue against what you built, seriously. The vocabulary of a global problem and of formal debate, where the data lives, the issue framed, the grammar of regret (third conditional), contrast and concession, a real formal debate on the radio of your headphones, and the capabilities objection.',
+ desc:'The instrument has been running for three weeks, so we measure again: has the number moved? Then the other half of the project begins: argue against what you built, seriously. The vocabulary of a global problem and of formal debate, where the data lives, the issue framed, the grammar of regret (third conditional), contrast and concession, listening to a real formal debate, and the capabilities objection.',
  give:'Sample 2 on the shared sheet; your team’s issue framed as one question; your first objection to your own instrument; ten conditional and concessive sentences (five for, five against); your listening notes.',
  across:{
   philosophy:'What any measure leaves out: the first objection to the criterion you chose in week 2, and the capabilities objection (Sen and Nussbaum): being well is what you can do and be, and no number captures all of that.',
