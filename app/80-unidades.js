@@ -197,7 +197,8 @@ async function unitProductsPanel(){
     </div>
     <p style="margin:12px 0 0"><b>${esc(rotuloGrado(_unit.grade))}${_unit.section?' '+esc(_unit.section):''} · Unit ${esc(_unit.unit)}${plan.title?' — '+esc(plan.title):''}</b>.
       Deliverables: ${DELS.map(d=>`${d.icon||''} ${esc(d.title)}`).join(' · ')}.</p>
-    <div style="margin:10px 0 0">${unitBotonPublica(dataF,'products','unitProductsPanel',_unit.section?rotuloGrado(_unit.grade)+' '+esc(_unit.section):'the whole grade')}</div>
+    <div style="margin:10px 0 0">${unitBotonPublica(dataF,'products','unitProductsPanel',_unit.section?rotuloGrado(_unit.grade)+' '+esc(_unit.section):'the whole grade')}
+      ${plan.perProduct?`<button class="btn small ghost" style="margin-left:8px" onclick="unitCsvToddle()">📋 Grades for the Toddle gradebook (CSV)</button>`:''}</div>
     ${rubrica}
   </div>
   <div id="unitAlumno"></div>
@@ -282,10 +283,31 @@ function unitPintaAlumno(){
         ${r.reviewed_at ? `<div class="muted" style="font-size:.72rem;margin-top:4px">marked · ${esc(new Date(r.reviewed_at).toLocaleDateString('en-GB'))}${r.released_at?' · sent to the student '+esc(new Date(r.released_at).toLocaleDateString('en-GB')):' · <b>hidden from the student</b> until you send the class'}</div>` : ''}
       </div>`;
   };
-  const producto = d => `<div style="flex:1 1 280px;min-width:260px">
+  /* Unidades con nota POR PRODUCTO (plan.perProduct, 9.º U5 desde el
+     12-oct-2026): cada producto es una columna del Gradebook de Toddle y se
+     califica con su propia rubrica de writing-rubrics.js. Los de texto se
+     corrigen en ✅ Corregir producciones escritas; los de archivo (la defensa
+     y el debate), aqui mismo, sobre su propia fila. */
+  const porProducto = !!(U.plan && U.plan.perProduct);
+  const rubDe = d => (window.WRITING_RUBRICS && WRITING_RUBRICS.get(U.grade, parseInt(U.unit,10), d.kind)) || null;
+  const marcaProducto = d => {
+    const r = f[d.kind], R = rubDe(d);
+    if(!porProducto || !r || !R) return '';
+    if(d.type!=='file') return `<div class="muted" style="font-size:.76rem;margin-top:6px">Marked with its rubric in <b>✅ Correct written productions</b>.</div>`;
+    const c = r.criteria || {};
+    return `<div style="margin-top:8px;border-top:1px dashed var(--line);padding-top:8px">
+      ${R.criteria.map(k=>`<div style="margin-bottom:8px"><div style="font-size:.8rem;font-weight:600">${esc(k.text)}</div>
+        <div style="display:flex;gap:5px;margin-top:4px;flex-wrap:wrap">${UNIT_LVL.map(l=>`<button class="btn small ${c[k.k]===l?'':'ghost'}" style="min-width:42px"
+          title="${esc((k.levels||{})[l]||'')}" onclick="unitProdNivel('${r.id}','${d.kind}','${k.k}','${l}')">${l}</button>`).join('')}</div>
+        ${c[k.k]?`<div style="font-size:.76rem;margin-top:4px;color:#475569">${esc((k.levels||{})[c[k.k]]||'')}</div>`:''}</div>`).join('')}
+      <textarea id="pc-${r.id}" rows="2" placeholder="Comment for the student" style="width:100%;padding:7px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.82rem">${esc(r.feedback||'')}</textarea>
+      <button class="btn small" style="margin-top:6px" onclick="unitProdGuarda('${r.id}','${d.kind}')">💾 Save this product</button>
+      <span class="state" id="ps-${r.id}"></span></div>`;
+  };
+  const producto = d => `<div style="flex:1 1 230px;min-width:220px">
       <div style="font-weight:700;font-size:.9rem;margin-bottom:6px">${d.icon||''} ${esc(d.title)}</div>
       ${d.type==='file' ? archivo(f[d.kind]) : textoBox(f[d.kind])}
-      ${notaBox(f[d.kind])}</div>`;
+      ${notaBox(f[d.kind])}${marcaProducto(d)}</div>`;
 
   const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 10px">
       <button class="btn" onclick="unitMueve(-1)" ${U.i===0?'disabled':''}>◀ Previous</button>
@@ -332,6 +354,14 @@ function unitPintaAlumno(){
         🖼️ Show in the unit gallery — classmates will be able to see this work as an example (by default only you and the student can see it).</label>
     </div>`;
 
+  /* Con nota por producto no hay una evaluacion unica de la unidad: lo que
+     se ensena es la fila que va al Gradebook de Toddle, producto a producto. */
+  const filaToddle = `<h4 style="margin:0 0 8px">📒 Toddle gradebook row</h4>
+    <table class="tbl"><tbody>${U.DELS.map((d,j)=>{ const r=f[d.kind], n=r?r.score:null, l=unitNivelDeNota(n);
+      return `<tr><td>P${j+1} · ${d.icon||''} ${esc(d.title)}</td><td style="text-align:center;font-weight:700">${n!=null?n+'/20 · '+l:'—'}</td>
+        <td class="muted" style="font-size:.78rem">${!r?'not submitted':(r.released_at?'sent to the student':(r.reviewed_at||n!=null?'marked · not sent':'to mark'))}</td></tr>`; }).join('')}</tbody></table>`;
+  const evalFinal = porProducto ? filaToddle : evaluacion;
+
   host.innerHTML = `${nav}
     <div class="card" style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
@@ -345,9 +375,48 @@ function unitPintaAlumno(){
       </div>
       <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0">${U.DELS.map(producto).join('')}</div>
       ${nb && nb.file_path ? `<div style="margin:0 0 12px"><button class="btn small" onclick="unitVerArchivo('${esc(nb.file_path)}',this)">📓 Notebook</button></div>` : ''}
-      <div style="border-top:1px solid var(--line);padding-top:12px">${nivelEsperadoBox('writing', p.cefr_level)}${evaluacion}</div>
+      <div style="border-top:1px solid var(--line);padding-top:12px">${nivelEsperadoBox('writing', p.cefr_level)}${evalFinal}</div>
     </div>`;
 }
+
+/* Nivel de un criterio de la rubrica PROPIA de un producto de archivo (la
+   defensa y el debate de 9.º U5). Se guarda en su fila al pulsarlo. */
+window.unitProdNivel = async function(id, kind, k, valor){
+  const f = _unit.filas[_unit.i]; if(!f) return;
+  const r = f[kind]; if(!r || r.id!==id) return;
+  const R = WRITING_RUBRICS.get(_unit.grade, parseInt(_unit.unit,10), kind); if(!R) return;
+  const c = Object.assign({}, r.criteria||{});
+  if(c[k]===valor) delete c[k]; else c[k] = valor;
+  r.criteria = c; r.score = WRITING_RUBRICS.nota(R, c);
+  unitPintaAlumno();
+  const { error } = await sb.from('unit_submissions').update({ criteria:c, score:r.score }).eq('id', id);
+  const st = $('#ps-'+id); if(st){ st.textContent = error ? 'Could not save: '+error.message : 'Saved'; st.className = error?'state err':'state ok'; }
+};
+window.unitProdGuarda = async function(id, kind){
+  const f = _unit.filas[_unit.i]; if(!f) return;
+  const r = f[kind]; if(!r || r.id!==id) return;
+  const ta = $('#pc-'+id), st = $('#ps-'+id);
+  const cambio = { feedback:(ta?ta.value:r.feedback)||'', score:r.score,
+                   reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
+  const { error } = await sb.from('unit_submissions').update(cambio).eq('id', id);
+  if(error){ if(st){ st.textContent='Could not save: '+error.message; st.className='state err'; } return; }
+  Object.assign(r, cambio); unitPintaAlumno();
+  const st2 = $('#ps-'+id); if(st2){ st2.textContent='Saved ✓ — hidden until you send the class'; st2.className='state ok'; }
+};
+/* Las notas de los productos, una columna por producto, para pasarlas al
+   Gradebook de Toddle (no tiene importacion: se copian desde aqui). */
+window.unitCsvToddle = function(){
+  const U = _unit, q = v => '"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+  const cab = ['Student','Section'].concat(U.DELS.map((d,j)=>'P'+(j+1)+' '+d.title+' (/20)')).concat(U.DELS.map((d,j)=>'P'+(j+1)+' level'));
+  const filas = U.filas.map(f=>{ const p = U.quien[f.alumno]||{};
+    const ns = U.DELS.map(d=>f[d.kind] ? f[d.kind].score : null);
+    return [p.full_name||'', p.section||''].concat(ns).concat(ns.map(unitNivelDeNota)); });
+  const csv = '\ufeff' + [cab].concat(filas).map(r=>r.map(q).join(',')).join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'}));
+  a.download = `toddle-${U.grade}-u${U.unit}${U.section?'-'+U.section:''}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+};
 
 /* Un nivel por criterio. Se guarda al pulsarlo (con la nota que resulta),
    sin marcar la entrega como enviada: eso es «Guardar y enviar». */

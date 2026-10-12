@@ -244,8 +244,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="writing-trace.js?v=321f3e2c"></script>
 <script src="activities-data.js?v=38ce60ee"></script>
 <script src="class-files.js?v=1a59ee7e"></script>
-<script src="unit-plans.js?v=f3995194"></script>
-<script src="writing-rubrics.js?v=c484737f"></script>
+<script src="unit-plans.js?v=069ea9d9"></script>
+<script src="writing-rubrics.js?v=3fcf9133"></script>
 <script src="project-arcs.js?v=110db8f3"></script>
 <script src="nis-nav.js?v=c6e39903"></script>
 <script src="coh-dict-widget.js?v=12c17091" defer></script>
@@ -338,16 +338,23 @@ function pinta(){
   </div>`;
 
   const weekWord=U.stepWord||'Week';
+  /* Una pausa del calendario (mock, vacaciones) se pinta antes de la semana
+     que la sigue: el alumno ve por que la numeracion no casa con el mes. */
+  const pausaAntes=n=>(U.breaks||[]).filter(b=>b.after===n-1).map(b=>
+    `<div class="card" style="background:#f3f6fb;border-left:4px solid #8aa4c8;margin-bottom:12px">
+      <b>&#9208; ${esc(b.title)}</b>${b.dates?' · '+esc(b.dates):''}<p style="margin:6px 0 0">${esc(b.text||'')}</p></div>`).join('');
   const looseGames=juegosSueltos();
   const weekScreens=haySeq ? U.sequence.map((w,i)=>({
     label:`${weekWord} ${w.n} · ${w.title}`,
     kind:'week',week:w.n,
-    html:`<p class="screen-kicker">Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'} · ${weekWord} ${w.n} of ${U.sequence.length}</p>
+    html:`<p class="screen-kicker">Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'} · ${weekWord} ${w.n} of ${U.sequence.length}${w.dates?' · '+esc(w.dates):''}</p>
+      ${pausaAntes(w.n)}
       <div class="card"><div class="week">
         <div class="n">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</div>
         <div style="flex:1">
           <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
           ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
+          ${w.due?`<div class="give" style="background:#fff4d6;border-color:#f0c35a">&#127919; Graded product this week: ${esc(w.due)}</div>`:''}
           ${capituloSemana(w.n)}
           ${sesionesSemana(w.n)}
           ${horaCambridge(w)}
@@ -361,7 +368,7 @@ function pinta(){
     <div class="card"><div class="week-menu">${(U.sequence||[]).map(w=>`
       <button type="button" class="week-jump" data-week-jump="${w.n}">
         <span class="num">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</span>
-        <span><b>${esc(w.title)}</b><small>${esc(w.desc)}</small></span>
+        <span><b>${esc(w.title)}</b><small>${w.dates?'<b>'+esc(w.dates)+'</b> · ':''}${esc(w.desc)}</small></span>
       </button>`).join('')}</div></div>`};
 
   const overview={label:'Unit overview · What you will produce',html:`

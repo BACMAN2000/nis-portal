@@ -1016,6 +1016,37 @@ window.WRITING_RUBRICS = (function(){
               B:'The parts are there but one is thin, the register slips, or the length is off.',
               C:'One block of text.'}}
         ]
+      },
+      /* P4, el producto oral (replanificacion del 12-oct-2026): la defensa
+         ante el panel (semana 5) y el debate formal (semana 8) son UNA nota,
+         la del criterio 3 del planner. Se corrige en Productos de unidad. */
+      debate: {
+        task:'Defence and debate', spec:'Panel defence (week 5) + formal debate (week 8)', oral:true,
+        nota:'Criterio 3 del planner, desdoblado en tres: contenido con datos propios, interaccion (preguntas, puntos de informacion, refutacion) y la forma de hablar.',
+        fuera:'Criteria 1, 2, 4 and 5 — the proposal, the story and the essay, corrected under their own rubrics.',
+        criteria:[
+          { k:'w1', n:1, from:3, auto:null,
+            text:'Content — point, evidence, explanation, with the data we measured at NIS.',
+            levels:{
+              AD:'Every point stands on our own figure and I say what that figure cannot prove.',
+              A:'Clear points, each with a figure from our audit or a source, and the explanation that links them.',
+              B:'Points with little evidence, or evidence with no explanation.',
+              C:'Opinions with no data.'}},
+          { k:'w2', n:2, from:3, auto:null,
+            text:'Interaction — questions from the panel, points of information and rebuttal.',
+            levels:{
+              AD:'I change my mind out loud when the objection is good, and say why, without losing the argument.',
+              A:'I take questions I did not expect, accept a point of information and rebut the other side’s best point.',
+              B:'I answer the easy questions; the hard ones get a repeat of my speech.',
+              C:'I do not respond to what others say.'}},
+          { k:'w3', n:3, from:3, auto:null,
+            text:'Delivery — from notes, in formal register, inside the time, building on my team.',
+            levels:{
+              AD:'I sound like I am thinking, not reciting, and I pick up what my teammates said.',
+              A:'I speak from notes, in formal register, inside the time, with signposting (firstly, my second point…).',
+              B:'I read most of it, or I run out of time.',
+              C:'I read a script word for word.'}}
+        ]
       }
     },
 
