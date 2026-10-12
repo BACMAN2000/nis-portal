@@ -1,0 +1,982 @@
+{
+  "date": "2026-10-12",
+  "issue": 6,
+  "breaking": [
+    "World: Pope Leo XIV will have an operation to take out a small lump in his lung.",
+    "Environment: eight orangutans go back to the forest in Borneo after the fires.",
+    "Sport: Harmanpreet Kaur is no longer captain of India's women's cricket team.",
+    "History: archaeologists find a Roman fort near a famous hill in Wales."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-12-pope-operation",
+      "section": "World",
+      "country": "Vatican City · Peru",
+      "flag": "🇻🇦",
+      "level": "A2",
+      "topic": "Health and good wishes",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "The Pope will have an operation",
+      "standfirst": "Pope Leo XIV says doctors found a small problem in his lung. People in Peru are sending him their best wishes.",
+      "body": [
+        "Pope Leo XIV is the leader of the Catholic Church. On Sunday 11 October, he spoke to people at the Vatican. He told them that doctors found a small nodule in his lung. A nodule is a small lump.",
+        "The Pope said the doctors found it very early. They think it is best to take it out. So he is going to have an operation in the next few days.",
+        "Many people in Peru are thinking about him. The Pope lived and worked in Peru for many years, and he is planning a visit to the country. Peru's President, Keiko Fujimori, wrote a message on the social media site X. She wished him a fast recovery.",
+        "On Sunday, the President also went to a special Mass at Las Nazarenas Sanctuary in the centre of Lima. People there prayed for the Pope's health."
+      ],
+      "glossary": [
+        {
+          "w": "lung",
+          "d": "one of the two parts inside your chest that you use to breathe"
+        },
+        {
+          "w": "nodule",
+          "d": "a small, hard lump that grows inside the body"
+        },
+        {
+          "w": "operation",
+          "d": "when a doctor cuts into a person's body to repair or take out something"
+        },
+        {
+          "w": "recovery",
+          "d": "the time when you get well again after you are ill"
+        },
+        {
+          "w": "prayed",
+          "d": "spoke to God, for example to ask for help for someone"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "The Pope talked about his health on Sunday.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The doctors found the nodule late.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "The Pope's operation will be next year.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The operation will be in a hospital in Rome.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "People prayed for the Pope at a church in Lima.",
+          "answer": "T"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "The President's message on X was very long.",
+          "answer": "NS"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend is ill and has to go to hospital for a few days. Write a message to your friend (25 words or more). Say: how you feel about the news, what you can do to help, and when you will visit."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-president-expresses-solidarity-with-pope-leo-xiv-wishes-him-a-speedy-recovery-1095524.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/pope-operation.jpg",
+        "alt": "The front of Las Nazarenas church in Lima",
+        "caption": "Las Nazarenas Sanctuary in Lima, where people prayed for the Pope (photo from an earlier year).",
+        "credit": "Herwarth Morales",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Iglesia_y_monasterio_de_las_Nazarenas_de_Lima.jpg"
+      }
+    },
+    {
+      "id": "2026-10-12-orangutans-home",
+      "section": "Environment",
+      "country": "Indonesia",
+      "flag": "🇮🇩",
+      "level": "A2",
+      "topic": "Animals and forest fires",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Back home in the forest: eight orangutans are free again",
+      "standfirst": "People saved the apes from big fires in Borneo. Now they are going back to the wild.",
+      "body": [
+        "Orangutans are big orange apes. They live in the forests of Borneo and Sumatra, two islands in South-East Asia. They are in great danger. A hundred years ago there were more than 230,000 orangutans. Now there are only about 104,000.",
+        "This summer there were big fires in the forests of Borneo. There are fires every dry season, but this year they were much stronger because of El Niño, a change in the ocean that brings very hot, dry weather. In August and September, people in Indonesia rescued 46 orangutans from the fires.",
+        "Last Friday, eight of the animals went back to the wild: three mothers, their three daughters and two adult males. An animal rescue group took them to a reserve in the west of the island. The reserve has food and water, and it is connected to other forests, so the apes can move safely."
+      ],
+      "glossary": [
+        {
+          "w": "apes",
+          "d": "large animals like monkeys, but with no tail"
+        },
+        {
+          "w": "rescued",
+          "d": "saved from danger"
+        },
+        {
+          "w": "wild",
+          "d": "nature, where animals live free and not with people"
+        },
+        {
+          "w": "reserve",
+          "d": "a place where animals and plants are protected"
+        },
+        {
+          "w": "connected",
+          "d": "joined to something else"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "How many orangutans live in Borneo and Sumatra now?",
+          "options": [
+            "about 46",
+            "about 104,000",
+            "more than 230,000"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why were the fires stronger this year?",
+          "options": [
+            "because of El Niño",
+            "because there were more people",
+            "because the forests were very old"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "How many orangutans went back to the wild last Friday?",
+          "options": [
+            "46",
+            "three",
+            "eight"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Who took the orangutans to the reserve?",
+          "options": [
+            "a group of tourists",
+            "an animal rescue group",
+            "people from Sumatra"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why is the reserve good for the apes?",
+          "options": [
+            "It has no trees.",
+            "It is near a big city.",
+            "It has food and water."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You watched a video about animals in danger. Write an email to your English friend (25 words or more). Say: which animal you saw, what problem it has, and what people can do to help it."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cwvgde0m2d73o"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/orangutans-home.jpg",
+        "alt": "An orangutan in a tree in the forest of Borneo",
+        "caption": "A wild orangutan in Borneo (2018).",
+        "credit": "Joeavison1",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Bornean_Orangutan_in_nest.jpg"
+      }
+    },
+    {
+      "id": "2026-10-12-awamaki-weavers",
+      "section": "Culture",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Traditional crafts",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Loom and hand: the weavers of the Sacred Valley",
+      "standfirst": "An American woman who fell in love with Cusco as a teenager now helps 200 Quechua weavers sell their work around the world.",
+      "body": [
+        "When Kennedy Leavens first visited Peru, she was only 17. She travelled from the United States with a group of students from her school, because their teacher's sister lived in Peru. At first, Kennedy felt ill because of the altitude, but soon she fell in love with the Sacred Valley of the Incas, near Cusco, and with the friendly people she met there.",
+        "She never forgot that trip. Today Cusco is her home, and she runs an organisation called Awamaki. The name comes from two Quechua words: awa, which means 'loom', and maki, which means 'hand'. Kennedy and the women she works with chose the name together.",
+        "Awamaki works with about 200 women from Quechua communities around Ollantaytambo. They use traditional techniques that their grandmothers also knew. Many of the women did not go to school, or only went for a few years, so the organisation helps them to weave to exact sizes and to keep the colours the same. It also teaches them about business and tourism.",
+        "The designs are created together with the weavers. Kennedy says the team does not copy fashion trends from other places. Their textiles are sold in a shop in Ollantaytambo and in shops in the United States, Japan, Australia, France and the United Kingdom. This means the women can earn money without leaving their communities or their traditions.",
+        "This year, Kennedy is part of 'More Peruvian Than Ever', a campaign that celebrates 15 years of the Peru country brand, Marca Perú."
+      ],
+      "glossary": [
+        {
+          "w": "altitude",
+          "d": "how high a place is above the sea; at high altitude some people feel ill"
+        },
+        {
+          "w": "loom",
+          "d": "a machine or frame used for making cloth from thread"
+        },
+        {
+          "w": "weave",
+          "d": "to make cloth by crossing threads over and under each other"
+        },
+        {
+          "w": "textiles",
+          "d": "cloth or things made of cloth"
+        },
+        {
+          "w": "campaign",
+          "d": "a plan of activities to tell people about something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why did Kennedy first go to Peru?",
+          "options": [
+            "to study Quechua at a university",
+            "on a trip with students from her school",
+            "to start a business in Cusco",
+            "to visit her own sister"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What problem did she have at the beginning?",
+          "options": [
+            "She felt ill because of the altitude.",
+            "She could not understand anyone.",
+            "She lost her bags.",
+            "She did not like the food."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the name Awamaki mean?",
+          "options": [
+            "valley and mountain",
+            "women and work",
+            "loom and hand",
+            "grandmother and child"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "How does Awamaki help the weavers?",
+          "options": [
+            "It sends them to school in the United States.",
+            "It buys new machines for them.",
+            "It gives them modern designs from Europe.",
+            "It teaches them about business and tourism."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Where are the women's textiles sold?",
+          "options": [
+            "only in Cusco",
+            "only on the internet",
+            "in Peru and in several other countries",
+            "only in the United States"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for young people: 'Articles wanted! A person who makes a difference. Tell us about someone who has done something good for the people in your town or community. What did they do, and why do you admire them?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-from-us-to-perus-sacred-valley-kennedy-leavens-promotes-200-women-weavers-work-1092825.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/awamaki-weavers.jpg",
+        "alt": "The town of Ollantaytambo between green mountains",
+        "caption": "Ollantaytambo, in the Sacred Valley, where Awamaki works with local weavers (earlier photo).",
+        "credit": "F Delventhal",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Ollantaytambo_view_of_town.jpg"
+      }
+    },
+    {
+      "id": "2026-10-12-harmanpreet-captain",
+      "section": "Sport",
+      "country": "India",
+      "flag": "🇮🇳",
+      "level": "B1",
+      "topic": "Cricket and leadership",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "India's World Cup-winning cricket captain steps down",
+      "standfirst": "Harmanpreet Kaur made millions of Indians love women's cricket. Now a younger player will lead the team.",
+      "body": [
+        "For almost ten years, Harmanpreet Kaur has been the captain of India's women's cricket team. Now she has decided to step down. Her long-time vice-captain, Smriti Mandhana, who is 30, will be the new captain of the team in every format of the game.",
+        "Harmanpreet, who is 37, became famous in 2017. In the semi-final of the Women's World Cup that year, she scored a century – 100 runs or more – against Australia. India lost the final to England, but millions of Indians began to follow women's cricket. Eight years later, in 2025, she led India to its first women's World Cup trophy. This year the team also won the Asia Cup and the Asian Games.",
+        "However, things changed after a disappointing T20 World Cup in England a few months ago. Harmanpreet was not batting well, and India's cricket board wanted a younger leader. According to reports, she hoped to stay captain in the longer forms of the game, but the board preferred Mandhana. Former players did not agree about the decision: some said it was time for a change, while others said her experience was too valuable to lose.",
+        "Harmanpreet shared an emotional message on Instagram. She said she had given the team everything and now wanted to play 'for the love of the game'. She plans to keep playing for India."
+      ],
+      "glossary": [
+        {
+          "w": "step down",
+          "d": "to leave an important job or position"
+        },
+        {
+          "w": "vice-captain",
+          "d": "the player who helps the captain and leads the team when the captain cannot"
+        },
+        {
+          "w": "century",
+          "d": "in cricket, a score of 100 runs or more by one player"
+        },
+        {
+          "w": "board",
+          "d": "a group of people who control an organisation"
+        },
+        {
+          "w": "emotional",
+          "d": "showing strong feelings"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Harmanpreet has decided to ___ as captain.",
+          "options": [
+            "take over",
+            "step down",
+            "run out",
+            "hold on"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "In 2017, she scored a ___ in the World Cup semi-final.",
+          "options": [
+            "goal",
+            "trophy",
+            "century",
+            "final"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "India ___ its first women's World Cup in 2025.",
+          "options": [
+            "won",
+            "scored",
+            "beat",
+            "passed"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "The cricket board wanted a ___ leader.",
+          "options": [
+            "older",
+            "richer",
+            "taller",
+            "younger"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Some former players thought her experience was too ___ to lose.",
+          "options": [
+            "valuable",
+            "expensive",
+            "famous",
+            "heavy"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "She ___ to keep playing for India.",
+          "options": [
+            "stops",
+            "refuses",
+            "plans",
+            "forgets"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Sam has written to you: 'The coach wants me to be the new captain of our school team! But I'm not sure I'm ready. What do you think makes a good captain? Should I say yes?' Write your email to Sam in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cm4g1pjrd5ewo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/harmanpreet-captain.jpg",
+        "alt": "A cricket stadium in India with high mountains behind it",
+        "caption": "A cricket stadium in Dharamshala, India (earlier photo).",
+        "credit": "BibhasCD",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:HPCA_Stadium_Dharamsala.jpg"
+      }
+    },
+    {
+      "id": "2026-10-12-roman-fort-wales",
+      "section": "Culture",
+      "country": "United Kingdom (Wales)",
+      "flag": "🇬🇧",
+      "level": "B2",
+      "topic": "History and archaeology",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "A legend in the hills: Roman fort may prove an old Welsh tale is true",
+      "standfirst": "For centuries a medieval story placed a Roman emperor's camp near a hill in Wales. Archaeologists may finally have found it.",
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "body": [
+        "A. For centuries, people in Wales have told a story about Magnus Maximus, a Roman emperor who ruled Britain in the fourth century. In a collection of medieval Welsh tales known as the Mabinogion, he appears under his Welsh name, Macsen Wledig, and sets up his camp at Frenni Fawr, a 395-metre hill in Pembrokeshire. Until now, however, there was no archaeological evidence that the Romans had ever been there.",
+        "B. That may be about to change. Dr Mark Merrony, a specialist in Roman history at the University of Oxford, noticed the outline of a large shape in an overgrown field while studying satellite images. When he visited the site in 2024, about 3.5 kilometres south-west of the summit, he spotted a piece of Roman tile on the ground – the first of many.",
+        "C. This year, a team paid for partly by the university and partly through crowdfunding carried out the first of several planned excavations. Before the dig, Merrony's brother Nick joked that he should find a couple of coins to prove his theory. To everyone's amazement, Nick then came across two coins from the late fourth century – the period when Magnus Maximus was in power.",
+        "D. The fort measures 180 by 150 metres and sits on a slope with a wide view of the surrounding countryside. It has the typical Roman 'playing-card' shape with rounded corners and probably housed around 500 soldiers. The diggers have found pottery, large numbers of tiles, clay floors, an unusual iron writing tool and even the marks left by wagon wheels.",
+        "E. The discovery also changes what historians believed about the region. It had been assumed that the local Celtic tribe lived peacefully alongside the Romans, but a heavily defended fort suggests otherwise. Surveys of the ground show a central building facing east, which Merrony believes was the headquarters, next to what was probably the commander's house."
+      ],
+      "glossary": [
+        {
+          "w": "medieval",
+          "d": "from the Middle Ages, about the years 500 to 1500"
+        },
+        {
+          "w": "overgrown",
+          "d": "covered with plants that have grown without control"
+        },
+        {
+          "w": "crowdfunding",
+          "d": "collecting small amounts of money from many people, usually on the internet"
+        },
+        {
+          "w": "excavations",
+          "d": "careful digging to find old objects and buildings"
+        },
+        {
+          "w": "headquarters",
+          "d": "the main building from which an organisation or army is controlled"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes the size and shape of the site?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph mentions a lucky find connected to a joke?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph explains how the site was first noticed?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph says the discovery challenges an earlier belief about the local people?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph explains where the legend comes from?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You have seen this announcement in an international English-language magazine for teenagers: 'History on your doorstep! Write an article about an old place near where you live. What is its story, and why should young people visit it?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/uk-news/2026/oct/12/mythical-roman-fort-frenni-fawr-wales-emperor"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/roman-fort-wales.jpg",
+        "alt": "A green hill called Frenni Fawr in Wales",
+        "caption": "Frenni Fawr, the hill named in the old Welsh tale (earlier photo).",
+        "credit": "Rude Health",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Frenni_Fawr_-_geograph.org.uk_-_3310239.jpg"
+      }
+    },
+    {
+      "id": "2026-10-12-adidas-stripes",
+      "section": "Economy",
+      "country": "Australia",
+      "flag": "🇦🇺",
+      "level": "B2",
+      "topic": "Brands and the law",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Three stripes against four: Adidas takes a fashion brand to court",
+      "standfirst": "The German sportswear giant says an Australian label's striped clothes are too similar to its famous design.",
+      "body": [
+        "How many stripes does it take to start a legal battle? For the German sportswear company Adidas, the answer appears to be four. The company is taking White Fox, a fast-fashion brand based in Sydney, to the Federal Court of Australia, claiming that its four-striped clothes are \"deceptively similar\" to Adidas's famous three stripes.",
+        "Adidas has owned the three-stripe trademark in Australia since 1957, and it argues that the design has built up a valuable reputation. According to the company, White Fox has been selling sweatpants and shorts with four parallel stripes of equal width since at least March, and has refused repeated requests to stop. Adidas's lawyers told the court that White Fox intended to profit from the bigger brand's reputation.",
+        "Some of the evidence concerns advertising. Adidas says one online advert for White Fox socks showed a model wearing pink Adidas shoes, which could make shoppers think the two brands were connected. It also claims that, after the case began, the stripes on those shoes were digitally removed from the picture.",
+        "White Fox denies doing anything wrong. Its lawyers say they will point out that several other Australian labels sell clothes with similar decorative stripes. A trial lasting three to four days is expected early next year. If Adidas wins, it wants White Fox to hand over the profits from the clothes, plus interest and costs.",
+        "The German company has won a similar battle before: in 2013 it successfully sued another firm in Australia over shoes with four stripes. White Fox, meanwhile, has grown fast. Launched in 2013 by a couple from Sydney, it is popular with teenagers and young adults in Australia, the UK and the US, and its yearly sales have risen about four times since 2022."
+      ],
+      "glossary": [
+        {
+          "w": "trademark",
+          "d": "a name, sign or design that legally belongs to one company"
+        },
+        {
+          "w": "reputation",
+          "d": "the opinion that people have about someone or something"
+        },
+        {
+          "w": "parallel",
+          "d": "running side by side, always at the same distance from each other"
+        },
+        {
+          "w": "evidence",
+          "d": "facts or objects that show whether something is true"
+        },
+        {
+          "w": "profits",
+          "d": "the money a business makes after paying all its costs"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer begin with a question about stripes?",
+          "options": [
+            "to explain how sportswear is designed",
+            "to criticise both companies",
+            "to introduce the case in a light-hearted way",
+            "to show that Adidas has changed its design"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does Adidas say about White Fox's behaviour before the case?",
+          "options": [
+            "It ignored several requests to stop selling the clothes.",
+            "It apologised and removed the clothes.",
+            "It asked Adidas for permission to use stripes.",
+            "It stopped advertising its clothes."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does Adidas claim about the advert for socks?",
+          "options": [
+            "The socks had three stripes.",
+            "The model was a famous athlete.",
+            "It only appeared on buses.",
+            "It showed Adidas shoes, which were later edited."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "How does White Fox plan to defend itself?",
+          "options": [
+            "by saying it has never used stripes",
+            "by saying other brands use similar stripes",
+            "by offering to pay Adidas",
+            "by changing the name of its brand"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does the last paragraph tell us?",
+          "options": [
+            "White Fox is still a very small company.",
+            "Adidas has never been to court before.",
+            "Adidas has won a similar case in the past.",
+            "White Fox only sells clothes in Australia."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about fashion and shopping. Now your teacher has asked you to write an essay. 'Do young people care too much about brand names?' Notes — write about: 1. price, 2. advertising and influencers, 3. (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c9e8ld448km8o"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/adidas-stripes.jpg",
+        "alt": "A tall court building in Sydney",
+        "caption": "The Law Courts Building in Sydney, home of the Federal Court of Australia (earlier photo).",
+        "credit": "Chris Olszewski",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Law_Courts_Building,_Sydney_04.jpg"
+      }
+    },
+    {
+      "id": "2026-10-12-starlink-india",
+      "section": "Technology",
+      "country": "India",
+      "flag": "🇮🇳",
+      "level": "C1",
+      "topic": "Satellite internet and competition",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Who will connect India? A very public fight over satellite internet",
+      "standfirst": "Elon Musk says powerful interests are keeping Starlink out of India. The government says everyone is being treated the same.",
+      "body": [
+        "Satellite internet promises to reach places that cables and phone masts never will – and in a country as vast as India, that promise is worth fighting over. This week the fight became unusually public, as Elon Musk, whose company SpaceX owns the satellite internet service Starlink, accused powerful business interests of keeping his product out of the country.",
+        "Starlink, which delivers internet access from satellites in low Earth orbit, has been trying to enter India since 2021. It has already obtained key licences, but it still lacks the final security clearances and the allocation of radio spectrum it needs to start commercial services. Musk, pointing out that Starlink is licensed in more than 165 countries, first blamed unnamed wealthy business owners and then singled out Mukesh Ambani, Asia's richest man, whose Reliance group owns Jio, India's biggest mobile network. Musk went as far as asking whether Ambani was \"the real boss of India\".",
+        "India's government rejected the accusation. The Ministry of Communications said that Starlink, Eutelsat OneWeb and Jio's own satellite company were all at roughly the same stage of the approval process, each waiting for security checks and spectrum. It described claims of unfair treatment as baseless. Neither Ambani nor Reliance has responded.",
+        "What makes the quarrel peculiar is that the rivals are also partners. In March 2025, both Reliance Jio and its competitor Bharti Airtel signed agreements with SpaceX to distribute Starlink equipment in India, subject to government approval – even as each prepares a satellite service of its own. At a technology conference in Delhi, Jio's chairman, Akash Ambani, declined to comment on the row, saying only that the company wanted to concentrate on its customers.",
+        "Security lies behind much of the caution. In 2024, Indian authorities said they had found Starlink equipment during a drug-smuggling investigation in the Andaman and Nicobar Islands and during an army operation in Manipur; Musk replied that the service had never been active in India. There are also questions about price: it is not yet clear whether rural families, the very people satellite internet is supposed to help, could afford it.",
+        "For now, millions of Indians in remote areas remain poorly connected, while some of the world's wealthiest people argue over who will connect them."
+      ],
+      "glossary": [
+        {
+          "w": "orbit",
+          "d": "the curved path that a satellite or planet follows around another object in space"
+        },
+        {
+          "w": "spectrum",
+          "d": "the range of radio frequencies that can be used to send signals"
+        },
+        {
+          "w": "clearances",
+          "d": "official permissions given after something has been checked"
+        },
+        {
+          "w": "peculiar",
+          "d": "strange or unusual"
+        },
+        {
+          "w": "rural",
+          "d": "in the countryside, not in towns or cities"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "In the first paragraph, the writer suggests that",
+          "options": [
+            "satellite internet is too expensive for India.",
+            "the size of India makes satellite internet especially valuable.",
+            "Musk has already won the argument.",
+            "mobile networks already cover the whole of India."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does Starlink still need before it can launch commercial services?",
+          "options": [
+            "licences in more countries",
+            "permission from Reliance Jio",
+            "security clearances and radio spectrum",
+            "new satellites in low Earth orbit"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "The government's statement implies that Starlink",
+          "options": [
+            "is being treated in the same way as its competitors.",
+            "will never be allowed into India.",
+            "has broken Indian law.",
+            "has already started its services."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why does the writer call the quarrel 'peculiar'?",
+          "options": [
+            "because Musk has never visited India",
+            "because Ambani has no interest in telecoms",
+            "because the government has taken sides",
+            "because companies in conflict also have business agreements"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "In paragraph 5, 'the very people' refers to",
+          "options": [
+            "Indian authorities",
+            "rural families",
+            "investigators",
+            "army officers"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's attitude in the final paragraph?",
+          "options": [
+            "enthusiastic about Musk's plans",
+            "confident the problem will soon be solved",
+            "angry with the Indian government",
+            "ironic about the contrast between the dispute and people's needs"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has watched a panel discussion about bringing fast internet to remote areas. The speakers talked about three options: government investment, private companies, and community projects. Write an essay discussing TWO of these options, explaining which you think would be more effective and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cvglw9ryjrylo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/starlink-india.jpg",
+        "alt": "Lines of light made by satellites crossing the night sky",
+        "caption": "Starlink satellites crossing the night sky over New Mexico, USA (earlier photo).",
+        "credit": "M. Lewinsky/Creative Commons Attribution 2.0",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Starlink_Satellites_Overhead.jpg"
+      }
+    },
+    {
+      "id": "2026-10-12-greenland-shark",
+      "section": "Environment",
+      "country": "Greenland",
+      "flag": "🇬🇱",
+      "level": "C1",
+      "topic": "Wildlife and the fishing industry",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Slow, ancient and unwanted: Greenland argues over the fate of its sharks",
+      "standfirst": "Fishers say the sharks are costing them money. Scientists warn that one of the ocean's oldest creatures cannot survive a cull.",
+      "body": [
+        "Few animals take life as slowly as the Greenland shark. It is the slowest shark in the world, yet it can grow to six or seven metres long and live for more than 400 years. It is also thought not to become an adult until the age of about 150. Now this remarkable creature has found itself at the centre of a bitter argument in the Arctic.",
+        "The problem lies in the cold waters off Greenland's west coast, where fishers catch halibut and cod – the same fish the sharks like to eat. Sharks that go after the catch often get tangled in fishing gear, cutting lines and costing fishers money. One young fisher from Ilulissat, Greenland's third-largest town, told the Guardian he had lost around 6,000 hooks this year alone.",
+        "Earlier this year, the local municipality of Avannaata approved a plan to cull 1,000 sharks, offering fishers 300 Danish krone for each one. Its mayor argued that the community had to protect fishers' incomes and the foods people had eaten for generations. The plan was eventually dropped after Greenland's government questioned whether it was legal, but the idea has not gone away.",
+        "Conservationists are alarmed. Because the species reproduces so slowly, it is still recovering from heavy fishing in the 19th and 20th centuries; in 1948 alone, 58,000 sharks were landed. One marine scientist described the Greenland shark as probably the ocean's most sensitive species when it comes to overfishing. A local conservation group adds that a cull would not even work: the sharks travel up to 2,000 kilometres a year, so any removed from one area would soon be replaced by others.",
+        "Others argue that the shark is being blamed for deeper problems. Fishing makes up about a quarter of Greenland's economy, and the industry faces too many boats, tight quotas, rising costs and few other jobs. The average size of halibut is shrinking, and fishers also complain about 'ghost lines' – lost or abandoned fishing gear left in the sea. Seen this way, the shark is less a cause of the crisis than a symptom of it."
+      ],
+      "glossary": [
+        {
+          "w": "tangled",
+          "d": "caught in lines or ropes that are twisted together"
+        },
+        {
+          "w": "cull",
+          "d": "to kill a number of animals in order to reduce their population"
+        },
+        {
+          "w": "reproduces",
+          "d": "has young animals"
+        },
+        {
+          "w": "quotas",
+          "d": "official limits on how much of something, such as fish, can be caught"
+        },
+        {
+          "w": "symptom",
+          "d": "a sign that shows a bigger problem exists"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "The first paragraph mainly serves to",
+          "options": [
+            "explain why fishers dislike sharks.",
+            "describe the unusual features of the animal at the heart of the debate.",
+            "compare the Greenland shark with other sharks.",
+            "argue that the shark should be protected."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why do fishers in Greenland see the sharks as a problem?",
+          "options": [
+            "The sharks attack fishing boats.",
+            "The sharks have eaten all the cod in the region.",
+            "The sharks damage their equipment and cost them money.",
+            "The sharks frighten tourists away."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What happened to the plan to cull 1,000 sharks?",
+          "options": [
+            "It was abandoned because of legal doubts.",
+            "It was carried out last summer.",
+            "It was replaced by a larger cull.",
+            "It was approved by the national government."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "According to the conservation group, a cull would fail because",
+          "options": [
+            "fishers would refuse to take part.",
+            "the sharks are too large to catch.",
+            "the sharks live for too long.",
+            "sharks from other areas would move in."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "The word 'symptom' in the final paragraph suggests that the shark",
+          "options": [
+            "is the main cause of the fishers' difficulties.",
+            "is a sign of wider problems in the fishing industry.",
+            "is suffering from a disease.",
+            "will soon disappear from Greenland."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's overall approach in the article?",
+          "options": [
+            "to support the cull",
+            "to criticise the conservationists",
+            "to present several points of view before suggesting a wider explanation",
+            "to make fun of the fishers"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has discussed conflicts between people and wild animals. The speakers mentioned three ways of dealing with them: paying people who lose money because of animals, changing the way people work (for example, with new equipment), and reducing the number of animals. Write an essay discussing TWO of these ways, explaining which you think is more effective and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/05/to-cull-or-not-to-cull-greenland-debates-fate-of-worlds-slowest-shark"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-12/greenland-shark.jpg",
+        "alt": "A Greenland shark swimming in dark, deep water",
+        "caption": "A Greenland shark filmed in the deep sea by a NOAA research ship (earlier photo).",
+        "credit": "NOAA Okeanos Explorer Program",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Somniosus_microcephalus_okeanos.jpg"
+      }
+    }
+  ]
+}
