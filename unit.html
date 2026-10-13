@@ -244,7 +244,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="writing-trace.js?v=321f3e2c"></script>
 <script src="activities-data.js?v=38ce60ee"></script>
 <script src="class-files.js?v=eebf11c5"></script>
-<script src="unit-plans.js?v=86a0c992"></script>
+<script src="unit-plans.js?v=768829a5"></script>
 <script src="writing-rubrics.js?v=3fcf9133"></script>
 <script src="project-arcs.js?v=110db8f3"></script>
 <script src="nis-nav.js?v=c6e39903"></script>
@@ -800,6 +800,15 @@ function packSemana(n){
   return `<div class="ses-row"><b>&#128216; Week pack — record sheets, info pages and models</b>
       <span class="grupo"><i>Open</i>${chip('pdf','PDF')}${chip('docx','Word')}</span></div>`;
 }
+/* Video de la semana (unit-plans.js: week.video). Vive en /opt/nis-media, no en el repo. */
+function videoSemana(n){
+  const w = (U.sequence||[]).filter(x=>x.n===n)[0];
+  const v = w && w.video; if(!v || !v.src) return '';
+  return `<div class="ses-row" style="display:block"><b>&#127916; ${esc(v.title||'Video of the week')}</b>
+      <video controls preload="none" playsinline ${v.poster?`poster="${esc(v.poster)}"`:''}
+        style="display:block;width:100%;max-width:760px;margin:10px 0 4px;border-radius:12px;background:#000"
+        src="${esc(v.src)}"></video></div>`;
+}
 function sesionesDelPlanner(n){
   const w = (U.sequence||[]).filter(x=>x.n===n)[0];
   if(!w || !(w.sessions||[]).length) return '';
@@ -825,7 +834,7 @@ function sesionesDelPlanner(n){
         <span class="state" id="e-${hito}"></span>
       </div>`;
   }).join('');
-  return `<div class="ses"><h4>Class materials — choose your level</h4>${packSemana(n)}${filas}</div>`;
+  return `<div class="ses"><h4>Class materials — choose your level</h4>${videoSemana(n)}${packSemana(n)}${filas}</div>`;
 }
 
 /* La hora semanal de Cambridge. No es una quinta sesion de clase: son las
@@ -895,8 +904,8 @@ function sesionesSemana(n){
         <span class="state" id="e-${hito}"></span>
       </div>`;
   }).join('');
-  if(!filas && !packSemana(n)) return '';
-  return `<div class="ses"><h4>Class materials — choose your level</h4>${packSemana(n)}${filas}</div>`;
+  if(!filas && !packSemana(n) && !videoSemana(n)) return '';
+  return `<div class="ses"><h4>Class materials — choose your level</h4>${videoSemana(n)}${packSemana(n)}${filas}</div>`;
 }
 
 /* La rubrica del writing, con sus cuatro niveles. Sale de
