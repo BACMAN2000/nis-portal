@@ -4120,6 +4120,7 @@ window.UNIT_PLANS = {
                model:'The corridor had been silent for an hour when the first tablet began to ring; we were still counting what nobody had unplugged.'}}}
      ]},
     {n:5,title:'From data to a proposal — and to a story',dates:'19–23 October',desc:'Turning numbers into something somebody can decide on: the recommendation, the objection, the proposal drafted by hand and closed against the rubric — Proposal due on Friday. And the same number followed into the year 802,701: the story, drafted.',
+     video:{src:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week5.mp4', poster:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week5.jpg', title:'Watch first — what we do this week (4:12)'},
      give:'P1 — the Proposal to the leadership team, handed in on Friday 23 October (300–350 words), and the handwritten draft of the story.',
      due:'P1 Proposal to the leadership team · Friday 23 October',
      across:{
