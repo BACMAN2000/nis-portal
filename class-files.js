@@ -370,6 +370,74 @@ window.CLASS_FILES = {
       "title": "Narrative tenses: what happened on audit day",
       "ws": {}
      }
+    ],
+    "5": [
+     {
+      "deck": "w5/slides/u5w5s1/",
+      "pages": 12,
+      "s": 1,
+      "slides": null,
+      "title": "A number is not a recommendation — and the objection they will raise",
+      "ws": {}
+     },
+     {
+      "deck": "w5/slides/u5w5s2/",
+      "pages": 10,
+      "s": 2,
+      "slides": null,
+      "title": "Drafting the proposal",
+      "ws": {}
+     },
+     {
+      "deck": "w5/slides/u5w5s3/",
+      "pages": 10,
+      "s": 3,
+      "slides": null,
+      "title": "Feedback against the rubric — and the final proposal",
+      "ws": {}
+     },
+     {
+      "deck": "w5/slides/u5w5s4/",
+      "pages": 13,
+      "s": 4,
+      "slides": null,
+      "title": "The story, drafted: the year 802,701",
+      "ws": {}
+     }
+    ],
+    "6": [
+     {
+      "deck": "w6/slides/u5w6s1/",
+      "pages": 11,
+      "s": 1,
+      "slides": null,
+      "title": "The story: feedback and final version",
+      "ws": {}
+     },
+     {
+      "deck": "w6/slides/u5w6s2/",
+      "pages": 10,
+      "s": 2,
+      "slides": null,
+      "title": "The story, out loud",
+      "ws": {}
+     },
+     {
+      "deck": "w6/slides/u5w6s3/",
+      "pages": 11,
+      "s": 3,
+      "slides": null,
+      "title": "Rehearse, and face the leadership team",
+      "ws": {}
+     },
+     {
+      "deck": "w6/slides/u5w6s4/",
+      "pages": 11,
+      "s": 4,
+      "slides": null,
+      "title": "Half the machine, what happened with it, and the Show",
+      "ws": {}
+     }
     ]
    }
   }

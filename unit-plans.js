@@ -4323,7 +4323,7 @@ window.UNIT_PLANS = {
        levels:{
          'A2':{task:'Prepare six cards with the key sentences of your defence, present with them and answer one question.',
                help:'Structure of the six cards given and the question bank.',
-               model:'We measured the devices. The answer was 63 per room. We recommend a timer.'},
+               model:'We measured the devices. The answer was 21 per room. We recommend a timer.'},
          'B1':{task:'Prepare your notes, present your defence and answer the questions from the panel.',
                help:'The three likely questions, listed.',
                model:'Our recommendation is to use a timer. This would reduce the energy used at night...'},
@@ -4336,7 +4336,7 @@ window.UNIT_PLANS = {
       {s:4,title:'Half the machine, what happened with it, and the Show',from:'6.1+6.3+6.4',
        objective:'Close the first half of The Time Machine, learn what the school decided to do with your work, and put the grade’s piece on stage.',
        hook:'Mystery envelope: the teacher opens the leadership team’s answer on screen — which recommendations they are taking forward and which not. Raise your hand if YOUR recommendation was chosen. Then: why were the others not? That is the real result of the unit.',
-       explain:'Chapters 5–6 of The Time Machine: the Eloi above ground, the Morlocks below. Wells took one fact of 1895 — who works and who does not — and this is where it went. The leadership team’s answer is not a mark: it is the real result. The Show is the grade’s dramatised reading — one story from the class or the collaborative future told in turns. Unit 6 begins here: you built the instrument; now argue, seriously, that it should not exist. Who is this future fair to?',
+       explain:'Chapters 5–6 of The Time Machine: the Eloi above ground, the Morlocks below. Wells took one fact of 1895 — who works and who does not — and this is where it went. The leadership team’s answer is not a mark: it is the real result. The Show is the grade’s dramatised reading — one story from the class or the collaborative future told in turns. The second half of the unit begins here: you built the instrument; now argue, seriously, that it should not exist. Who is this future fair to?',
        example:'Reading-diary prediction: “I think the Morlocks will be stronger than the Eloi because Wells says they work underground, and the Time Traveller is afraid of the dark.” Reflection opening: “The panel took forward my recommendation about the timers because…”.',
        view:[
          '5 min · HOOK. The leadership team’s answer: which recommendations go forward, and why not the others?',
@@ -4358,7 +4358,7 @@ window.UNIT_PLANS = {
          'B2':{task:'Explain what fact of 1895 the Eloi and the Morlocks come from and which of the class’s numbers could do the same; write your reflection, including what you learned from an objection you received. Perform.',
                help:'Connect Wells’s method to your own story. What did you think before, and what do you think now?',
                model:'Wells took the class divide of his time; our number about screen time could split students into those who ...'},
-         'C1':{task:'Explain the two-class future as a narrative technique AND as a problem of justice, say which of the two Unit 6 should take up, and write the question your number leaves open — the one the leadership team did not ask. Perform.',
+         'C1':{task:'Explain the two-class future as a narrative technique AND as a problem of justice, say which of the two the second half of the unit should take up, and write the question your number leaves open — the one the leadership team did not ask. Perform.',
                help:'One answer is about craft; the other is about who it is fair to. If they did not ask it, it is because it is uncomfortable.',
                model:'As technique, the split makes the future visible; as a problem of justice, it asks who pays for the machine.'}}}
      ]},
