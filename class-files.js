@@ -333,6 +333,45 @@ window.CLASS_FILES = {
      }
     ]
    }
+  },
+  "u5": {
+   "base": "g9/u5/",
+   "weeks": {
+    "4": [
+     {
+      "deck": "w4/slides/u5w4s1/",
+      "pages": 14,
+      "s": 1,
+      "slides": null,
+      "title": "The protocol, agreed — and the sampling plan",
+      "ws": {}
+     },
+     {
+      "deck": "w4/slides/u5w4s2/",
+      "pages": 9,
+      "s": 2,
+      "slides": null,
+      "title": "Out into the school: field day",
+      "ws": {}
+     },
+     {
+      "deck": "w4/slides/u5w4s3/",
+      "pages": 8,
+      "s": 3,
+      "slides": null,
+      "title": "Is this number trustworthy? Cleaning, averages and the chart",
+      "ws": {}
+     },
+     {
+      "deck": "w4/slides/u5w4s4/",
+      "pages": 10,
+      "s": 4,
+      "slides": null,
+      "title": "Narrative tenses: what happened on audit day",
+      "ws": {}
+     }
+    ]
+   }
   }
  }
 };

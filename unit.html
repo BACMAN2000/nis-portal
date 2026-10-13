@@ -243,7 +243,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="config.js?v=720edc7d"></script>
 <script src="writing-trace.js?v=321f3e2c"></script>
 <script src="activities-data.js?v=38ce60ee"></script>
-<script src="class-files.js?v=1a59ee7e"></script>
+<script src="class-files.js?v=c08a14e4"></script>
 <script src="unit-plans.js?v=5b1c05de"></script>
 <script src="writing-rubrics.js?v=3fcf9133"></script>
 <script src="project-arcs.js?v=110db8f3"></script>
@@ -853,10 +853,21 @@ function sesionesSemana(n){
     const ver = (x.deck && x.pages)
       ? `<a class="deck-chip" href="#" data-deck="${esc(base + x.deck)}" data-pages="${x.pages}"
            data-titulo="S${x.s} · ${esc(x.title||('Session '+x.s))}">&#9654; View class</a>` : '';
-    if(!niveles && !ver && !online) return '';
+    /* Sesiones con diapositivas pero sin fichas subidas (9.º U5 desde el
+       12-oct-2026): la ficha por nivel sigue saliendo del planner, igual que
+       en sesionesDelPlanner, y el profesor conserva su guion de clase. */
+    const wP = (U.sequence||[]).filter(w=>w.n===n)[0];
+    const sP = wP ? (wP.sessions||[]).filter(z=>z.s===x.s)[0] : null;
+    const lvP = (!online && !niveles && sP) ? (sP.levels || wP.levels) : null;
+    const urlP = extra => `class-session.html?grade=${GRADE}&unit=${UNIT}&week=${n}&session=${x.s}${extra||''}`;
+    const planner = lvP ? Object.keys(lvP).map(l=>
+      `<a class="on-chip" href="${urlP('&level='+encodeURIComponent(l))}">${esc(l)}</a>`).join('') : '';
+    const guion = (sP && esProfe) ? `<a class="deck-chip" href="${urlP('')}">&#128203; Class script</a>` : '';
+    if(!niveles && !ver && !online && !planner) return '';
     const hito = 'w' + n + 's' + x.s;
     return `<div class="ses-row">
-        <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
+        <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}${guion}
+        ${planner?`<span class="grupo"><i>Worksheet</i>${planner}</span>`:''}
         ${online?`<span class="grupo"><i>Solve online</i>${online}</span>`:''}
         ${niveles?`<span class="grupo"><i>PDF to print</i>${niveles}</span>`:''}
         <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
