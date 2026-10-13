@@ -3977,7 +3977,7 @@ window.UNIT_PLANS = {
      give:'Nothing for the unit — your Mock 2 papers.',
      sessions:[]},
     {n:4,title:'Measuring this building',dates:'13–16 October',
-      video:{src:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4-v2.mp4', poster:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4-v2.jpg', title:'Watch first — what we do this week (3:45)'},desc:'The audit itself, with ICT and Maths: devices, screen minutes, kWh, AI use and e-waste at Nordic International School. Five teams, five questions, one protocol — real numbers from our own building. On Friday, the grammar for telling what happened.',
+      video:{src:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4-v3.mp4', poster:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4-v3.jpg', title:'Watch first — what we do this week (3:45)'},desc:'The audit itself, with ICT and Maths: devices, screen minutes, kWh, AI use and e-waste at Nordic International School. Five teams, five questions, one protocol — real numbers from our own building. On Friday, the grammar for telling what happened.',
      give:'Your team’s dataset (record sheet + cleaned table), the method you followed, one chart with its caption, and a test scene in the four past tenses.',
      across:{
        philosophy:'The longest study on happiness (Harvard): what can only be known by looking for a long time — and what eleven weeks of data cannot tell you.',
