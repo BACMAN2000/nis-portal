@@ -251,6 +251,35 @@ function _bandaMiUnidad(){
   </div>`;
 }
 
+/* El periódico del día, arriba en la portada: los titulares del número de
+   hoy, cada uno abre su artículo directamente, para que no quede
+   escondido en «More». Si no carga el número, queda la banda con el botón. */
+function _pintaPeriodico(id){
+  const box = document.getElementById(id);
+  if(!box) return;
+  const abrir = a => "window._newsArt=" + (a ? "'" + a + "'" : "null") + ";window._nav('news')";
+  const pinta = (num, arts) => {
+    const fecha = num ? new Date(num.date + 'T12:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}) : '';
+    const filas = (arts||[]).map(a => `<div class="news-row" onclick="${abrir(a.id)}" tabindex="0" role="button"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${abrir(a.id)}}">
+        <span class="chip">${esc(a.level||'')}</span><span>${esc(a.flag||'')}</span><b>${esc(a.headline||'')}</b></div>`).join('');
+    box.innerHTML = `<div class="card news-band">
+      <div class="news-band-head">
+        <div><div class="muted" style="font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700">
+          📰 Today's newspaper${num ? ' · No. ' + esc(String(num.issue)) + ' · ' + esc(fecha) : ''}</div>
+          <h2 style="margin:2px 0 0;font-family:Georgia,'Times New Roman',serif;color:var(--blue-dd)">${esc(newsName())}</h2></div>
+        <button class="btn" onclick="${abrir(null)}">Open the newspaper</button>
+      </div>
+      ${filas ? `<div class="news-rows">${filas}</div>` : '<p class="muted" style="margin:8px 0 0">Daily news in English at your level: A2, B1, B2 and C1.</p>'}
+    </div>`;
+  };
+  pinta(null, null);
+  fetch('newspaper/issues/index.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null)
+    .then(ix => { const n = ix && ix.issues && ix.issues[0]; return n ? fetch('newspaper/issues/' + n.date + '.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null) : null; })
+    .then(num => { if(num && document.getElementById(id) === box) pinta(num, num.articles); })
+    .catch(() => {});
+}
+
 function studentHub(){
   if(mockModeActive()) return mockModeHub();   // dia de mock: solo la tarjeta del mock
   if(typeof isStaffGrade==='function' && isStaffGrade(state.profile && state.profile.grade_id)) return teacherRoomHub();   // aula de profesores
@@ -271,6 +300,7 @@ function studentHub(){
   const _hasReaders = !!(gkey && typeof READER_BOOKS !== 'undefined' && (READER_BOOKS[gkey]||[]).length);
   $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''}${p.cefr_level?' · Level '+esc(p.cefr_level):''} — What would you like to do today?</p>
+    ${schoolContentOK('news.daily') ? '<div id="news-band"></div>' : ''}
     ${_bandaMiUnidad()}
     <div class="grid cols-2 track-grid" style="margin-top:16px">
       ${_trackCard('🏫','My classes',gLabel+': units'+(_hasReaders?', activities, readers':', activities')+' and unit exams',classesGo,['🎯 Units','🎲 Activities'].concat(_hasReaders?['📚 Readers']:[]))}
@@ -281,7 +311,6 @@ function studentHub(){
     <div class="grid cols-3">
       ${_hubCard('🧰','Practice tools','Sounds, grammar and vocabulary games to train on your own.',"window._nav('tools')")}
       ${nodeVisible('general.library') ? _hubCard('📚','Library','NIS Library: search and explore the school library.',"window._nav('library')") : ''}
-      ${schoolContentOK('news.daily') ? _hubCard('📰',newsName(),'Daily news in English at your level: A2, B1, B2 and C1.',"window._nav('news')") : ''}
       ${nodeVisible('general.mun') ? _hubCard('🌐','MUN Academy','Model United Nations: debate, public speaking and diplomacy.',"window._nav('mun')") : ''}
       ${_hubCard('📊','My progress','Your results in mocks, practice tests and activities.',"window._nav('results')")}
       ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes and more.',"window._nav('french')") : ''}
@@ -289,6 +318,7 @@ function studentHub(){
   // La tarjeta del curso de su etapa (Fun for Nordic / Nordic Ascent), a un
   // clic desde la portada: Paolo pidio que se encontrara sin buscarla.
   _pintaSerie('serie-card', 'home');
+  _pintaPeriodico('news-band');
 }
 
 /* Helpers de unidades y arcos de proyecto (unitsNode, unitPlansFor,

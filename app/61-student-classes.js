@@ -99,7 +99,9 @@ function newsName(){
   return 'The ' + String(S.short || S.name || 'School').replace(/\s+Schools?$/i, '') + ' Times';
 }
 function newsBody(){
-  return `<iframe src="newspaper/?embed=1" title="${esc(newsName())}" style="width:100%;height:calc(100vh - 110px);min-height:520px;border:0;border-radius:14px;background:#ece7dc"></iframe>
+  // _newsArt: la portada abre un artículo concreto (#a=<id>); se usa una vez.
+  const art = window._newsArt; window._newsArt = null;
+  return `<iframe src="newspaper/?embed=1${art ? '#a=' + encodeURIComponent(art) : ''}" title="${esc(newsName())}" style="width:100%;height:calc(100vh - 110px);min-height:520px;border:0;border-radius:14px;background:#ece7dc"></iframe>
     <p class="muted" style="margin:6px 0 0;font-size:13px"><a href="newspaper/" target="_blank" rel="noopener">Open in a new tab ↗</a></p>`;
 }
 function studentNews(){
