@@ -1,0 +1,984 @@
+{
+  "date": "2026-10-13",
+  "issue": 7,
+  "breaking": [
+    "Peru: 72 students win medals at the National Mathematics Olympiad.",
+    "Peru wins six World Travel Awards, and Machu Picchu is the best attraction in South America.",
+    "France: a big fire destroys the oldest covered food market in Paris.",
+    "Sport: a Michael Jordan shirt from 1998 sells for a record US$14 million."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-13-maths-olympiad",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "School and competitions",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "1.7 million students and 72 medals: Peru's big maths competition",
+      "standfirst": "The best young mathematicians in the country got their prizes in Lima on Monday.",
+      "body": [
+        "Every year, Peru has a big maths competition for school students. It is called the National Mathematics Olympiad. This year was the 22nd Olympiad, and 1.7 million students registered for it.",
+        "On Monday 12 October there was a prize ceremony in Chosica, in the east of Lima. 72 students got a medal: 12 gold, 24 silver and 36 bronze.",
+        "President Keiko Fujimori and the Education Minister, José Antonio Chang, went to the ceremony. The President said maths was her favourite subject at school. Her father was a mathematician, and her mother had an academy where students learned maths.",
+        "The best students also get money. The winner in Level 3 gets S/50,000, and the student in second place gets S/15,000.",
+        "The President told all the students to try again next year. 'What matters is being prepared,' she said."
+      ],
+      "glossary": [
+        {
+          "w": "competition",
+          "d": "an event where people try to be better than others and win a prize"
+        },
+        {
+          "w": "ceremony",
+          "d": "a special, formal event, for example when people get prizes"
+        },
+        {
+          "w": "medal",
+          "d": "a round piece of metal that you get when you win or do very well"
+        },
+        {
+          "w": "mathematician",
+          "d": "a person who studies maths as their job"
+        },
+        {
+          "w": "prepared",
+          "d": "ready for something because you have worked or studied for it"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "1.7 million students registered for this year's Olympiad.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The prize ceremony was in the centre of Lima.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "More students won bronze medals than gold medals.",
+          "answer": "T"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "Students from other countries also took part in the Olympiad.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The student in second place in Level 3 gets more money than the winner.",
+          "answer": "F"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "The President studied maths at university.",
+          "answer": "NS"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You took part in a competition at school last week. Write an email to your English friend (25 words or more). Say: what the competition was, how you prepared for it, and how you felt at the end."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-president-participates-in-22nd-national-mathematics-olympiad-awards-ceremony-1095598.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/maths-olympiad.jpg",
+        "alt": "The main square of Chosica, a town in the east of Lima",
+        "caption": "Chosica, in the east of Lima, where the Olympiad prizes were given (earlier photo).",
+        "credit": "454Andres454",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Plaza_de_Chosica,_Lima,_Per%C3%BA.jpg"
+      }
+    },
+    {
+      "id": "2026-10-13-new-york-owls",
+      "section": "Environment",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "A2",
+      "topic": "Wild animals in the city",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "New neighbours in New York: a family of owls!",
+      "standfirst": "A strange noise at night led a couple to some very special birds.",
+      "body": [
+        "Elisabeth Williams lives in an apartment in Manhattan, in New York. About a month ago, she started to hear a strange, high noise at night. It was not a pigeon! She and her husband, Sam, heard the noise again and again for weeks.",
+        "On the evening of 3 October, Sam saw something dark fly past their patio. Elisabeth took a photo, but it was very dark. Later, she looked at the photo on her phone and got a surprise. It was a barn owl, with a face like a heart. She called it Scotty.",
+        "Then they saw more owls on the roof of a water tower near Central Park. Scotty had a family! The couple sent their photos to a local newspaper. Soon TV stations and social media shared them too.",
+        "People don't often see barn owls in Manhattan, so now the birds are famous. Elisabeth and Sam have some very special new neighbours!"
+      ],
+      "glossary": [
+        {
+          "w": "neighbours",
+          "d": "people (or animals) that live near you"
+        },
+        {
+          "w": "strange",
+          "d": "unusual or surprising, not what you know"
+        },
+        {
+          "w": "patio",
+          "d": "a small outside area next to a house or apartment, where you can sit"
+        },
+        {
+          "w": "roof",
+          "d": "the top part that covers a building"
+        },
+        {
+          "w": "famous",
+          "d": "known by a lot of people"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What did Elisabeth notice first?",
+          "options": [
+            "a bird on her patio",
+            "a strange noise at night",
+            "a photo in a newspaper"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What was the surprise when Elisabeth looked at her photo?",
+          "options": [
+            "It showed a barn owl.",
+            "It was very clear and bright.",
+            "It was taken in Central Park."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Who is Scotty?",
+          "options": [
+            "Elisabeth's husband",
+            "a TV reporter",
+            "the first owl they saw"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Where were the other owls?",
+          "options": [
+            "inside Central Park",
+            "on a water tower",
+            "on the couple's patio"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why are the owls famous now?",
+          "options": [
+            "They are the biggest owls in America.",
+            "They came to New York from a zoo.",
+            "People don't often see barn owls in Manhattan."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 7",
+        "task": "Look at the three pictures: a girl hears a noise at night; she looks out of the window; she sees an animal in the garden. Write the story shown in the pictures (35 words or more)."
+      },
+      "sources": [
+        {
+          "name": "The New York Times",
+          "url": "https://www.nytimes.com/2026/10/11/nyregion/owls-upper-west-side-new-york-city.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/new-york-owls.jpg",
+        "alt": "A barn owl with a white, heart-shaped face flying",
+        "caption": "A barn owl in flight. Barn owls have a face shaped like a heart (photo from Europe).",
+        "credit": "Luc Viatour",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Tyto_alba_1_Luc_Viatour.jpg"
+      }
+    },
+    {
+      "id": "2026-10-13-peru-travel-awards",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Tourism",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Six prizes for Peru: the best place to travel in South America",
+      "standfirst": "Peru and Machu Picchu are winners again at the World Travel Awards.",
+      "body": [
+        "Peru has been named the leading travel destination in South America once again. At the 2026 World Travel Awards for South America, the country won six prizes, which shows how attractive it is to tourists from all over the world.",
+        "Five of the awards were for the country itself. Peru was chosen as South America's leading destination, and also as the leading destination for food, for culture and for nature. It also won a prize for its contribution to sustainable tourism, which is travel that protects nature and history and helps local communities.",
+        "The sixth award went to Machu Picchu, the famous Inca site in Cusco. It was named South America's leading tourist attraction. Visitors love its amazing stone buildings and the way they fit into the mountains around them.",
+        "The World Travel Awards are considered some of the most important prizes in the tourism industry. Rogers Valencia, Peru's Minister of Foreign Trade and Tourism, said the awards filled the country with pride. He added that the government wants tourism that respects Peru's diversity, protects its heritage and creates opportunities for Peruvians.",
+        "PromPeru, a government agency, works to promote Peru's destinations in other countries. It hopes the six awards will bring even more visitors who want to discover Peru's food, culture and nature."
+      ],
+      "glossary": [
+        {
+          "w": "destination",
+          "d": "the place where someone is going on a trip"
+        },
+        {
+          "w": "sustainable",
+          "d": "able to continue for a long time without damaging nature"
+        },
+        {
+          "w": "attraction",
+          "d": "a place that many tourists want to visit"
+        },
+        {
+          "w": "heritage",
+          "d": "old buildings, traditions and culture that a country keeps from its past"
+        },
+        {
+          "w": "promote",
+          "d": "to tell people about something so that more people want it or use it"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Peru ___ six prizes at the 2026 World Travel Awards for South America.",
+          "options": [
+            "won",
+            "beat",
+            "passed",
+            "reached"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "Machu Picchu was ___ South America's leading tourist attraction.",
+          "options": [
+            "told",
+            "said",
+            "named",
+            "spoken"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "Sustainable tourism tries to ___ nature and history.",
+          "options": [
+            "destroy",
+            "protect",
+            "sell",
+            "forget"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "The minister said the awards ___ the country with pride.",
+          "options": [
+            "made",
+            "gave",
+            "took",
+            "filled"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "PromPeru promotes Peru's destinations ___ other countries.",
+          "options": [
+            "by",
+            "of",
+            "in",
+            "with"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "PromPeru hopes the awards will ___ more visitors to Peru.",
+          "options": [
+            "go",
+            "bring",
+            "make",
+            "stay"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Alex has written to you: 'My family wants to visit Peru next year, but we only have one week! Which place should we visit first? What food should we try? And what's the best time of year to go?' Write your email to Alex in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-wins-six-world-travel-awards-named-south-americas-leading-destination-1095603.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/peru-travel-awards.jpg",
+        "alt": "The old stone houses of Machu Picchu between green mountains",
+        "caption": "Machu Picchu, named South America's leading tourist attraction (photo from 2015).",
+        "credit": "Diego Delso",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_Per%C3%BA,_2015-07-30,_DD_47.JPG"
+      }
+    },
+    {
+      "id": "2026-10-13-paris-market-fire",
+      "section": "Culture",
+      "country": "France",
+      "flag": "🇫🇷",
+      "level": "B1",
+      "topic": "History and food",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "400 years of history lost: fire destroys a famous Paris market",
+      "standfirst": "The Marché des Enfants Rouges was the oldest covered food market in the French capital.",
+      "body": [
+        "A fire has destroyed the oldest covered food market in Paris. The Marché des Enfants Rouges, in the Marais area in the centre of the French capital, had been open since 1615, more than 400 years ago.",
+        "The fire started during the night between Sunday and Monday, and it was first reported at about 3 a.m. Firefighters needed nine hoses, two of them very powerful, to bring the flames under control. The fire spread through all 1,000 square metres of the market, and part of the metal structure fell down inside. 'Nothing remains of the covered market,' a fire officer told reporters. Luckily, the fire did not reach any of the buildings next to it.",
+        "The market got its unusual name, which means 'the red children', from the red clothes that orphans wore at a hospital nearby until 1772. In 1982 it became an official historical monument.",
+        "In recent years, the market was also famous for its street food. This year, Food & Wine magazine said it was the fifth best place for street food in the world, after places in London, Bangkok, Lyon and Mexico City.",
+        "Nobody knows yet what caused the fire, and an investigation has started. The city says it will find temporary places for the market's businesses so that they can continue working. The market might also have a new life in a different part of Paris."
+      ],
+      "glossary": [
+        {
+          "w": "hoses",
+          "d": "long tubes that carry water, used by firefighters"
+        },
+        {
+          "w": "orphans",
+          "d": "children whose parents have died"
+        },
+        {
+          "w": "monument",
+          "d": "an important old building or place that a country protects"
+        },
+        {
+          "w": "investigation",
+          "d": "when people try to find out the facts about something that happened"
+        },
+        {
+          "w": "temporary",
+          "d": "for a short time only, not forever"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "How old was the market?",
+          "options": [
+            "about 100 years old",
+            "about 200 years old",
+            "more than 400 years old",
+            "about 1,000 years old"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Where does the name 'Enfants Rouges' come from?",
+          "options": [
+            "the clothes that orphans wore at a hospital near the market",
+            "the red colour of the market building",
+            "the children who sold food in the market",
+            "the red fruit that was sold there"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What happened to the buildings next to the market?",
+          "options": [
+            "They were badly damaged.",
+            "Part of them fell down.",
+            "They were closed for a week.",
+            "The fire did not reach them."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What did Food & Wine magazine say about the market this year?",
+          "options": [
+            "It was the best market in Paris.",
+            "It was one of the best places for street food in the world.",
+            "Its food was better than the food in Lyon.",
+            "It was too expensive for tourists."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What will happen to the people who had businesses in the market?",
+          "options": [
+            "They will have to stop working.",
+            "They will move to Lyon.",
+            "They will get temporary places to work.",
+            "They will open a new market next week."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for young people: 'Articles wanted! A special place in my town. Tell us about a market, a shop or a café that is important in your town. What can you find there, and why do people love it?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-13/marche-couvert-des-enfants-rouges-paris-market-fire/107258094"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/paris-market-fire.jpg",
+        "alt": "The Marché des Enfants Rouges in Paris, closed on a Sunday afternoon",
+        "caption": "The Marché des Enfants Rouges before the fire (earlier photo).",
+        "credit": "Popolon",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Paris_III-March%C3%A9_des_Enfants-Rouges.jpg"
+      }
+    },
+    {
+      "id": "2026-10-13-birdsong-tutors",
+      "section": "Environment",
+      "country": "Argentina · United Kingdom · Australia",
+      "flag": "🇦🇷",
+      "level": "B2",
+      "topic": "Birds and conservation",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "Singing lessons for birds: can technology save forgotten songs?",
+      "standfirst": "When bird populations shrink, young birds may never learn to sing properly. Scientists are looking for ways to help.",
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "body": [
+        "A. In a park in Buenos Aires, Argentina, scientists recently heard a tune that had not been sung there for decades. Local rufous-collared sparrows sang it in the 1960s but it had since disappeared. Scientists, including the physicist Gabriel Mindlin, recreated the song with a computer and played it in the park. Less than three months later, a local bird began to copy parts of it.",
+        "B. This matters because a good song is a survival tool. A male bird that sings a complex song, in the right local 'dialect', has a better chance of attracting a mate and defending its territory. But when a population falls, young birds have fewer adults to learn from. They may sing abnormally or even pick up the songs of other species, which can reduce their chances of breeding.",
+        "C. About 4,000 of the world's 10,000 bird species are songbirds. They learn at least part of their songs from others, often a father or neighbours, which is why local groups develop their own dialects. Environment matters too: flat whistles travel well through thick rainforest, while very fast trills are more common in cooler regions, where birds communicate at closer range.",
+        "D. There is some good news. In England, a group of cirl buntings was moved from Devon to Cornwall. At first, their songs were squeaky, slow and much less varied. Eight years later, however, they sounded normal again. According to Sarah Collins of the University of Plymouth, these birds are born knowing the basic elements of their song and only need to learn how to put them together.",
+        "E. In Australia, the wild population of regent honeyeaters, a critically endangered species, had fallen to about 250 birds. Young birds bred in zoos learned the wild songs from two wild-born male 'tutors', and later taught them to the next generation. Bringing wild birds into captivity can cause stress and spread disease, however, so researchers hope computer-made songs could one day do the teaching instead."
+      ],
+      "glossary": [
+        {
+          "w": "dialect",
+          "d": "a form of a language (or song) used by one group in one area"
+        },
+        {
+          "w": "territory",
+          "d": "an area that an animal thinks belongs to it and defends against others"
+        },
+        {
+          "w": "breeding",
+          "d": "producing babies or young animals"
+        },
+        {
+          "w": "endangered",
+          "d": "in danger of disappearing completely"
+        },
+        {
+          "w": "captivity",
+          "d": "the situation of an animal that is kept in a zoo or cage, not living free"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes birds whose songs returned to normal after several years?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph explains how the place where birds live affects the sounds they make?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph describes a song coming back after it had been lost?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains why a smaller population can harm young birds' singing?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph mentions birds that became teachers of the next generation?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You have seen this announcement in an international English-language magazine for teenagers: 'The sounds of nature. Write an article about a natural sound you love – birds, the sea, rain or anything else. Where do you hear it, how does it make you feel, and why should people listen more carefully to nature?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/13/ornithology-trill-why-birds-sing-birdsong-dialects-tutors-ai-aoe"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/birdsong-tutors.jpg",
+        "alt": "A small brown sparrow with a reddish band around its neck",
+        "caption": "A rufous-collared sparrow, the bird studied in Buenos Aires (photo taken in Santiago, Chile).",
+        "credit": "Charles J. Sharp",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Rufous-collared_sparrow_(Zonotrichia_capensis_chilensis)_Santiago.jpg"
+      }
+    },
+    {
+      "id": "2026-10-13-jordan-jersey",
+      "section": "Sport",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B2",
+      "topic": "Basketball and collecting",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "A shirt worth US$14 million: Michael Jordan breaks another record",
+      "standfirst": "The jersey Jordan wore in the 1998 NBA Finals is now the most expensive piece of basketball history ever sold.",
+      "body": [
+        "Michael Jordan retired from basketball many years ago, but he is still breaking records. This week, a Chicago Bulls jersey that he wore in the 1998 NBA Finals was sold for US$14 million, the highest price ever paid for any piece of basketball memorabilia.",
+        "The shirt, which Jordan signed, was sold in a private sale organised by Hunt Auctions. The buyer was Ron Firman, a real estate investor from Miami. According to the auction house, it is now the second most expensive game-worn sports shirt in history. First place still belongs to the New York Yankees shirt that baseball legend Babe Ruth wore in the 1932 World Series, which went for US$24.12 million in 2024.",
+        "Jordan wore the jersey in Game 2 of the Finals, on 5 June 1998, in Salt Lake City. The Bulls won 93–88 thanks to a superb performance from their star, who scored 37 points and made five rebounds and three assists. Chicago went on to beat the Utah Jazz in six games. It was Jordan's sixth and final title with the Bulls, and he was named the most valuable player of the Finals for the sixth time, two more than anyone else in NBA history.",
+        "That season became even more famous in 2020, when the popular documentary The Last Dance told its story to a new generation of fans.",
+        "The record did not last long for the previous holder. In September, another Jordan shirt from the same Finals, worn in Game 3, had sold at auction for US$12.26 million. David Hunt, the president of the auction house, said Jordan objects had become an elite 'asset class' – something people now buy as an investment, in the same way as famous works of art."
+      ],
+      "glossary": [
+        {
+          "w": "memorabilia",
+          "d": "objects connected with a famous person or event that people collect"
+        },
+        {
+          "w": "auction",
+          "d": "a sale where things are sold to the person who offers the most money"
+        },
+        {
+          "w": "investor",
+          "d": "a person who puts money into something hoping to make more money"
+        },
+        {
+          "w": "rebounds",
+          "d": "in basketball, catching the ball after a shot has missed the basket"
+        },
+        {
+          "w": "investment",
+          "d": "something you buy because you hope it will become more valuable"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "In the first paragraph, the writer suggests that Jordan",
+          "options": [
+            "has recently started playing basketball again.",
+            "remains important even though he no longer plays.",
+            "sold his own jersey for a record price.",
+            "was the most expensive player in NBA history."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What do we learn about the sale of Babe Ruth's shirt?",
+          "options": [
+            "It happened in 1932.",
+            "It was cheaper than the Jordan jersey.",
+            "It was also organised by Hunt Auctions.",
+            "It is still the highest price for a game-worn sports shirt."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why is the game in Salt Lake City described in detail?",
+          "options": [
+            "to show how well Jordan played while wearing the jersey",
+            "to explain why the Bulls lost the series",
+            "to compare Jordan with other players of the Utah Jazz",
+            "to describe the end of the 1998 season"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'the previous holder' in the last paragraph refer to?",
+          "options": [
+            "Babe Ruth's shirt",
+            "David Hunt",
+            "the shirt Jordan wore in Game 3",
+            "the documentary The Last Dance"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "According to David Hunt, people now buy Jordan objects",
+          "options": [
+            "mainly to wear them.",
+            "as a way of making money, like art.",
+            "because they are cheaper than paintings.",
+            "only after watching The Last Dance."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about sport and money. Now your teacher has asked you to write an essay. 'Is it right that people pay millions for objects that belonged to famous sports stars?' Notes – write about: 1. the memories and history these objects keep, 2. other ways the money could be used, 3. (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-13/michael-jordan-last-dance-jersey-sold-record-price/107259074"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/jordan-jersey.jpg",
+        "alt": "A young Michael Jordan holding up a red Chicago Bulls shirt",
+        "caption": "Michael Jordan with his first Chicago Bulls jersey in 1984, fourteen years before the 1998 Finals.",
+        "credit": "United Press International",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Michael_Jordan_holds_up_his_Chicago_Bulls_jersey_on_September_12,_1984_(cropped).jpg"
+      }
+    },
+    {
+      "id": "2026-10-13-superhabitable-worlds",
+      "section": "Science",
+      "country": "Germany",
+      "flag": "🇩🇪",
+      "level": "C1",
+      "topic": "Space and the search for life",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Better than Earth? The hunt for 'superhabitable' worlds",
+      "standfirst": "Some scientists believe the best places for life in the galaxy may orbit stars quite different from our Sun.",
+      "body": [
+        "We tend to assume that Earth is the gold standard for life: a planet so well suited to living things that any world capable of supporting life must closely resemble it. A growing number of astronomers, however, are questioning that assumption. Somewhere out there, they argue, there may be planets where life could flourish for longer, and in greater variety, than it ever has here. It is a bold idea, but it rests on some intriguing evidence.",
+        "Part of the evidence comes from an unexpected place: a laboratory in Berlin. A few years ago, the astrobiologist Iva Vilović grew garden cress under a lamp designed to imitate a K-dwarf, an orange star that is cooler than our Sun and burns more slowly. To her surprise, the plants grew faster and taller than those grown under artificial sunlight. The result suggests that photosynthesis, the process that ultimately feeds almost every food chain on Earth, could work perfectly well on planets orbiting such stars. Vilović, who now works at the Leibniz Institute for Astrophysics in Potsdam, believes these stars deserve a central place in the search for life beyond the solar system.",
+        "The most promising candidates are 'super-Earths', rocky planets somewhat larger than our own. Scientists have even sketched what an ideal example, known as a superhabitable world, might look like. It would be roughly 20 to 30 per cent wider than Earth and about twice as massive, and it would orbit at just the right distance from its star for liquid water to exist on its surface.",
+        "That extra size would bring several advantages. Stronger gravity would hold on to a thicker atmosphere, producing a warmer and more stable climate. A larger iron core would generate a more powerful magnetic field, giving better protection against harmful radiation from space. Gravity would also wear down mountains and fill in deep ocean trenches, leaving a smoother planet covered by shallow lakes and seas.",
+        "None of this proves that such worlds are inhabited. But it does challenge a comfortable idea: that, when it comes to life, our own planet is as good as it gets."
+      ],
+      "glossary": [
+        {
+          "w": "flourish",
+          "d": "to grow or develop very well and successfully"
+        },
+        {
+          "w": "photosynthesis",
+          "d": "the process in which plants use light to make their own food"
+        },
+        {
+          "w": "orbiting",
+          "d": "moving in a curved path around a star or planet"
+        },
+        {
+          "w": "massive",
+          "d": "(in science) having a lot of mass, so it is very heavy"
+        },
+        {
+          "w": "inhabited",
+          "d": "having people, animals or other living things living there"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "In the first paragraph, the writer's main purpose is to",
+          "options": [
+            "explain why Earth is the best planet for life.",
+            "describe how astronomers search for new planets.",
+            "introduce a challenge to a widely held belief.",
+            "criticise astronomers for making assumptions."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why does the writer describe the evidence as coming from 'an unexpected place'?",
+          "options": [
+            "Research on space was carried out with ordinary plants on Earth.",
+            "The experiment took place outside a university.",
+            "Vilović was not trained as a scientist.",
+            "The lamp had been designed for a different purpose."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What did Vilović's experiment suggest?",
+          "options": [
+            "K-dwarf stars are too cool to support life.",
+            "Garden cress could grow on other planets today.",
+            "Plants need light identical to sunlight to grow well.",
+            "Plants could make food from the light of orange stars."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "According to the fourth paragraph, a stronger magnetic field would",
+          "options": [
+            "make the planet's climate warmer.",
+            "shield the surface from dangerous radiation.",
+            "help to create deeper oceans.",
+            "hold on to a thicker atmosphere."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "The phrase 'as good as it gets' in the last paragraph refers to the idea that",
+          "options": [
+            "life on Earth is getting better.",
+            "superhabitable worlds definitely contain life.",
+            "no planet could be better for life than Earth.",
+            "scientists have found the perfect planet."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's attitude to the idea of superhabitable worlds?",
+          "options": [
+            "Cautiously open: it is interesting but not yet proven.",
+            "Strongly doubtful: it is a waste of research money.",
+            "Completely convinced: such worlds certainly exist.",
+            "Indifferent: it has no importance for people on Earth."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has watched a documentary about how governments spend money on science. The documentary mentioned three areas: searching for life on other planets, exploring the deep ocean, and studying climate change. Write an essay discussing TWO of these areas, explaining which you think deserves more public money and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The New York Times",
+          "url": "https://www.nytimes.com/2026/10/13/science/inhabitable-planets-solar-system.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/superhabitable-worlds.jpg",
+        "alt": "An artist's picture of a rocky planet bigger than Earth",
+        "caption": "An artist's idea of Kepler-452b, a planet a little larger than Earth (NASA image, 2015).",
+        "credit": "NASA Ames/JPL-Caltech/T. Pyle",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Kepler-452b_artist_concept.jpg"
+      }
+    },
+    {
+      "id": "2026-10-13-batam-data-centres",
+      "section": "Technology",
+      "country": "Indonesia",
+      "flag": "🇮🇩",
+      "level": "C1",
+      "topic": "Data centres and water",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Taps or servers? An island's thirst for water and data",
+      "standfirst": "On Batam, in Indonesia, residents say new data centres are competing with them for scarce fresh water.",
+      "body": [
+        "Batam, an Indonesian island just an hour by ferry from Singapore, has big ambitions. It wants to become a digital hub, and investors have responded: by mid-2026, more than US$6.7 billion had been put into data centres there. Yet for some of its 1.3 million residents, the boom has coincided with something far more basic going wrong. Their taps have run dry.",
+        "Recently, around 300 angry residents entered a compound of data centres in the new Nongsa Digital Park, carrying empty bottles and containers. One protester told the BBC that her village had received no tap water for three months and now depended on tanker trucks. Residents suspect that water meant for their homes is being diverted to cool the machines. BP Batam, the agency in charge of trade and industry, denies this and blames a long dry spell instead.",
+        "The island is particularly vulnerable because it has no natural sources of fresh water; it depends entirely on rain collected in six artificial reservoirs. Shortages are common, and this year they are worse, possibly because of a powerful El Niño. After earlier protests, the authorities told companies building new data centres that they must construct their own desalination plants rather than rely on the reservoirs.",
+        "The difficulty is that nobody knows how much water the centres actually use. Companies often treat such figures as confidential, and an expert quoted by the BBC argued that projects should be built transparently, with the numbers made public. Studies in the United States suggest that a typical data centre consumes as much water in a day as about 1,000 households, because servers must be constantly cooled to stop them overheating.",
+        "Batam is not an isolated case. From the US to the UK and other parts of Asia, communities are pushing back against the huge, windowless buildings that power artificial intelligence and the internet. Their concerns range from noise and lights to the pressure on electricity and water. As demand for digital services keeps growing, the question of who gets priority when resources run short is unlikely to go away."
+      ],
+      "glossary": [
+        {
+          "w": "hub",
+          "d": "the central or most important place for a particular activity"
+        },
+        {
+          "w": "diverted",
+          "d": "sent in a different direction from the one planned"
+        },
+        {
+          "w": "reservoirs",
+          "d": "large lakes, often made by people, where water is stored"
+        },
+        {
+          "w": "desalination",
+          "d": "the process of removing salt from sea water so people can use it"
+        },
+        {
+          "w": "transparently",
+          "d": "in an open way, so that people can see what is happening"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "The writer uses the phrase 'something far more basic' in the first paragraph to",
+          "options": [
+            "suggest that data centres are not important.",
+            "contrast high-tech investment with a simple human need.",
+            "explain why investors chose Batam.",
+            "describe the cost of building data centres."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "How does BP Batam explain the water shortages?",
+          "options": [
+            "Too many tourists are visiting the island.",
+            "The water company has old equipment.",
+            "There has been very little rain for a long time.",
+            "Residents are using too much water."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why is Batam described as 'particularly vulnerable'?",
+          "options": [
+            "It relies completely on rainwater stored in reservoirs.",
+            "It is too far from Singapore to receive help.",
+            "Its desalination plants have stopped working.",
+            "It has more data centres than any other island."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'such figures' in the fourth paragraph refer to?",
+          "options": [
+            "the number of residents on the island",
+            "the amount of money invested",
+            "the number of protests",
+            "the amount of water the centres use"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "In the last paragraph, the writer suggests that",
+          "options": [
+            "the problem will soon be solved by new technology.",
+            "only Indonesia faces this kind of problem.",
+            "similar conflicts are likely to continue in many places.",
+            "people should stop using artificial intelligence."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Overall, the writer's approach to the story is",
+          "options": [
+            "balanced, presenting the views of residents and authorities.",
+            "openly hostile towards technology companies.",
+            "mainly focused on the profits of investors.",
+            "humorous, making fun of the protesters."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has discussed how new industries can put pressure on local resources such as water and energy. The speakers suggested three possible responses: strict government rules, making companies publish information about what they use, and giving local communities a vote on new projects. Write an essay discussing TWO of these responses, explaining which you think would be more effective and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cqj6j7wlxd5eo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-13/batam-data-centres.jpg",
+        "alt": "The long Barelang Bridge over the sea in Batam, Indonesia",
+        "caption": "The Barelang Bridge, which links Batam to nearby islands (earlier photo).",
+        "credit": "Cabajar",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Barelang_Bridge_in_Indonesia.jpg"
+      }
+    }
+  ]
+}
