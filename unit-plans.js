@@ -4082,7 +4082,7 @@ window.UNIT_PLANS = {
                model:'The total is 510 devices. The average is 21 devices per room.'},
          'B1':{task:'Work out totals and averages, build your chart and write the sentence that goes under it.',
                help:'On average, in total, per student. The caption says what the chart cannot show.',
-               model:'On average, there were 64 devices per room at 10:15, which is about 2.5 devices per student.'},
+               model:'On average, there were 21 devices per room at 10:15, which is about 0.85 devices per student.'},
          'B2':{task:'Present your data and explain how you obtained it so it could be repeated; choose the chart type and justify it.',
                help:'The method in three sentences, in the passive. Why that type and not another.',
                model:'Devices were counted in 12 rooms at 10:15 on two days. A bar chart was chosen because the rooms are separate categories...'},
