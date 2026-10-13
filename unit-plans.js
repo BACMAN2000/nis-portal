@@ -3977,7 +3977,7 @@ window.UNIT_PLANS = {
      give:'Nothing for the unit — your Mock 2 papers.',
      sessions:[]},
     {n:4,title:'Measuring this building',dates:'13–16 October',
-      video:{src:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4.mp4', poster:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4.jpg', title:'Watch first — what we do this week (3:40)'},desc:'The audit itself, with ICT and Maths: devices, screen minutes, kWh, AI use and e-waste at Nordic International School. Five teams, five questions, one protocol — real numbers from our own building. On Friday, the grammar for telling what happened.',
+      video:{src:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4-v2.mp4', poster:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week4-v2.jpg', title:'Watch first — what we do this week (3:45)'},desc:'The audit itself, with ICT and Maths: devices, screen minutes, kWh, AI use and e-waste at Nordic International School. Five teams, five questions, one protocol — real numbers from our own building. On Friday, the grammar for telling what happened.',
      give:'Your team’s dataset (record sheet + cleaned table), the method you followed, one chart with its caption, and a test scene in the four past tenses.',
      across:{
        philosophy:'The longest study on happiness (Harvard): what can only be known by looking for a long time — and what eleven weeks of data cannot tell you.',
@@ -4120,7 +4120,7 @@ window.UNIT_PLANS = {
                model:'The corridor had been silent for an hour when the first tablet began to ring; we were still counting what nobody had unplugged.'}}}
      ]},
     {n:5,title:'From data to a proposal — and to a story',dates:'19–23 October',desc:'Turning numbers into something somebody can decide on: the recommendation, the objection, the proposal drafted by hand and closed against the rubric — Proposal due on Friday. And the same number followed into the year 802,701: the story, drafted.',
-     video:{src:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week5.mp4', poster:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week5.jpg', title:'Watch first — what we do this week (4:12)'},
+     video:{src:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week5-v2.mp4', poster:'https://nis.cohasset.pe/nis-fun/assets/videos/g9/g9-u5-week5-v2.jpg', title:'Watch first — what we do this week (4:11)'},
      give:'P1 — the Proposal to the leadership team, handed in on Friday 23 October (300–350 words), and the handwritten draft of the story.',
      due:'P1 Proposal to the leadership team · Friday 23 October',
      across:{
