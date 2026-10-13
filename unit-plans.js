@@ -4309,7 +4309,7 @@ window.UNIT_PLANS = {
        objective:'Prepare to speak from notes, not from a script, and defend the proposal in front of the people who will write the policy. (P4 part A.)',
        hook:'Ten-second challenge: “Your headline figure and what you want, in one sentence, without notes.” Then the lights go on in the corridor: the leadership team enters. Today the panel is real, and the ICT instrument is on the table, running: the number it collects is the one you are talking about.',
        explain:'Rehearse first (first part of the lesson, then the panel). Six minutes, timed; whoever reads it out gets stopped. Prepare the three questions they will certainly ask and the one you would rather they did not. Answer or say honestly that you do not know and how you would find out — “I do not know, but I would find out like this” is a good answer. If the objection is good, concede it out loud and say what you would change. This is criterion 3, part A.',
-       example:'Defence opening: “We are Team 3. We measured how many devices were charging at 10:15, and we found 2.5 devices per student. We recommend a timer on the carts. The objection we expect is the cost, and this is our answer.”',
+       example:'Defence opening: “We are Team 3. We measured how many devices were charging at 10:15, and we found 0.85 devices per student. We recommend a timer on the carts. The objection we expect is the cost, and this is our answer.”',
        view:[
          '5 min · HOOK. One-sentence challenge, no notes.',
          '12 min · REHEARSAL in pairs: six minutes timed, swapping roles — one presents, the other objects. Prepare the three questions and the one you would rather avoid.',
