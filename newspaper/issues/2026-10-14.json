@@ -1,0 +1,965 @@
+{
+  "date": "2026-10-14",
+  "issue": 8,
+  "breaking": [
+    "Peru: police climb Putucusi mountain to rescue a tourist near Machu Picchu.",
+    "Sport: Rwanda will host the first Formula 1 race in Africa since 1993.",
+    "Peru: archaeologists find a Moche child's tomb with 32 ceramic objects.",
+    "Science: Jonathan the tortoise, aged 194, helps scientists study ageing."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-14-putucusi-rescue",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Travel and safety",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Police climb a sacred mountain to rescue a tourist",
+      "standfirst": "A young visitor got trapped on Putucusi, a mountain next to Machu Picchu.",
+      "body": [
+        "A tourist got into trouble on a mountain near Machu Picchu. The mountain is called Putucusi. It is a sacred mountain, and it stands at one end of the Inca city.",
+        "The tourist is a 22-year-old man from Ukraine. Last Sunday, a little after noon, he went missing. He became trapped in a place that is very hard to reach. The Ministry of Culture told the police.",
+        "Police officers from the Machu Picchu station climbed the steep mountain. They found the man about 100 metres from the start of the climb. The officers helped him and took him safely to the railway line. Then he went to a health centre for a check-up.",
+        "More and more visitors want to climb Putucusi because it gives them a new view of Machu Picchu and the Vilcanota River. The top of the mountain is more than 2,560 metres above sea level. The local authorities want to make a route to the top."
+      ],
+      "glossary": [
+        {
+          "w": "trapped",
+          "d": "not able to move or leave a place"
+        },
+        {
+          "w": "steep",
+          "d": "going up very quickly, not flat"
+        },
+        {
+          "w": "missing",
+          "d": "not in the place where you should be, and nobody knows where you are"
+        },
+        {
+          "w": "railway line",
+          "d": "the tracks that trains use"
+        },
+        {
+          "w": "route",
+          "d": "a way from one place to another"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where is Putucusi?",
+          "options": [
+            "in the city of Cusco",
+            "at one end of Machu Picchu",
+            "in the north of Peru"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Who told the police about the problem?",
+          "options": [
+            "the Ministry of Culture",
+            "a train driver",
+            "the tourist's family"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Where did the police find the man?",
+          "options": [
+            "about 100 metres from the start of the climb",
+            "near the top of the mountain",
+            "at the railway station"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What happened after the police found him?",
+          "options": [
+            "He climbed to the top.",
+            "He went to a health centre.",
+            "He flew home to Ukraine."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What do the local authorities want?",
+          "options": [
+            "to close the mountain",
+            "to stop tourists coming to Peru",
+            "to make a route to the top"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your friend wants to climb a mountain next weekend. Write an email to your friend (25 words or more). Say: which mountain you would like to climb, what you will take with you, and why it is important to be careful."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-police-rescue-ukrainian-tourist-trapped-on-putucusi-mountain-machu-picchu-1095761.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/putucusi-rescue.jpg",
+        "alt": "The ancient stone houses of Machu Picchu with green mountains behind",
+        "caption": "Machu Picchu, the Inca city next to Putucusi mountain (earlier photo).",
+        "credit": "Diego Delso",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_Per%C3%BA,_2015-07-30,_DD_47.JPG"
+      }
+    },
+    {
+      "id": "2026-10-14-f1-rwanda",
+      "section": "Sport",
+      "country": "Rwanda",
+      "flag": "🇷🇼",
+      "level": "A2",
+      "topic": "Sport and travel",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Formula 1 is coming back to Africa",
+      "standfirst": "Rwanda will host a Formula 1 race in about 2030, after a new ten-year agreement.",
+      "body": [
+        "Formula 1 is going back to Africa! Rwanda will have a Formula 1 race in about 2030. It will be called the African Grand Prix. The agreement is for ten years.",
+        "Formula 1 last raced in Africa in 1993, in South Africa. Since then, the sport has wanted to come back.",
+        "The race will be near Kigali, the capital of Rwanda. The new track will be in a town called Bugesera, about 40 kilometres south of the city. The track is not built yet. A new international airport is also being built there.",
+        "The track will be fast, with hills and many bends. It will have space for 100,000 people. In the rest of the year, people will also use it for concerts and shows.",
+        "A Formula 1 boss said it was a 'landmark moment'. With Rwanda, the sport will race on every continent where people live."
+      ],
+      "glossary": [
+        {
+          "w": "agreement",
+          "d": "a plan that two or more people say yes to"
+        },
+        {
+          "w": "track",
+          "d": "a road made for races"
+        },
+        {
+          "w": "capital",
+          "d": "the most important city in a country"
+        },
+        {
+          "w": "continent",
+          "d": "one of the seven very large areas of land on Earth"
+        },
+        {
+          "w": "space",
+          "d": "room for people or things"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "Formula 1 last raced in Africa in 1993.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The new track in Rwanda is already finished.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "The track will be in the city of Kigali.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The track will have space for 100,000 people.",
+          "answer": "T"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "Rwanda's president will drive in the first race.",
+          "answer": "NS"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 7",
+        "task": "Write a short story (35 words or more) about a day at a big race. Your story must begin with this sentence: 'The cars were ready, and the crowd was loud.'"
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-14/f1-to-host-african-grand-prix-in-rwanda/107263392"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/f1-rwanda.jpg",
+        "alt": "Tall buildings in the centre of Kigali",
+        "caption": "Buildings in Kigali, the capital of Rwanda (earlier photo).",
+        "credit": "Schlawgclart",
+        "license": "CC0",
+        "link": "https://commons.wikimedia.org/wiki/File:Buildings_in_Kigali_CBD,_Rwanda_1.jpg"
+      }
+    },
+    {
+      "id": "2026-10-14-cusco-wildfires",
+      "section": "Environment",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Environment and emergencies",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Helicopters and a big plane help to fight forest fires in Cusco",
+      "standfirst": "Peru's president says two wildfires in the Cusco region are now under control.",
+      "body": [
+        "In the Cusco region, forest fires have been burning in several places. On Tuesday, President Keiko Fujimori said that two of the fires, in the province of Calca, were now under control. She had flown over the area that morning in a helicopter with a general of the Peruvian Air Force. Wildfires can spread quickly, so a fast reaction is very important.",
+        "Aircraft are playing an important part in the fight against the fire. Helicopters carry big buckets of water and drop it on the flames. A larger plane, called a C-27J Spartan, is helping as well. It has a tank that holds 1,000 litres of water.",
+        "The president also thanked the people who are working on the ground. She said that the forest firefighters and the organised local people are still working hard in Quillabamba. Fighting a fire from the air is useful, but the people on the ground are still very important.",
+        "Later, Ms Fujimori planned to hold a working meeting. The air force general, the ministers of Defence and of Agrarian Development and Irrigation, the governor of Cusco, the mayor of Cusco and the firefighters will all be there. Together they will decide where to send the helicopters and the plane next."
+      ],
+      "glossary": [
+        {
+          "w": "wildfire",
+          "d": "a big fire that burns in a forest or on grass and is difficult to stop"
+        },
+        {
+          "w": "bucket",
+          "d": "a round container with a handle, used to carry water"
+        },
+        {
+          "w": "tank",
+          "d": "a large container for liquid"
+        },
+        {
+          "w": "flames",
+          "d": "the bright, hot parts of a fire"
+        },
+        {
+          "w": "governor",
+          "d": "the person who is the head of a region"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "The president said that the two fires in Calca were now under ___.",
+          "options": [
+            "control",
+            "order",
+            "power",
+            "care"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "Helicopters ___ big buckets of water to drop on the flames.",
+          "options": [
+            "wear",
+            "carry",
+            "push",
+            "make"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "The large plane has a ___ that holds 1,000 litres of water.",
+          "options": [
+            "bottle",
+            "bag",
+            "tank",
+            "box"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "The firefighters are working with the organised local ___.",
+          "options": [
+            "visitors",
+            "ministers",
+            "tourists",
+            "people"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "At the meeting, the group will ___ where to send the aircraft next.",
+          "options": [
+            "forget",
+            "show",
+            "decide",
+            "ask"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language school magazine: 'Articles wanted! Who helps people when there is an emergency in your area? Write about the people who do this work and say why their job is important.' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-president-keiko-fujimori-confirms-two-wildfires-brought-under-control-in-cusco-1095771.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/cusco-wildfires.jpg",
+        "alt": "A white statue of Christ on a hill above the city of Cusco",
+        "caption": "The Cristo Blanco statue above the city of Cusco (2011).",
+        "credit": "Pierre André Leclercq",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Cristo_Blanco_(Cusco)_en_2011.jpg"
+      }
+    },
+    {
+      "id": "2026-10-14-margaret-hamilton",
+      "section": "Science",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B1",
+      "topic": "Space and technology history",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "The woman whose code helped humans land on the Moon",
+      "standfirst": "Margaret Hamilton, who led the team that wrote the Apollo 11 software, has died at the age of 90.",
+      "body": [
+        "Margaret Hamilton, one of the great pioneers of computer programming, has died at the age of 90. The Massachusetts Institute of Technology (MIT) announced the news on Wednesday. She died on 30 September.",
+        "When Hamilton started her career, jobs such as 'software engineer' did not really exist yet. She learned to write programs from a famous weather scientist at MIT. Later, she worked on a system that could find enemy aircraft. Then NASA asked MIT to make the flight software for the Apollo spacecraft, and she was very happy to join the project. She remembered that she was 'the first programmer to join'.",
+        "In 1969, only minutes before Apollo 11 was going to land on the Moon, an alarm rang in the spacecraft's computer. The people in charge had to decide whether to stop the mission. They continued, because the software was doing exactly what Hamilton's team had planned. It told everyone about the problem and, at the same time, restarted the most important tasks.",
+        "In 2016, President Barack Obama gave her the Presidential Medal of Freedom. In his speech, he said that the astronauts did not have much time, but luckily they had Margaret Hamilton.",
+        "Hamilton leaves a daughter, a son-in-law, two grandsons and four great-grandchildren."
+      ],
+      "glossary": [
+        {
+          "w": "pioneer",
+          "d": "one of the first people to do or study something new"
+        },
+        {
+          "w": "software",
+          "d": "the programs that tell a computer what to do"
+        },
+        {
+          "w": "mission",
+          "d": "an important trip or job with a special aim"
+        },
+        {
+          "w": "alarm",
+          "d": "a loud sound that warns you about danger"
+        },
+        {
+          "w": "medal",
+          "d": "a small round piece of metal given as a prize"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Who announced Margaret Hamilton's death?",
+          "options": [
+            "NASA",
+            "MIT",
+            "President Obama",
+            "her family's doctor"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What did Hamilton do before she worked on Apollo?",
+          "options": [
+            "She was a weather reporter.",
+            "She flew to the Moon.",
+            "She taught children to read.",
+            "She worked on a system that could find enemy aircraft."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What happened shortly before Apollo 11 landed?",
+          "options": [
+            "An alarm rang in the spacecraft's computer.",
+            "The astronauts forgot the way.",
+            "The radio stopped working.",
+            "NASA ended the mission."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why did the mission continue?",
+          "options": [
+            "The astronauts did not listen to the alarm.",
+            "The software did what the team had planned.",
+            "The computer was turned off.",
+            "Obama gave the order."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What happened in 2016?",
+          "options": [
+            "She won a prize from MIT.",
+            "She wrote a book about the Moon.",
+            "She received the Presidential Medal of Freedom.",
+            "She met the astronauts again."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "You received this email from your English friend Sam: 'We are learning about famous scientists at school. Who is the person you most admire in science or technology? Why? Write and tell me!' Write your email to Sam in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/07/margaret-hamilton-moon-computer-software"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/margaret-hamilton.jpg",
+        "alt": "A woman working at the Apollo command module equipment",
+        "caption": "Margaret Hamilton at work on the Apollo flight software in the 1960s.",
+        "credit": "NASA",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Margaret_Hamilton_in_action.jpg"
+      }
+    },
+    {
+      "id": "2026-10-14-moche-child-tomb",
+      "section": "Culture",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B2",
+      "topic": "Archaeology and history",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "A child's tomb full of treasures sheds new light on the Moche",
+      "standfirst": "Archaeologists in northern Peru have found a tomb about 1,400 years old, with 32 ceramic objects and a metal mask.",
+      "body": [
+        "More than 1,400 years ago, the sudden death of a child from the Moche elite led to an important funeral ceremony at the foot of Huaca de la Luna, one of the main temples of this pre-Hispanic society. The temple stands in the Moche valley, near Trujillo, in the La Libertad region of northern Peru.",
+        "A few days ago, archaeologists from the Huacas de Moche Project, who were excavating the Uhle funerary platform next to the Courtyard of the Serpents, uncovered the tomb. It may belong to the final period of Moche society. The project director, Carlos Rengifo, told Andina that the discovery is significant because the important tombs found earlier on the platform belonged to adults who had probably reached a certain rank during their lives and were honoured for it after death. A child buried with so many offerings sheds new light on how social status worked.",
+        "The tomb measures 1.20 metres long, 70 centimetres wide and 1.20 metres deep, and it has the enclosed structure that is typical of Moche burials. Inside, the team found 32 ceramic objects, including decorated plates and vessels showing bird-shaped figures, prisoners, scenes of sacrifice and combat, and gods. Around the skull there was a kind of metal mask, probably copper and perhaps once decorated, and another piece of metal lay beside the foot bones.",
+        "The resident archaeologist, Enrique Zavaleta, said that in more than two decades of excavating at Huaca de la Luna he had never found a tomb with offerings like these. One bottle has attracted particular attention, because bottles of this kind are uncommon in Moche culture. It shows a coastal lagoon, a stretch of water separated from the sea by a strip of sand, with birds.",
+        "Rengifo compares Peru's past to an 'enormous puzzle' in which every adobe brick, vessel and fragment helps experts understand what happened and why. He adds that many things we regard as common sense were seen very differently by these ancient societies."
+      ],
+      "glossary": [
+        {
+          "w": "elite",
+          "d": "the small group of people with the most power or wealth in a society"
+        },
+        {
+          "w": "funerary",
+          "d": "connected with a funeral or the burial of a dead person"
+        },
+        {
+          "w": "excavating",
+          "d": "to dig in the ground to find things from the past"
+        },
+        {
+          "w": "offering",
+          "d": "a gift that is given to a god or placed with a dead person"
+        },
+        {
+          "w": "fragment",
+          "d": "a small piece of something that has broken"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What makes this discovery different from earlier finds on the Uhle funerary platform?",
+          "options": [
+            "It was the first tomb found on the platform.",
+            "The person buried there was a child.",
+            "It contains no ceramic objects.",
+            "It was built after the Moche period."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to the text, earlier important tombs on the platform belonged to",
+          "options": [
+            "adults who had probably held a certain rank.",
+            "children from poor families.",
+            "priests from another culture.",
+            "archaeologists from the project."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What did the archaeologists find around the child's skull?",
+          "options": [
+            "a ceramic bottle",
+            "a gold crown",
+            "a kind of metal mask",
+            "a piece of adobe"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why does the bottle with the lagoon attract attention?",
+          "options": [
+            "It is the largest vessel in the tomb.",
+            "It was found beside the foot bones.",
+            "Bottles of this kind are uncommon in Moche culture.",
+            "It shows prisoners and gods."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What point does Rengifo make with his comparison to a puzzle?",
+          "options": [
+            "Moche history will never be understood.",
+            "Every small find helps to explain the past.",
+            "Common sense is enough to read the past.",
+            "Excavations should stop for now."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about how we learn about the past. Now your teacher has asked you to write an essay. Write an essay using ALL the notes and give reasons for your point of view. Essay question: 'Is it important to spend public money on archaeology?' Notes: 1. museums and tourism 2. understanding our identity 3. (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-elite-moche-infants-tomb-discovered-at-huaca-de-luna-in-trujillo-1095676.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/moche-child-tomb.jpg",
+        "alt": "A Moche ceramic vase shaped like a human face",
+        "caption": "A Moche portrait vase in a museum in Lima (2011), not from the new tomb.",
+        "credit": "Pierre André Leclercq",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Moche_portrait_ceramic_in_Museo_Arqueol%C3%B3gico_Rafael_Larco_Herrera_(2011).jpg"
+      }
+    },
+    {
+      "id": "2026-10-14-beijing-drone-ban",
+      "section": "Technology",
+      "country": "China",
+      "flag": "🇨🇳",
+      "level": "B2",
+      "topic": "Technology and security",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "No drones allowed: Beijing bans ownership of the flying machines",
+      "standfirst": "From 15 November, people in the Chinese capital will not be allowed to keep a drone at home, and owners are rushing to get rid of them.",
+      "body": [
+        "A. Beijing's government announced in September that, from 15 November, it will be forbidden not only to fly drones in the capital but also to own or store one. Before the rules start, owners must take their aircraft out of the city or dispose of them through government-approved buyback and recycling schemes. Anyone who ignores the rules faces confiscation and fines of up to 5,000 yuan.",
+        "B. The change has produced long queues at buyback sites, and some owners are being offered less than a quarter of what they paid. Kristine, who lives in Sydney, says her brother bought his drone only a year ago for about 2,000 dollars. He did not want to sell it at a loss, so he posted it to her instead.",
+        "C. Others have found a different solution. Matthew Zhang, an aerial photographer, has sent his drone to his parents' home in nearby Tianjin and plans to travel there whenever he needs it. He admits that it is 'definitely inconvenient', but at least he can still use it.",
+        "D. Most big Chinese cities already have no-fly zones near airports, military sites and government buildings, but Beijing will be the only one to forbid ownership. Unapproved outdoor flights were banned in August 2025, and the rules became stricter after a small plane crashed into the capital's tallest building in June. The government says the aim is to strengthen the security of the capital.",
+        "E. The regulation seems to cover even radio-controlled model aircraft and toy drones, and several online shops, including Taobao, have restricted sales to Beijing addresses. A researcher at a Taiwanese defence institute called the ban 'deeply ironic', because China is the world's biggest maker of consumer drones."
+      ],
+      "glossary": [
+        {
+          "w": "forbidden",
+          "d": "not allowed by a rule or law"
+        },
+        {
+          "w": "dispose of",
+          "d": "to get rid of something"
+        },
+        {
+          "w": "confiscation",
+          "d": "when an official takes something away from you as a punishment"
+        },
+        {
+          "w": "inconvenient",
+          "d": "causing difficulty or trouble"
+        },
+        {
+          "w": "regulation",
+          "d": "an official rule made by a government"
+        }
+      ],
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes someone who has found a way to keep using a drone?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph says that a security incident led to stricter measures?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph mentions the possible punishment for breaking the rule?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph mentions owners' disappointment at how little money they can get back?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph includes a comment about the irony of the situation?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You have seen this announcement on an international technology website: 'Should cities ban some technology to keep people safe? Tell us what you think and give an example of a rule that works well.' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-12/beijing-residents-dispose-drones-ahead-of-ban-on-ownership/107229144"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/beijing-drone-ban.jpg",
+        "alt": "Several drones on display on tables at an exhibition",
+        "caption": "Drones on display at an exhibition in India (earlier photo).",
+        "credit": "iMahesh",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:An_UAV_displayed_by_Vyomik_drones_at_Amaravati_Drone_summit_(01).jpg"
+      }
+    },
+    {
+      "id": "2026-10-14-jonathan-tortoise",
+      "section": "Science",
+      "country": "Saint Helena",
+      "flag": "🇸🇭",
+      "level": "C1",
+      "topic": "Genetics and ageing",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Jonathan the tortoise, 194, may hold clues to a longer life",
+      "standfirst": "Scientists have analysed the DNA of the world's oldest living land animal and found signs that his cells' tiny 'batteries' have stayed unusually young.",
+      "body": [
+        "Jonathan, a giant tortoise believed to be 194 years old, lives in the grounds of Plantation House, the governor's residence on the South Atlantic island of Saint Helena. As the oldest living land animal, he is a contemporary of Queen Victoria and Charles Darwin, and he has now become an unlikely partner in the age-old human quest to extend lifespan.",
+        "An international team led by Benjamin Vaisvil analysed his genetic code. They found a host of variants in most of the biological pathways for ageing that scientists have identified. Together, they help an organism to survive by repairing damaged DNA, regulating its metabolism and fending off cancer. Yet it was something subtler that intrigued the researchers most: chemical patterns on his genes that seem to protect the healthy functioning of his mitochondria, the tiny battery-like structures that power cells. Failing mitochondria have been strongly linked to ageing and to age-related diseases.",
+        "The chemical tags involved are known as methyl groups, which typically silence the genes they attach to and change over time. Writing in the journal Science Advances, the team compared the patterns on Jonathan's genes with those of other giant tortoises. On many genes his patterns were similar to those of other old animals, but on genes connected with mitochondrial function they matched those of much younger ones. Stephen Clark, a senior researcher at the Kallel Foundation, said this offers a window on what happens over a very long period, and suggested that Jonathan's mitochondria must be unusually stable.",
+        "It is unclear whether, or by how much, this chemical patterning contributes to Jonathan's long life, and Clark said that the team must now test the idea. One possible next step is to ask whether mitochondria can be made young again, or even replaced, to extend longevity.",
+        "He arrived on Saint Helena in 1882. When the island's senior veterinary officer, Joe Hollis, took over his care in 2009, he was blind from cataracts, had lost his sense of smell and had a soft, crumbly beak that made it hard to forage. Hollis began feeding him by hand, and within six months to a year Jonathan had regained weight and grown a hard, serrated beak. In April, a fake social-media account spread a false report of his death as part of a cryptocurrency scam, until the governor checked and found him asleep under a tree, 'very much alive'."
+      ],
+      "glossary": [
+        {
+          "w": "contemporary",
+          "d": "a person who lives at the same time as another person"
+        },
+        {
+          "w": "variant",
+          "d": "a form of something that is a little different from the usual one"
+        },
+        {
+          "w": "fending off",
+          "d": "to defend yourself against something dangerous"
+        },
+        {
+          "w": "longevity",
+          "d": "the quality of living for a long time"
+        },
+        {
+          "w": "forage",
+          "d": "to search for food"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer mention Queen Victoria and Charles Darwin?",
+          "options": [
+            "to show how long Jonathan has been alive",
+            "to explain who first studied the tortoise",
+            "to compare Jonathan's diet with theirs",
+            "to suggest that Jonathan is famous in Britain"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What most interested the researchers about Jonathan's DNA?",
+          "options": [
+            "the large size of his mitochondria",
+            "chemical patterns that seem to protect his mitochondria",
+            "the number of genes that fight cancer",
+            "the similarity of his genes to those of humans"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "In the second paragraph, 'they' in 'Together, they help an organism' refers to",
+          "options": [
+            "the genetic variants.",
+            "the researchers.",
+            "the mitochondria.",
+            "the ageing pathways."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is the writer's attitude to the findings in the fourth paragraph?",
+          "options": [
+            "He is dismissive of the research.",
+            "He is certain that the secret of long life has been found.",
+            "He is worried about the ethical risks.",
+            "He is cautious because the idea has not been tested yet."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why does the writer describe Joe Hollis's work with Jonathan?",
+          "options": [
+            "to criticise earlier owners of the tortoise",
+            "to explain how the DNA samples were collected",
+            "to show that Jonathan's health improved with human care",
+            "to prove that cataracts can be cured"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What does the story of the fake account show?",
+          "options": [
+            "that Jonathan has no real interest for the public",
+            "that tortoises are hard to look after",
+            "that the governor often checks on the animal",
+            "that false news about Jonathan spread very widely"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a panel discussion on living longer. The speakers talked about three areas: scientific research on ageing, healthy lifestyles, and care for older people. Write an essay discussing TWO of these areas, explaining which one is more important for society and giving reasons for your opinion. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/07/jonathan-the-giant-tortoise-194-offers-up-insight-into-secrets-of-longevity"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/jonathan-tortoise.jpg",
+        "alt": "A giant tortoise walking on grass",
+        "caption": "A giant tortoise of a related kind in the Seychelles (not Jonathan).",
+        "credit": "NorbertNagel",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Aldabra_giant_tortoise_(Aldabrachelys_gigantea)_in_Curieuse_Island_-_04.jpg"
+      }
+    },
+    {
+      "id": "2026-10-14-china-loneliness-industry",
+      "section": "World",
+      "country": "China",
+      "flag": "🇨🇳",
+      "level": "C1",
+      "topic": "Society and ageing",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "China's 'loneliness industry' sells company as well as meals",
+      "standfirst": "As more people live far from their families, small firms are offering older people practical help and a friendly face.",
+      "body": [
+        "Yang is 91 and lives on the edge of Beijing. Since her husband died, she says, the hardest thing has been the silence: when she wanted to talk to someone, she talked to the television. Glaucoma has left her eyesight failing, so even small tasks, such as adjusting the controls of her air conditioner, had become difficult.",
+        "Her situation is far from unusual. Teresa Kuan, an associate professor at the Chinese University of Hong Kong, says that isolation in Chinese cities is made worse by the structure of society and by the way people interact. Rural migrants leave close-knit communities in search of work, and graduates uproot themselves to chase jobs on the other side of the country. In both cases, the support networks they once relied on stay behind.",
+        "Out of this gap has grown what is called a 'loneliness industry'. Wang Yingwei, a former mobile-phone salesman, leads a delivery team on electric scooters that brings Yang hot meals twice a day, but their help goes much further. He describes the group as 'community children', trying to put themselves in the shoes of older people. If the tap water is cloudy and full of lime, he installs a filter tank; if a shower is broken, he buys a part and repairs it. Such small things, he argues, can make people much happier. His services cost less than half the price of employing a caregiver.",
+        "His motive is personal. His father-in-law, who developed Alzheimer's disease, had to move into a nursing home whose conditions Wang considered unacceptable, and he now wants to help older people stay in their own homes for as long as possible. His company currently has four employees, although he says it may grow as demand increases.",
+        "Reliable data on the sector is scarce, but operators say it has expanded rapidly in recent years, and the securities company Sinolink valued it at about $7.4 billion in 2025. Zheng Ruizhi, a 75-year-old client whose son lives two hours away, says that since retiring she has had few chances to meet other people; she was recovering from an injury when Wang's team began to visit.",
+        "Whether paid company can ever replace the daily presence of family remains an open question. For the moment, though, the customers' answer seems to be a simple one: they would rather have someone at the door than no one at all."
+      ],
+      "glossary": [
+        {
+          "w": "isolation",
+          "d": "the state of being alone and separate from other people"
+        },
+        {
+          "w": "uproot",
+          "d": "to move yourself away from the place where you have lived"
+        },
+        {
+          "w": "close-knit",
+          "d": "having strong, friendly relationships between members"
+        },
+        {
+          "w": "caregiver",
+          "d": "a person whose job is to look after someone who is old or ill"
+        },
+        {
+          "w": "scarce",
+          "d": "not available in large amounts"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer's description of Yang's life in the first paragraph show?",
+          "options": [
+            "how loneliness and failing health can make life difficult",
+            "that older people prefer to live alone",
+            "that technology has improved life for the elderly",
+            "that Yang does not need any help"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to Teresa Kuan, loneliness in Chinese cities is increased by",
+          "options": [
+            "the shortage of nursing homes.",
+            "the way society is organised and people interact.",
+            "a lack of jobs for graduates.",
+            "the cost of electric scooters."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does 'community children' tell us about how Wang sees his team?",
+          "options": [
+            "as paid professional nurses",
+            "as unpaid volunteers",
+            "as people who take on the role of family members"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why did Wang start his business?",
+          "options": [
+            "He wanted to earn more than he did as a salesman.",
+            "He was following the advice of Sinolink.",
+            "He wanted to open a new nursing home.",
+            "He wanted older people to be able to stay at home."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the writer's purpose in the final paragraph?",
+          "options": [
+            "to criticise Wang's company",
+            "to give exact figures on the industry",
+            "to leave the reader with a question and a hopeful note",
+            "to argue that families should pay for such services"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "The phrase 'in the shoes of' in the third paragraph is closest in meaning to",
+          "options": [
+            "on the side of.",
+            "in the position of.",
+            "in the place of work of.",
+            "at the age of."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (proposal)",
+        "task": "Your school wants to start a programme in which students visit older people in your neighbourhood who live alone. The head teacher has asked students to write a proposal explaining what the programme should include and how it would benefit both groups. Write your proposal in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cm5ynwpzkgk1o"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-14/china-loneliness-industry.jpg",
+        "alt": "A small shop in a narrow street in a Beijing hutong",
+        "caption": "A shop in a Beijing hutong, one of the old neighbourhoods of the city (earlier photo).",
+        "credit": "lyng883",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Beijing_hutong_1.jpg"
+      }
+    }
+  ]
+}
