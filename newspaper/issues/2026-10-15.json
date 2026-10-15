@@ -1,0 +1,993 @@
+{
+  "date": "2026-10-15",
+  "issue": 9,
+  "breaking": [
+    "Peru: BTS played three concerts in Lima and the band's leader visited Huaca Pucllana.",
+    "Science: NASA's Perseverance rover now holds the record for the longest drive on another world.",
+    "France: Mont Blanc is 1.29 metres lower than last year.",
+    "Brazil: workers will get two days off a week and a 40-hour working week."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-15-bts-lima",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Music and tourism",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "BTS in Lima: big concerts, a famous hat and lots of visitors",
+      "standfirst": "The South Korean band played three concerts in Lima, and its leader visited a very old pyramid.",
+      "body": [
+        "BTS, the famous band from South Korea, came to Peru this month. The group played three concerts at San Marcos Stadium in Lima. The first concert was on Wednesday 7 October, and the other two were on 9 and 10 October. Thousands of fans, who call themselves ARMY, went to see them.",
+        "The day after the first concert, the band's leader, RM, visited Huaca Pucllana. It is a very old pyramid in the Miraflores district of Lima. People from the Lima culture built it with adobe and clay between about 200 and 700 AD. RM shared photos of his visit on Instagram. In one photo, he is wearing a colourful chullo, a traditional Peruvian wool hat.",
+        "The concerts are good for Peru's economy too. The Ministry of Foreign Trade and Tourism says visitors will spend about US$18.7 million on hotels, food, transport and other things. The minister said that big international events bring more tourists to the country."
+      ],
+      "glossary": [
+        {
+          "w": "concerts",
+          "d": "shows where musicians play music for many people"
+        },
+        {
+          "w": "fans",
+          "d": "people who like a singer, band or team very much"
+        },
+        {
+          "w": "pyramid",
+          "d": "a big old building with four sides that go up to a point"
+        },
+        {
+          "w": "clay",
+          "d": "soft earth that becomes hard when it is dry or hot"
+        },
+        {
+          "w": "traditional",
+          "d": "done or made in the same way for a very long time"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where did BTS play their concerts?",
+          "options": [
+            "at a stadium in Lima",
+            "at Huaca Pucllana",
+            "in a park in Miraflores"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "When did RM visit Huaca Pucllana?",
+          "options": [
+            "before the first concert",
+            "on 10 October",
+            "the day after the first concert"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Who built Huaca Pucllana?",
+          "options": [
+            "the Incas",
+            "people from the Lima culture",
+            "people from South Korea"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is a chullo?",
+          "options": [
+            "a wool hat",
+            "a kind of food",
+            "a Peruvian dance"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Who will spend about US$18.7 million?",
+          "options": [
+            "the band",
+            "the Ministry",
+            "visitors"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You went to a concert last weekend. Write an email to your English friend (25 words or more). Say: who you saw, who you went with, and what you liked best."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-bts-fever-continues-as-band-leader-visits-huaca-pucllana-in-colorful-chullo-1095238.aspx"
+        },
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-bts-concerts-could-generate-187-million-in-tourism-impact-1095312.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/bts-lima.jpg",
+        "alt": "A large stepped pyramid made of small adobe bricks in a city",
+        "caption": "Huaca Pucllana in Miraflores, Lima, the old pyramid that RM visited (earlier photo).",
+        "credit": "McKay Savage",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Huaca_Pucllana_Miraflores.jpg"
+      }
+    },
+    {
+      "id": "2026-10-15-perseverance-record",
+      "section": "Science",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "A2",
+      "topic": "Space",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "A new record on Mars: Perseverance drives farther than any other rover",
+      "standfirst": "NASA's robot car has now travelled about 45 kilometres on the red planet.",
+      "body": [
+        "Perseverance is a robot car, or rover, from NASA. It landed on Mars in February 2021, in a place called Jezero Crater. Since then, it has driven slowly in and around the crater and studied the rocks there.",
+        "Last Sunday, Perseverance broke a record. Its total distance went past 28.06 miles, or about 45 kilometres. Except on Earth, no vehicle in the solar system has driven farther. The old record belonged to Opportunity, a smaller NASA rover. Opportunity drove on Mars from 2004 until 2018, when it stopped working.",
+        "The team thought Perseverance would break the record in August. But then the rover found some interesting light-coloured rocks. They may be some of the oldest rocks ever studied on Mars, so Perseverance stayed near them for two months. For the scientists, the rocks are more important than the record. The rover will probably drive many more kilometres in the next few years."
+      ],
+      "glossary": [
+        {
+          "w": "rover",
+          "d": "a car-like robot that moves on another planet or moon"
+        },
+        {
+          "w": "crater",
+          "d": "a big round hole in the ground"
+        },
+        {
+          "w": "record",
+          "d": "the best, longest or fastest result that anyone has ever got"
+        },
+        {
+          "w": "vehicle",
+          "d": "a machine that carries people or things, like a car or bus"
+        },
+        {
+          "w": "distance",
+          "d": "how far it is from one place to another"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "Perseverance landed on Mars in 2021.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "Opportunity was bigger than Perseverance.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Perseverance can drive at night.",
+          "answer": "NS"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "Perseverance broke the record in August.",
+          "answer": "F"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The scientists think the rocks are more important than the record.",
+          "answer": "T"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 7",
+        "task": "Write a short story (35 words or more) about a robot that travels to a new planet. Your story must begin with this sentence: 'The little robot opened its eyes and looked at the red sand.'"
+      },
+      "sources": [
+        {
+          "name": "The New York Times",
+          "url": "https://www.nytimes.com/2026/10/12/science/mars-rover-sets-record.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/perseverance-record.png",
+        "alt": "NASA's Perseverance rover, a car-like robot, standing on red rocky ground on Mars",
+        "caption": "A self-portrait taken by Perseverance on Mars (earlier NASA image).",
+        "credit": "NASA/JPL-Caltech/MSSS",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Perseverance_Stuns_in_New_Selfie.png"
+      }
+    },
+    {
+      "id": "2026-10-15-molly-mechanical-bird",
+      "section": "World",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B1",
+      "topic": "Social media",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "A singer, a small shop and a mechanical bird called Molly",
+      "standfirst": "One angry post from a famous singer brought crowds – and problems – to a toy shop in New York.",
+      "body": [
+        "Art of Play is a small shop that sells toys, games and puzzles in Cobble Hill, a quiet part of Brooklyn in New York. On one wall of the shop there is a wooden mechanical bird called Molly, which can sing and dance.",
+        "Last Saturday, the American singer Kelly Clarkson visited the shop for about five minutes. She liked the bird and wanted to buy it. Later, she complained on social media. She said that the staff had looked at her as if she couldn't afford the bird, which she said cost $15,000. She compared her experience to a famous scene in the 1990 film Pretty Woman, where shop assistants are rude to a customer.",
+        "The shop told a different story. It said that Molly is fixed to the wall and is not for sale. According to the shop, an employee told the singer that she could buy an identical bird for $15,000. The shop also offered her a different singing bird, made by a clock-making company in Germany, for $2,000.",
+        "After the singer's posts, thousands of people attacked the small business online, and the owner said that he and his staff had received threats. \"It's been a surreal experience,\" the shop said. On Wednesday, when BBC reporters visited, there were more journalists than customers inside. Molly was still on the wall – but now with a joke price tag of $15 million."
+      ],
+      "glossary": [
+        {
+          "w": "mechanical",
+          "d": "working with moving parts, like a machine"
+        },
+        {
+          "w": "complained",
+          "d": "said that you were not happy about something"
+        },
+        {
+          "w": "afford",
+          "d": "to have enough money to buy something"
+        },
+        {
+          "w": "identical",
+          "d": "exactly the same"
+        },
+        {
+          "w": "threats",
+          "d": "messages saying that someone will hurt you or cause you problems"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is Molly?",
+          "options": [
+            "a pet bird that lives in the shop",
+            "a wooden bird that can sing and dance",
+            "a toy that the singer made",
+            "a bird from a famous film"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What did Kelly Clarkson say about her visit?",
+          "options": [
+            "The bird was too small for her.",
+            "The shop was closed when she arrived.",
+            "The staff thought she did not have enough money.",
+            "She could not find the right shop."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the shop say about Molly?",
+          "options": [
+            "It is not for sale.",
+            "It was sold last week.",
+            "It costs $2,000.",
+            "It was made in Germany."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What happened after the singer's posts?",
+          "options": [
+            "The shop closed for a week.",
+            "The singer bought a different bird.",
+            "The shop gave Molly to a museum.",
+            "Many people attacked the shop online."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why does Molly now have a price tag of $15 million?",
+          "options": [
+            "Its real price has gone up.",
+            "The shop is making a joke.",
+            "The singer wants to buy it.",
+            "It is the oldest bird in the world."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for teenagers: 'Articles wanted! Is it a good idea to complain about a shop or restaurant on social media? What other ways are there to solve a problem? Write an article answering these questions.' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cxvgdneplgzeo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/molly-mechanical-bird.jpg",
+        "alt": "A small antique box with a tiny mechanical bird on top",
+        "caption": "An old singing bird box from France, about 1890 – a machine like Molly, but much smaller.",
+        "credit": "Raphael Cole",
+        "license": "CC0",
+        "link": "https://commons.wikimedia.org/wiki/File:Singing_Bird_Box_by_Bontems.JPG"
+      }
+    },
+    {
+      "id": "2026-10-15-mont-blanc-height",
+      "section": "Environment",
+      "country": "France",
+      "flag": "🇫🇷",
+      "level": "B1",
+      "topic": "Mountains and climate",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Europe's 'roof' is getting a little lower",
+      "standfirst": "Surveyors say Mont Blanc lost more than a metre of height in a year.",
+      "body": [
+        "Mont Blanc in France is the highest mountain in western Europe, and people often call it 'the roof of Europe'. But its height is not the same every year. Last month, a team of surveyors climbed to the top to measure it again. On Wednesday they announced the result: the summit is now 4,807.47 metres above sea level. That is 1.29 metres lower than in 2025.",
+        "How can a mountain change its height? The rock of Mont Blanc is about 4,792 metres high, and on top of the rock there is a thick cap of snow and ice. Heat, wind, snow and rain make this cap thicker or thinner, so the summit goes up and down. The highest result was in 2007, when it reached 4,810.90 metres. The lowest in recent years was in 2023.",
+        "The surveyors have checked the mountain regularly since 2001. They use very exact satellite technology, and drones help them to make a detailed model of the snow and ice.",
+        "The experts say that one year's change does not tell us everything about climate change. However, lower down in the Alps the ice is melting fast. This summer was the hottest on record in western Europe, and Swiss scientists say Switzerland has lost one-fifth of its ice in the last five years. The leader of the expedition said that, on one glacier, climbers now cross a stream where there used to be ice."
+      ],
+      "glossary": [
+        {
+          "w": "surveyors",
+          "d": "people whose job is to measure land and buildings"
+        },
+        {
+          "w": "summit",
+          "d": "the highest point of a mountain"
+        },
+        {
+          "w": "sea level",
+          "d": "the height of the sea, used to measure how high places are"
+        },
+        {
+          "w": "expedition",
+          "d": "a long trip that a group makes for a special reason"
+        },
+        {
+          "w": "glacier",
+          "d": "a very large area of ice that moves slowly down a mountain"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Last month, a team of surveyors climbed to the top to ___ the mountain.",
+          "options": [
+            "count",
+            "weigh",
+            "measure",
+            "build"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "The summit is now 1.29 metres ___ than in 2025.",
+          "options": [
+            "lower",
+            "higher",
+            "longer",
+            "wider"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "Heat, wind, snow and rain make the cap of snow and ice thicker or ___.",
+          "options": [
+            "smaller",
+            "warmer",
+            "heavier",
+            "thinner"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "Drones help the surveyors to make a detailed ___ of the snow and ice.",
+          "options": [
+            "film",
+            "model",
+            "price",
+            "story"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Switzerland has ___ one-fifth of its ice in the last five years.",
+          "options": [
+            "found",
+            "sold",
+            "lost",
+            "made"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "You received this email from your English friend Alex: 'Next summer my family wants to visit some mountains. Are there any mountains near where you live? What can people do there? Do you think it's important to protect mountains? Why?' Write your email to Alex in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/14/mont-blanc-loses-metre-height"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/mont-blanc-height.jpg",
+        "alt": "A white snowy mountain top above a large glacier under a blue sky",
+        "caption": "Mont Blanc and the Glacier du Géant (photo from 2010).",
+        "credit": "Ximonic, Simo Räsänen",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Glacier_du_Mont_Mallet_(Glacier_du_G%C3%A9ant)_%26_Mont_Blanc,_2010_July.jpg"
+      }
+    },
+    {
+      "id": "2026-10-15-caral-el-nino",
+      "section": "Environment",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B2",
+      "topic": "Archaeology and climate",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Built to last: a 5,000-year-old city gets ready for El Niño",
+      "standfirst": "Archaeologists at Caral are protecting the ancient Sacred City from heavy rain – and learning from the people who built it.",
+      "body": [
+        "The Sacred City of Caral, in the Supe Valley north of Lima, was built by one of the oldest civilisations in the world, which developed there between 3000 and 1800 BC. Now, as Peru prepares for the heavy rain that El Niño is expected to bring, the archaeologists who look after the site are working hard to protect its ancient buildings.",
+        "According to Aldemar Crispín, the Ministry of Culture's chief archaeologist at Caral, the work is \"quite intensive\". His team has installed drainage channels and water outlets, and roofs and coverings are being put over the structures so that rain does not fall directly on them. Windbreaks have also been set up to stop the wind from wearing away the walls. The work is being paid for with both public and private money.",
+        "Interestingly, some of the monuments were already prepared for bad weather because of the way they were built. Their builders used a technique called shicras: they filled bags made of plant fibres with stones of different sizes and used them to build walls that could resist earthquakes, which are common on Peru's central coast. A similar method has been used in recent times in Japan. The people of Caral also chose to build their settlements away from riverbanks. In 2017, a coastal El Niño destroyed many crops in the Supe Valley, but it did not destroy the archaeological sites.",
+        "Research at Caral began 32 years ago, and discoveries are still being made. Recently, archaeologists found two small clay figures, one male and one female, near the Main Residential Complex. They may help to explain how these people saw nature and themselves. To celebrate the anniversary, the site will hold a festival called Caral Raymi on 23 and 24 October, with a ceremony for Pachamama, coloured lights at night, and traditional music and dance."
+      ],
+      "glossary": [
+        {
+          "w": "civilisations",
+          "d": "large, organised societies with their own culture and way of life"
+        },
+        {
+          "w": "drainage",
+          "d": "a system that carries extra water away from a place"
+        },
+        {
+          "w": "windbreaks",
+          "d": "walls, fences or lines of trees that protect a place from the wind"
+        },
+        {
+          "w": "settlements",
+          "d": "places where people have come to live and build homes"
+        },
+        {
+          "w": "anniversary",
+          "d": "a date when you remember something that happened on the same date in an earlier year"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the main aim of the work described in paragraph 2?",
+          "options": [
+            "to find new buildings under the ground",
+            "to bring more tourists to the site",
+            "to rebuild walls that have already fallen",
+            "to protect the structures from rain and wind"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does the writer find interesting about some of the monuments?",
+          "options": [
+            "They could already resist bad weather.",
+            "They were designed by engineers from Japan.",
+            "They had roofs as early as 3000 BC.",
+            "They were badly damaged in 2017."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What were shicras?",
+          "options": [
+            "roofs made of plant fibres",
+            "channels that carried water away",
+            "bags of stones used to build walls",
+            "small figures made of clay"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What happened in the Supe Valley in 2017?",
+          "options": [
+            "The ancient buildings of Caral were destroyed.",
+            "Crops were damaged, but the ancient sites survived.",
+            "Research at Caral began for the first time.",
+            "Archaeologists found two clay figures."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why does the writer mention the clay figures?",
+          "options": [
+            "to show that research at Caral is still producing discoveries",
+            "to explain how the walls were built",
+            "to describe damage caused by El Niño",
+            "to show that the figures came from Japan"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What do we learn about Caral Raymi?",
+          "options": [
+            "It takes place every month.",
+            "It will last for two days.",
+            "It will be held in the centre of Lima.",
+            "It celebrates the end of El Niño."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about protecting historical sites. Now your teacher has asked you to write an essay. 'Should governments spend more money protecting ancient sites from climate change?' Notes – write about: 1. the cost, 2. tourism, 3. ........ (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-how-is-caral-preparing-to-protect-the-sacred-city-from-nino-1095743.aspx"
+        },
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-anthropomorphic-figurines-dating-from-3000-to-1800-bc-discovered-in-caral-1095933.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/caral-el-nino.jpg",
+        "alt": "Ancient stone pyramids and platforms in a dry desert valley",
+        "caption": "The Sacred City of Caral in the Supe Valley (earlier photo).",
+        "credit": "AlisonRuthHughes",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Caral-1.jpg"
+      }
+    },
+    {
+      "id": "2026-10-15-wildlife-photographer",
+      "section": "Culture",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "B2",
+      "topic": "Photography and nature",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "An elephant's sad journey wins the world's top wildlife photo prize",
+      "standfirst": "From glowing mushrooms to a curious octopus, this year's Wildlife Photographer of the Year winners show nature at its most surprising.",
+      "body": [
+        "A. The overall winner of Wildlife Photographer of the Year 2026 is Federico Veronesi from Italy. While he was tracking elephants in Namibia, he noticed unusual drag marks in a dry riverbed. Then a female elephant appeared, carrying her dead calf between her tusk and her trunk. Scientists know that both Asian and African elephants react to death in complex ways: they make sounds, guard the body and even handle the bones. Veronesi's photograph, The Aftermath, captures one of these rare moments.",
+        "B. In the Natural Artistry category, Michał Michalski from Poland used a slow shutter speed to create something close to a painting. When a sparrowhawk frightened a mixed flock of goldfinches and bramblings out of a sunflower field, the moving birds became a blur, making bare birch trees look as if they still had their autumn leaves.",
+        "C. Agorastos Papatsanis from Greece won the Plants and Fungi category on the lower slopes of Mount Olympus. By shining ultraviolet light on mushrooms growing from a rotting log, he made their stems glow bright yellow. He experimented for some time before finding the strongest effect.",
+        "D. Under the sea off Cornwall, in the UK, Aaron Sanders was diving when he spotted the marks of an octopus's suckers through a thin piece of kelp. Slowly, a single eye appeared. Diver and octopus stayed perfectly still, watching each other with what seemed like shared curiosity. His picture, A Watchful Eye, won the Animal Portraits prize.",
+        "E. Not every winning image is simply beautiful. Alex Visbal from Colombia photographed a lake in Utah, in the US, which is divided by a man-made line. On one side, the water is pink because of microbes that thrive in extremely salty water. The lake's ecology is in decline because of industry, water being taken upstream and climate change, although the area has since been placed under conservation management. All the winning photographs will be shown at the Natural History Museum in London from 16 October 2026 until July 2027."
+      ],
+      "glossary": [
+        {
+          "w": "tracking",
+          "d": "following an animal by looking at the marks it leaves"
+        },
+        {
+          "w": "shutter speed",
+          "d": "how long a camera lets light in when it takes a photo"
+        },
+        {
+          "w": "blur",
+          "d": "a shape that you cannot see clearly"
+        },
+        {
+          "w": "ultraviolet",
+          "d": "a kind of light that people cannot see with their eyes"
+        },
+        {
+          "w": "thrive",
+          "d": "to grow or live very well"
+        }
+      ],
+      "instructions": "For each question, choose the paragraph (A–E). Some paragraphs can be chosen more than once.",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes a photographer who used a special kind of light?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph describes an animal and a person looking at each other?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph tells readers where they can see the photos?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains how a photographer made trees seem to have leaves?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph mentions behaviour that has been seen in two kinds of the same animal?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "match",
+          "q": "Which paragraph mentions a place that is now being protected?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (review)",
+        "task": "You have seen this announcement on an international website for young people: 'Reviews wanted! Tell us about a photograph, painting or exhibition that made you think about nature. What did it show? How did it make you feel? Would you recommend it to other people?' Write your review in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/gallery/2026/oct/14/wildlife-photographer-of-the-year-2026-winners-in-pictures"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/wildlife-photographer.jpg",
+        "alt": "An African elephant walking on dry ground in Namibia",
+        "caption": "An African bush elephant in Etosha National Park, Namibia (not the winning photo).",
+        "credit": "Giles Laurent",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:103_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg"
+      }
+    },
+    {
+      "id": "2026-10-15-second-generation-planet",
+      "section": "Science",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "C1",
+      "topic": "Astronomy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Rising from the ashes: the 'impossible' planet around a dead star",
+      "standfirst": "Astronomers think they have found a rare second-generation world – and the first clue had been hiding in data collected in 1999.",
+      "body": [
+        "When a star like our Sun runs out of nuclear fuel, it throws off its outer layers and collapses into a white dwarf: a small, extremely dense remnant that cools very slowly. Planets can sometimes survive this violent transformation. What astronomers had not expected to find was a planet that appears to have been born afterwards, out of the dying star's own debris.",
+        "Yet that is precisely what a team led by researchers at the University of Warwick, in the UK, believe they have found around a white dwarf known as HS 0209+0832. Their findings, published this month in the journal Nature Astronomy, began not with a new observation but with an old one. Measurements made by NASA's Hubble Space Telescope in 1999 contained about 100 chemical features that nobody had managed to identify for more than two decades. Using an updated database of chemical signatures, doctoral researcher Jamie Williams discovered that many of them matched niobium, a heavy element never before detected in the atmosphere of a white dwarf.",
+        "That detail matters because elements such as niobium are produced only by dying stars, which then eject them. The team suspects that some of this ejected material gathered into a disc and eventually formed a gas giant roughly the size of Jupiter. Further support came from NASA's TESS satellite, which monitored the white dwarf for four months and recorded a regular change in its brightness every 4.4 days. That would be consistent with a planet orbiting only about 3.7 million miles (roughly six million kilometres) from the star, far closer than Mercury is to the Sun.",
+        "At such close range, intense radiation is probably stripping away the planet's atmosphere. The escaping gas may form a comet-like tail, settle into a disc and finally fall onto the star – a process which would explain the unusual heavy elements Hubble detected. Even so, Williams believes the planet is likely to survive, since the radiation should weaken as the white dwarf cools. He compared the discovery to finding a planet that has \"risen from the ashes\" of the star it once orbited.",
+        "If it is confirmed, this will be the first convincing example of a second-generation planet orbiting a white dwarf. The next step is to search for other white dwarfs with similar chemical fingerprints, to establish whether such worlds are genuinely rare or simply hard to find."
+      ],
+      "glossary": [
+        {
+          "w": "remnant",
+          "d": "a small part of something that is left after the rest has gone"
+        },
+        {
+          "w": "debris",
+          "d": "pieces of material left after something has been destroyed or broken up"
+        },
+        {
+          "w": "eject",
+          "d": "to throw something out with force"
+        },
+        {
+          "w": "consistent with",
+          "d": "matching or agreeing with something"
+        },
+        {
+          "w": "stripping away",
+          "d": "removing a layer from the surface of something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "According to the first paragraph, what had astronomers not expected?",
+          "options": [
+            "that planets could survive the death of their star",
+            "that white dwarfs cool so slowly",
+            "that a planet could form after its star had died",
+            "that stars like the Sun have outer layers"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why does the writer say the findings 'began not with a new observation but with an old one'?",
+          "options": [
+            "to criticise the scientists who worked on Hubble in 1999",
+            "to emphasise that old data was re-examined with better tools",
+            "to explain why Hubble is no longer used",
+            "to suggest that the findings are unreliable"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why is the presence of niobium significant?",
+          "options": [
+            "It is produced only by dying stars.",
+            "It is found in every white dwarf.",
+            "It is common in the atmosphere of Jupiter.",
+            "It makes stars shine more brightly."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What did the TESS satellite detect?",
+          "options": [
+            "a comet passing close to the star",
+            "the atmosphere of the planet itself",
+            "a companion star near the white dwarf",
+            "a regular change in the star's brightness"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "In paragraph 4, what does 'a process which would explain the unusual heavy elements' refer to?",
+          "options": [
+            "the formation of the planet's tail only",
+            "gas escaping from the planet and falling onto the star",
+            "the cooling of the white dwarf",
+            "the work of the Hubble telescope"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's attitude in the final paragraph?",
+          "options": [
+            "cautious, because the finding still needs to be confirmed",
+            "dismissive, because such planets cannot exist",
+            "certain, because the discovery has been proven",
+            "indifferent, because the result matters little"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a lecture on space research. The speakers discussed three ways of spending money on science: building new telescopes and satellites, re-analysing data that has already been collected, and training young scientists. Write an essay discussing two of these. You should explain which one is more important, giving reasons to support your opinion. Write your essay in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "Forbes",
+          "url": "https://www.forbes.com/sites/jamiecartereurope/2026/10/15/impossible-new-planet-may-have-formed-around-a-dead-star/"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/second-generation-planet.jpg",
+        "alt": "A drawing of a small bright star surrounded by a ring of dust and rocks",
+        "caption": "An artist's drawing of material around a white dwarf star (NASA/ESA illustration, earlier).",
+        "credit": "NASA, ESA, STScI, and G. Bacon (STScI)",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Artist%E2%80%99s_impression_of_debris_around_a_white_dwarf_star.jpg"
+      }
+    },
+    {
+      "id": "2026-10-15-brazil-working-week",
+      "section": "Economy",
+      "country": "Brazil",
+      "flag": "🇧🇷",
+      "level": "C1",
+      "topic": "Work and society",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Two days off for everyone? Brazil votes to shorten the working week",
+      "standfirst": "A change to the constitution will cut the standard week from 44 to 40 hours. Supporters predict better-rested workers; critics warn of higher prices.",
+      "body": [
+        "Brazil's Congress has approved one of the biggest changes to workers' rights since the country returned to democracy in 1988. A constitutional amendment will reduce the standard working week from 44 hours to 40 and guarantee employees two days off a week, without any reduction in their salary. More than 30 million workers are expected to benefit. Celebrating the result on social media, Lula said the change would give people more time to rest, to be with their families and to look after themselves.",
+        "The measure had already passed the Chamber of Deputies, the lower house, in May. On Wednesday, the Senate backed it by an overwhelming 75 votes to one. The vote came less than two weeks before the second round of Brazil's presidential election on 25 October, and both candidates ended up supporting it: President Luiz Inácio Lula da Silva, who had championed the change, and Senator Flávio Bolsonaro, who had previously opposed it but said he had changed his mind because of its popularity. Opinion polls suggest the idea is very popular; one national survey found that almost 70% of Brazilians were in favour.",
+        "The change will not happen overnight. After a two-month grace period, the week will first be cut to 42 hours and later to 40, so it will take more than a year to come fully into effect. For some workers, the impact could be considerable. Luciana de Almeida, a 36-year-old supermarket cashier in Rio de Janeiro who currently works six days a week, told the BBC that it would \"make a lot of difference\" to her life.",
+        "Not everyone is convinced, however. Critics argue that shorter hours will push up production costs, which businesses will eventually pass on to consumers in the form of higher prices. Supporters counter that people who enjoy two full days of rest will be fresher, and therefore more productive, during the hours they do work.",
+        "The debate echoes discussions in many countries about how much of our lives should be spent at work. Whether Brazil's reform produces a healthier, more efficient workforce or simply a more expensive economy is a question that economists far beyond Brazil are likely to follow closely."
+      ],
+      "glossary": [
+        {
+          "w": "amendment",
+          "d": "a change made to a law or official document"
+        },
+        {
+          "w": "overwhelming",
+          "d": "very large, much bigger than the other side"
+        },
+        {
+          "w": "championed",
+          "d": "publicly supported and fought for an idea"
+        },
+        {
+          "w": "grace period",
+          "d": "extra time given before a new rule starts"
+        },
+        {
+          "w": "counter",
+          "d": "to reply to an argument with an opposite argument"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer emphasise in the first paragraph?",
+          "options": [
+            "how long the reform will take to introduce",
+            "the historical importance of the change",
+            "how much the reform will cost businesses",
+            "the arguments of the reform's critics"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What was notable about the vote in the Senate?",
+          "options": [
+            "It was extremely close.",
+            "It took place in May.",
+            "The lower house later rejected it.",
+            "Almost every senator supported the amendment."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the phrase 'will not happen overnight' suggest?",
+          "options": [
+            "The change will be introduced gradually.",
+            "Workers will lose some pay at first.",
+            "The law may still be cancelled.",
+            "Night work will be banned."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why does the writer mention Luciana de Almeida?",
+          "options": [
+            "to criticise conditions in supermarkets",
+            "to give the view of a politician",
+            "to show how the change could affect an individual worker",
+            "to explain why prices are likely to rise"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "According to critics, what is the main risk of the reform?",
+          "options": [
+            "Workers will become less hard-working.",
+            "Companies will move out of Brazil.",
+            "The election result will be affected.",
+            "Higher costs could lead to higher prices."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "How does the writer present the reform overall?",
+          "options": [
+            "as clearly harmful to the economy",
+            "as nothing more than a political trick",
+            "as an issue with arguments on both sides",
+            "as certain to succeed"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (proposal)",
+        "task": "Your school is thinking about changing the timetable so that students have a shorter school day but more homework, or a longer school day with no homework. The head teacher has asked students to write a proposal. In your proposal, compare the two options, explain how each would affect students' learning and free time, and recommend which option the school should choose. Write your proposal in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cmwy43pp08elo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-15/brazil-working-week.jpg",
+        "alt": "Two tall towers and two bowl-shaped buildings of Brazil's National Congress",
+        "caption": "Brazil's National Congress in Brasília, where the amendment was approved (earlier photo).",
+        "credit": "Cayambe",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Brasilia_National_Congress_Buildings.jpg"
+      }
+    }
+  ]
+}
