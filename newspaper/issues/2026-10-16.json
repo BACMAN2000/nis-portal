@@ -1,0 +1,1015 @@
+{
+  "date": "2026-10-16",
+  "issue": 10,
+  "breaking": [
+    "Peru: 739 women from the countryside get money for their small businesses.",
+    "Fiji: doctors in Saudi Arabia separate twin sisters after a 13-hour operation.",
+    "Turkey: divers find the oldest shipwreck in the world, up to 4,700 years old.",
+    "Science: the world's clocks will stop using leap seconds and use a leap hour instead."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-16-rural-women-peru",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Work and business",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "A big day for women farmers in Peru",
+      "standfirst": "The government is giving money to 739 women from the countryside to help their small businesses.",
+      "body": [
+        "On Thursday 15 October, people around the world celebrated International Rural and Indigenous Women's Day. In Lima, Peru's President, Keiko Fujimori, gave money to 739 women from the countryside and from Indigenous communities. The money will help them with their small businesses.",
+        "In total, the government is giving S/10 million, which is about US$2.9 million. The women work in 78 groups in 18 regions of Peru. The region of Junín has the most groups: 22. The government pays 90% of the cost of each business plan, and the women's groups pay the rest.",
+        "The women produce coffee, cacao and honey. Some of them keep guinea pigs, cows or pigs. With the new money, they can buy better tools, produce more and sell their products in more places. The president said that when the country helps a woman, it also helps her family and her children."
+      ],
+      "glossary": [
+        {
+          "w": "countryside",
+          "d": "land with farms and fields, far from towns and cities"
+        },
+        {
+          "w": "communities",
+          "d": "groups of people who live in the same place"
+        },
+        {
+          "w": "businesses",
+          "d": "work that people do to make and sell things for money"
+        },
+        {
+          "w": "honey",
+          "d": "a sweet, thick food that bees make"
+        },
+        {
+          "w": "tools",
+          "d": "things you hold in your hand to do a job, like a hammer"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why was 15 October a special day?",
+          "options": [
+            "It was International Rural and Indigenous Women's Day.",
+            "It was the first day of a new school year.",
+            "It was the president's birthday."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "How many women will get money?",
+          "options": [
+            "78",
+            "18",
+            "739"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Which region has the most groups?",
+          "options": [
+            "Lima",
+            "Junín",
+            "Puno"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Who pays most of the cost of each business plan?",
+          "options": [
+            "the women's groups",
+            "a bank",
+            "the government"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What can the women do with the money?",
+          "options": [
+            "travel to Lima",
+            "buy better tools",
+            "build a new school"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your friend wants to start a small business. Write an email to your friend (25 words or more). Say: what business your friend can start, what they need to buy, and who can help them."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-government-fosters-ventures-by-739-rural-and-indigenous-women-with-29-million-1096119.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/rural-women-peru.jpg",
+        "alt": "Many guinea pigs in a small farm building",
+        "caption": "Guinea pigs on a farm near Puno, Peru. Some of the women's businesses breed these animals (earlier photo).",
+        "credit": "Phil Whitehouse",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Guinea_Pig_Farm.jpg"
+      }
+    },
+    {
+      "id": "2026-10-16-fiji-twins",
+      "section": "Health",
+      "country": "Fiji",
+      "flag": "🇫🇯",
+      "level": "A2",
+      "topic": "Health and family",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Twin sisters from Fiji are separated after a long operation",
+      "standfirst": "Doctors in Saudi Arabia worked for almost 13 hours to separate two baby girls.",
+      "body": [
+        "Dicecea and Jesepeli Kikau are twin sisters from Fiji, a country of islands in the Pacific Ocean. They are 13 months old. When they were born, their bodies were joined at the bottom of their stomachs. Babies like this are called conjoined twins. It is very rare.",
+        "The family travelled to Riyadh, in Saudi Arabia, at the end of July. On Thursday, doctors at a children's hospital there separated the girls. The operation took almost 13 hours. The girls' parents watched it on a video screen. Before the operation, they gave the twins new Arabic names: Sarah and Noorah.",
+        "Hospitals in some other countries wanted a lot of money before the operation, but in Saudi Arabia it was free. The hospital says these were the 74th conjoined twins it has separated, from 29 different countries. The lead doctor said the operation went better than the team expected."
+      ],
+      "glossary": [
+        {
+          "w": "twin",
+          "d": "one of two children born to the same mother at the same time"
+        },
+        {
+          "w": "joined",
+          "d": "connected, so that two things are together"
+        },
+        {
+          "w": "rare",
+          "d": "not happening very often"
+        },
+        {
+          "w": "operation",
+          "d": "when a doctor cuts into a person's body to make them better"
+        },
+        {
+          "w": "screen",
+          "d": "the flat part of a TV or computer where you see pictures"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "The twins come from Saudi Arabia.",
+          "answer": "F"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The operation took almost 13 hours.",
+          "answer": "T"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "The parents were in the room during the operation.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The twins have got new names.",
+          "answer": "T"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The girls will go home to Fiji next month.",
+          "answer": "NS"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "The family paid a lot of money for the operation in Saudi Arabia.",
+          "answer": "F"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend is in hospital. Write a note to your friend (25 words or more). Say: how you feel about the news, what you will bring, and when you will visit."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-16/surgery-separates-fijian-conjoined-twins-in-saudi-arabia/107271702"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/fiji-twins.jpg",
+        "alt": "Tall modern buildings in a big city under a blue sky",
+        "caption": "Riyadh, the capital of Saudi Arabia, where the twins had their operation (photo from 2018).",
+        "credit": "B.alotaby",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Riyadh_Skyline.jpg"
+      }
+    },
+    {
+      "id": "2026-10-16-caral-figurines",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "History and archaeology",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Two small clay figures tell a big story about Caral",
+      "standfirst": "Archaeologists have found two figurines that are up to 5,000 years old in the Sacred City of Caral.",
+      "body": [
+        "Archaeologists working in the ancient Sacred City of Caral have found two small figures made of clay. Caral is in the Supe valley, in the Lima region, and the figurines were discovered in a building near the city's main residential area. Experts believe they were made between 3000 and 1800 BC.",
+        "One figure looks like a man and seems to be wearing a simple piece of cloth around his waist. The other one has the shape of a woman. According to the researchers, the two figures may show a couple, and the idea of two opposite but connected parts, which was important in the way these people understood nature.",
+        "Marco Antonio Machacuay, one of the archaeologists in charge of research at Caral, explained that figurines like these are not found in many places. That is why they could help us understand how the people of Caral thought about the world and about themselves. The early figurines had no colour, but after 1800 BC people started to paint them, especially their clothes and jewellery.",
+        "Because they are so old and delicate, the two figurines were shown for only a short time in an exhibition at the Ministry of Culture in Lima. This month marks 32 years since research in Caral began, and there will be a celebration called Caral Raymi at the Sacred City on 23 and 24 October."
+      ],
+      "glossary": [
+        {
+          "w": "archaeologists",
+          "d": "people who study very old objects and places to learn about the past"
+        },
+        {
+          "w": "figurines",
+          "d": "small models of people or animals"
+        },
+        {
+          "w": "couple",
+          "d": "two people who are married or in a relationship"
+        },
+        {
+          "w": "delicate",
+          "d": "easy to break or damage"
+        },
+        {
+          "w": "exhibition",
+          "d": "a show where people can go and look at objects or art"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where exactly were the figurines found?",
+          "options": [
+            "inside the Ministry of Culture in Lima",
+            "in a building near the main residential area of Caral",
+            "under the sea near the Supe valley",
+            "in a small museum in the Lima region"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What do the researchers think the two figures may show?",
+          "options": [
+            "two children playing",
+            "a king and his soldier",
+            "a couple",
+            "two gods of the sea"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why are the figurines important, according to Machacuay?",
+          "options": [
+            "This kind of figurine is not found in many places.",
+            "They are made of gold.",
+            "They are the largest figures ever found in Peru.",
+            "They are painted with bright colours."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What changed after 1800 BC?",
+          "options": [
+            "People stopped making figurines.",
+            "People began to add colour to figurines.",
+            "Figurines became much bigger.",
+            "Figurines were made of stone."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why were the figurines on show for only a short time?",
+          "options": [
+            "Too many people wanted to see them.",
+            "They were sent to a museum abroad.",
+            "The exhibition closed early.",
+            "They are very old and can be damaged easily."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What will happen on 23 and 24 October?",
+          "options": [
+            "the opening of a new museum",
+            "the start of new excavations",
+            "a celebration at the Sacred City",
+            "a visit to the Ministry of Culture"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this announcement in an English-language magazine for teenagers: 'Articles wanted! An object from the past. Tell us about an old object you have seen – in a museum, at a historic site or at home. What does it look like? What can it teach us about the people who made it?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-anthropomorphic-figurines-dating-from-3000-to-1800-bc-discovered-in-caral-1095933.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/caral-figurines.jpg",
+        "alt": "Ancient stone buildings and platforms in a dry valley",
+        "caption": "The Sacred City of Caral, where the two figurines were found (earlier photo).",
+        "credit": "AlisonRuthHughes",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Caral-24.jpg"
+      }
+    },
+    {
+      "id": "2026-10-16-endeavour-shuttle",
+      "section": "Technology",
+      "country": "USA",
+      "flag": "🇺🇸",
+      "level": "B1",
+      "topic": "Space and museums",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "A space shuttle stands up again in Los Angeles",
+      "standfirst": "From 13 November, visitors to a California museum can stand under Space Shuttle Endeavour, ready for launch.",
+      "body": [
+        "Space Shuttle Endeavour, which flew into space 25 times, is getting a new home. On Friday 13 November, the California Science Center in Los Angeles will open it to the public again after nearly three years. This time, the shuttle will not lie flat. It will stand up, almost 200 feet (about 60 metres) tall, connected to a huge orange fuel tank and two rocket boosters, just as it did before a launch.",
+        "It will be the first time in history that the public can stand directly underneath a complete, real space shuttle in this position. When shuttles took off in Florida, people had to watch from far away for safety reasons. Visitors will also be able to ride a lift next to the shuttle and look down into the place where the pilots sat.",
+        "Endeavour was built in California after NASA lost the shuttle Challenger in 1986. Its name was chosen in a competition for schoolchildren, and it comes from the ship of the explorer Captain James Cook. Between 1992 and 2011, Endeavour helped to repair the Hubble Space Telescope and carried the first US part of the International Space Station into space.",
+        "Putting the shuttle in this position took many years and a lot of money: the new building around it cost about US$450 million. General entry to the museum is free, but visitors will need to book a time, for a small fee, to see the new space centre."
+      ],
+      "glossary": [
+        {
+          "w": "launch",
+          "d": "the moment when a rocket or spaceship leaves the ground"
+        },
+        {
+          "w": "fuel",
+          "d": "something that burns to give power, like petrol"
+        },
+        {
+          "w": "underneath",
+          "d": "directly below something"
+        },
+        {
+          "w": "explorer",
+          "d": "a person who travels to places that people do not know well"
+        },
+        {
+          "w": "book",
+          "d": "to arrange to have a place, a ticket or a time in the future"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "The museum will ___ the shuttle to the public again on 13 November.",
+          "options": [
+            "open",
+            "visit",
+            "enter",
+            "come"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "This time, the shuttle will stand up instead of lying ___.",
+          "options": [
+            "straight",
+            "flat",
+            "empty",
+            "short"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "In the past, people had to watch launches from far away for ___ reasons.",
+          "options": [
+            "money",
+            "weather",
+            "safety",
+            "travel"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "Endeavour's name was ___ in a competition for schoolchildren.",
+          "options": [
+            "won",
+            "taken",
+            "made",
+            "chosen"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "The shuttle helped to ___ the Hubble Space Telescope.",
+          "options": [
+            "break",
+            "sell",
+            "repair",
+            "build"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "Visitors must ___ a time to see the new space centre.",
+          "options": [
+            "spend",
+            "keep",
+            "lose",
+            "book"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English-speaking friend Sam has written to you: 'I'm visiting your city next month and I'd love to go to a museum with you. Which museum should we visit? What can we see there? How can we get there?' Write your email to Sam in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Forbes",
+          "url": "https://www.forbes.com/sites/charlottekiang/2026/10/13/space-shuttle-endeavour-is-go-for-launch-on-november-13/"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/endeavour-shuttle.jpg",
+        "alt": "A white space shuttle lying flat inside a large museum hall",
+        "caption": "Endeavour in its old flat position at the California Science Center in 2022.",
+        "credit": "Mys 721tx",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Space_Shuttle_Endeavour_at_California_Science_Center,_Dec_2022.jpg"
+      }
+    },
+    {
+      "id": "2026-10-16-oldest-shipwreck",
+      "section": "Culture",
+      "country": "Turkey",
+      "flag": "🇹🇷",
+      "level": "B2",
+      "topic": "Archaeology and trade",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "A 'time capsule' under the sea: the world's oldest shipwreck",
+      "standfirst": "Divers off the coast of Turkey have found the remains of a trading ship that sank up to 4,700 years ago.",
+      "body": [
+        "Archaeologists in Turkey say they have discovered the oldest shipwreck ever found. The ship sank between 4,400 and 4,700 years ago, in the Early Bronze Age – roughly when the Great Pyramid of Egypt was being built. Its remains lie about 30 metres below the surface, on an underwater slope close to Kekova Island, in the province of Antalya.",
+        "Nothing is left of the vessel's wooden structure, which has completely disappeared over the centuries. However, its cargo has survived. Divers found three large stone anchors and more than 30 ceramic storage jars, known as amphorae. Experts believe the ship was about 10 metres long and was used to carry goods across the Mediterranean, probably from the eastern coast of the sea towards the ancient city of Troy or the island of Crete.",
+        "Without any wood, the team could not use radiocarbon dating to work out the ship's age. Instead, they studied the shape of the jars, which have two handles, a ridge around the middle and a flat base. Because pottery styles change over time, they compared them with similar jars found in Egypt and the Middle East that are known to be 4,400 to 4,700 years old. Professor Hakan Öniz, who led the expedition, described the wreck as \"a time capsule at the bottom of the sea\".",
+        "The biggest surprise came later. When Dr Karin Sowada, an archaeologist from Australia, looked inside some of the jars that were still in one piece, she found a thick, shiny substance left over from what they once held. The team is now trying to identify it: it might be olive oil, wine or tree resin. The objects are being carefully conserved, and Turkey's culture minister has said they will be put on display in a new museum."
+      ],
+      "glossary": [
+        {
+          "w": "vessel",
+          "d": "a ship or large boat"
+        },
+        {
+          "w": "cargo",
+          "d": "the goods that a ship, plane or truck carries"
+        },
+        {
+          "w": "anchors",
+          "d": "heavy objects dropped into the water to stop a ship from moving"
+        },
+        {
+          "w": "substance",
+          "d": "a material of a particular kind, such as a liquid or powder"
+        },
+        {
+          "w": "conserved",
+          "d": "protected and repaired so that it does not get damaged"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer say about the age of the ship in paragraph 1?",
+          "options": [
+            "It is about 1,000 years older than the Great Pyramid.",
+            "It comes from about the same period as the Great Pyramid.",
+            "Its exact age was found by testing the wood.",
+            "It sank at the end of the Bronze Age."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to paragraph 2, what has survived from the ship?",
+          "options": [
+            "most of its wooden body",
+            "a map showing its route",
+            "its stone anchors and storage jars",
+            "its sails and ropes"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why did the team study the shape of the jars?",
+          "options": [
+            "Radiocarbon dating was impossible without any wood.",
+            "They wanted to know who had made each jar.",
+            "The jars were too heavy to bring to the surface.",
+            "Experts from Egypt asked them to compare the styles."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'them' refer to in 'they compared them with similar jars'?",
+          "options": [
+            "the jars from the wreck",
+            "pottery styles",
+            "the handles",
+            "Egypt and the Middle East"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What surprised Dr Sowada?",
+          "options": [
+            "that the jars were completely empty",
+            "that some jars had come from Australia",
+            "that all the jars were broken",
+            "that something from the jars' original contents was still inside"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the main purpose of the article?",
+          "options": [
+            "to explain how divers train for deep-sea work",
+            "to describe an important discovery and how its age was worked out",
+            "to argue that Turkey should keep all its ancient objects",
+            "to compare different types of ancient ships"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement in an international magazine for students: 'Treasures from the past. Which historical place or object in your country would you most like to explore, and why? What do you think it could teach young people today?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c6gr80rk1yyko"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/oldest-shipwreck.jpg",
+        "alt": "A blue bay with a small village and a long rocky island behind it",
+        "caption": "The coast near Kekova Island in Turkey, where the shipwreck was found (earlier photo).",
+        "credit": "Bjørn Christian Tørrissen",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Kekova_island_and_Kalekoey_village.jpg"
+      }
+    },
+    {
+      "id": "2026-10-16-pterosaur-museum",
+      "section": "Science",
+      "country": "China",
+      "flag": "🇨🇳",
+      "level": "B2",
+      "topic": "Architecture and energy",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "instructions": "For each question, choose the paragraph (A–E). The paragraphs may be chosen more than once.",
+      "headline": "Like eggs in the sand: a desert museum that keeps itself cool",
+      "standfirst": "A new museum of flying reptiles in China's Gobi desert is built mostly underground to survive extreme heat and cold.",
+      "body": [
+        "A. From a distance, the silver Hami Pterosaur Museum looks like a base on Mars, and from the air it resembles a group of dinosaur eggs lying in the sand. The new museum, in the Gobi desert in north-west China, displays hundreds of fossils of pterosaurs – flying reptiles related to dinosaurs – including part of the head of one that lived in the area around 130 million years ago.",
+        "B. The location is extreme. In summer, the air can get hotter than 55C and the ground can reach 80C, while winter temperatures can fall below -20C, and strong winds and sandstorms are common. Even so, the museum's director, the palaeontologist Wang Xiaolin, says it was important to build it here, because this is where the fossils were found. Keeping them nearby protects them and shows them in their natural setting.",
+        "C. The architects, from the Beijing firm Turenscape, came up with a clever solution: they built most of the 8,000-square-metre museum 8 metres underground, where temperatures are much lower in summer. This keeps the building cool in the hot months and warm in winter, while natural ventilation shafts let hot air rise and escape. According to the company's estimates, the museum uses 94% less electricity for air conditioning than a similar building above the ground.",
+        "D. Being underground creates another problem: darkness. To solve it, the designers added giant see-through funnels that run from the ceiling to the floor and bring daylight inside. They say these cut the need for electric lighting by nearly half.",
+        "E. Power comes from the museum's own solar farm, about a kilometre away, which is shaped like a pterosaur when seen from above, plus batteries that store energy. The farm is expected to produce enough electricity for the whole museum, although the building is still connected to the city's grid as a back-up. It was one of the last projects designed by the late Kongjian Yu, the landscape architect famous for China's 'sponge cities'."
+      ],
+      "glossary": [
+        {
+          "w": "fossils",
+          "d": "the remains of very old animals or plants, preserved in rock"
+        },
+        {
+          "w": "reptiles",
+          "d": "animals with cold blood and skin covered in scales, such as snakes and lizards"
+        },
+        {
+          "w": "ventilation",
+          "d": "the movement of fresh air through a room or building"
+        },
+        {
+          "w": "funnels",
+          "d": "tubes that are wide at one end and narrow at the other"
+        },
+        {
+          "w": "grid",
+          "d": "the network of wires that carries electricity to buildings in an area"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph mentions a way of bringing natural light into the building?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph explains why the museum was built in such a difficult place?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph describes the shape of a structure that produces energy?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph describes what the building looks like from different points of view?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph gives a figure for the energy saved on cooling?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "match",
+          "q": "Which paragraph mentions the age of an animal whose remains are on display?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about modern buildings. Now your teacher has asked you to write an essay. 'Should all new public buildings be designed to use as little energy as possible?' Notes – write about: 1. the cost of building, 2. comfort for the people who use them, 3. ________ (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/16/dinosaur-eggs-pterosaur-museum-built-gobi-desert"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/pterosaur-museum.jpg",
+        "alt": "A fossil skull of a flying reptile with a long beak on display",
+        "caption": "A skull of Hamipterus, a pterosaur found in the Hami area, in a museum in Beijing (earlier photo).",
+        "credit": "Jonathan Chen",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Hamipterus-Paleozoological_Museum_of_China.jpg"
+      }
+    },
+    {
+      "id": "2026-10-16-anchoveta-el-nino",
+      "section": "Environment",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "C1",
+      "topic": "Oceans, climate and the economy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Small fish, big problem: Peru's anchoveta and the coming 'super El Niño'",
+      "standfirst": "Peru has closed one of the world's most important fisheries. The reasons say a great deal about warming oceans and decades of overfishing.",
+      "body": [
+        "In June, the Peruvian government took a decision it knew would be painful: it ordered anchoveta boats to stay in port, suspending the fishing season. What began as a temporary measure had become, by mid-August, a complete closure. It was a heavy blow for one of the country's key industries, but the authorities argued that managing the sea on the basis of scientific evidence left them no other option.",
+        "It is difficult to exaggerate how much this small silver fish matters. Measured by weight, Peruvian anchoveta have accounted for roughly a tenth of the world's commercial fish catch since 1970 – more than any other species. Yet very little of it is eaten as fish. Over 90% is turned into fishmeal and fish oil, which are shipped around the world to feed farmed fish and livestock. In some years the catch is worth close to US$3 billion, and Peru's central bank expects the fishing sector to shrink by 30.7% this year, with about 78,000 jobs lost.",
+        "The immediate reason for the closure is El Niño, the periodic warming of the Pacific off South America, named by fishermen centuries ago because it tends to peak around Christmas. Climate models suggest that the event now developing could be the most severe since reliable records began in the 1880s. Warmer water threatens the plankton that anchoveta feed on, and therefore the fish themselves.",
+        "In most years, the cold Humboldt Current, which flows north along the coasts of Chile and Peru, brings nutrients up from the deep and makes these waters some of the most productive on Earth. Even so, the anchoveta's history is one of dramatic ups and downs. In 1970, Peru landed more than 12 million tonnes; three years later, the catch had fallen by 88%. Recent catches have been between 2 and 4 million tonnes a year.",
+        "As the writer Geoff Mann argues in The Guardian, El Niño is only part of the story. Decades of intensive fishing have made the population far more vulnerable, and it is the combination of the two that turns a natural cycle into an economic and ecological crisis. Because Peru is by far the world's most important exporter of fishmeal, the effects will be felt well beyond its borders – in jobs, food supplies and supermarket prices."
+      ],
+      "glossary": [
+        {
+          "w": "suspending",
+          "d": "stopping something for a period of time"
+        },
+        {
+          "w": "exaggerate",
+          "d": "to say that something is bigger or more important than it really is"
+        },
+        {
+          "w": "fishmeal",
+          "d": "dried fish crushed into powder and used as food for animals or as fertiliser"
+        },
+        {
+          "w": "plankton",
+          "d": "very small plants and animals that float in the sea and are food for fish"
+        },
+        {
+          "w": "vulnerable",
+          "d": "easily harmed or damaged"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer suggest about the government's decision in paragraph 1?",
+          "options": [
+            "It was taken quickly without consulting experts.",
+            "It was difficult but justified by scientific evidence.",
+            "It was welcomed by the fishing industry.",
+            "It was only ever meant to last a few days."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What point is the writer making with the words 'very little of it is eaten as fish'?",
+          "options": [
+            "Peruvians prefer other kinds of seafood.",
+            "The fish is too small to be sold in shops.",
+            "Most of the catch is wasted.",
+            "The anchoveta's value lies mainly in its use as animal feed."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "According to paragraph 3, why is El Niño a threat to the anchoveta?",
+          "options": [
+            "It makes the water too cold for them.",
+            "It brings more fishing boats to the area.",
+            "It damages the food the fish depend on.",
+            "It only happens at Christmas."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "The figures for 1970 and 1973 are used to illustrate",
+          "options": [
+            "how much the catch can change in a short time.",
+            "how well the industry was managed in the past.",
+            "the growth of fishmeal exports.",
+            "the strength of the Humboldt Current."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does 'the two' refer to in the final paragraph?",
+          "options": [
+            "Chile and Peru",
+            "fishmeal and fish oil",
+            "jobs and food supplies",
+            "El Niño and many years of intensive fishing"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Overall, how does the article present the crisis?",
+          "options": [
+            "as a purely local problem for Peru",
+            "as a problem caused only by climate change",
+            "as a problem with consequences around the world",
+            "as a problem that will be solved by next season"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a panel discussion on how to protect fish populations in the oceans. The speakers discussed three approaches: strict limits on how much can be caught, protected areas where fishing is banned, and persuading consumers to change what they buy. Write an essay discussing two of these approaches. You should explain which approach would be more effective, giving reasons to support your opinion. Write your essay in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/news/2026/oct/15/a-perfect-storm-how-the-super-el-nino-is-devastating-the-fishing-industry"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/anchoveta-el-nino.jpg",
+        "alt": "Many fishing boats on the sea near a port",
+        "caption": "Fishing boats at Chimbote, one of Peru's main anchoveta ports (earlier photo).",
+        "credit": "Inti Runa Viajero",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Bateaux_de_p%C3%AAche_en_rade_de_Chimbote.jpg"
+      }
+    },
+    {
+      "id": "2026-10-16-leap-hour",
+      "section": "Science",
+      "country": "France",
+      "flag": "🇫🇷",
+      "level": "C1",
+      "topic": "Time and technology",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Time for a change: why the world is swapping the leap second for a leap hour",
+      "standfirst": "After 30 years of debate, the world's timekeepers have agreed on a new way to keep clocks in step with a planet that refuses to spin at a steady speed.",
+      "body": [
+        "For more than half a century, the world's clocks have occasionally been given an extra second to keep them in line with the rotation of the Earth. That arrangement is now coming to an end. On Thursday, delegates from 69 countries, meeting in Versailles, France, at a conference of the International Bureau of Weights and Measures, voted to replace the leap second with a leap hour from next year.",
+        "The problem lies in the gap between two kinds of time. Since 1967, a second has been defined not by the Earth's rotation but by atomic clocks: officially, it is 9,192,631,770 vibrations of a caesium atom. These clocks are extraordinarily precise, and modern life depends on them, from satellites and communications to electricity grids and financial trading. The planet itself, however, is a far less reliable timekeeper, as its spin is affected by its molten core, the movement of the oceans and powerful jet streams.",
+        "Overall, the Earth is slowing down, which is why 27 leap seconds have been added since 1972. Yet these small adjustments have caused real trouble. After the leap second of 2012, some computer systems could not cope with a minute lasting 61 seconds; servers froze, and websites including Reddit and LinkedIn crashed. More worryingly, the Earth's rotation has sped up over the past decade, creating a 30% chance that a negative leap second – removing a second rather than adding one – would be needed within ten years. No one has ever had to test software for that.",
+        "Under the new system, official time will be allowed to drift up to an hour away from astronomical time before any correction is made, something that is not expected to happen for thousands of years. Dr Setnam Shemar of the UK's National Physical Laboratory pointed out that people already cope perfectly well with clocks moving by an hour for daylight saving time.",
+        "Not everyone has been enthusiastic. The UK has worried about the link with Greenwich Mean Time, and Russia has raised concerns about its Glonass satellite navigation system. And as the director of the Paris centre that tracks the Earth's rotation observed, the vote does not so much solve the problem as hand it over to people in the distant future."
+      ],
+      "glossary": [
+        {
+          "w": "delegates",
+          "d": "people chosen to represent a country or group at a meeting"
+        },
+        {
+          "w": "precise",
+          "d": "very exact and accurate"
+        },
+        {
+          "w": "molten",
+          "d": "turned into liquid by very great heat"
+        },
+        {
+          "w": "drift",
+          "d": "to move slowly away from where something should be"
+        },
+        {
+          "w": "enthusiastic",
+          "d": "showing a lot of interest and excitement about something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What was decided at the conference in Versailles?",
+          "options": [
+            "to stop measuring time with atomic clocks",
+            "to replace leap seconds with a much larger, much rarer correction",
+            "to add a negative leap second next year",
+            "to abolish daylight saving time"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "In paragraph 2, the writer contrasts",
+          "options": [
+            "the precision of atomic clocks with the irregular spin of the Earth.",
+            "old and new ways of measuring distance.",
+            "the needs of satellites and electricity grids.",
+            "the Earth's molten core and its oceans."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why does the writer mention Reddit and LinkedIn?",
+          "options": [
+            "to show that leap seconds are discussed widely online",
+            "to explain how websites measure time",
+            "to give examples of problems caused by an extra second",
+            "to criticise technology companies"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What has made the issue more urgent recently?",
+          "options": [
+            "The Earth has started to slow down faster.",
+            "Atomic clocks have become less reliable.",
+            "A second had to be removed in 2012.",
+            "There is a real chance that a second may need to be taken away."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why does Dr Shemar mention daylight saving time?",
+          "options": [
+            "to show that people already adapt easily to one-hour changes",
+            "to argue that daylight saving should end",
+            "to explain how leap seconds were invented",
+            "to suggest that people need more sleep"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What point is made at the end of the article?",
+          "options": [
+            "The decision should have been made by the UK.",
+            "The vote mainly postpones the real decision.",
+            "A leap hour will be needed very soon.",
+            "Satellite systems will stop working."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (article)",
+        "task": "A science magazine for young people has invited readers to send in articles with the title 'Does precise time really matter?'. Write an article explaining how accurate time affects everyday life and technology, and whether you think most people pay enough attention to it. Write your article in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/15/times-up-for-the-leap-second-as-scientists-swap-it-for-the-leap-hour"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-16/leap-hour.jpg",
+        "alt": "An early scientific machine with metal tubes and dials in a museum",
+        "caption": "The first caesium atomic clock, built in 1955 at the UK's National Physical Laboratory, now in a museum.",
+        "credit": "Richard Ash",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Mk._1_caesium_clock_ScienceMuseum_(21007479106).jpg"
+      }
+    }
+  ]
+}
