@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Valida las unidades de secundaria (b2f, c1a) contra el formato de examen.
+"""Valida las unidades de secundaria (ket, pet, b2f, c1a) contra el formato de examen.
 
 Comprueba lo que el motor no perdona (campos que faltan, respuestas fuera de
 las opciones) y lo que el examen no perdona (una lectura de 250 palabras
@@ -20,8 +20,17 @@ def aviso(u, a, m): AVISO.append(f'{u} {a}: {m}')
 
 def words(t): return len(re.findall(r'\S+', re.sub(r'<[^>]+>', ' ', str(t or ''))))
 def norm(s): return re.sub(r'[^a-z0-9 ]', '', str(s).lower()).strip()
-LIMITES = {'b2f': {'reading': (500, 750), 'writing': (140, 190)},
+LIMITES = {'ket': {'reading': (150, 260), 'writing': (25, 50)},
+           'pet': {'reading': (280, 450), 'writing': (90, 125)},
+           'b2f': {'reading': (500, 750), 'writing': (140, 190)},
            'c1a': {'reading': (650, 900), 'writing': (220, 260)}}
+# Lo que cambia por examen (A2 Key / B1 Preliminary frente a B2/C1). None = la regla de B2/C1.
+SPEC = {
+    'ket': dict(reading_q=5, reading_opts=3, mc_cloze=(6, 3), gap_text=6, listening=(5, 150), mm=(3, 7),
+                lmc=[(5, 5), (1, 5)], lmatch_tasks=1, pics2=0, spokes2=5, gapped=None, exam_task=(6, 3), genres=('email', 'note', 'story', 'message')),
+    'pet': dict(reading_q=5, reading_opts=4, mc_cloze=(6, 4), gap_text=6, listening=(6, 250), mm=(8, 5),
+                lmc=[(7, 7), (6, 6), (1, 6)], lmatch_tasks=None, pics2=1, spokes2=0, gapped=(5, 8), exam_task=(5, 3), genres=('email', 'article', 'story')),
+}
 
 def sesgo(u, a, idx, n_opts):
     """La respuesta correcta no puede caer casi siempre en la misma letra."""
@@ -36,15 +45,16 @@ def revisa(u, act, nivel):
     if 'outputs' not in act: grave(u, tag, 'falta outputs')
     exam = t in ('reading', 'mc_cloze', 'word_formation', 'gapped_text', 'multiple_matching', 'listening', 'listening_mc', 'listening_match', 'key_transform', 'gap_text', 'writing')
     if exam and not act.get('tips'): aviso(u, tag, 'sin tips (What to expect / How to go about it)')
-    lim = LIMITES.get(nivel, LIMITES['c1a'])
+    lim = LIMITES.get(nivel, LIMITES['c1a']); sp = SPEC.get(nivel)
 
     if t == 'reading':
         n = words(d.get('text'))
         if not (lim['reading'][0] <= n <= lim['reading'][1] + 100): grave(u, tag, f'texto de {n} palabras (se esperan {lim["reading"][0]}–{lim["reading"][1]})')
         qs = d.get('questions') or []
-        if len(qs) != 6: aviso(u, tag, f'{len(qs)} preguntas (Part 5 tiene 6)')
+        rq, ro = (sp['reading_q'], sp['reading_opts']) if sp else (6, 4)
+        if len(qs) != rq: aviso(u, tag, f'{len(qs)} preguntas (esta parte tiene {rq})')
         for i, q in enumerate(qs):
-            if len(q.get('options', [])) != 4: grave(u, tag, f'pregunta {i+1}: {len(q.get("options", []))} opciones (deben ser 4)')
+            if len(q.get('options', [])) != ro: grave(u, tag, f'pregunta {i+1}: {len(q.get("options", []))} opciones (deben ser {ro})')
             if not (0 <= q.get('answer', -1) < len(q.get('options', []))): grave(u, tag, f'pregunta {i+1}: answer fuera de rango')
             if len(set(map(norm, q.get('options', [])))) != len(q.get('options', [])): grave(u, tag, f'pregunta {i+1}: opciones repetidas')
         sesgo(u, tag, [q.get('answer') for q in qs], 4)
@@ -53,10 +63,11 @@ def revisa(u, act, nivel):
     elif t == 'mc_cloze':
         gaps = re.findall(r'\{(\d+)\}', d.get('text', '')); items = d.get('items') or []
         if len(gaps) != len(items): grave(u, tag, f'{len(gaps)} huecos y {len(items)} items')
-        if len(items) != 8: aviso(u, tag, f'{len(items)} items (Part 1 tiene 8)')
+        mn, mo = sp['mc_cloze'] if sp else (8, 4)
+        if len(items) != mn: aviso(u, tag, f'{len(items)} items (esta parte tiene {mn})')
         for i, it in enumerate(items):
-            if len(it.get('options', [])) != 4: grave(u, tag, f'item {i+1}: {len(it.get("options", []))} opciones')
-            if not (0 <= it.get('answer', -1) < 4): grave(u, tag, f'item {i+1}: answer fuera de rango')
+            if len(it.get('options', [])) != mo: grave(u, tag, f'item {i+1}: {len(it.get("options", []))} opciones (deben ser {mo})')
+            if not (0 <= it.get('answer', -1) < mo): grave(u, tag, f'item {i+1}: answer fuera de rango')
         sesgo(u, tag, [it.get('answer') for it in items], 4)
 
     elif t == 'word_formation':
@@ -72,7 +83,9 @@ def revisa(u, act, nivel):
         gaps = re.findall(r'\{(\d+)\}', d.get('text', '')); paras = d.get('paragraphs') or []; ans = d.get('answers') or []
         letras = [p.get('letter') for p in paras]
         if len(gaps) != len(ans): grave(u, tag, f'{len(gaps)} huecos y {len(ans)} respuestas')
-        if len(paras) != len(ans) + 1: aviso(u, tag, f'{len(paras)} párrafos para {len(ans)} huecos (debe sobrar uno)')
+        gg, gp = (sp['gapped'] or (len(ans), len(ans) + 1)) if sp else (len(ans), len(ans) + 1)
+        if sp and len(ans) != gg: aviso(u, tag, f'{len(ans)} huecos (esta parte tiene {gg})')
+        if len(paras) != gp: aviso(u, tag, f'{len(paras)} opciones para {len(ans)} huecos (deben ser {gp})')
         if len(set(ans)) != len(ans): grave(u, tag, 'una letra se usa dos veces')
         for a in ans:
             if a not in letras: grave(u, tag, f'respuesta {a} no es un párrafo')
@@ -82,21 +95,24 @@ def revisa(u, act, nivel):
     elif t == 'multiple_matching':
         secs = d.get('sections') or []; qs = d.get('questions') or []
         letras = [s.get('letter') for s in secs]
-        if len(secs) < 4: grave(u, tag, f'{len(secs)} secciones (mínimo 4)')
+        if sp and len(secs) != sp['mm'][0]: grave(u, tag, f'{len(secs)} secciones (esta parte tiene {sp["mm"][0]})')
+        if not sp and len(secs) < 4: grave(u, tag, f'{len(secs)} secciones (mínimo 4)')
         for i, q in enumerate(qs):
             if q.get('answer') not in letras: grave(u, tag, f'pregunta {i+1}: respuesta {q.get("answer")} no es una sección')
         n = sum(words(s.get('text')) for s in secs)
         if n < lim['reading'][0] - 100: grave(u, tag, f'secciones suman {n} palabras')
         c = Counter(q.get('answer') for q in qs)
         if qs and c.most_common(1)[0][1] > len(qs) / 2: aviso(u, tag, f'la sección {c.most_common(1)[0][0]} responde {c.most_common(1)[0][1]}/{len(qs)}')
-        if len(qs) not in (4, 10): aviso(u, tag, f'{len(qs)} preguntas (P6 tiene 4, P8 tiene 10)')
+        if sp and len(qs) != sp['mm'][1]: aviso(u, tag, f'{len(qs)} preguntas (esta parte tiene {sp["mm"][1]})')
+        if not sp and len(qs) not in (4, 10): aviso(u, tag, f'{len(qs)} preguntas (P6 tiene 4, P8 tiene 10)')
 
     elif t == 'listening':
         if not act.get('audio'): grave(u, tag, 'sin audio')
         sc = norm(d.get('script', '')); qs = d.get('questions') or []
         if not sc: grave(u, tag, 'sin script')
-        if words(d.get('script')) < 350: aviso(u, tag, f'guion de {words(d.get("script"))} palabras (Part 2 son ~3 min ≈ 400+)')
-        if len(qs) != 8: aviso(u, tag, f'{len(qs)} huecos (Part 2 tiene 8)')
+        lg, lw = sp['listening'] if sp else (8, 350)
+        if words(d.get('script')) < lw: aviso(u, tag, f'guion de {words(d.get("script"))} palabras (mínimo {lw})')
+        if len(qs) != lg: aviso(u, tag, f'{len(qs)} huecos (esta parte tiene {lg})')
         for i, q in enumerate(qs):
             if '…' not in q.get('q', ''): grave(u, tag, f'hueco {i+1}: la frase no lleva …')
             if norm(q.get('answer', '')) not in sc: grave(u, tag, f'hueco {i+1}: el audio no dice «{q.get("answer")}»')
@@ -109,7 +125,8 @@ def revisa(u, act, nivel):
         for i, q in enumerate(todas):
             if len(q.get('options', [])) not in (3, 4): grave(u, tag, f'pregunta {i+1}: {len(q.get("options", []))} opciones')
             if not (0 <= q.get('answer', -1) < len(q.get('options', []))): grave(u, tag, f'pregunta {i+1}: answer fuera de rango')
-        if not ((len(ex) == 3 and len(todas) == 6) or (len(ex) == 1 and len(todas) == 6)): aviso(u, tag, f'{len(ex)} extractos / {len(todas)} preguntas (P1: 3×2, P3: 1×6)')
+        formas = sp['lmc'] if sp else [(3, 6), (1, 6)]
+        if (len(ex), len(todas)) not in formas: aviso(u, tag, f'{len(ex)} extractos / {len(todas)} preguntas (se esperan {" o ".join(f"{a}×{b//a}" for a, b in formas)})')
         sesgo(u, tag, [q.get('answer') for q in todas], 4)
         hablantes = set(re.findall(r'^([A-Z][A-Za-z0-9 .\'-]{0,40}):', d.get('script', ''), re.M))
         if len(hablantes) < 2: aviso(u, tag, 'el guion tiene una sola voz')
@@ -118,6 +135,8 @@ def revisa(u, act, nivel):
         if not act.get('audio'): grave(u, tag, 'sin audio')
         if not d.get('script'): grave(u, tag, 'sin script')
         spk = d.get('speakers') or ['1', '2', '3', '4', '5']
+        nt = sp['lmatch_tasks'] if sp else 2
+        if nt and len(d.get('tasks') or []) != nt: aviso(u, tag, f'{len(d.get("tasks") or [])} tareas (esta parte tiene {nt})')
         for ti, tk in enumerate(d.get('tasks') or []):
             opts = tk.get('options') or []; ans = tk.get('answers') or []
             if len(opts) != 8: aviso(u, tag, f'tarea {ti+1}: {len(opts)} opciones (son 8)')
@@ -144,8 +163,9 @@ def revisa(u, act, nivel):
     elif t == 'gap_text':
         gaps = re.findall(r'\{(\d+)\}', d.get('text', '')); ans = d.get('answers') or []
         if len(gaps) != len(ans): grave(u, tag, f'{len(gaps)} huecos y {len(ans)} respuestas')
-        if nivel in ('b2f', 'c1a') and d.get('box'): grave(u, tag, 'open cloze con banco de palabras: en B2/C1 el hueco se escribe')
-        if len(ans) != 8: aviso(u, tag, f'{len(ans)} huecos (Part 2 tiene 8)')
+        if d.get('box'): grave(u, tag, 'open cloze con banco de palabras: en el examen el hueco se escribe')
+        gn = sp['gap_text'] if sp else 8
+        if len(ans) != gn: aviso(u, tag, f'{len(ans)} huecos (esta parte tiene {gn})')
         for i, a in enumerate(ans):
             if ' ' in a.strip(): grave(u, tag, f'hueco {i+1}: «{a}» no es una palabra')
         c = Counter(map(norm, ans))
@@ -157,14 +177,16 @@ def revisa(u, act, nivel):
         w = d.get('words') or lim['writing']
         m = words(re.sub(r'<p><i>.*?</i></p>', '', d.get('model', ''), count=1, flags=re.S))
         if not (w[0] - 10 <= m <= w[1] + 15): aviso(u, tag, f'el modelo tiene {m} palabras (tarea {w[0]}–{w[1]})')
-        if d.get('genre') not in ('essay', 'proposal', 'report', 'review', 'letter', 'email', 'formal letter', 'informal email', 'formal email', 'article', 'story'): aviso(u, tag, f'genre raro: {d.get("genre")}')
+        ok_g = sp['genres'] if sp else ('essay', 'proposal', 'report', 'review', 'letter', 'email', 'formal letter', 'informal email', 'formal email', 'article', 'story')
+        if d.get('genre') not in ok_g: aviso(u, tag, f'genre raro: {d.get("genre")}')
 
     elif t == 'pairwork':
         parts = d.get('parts')
         if parts:
             for p in parts:
-                need_pics = 2 if nivel == 'b2f' else 3
-                if p.get('part') == 2 and len(p.get('pictures', [])) != need_pics: grave(u, tag, 'Part 2 sin %d fotos' % need_pics)
+                need_pics = sp['pics2'] if sp else (2 if nivel == 'b2f' else 3)
+                if p.get('part') == 2 and need_pics and len(p.get('pictures', [])) != need_pics: grave(u, tag, 'Part 2 sin %d fotos' % need_pics)
+                if p.get('part') == 2 and sp and sp['spokes2'] and len(p.get('spokes', [])) != sp['spokes2']: grave(u, tag, 'Part 2 sin cinco ideas (tarjeta de tema)')
                 if p.get('part') == 3 and len(p.get('spokes', [])) != 5: grave(u, tag, 'Part 3 sin cinco ideas')
                 if p.get('part') in (1, 4) and len(p.get('prompts', [])) < 3: grave(u, tag, f'Part {p.get("part")} con menos de 3 preguntas')
         elif not d.get('text'): grave(u, tag, 'pairwork sin texto')
@@ -184,8 +206,13 @@ def revisa(u, act, nivel):
         if len(pares) < 8: aviso(u, tag, f'{len(pares)} pares')
         if len(set(norm(p['left']) for p in pares)) != len(pares): grave(u, tag, 'palabra repetida')
     elif t == 'exam_task':
-        for i, it in enumerate(d.get('items') or []):
+        its = d.get('items') or []
+        if sp and len(its) != sp['exam_task'][0]: aviso(u, tag, f'{len(its)} avisos (esta parte tiene {sp["exam_task"][0]})')
+        for i, it in enumerate(its):
+            if sp and len(it.get('options', [])) != sp['exam_task'][1]: grave(u, tag, f'item {i+1}: {len(it.get("options", []))} opciones (deben ser {sp["exam_task"][1]})')
             if not (0 <= it.get('answer', -1) < len(it.get('options', []))): grave(u, tag, f'item {i+1}: answer fuera de rango')
+        if sp: sesgo(u, tag, [it.get('answer') for it in its], sp['exam_task'][1])
+        if not d.get('instructions'): grave(u, tag, 'falta data.instructions')
     else:
         aviso(u, tag, f'tipo {t} sin reglas de validación')
 
@@ -202,20 +229,25 @@ def unidad(path):
     if len(set(codes)) != len(codes): grave(u, '-', 'códigos de actividad repetidos')
     if codes != sorted(codes): aviso(u, '-', 'las actividades no van en orden de letra')
     tipos = Counter(a.get('type') for a in U.get('activities', []))
-    if nivel in ('c1a', 'b2f'):
+    if nivel in ('c1a', 'b2f', 'ket', 'pet'):
         for need in ('writing', 'pairwork'):
             if not tipos.get(need): grave(u, '-', f'la unidad no tiene {need}')
-        if not any(tipos.get(t) for t in ('reading', 'gapped_text', 'multiple_matching')): grave(u, '-', 'sin tarea de Reading')
+        if not any(tipos.get(t) for t in ('reading', 'gapped_text', 'multiple_matching', 'exam_task')): grave(u, '-', 'sin tarea de Reading')
+        if nivel in ('ket', 'pet') and not tipos.get('reading'): grave(u, '-', 'sin el artículo de lectura (Part 3)')
+        if nivel in ('ket', 'pet') and tipos.get('grammar_box', 0) != 2: aviso(u, '-', f'{tipos.get("grammar_box", 0)} cajas de gramática (deben ser 2)')
         if not any(tipos.get(t) for t in ('listening', 'listening_mc', 'listening_match')): grave(u, '-', 'sin tarea de Listening')
         uoe = sum(tipos.get(t, 0) for t in ('mc_cloze', 'gap_text', 'word_formation', 'key_transform'))
-        if uoe < 2: aviso(u, '-', f'solo {uoe} tarea(s) de Use of English')
+        if nivel in ('b2f', 'c1a') and uoe < 2: aviso(u, '-', f'solo {uoe} tarea(s) de Use of English')
+        if nivel in ('ket', 'pet'):
+            partes = sum(tipos.get(t, 0) for t in ('exam_task', 'multiple_matching', 'gapped_text', 'mc_cloze', 'gap_text'))
+            if partes < 2: aviso(u, '-', f'solo {partes} parte(s) de Reading además del artículo (deben ser 2)')
     for a in U.get('activities', []):
         revisa(u, a, nivel)
         if a.get('audio') and not re.match(rf'^{nivel}/u\d\d-[a-z]\.mp3$', a['audio']): aviso(u, a.get('code'), f'nombre de audio fuera de convención: {a["audio"]}')
 
 if __name__ == '__main__':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-    arg = sys.argv[1] if len(sys.argv) > 1 else 'content/c1a'
+    arg = sys.argv[1] if len(sys.argv) > 1 else 'content/c1a'  # también content/ket, content/pet, content/b2f
     files = [arg] if arg.endswith('.json') else sorted(glob.glob(os.path.join(arg, 'unit-*.json')))
     for f in files: unidad(f)
     for m in GRAVE: print('GRAVE ', m)
