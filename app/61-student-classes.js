@@ -598,7 +598,7 @@ function irAMiUnidad(){
 /* Colegio de muestra: solo sus rutas. Escribir #cambridge, #library… en la
    barra abría pantallas de NIS; ahora cae en Home. */
 const SAMPLE_ROUTES = new Set(['home','english','practice','mocks','tools','phrasal','collocations','idioms','wordform',
-                               'results','news','caminfo','account']);
+                               'results','news','caminfo','account','help']);
 function _navRender(k){
   let m;
   if(typeof schoolIsSample==='function' && schoolIsSample() && !SAMPLE_ROUTES.has(k)){ studentHub(); return true; }
@@ -624,7 +624,8 @@ function _navRender(k){
   if(m=/^classes_(g\d+)_readers_report$/.exec(k)){ studentReaderReport(m[1]); return true; }
   if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
-  if(k==='help'){ _setNav('help'); $('#main').innerHTML = ayudaBody(); return true; }
+  // La muestra tiene su propia ayuda (app/64-sample.js): la de NIS habla de NIS.
+  if(k==='help'){ _setNav('help'); $('#main').innerHTML = (typeof schoolIsSample==='function' && schoolIsSample()) ? sampleHelpBody() : ayudaBody(); return true; }
   // 'english' pinta ahora exactamente Home (alias): los ?back=./#english
   // viejos de las paginas de actividades siguen cayendo en un sitio con
   // sentido. 'myclasses' y 'tools' son las dos claves nuevas de la barra.
@@ -685,6 +686,8 @@ function studentMocks(){
   // mock (mock mode); los demas dias no hay nada que enseñarle aqui.
   // Salvo en el colegio de muestra, que enseña su MOCK 1 por destreza.
   if(_isStudent() && !schoolIsSample()){ studentHub(); return; }
+  // Muestra: nivel elegido arriba y una fila por test (app/64-sample.js).
+  if(schoolIsSample()) return samplePractice('mock');
   _setNav('mocks');
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
     <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'MOCK 1 and MOCK 2 of each level' : 'MOCK 1 and MOCK 2'} in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.</p>
@@ -702,6 +705,7 @@ function studentPractice(){
   // Desde el menu se llega aqui sin pasar por la tarjeta de English, que es
   // la que ponia el candado: se comprueba el mismo nodo (english.practice).
   if(_isStudent() && !nodeVisible(CAMBRIDGE_PRACTICE_NODE)){ _lockedView('', '🎯 Practice Tests'); return; }
+  if(schoolIsSample()) return samplePractice('practice');   // nivel + fila por test (app/64-sample.js)
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
     <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'Practice 1 and 2 of each level (A2 · B1 · B2 · C1)' : 'Practice tests 1, 2 and 3'} in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.</p>
     <div class="grid cols-3" style="margin-top:12px">
@@ -967,6 +971,8 @@ async function _sampleResults(uid){
 async function studentResults(){
   // Fase 2 WP-B: My Progress es ahora de primer nivel (peer de Home), sin
   // «atrás» — igual que Cambridge, Mocks o Practice Tests.
+  // Muestra: progreso visual (destrezas, escala Cambridge, gráfico) en app/64-sample.js.
+  if(schoolIsSample()) return sampleProgress();
   _setNav('results');
   const p=state.profile;
   const back = '';

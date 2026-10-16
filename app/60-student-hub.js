@@ -56,9 +56,14 @@ async function renderStudent(initial){
     // estaban identicas en Home, asi que era una pestaña que no llevaba a
     // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
     {key:'results',label:'📊 My Progress'},
-    ...(typeof schoolIsSample==='function' && schoolIsSample() ? [] : [{key:'help',label:'❓ Help'}]),
+    // La muestra vuelve a tener Help (16-oct-2026), pero con su propio cuerpo
+    // (sampleHelpBody, app/64-sample.js): la ayuda de NIS habla de NIS.
+    {key:'help',label:'❓ Help'},
     {key:'account',label:'👤 My account'},
-  ], initial||'home', `<div class="center muted">Loading…</div>`);
+  ], initial||'home', `<div class="center muted">Loading…</div>`) + _smpTabbarHTML();
+  // La clase en <body> acota los estilos de la muestra (sample.css) y sobrevive
+  // a los repintados de la SPA, que solo cambian #main.
+  document.body.classList.toggle('coh-sample', typeof schoolIsSample==='function' && schoolIsSample() && !mockModeActive());
   window.__nisPaso='alumno:shell';
   // Toda la navegación pasa por window._nav para que la ruta quede en el hash
   // (deep links desde las páginas de actividades + "atrás" del navegador).
@@ -315,26 +320,16 @@ function _pintaPeriodico(id){
     .catch(() => {});
 }
 
-/* Portada del colegio de muestra (sample.cohasset.pe, 15-oct-2026): solo las
-   piezas que lleva la muestra. Las pistas de clases, Cambridge, biblioteca y
-   MUN de la portada normal no miran las apps del colegio, y aquí están apagadas. */
-function _sampleHub(p){
-  const hay = (ks)=>ks.some(k=>schoolContentOK(k));
-  const cards = [];
-  if(hay(['practice.reading','practice.listening','practice.writing']))
-    cards.push(_hubCard('🎯','Practice Tests','Practice 1 and 2 of each level — A2 Key, B1 Preliminary, B2 First, C1 Advanced — in the digital Cambridge format, marked at once.',"window._nav('practice')"));
-  if(hay(['mock.reading','mock.listening','mock.writing']))
-    cards.push(_hubCard('🎓','Mocks','MOCK 1 and MOCK 2 of each level: a full timed paper per skill. Writing is marked by the AI examiner with the Cambridge criteria.',"window._nav('mocks')"));
-  if(hay(['tool.phrasal','tool.collocations','tool.idioms','tool.wordform']))
-    cards.push(_hubCard('🧰','Practice tools','Phrasal verbs, collocations, idioms and word formation: two blocks of every level to study, practise and play.',"window._nav('tools')"));
-  if(schoolContentOK('news.daily'))
-    cards.push(_hubCard('📰',newsName(),'A daily newspaper at four levels (A2 · B1 · B2 · C1) with Cambridge-style questions.',"window._nav('news')"));
-  cards.push(_hubCard('📘','Cambridge info','Every exam from A2 Key to C2 Proficiency: papers, timing, scoring and the Cambridge Scale.',"window._nav('caminfo')"));
-  IELTS_PIECES.filter(x=>schoolContentOK(x.key)).forEach(x=>cards.push(_hubCard(x.emoji,x.title,x.desc,`window._ssoCohasset('${x.href}')`)));
-  cards.push(_hubCard('📊','My progress','Your results in practice tests and mocks.',"window._nav('results')"));
-  $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
-    <p class="muted" style="margin-top:-6px">This is a <b>sample</b> of Cohasset Schools: a selection of exams and tools, each working from start to finish. Every attempt is saved in My progress.</p>
-    <div class="grid cols-3" style="margin-top:16px">${cards.join('')}</div>`;
+/* Portada del colegio de muestra (sample.cohasset.pe): _sampleHub vive ahora
+   en app/64-sample.js, con el resto de vistas de la muestra (16-oct-2026). */
+/* Móvil (≤760 px) en la muestra: barra inferior con las cuatro puertas que más
+   se usan; el resto sigue en el cajón ☰. Lleva data-nav, así que bindNav la
+   cablea y _setNav la marca igual que la barra lateral. Fuera de la muestra
+   (o en día de mock) no se pinta nada. */
+function _smpTabbarHTML(){
+  if(!(typeof schoolIsSample==='function' && schoolIsSample()) || mockModeActive()) return '';
+  const it = (k,ico,l)=>`<div class="smp-tab" data-nav="${k}" tabindex="0" role="button"><span aria-hidden="true">${ico}</span>${l}</div>`;
+  return `<nav class="smp-tabbar" aria-label="Main">${it('home','🏠','Home')}${it('practice','🎯','Practice')}${it('mocks','🎓','Mocks')}${it('results','📊','Progress')}</nav>`;
 }
 function studentHub(){
   if(mockModeActive()) return mockModeHub();   // dia de mock: solo la tarjeta del mock

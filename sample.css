@@ -1,0 +1,168 @@
+/* ===== Colegio de muestra (sample.cohasset.pe) — 16-oct-2026 =====
+   Estilos de las vistas de app/64-sample.js. Todas las clases llevan el
+   prefijo smp- y solo las pinta la muestra, así que NIS no ve ningún cambio;
+   lo que depende del contexto (barra inferior en móvil) cuelga además de
+   body.coh-sample. Solo tokens de brand.css: el tema oscuro sale solo. */
+
+.smp-sub{margin-top:-6px}
+.smp-ap{font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+
+/* Fichas de nivel (A2 · B1 · B2 · C1) */
+.smp-levelbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+.smp-levelbar-l{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--grey)}
+.smp-levels{display:flex;gap:6px;flex-wrap:wrap}
+.smp-lv{border:1.5px solid var(--line);background:var(--white);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:.86rem;cursor:pointer;transition:.15s;line-height:1.2}
+.smp-lv b{color:var(--blue-d)}
+.smp-lv span{color:var(--grey)}
+.smp-lv:hover{border-color:var(--blue)}
+.smp-lv.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.smp-lv.on b,.smp-lv.on span{color:#fff}
+
+/* Pastillas de estado */
+.smp-pill{display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--line);color:var(--grey);border-radius:999px;padding:3px 10px;font-size:.76rem;font-weight:600;white-space:nowrap}
+.smp-pill.ok{background:rgba(22,163,74,.10);border-color:rgba(22,163,74,.35);color:var(--good)}
+.smp-pill.demo{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.45);color:#9a5b00;vertical-align:middle;margin-left:6px}
+:root[data-theme="dark"] .smp-pill.demo{color:var(--warn)}
+
+/* Practice / Mocks: una tarjeta por destreza, una fila por test */
+.smp-skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.smp-skill{margin-bottom:0;display:flex;flex-direction:column}
+.smp-skill-h{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.smp-skill-h h2{margin:0 0 2px;color:var(--blue-d);font-size:1.12rem}
+.smp-skill-h .muted{font-size:.84rem;line-height:1.35}
+.smp-skill-h .ico3d{flex:none}
+.smp-tests{list-style:none;margin:0;padding:0}
+.smp-test{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.smp-test-name{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.smp-test-name b{white-space:nowrap}
+.smp-test-name .muted{font-size:.8rem}
+.smp-test-go{flex:none;text-decoration:none;min-width:84px;text-align:center}
+.smp-test-note{color:var(--grey);font-size:.88rem;display:block}
+
+/* Portada: banda del candidato */
+.smp-band{display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  background:linear-gradient(135deg,var(--white),var(--bg));border-top:5px solid var(--blue)}
+.smp-band-main{flex:1 1 360px;min-width:0}
+.smp-band-main h1{margin:0 0 4px}
+.smp-band-main p{margin:0}
+.smp-band-main .smp-levelbar{margin:14px 0 12px}
+.smp-band-ring{display:flex;align-items:center;gap:12px;flex:none}
+.smp-band-ring .muted{font-size:.88rem;line-height:1.3}
+.smp-ring{width:112px;height:112px}
+.smp-ring circle{fill:none;stroke-width:9}
+.smp-ring .tr{stroke:var(--line)}
+.smp-ring .pr{stroke:var(--blue);stroke-linecap:round;transition:stroke-dasharray .6s}
+.smp-ring .n{font-size:26px;font-weight:700;fill:var(--blue-d)}
+.smp-ring .d{font-size:11px;fill:var(--grey)}
+
+/* Portada: tarjetas homogéneas */
+.smp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;align-items:stretch}
+.smp-card{margin-bottom:0;display:flex;flex-direction:column;align-items:flex-start;cursor:pointer;transition:transform .16s,border-color .16s,box-shadow .2s;padding:20px}
+.smp-card:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 14px 28px -18px rgba(36,76,119,.45)}
+.smp-card-ico{height:64px;margin-bottom:8px}
+.smp-card h2{margin:0 0 4px;color:var(--blue-d);font-size:1.12rem}
+.smp-card-d{font-size:.86rem;line-height:1.4}
+.smp-card-meta{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 14px}
+.smp-cta{margin-top:auto;display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;font-weight:700;font-size:.9rem;border-radius:var(--r-sm);padding:9px 16px}
+.smp-card:hover .smp-cta{background:var(--blue-d)}
+:root[data-theme="dark"] .smp-card:hover .smp-cta{background:var(--blue)}
+/* .btn.ghost lleva fondo #fff literal en brand.css: en oscuro, con el texto
+   ya aclarado, quedaba ilegible. Solo en las vistas de la muestra. */
+:root[data-theme="dark"] body.coh-sample .btn.ghost{background:transparent}
+
+/* Tour guiado */
+.smp-tour-cap{position:fixed;inset:0;z-index:705;background:transparent}
+.smp-tour-on{position:relative;z-index:700;border-radius:var(--r);box-shadow:0 0 0 4px var(--blue),0 0 0 9999px rgba(10,18,36,.58)!important;transform:none!important}
+.smp-tour-bubble{position:fixed;z-index:710;width:min(360px,calc(100vw - 28px));background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.35);padding:16px 18px}
+.smp-tour-bubble.docked{left:14px;right:14px;bottom:84px;width:auto}
+.smp-tour-bubble h3{margin:2px 0 6px;color:var(--blue-d);font-size:1.05rem}
+.smp-tour-bubble p{margin:0 0 12px;font-size:.92rem;line-height:1.45}
+.smp-tour-step{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--grey)}
+.smp-tour-btns{display:flex;gap:8px;align-items:center}
+.smp-tour-btns .sp{flex:1}
+
+/* My Progress */
+.smp-demo-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.smp-empty{text-align:center;padding:36px 22px}
+.smp-empty-ico{font-size:3.4rem;line-height:1;margin-bottom:6px}
+.smp-empty h2{margin:0 0 6px}
+.smp-empty p{max-width:460px;margin:0 auto 16px}
+.smp-empty-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.smp-sks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:18px}
+.smp-sk{margin-bottom:0}
+.smp-sk-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.smp-sk-h .muted{margin-left:auto;font-size:.8rem}
+.smp-best{font-size:2rem;font-weight:700;color:var(--blue-d);margin:6px 0 4px}
+.smp-bar{position:relative;height:12px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:visible}
+.smp-bar span{display:block;height:100%;background:var(--warn);border-radius:999px}
+.smp-bar span.ok{background:var(--good)}
+.smp-bar i{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink);opacity:.55;margin-left:-1px}
+.smp-bar-l{font-size:.8rem;margin-top:6px;line-height:1.35}
+.smp-est{font-size:1.15rem;margin:0 0 10px}
+.smp-est b{color:var(--blue-d);font-size:1.4rem}
+.smp-est .muted{font-size:.85rem}
+.smp-scale{position:relative;padding:30px 0 4px;--lab:96px}
+.smp-row{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);align-items:center;margin-bottom:5px}
+.smp-row-l{font-size:.78rem;color:var(--blue-dd);display:flex;gap:6px;align-items:baseline;padding-right:8px}
+.smp-row-l .rng{color:var(--grey);font-size:.72rem}
+.smp-lane{position:relative;height:24px;background:var(--bg);border-radius:6px}
+.smp-band-b{position:absolute;top:0;bottom:0;background:var(--lila);border-radius:6px}
+.smp-dot{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--blue-d);border:2px solid var(--white)}
+/* La línea del alumno cruza todas las pistas: vive en una capa a la altura
+   de las pistas, desplazada lo que ocupa la columna de rótulos. */
+.smp-track{position:absolute;top:0;bottom:27px;left:var(--lab);right:0;pointer-events:none;z-index:1}
+.smp-mark{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--blue)}
+.smp-mark span{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.smp-axis{position:relative;height:18px;margin-top:4px;border-top:1px solid var(--line)}
+.smp-axis span{position:absolute;top:2px;transform:translateX(-50%);font-size:.7rem;color:var(--grey)}
+.smp-note{font-size:.8rem;margin:10px 0 0}
+.smp-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px}
+.smp-two .card{margin-bottom:0}
+.smp-two + .card{margin-top:18px}
+.smp-chart{width:100%;height:auto;display:block}
+.smp-chart .ln{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linejoin:round}
+.smp-chart .pt{fill:var(--blue-d);stroke:var(--white);stroke-width:1.5}
+.smp-chart .gl{stroke:var(--line);stroke-width:1}
+.smp-chart .pass{stroke:var(--good);stroke-width:1.5;stroke-dasharray:4 4}
+.smp-chart .ax{font-size:10px;fill:var(--grey)}
+.smp-legend{font-size:.78rem;margin-top:6px}
+.smp-legend .k{display:inline-block;width:16px;height:0;border-top:2.5px solid var(--blue);vertical-align:middle}
+.smp-legend .k.pass{border-top:2px dashed var(--good)}
+.smp-tbl-w{overflow-x:auto}
+.smp-tbl table{width:100%}
+
+/* Ayuda */
+.smp-help-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.smp-help-q{padding:0;margin-bottom:10px}
+.smp-help-q summary{cursor:pointer;padding:16px 20px;font-weight:700;color:var(--blue-d);list-style-position:inside}
+.smp-help-a{padding:0 20px 14px;line-height:1.55}
+.smp-help-a p{margin:0 0 8px}
+
+/* Barra inferior (móvil, solo la muestra) */
+.smp-tabbar{display:none}
+@media(max-width:760px){
+  body.coh-sample .smp-tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:600;background:var(--white);
+    border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(36,76,119,.10);padding:4px 4px calc(4px + env(safe-area-inset-bottom))}
+  body.coh-sample .smp-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border-radius:10px;
+    font-size:.7rem;font-weight:600;color:var(--grey);cursor:pointer}
+  body.coh-sample .smp-tab span{font-size:1.3rem;line-height:1}
+  body.coh-sample .smp-tab.active{color:var(--blue-d);background:var(--bg)}
+  body.coh-sample .main{padding-bottom:88px}
+  .smp-two{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){
+  body.coh-sample .main{padding:16px 14px 88px}
+  .smp-band{gap:14px;padding:18px 16px}
+  .smp-card,.smp-skill,.smp-sk{padding:18px 16px}
+  .smp-band-ring{width:100%}
+  .smp-cards,.smp-skills,.smp-sks{grid-template-columns:minmax(0,1fr)}
+  .smp-cta{width:100%;justify-content:center;padding:11px 16px}
+  .smp-card{align-items:stretch}
+  .smp-card-ico{align-self:flex-start}
+  .smp-scale{--lab:30px}
+  .smp-row-l .rng{display:none}
+  .smp-test{flex-wrap:wrap}
+  .smp-test-go{width:100%;padding:10px}
+  .smp-tour-btn{width:100%}
+  .smp-tbl th,.smp-tbl td{padding:9px 5px;font-size:.82rem}
+}
