@@ -274,8 +274,22 @@ async function loadProfile(){
   if(!data){ state.profile=null; return; }
   state.profile = data;
   sincronizaIdioma(data);
+  _avisoSample();
   try{ await withTimeout(loadReaderAssignments(), 8000, 'READER_ASSIGNMENTS_TIMEOUT'); }
   catch(e){ console.warn('Reader assignments unavailable during startup', e); }
+}
+/* Colegio de muestra (16-oct-2026): avisa al admin de Cohasset Schools de que
+   alguien lo está usando. El backend de cohasset.pe comprueba con el token que
+   la cuenta es del sample y deja un aviso (y un correo) cada 3 h por cuenta. */
+function _avisoSample(){
+  try{
+    if(!/^sample\./.test(location.hostname) && !(window.schoolIsSample && schoolIsSample())) return;
+    if(sessionStorage.getItem('cohSampleAviso')) return;
+    const t = state.session && state.session.access_token; if(!t) return;
+    sessionStorage.setItem('cohSampleAviso','1');
+    fetch('https://cohasset.pe/api/sso/school/activity',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({token:t,event:'session'})}).catch(()=>{});
+  }catch(_){}
 }
 /* El idioma de la interfaz (botón 🌐, nis-i18n.js) se guarda en
    profiles.ui_lang para que siga al alumno de un equipo a otro. Al entrar,

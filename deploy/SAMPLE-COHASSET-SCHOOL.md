@@ -9,13 +9,16 @@ con una cuenta de este colegio ve **solo** esta selección, cada pieza de punta 
 | 🎓 Mocks | MOCK 1 y MOCK 2 de cada nivel en Reading, Listening y Writing (Writing corregido por el examinador de IA) |
 | 🧰 Practice tools | Phrasal verbs, Collocations, Idioms y Word formation: los dos primeros bloques de cada nivel |
 | ✍️ IELTS Writing Studio | En cohasset.pe, con la sesión del colegio (SSO) |
-| 📊 My progress | Sus resultados, guardados **solo en el navegador** (16-oct-2026) |
+| 📰 The Cohasset Times | El periódico diario (A2-C1) |
+| 📘 Cambridge info | Formato, duración y puntuación de cada examen (sin grados ni apps de NIS) |
+| 📊 My progress | Sus resultados (tabla `sample_attempts`) |
 
-**Sin resultados en la base.** `settings.local_results = true`: los intentos de las
-cuentas sample no se guardan en Supabase (trigger `trg_local_results` en `exam_attempts`
-y `activity_attempts`, migración `2026-10-16_01`), ni van al archivo de textos (webhook)
-ni por correo. El portal y los motores los guardan en `localStorage`
-(`cohSampleResults:<uid>`) y My Progress los lee de ahí. Con `sample.cohasset.pe` los
+**Intentos aparte de los resultados de los colegios.** `settings.local_results = true`: el
+trigger `trg_local_results` desvía a `sample_attempts` lo que las cuentas sample escriben en
+`exam_attempts` y `activity_attempts` (migraciones `2026-10-16_01` y `_02`); no van al archivo
+de textos (webhook) ni por correo. **Aviso al admin:** al entrar (una vez por cuenta cada 3 h)
+y al terminar cada examen, `POST cohasset.pe/api/sso/school/activity` deja una notificación en
+la bandeja de admin_sistema; la de entrada manda además un correo a ADMIN_EMAIL. Con `sample.cohasset.pe` los
 mocks llevan la marca Cohasset Schools (`mocks-cambridge/config.js`).
 
 ## Crear más cuentas sample

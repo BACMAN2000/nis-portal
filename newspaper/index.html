@@ -284,7 +284,9 @@ getJSON('issues/index.json').then(function(ix){
 
 /* Nombre del periódico según el colegio (Cohasset Schools): NIS = The Nordic Times. */
 function brand(){
-  var S = window.NIS_SCHOOL, n = (!S || !S.slug || S.slug === 'nis') ? 'The Nordic Times' : 'The ' + String(S.short || S.name || 'School').replace(/\s+Schools?$/i, '') + ' Times';
+  var S = window.NIS_SCHOOL, n = /^sample\./.test(location.hostname) ? 'The Cohasset Times'
+    : (!S || !S.slug || S.slug === 'nis') ? 'The Nordic Times'
+    : 'The ' + String(S.short_name || S.short || S.name || 'School').replace(/\s+Schools?$/i, '') + ' Times';
   $('mast').textContent = n; document.title = n;
   return S && S.loaded;
 }

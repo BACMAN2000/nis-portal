@@ -44,7 +44,8 @@ async function renderStudent(initial){
   ] : [
     {key:'home',label:'🏠 Home'},
     // Colegio de muestra: sus dos puertas de examen, a la vista.
-    ...(typeof schoolIsSample==='function' && schoolIsSample() ? [{key:'practice',label:'🎯 Practice tests'},{key:'mocks',label:'🎓 Mocks'}] : []),
+    ...(typeof schoolIsSample==='function' && schoolIsSample() ? [{key:'practice',label:'🎯 Practice tests'},{key:'mocks',label:'🎓 Mocks'},
+        ...(schoolContentOK('news.daily') ? [{key:'news',label:'📰 '+newsName()}] : []),{key:'caminfo',label:'📘 Cambridge info'}] : []),
     {key:'myclasses',label:'🏫 My classes'},
     ...(nodeVisible('french') ? [{key:'french',label:'🇫🇷 French'}] : []),
     {key:'cambridge',label:'🎓 Cambridge'},
@@ -55,7 +56,7 @@ async function renderStudent(initial){
     // estaban identicas en Home, asi que era una pestaña que no llevaba a
     // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
     {key:'results',label:'📊 My Progress'},
-    {key:'help',label:'❓ Help'},
+    ...(typeof schoolIsSample==='function' && schoolIsSample() ? [] : [{key:'help',label:'❓ Help'}]),
     {key:'account',label:'👤 My account'},
   ], initial||'home', `<div class="center muted">Loading…</div>`);
   window.__nisPaso='alumno:shell';
@@ -90,10 +91,11 @@ function studentCoach(){ _setNav('tools'); $('#main').innerHTML = coachPanel(); 
    router del alumno (window._nav las mandaba, sin match, de vuelta al hub) —
    se quedan cableadas aqui, con el mismo estilo sin cabecera que Phonics y
    Pronunciation, sus vecinas de siempre en el bloque «Practice». */
-function studentPhrasal(){ _setNav('tools'); $('#main').innerHTML = phrasalPanel(); }
-function studentCollocations(){ _setNav('tools'); $('#main').innerHTML = collocationsPanel(); }
-function studentIdioms(){ _setNav('tools'); $('#main').innerHTML = idiomsPanel(); }
-function studentWordform(){ _setNav('tools'); $('#main').innerHTML = wordformPanel(); }
+const _toolsBack = () => _backBtn("window._nav('tools')",'Practice tools');
+function studentPhrasal(){ _setNav('tools'); $('#main').innerHTML = _toolsBack() + phrasalPanel(); }
+function studentCollocations(){ _setNav('tools'); $('#main').innerHTML = _toolsBack() + collocationsPanel(); }
+function studentIdioms(){ _setNav('tools'); $('#main').innerHTML = _toolsBack() + idiomsPanel(); }
+function studentWordform(){ _setNav('tools'); $('#main').innerHTML = _toolsBack() + wordformPanel(); }
 function studentDict(){ _setNav('tools'); $('#main').innerHTML = dictPanel(); }
 /* 🧰 Practice tools (Fase 2 WP-B): el bloque «Practice» de ENGLISH_AREAS,
    suelto de la parrilla de English — mismos handlers y candados de siempre. */
@@ -325,10 +327,13 @@ function _sampleHub(p){
     cards.push(_hubCard('🎓','Mocks','MOCK 1 and MOCK 2 of each level: a full timed paper per skill. Writing is marked by the AI examiner with the Cambridge criteria.',"window._nav('mocks')"));
   if(hay(['tool.phrasal','tool.collocations','tool.idioms','tool.wordform']))
     cards.push(_hubCard('🧰','Practice tools','Phrasal verbs, collocations, idioms and word formation: two blocks of every level to study, practise and play.',"window._nav('tools')"));
+  if(schoolContentOK('news.daily'))
+    cards.push(_hubCard('📰',newsName(),'A daily newspaper at four levels (A2 · B1 · B2 · C1) with Cambridge-style questions.',"window._nav('news')"));
+  cards.push(_hubCard('📘','Cambridge info','Every exam from A2 Key to C2 Proficiency: papers, timing, scoring and the Cambridge Scale.',"window._nav('caminfo')"));
   IELTS_PIECES.filter(x=>schoolContentOK(x.key)).forEach(x=>cards.push(_hubCard(x.emoji,x.title,x.desc,`window._ssoCohasset('${x.href}')`)));
   cards.push(_hubCard('📊','My progress','Your results in practice tests and mocks.',"window._nav('results')"));
   $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
-    <p class="muted" style="margin-top:-6px">This is a <b>sample</b> of Cohasset Schools: a selection of exams and tools, each working from start to finish. Your results stay in this browser.</p>
+    <p class="muted" style="margin-top:-6px">This is a <b>sample</b> of Cohasset Schools: a selection of exams and tools, each working from start to finish. Every attempt is saved in My progress.</p>
     <div class="grid cols-3" style="margin-top:16px">${cards.join('')}</div>`;
 }
 function studentHub(){

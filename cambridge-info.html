@@ -222,6 +222,26 @@ const TABS = [['niveles','📚 The exams'],['escala','📐 Cambridge Scale'],
               ['gramatica','📖 YLE Grammar'],['planes','🧑‍🏫 Lesson plans'],['recursos','📂 Official YLE resources']];
 let cur = 'niveles';
 
+/* Colegio de muestra (sample.cohasset.pe, 16-oct-2026): ni Nordic ni NIS.
+   Logo de Cohasset Schools, fuera «At NIS» y los planes de clase, sin los
+   grados de NIS y solo los enlaces a apps que lleva la muestra. */
+const SAMPLE = /^sample\./.test(location.hostname) || /[?&]school=sample\b/.test(location.search);
+if(SAMPLE){
+  document.title = 'Cambridge Info · Cohasset Schools';
+  const lg = document.querySelector('header.top img');
+  if(lg){ lg.src = 'assets/cohasset-school-white.svg'; lg.alt = 'Cohasset Schools'; }
+  const lead = document.querySelector('header.top p');
+  if(lead) lead.textContent = 'What each exam is, how many parts it has, how long it takes and how it is scored on the Cambridge Scale.';
+  for(let i = TABS.length - 1; i >= 0; i--) if(TABS[i][0] === 'nis' || TABS[i][0] === 'planes') TABS.splice(i, 1);
+  const enMuestra = /^mocks-cambridge\/(reading|listening|writing)-quiz\.html/;
+  EXAMS.forEach(e => {
+    e.who = '';
+    e.portal = e.portal.filter(([, h]) => enMuestra.test(h));
+    e.idea = e.idea.replace('The school’s reference exam. ', '')
+                   .replace(/It is not currently part of the NIS plan;[^.]*\./, 'Included to show the full scale.');
+  });
+}
+
 const el = id => document.getElementById(id);
 
 function drawTabs(){
@@ -249,7 +269,7 @@ function examCard(e){
       <span class="em">${e.em}</span>
       <span class="nm">${e.name}</span>
       <span class="pill cefr" style="background:${e.color};border-color:${e.color}">${e.cefr}</span>
-      <span class="pill who">${e.who}</span>
+      ${e.who ? `<span class="pill who">${e.who}</span>` : ''}
       ${e.scale?`<span class="pill">Scale ${e.scale[0]}–${e.scale[1]}</span>`:`<span class="pill">Shields 1–5</span>`}
     </div>
     <p class="lead">${e.idea}</p>

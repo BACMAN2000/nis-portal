@@ -96,13 +96,17 @@ function studentGeneral(){
 function newsName(){
   const S = window.NIS_SCHOOL;
   if(!S || !S.slug || S.slug==='nis') return 'The Nordic Times';
-  return 'The ' + String(S.short || S.name || 'School').replace(/\s+Schools?$/i, '') + ' Times';
+  return 'The ' + String(S.short_name || S.short || S.name || 'School').replace(/\s+Schools?$/i, '') + ' Times';
 }
 function newsBody(){
   // _newsArt: la portada abre un artículo concreto (#a=<id>); se usa una vez.
   const art = window._newsArt; window._newsArt = null;
   return `<iframe src="newspaper/?embed=1${art ? '#a=' + encodeURIComponent(art) : ''}" title="${esc(newsName())}" style="width:100%;height:calc(100vh - 110px);min-height:520px;border:0;border-radius:14px;background:#ece7dc"></iframe>
     <p class="muted" style="margin:6px 0 0;font-size:13px"><a href="newspaper/" target="_blank" rel="noopener">Open in a new tab ↗</a></p>`;
+}
+function studentCambridgeInfo(){
+  _setNav('caminfo');
+  $('#main').innerHTML = cambridgeInfoBody();
 }
 function studentNews(){
   _setNav('news');
@@ -591,8 +595,13 @@ function irAMiUnidad(){
 }
 
 /* Pinta una vista. Devuelve true si la clave era una ruta conocida. */
+/* Colegio de muestra: solo sus rutas. Escribir #cambridge, #library… en la
+   barra abría pantallas de NIS; ahora cae en Home. */
+const SAMPLE_ROUTES = new Set(['home','english','practice','mocks','tools','phrasal','collocations','idioms','wordform',
+                               'results','news','caminfo','account']);
 function _navRender(k){
   let m;
+  if(typeof schoolIsSample==='function' && schoolIsSample() && !SAMPLE_ROUTES.has(k)){ studentHub(); return true; }
   // Dia de mock (app/62-mock-mode.js): ninguna ruta salvo Home responde.
   if(mockModeActive() && k!=='home'){ mockModeBlock(); mockModeHub(); return true; }
   // Francés primero: sus rutas llevan el prefijo fr_ y si no, `classes_(g\d+)`
@@ -622,7 +631,7 @@ function _navRender(k){
   const fn={english:studentHub,french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,cambridge:studentCambridgePortal,library:studentLibrary,news:studentNews,mun:studentMun,classes:studentClasses,
     myclasses:studentMyClasses,tools:studentTools,grammarlab:()=>studentGrammarLab(),
-    phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
+    phonics:studentPhonics,coach:studentCoach,results:studentResults,caminfo:studentCambridgeInfo,nishoot:studentNishoot,games:studentGames,
     phrasal:studentPhrasal,collocations:studentCollocations,idioms:studentIdioms,wordform:studentWordform,dict:studentDict,
     final:studentFinal,account:studentAccount,home:studentHub}[k];
   if(fn){ fn(); return true; }
@@ -678,12 +687,12 @@ function studentMocks(){
   if(_isStudent() && !schoolIsSample()){ studentHub(); return; }
   _setNav('mocks');
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
-    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'MOCK 1 and MOCK 2 of each level' : 'MOCK 1 and MOCK 2'} in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. ${schoolIsSample() ? 'In this sample your results stay in this browser, in My Progress.' : 'Your result is saved only in My Progress.'}</p>
+    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'MOCK 1 and MOCK 2 of each level' : 'MOCK 1 and MOCK 2'} in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.</p>
     <div class="grid cols-2" style="margin-top:12px">
       ${schoolContentOK('mock.reading') ? _skillCard('📖','Reading & Use of English','KET/PET/FCE/CAE-style texts and tasks with a timer.',_withBack(QUIZ_URL+'reading-quiz.html?branch=mocks','mocks')) : ''}
       ${schoolContentOK('mock.listening') ? _skillCard('🎧','Listening','Real audio in Cambridge format, with a timer.',_withBack(QUIZ_URL+'listening-quiz.html?branch=mocks','mocks')) : ''}
       ${schoolContentOK('mock.writing') ? _skillCard('✍️','Writing',(schoolIsSample() ? 'Part 1 compulsory + Part 2 of your choice, marked by the AI examiner. B1 · B2 · C1 (the A2 Writing is inside Reading & Writing).' : 'Part 1 compulsory + Part 2 of your choice. Graded by your teacher. B1 · B2 · C1 only.'),_withBack(QUIZ_URL+'writing-quiz.html?branch=mocks','mocks')) : ''}
-      ${_soonCard('🗣️','Speaking','Cambridge-style interview with an examiner.')}
+      ${schoolIsSample() ? '' : _soonCard('🗣️','Speaking','Cambridge-style interview with an examiner.')}
     </div>`;
 }
 
@@ -694,11 +703,11 @@ function studentPractice(){
   // la que ponia el candado: se comprueba el mismo nodo (english.practice).
   if(_isStudent() && !nodeVisible(CAMBRIDGE_PRACTICE_NODE)){ _lockedView('', '🎯 Practice Tests'); return; }
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
-    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'Practice 1 and 2 of each level (A2 · B1 · B2 · C1)' : 'Practice tests 1, 2 and 3'} in authentic Cambridge format — always available. You go straight in with your session${schoolIsSample() ? '. In this sample your results stay in this browser, in My Progress.' : ' and your result is saved only in My Progress.'}</p>
+    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'Practice 1 and 2 of each level (A2 · B1 · B2 · C1)' : 'Practice tests 1, 2 and 3'} in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.</p>
     <div class="grid cols-3" style="margin-top:12px">
       ${schoolContentOK('practice.reading') ? _skillCard('📖','Reading & Use of English',(schoolIsSample() ? 'Practice 1 · 2' : 'Practice 1 · 2 · 3')+' with automatic marking and CEFR feedback.',_withBack(QUIZ_URL+'reading-quiz.html?branch=practice','practice')) : ''}
       ${schoolContentOK('practice.listening') ? _skillCard('🎧','Listening','Practice with real audio and automatic marking.',_withBack(QUIZ_URL+'listening-quiz.html?branch=practice','practice')) : ''}
-      ${schoolContentOK('practice.writing') ? _skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',_withBack(QUIZ_URL+'writing-quiz.html?branch=practice','practice')) : ''}
+      ${schoolContentOK('practice.writing') ? _skillCard('✍️','Writing',schoolIsSample() ? 'Practice 1 · 2, marked at once by the AI examiner with the Cambridge criteria.' : 'Writing tasks your teacher grades with a rubric.',_withBack(QUIZ_URL+'writing-quiz.html?branch=practice','practice')) : ''}
     </div>`;
 }
 
@@ -947,11 +956,13 @@ function _pintaSerie(cajaId, route){
 }
 
 /* ---------- My Progress: historial completo del alumno (mocks, practice y actividades) ---------- */
-function _sampleResults(uid){
-  try{
-    const d = JSON.parse(localStorage.getItem('cohSampleResults:'+uid) || '{}') || {};
-    return { exam: Array.isArray(d.exam) ? d.exam : [], act: Array.isArray(d.act) ? d.act : [] };
-  }catch(e){ return { exam:[], act:[] }; }
+/* Colegio de muestra: sus intentos viven aparte, en sample_attempts (los
+   desvía allí el trigger trg_local_results); cada fila guarda la original. */
+async function _sampleResults(uid){
+  const { data } = await sb.from('sample_attempts').select('source,row').eq('student_id',uid).order('submitted_at',{ascending:false});
+  const rows = data || [];
+  return { exam: rows.filter(r=>r.source==='exam_attempts').map(r=>r.row),
+           act:  rows.filter(r=>r.source==='activity_attempts').map(r=>r.row) };
 }
 async function studentResults(){
   // Fase 2 WP-B: My Progress es ahora de primer nivel (peer de Home), sin
@@ -961,9 +972,8 @@ async function studentResults(){
   const back = '';
   if(!p.id) return _previewNeedsStudent('📊 My Progress', back);
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Loading…</p>`;
-  // Colegio de muestra: nada en la base; los intentos viven en este navegador
-  // (cohSampleResults:<uid>, los escriben nis-bridge.js y lexapp.js).
-  const muestra = schoolIsSample() ? _sampleResults(p.id) : null;
+  // Colegio de muestra: sus intentos se leen de sample_attempts.
+  const muestra = schoolIsSample() ? await _sampleResults(p.id) : null;
   const { data:attsRaw } = muestra ? {data:muestra.exam} : await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const atts = muestra ? attsRaw : await mockVisibleAttempts(attsRaw||[], p.id);   // nada del Official Mock 2 hasta que se libere o se le envíe su informe
   const bySkill = SKILLS.map(sk=>{
@@ -992,10 +1002,11 @@ async function studentResults(){
   const detalle=(a)=>{ const f=window.activitiesPanel&&window.activitiesPanel.detailHTML; return f?f(a):''; };
   const actTable=(list)=> list.length ? `<table><thead><tr><th>Activity</th><th>Level</th><th>Result</th><th>⏱ Time</th><th>💡 Hints</th><th>Date</th><th></th></tr></thead><tbody>${
       list.map(a=>{ const d=detalle(a); return `<tr><td>${a.activity==='crossword'?'🔎':'🔍'} ${esc(a.title||(a.activity==='crossword'?'Crossword':'Word Search'))}</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td><td>${d?`<button class="btn sm ghost" onclick="const r=this.closest('tr').nextElementSibling; r.hidden=!r.hidden; this.textContent=r.hidden?'▾ My answers':'▴ Hide'">▾ My answers</button>`:''}</td></tr>${d?`<tr hidden><td colspan="7" style="background:#f8fafc;padding:10px 14px">${d}</td></tr>`:''}`; }).join('')
-    }</tbody></table>` : `<p class="muted">You haven’t completed any activities yet. Go to <b>Classes → Activities</b>.</p>`;
+    }</tbody></table>` : (muestra ? `<p class="muted">No activities yet. Open <a href="#" onclick="window._nav('tools');return false"><b>🧰 Practice tools</b></a> and finish a block.</p>`
+                : `<p class="muted">You haven’t completed any activities yet. Go to <b>Classes → Activities</b>.</p>`);
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not assigned')}</p>
-    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div class="card" style="display:${muestra ? 'none' : 'flex'};justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
       <div><h2 style="margin:0 0 2px">🏅 Final result · CEFR</h2>
         <div class="muted" style="font-size:.85rem">Your final level, combining your best result per skill — the report your family receives, plus its PDF.</div></div>
       <button class="btn sm" onclick="window._nav('final')">View</button>
@@ -1005,7 +1016,7 @@ async function studentResults(){
         <div class="n">${s.best!=null?s.best+'%':'—'}</div>
         <div class="muted" style="font-size:.8rem">${s.n} attempt(s)${s.avg!=null?' · avg '+s.avg+'%':''}</div></div>`).join('')}
     </div>
-    <div class="card"><h2>Projection</h2>${projection(p,bySkill,all)}</div>
+    ${muestra ? '' : `<div class="card"><h2>Projection</h2>${projection(p,bySkill,all)}</div>`}
     <div class="card"><h2>📝 Mocks (${mocks.length})</h2>${histTable(mocks)}</div>
     <div class="card"><h2>🎯 Practice Tests (${practice.length})</h2>${histTable(practice)}</div>
     <div class="card"><h2>🎲 Activities (${(acts||[]).length})</h2>${actTable(acts||[])}</div>

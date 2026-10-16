@@ -82,8 +82,6 @@ if(!window.NISACT) window.NISACT = (function(){
       return c.auth.getSession().then(function(s){
         var u = s && s.data && s.data.session && s.data.session.user;
         if(!u) return {skipped:true};
-        // Colegio de muestra: el resultado se queda en este navegador, no en la base.
-        if(typeof alcanceMuestra === 'function' && alcanceMuestra()) return guardaMuestra(u.id, r);
         return c.from('activity_attempts').insert({
           student_id:u.id, activity:r.activity, title:r.title, level:r.level || null,
           score:(r.score == null ? null : r.score), total:(r.total == null ? null : r.total),
@@ -91,20 +89,6 @@ if(!window.NISACT) window.NISACT = (function(){
         }).then(function(q){ return (q && q.error) ? {sent:false, motivo:q.error.message} : {sent:true}; });
       });
     }).catch(function(e){ return {sent:false, motivo:(e && e.message) || 'no connection'}; });
-  }
-  /* Mismo formato que una fila de activity_attempts, para que My Progress la pinte igual. */
-  function guardaMuestra(uid, r){
-    try {
-      var k = 'cohSampleResults:' + uid;
-      var d = JSON.parse(localStorage.getItem(k) || '{}') || {};
-      d.act = d.act || [];
-      d.act.unshift({ id:'local-' + Date.now(), student_id:uid, activity:r.activity, title:r.title,
-        level:r.level || null, score:(r.score == null ? null : r.score), total:(r.total == null ? null : r.total),
-        duration_sec:(r.duration == null ? null : r.duration), submitted_at:new Date().toISOString() });
-      d.act = d.act.slice(0, 300);
-      localStorage.setItem(k, JSON.stringify(d));
-    } catch(e){}
-    return {sent:true, local:true};
   }
   return {submit:submit};
 })();
