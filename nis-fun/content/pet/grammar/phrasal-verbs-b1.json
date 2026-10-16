@@ -1,0 +1,201 @@
+{
+  "id": "phrasal-verbs-b1",
+  "level": "pet",
+  "area": "Words",
+  "title": "Phrasal verbs: turn it on, look after it",
+  "tagline": "Some phrasal verbs split around the object (turn it on), others never do (look after it).",
+  "cefr": "B1",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 1 — email", "Speaking Part 2 — describing photos"],
+  "why": "Phrasal verbs are everywhere in everyday English: put on a coat, pick up a bag, find out the answer. B1 Preliminary tests them in the multiple-choice cloze, and the Speaking and Writing tasks sound more natural with them. The biggest problem for students is where the object goes: turn it on is correct, but turn on it is not.",
+  "hook": {
+    "text": "Miss Vega: \"Please <b>turn</b> the lights <b>on</b>.\" Liam: \"I <b>turned</b> <b>them</b> <b>on</b>, Miss.\" Sofia: \"I'm <b>looking for</b> my pen — did you <b>pick it up</b>?\" Nadia: \"Yes, I'm <b>looking after</b> it for you.\"",
+    "ask": "Where do the words them and it go: before or after the little word on and up? And does looking after it work like turn them on?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Where does the object go?",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Turn", "role": "verb"}, {"t": "the light", "role": "obj"}, {"t": "on", "role": "kw"}], "note": "separable: noun in the middle"},
+        {"parts": [{"t": "Turn", "role": "verb"}, {"t": "on", "role": "kw"}, {"t": "the light", "role": "obj"}], "note": "separable: noun after"},
+        {"parts": [{"t": "Turn", "role": "verb"}, {"t": "it", "role": "obj"}, {"t": "on", "role": "kw"}], "note": "pronoun: always in the middle"},
+        {"parts": [{"t": "Look after", "role": "verb"}, {"t": "it", "role": "obj"}], "note": "inseparable: object after"}
+      ],
+      "caption": "With a <b>pronoun</b> (it, them, him, her) a separable phrasal verb always splits: <b>turn it on</b>, never turn on it."
+    },
+    {
+      "type": "contrast",
+      "title": "Separable or inseparable?",
+      "columns": ["Separable (turn on)", "Inseparable (look after)"],
+      "rows": [
+        {"label": "With a noun", "cells": ["turn the light on / turn on the light", "look after the dog (only)"]},
+        {"label": "With a pronoun", "cells": ["turn it on", "look after it"]},
+        {"label": "Other examples", "cells": ["put on, take off, pick up, give up", "look for, get on with, look after"]},
+        {"label": "Rule", "cells": ["pronoun goes in the middle", "never split them"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Common B1 phrasal verbs",
+      "center": "Phrasal verbs",
+      "branches": [
+        {"label": "clothes", "items": ["put on", "take off"], "tone": "a"},
+        {"label": "actions with things", "items": ["pick up", "turn on", "turn off"], "tone": "b"},
+        {"label": "no object needed", "items": ["get up", "sit down", "give up"], "tone": "c"},
+        {"label": "people and searching", "items": ["look for", "look after", "get on with"], "tone": "a"},
+        {"label": "learning", "items": ["find out", "work out"], "tone": "b"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "verb", "tone": "a", "ex": "turn"},
+      {"chip": "object (noun or pronoun)", "tone": "kw", "ex": "it"},
+      {"chip": "particle", "tone": "b", "ex": "on"}
+    ],
+    "table": {
+      "head": ["Type", "Rule", "Example"],
+      "rows": [
+        ["Separable", "noun goes in the middle or after; pronoun always in the middle", "<b>Put</b> your coat <b>on</b>. / <b>Put</b> it <b>on</b>."],
+        ["Inseparable", "object always comes after the whole phrasal verb", "I <b>look after</b> my brother. / I <b>look after</b> him."],
+        ["No object", "the phrasal verb stands alone", "I <b>get up</b> at six. / The plane <b>took off</b>."],
+        ["Three-part verbs", "verb + two small words, never split", "I <b>get on with</b> my cousin."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Separable phrasal verbs with a noun: two possible positions",
+      "examples": [
+        {"text": "Can you <b>turn on</b> the light?", "note": "noun after the phrasal verb"},
+        {"text": "Can you <b>turn</b> the light <b>on</b>?", "note": "noun in the middle, same meaning"},
+        {"text": "Mateo <b>picked up</b> the ball and ran.", "note": "pick up = lift from the floor"}
+      ]
+    },
+    {
+      "point": "Separable phrasal verbs with a pronoun: always in the middle",
+      "examples": [
+        {"text": "It's cold. <b>Put</b> your coat <b>on</b>. → <b>Put</b> it <b>on</b>.", "note": "it goes between put and on"},
+        {"text": "Your shoes are dirty. <b>Take</b> them <b>off</b>.", "note": "them goes between take and off"},
+        {"text": "I dropped my pen and Liam <b>picked</b> it <b>up</b>.", "note": "never picked up it"}
+      ]
+    },
+    {
+      "point": "Inseparable phrasal verbs: never split them",
+      "examples": [
+        {"text": "Sofia <b>looks after</b> her little brother.", "note": "look after = take care of"},
+        {"text": "Nadia is <b>looking for</b> her keys.", "note": "look for = try to find"},
+        {"text": "I <b>get on with</b> everyone in my class.", "note": "get on with = have a good relationship"}
+      ]
+    },
+    {
+      "point": "Phrasal verbs with no object",
+      "examples": [
+        {"text": "I <b>get up</b> at six on school days.", "note": "get up = leave your bed"},
+        {"text": "The plane <b>took off</b> on time.", "note": "take off = leave the ground"},
+        {"text": "Don't <b>give up</b>! You can do it.", "note": "give up = stop trying"},
+        {"text": "We'll <b>find out</b> the result tomorrow.", "note": "find out = learn a fact"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Turn on it, please.", "right": "<b>Turn it on</b>, please.", "why": "With a pronoun (it, them, him), a separable phrasal verb must split."},
+    {"wrong": "Take off them before you come in.", "right": "<b>Take them off</b> before you come in.", "why": "The pronoun goes between take and off."},
+    {"wrong": "She looks the baby after every day.", "right": "She <b>looks after</b> the baby every day.", "why": "Look after is inseparable: never put the object inside."},
+    {"wrong": "I'm looking it for everywhere.", "right": "I'm <b>looking for it</b> everywhere.", "why": "Look for is inseparable too: the object comes after for."},
+    {"wrong": "I get on well with he.", "right": "I get on well with <b>him</b>.", "why": "After with, use the object pronoun: him, her, them."},
+    {"wrong": "He gave up it.", "right": "He <b>gave it up</b>.", "why": "Give up is separable, so the pronoun goes in the middle."}
+  ],
+  "l1": [
+    {"es": "Enciéndelo.", "wrong": "Turn on it.", "right": "<b>Turn it on</b>.", "why": "In Spanish the pronoun is attached to the verb. In English it goes between the verb and the particle."},
+    {"es": "Cuido a mi hermano.", "wrong": "I care my brother.", "right": "I <b>look after</b> my brother.", "why": "Spanish cuidar is one verb. English often needs a phrasal verb: look after."},
+    {"es": "Busco mis llaves.", "wrong": "I search my keys.", "right": "I'm <b>looking for</b> my keys.", "why": "Spanish buscar has no small word. English needs look for to try to find something."},
+    {"es": "Me llevo bien con mis primos.", "wrong": "I take well with my cousins.", "right": "I <b>get on</b> well <b>with</b> my cousins.", "why": "Spanish llevarse bien is get on with in English, never take well."}
+  ],
+  "remember": {
+    "trick": "It in the middle, but look AFTER it!",
+    "tip": "Pronouns (it, them) go in the middle for turn on, take off, pick up. For look after, look for and get on with, nothing goes in the middle."
+  },
+  "dialogue": {
+    "title": "Packing for the school trip",
+    "context": "Miss Vega helps Mateo, Sofia, Liam and Nadia get ready on the morning of the school trip.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Good morning, everyone. Please <b>put</b> your jackets <b>on</b> — it's cold."},
+      {"speaker": "Mateo", "text": "I can't find mine. I'm <b>looking for</b> it everywhere!"},
+      {"speaker": "Sofia", "text": "It's on the floor, Mateo. <b>Pick</b> it <b>up</b> and <b>put</b> it <b>on</b>."},
+      {"speaker": "Liam", "text": "Miss, the bus is late. Shall I <b>find out</b> when it's coming?"},
+      {"speaker": "Miss Vega", "text": "Yes, please. And <b>turn off</b> your phones when you get on the bus."},
+      {"speaker": "Nadia", "text": "I never <b>turn</b> mine <b>off</b>, but I'll try."},
+      {"speaker": "Sofia", "text": "Don't <b>give up</b>, Nadia! It's only for the morning."},
+      {"speaker": "Liam", "text": "Mateo, I'll <b>look after</b> your lunch while you <b>get up</b> from the floor."},
+      {"speaker": "Mateo", "text": "Thanks! I always <b>get on with</b> you when you're helpful."},
+      {"speaker": "Miss Vega", "text": "Ready? Then <b>take</b> your bags <b>off</b> the floor and let's go!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "It's dark in here. Can you ___?", "options": ["turn on it", "turn it on", "turn on"], "answer": 1, "why": "pronoun goes between turn and on"},
+        {"sentence": "Who is ___ the baby tonight?", "options": ["looking up", "looking out", "looking after"], "answer": 2, "why": "look after = take care of"},
+        {"sentence": "Take your hat ___ in class.", "options": ["off", "on", "down"], "answer": 0, "why": "take off = remove clothes"},
+        {"sentence": "Nadia ___ with her sister really well.", "options": ["gets off", "gets on", "gets up"], "answer": 1, "why": "get on with = have a good relationship"},
+        {"sentence": "I'm ___ my keys. Have you seen them?", "options": ["looking for", "looking at", "looking after"], "answer": 0, "why": "look for = try to find"},
+        {"sentence": "Don't ___! You can do it.", "options": ["give off", "give away", "give up"], "answer": 2, "why": "give up = stop trying"},
+        {"sentence": "The shoes are dirty. Please take ___ before you come in.", "options": ["off them", "off it", "them off"], "answer": 2, "why": "pronoun in the middle"},
+        {"sentence": "Mateo wants to ___ who won the game.", "options": ["find up", "find out", "find on"], "answer": 1, "why": "find out = learn a fact"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the phrasal verb in brackets in the correct form. Add it or them where you need to.",
+      "items": [
+        {"sentence": "It's cold outside. ___ (put on) your coat.", "answers": ["Put on", "put on"]},
+        {"sentence": "Miss Vega dropped her pen, so Liam ___ (pick up) for her.", "answers": ["picked it up"]},
+        {"sentence": "Nadia can't find her glasses. She's ___ (look for) them everywhere.", "answers": ["looking for"]},
+        {"sentence": "I hate this game and I'm not going to win. I ___ (give up).", "answers": ["give up"]},
+        {"sentence": "I ___ (get on) with all my classmates.", "answers": ["get on"]},
+        {"sentence": "Sofia's aunt always ___ (look after) the dog.", "answers": ["looks after"]},
+        {"sentence": "Here are your dirty shoes. Please ___ (take off) before you come in.", "answers": ["take them off"]},
+        {"sentence": "Let's ___ (find out) who won the competition.", "answers": ["find out"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["turn it on", "Can you", "?"], "answer": "Can you turn it on?"},
+        {"words": ["on Saturdays", "look after", "I", "my little brother", "."], "answer": "I look after my little brother on Saturdays."},
+        {"words": ["before you come in", "off", "Take your shoes", "."], "answer": "Take your shoes off before you come in."},
+        {"words": ["well", "Nadia", "gets on", "with Sofia", "."], "answer": "Nadia gets on well with Sofia."},
+        {"words": ["now", "Don't", "give up", "!"], "answer": "Don't give up now!"},
+        {"words": ["my keys", "I'm", "looking for", "."], "answer": "I'm looking for my keys."}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "Please switch the light on.", "key": "TURN", "second_start": "Please", "second_end": "on.", "answers": ["turn the light"]},
+        {"first": "Sofia is taking care of her grandmother.", "key": "LOOKING", "second_start": "Sofia is", "second_end": "grandmother.", "answers": ["looking after her"]},
+        {"first": "I'm trying to find my phone.", "key": "LOOKING", "second_start": "I'm", "second_end": "my phone.", "answers": ["looking for"]},
+        {"first": "Mateo wants to stop playing the piano.", "key": "GIVE", "second_start": "Mateo wants to", "second_end": "the piano.", "answers": ["give up"]},
+        {"first": "Nadia is friendly with her teachers.", "key": "GETS", "second_start": "Nadia", "second_end": "her teachers.", "answers": ["gets on with"]},
+        {"first": "The shoes are dirty. Take off the shoes.", "key": "THEM", "second_start": "The shoes are dirty. Take", "second_end": ".", "answers": ["them off"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can put it or them in the middle of separable phrasal verbs like turn on, take off and pick up.",
+    "I can use look after, look for and get on with correctly, without splitting them.",
+    "I can use common phrasal verbs such as put on, give up, find out and get up in everyday sentences."
+  ],
+  "summary": [
+    "A phrasal verb is a verb plus a small word (on, off, up, out) with a new meaning.",
+    "With separable ones, a noun can go in the middle or after, but a pronoun always goes in the middle: turn it on.",
+    "Inseparable ones are never split: look after it, look for them, get on with him.",
+    "Some phrasal verbs need no object: get up, sit down, give up, take off (a plane)."
+  ]
+}

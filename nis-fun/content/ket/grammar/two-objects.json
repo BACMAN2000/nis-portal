@@ -1,0 +1,198 @@
+{
+  "id": "two-objects",
+  "level": "ket",
+  "area": "Sentence building",
+  "title": "Give me the ball: verbs with two objects",
+  "tagline": "Give, send, show, buy: say who gets the thing, in two different ways.",
+  "cefr": "A2",
+  "exam": ["Reading Part 5 — open cloze", "Writing Part 6 — short message"],
+  "why": "Verbs like <i>give, send</i> and <i>buy</i> have two objects: a person and a thing. You need both patterns to write messages and to speak naturally: <i>Send me a text</i> or <i>Send it to me</i>. The exam checks word order in short gaps.",
+  "hook": {
+    "text": "Miss Vega has a prize. \"I'll <b>give Nadia the book</b>,\" she says. \"Look, Nadia — I <b>bought it for you</b>!\" Then Liam asks: \"Can you <b>show it to me</b>?\"",
+    "ask": "Which sentences have a person and a thing after the verb? Look at the small words to and for."
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Two ways to say the same thing",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "Mateo", "role": "subj"}, {"t": "gave", "role": "verb"}, {"t": "Sofia", "role": "obj"}, {"t": "a pen", "role": "x"}, {"t": ".", "role": "x"}], "note": "verb + person + thing"},
+        {"parts": [{"t": "Mateo", "role": "subj"}, {"t": "gave", "role": "verb"}, {"t": "a pen", "role": "x"}, {"t": "to", "role": "kw"}, {"t": "Sofia", "role": "obj"}, {"t": ".", "role": "x"}], "note": "verb + thing + to + person"},
+        {"parts": [{"t": "Dad", "role": "subj"}, {"t": "bought", "role": "verb"}, {"t": "a bike", "role": "x"}, {"t": "for", "role": "kw"}, {"t": "me", "role": "obj"}, {"t": ".", "role": "x"}], "note": "buy and make use for"},
+        {"parts": [{"t": "Give", "role": "verb"}, {"t": "it", "role": "x"}, {"t": "to", "role": "kw"}, {"t": "me", "role": "obj"}, {"t": ".", "role": "x"}], "note": "with it / them: thing first"}
+      ],
+      "caption": "Person first: <b>no to</b>. Thing first: <b>add to or for</b>."
+    },
+    {
+      "type": "map",
+      "title": "to or for?",
+      "center": "Two objects",
+      "branches": [
+        {"label": "to", "items": ["give", "send", "show", "bring"], "tone": "a"},
+        {"label": "to", "items": ["lend", "tell", "pass", "teach"], "tone": "b"},
+        {"label": "for", "items": ["buy", "make", "cook", "get"], "tone": "c"}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to choose the pattern",
+      "steps": [
+        {"label": "Is the thing it or them?", "ex": "the book → <b>it</b>"},
+        {"label": "Yes: put the thing first, then to or for", "ex": "Give <b>it to</b> me."},
+        {"label": "No: you can put the person first", "ex": "Give <b>me the book</b>."}
+      ],
+      "caption": "With <b>it</b> or <b>them</b>, always use the <b>to / for</b> pattern."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "a", "ex": "Mateo"},
+      {"chip": "verb", "tone": "kw", "ex": "gave"},
+      {"chip": "person", "tone": "b", "ex": "Sofia"},
+      {"chip": "thing", "tone": "c", "ex": "a pen"}
+    ],
+    "table": {
+      "head": ["Pattern", "Example", "Note"],
+      "rows": [
+        ["verb + person + thing", "She sent me a message.", "no to or for"],
+        ["verb + thing + to + person", "She sent a message to me.", "give, send, show, bring, lend, tell"],
+        ["verb + thing + for + person", "He made a cake for her.", "buy, make, cook, get"],
+        ["verb + it / them + to / for + person", "Give it to him.", "pronoun thing → this pattern only"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "verb + person + thing",
+      "examples": [
+        {"text": "Miss Vega <b>gave us homework</b>.", "note": "us = the people, homework = the thing"},
+        {"text": "Mateo <b>sent Sofia a message</b>.", "note": "person first, no to"},
+        {"text": "Liam <b>showed me his photos</b>.", "note": "me = the person"},
+        {"text": "Can you <b>bring me a pencil</b>?", "note": "a polite request"}
+      ]
+    },
+    {
+      "point": "verb + thing + to / for + person",
+      "examples": [
+        {"text": "She <b>gave the book to Nadia</b>.", "note": "give uses to"},
+        {"text": "I <b>sent a message to my gran</b>.", "note": "send uses to"},
+        {"text": "Dad <b>bought a cake for me</b>.", "note": "buy uses for"},
+        {"text": "Mum <b>made a sandwich for Liam</b>.", "note": "make uses for"}
+      ]
+    },
+    {
+      "point": "With it and them: thing first",
+      "examples": [
+        {"text": "Give <b>it to me</b>, please.", "note": "never give me it"},
+        {"text": "I'll show <b>them to you</b> tomorrow.", "note": "them = the photos"},
+        {"text": "She bought <b>it for him</b>.", "note": "it + for + person"}
+      ]
+    },
+    {
+      "point": "Object pronouns: me, you, him, her, us, them",
+      "examples": [
+        {"text": "Can you tell <b>me</b> the answer?", "note": "me, not I"},
+        {"text": "He lent <b>her</b> his pen.", "note": "her, not she"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She sent to me a message.", "right": "She sent <b>me a message</b>.", "why": "Person first means no to."},
+    {"wrong": "He bought to me a gift.", "right": "He bought <b>me a gift</b>.", "why": "Buy uses for, never to."},
+    {"wrong": "Give she the pen.", "right": "Give <b>her</b> the pen.", "why": "After the verb use her, not she."},
+    {"wrong": "She told a story me.", "right": "She told <b>me a story</b>.", "why": "The person comes before the thing."},
+    {"wrong": "I bought a bike to him.", "right": "I bought a bike <b>for him</b>.", "why": "Buy and make go with for."}
+  ],
+  "l1": [
+    {"es": "Dámelo.", "wrong": "Give me it.", "right": "Give <b>it to me</b>.", "why": "Spanish puts two small words together. In English it goes before to + person."},
+    {"es": "Le di el libro a Nadia.", "wrong": "I gave to Nadia the book.", "right": "I gave <b>Nadia the book</b>.", "why": "The Spanish a becomes to only after the thing: I gave the book to Nadia."},
+    {"es": "Dime la verdad.", "wrong": "Tell to me the truth.", "right": "Tell <b>me the truth</b>.", "why": "No to when the person comes first."},
+    {"es": "Se lo envié.", "wrong": "I sent him it.", "right": "I sent <b>it to him</b>.", "why": "With it, put the thing first and add to."}
+  ],
+  "remember": {
+    "trick": "It or them? Thing first: give it to her.",
+    "tip": "Person first, no small word. Thing first, add to (give, send, show) or for (buy, make). With it and them, always thing first."
+  },
+  "dialogue": {
+    "title": "Birthday prizes",
+    "context": "Miss Vega gives prizes to the students after the end-of-term quiz.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Well done, everyone. I've got something for you. First, I'll <b>give Sofia a book</b>."},
+      {"speaker": "Sofia", "text": "Thank you, Miss! Can I <b>show it to Nadia</b>?"},
+      {"speaker": "Nadia", "text": "Yes, <b>show it to me</b>! I love new books."},
+      {"speaker": "Miss Vega", "text": "And Mateo, I <b>bought a game for you</b>."},
+      {"speaker": "Mateo", "text": "Thanks! Liam, I'll <b>lend it to you</b> on Monday."},
+      {"speaker": "Liam", "text": "Great! Can you <b>send me a message</b> before?"},
+      {"speaker": "Mateo", "text": "Sure. I'll <b>send you the time</b> tonight."},
+      {"speaker": "Miss Vega", "text": "Good. Now <b>pass me those papers</b>, please."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word or words.",
+      "items": [
+        {"sentence": "Miss Vega gave ___ a prize.", "options": ["I", "to me", "me"], "answer": 2, "why": "person first: object pronoun, no to"},
+        {"sentence": "Please give the pen ___ Mateo.", "options": ["for", "to", "at"], "answer": 1, "why": "give + thing + to + person"},
+        {"sentence": "Mum made a cake ___ my sister.", "options": ["for", "to", "of"], "answer": 0, "why": "make + thing + for + person"},
+        {"sentence": "Where's my book? Please give ___ to me.", "options": ["it", "me", "I"], "answer": 0, "why": "the thing as a pronoun: give it to me"},
+        {"sentence": "I've got two tickets. I'll show ___ to you.", "options": ["it", "them", "they"], "answer": 1, "why": "tickets → them"},
+        {"sentence": "Liam sent ___ a message.", "options": ["she", "to she", "her"], "answer": 2, "why": "object pronoun after the verb"},
+        {"sentence": "Can you lend ___ your pen?", "options": ["to me", "me", "I"], "answer": 1, "why": "person first: me, no to"},
+        {"sentence": "He bought a gift ___ his mum.", "options": ["for", "to", "at"], "answer": 0, "why": "buy + thing + for + person"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete the sentence with to, for or the right pronoun.",
+      "items": [
+        {"sentence": "Dad bought a bike ___ me.", "answers": ["for"]},
+        {"sentence": "I sent the photo ___ Nadia.", "answers": ["to"]},
+        {"sentence": "Miss Vega showed ___ (we) her photos.", "answers": ["us"]},
+        {"sentence": "Can you bring ___ (I) a glass of water?", "answers": ["me"]},
+        {"sentence": "Give the ball ___ him.", "answers": ["to"]},
+        {"sentence": "She made ___ (he) a birthday card.", "answers": ["him"]},
+        {"sentence": "I've got the book. I'll lend ___ to you.", "answers": ["it"]},
+        {"sentence": "Mateo told ___ (they) a funny story.", "answers": ["them"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["homework", "gave us", "Miss Vega", "."], "answer": "Miss Vega gave us homework."},
+        {"words": ["to Sofia", "I", "a message", "sent", "."], "answer": "I sent a message to Sofia."},
+        {"words": ["to me", "it", "Give", "."], "answer": "Give it to me."},
+        {"words": ["for me", "Dad", "bought", "a bike", "."], "answer": "Dad bought a bike for me."},
+        {"words": ["your photos", "Can you", "show", "me", "?"], "answer": "Can you show me your photos?"},
+        {"words": ["a sandwich", "him", "She", "made", "."], "answer": "She made him a sandwich."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "Mateo gave Sofia a pen.", "ok": true, "why": "verb + person + thing"},
+        {"sentence": "Give me it, please.", "ok": false, "fix": "Give <b>it to me</b>, please.", "why": "with it, thing first + to"},
+        {"sentence": "I'll send it to you.", "ok": true, "why": "it + to + person"},
+        {"sentence": "She bought to me a book.", "ok": false, "fix": "She bought <b>me a book</b>.", "why": "person first, no to"},
+        {"sentence": "Mum made a cake for Liam.", "ok": true, "why": "make + thing + for + person"},
+        {"sentence": "Show to me your photo.", "ok": false, "fix": "Show <b>me your photo</b>.", "why": "person first, no to"},
+        {"sentence": "He gave she a present.", "ok": false, "fix": "He gave <b>her</b> a present.", "why": "object pronoun: her"},
+        {"sentence": "Can you lend me your ruler?", "ok": true, "why": "lend + person + thing"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say <i>give me the ball</i> and <i>give the ball to me</i> and I know both are right.",
+    "I can use <i>to</i> with give, send and show, and <i>for</i> with buy and make.",
+    "I can say <i>Give it to her</i> (not <i>give her it</i>) and use me, him, her, us and them."
+  ],
+  "summary": [
+    "Two objects: <b>person + thing</b> (<i>give me the ball</i>) or <b>thing + to/for + person</b> (<i>give the ball to me</i>).",
+    "<b>To</b> goes with give, send, show, bring, lend, tell. <b>For</b> goes with buy, make, cook.",
+    "With <b>it</b> or <b>them</b>, put the thing first: <i>give it to her</i>.",
+    "After the verb use object pronouns: <i>me, you, him, her, us, them</i>."
+  ]
+}

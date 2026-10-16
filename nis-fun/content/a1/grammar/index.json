@@ -2,11 +2,17 @@
   "level": "a1",
   "cefr": "A1",
   "exam": "A1 Foundations",
-  "count": 12,
+  "count": 13,
   "areas": [
     {
       "area": "First words, first sentences",
       "topics": [
+        {
+          "id": "adjectives-a1",
+          "title": "Adjectives: a big dog, the dog is big",
+          "tagline": "Big, red, happy: words that describe things, and where to put them.",
+          "cefr": "A1"
+        },
         {
           "id": "be-am-is-are",
           "title": "The verb be: am, is, are",

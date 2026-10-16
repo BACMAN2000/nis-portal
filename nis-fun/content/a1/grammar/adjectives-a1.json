@@ -1,0 +1,198 @@
+{
+  "id": "adjectives-a1",
+  "level": "a1",
+  "area": "First words, first sentences",
+  "title": "Adjectives: a big dog, the dog is big",
+  "tagline": "Big, red, happy: words that describe things, and where to put them.",
+  "cefr": "A1",
+  "exam": ["Speaking Part 1 — questions about you and your things", "Reading Part 5 — open cloze (grammar gaps)"],
+  "why": "Adjectives help you say what people and things are like: <i>a small red bag, my teacher is kind</i>. In Speaking you describe your family, your room and your pets, so you need them in your first answers.",
+  "hook": {
+    "text": "Nadia shows Mateo a photo. \"Look! A <b>big black</b> cat!\" \"Wow,\" says Mateo. \"The cat is <b>very big</b>! What's it <b>like</b>?\" \"It's <b>really friendly</b>,\" says Nadia.",
+    "ask": "Where is the word big in each sentence: before the noun or after is? Does it ever change?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Two places for an adjective",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "'ve got", "role": "verb"}, {"t": "a", "role": "x"}, {"t": "big", "role": "kw"}, {"t": "dog", "role": "obj"}, {"t": ".", "role": "x"}], "note": "before the noun"},
+        {"parts": [{"t": "The dog", "role": "subj"}, {"t": "is", "role": "verb"}, {"t": "big", "role": "kw"}, {"t": ".", "role": "x"}], "note": "after be"},
+        {"parts": [{"t": "The dogs", "role": "subj"}, {"t": "are", "role": "verb"}, {"t": "big", "role": "kw"}, {"t": ".", "role": "x"}], "note": "plural: still no -s"},
+        {"parts": [{"t": "She", "role": "subj"}, {"t": "is", "role": "verb"}, {"t": "very", "role": "x"}, {"t": "happy", "role": "kw"}, {"t": ".", "role": "x"}], "note": "very + adjective"}
+      ],
+      "caption": "The adjective is <b>always the same</b>: big dog, big dogs. It never takes an <b>-s</b>."
+    },
+    {
+      "type": "map",
+      "title": "Adjectives we use every day",
+      "center": "Adjectives",
+      "branches": [
+        {"label": "Colours", "items": ["red", "blue", "green", "black", "white"], "tone": "a"},
+        {"label": "Size", "items": ["big", "small", "tall", "short", "long"], "tone": "b"},
+        {"label": "Feelings", "items": ["happy", "sad", "tired", "hungry"], "tone": "c"},
+        {"label": "Other", "items": ["new", "old", "hot", "cold", "nice"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to put two adjectives together",
+      "steps": [
+        {"label": "Say the size first", "ex": "a <b>big</b>"},
+        {"label": "Then the colour", "ex": "a big <b>black</b>"},
+        {"label": "Then the noun", "ex": "a big black <b>cat</b>"}
+      ],
+      "caption": "Size, then colour, then noun. No <i>and</i> and no comma: a big black cat."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "a / an", "tone": "kw", "ex": "a"},
+      {"chip": "adjective", "tone": "a", "ex": "big"},
+      {"chip": "noun", "tone": "b", "ex": "dog"}
+    ],
+    "table": {
+      "head": ["Pattern", "Example", "Remember"],
+      "rows": [
+        ["adjective + noun", "a red bag", "adjective first"],
+        ["be + adjective", "The bag is red.", "no a/an, no -s"],
+        ["very / really + adjective", "It's very big.", "very goes before the adjective"],
+        ["size + colour + noun", "a small white cat", "size, then colour"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Before a noun: a big dog",
+      "examples": [
+        {"text": "I've got a <b>red</b> bag.", "note": "adjective before the noun"},
+        {"text": "She is a <b>tall</b> girl.", "note": "a + adjective + noun"},
+        {"text": "They are <b>new</b> shoes.", "note": "plural noun, adjective stays the same"}
+      ]
+    },
+    {
+      "point": "After be: the dog is big",
+      "examples": [
+        {"text": "My bag is <b>blue</b>.", "note": "be + adjective, no a/an"},
+        {"text": "The shoes are <b>old</b>.", "note": "plural: are + adjective, no -s"},
+        {"text": "I am <b>tired</b> and <b>hungry</b>.", "note": "feelings use be + adjective"}
+      ]
+    },
+    {
+      "point": "very and really",
+      "examples": [
+        {"text": "The pizza is <b>very</b> hot.", "note": "very + adjective"},
+        {"text": "Sofia is <b>really</b> happy today.", "note": "really = very, a bit stronger"}
+      ]
+    },
+    {
+      "point": "Two adjectives and What's it like?",
+      "examples": [
+        {"text": "It's a <b>big black</b> cat.", "note": "size first, then colour"},
+        {"text": "<b>What's</b> your new teacher <b>like</b>?", "note": "asks for a description"},
+        {"text": "She's <b>kind</b> and <b>funny</b>.", "note": "answer with be + adjective"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I've got a car red.", "right": "I've got a <b>red car</b>.", "why": "The adjective comes before the noun."},
+    {"wrong": "The dogs are bigs.", "right": "The dogs are <b>big</b>.", "why": "Adjectives never take -s."},
+    {"wrong": "It's a black big cat.", "right": "It's a <b>big black</b> cat.", "why": "Size comes before colour."},
+    {"wrong": "He is much tall.", "right": "He is <b>very</b> tall.", "why": "Use very or really before an adjective, not much."},
+    {"wrong": "She has an big dog.", "right": "She has <b>a</b> big dog.", "why": "Use an only before a vowel sound: an old dog, a big dog."}
+  ],
+  "l1": [
+    {"es": "Tengo un gato negro.", "wrong": "I've got a cat black.", "right": "I've got a <b>black cat</b>.", "why": "In Spanish the adjective often goes after the noun. In English it goes before."},
+    {"es": "Los perros son grandes.", "wrong": "The dogs are bigs.", "right": "The dogs are <b>big</b>.", "why": "In Spanish the adjective changes (grandes). In English it never changes."},
+    {"es": "Es muy alto.", "wrong": "He is much tall.", "right": "He is <b>very</b> tall.", "why": "Muy is very in English, not much."},
+    {"es": "Tengo hambre.", "wrong": "I have hungry.", "right": "I <b>am</b> hungry.", "why": "Feelings use be + adjective in English."},
+    {"es": "¿Cómo es tu profesora?", "wrong": "How is your teacher?", "right": "<b>What's</b> your teacher <b>like</b>?", "why": "To ask for a description, say What's … like?"}
+  ],
+  "remember": {
+    "trick": "Adjectives never add S: big dogs, not bigs!",
+    "tip": "Say it out loud: a big dog, two big dogs. The adjective stays the same. Only the noun changes."
+  },
+  "dialogue": {
+    "title": "A photo of Luna",
+    "context": "Nadia and Mateo look at a photo on Nadia's phone.",
+    "lines": [
+      {"speaker": "Nadia", "text": "Look! This is my cat, Luna. She's a <b>big black</b> cat."},
+      {"speaker": "Mateo", "text": "She's <b>beautiful</b>! What's she <b>like</b>?"},
+      {"speaker": "Nadia", "text": "She's <b>very friendly</b> and <b>really funny</b>."},
+      {"speaker": "Mateo", "text": "Are her eyes <b>green</b>?"},
+      {"speaker": "Nadia", "text": "Yes, they are. They're <b>big</b> and <b>green</b>."},
+      {"speaker": "Mateo", "text": "I've got a <b>small white</b> rabbit. He's <b>very soft</b>."},
+      {"speaker": "Nadia", "text": "Cool! Is he <b>old</b> or <b>new</b>?"},
+      {"speaker": "Mateo", "text": "He's <b>new</b>. I'm <b>really happy</b>!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word.",
+      "items": [
+        {"sentence": "I've got a ___ bag.", "options": ["reds", "red", "a red"], "answer": 1, "why": "adjective before the noun, no -s"},
+        {"sentence": "My shoes are ___.", "options": ["blue", "blues", "a blue"], "answer": 0, "why": "be + adjective, no -s"},
+        {"sentence": "It's a ___ cat.", "options": ["black big", "big black", "bigs black"], "answer": 1, "why": "size first, then colour"},
+        {"sentence": "The dogs are ___.", "options": ["bigs", "a big", "big"], "answer": 2, "why": "adjectives never take -s"},
+        {"sentence": "She is ___ happy.", "options": ["happy very", "very", "is very"], "answer": 1, "why": "very goes before the adjective"},
+        {"sentence": "What's your new teacher ___?", "options": ["like", "liking", "likes"], "answer": 0, "why": "What's … like? asks for a description"},
+        {"sentence": "I've got two ___ sisters.", "options": ["talls", "are tall", "tall"], "answer": 2, "why": "adjective before the noun, no -s"},
+        {"sentence": "Mateo is ___ tired.", "options": ["really", "real", "reallys"], "answer": 0, "why": "really + adjective"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete the sentence. Do not add -s to an adjective.",
+      "items": [
+        {"sentence": "I've got two ___ (red) bags.", "answers": ["red"]},
+        {"sentence": "The dogs are ___ (big).", "answers": ["big"]},
+        {"sentence": "My cat is ___ happy today.", "answers": ["very", "really"]},
+        {"sentence": "What's your new bike ___?", "answers": ["like"]},
+        {"sentence": "Nadia is ___ tired this morning.", "answers": ["really", "very"]},
+        {"sentence": "My shoes are ___ (new).", "answers": ["new"]},
+        {"sentence": "Liam has got ___ (brown) eyes.", "answers": ["brown"]},
+        {"sentence": "I live in a ___ (small) house.", "answers": ["small"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["a", "It's", "cat", "big", "."], "answer": "It's a big cat."},
+        {"words": ["black", "is", "The", "dog", "."], "answer": "The dog is black."},
+        {"words": ["very", "is", "Sofia", "happy", "."], "answer": "Sofia is very happy."},
+        {"words": ["a big black dog", "I've got", "."], "answer": "I've got a big black dog."},
+        {"words": ["like", "it", "What's", "?"], "answer": "What's it like?"},
+        {"words": ["are", "shoes", "My", "new", "."], "answer": "My shoes are new."}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "She is a tall girl.", "ok": true, "why": "a + adjective + noun, correct"},
+        {"sentence": "The dogs are bigs.", "ok": false, "fix": "The dogs are <b>big</b>.", "why": "adjectives never take -s"},
+        {"sentence": "It's a big black cat.", "ok": true, "why": "size, then colour"},
+        {"sentence": "I've got a car red.", "ok": false, "fix": "I've got a <b>red car</b>.", "why": "adjective before the noun"},
+        {"sentence": "It's a black big cat.", "ok": false, "fix": "It's a <b>big black</b> cat.", "why": "size before colour"},
+        {"sentence": "Mateo is very tired.", "ok": true, "why": "very + adjective"},
+        {"sentence": "She is happy very.", "ok": false, "fix": "She is <b>very happy</b>.", "why": "very goes before the adjective"},
+        {"sentence": "What's your new teacher like?", "ok": true, "why": "asks for a description, correct"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can describe things with adjectives: <i>a big dog, a red bag</i>.",
+    "I can say <i>The dog is big</i> and I never add -s to an adjective.",
+    "I can use <i>very</i> and <i>really</i> and ask <i>What's it like?</i>"
+  ],
+  "summary": [
+    "An adjective goes <b>before the noun</b> (a big dog) or <b>after be</b> (the dog is big).",
+    "Adjectives <b>never take -s</b>: big dogs, not bigs.",
+    "Use <b>very</b> or <b>really</b> before an adjective, never much.",
+    "Two adjectives: <b>size, then colour</b> — a big black cat.",
+    "Ask <b>What's it like?</b> to get a description."
+  ]
+}

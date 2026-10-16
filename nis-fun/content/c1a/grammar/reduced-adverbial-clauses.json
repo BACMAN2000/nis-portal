@@ -1,0 +1,182 @@
+{
+  "id": "reduced-adverbial-clauses",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Reduced and verbless clauses: while waiting, when in doubt",
+  "tagline": "Keep the conjunction, drop the subject and 'be': a time, reason or concession clause shrinks to a few words.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze: while, once, though, if before a reduced clause",
+    "Writing Part 2 — report, review or proposal: compact, formal style",
+    "Writing Part 1 — essay: concise concession (Though small, …)"
+  ],
+  "why": "Advanced writers keep the conjunction and cut the rest: <i>While waiting for the bus</i> instead of <i>While I was waiting for the bus</i>, or <i>If necessary</i> instead of <i>If it is necessary</i>. This is how reports, reviews and instructions sound at C1, and Part 2 open cloze often removes the conjunction itself. The price is one strict rule: the missing subject is always the subject of the main clause, so a mismatch makes a dangling modifier.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "From full clause to reduced clause",
+      "before": {
+        "text": "While Sofia was waiting for her results, she revised the vocabulary again.",
+        "hl": ["While Sofia was waiting"]
+      },
+      "after": {
+        "text": "While waiting for her results, Sofia revised the vocabulary again.",
+        "hl": ["While waiting", "Sofia"]
+      },
+      "steps": [
+        "Check that the subject of both clauses is the same person or thing (Sofia).",
+        "Keep the conjunction (<b>While</b>) and delete the subject and the auxiliary <i>was</i>.",
+        "Use the -ing form: <b>While waiting</b> — the conjunction stays in the sentence to show the relationship."
+      ]
+    },
+    {
+      "type": "map",
+      "title": "What can follow the conjunction?",
+      "center": "Conjunction + reduced clause",
+      "branches": [
+        {"label": "conjunction + -ing (time)", "items": ["While waiting …", "After finishing …", "Before leaving …", "On arriving …"], "tone": "a"},
+        {"label": "-ing alone (reason, no conjunction)", "items": ["Not knowing what to do, …", "Being unsure, …"], "tone": "b"},
+        {"label": "conjunction + adjective", "items": ["Though tired, …", "If necessary, …", "When ready, …"], "tone": "c"},
+        {"label": "conjunction + noun / prepositional phrase", "items": ["When in doubt, …", "Once inside, …", "Although a keen reader, …"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Same subject, or dangling?",
+      "columns": ["Correct", "Dangling modifier"],
+      "rows": [
+        {"label": "Pattern", "cells": ["both clauses share one subject", "the main subject differs from the hidden one"]},
+        {"label": "Example", "cells": ["<b>While waiting</b> for the bus, <b>Liam</b> read a book.", "<b>While waiting</b> for the bus, <b>the rain</b> started."]},
+        {"label": "Problem", "cells": ["none: Liam waited and Liam read", "the rain cannot be the one waiting"]},
+        {"label": "Fix", "cells": ["—", "While <b>we were waiting</b> for the bus, the rain started."]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "conjunction", "tone": "kw", "ex": "While"},
+      {"chip": "-ing / adjective / noun phrase", "tone": "a", "ex": "waiting for the bus"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "main clause (same subject)", "tone": "b", "ex": "Liam read a book"}
+    ],
+    "table": {
+      "head": ["Type", "Full clause", "Reduced clause"],
+      "rows": [
+        ["time: conjunction + -ing", "While I was crossing the road, I saw Nadia.", "While crossing the road, I saw Nadia."],
+        ["time: after / before + -ing", "Before she leaves, she checks the windows.", "Before leaving, she checks the windows."],
+        ["time: on + -ing", "As soon as we arrived, we phoned home.", "On arriving, we phoned home."],
+        ["reason: -ing, no conjunction", "Because he did not know the way, he asked a guard.", "Not knowing the way, he asked a guard."],
+        ["concession: adjective", "Although she was tired, Nadia stayed.", "Though tired, Nadia stayed."],
+        ["condition: if + adjective", "If it is necessary, call me.", "If necessary, call me."],
+        ["verbless set phrase", "When you are in doubt, ask.", "When in doubt, ask."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Time clauses: while, after, before, on, since, once + -ing",
+      "examples": [
+        {"text": "<b>While waiting</b> for the interview, Mateo reread his notes.", "note": "= while he was waiting; simultaneous"},
+        {"text": "<b>After finishing</b> the experiment, the students cleaned the lab.", "note": "= after they had finished; one action follows another"},
+        {"text": "Sofia always checks her bag <b>before leaving</b> the classroom.", "note": "= before she leaves; the reduced clause can come second"}
+      ]
+    },
+    {
+      "point": "Reason: Not knowing, Being unsure",
+      "examples": [
+        {"text": "<b>Not knowing</b> what to say, Liam stayed silent.", "note": "= because he did not know; negative placed before the -ing"},
+        {"text": "<b>Being</b> new to the school, Nadia asked for a map.", "note": "being = because she was; the conjunction is dropped"},
+        {"text": "<b>Unable to find</b> a seat, we sat on the steps.", "note": "adjective + to-infinitive carries the reason"}
+      ]
+    },
+    {
+      "point": "Verbless clauses: conjunction + adjective, noun or preposition",
+      "examples": [
+        {"text": "<b>When in doubt</b>, ask your teacher before you submit.", "note": "= when you are in doubt; a set phrase"},
+        {"text": "Tickets can be refunded <b>if necessary</b>.", "note": "= if it is necessary"},
+        {"text": "<b>Though</b> tired, Liam refused to stop until the last page was done.", "note": "= although he was tired; concession"}
+      ]
+    },
+    {
+      "point": "The same-subject rule",
+      "examples": [
+        {"text": "<b>Once inside</b>, the visitors were handed a map.", "note": "once they were inside: visitors is the subject"},
+        {"text": "<b>Although a keen reader</b>, Mateo had never finished a long novel.", "note": "Mateo = a keen reader: subject and noun phrase match"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "While waiting for the bus, the rain started.", "right": "<b>While we were waiting</b> for the bus, the rain started.", "why": "Dangling modifier: the rain cannot be the one waiting."},
+    {"wrong": "After to finish the report, she emailed it.", "right": "After <b>finishing</b> the report, she emailed it.", "why": "After a conjunction or preposition use the -ing form, not the to-infinitive."},
+    {"wrong": "Before to leave, check the windows.", "right": "Before <b>leaving</b>, check the windows.", "why": "<i>Before</i> + -ing, never <i>before to</i>."},
+    {"wrong": "Because tired, Mateo went to bed early.", "right": "<b>Being tired</b> (or <b>Because he was tired</b>), Mateo went to bed early.", "why": "<i>Because</i> cannot introduce a verbless clause; use <i>being</i> or a full clause."},
+    {"wrong": "Although tired, the exam seemed endless.", "right": "Although <b>he was</b> tired, the exam seemed endless.", "why": "The exam is not tired: either add a subject or change the main clause so that it names the tired person."},
+    {"wrong": "Knowing not what to do, Nadia asked for help.", "right": "<b>Not knowing</b> what to do, Nadia asked for help.", "why": "In modern English the negative <i>not</i> comes before the -ing form."}
+  ],
+  "dialogue": {
+    "title": "Tightening the lab report",
+    "context": "Miss Vega is helping Sofia, Mateo and Nadia shorten their lab reports before the deadline.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Your report is clear, but it's wordy. <b>If necessary</b>, cut each sentence by a third."},
+      {"speaker": "Sofia", "text": "I wrote 'While we were waiting for the results, we cleaned the equipment'. Should it be <b>While waiting</b> for the results, we cleaned the equipment?"},
+      {"speaker": "Miss Vega", "text": "Yes. The subject is the same, so you can reduce it."},
+      {"speaker": "Mateo", "text": "What about 'Because I did not know the exact amount, I used the larger flask'?"},
+      {"speaker": "Miss Vega", "text": "<b>Not knowing</b> the exact amount, I used the larger flask. Much tighter."},
+      {"speaker": "Nadia", "text": "<b>Though tired</b>, we repeated the test twice. Is that acceptable in a report?"},
+      {"speaker": "Miss Vega", "text": "It's fine, but keep the tone formal. <b>When in doubt</b>, use the full clause."},
+      {"speaker": "Sofia", "text": "I also have 'After we had finished, we weighed the sample.' Can I write <b>After finishing</b>, we weighed the sample?"},
+      {"speaker": "Miss Vega", "text": "Perfect. Just check that <b>once inside</b> the lab, the reader knows who is doing what."},
+      {"speaker": "Mateo", "text": "Understood. <b>Before submitting</b> it, I'll read every reduced clause for a hidden subject."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ for the bus, Liam realised he had left his wallet at home.", "options": ["While waited", "While wait", "While waiting"], "answer": 2, "why": "while + -ing for a simultaneous action"},
+        {"sentence": "After ___ the form, hand it to the receptionist.", "options": ["to complete", "complete", "completing"], "answer": 2, "why": "after + -ing"},
+        {"sentence": "Sofia always checks her work before ___ it in.", "options": ["to hand", "handing", "hand"], "answer": 1, "why": "before + -ing"},
+        {"sentence": "___ the answer, Mateo guessed.", "options": ["Not knowing", "Knowing not", "Not known"], "answer": 0, "why": "negative -ing for a reason clause"},
+        {"sentence": "When ___, ask Miss Vega before you start.", "options": ["doubtful in", "in doubt", "doubt"], "answer": 1, "why": "verbless set phrase: when in doubt"},
+        {"sentence": "___ tired, Nadia stayed to help clear up.", "options": ["Despite", "Though", "Because"], "answer": 1, "why": "though + adjective is a concession; despite and because do not take it"},
+        {"sentence": "Please submit the form online or, ___, in person.", "options": ["if necessary", "if necessity", "if necessarily"], "answer": 0, "why": "if + adjective"},
+        {"sentence": "___ the exam, the students were told to stay seated.", "options": ["After finishing", "After finish", "After to finish"], "answer": 0, "why": "after + -ing; the hidden subject (the students) matches the main clause"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one word or the correct form of the word in brackets.",
+      "items": [
+        {"sentence": "While ___ (cross) the road, always look both ways.", "answers": ["crossing"]},
+        {"sentence": "___ (not/know) which train to take, Sofia asked a guard.", "answers": ["Not knowing"]},
+        {"sentence": "Before ___ (leave) the lab, make sure the equipment is switched off.", "answers": ["leaving"]},
+        {"sentence": "___ necessary, you can retake the test in January.", "answers": ["If"]},
+        {"sentence": "Once ___ the building, visitors must sign in at reception.", "answers": ["inside"]},
+        {"sentence": "After ___ (speak) to the head, the parents felt reassured.", "answers": ["speaking"]},
+        {"sentence": "___ (be) unsure of the date, I checked the calendar again.", "answers": ["Being"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "While I was waiting for the doctor, I read a magazine.", "key": "WAITING", "second_start": "", "second_end": "for the doctor, I read a magazine.", "answers": ["While waiting"]},
+        {"first": "Because he didn't know the way, Mateo took a taxi.", "key": "KNOWING", "second_start": "", "second_end": "the way, Mateo took a taxi.", "answers": ["Not knowing"]},
+        {"first": "After she finished her homework, Sofia went online.", "key": "FINISHING", "second_start": "", "second_end": "her homework, Sofia went online.", "answers": ["After finishing"]},
+        {"first": "If it is necessary, you can ring me after ten.", "key": "NECESSARY", "second_start": "", "second_end": ", you can ring me after ten.", "answers": ["If necessary"]},
+        {"first": "Although he was tired, Liam kept going.", "key": "THOUGH", "second_start": "", "second_end": ", Liam kept going.", "answers": ["Though tired"]},
+        {"first": "Before she left the office, Nadia locked the drawers.", "key": "LEAVING", "second_start": "", "second_end": "the office, Nadia locked the drawers.", "answers": ["Before leaving"]},
+        {"first": "Whenever it is possible, we cycle to school.", "key": "POSSIBLE", "second_start": "", "second_end": ", we cycle to school.", "answers": ["Whenever possible"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Keep the conjunction (<i>while, after, before, once, though, if, when</i>) and drop the subject and <i>be</i>: <i>While waiting …</i>, <i>If necessary …</i>.",
+    "A reduced clause may contain -ing, an adjective, a noun phrase or a prepositional phrase: <i>Though tired</i>, <i>When in doubt</i>, <i>Once inside</i>.",
+    "Reason clauses lose the conjunction altogether: <i>Not knowing what to do, …</i>; put <i>not</i> before the -ing form.",
+    "The hidden subject must be the subject of the main clause; otherwise you have a dangling modifier.",
+    "After a conjunction or preposition use -ing, never the to-infinitive: <i>after finishing</i>, <i>before leaving</i>."
+  ]
+}

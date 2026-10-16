@@ -1,0 +1,199 @@
+{
+  "id": "should-have-b1",
+  "level": "pet",
+  "area": "Modals",
+  "title": "should have / shouldn't have: looking back",
+  "tagline": "Use should have + past participle to say what was the right (or wrong) thing to do in the past.",
+  "cefr": "B1",
+  "exam": ["Reading Part 5 — multiple-choice cloze", "Writing Part 1 — email", "Speaking Part 3 — discussing a situation"],
+  "why": "At B1 you need to talk about mistakes and regrets: I should have studied more, you shouldn't have shouted. B1 Preliminary tests modal verbs in the multiple-choice cloze, and in the Writing email you often say what you wish you had done differently. Getting the form right also makes your speaking sound natural, especially with the short sound should've.",
+  "hook": {
+    "text": "Mateo: \"I failed the quiz. I <b>should have studied</b> more!\" Sofia: \"Yes, and you <b>shouldn't have played</b> games all night.\" Mateo: \"I know. I <b>should have listened</b> to you!\"",
+    "ask": "Mateo is talking about last night, not tonight. What three words come before studied, played and listened? Do you see the same pattern each time?"
+  },
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Looking back from now",
+      "marks": [
+        {"at": "past", "label": "Mateo played games all night", "sub": "the mistake"},
+        {"at": "now", "label": "Mateo failed the quiz", "sub": "the result today"}
+      ],
+      "arrows": [[0, 1, "should have studied"]],
+      "caption": "We look back at the past and say what would have been better: <b>should have</b> + past participle."
+    },
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "I", "role": "subj"}, {"t": "should have", "role": "aux"}, {"t": "studied", "role": "verb"}, {"t": "more", "role": "x"}], "note": "regret: I didn't study"},
+        {"parts": [{"t": "You", "role": "subj"}, {"t": "shouldn't have", "role": "neg"}, {"t": "shouted", "role": "verb"}, {"t": "at him", "role": "obj"}], "note": "criticism: you shouted"},
+        {"parts": [{"t": "Should", "role": "aux"}, {"t": "we", "role": "subj"}, {"t": "have called", "role": "verb"}, {"t": "Miss Vega", "role": "obj"}, {"t": "?", "role": "x"}], "note": "question"}
+      ],
+      "caption": "After <b>should have</b> the main verb is always the <b>past participle</b>: studied, shouted, called, gone, seen."
+    },
+    {
+      "type": "contrast",
+      "title": "should or should have?",
+      "columns": ["should + base verb", "should have + past participle"],
+      "rows": [
+        {"label": "Time", "cells": ["now or the future", "the past"]},
+        {"label": "Idea", "cells": ["advice for what to do", "regret or criticism about what happened"]},
+        {"label": "Example", "cells": ["You should sleep more.", "You should have slept more."]},
+        {"label": "Negative", "cells": ["You shouldn't shout.", "You shouldn't have shouted."]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "a", "ex": "I"},
+      {"chip": "should / shouldn't have", "tone": "kw", "ex": "should have"},
+      {"chip": "past participle", "tone": "b", "ex": "studied"},
+      {"chip": "rest", "tone": "c", "ex": "more"}
+    ],
+    "table": {
+      "head": ["Form", "Pattern", "Example"],
+      "rows": [
+        ["Positive", "subject + should have + past participle", "I <b>should have called</b> you."],
+        ["Negative", "subject + shouldn't have + past participle", "He <b>shouldn't have eaten</b> so much."],
+        ["Question", "Should + subject + have + past participle?", "<b>Should</b> we <b>have waited</b>?"],
+        ["Question word", "What / Why should + subject + have + participle?", "What <b>should</b> I <b>have said</b>?"],
+        ["Spoken form", "should've / shouldn't've", "I <b>should've</b> asked."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Regret about something you did or didn't do",
+      "examples": [
+        {"text": "I <b>should have taken</b> an umbrella. I'm wet!", "note": "I didn't take one, and now I regret it"},
+        {"text": "Nadia <b>should have gone</b> to bed earlier.", "note": "she stayed up, and now she is tired"},
+        {"text": "We <b>should have left</b> home at seven.", "note": "we were late, so it was the better plan"}
+      ]
+    },
+    {
+      "point": "Criticising someone: shouldn't have",
+      "examples": [
+        {"text": "You <b>shouldn't have shouted</b> at your sister.", "note": "you shouted, and it was wrong"},
+        {"text": "Liam <b>shouldn't have told</b> the secret.", "note": "he told it, and that was a mistake"},
+        {"text": "They <b>shouldn't have left</b> the door open.", "note": "they left it open, and now the cat has escaped"}
+      ]
+    },
+    {
+      "point": "Advice about now or later, or about the past?",
+      "examples": [
+        {"text": "You <b>should study</b> more for the next test.", "note": "advice for the future: should + base verb"},
+        {"text": "You <b>should have studied</b> more for the last test.", "note": "looking back: should have + participle"}
+      ]
+    },
+    {
+      "point": "Questions and the short spoken form",
+      "examples": [
+        {"text": "<b>Should</b> we <b>have called</b> Miss Vega?", "note": "a question about the past"},
+        {"text": "What <b>should</b> I <b>have said</b>?", "note": "asking for the better answer"},
+        {"text": "I <b>should've</b> checked my phone.", "note": "in speech: should've sounds like 'should-uv'"},
+        {"text": "We <b>shouldn't've</b> waited so long.", "note": "very informal speech, not for writing"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I should of studied more.", "right": "I should <b>have</b> studied more.", "why": "It sounds like of, but it is have. Say and write should've or should have."},
+    {"wrong": "You should have went home.", "right": "You should have <b>gone</b> home.", "why": "After should have use the past participle (gone), not the past simple (went)."},
+    {"wrong": "I should studied last night.", "right": "I should <b>have studied</b> last night.", "why": "For the past you need have + participle. should + past form is wrong."},
+    {"wrong": "She should have to call me.", "right": "She should have <b>called</b> me.", "why": "No to after should have."},
+    {"wrong": "He shouldn't has said that.", "right": "He shouldn't <b>have</b> said that.", "why": "After a modal verb, have never changes: have, not has."},
+    {"wrong": "Should I have to study more yesterday?", "right": "<b>Should I have studied</b> more yesterday?", "why": "In a question, should comes first, then the subject, then have + participle."}
+  ],
+  "l1": [
+    {"es": "Debería haber llamado.", "wrong": "I should have call.", "right": "I should have <b>called</b>.", "why": "Spanish haber + participio becomes should have + past participle, so the verb needs its participle form."},
+    {"es": "No debiste decírselo.", "wrong": "You didn't should tell her.", "right": "You <b>shouldn't have told</b> her.", "why": "The negative goes with should: shouldn't have, never didn't should."},
+    {"es": "Tenías que haber ido.", "wrong": "You had to go.", "right": "You <b>should have gone</b>.", "why": "You had to go means it was necessary and you went. Should have gone means you didn't go but it was better."},
+    {"es": "Debí quedarme en casa.", "wrong": "I should of stayed at home.", "right": "I <b>should have stayed</b> at home.", "why": "Debí/debería haber is always should have, never should of."}
+  ],
+  "remember": {
+    "trick": "Look back? SHOULD HAVE + the -ED!",
+    "tip": "Think of it as a time machine: should have + past participle sends your advice back to yesterday. Say should've to practise the sound."
+  },
+  "dialogue": {
+    "title": "After the match",
+    "context": "Mateo's team lost the match and Liam, Nadia and Sofia talk to him and Miss Vega on the bench.",
+    "lines": [
+      {"speaker": "Mateo", "text": "I can't believe we lost. I <b>should have passed</b> the ball to Liam!"},
+      {"speaker": "Liam", "text": "True, and I <b>should have shouted</b> louder. I was free!"},
+      {"speaker": "Nadia", "text": "We <b>shouldn't have stopped</b> to argue about it during the game."},
+      {"speaker": "Sofia", "text": "And we <b>should have warmed</b> up properly. I was cold in the first half."},
+      {"speaker": "Miss Vega", "text": "<b>Should</b> we <b>have changed</b> the plan at half-time? I think so."},
+      {"speaker": "Mateo", "text": "What <b>should</b> we <b>have done</b>, Miss?"},
+      {"speaker": "Miss Vega", "text": "You <b>should have kept</b> the ball more and you <b>shouldn't have kicked</b> it so far."},
+      {"speaker": "Liam", "text": "Next time I <b>shouldn't have</b>... I mean, I <b>shouldn't</b> shout at the referee!"},
+      {"speaker": "Nadia", "text": "Liam, you <b>shouldn't have said</b> that to him today. It was rude!"},
+      {"speaker": "Sofia", "text": "Easy to say now. But we <b>should have thought</b> about it earlier."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Mateo failed the test. He ___ harder.", "options": ["should study", "should have studied", "should studying"], "answer": 1, "why": "looking back = should have + participle"},
+        {"sentence": "You didn't tell me the truth. You ___ me.", "options": ["should have told", "should tell", "shouldn't have told"], "answer": 0, "why": "regret about the past: should have + participle"},
+        {"sentence": "It's cold outside. You ___ your coat now.", "options": ["should have worn", "shouldn't wear", "should wear"], "answer": 2, "why": "advice for now = should + base verb"},
+        {"sentence": "Nadia ate five cakes and feels sick. She ___ so many.", "options": ["shouldn't eat", "shouldn't have eaten", "should have eaten"], "answer": 1, "why": "she did it, and it was a mistake"},
+        {"sentence": "We missed the bus. We ___ earlier.", "options": ["shouldn't have left", "should leave", "should have left"], "answer": 2, "why": "the better past action: should have left"},
+        {"sentence": "___ we have called Miss Vega?", "options": ["Should", "Did", "Would"], "answer": 0, "why": "question: Should + subject + have + participle"},
+        {"sentence": "Liam shouted at his sister. He ___ that.", "options": ["shouldn't have done", "should have done", "shouldn't do"], "answer": 0, "why": "criticism of a past action"},
+        {"sentence": "It was a secret! You ___ anyone.", "options": ["should have told", "should tell", "shouldn't have told"], "answer": 2, "why": "telling was a mistake"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with should have or shouldn't have and the verb in brackets, in the correct form.",
+      "items": [
+        {"sentence": "I forgot my homework. I ___ (pack) my bag last night.", "answers": ["should have packed"]},
+        {"sentence": "He was only joking. You ___ (shout) at him.", "answers": ["shouldn't have shouted", "should not have shouted"]},
+        {"sentence": "She has a headache. She ___ (sleep) more.", "answers": ["should have slept"]},
+        {"sentence": "We're soaked! We ___ (take) an umbrella.", "answers": ["should have taken"]},
+        {"sentence": "The fish was old and he felt ill. He ___ (eat) it.", "answers": ["shouldn't have eaten", "should not have eaten"]},
+        {"sentence": "Miss Vega gave me good advice. I ___ (listen) to her.", "answers": ["should have listened"]},
+        {"sentence": "Now the cat has escaped! They ___ (leave) the door open.", "answers": ["shouldn't have left", "should not have left"]},
+        {"sentence": "The task was hard. Mateo ___ (ask) for help earlier.", "answers": ["should have asked"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["called me", "You", "should have", "."], "answer": "You should have called me."},
+        {"words": ["all the cake", "shouldn't have eaten", "He", "."], "answer": "He shouldn't have eaten all the cake."},
+        {"words": ["waited for Liam", "?", "Should we have"], "answer": "Should we have waited for Liam?"},
+        {"words": ["last night", "I", "more", "should have studied", "."], "answer": "I should have studied more last night."},
+        {"words": ["laughed at her", "They", "shouldn't have", "."], "answer": "They shouldn't have laughed at her."},
+        {"words": ["said", "What", "should I have", "?"], "answer": "What should I have said?"}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {"first": "I didn't study, and that was a mistake.", "key": "SHOULD", "second_start": "I", "second_end": "studied.", "answers": ["should have"]},
+        {"first": "It was wrong of you to take my pen.", "key": "SHOULDN'T", "second_start": "You", "second_end": "my pen.", "answers": ["shouldn't have taken"]},
+        {"first": "Why didn't you ask me for help?", "key": "SHOULD", "second_start": "You", "second_end": "me for help.", "answers": ["should have asked"]},
+        {"first": "It's a pity Nadia didn't come to the party.", "key": "SHOULD", "second_start": "Nadia", "second_end": "to the party.", "answers": ["should have come"]},
+        {"first": "Liam was wrong to tell the secret.", "key": "SHOULDN'T", "second_start": "Liam", "second_end": "the secret.", "answers": ["shouldn't have told"]},
+        {"first": "I think it was a mistake to wait so long.", "key": "SHOULDN'T", "second_start": "We", "second_end": "so long.", "answers": ["shouldn't have waited"]}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what was the right thing to do in the past with should have + past participle.",
+    "I can criticise a past action with shouldn't have, and tell it apart from should + base verb for now.",
+    "I can ask Should we have…? and say should've in a natural way."
+  ],
+  "summary": [
+    "Use should have + past participle for a regret or for what would have been better in the past.",
+    "Use shouldn't have + past participle when a past action was a mistake.",
+    "should + base verb is advice for now or later; should have is for the past.",
+    "In speech we say should've, but we never write should of."
+  ]
+}

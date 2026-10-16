@@ -1,0 +1,661 @@
+{
+  "id": "ing-as-subject",
+  "level": "pet",
+  "area": "Sentence building",
+  "title": "-ing as a subject: Swimming is fun",
+  "tagline": "An -ing phrase can start a sentence and act like a noun, and it takes a singular verb.",
+  "cefr": "B1",
+  "exam": [
+    "Reading Part 5 — multiple-choice cloze",
+    "Writing Part 1 — email",
+    "Speaking Part 3 — discussing a situation"
+  ],
+  "why": "When you talk about hobbies, habits and opinions, you need to start a sentence with an activity: Swimming is fun, Getting up early is hard. B1 Preliminary uses this pattern in the multiple-choice cloze and in the Writing email, and a speaker who can say Not eating breakfast is a bad idea sounds much more natural than one who only says I think it is bad to not eat.",
+  "hook": {
+    "text": "Sofia: \"<b>Swimming</b> is fun!\" Liam: \"<b>Getting up</b> at six is not fun.\" Nadia: \"<b>Not trying</b> is worse. <b>Learning</b> something new makes me happy.\"",
+    "ask": "Each sentence starts with a word ending in -ing. Is that word a person, a thing or an activity? And which verb comes next: is, is not, makes — one thing or many?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence with an -ing subject",
+      "legend": true,
+      "sentences": [
+        {
+          "parts": [
+            {
+              "t": "Swimming",
+              "role": "subj"
+            },
+            {
+              "t": "is",
+              "role": "verb"
+            },
+            {
+              "t": "fun",
+              "role": "x"
+            }
+          ],
+          "note": "short subject"
+        },
+        {
+          "parts": [
+            {
+              "t": "Learning to dance",
+              "role": "subj"
+            },
+            {
+              "t": "takes",
+              "role": "verb"
+            },
+            {
+              "t": "patience",
+              "role": "obj"
+            }
+          ],
+          "note": "longer subject, still singular"
+        },
+        {
+          "parts": [
+            {
+              "t": "Not",
+              "role": "neg"
+            },
+            {
+              "t": "eating",
+              "role": "kw"
+            },
+            {
+              "t": "breakfast",
+              "role": "obj"
+            },
+            {
+              "t": "is",
+              "role": "verb"
+            },
+            {
+              "t": "a bad idea",
+              "role": "x"
+            }
+          ],
+          "note": "negative -ing subject"
+        }
+      ],
+      "caption": "The whole -ing phrase is <b>one</b> subject, so the verb is singular: <b>is, takes, makes</b>."
+    },
+    {
+      "type": "contrast",
+      "title": "Two ways to say the same thing",
+      "columns": [
+        "-ing subject",
+        "It's + adjective + to"
+      ],
+      "rows": [
+        {
+          "label": "Starts with",
+          "cells": [
+            "the activity",
+            "It's"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "Making friends is easy.",
+            "It's easy to make friends."
+          ]
+        },
+        {
+          "label": "Verb form",
+          "cells": [
+            "-ing",
+            "to + base verb"
+          ]
+        },
+        {
+          "label": "Feeling",
+          "cells": [
+            "the activity is the topic",
+            "a general opinion"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "How to make a sentence with an -ing subject",
+      "steps": [
+        {
+          "label": "Choose the activity and add -ing",
+          "ex": "<b>Swimming</b>"
+        },
+        {
+          "label": "Add any extra words",
+          "ex": "Swimming <b>in the sea</b>"
+        },
+        {
+          "label": "Add a singular verb",
+          "ex": "Swimming in the sea <b>is</b>"
+        },
+        {
+          "label": "Finish with your opinion",
+          "ex": "Swimming in the sea is <b>great fun</b>."
+        }
+      ],
+      "caption": "To make it negative, put <b>not</b> before the -ing word: <b>Not</b> swimming is a pity."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "(not) + verb-ing",
+        "tone": "a",
+        "ex": "Swimming"
+      },
+      {
+        "chip": "+ extra words",
+        "tone": "c",
+        "ex": "in the sea"
+      },
+      {
+        "chip": "+ singular verb",
+        "tone": "b",
+        "ex": "is"
+      },
+      {
+        "chip": "+ rest of the sentence",
+        "tone": "kw",
+        "ex": "great fun"
+      }
+    ],
+    "table": {
+      "head": [
+        "Pattern",
+        "Example",
+        "What it means"
+      ],
+      "rows": [
+        [
+          "-ing as subject",
+          "<b>Cooking</b> is relaxing.",
+          "the activity is what we talk about"
+        ],
+        [
+          "-ing phrase as subject",
+          "<b>Playing chess</b> takes time.",
+          "a longer phrase, still one subject"
+        ],
+        [
+          "not + -ing",
+          "<b>Not sleeping</b> makes me tired.",
+          "the negative of an activity"
+        ],
+        [
+          "It's + adjective + to",
+          "<b>It's</b> boring <b>to wait</b>.",
+          "the same idea with a different start"
+        ],
+        [
+          "-ing as object",
+          "Sofia loves <b>dancing</b>.",
+          "the activity comes after the verb"
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "An activity as the subject of the sentence",
+      "examples": [
+        {
+          "text": "<b>Swimming</b> in the sea <b>is</b> great fun.",
+          "note": "the activity is what we talk about"
+        },
+        {
+          "text": "<b>Learning</b> to play chess <b>takes</b> patience.",
+          "note": "a longer phrase is still one subject"
+        },
+        {
+          "text": "<b>Cooking</b> with friends <b>is</b> my favourite thing to do.",
+          "note": "an opinion about a hobby"
+        }
+      ]
+    },
+    {
+      "point": "The verb after an -ing subject is singular",
+      "examples": [
+        {
+          "text": "<b>Walking</b> to school every day <b>keeps</b> you fit.",
+          "note": "keeps, not keep: one activity"
+        },
+        {
+          "text": "<b>Reading</b> books in English <b>helps</b> your vocabulary.",
+          "note": "helps, not help"
+        },
+        {
+          "text": "<b>Getting</b> good marks <b>doesn't happen</b> by magic.",
+          "note": "doesn't, not don't"
+        }
+      ]
+    },
+    {
+      "point": "It's + adjective + to, or an -ing subject",
+      "examples": [
+        {
+          "text": "<b>It's</b> easy <b>to make</b> friends at this school.",
+          "note": "it comes first, then to + verb"
+        },
+        {
+          "text": "<b>Making</b> friends at this school <b>is</b> easy.",
+          "note": "same idea, -ing first"
+        },
+        {
+          "text": "<b>It's</b> boring <b>to wait</b> for the bus.",
+          "note": "a general opinion"
+        }
+      ]
+    },
+    {
+      "point": "Not + -ing, and -ing after other verbs",
+      "examples": [
+        {
+          "text": "<b>Not sleeping</b> enough makes you grumpy.",
+          "note": "not goes before the -ing word"
+        },
+        {
+          "text": "Sofia loves <b>dancing</b> and hates <b>losing</b>.",
+          "note": "-ing after a verb: the activity is the object"
+        },
+        {
+          "text": "Liam is tired of <b>waiting</b> for the bus.",
+          "note": "after tired of, we always use -ing"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Swim is fun.",
+      "right": "<b>Swimming</b> is fun.",
+      "why": "A base verb cannot be a subject. Use verb + -ing."
+    },
+    {
+      "wrong": "Playing video games all day make you tired.",
+      "right": "Playing video games all day <b>makes</b> you tired.",
+      "why": "The -ing phrase is one subject, so the verb is singular: makes."
+    },
+    {
+      "wrong": "Don't eating late is bad for you.",
+      "right": "<b>Not eating</b> late is bad for you.",
+      "why": "For the negative of an -ing subject we use not + -ing, not don't."
+    },
+    {
+      "wrong": "To swimming is fun.",
+      "right": "<b>Swimming</b> is fun.",
+      "why": "Use -ing alone, or to + base verb (To swim is fun), but never to + -ing."
+    },
+    {
+      "wrong": "It's important drinking water.",
+      "right": "It's important <b>to drink</b> water.",
+      "why": "After It's + adjective, we usually use to + base verb."
+    },
+    {
+      "wrong": "Learning languages are useful.",
+      "right": "Learning languages <b>is</b> useful.",
+      "why": "One activity, so one singular verb: is."
+    }
+  ],
+  "l1": [
+    {
+      "es": "Nadar es divertido.",
+      "wrong": "Swim is fun.",
+      "right": "<b>Swimming</b> is fun.",
+      "why": "Spanish uses the infinitive as a subject. English needs the -ing form."
+    },
+    {
+      "es": "Fumar es malo para la salud.",
+      "wrong": "Smoke is bad for health.",
+      "right": "<b>Smoking</b> is bad for your health.",
+      "why": "Again, Spanish infinitive becomes English -ing when it is the subject."
+    },
+    {
+      "es": "No comer es peligroso.",
+      "wrong": "No eat is dangerous.",
+      "right": "<b>Not eating</b> is dangerous.",
+      "why": "No eat does not exist in English. Use not + -ing."
+    },
+    {
+      "es": "Es difícil levantarse temprano.",
+      "wrong": "Is difficult get up early.",
+      "right": "<b>It's</b> difficult <b>to get up</b> early.",
+      "why": "English always needs a subject (It) and to + verb after the adjective."
+    }
+  ],
+  "remember": {
+    "trick": "-ING starts it, IS follows it!",
+    "tip": "When an activity starts the sentence, add -ing and then use one singular verb: Swimming is, Reading helps, Not eating makes."
+  },
+  "dialogue": {
+    "title": "What makes a good weekend?",
+    "context": "Miss Vega asks Mateo, Sofia, Liam and Nadia what makes a good weekend during a quiet lesson.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "So, what makes a good weekend? Who wants to start?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "For me, <b>sleeping</b> late <b>is</b> the best part."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Really? <b>Doing</b> sport at the weekend <b>makes</b> me feel great."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I agree with both. <b>Meeting</b> friends <b>is</b> important, too."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "<b>Not having</b> homework <b>is</b> the best thing for me!"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Ha! But <b>doing</b> your homework early <b>gives</b> you more free time."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "It's true. <b>It's</b> hard <b>to start</b>, but it feels good afterwards."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Finishing</b> everything on Friday <b>sounds</b> impossible to me."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "<b>Planning</b> your week <b>helps</b>, honestly."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Good point, Nadia. <b>Talking</b> about it <b>is</b> the first step!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "___ is good for your health.",
+          "options": [
+            "Walk",
+            "Walking",
+            "To walking"
+          ],
+          "answer": 1,
+          "why": "an activity as the subject needs -ing"
+        },
+        {
+          "sentence": "Swimming ___ my favourite sport.",
+          "options": [
+            "is",
+            "are",
+            "be"
+          ],
+          "answer": 0,
+          "why": "one activity = singular verb"
+        },
+        {
+          "sentence": "___ breakfast is a bad idea.",
+          "options": [
+            "Eating not",
+            "Don't eat",
+            "Not eating"
+          ],
+          "answer": 2,
+          "why": "negative -ing subject = not + -ing"
+        },
+        {
+          "sentence": "It's important ___ enough water.",
+          "options": [
+            "drinking",
+            "to drink",
+            "drink"
+          ],
+          "answer": 1,
+          "why": "It's + adjective + to + base verb"
+        },
+        {
+          "sentence": "___ video games all day makes you tired.",
+          "options": [
+            "Play",
+            "To playing",
+            "Playing"
+          ],
+          "answer": 2,
+          "why": "-ing as a subject"
+        },
+        {
+          "sentence": "Running for an hour ___ me thirsty.",
+          "options": [
+            "make",
+            "makes",
+            "making"
+          ],
+          "answer": 1,
+          "why": "singular verb after an -ing subject"
+        },
+        {
+          "sentence": "I'm tired of ___ the same song.",
+          "options": [
+            "hear",
+            "to hear",
+            "hearing"
+          ],
+          "answer": 2,
+          "why": "tired of + -ing"
+        },
+        {
+          "sentence": "Liam suggested ___ a film tonight.",
+          "options": [
+            "watching",
+            "to watch",
+            "watch"
+          ],
+          "answer": 0,
+          "why": "suggest + -ing"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with the correct form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "___ (read) before bed helps me relax.",
+          "answers": [
+            "Reading",
+            "reading"
+          ]
+        },
+        {
+          "sentence": "___ (not/wake up) early is impossible for me.",
+          "answers": [
+            "Not waking up",
+            "not waking up"
+          ]
+        },
+        {
+          "sentence": "Swimming in the sea ___ (be) great fun.",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "sentence": "Mateo is crazy about ___ (collect) old coins.",
+          "answers": [
+            "collecting"
+          ]
+        },
+        {
+          "sentence": "___ (eat) too much sugar is bad for you.",
+          "answers": [
+            "Eating",
+            "eating"
+          ]
+        },
+        {
+          "sentence": "Making new friends ___ (take) time.",
+          "answers": [
+            "takes"
+          ]
+        },
+        {
+          "sentence": "Nadia is afraid of ___ (speak) in public.",
+          "answers": [
+            "speaking"
+          ]
+        },
+        {
+          "sentence": "I'm sorry for ___ (be) late.",
+          "answers": [
+            "being"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {
+          "words": [
+            "is",
+            "a lot of fun",
+            "Learning English",
+            "."
+          ],
+          "answer": "Learning English is a lot of fun."
+        },
+        {
+          "words": [
+            "bad",
+            "Not sleeping",
+            "for you",
+            "is",
+            "."
+          ],
+          "answer": "Not sleeping is bad for you."
+        },
+        {
+          "words": [
+            "takes",
+            "Walking to school",
+            "twenty minutes",
+            "."
+          ],
+          "answer": "Walking to school takes twenty minutes."
+        },
+        {
+          "words": [
+            "to drink water",
+            "It's",
+            "important",
+            "."
+          ],
+          "answer": "It's important to drink water."
+        },
+        {
+          "words": [
+            "isn't",
+            "easy",
+            "Playing the guitar",
+            "."
+          ],
+          "answer": "Playing the guitar isn't easy."
+        },
+        {
+          "words": [
+            "allowed",
+            "Is",
+            "swimming in the lake",
+            "?"
+          ],
+          "answer": "Is swimming in the lake allowed?"
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it means the same as the first, using the word given. Use no more than three words.",
+      "items": [
+        {
+          "first": "It's boring to wait for the bus.",
+          "key": "WAITING",
+          "second_start": "",
+          "second_end": "for the bus is boring.",
+          "answers": [
+            "Waiting"
+          ]
+        },
+        {
+          "first": "It's hard for me to learn the violin.",
+          "key": "HARD",
+          "second_start": "Learning the violin",
+          "second_end": "for me.",
+          "answers": [
+            "is hard"
+          ]
+        },
+        {
+          "first": "Don't eat in class — it's against the rules.",
+          "key": "AGAINST",
+          "second_start": "Eating in class",
+          "second_end": "the rules.",
+          "answers": [
+            "is against"
+          ]
+        },
+        {
+          "first": "It is dangerous when you don't wear a helmet.",
+          "key": "NOT",
+          "second_start": "",
+          "second_end": "a helmet is dangerous.",
+          "answers": [
+            "Not wearing"
+          ]
+        },
+        {
+          "first": "I'm sorry that I was late.",
+          "key": "FOR",
+          "second_start": "I'm sorry",
+          "second_end": "late.",
+          "answers": [
+            "for being"
+          ]
+        },
+        {
+          "first": "Sofia loves to take photos.",
+          "key": "TAKING",
+          "second_start": "Sofia loves",
+          "second_end": "photos.",
+          "answers": [
+            "taking"
+          ]
+        }
+      ]
+    }
+  ],
+  "can_do": [
+    "I can start a sentence with an -ing phrase, like Swimming is fun.",
+    "I can use a singular verb after an -ing subject, even when the phrase is long.",
+    "I can make the negative with not + -ing and say the same idea with It's + adjective + to."
+  ],
+  "summary": [
+    "An -ing phrase can be the subject of a sentence: Swimming is fun.",
+    "The verb after an -ing subject is singular: is, takes, makes, doesn't.",
+    "The negative is not + -ing: Not eating breakfast is a bad idea.",
+    "It's + adjective + to + base verb says the same idea: It's easy to make friends."
+  ]
+}

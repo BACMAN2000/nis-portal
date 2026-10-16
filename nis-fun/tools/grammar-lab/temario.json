@@ -25,6 +25,7 @@
    {"id":"reporting-verbs","title":"Reporting verbs and their patterns","brief":"suggest/recommend + -ing; deny/admit + -ing; accuse sb of; insist on; warn/advise/persuade sb (not) to; agree/offer/refuse + to; apologise for."}
   ]},
   {"area":"Sentence building","topics":[
+   {"id":"verb-object-infinitive","title":"Verb + object + to: I want you to come","brief":"want / would like / ask / tell / expect / allow / persuade / remind / encourage / warn + object + to-infinitive; negative not to (She told me not to wait); make / let + object + bare infinitive; be + past participle + to in the passive (We were asked to wait); the trap I want that you come."},
    {"id":"relative-clauses","title":"Relative clauses","brief":"Defining vs non-defining (commas, that, omission); whose/where/when/why; which referring to a whole clause; prepositions in relative clauses; reduced relatives (-ing/-ed)."},
    {"id":"gerund-infinitive","title":"Verb patterns: gerund and infinitive","brief":"Verbs + -ing vs + to; verbs that change meaning (remember/forget/stop/try/regret/mean/go on); adjectives + to; prepositions + -ing; make/let + bare infinitive."},
    {"id":"linking-contrast","title":"Contrast and concession","brief":"although/even though/though; despite/in spite of (+ -ing/the fact that); whereas/while; however/nevertheless/on the other hand; position and punctuation."},
@@ -65,6 +66,8 @@
    {"id":"reporting-advanced","title":"Reporting: verbs, patterns and distance","brief":"Reporting verbs with their patterns (deny/insist/urge/object to/threaten/accuse of/blame for/dissuade from); reporting with hedges (claim/allege/is said to/is thought to); reported questions and requests; reporting without backshift; summarising what was said."}
   ]},
   {"area":"Sentence building","topics":[
+   {"id":"reduced-adverbial-clauses","title":"Reduced and verbless clauses: while waiting, when in doubt","brief":"Reduced time clauses (While waiting for the bus, …; After finishing, …; Before leaving, …); reduced cause clauses (Not knowing what to do, …); verbless clauses (When in doubt, …; If necessary, …; Though tired, …); the subject must be the same in both clauses."},
+   {"id":"paired-conjunctions","title":"Paired conjunctions: both … and, not only … but also","brief":"both … and, either … or, neither … nor, not only … but (also), whether … or; parallel structure after each half; verb agreement with the nearer subject (Neither the teacher nor the students were…); inversion after Not only at the start of a sentence."},
    {"id":"verb-patterns-advanced","title":"Advanced verb patterns","brief":"Verbs + object + infinitive/-ing (I saw him leave / leaving); perfect and continuous infinitives (seems to have been); passive infinitives; verb + preposition + -ing; can't help/bear/stand; to vs to + -ing after object to/look forward to/be used to."},
    {"id":"participle-clauses","title":"Participle clauses","brief":"Present, past and perfect participle clauses (Having finished…, Built in 1900…); reduced relatives; with + noun + participle; participles after conjunctions (when asked, if given); avoiding dangling participles."},
    {"id":"relative-clauses-advanced","title":"Advanced relative clauses","brief":"Preposition + whom/which; whereby/wherein; whatever/whichever/whoever; of which/whose with things; all of whom / some of which; non-finite relatives (the first person to…); which for whole clauses in formal writing."},
@@ -85,6 +88,7 @@
  ]},
   "a1": {"cefr":"A1","exam":"A1 Foundations","areas":[
   {"area":"First words, first sentences","topics":[
+   {"id":"adjectives-a1","title":"Adjectives: a big dog, the dog is big","brief":"Adjectives before a noun (a big dog) and after be (the dog is big); adjectives never take -s (two red cars); very / really + adjective; colours, size and feelings; two adjectives together (a big black cat); What's it like?"},
    {"id":"be-am-is-are","title":"The verb be: am, is, are","brief":"I am / you are / he is…; contractions (I'm, she's, they're); negatives (isn't, aren't); questions and short answers (Are you…? Yes, I am.); age, nationality, feelings and jobs with be; the classic trap I have 12 years."},
    {"id":"nouns-plurals-this-that","title":"Nouns: a/an, plurals, this/that/these/those","brief":"a/an with a consonant or vowel sound (a dog, an apple, a uniform); plural -s/-es/-ies and the irregulars (children, people, feet, teeth, mice); this/that/these/those with near and far; What's this? / What are those?"},
    {"id":"have-got-a1","title":"have got: what you have","brief":"I have got / she has got; contractions ('ve got, 's got); negatives (haven't got, hasn't got); questions (Have you got…? Has she got…?) and short answers; family, pets, possessions and describing people (She's got long hair)."},
@@ -121,6 +125,7 @@
    {"id":"zero-first-conditional","title":"Zero and first conditional","brief":"if/when + present simple for things that are always true; if + present, will/won't for real future situations; imperatives and can in the result; unless = if not; the comma when if comes first."}
   ]},
   {"area":"Sentence building","topics":[
+   {"id":"two-objects","title":"Give me the ball: verbs with two objects","brief":"give, send, show, bring, buy, make, tell, lend + person + thing (Give me the ball); thing + to/for + person (Give it to me, I bought it for you); with pronouns it/them the to/for pattern is the safe one; object pronouns me, him, her, us, them."},
    {"id":"questions","title":"Questions and short answers","brief":"Question words (what/where/when/who/why/how/which/whose); how + adjective (how often/how long/how much/how many/how far); word order with be, do/does/did and modals; short answers; questions about the subject (Who called?)."},
    {"id":"linking-words","title":"Linking words: and, but, or, so, because","brief":"and/but/or/so/because; then/after that/when/before/after/while for time; also/too/as well; that's why; joining two short sentences into one for Writing Parts 6 and 7."},
    {"id":"verb-patterns-a2","title":"Verb patterns: like doing, want to do","brief":"like/love/hate/enjoy/don't mind + -ing; want/need/would like/hope/decide/learn + to; go + -ing (go swimming); let's/why don't we/how about + -ing; start/begin with both."},
@@ -130,6 +135,7 @@
    {"id":"story-telling-sequencing","title":"Telling a story: sequencing and past tenses together","brief":"First/then/next/after that/finally; one day/suddenly/in the end; past simple and past continuous in the same story; time expressions; the shape of a 35-word story for Writing Part 7."}
   ]},
   {"area":"Comparison & description","topics":[
+   {"id":"too-much-many-enough","title":"too much, too many and (not) enough","brief":"too much + uncountable, too many + countable, too + adjective; enough + noun (enough chairs) and adjective + enough (old enough); not enough; problem vs just right; too … to / … enough to."},
    {"id":"comparatives-superlatives","title":"Comparatives and superlatives","brief":"-er/-est and more/most; spelling (big → bigger, happy → happiest); irregular (good/bad/far); than; the with superlatives; as…as and not as…as; much/a lot + comparative."},
    {"id":"adjectives-adverbs-a2","title":"Adjectives and adverbs","brief":"Adjectives before nouns and after be/look/feel; -ed vs -ing (bored/boring); adverbs of manner with -ly (and irregular: well, fast, hard); too + adjective, adjective + enough, very/really/quite; two adjectives in order (a big red bag)."},
    {"id":"articles-a2","title":"a, an, the or nothing?","brief":"a/an for one of many and for jobs; the for something known or unique; no article with meals, sports, languages and plural general nouns; go to school/bed/work; at home; the cinema/the beach/the station."},
@@ -151,6 +157,7 @@
    {"id":"used-to-would","title":"used to and would for past habits","brief":"used to/didn't use to/Did you use to…? for past habits and states that are different now; would for repeated past actions (not states); used to vs be used to (intro)."}
   ]},
   {"area":"Modals","topics":[
+   {"id":"should-have-b1","title":"should have / shouldn't have: looking back","brief":"should have + past participle for regrets and criticism about the past (I should have studied); shouldn't have; should have vs should; questions (Should I have told her?); pronunciation should've."},
    {"id":"modals-obligation-b1","title":"Obligation and advice: must, have to, should, ought to","brief":"must vs have to; mustn't vs don't have to/needn't; should/ought to/had better for advice; had to/didn't have to in the past; be allowed to; notices and rules (Reading Part 1)."},
    {"id":"modals-deduction","title":"Deduction: must, might, may, could, can't","brief":"Present deduction (must be/can't be/might be) and past deduction (must have/can't have/might have + participle); degrees of certainty; deduction must vs obligation must."},
    {"id":"modals-ability-possibility","title":"Ability, possibility, requests and offers","brief":"can/could/be able to/managed to for ability; may/might/could for possibility; Could you…?/Would you mind…? for requests; Shall I…?/I'll… for offers; may/can for permission."}
@@ -169,6 +176,7 @@
    {"id":"reported-questions-commands","title":"Reported questions, commands and requests","brief":"Reported yes/no questions with if/whether; wh- questions and their word order; ask/tell/want sb (not) to; suggest/advise/warn/promise/offer/refuse and their patterns."}
   ]},
   {"area":"Sentence building","topics":[
+   {"id":"ing-as-subject","title":"-ing as a subject: Swimming is fun","brief":"Gerund phrases as the subject (Learning languages is useful) and the object (I enjoy cooking); singular verb after an -ing subject; It's + adjective + to vs -ing subject; not + -ing (Not sleeping enough is bad)."},
    {"id":"relative-clauses-b1","title":"Relative clauses","brief":"Defining clauses with who/which/that/where/whose/when; leaving out the pronoun when it is the object; non-defining clauses with commas (intro); that is not used after a comma."},
    {"id":"verb-patterns-b1","title":"Verb patterns: -ing or to?","brief":"Verbs + -ing (enjoy, finish, avoid, mind, suggest); verbs + to (want, decide, hope, promise, learn); both with a change of meaning (remember/forget/stop/try); make/let + verb; prepositions + -ing; adjectives + to."},
    {"id":"linking-contrast-reason","title":"Linking: contrast, reason, purpose and result","brief":"although/though/even though/however/despite/in spite of; because/because of/as/since; so that/in order to/to; so/therefore/as a result; too/enough; punctuation with linkers in Writing Parts 1 and 2."},
@@ -180,6 +188,7 @@
    {"id":"adjectives-adverbs-b1","title":"Adjectives and adverbs","brief":"Order of adjectives (a lovely old wooden box); -ed vs -ing; adverbs of manner, degree and frequency and their position; adjectives vs adverbs (hard/hardly, late/lately, good/well); so/such; extreme adjectives with absolutely."}
   ]},
   {"area":"Words","topics":[
+   {"id":"phrasal-verbs-b1","title":"Phrasal verbs: turn it on, look after it","brief":"Phrasal verbs with an object: separable (turn the TV on / turn it on — never turn on it) and inseparable (look after the dog / look after it); intransitive phrasal verbs (get up, break down); common B1 sets: put on, take off, pick up, give up, find out, look for, get on with."},
    {"id":"word-formation-b1","title":"Word formation: prefixes, suffixes and families","brief":"Word families (succeed/success/successful/successfully); noun suffixes (-tion/-ment/-ness/-er/-ist); adjective suffixes (-ful/-less/-able/-ive/-ous); -ly adverbs; negative prefixes (un-/dis-/im-/in-/ir-); re-/over-/under-; spelling changes; how Reading Parts 5 and 6 test them."}
   ]}
  ]}

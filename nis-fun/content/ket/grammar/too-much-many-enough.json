@@ -1,0 +1,204 @@
+{
+  "id": "too-much-many-enough",
+  "level": "ket",
+  "area": "Comparison & description",
+  "title": "too much, too many and (not) enough",
+  "tagline": "Too much noise, too many people, not enough time: say when something is a problem.",
+  "cefr": "A2",
+  "exam": ["Reading Part 4 — multiple-choice cloze", "Reading Part 5 — open cloze"],
+  "why": "We use <i>too</i> when there is more than we want, and <i>enough</i> when the amount is right. They are in every complaint, every plan and every excuse: <i>too tired, not enough time</i>. Reading Parts 5 and 6 often test them in short gaps.",
+  "hook": {
+    "text": "Sofia and Mateo try to carry the boxes. \"There are <b>too many</b> boxes!\" says Sofia. \"And they're <b>too</b> heavy,\" says Mateo. \"We haven't got <b>enough</b> hands — or <b>enough</b> time!\"",
+    "ask": "Find the problems in the story. Which words come before boxes, heavy and hands?"
+  },
+  "diagrams": [
+    {
+      "type": "blocks",
+      "title": "Build the sentence",
+      "legend": true,
+      "sentences": [
+        {"parts": [{"t": "There is", "role": "x"}, {"t": "too much", "role": "kw"}, {"t": "noise", "role": "obj"}, {"t": ".", "role": "x"}], "note": "too much + uncountable"},
+        {"parts": [{"t": "There are", "role": "x"}, {"t": "too many", "role": "kw"}, {"t": "people", "role": "obj"}, {"t": ".", "role": "x"}], "note": "too many + countable"},
+        {"parts": [{"t": "The bag", "role": "subj"}, {"t": "is", "role": "verb"}, {"t": "too", "role": "kw"}, {"t": "heavy", "role": "x"}, {"t": ".", "role": "x"}], "note": "too + adjective"},
+        {"parts": [{"t": "We", "role": "subj"}, {"t": "have got", "role": "verb"}, {"t": "enough", "role": "kw"}, {"t": "chairs", "role": "obj"}, {"t": ".", "role": "x"}], "note": "enough + noun"}
+      ],
+      "caption": "<b>Too</b> is a problem: more than we want. <b>Enough</b> is the right amount."
+    },
+    {
+      "type": "contrast",
+      "title": "too or enough?",
+      "columns": ["too", "enough"],
+      "rows": [
+        {"label": "Meaning", "cells": ["more than you want", "as much as you need"]},
+        {"label": "With an adjective", "cells": ["too + adjective: too cold", "adjective + enough: warm enough"]},
+        {"label": "With a noun", "cells": ["too much / too many + noun", "enough + noun: enough chairs"]},
+        {"label": "Negative", "cells": ["— (not used)", "not enough: less than you need"]},
+        {"label": "With a verb", "cells": ["too tired to walk", "old enough to drive"]}
+      ]
+    },
+    {
+      "type": "steps",
+      "title": "Which word do I need?",
+      "steps": [
+        {"label": "Is the next word an adjective?", "ex": "heavy → <b>too</b> heavy / heavy <b>enough</b>"},
+        {"label": "Can you count the noun?", "ex": "people → <b>too many</b> people"},
+        {"label": "Can't you count it?", "ex": "noise → <b>too much</b> noise"}
+      ],
+      "caption": "Adjective? Use <b>too</b>. Countable noun? <b>Too many</b>. Uncountable noun? <b>Too much</b>."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "too much / too many", "tone": "kw", "ex": "too many"},
+      {"chip": "noun", "tone": "a", "ex": "people"},
+      {"chip": "too", "tone": "kw", "ex": "too"},
+      {"chip": "adjective", "tone": "b", "ex": "heavy"},
+      {"chip": "enough", "tone": "c", "ex": "enough chairs / big enough"}
+    ],
+    "table": {
+      "head": ["Pattern", "Example", "Note"],
+      "rows": [
+        ["too much + uncountable", "too much noise", "water, time, money, homework"],
+        ["too many + countable", "too many people", "plural noun"],
+        ["too + adjective", "too heavy", "no much or many"],
+        ["enough + noun", "enough time", "enough goes before the noun"],
+        ["adjective + enough", "big enough", "enough goes after the adjective"],
+        ["too / enough + to", "too tired to walk, old enough to drive", "to + the base verb"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "too much and too many",
+      "examples": [
+        {"text": "There is <b>too much</b> noise in here.", "note": "noise can't be counted → too much"},
+        {"text": "There are <b>too many</b> people in the lift.", "note": "people can be counted → too many"},
+        {"text": "I ate <b>too much</b> yesterday.", "note": "too much can stand alone"}
+      ]
+    },
+    {
+      "point": "too + adjective",
+      "examples": [
+        {"text": "This bag is <b>too</b> heavy for me.", "note": "more heavy than I can carry"},
+        {"text": "I'm <b>too</b> tired to play football.", "note": "so tired that I can't do it"},
+        {"text": "The tickets are <b>too</b> expensive.", "note": "the price is a problem"}
+      ]
+    },
+    {
+      "point": "enough and not enough",
+      "examples": [
+        {"text": "We've got <b>enough</b> chairs for everyone.", "note": "enough + noun: the right amount"},
+        {"text": "Is the room big <b>enough</b> for ten people?", "note": "adjective + enough"},
+        {"text": "There isn't <b>enough</b> time to finish.", "note": "not enough = less than we need"},
+        {"text": "Mateo isn't tall <b>enough</b> to see.", "note": "not + adjective + enough"}
+      ]
+    },
+    {
+      "point": "too … to and … enough to",
+      "examples": [
+        {"text": "He's <b>too</b> young <b>to</b> drive a car.", "note": "too + adjective + to + verb"},
+        {"text": "She's old <b>enough to</b> go alone.", "note": "adjective + enough + to + verb"},
+        {"text": "It's <b>too</b> cold <b>to</b> swim today.", "note": "the cold stops us"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I have too much friends.", "right": "I have <b>too many</b> friends.", "why": "Friends can be counted, so use too many."},
+    {"wrong": "The room isn't enough big.", "right": "The room isn't <b>big enough</b>.", "why": "With an adjective, enough goes after it."},
+    {"wrong": "He is too young for drive.", "right": "He is too young <b>to drive</b>.", "why": "Use to + the base verb, not for."},
+    {"wrong": "We have time enough.", "right": "We have <b>enough time</b>.", "why": "With a noun, enough goes before it."},
+    {"wrong": "The soup is too much hot.", "right": "The soup is <b>too hot</b>.", "why": "Before an adjective use too, not too much."}
+  ],
+  "l1": [
+    {"es": "Hay demasiada gente.", "wrong": "There is too much people.", "right": "There are <b>too many</b> people.", "why": "People can be counted, so use too many and are."},
+    {"es": "Está demasiado caliente.", "wrong": "It's too much hot.", "right": "It's <b>too hot</b>.", "why": "Spanish uses demasiado for everything. English uses too before an adjective."},
+    {"es": "No soy lo suficientemente alto.", "wrong": "I'm not enough tall.", "right": "I'm not <b>tall enough</b>.", "why": "Enough goes after an adjective."},
+    {"es": "Estoy demasiado cansado para caminar.", "wrong": "I'm too tired for walk.", "right": "I'm too tired <b>to walk</b>.", "why": "Use to + verb, not para / for."},
+    {"es": "Tengo suficientes libros.", "wrong": "I have enough of books.", "right": "I have <b>enough books</b>.", "why": "No of after enough."}
+  ],
+  "remember": {
+    "trick": "TOO is too much. ENOUGH is just right!",
+    "tip": "Too = a problem. Enough = the right amount, and not enough = a problem. Adjective + enough, but enough + noun."
+  },
+  "dialogue": {
+    "title": "Packing for the school trip",
+    "context": "Miss Vega and the students check the bags before the school trip.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Is there <b>enough</b> food for everyone?"},
+      {"speaker": "Sofia", "text": "I think so. But there's <b>too much</b> bread and not <b>enough</b> fruit."},
+      {"speaker": "Liam", "text": "This bag is <b>too</b> heavy. I can't carry it!"},
+      {"speaker": "Nadia", "text": "You've got <b>too many</b> books in it, Liam."},
+      {"speaker": "Mateo", "text": "Are the bottles big <b>enough</b>? It's a hot day."},
+      {"speaker": "Miss Vega", "text": "Not really. We haven't got <b>enough</b> water for six hours."},
+      {"speaker": "Sofia", "text": "I'm <b>too</b> excited <b>to</b> sleep, Miss!"},
+      {"speaker": "Miss Vega", "text": "Try. We've got <b>too many</b> things to do tomorrow."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word or words.",
+      "items": [
+        {"sentence": "There's ___ noise in here. I can't think!", "options": ["too many", "too much", "too"], "answer": 1, "why": "noise is uncountable → too much"},
+        {"sentence": "There are ___ people in the lift.", "options": ["too much", "too", "too many"], "answer": 2, "why": "people is countable → too many"},
+        {"sentence": "This soup is ___ hot. I can't eat it.", "options": ["too much", "too", "too many"], "answer": 1, "why": "before an adjective use too"},
+        {"sentence": "We've got ___ chairs for everyone.", "options": ["enough", "too", "much"], "answer": 0, "why": "enough goes before a noun"},
+        {"sentence": "He isn't ___ to ride that bike.", "options": ["enough tall", "too tall", "tall enough"], "answer": 2, "why": "adjective + enough"},
+        {"sentence": "I haven't got ___ time to finish.", "options": ["too many", "enough", "enough of"], "answer": 1, "why": "enough + noun, no of"},
+        {"sentence": "She is ___ tired to walk home.", "options": ["too", "too much", "enough"], "answer": 0, "why": "too + adjective + to + verb"},
+        {"sentence": "The bag is ___ for me to carry.", "options": ["too heavy", "heavy too", "enough heavy"], "answer": 0, "why": "too goes before the adjective"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete with too, too much, too many or enough.",
+      "items": [
+        {"sentence": "There are ___ cars on the road today.", "answers": ["too many"]},
+        {"sentence": "I can't sleep. There's ___ light.", "answers": ["too much"]},
+        {"sentence": "The water is ___ cold to swim.", "answers": ["too"]},
+        {"sentence": "Is the room big ___ for ten people?", "answers": ["enough"]},
+        {"sentence": "We've got ___ pizza for everyone.", "answers": ["enough"]},
+        {"sentence": "He is ___ young to drive a car.", "answers": ["too"]},
+        {"sentence": "I haven't got ___ money for the ticket.", "answers": ["enough"]},
+        {"sentence": "She eats ___ sweets — that's not good.", "answers": ["too many"]}
+      ]
+    },
+    {
+      "type": "order",
+      "instructions": "Put the words in order. Tap them one by one.",
+      "items": [
+        {"words": ["people", "There are", "too many", "."], "answer": "There are too many people."},
+        {"words": ["to walk", "too tired", "I'm", "."], "answer": "I'm too tired to walk."},
+        {"words": ["big enough", "it", "Is", "?"], "answer": "Is it big enough?"},
+        {"words": ["chairs", "haven't got", "enough", "We", "."], "answer": "We haven't got enough chairs."},
+        {"words": ["too much", "There is", "noise", "."], "answer": "There is too much noise."},
+        {"words": ["to ride", "you", "Are", "tall enough", "?"], "answer": "Are you tall enough to ride?"}
+      ]
+    },
+    {
+      "type": "spot",
+      "instructions": "Right or wrong? Tap ✓ or ✗. If it is wrong, say the right sentence.",
+      "items": [
+        {"sentence": "I have too much friends.", "ok": false, "fix": "I have <b>too many</b> friends.", "why": "friends is countable → too many"},
+        {"sentence": "There are too many people here.", "ok": true, "why": "people is countable → too many"},
+        {"sentence": "The room isn't enough big.", "ok": false, "fix": "The room isn't <b>big enough</b>.", "why": "adjective + enough"},
+        {"sentence": "We've got enough chairs.", "ok": true, "why": "enough + noun"},
+        {"sentence": "She is too tired to walk.", "ok": true, "why": "too + adjective + to + verb"},
+        {"sentence": "He is too young for drive.", "ok": false, "fix": "He is too young <b>to drive</b>.", "why": "to + base verb"},
+        {"sentence": "There is too many noise.", "ok": false, "fix": "There is <b>too much</b> noise.", "why": "noise is uncountable → too much"},
+        {"sentence": "Is the water warm enough?", "ok": true, "why": "adjective + enough"}
+      ]
+    }
+  ],
+  "can_do": [
+    "I can say what is a problem with <i>too much, too many</i> and <i>too + adjective</i>.",
+    "I can say when the amount is right or wrong with <i>enough</i> and <i>not enough</i>.",
+    "I can use <i>too tired to…</i> and <i>old enough to…</i> to explain what I can or can't do."
+  ],
+  "summary": [
+    "<b>Too much</b> + uncountable noun, <b>too many</b> + countable noun, <b>too</b> + adjective.",
+    "<b>Enough</b> goes before a noun (<i>enough time</i>) and after an adjective (<i>big enough</i>).",
+    "<b>Not enough</b> means less than you need.",
+    "Add <b>to</b> + verb: <i>too tired to walk, old enough to drive</i>."
+  ]
+}

@@ -2,7 +2,7 @@
   "level": "c1a",
   "cefr": "C1",
   "exam": "C1 Advanced",
-  "count": 24,
+  "count": 26,
   "areas": [
     {
       "area": "Tenses & aspect",
@@ -99,6 +99,18 @@
     {
       "area": "Sentence building",
       "topics": [
+        {
+          "id": "reduced-adverbial-clauses",
+          "title": "Reduced and verbless clauses: while waiting, when in doubt",
+          "tagline": "Keep the conjunction, drop the subject and 'be': a time, reason or concession clause shrinks to a few words.",
+          "cefr": "C1"
+        },
+        {
+          "id": "paired-conjunctions",
+          "title": "Paired conjunctions: both … and, not only … but also",
+          "tagline": "Two-part linkers balance two ideas — keep them parallel, and invert after a fronted 'Not only'.",
+          "cefr": "C1"
+        },
         {
           "id": "verb-patterns-advanced",
           "title": "Advanced verb patterns",

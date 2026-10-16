@@ -1,0 +1,172 @@
+{
+  "id": "verb-object-infinitive",
+  "level": "b2f",
+  "area": "Sentence building",
+  "title": "Verb + object + to: I want you to come",
+  "tagline": "After want, ask, tell and friends, put the person first and then 'to' + verb — never 'that'.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze",
+    "Writing Part 2 — email or letter: asking and telling people to do things"
+  ],
+  "why": "When you want somebody else to do something, English puts that person straight after the verb and links the action with <i>to</i>: <i>I want you to come</i>. Learners often copy the Spanish 'quiero que vengas' pattern and write <i>want that you come</i>, which is always wrong. This frame turns up in key word transformations, in open cloze gaps and in every email where you ask for help or give instructions.",
+  "diagrams": [
+    {
+      "type": "formula",
+      "title": "The basic frame",
+      "parts": [
+        {"chip": "want / ask / tell ...", "tone": "kw", "ex": "asked"},
+        {"chip": "object (the person)", "tone": "a", "ex": "Nadia"},
+        {"chip": "to + infinitive", "tone": "b", "ex": "to help"}
+      ],
+      "caption": "Mateo <b>asked</b> Nadia <b>to help</b> him with the poster."
+    },
+    {
+      "type": "contrast",
+      "title": "English vs the Spanish-style pattern",
+      "columns": ["Correct in English", "Wrong (copied from Spanish)"],
+      "rows": [
+        {"label": "Wish for someone", "cells": ["I want <b>you to come</b>.", "I want <b>that you come</b>."]},
+        {"label": "Instruction", "cells": ["She told <b>us to wait</b>.", "She told <b>that we wait</b>."]},
+        {"label": "Negative", "cells": ["He warned me <b>not to touch</b> it.", "He warned me <b>to don't touch</b> it."]},
+        {"label": "Why", "cells": ["object + to-infinitive", "no 'that' clause after want"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Which verbs use this pattern?",
+      "center": "verb + object + ...",
+      "branches": [
+        {"label": "+ object + to-infinitive: wishes", "items": ["want", "would like", "expect", "need"], "tone": "a"},
+        {"label": "+ object + to-infinitive: telling and persuading", "items": ["ask", "tell", "persuade", "remind", "warn", "encourage", "allow"], "tone": "b"},
+        {"label": "+ object + bare infinitive (no 'to')", "items": ["make", "let"], "tone": "c"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "verb", "tone": "kw", "ex": "persuaded"},
+      {"chip": "object", "tone": "a", "ex": "her brother"},
+      {"chip": "(not) to + infinitive", "tone": "b", "ex": "to apply"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["want / would like / expect", "verb + object + to-infinitive", "Miss Vega expects us to hand in the essay on Monday."],
+        ["ask / tell / remind / warn", "verb + object + to-infinitive", "Liam reminded Sofia to bring her passport."],
+        ["persuade / encourage / allow", "verb + object + to-infinitive", "The school allows students to use tablets in class."],
+        ["negative", "verb + object + not to + infinitive", "The guide told us not to feed the animals."],
+        ["make / let", "verb + object + bare infinitive", "Her dad let her borrow the car."],
+        ["passive of make", "be made + to-infinitive", "We were made to run an extra lap."],
+        ["passive of ask / tell / allow", "be asked / told / allowed + to-infinitive", "Visitors are asked to switch off their phones."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Wishes and expectations about other people: want, would like, expect",
+      "examples": [
+        {"text": "My parents <b>want me to take</b> a gap year before university.", "note": "want + object + to-infinitive"},
+        {"text": "Sofia <b>would like</b> her cousin <b>to visit</b> Cusco with her.", "note": "would like is more polite and more formal than want"},
+        {"text": "The organisers <b>expect</b> every team <b>to arrive</b> an hour early.", "note": "expect = think that someone will, or should"}
+      ]
+    },
+    {
+      "point": "Telling, asking and persuading: ask, tell, remind, warn, persuade, encourage",
+      "examples": [
+        {"text": "Nadia <b>asked</b> Mateo <b>to lend</b> her his notes.", "note": "a request"},
+        {"text": "The lifeguard <b>warned</b> the swimmers <b>not to go</b> beyond the red flags.", "note": "negative: not to, placed before the verb"},
+        {"text": "Miss Vega <b>encouraged</b> Liam <b>to enter</b> the writing competition.", "note": "give someone confidence to act"},
+        {"text": "It took an hour, but Sofia <b>persuaded</b> her mum <b>to let</b> her go to the concert.", "note": "persuade = succeed in convincing; the result happens"}
+      ]
+    },
+    {
+      "point": "make and let: no 'to' after the object",
+      "examples": [
+        {"text": "The film <b>made</b> everyone <b>cry</b>.", "note": "make + object + bare infinitive"},
+        {"text": "Mateo's dad <b>let</b> him <b>stay</b> up for the match.", "note": "let = give permission, bare infinitive"}
+      ]
+    },
+    {
+      "point": "The passive: be asked, be told, be allowed, be made",
+      "examples": [
+        {"text": "Candidates <b>are asked to put</b> their phones in the box.", "note": "passive with ask + to-infinitive"},
+        {"text": "We <b>weren't allowed to take</b> photos inside the museum.", "note": "be allowed + to-infinitive"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I want that you come to my party.", "right": "I want <b>you to come</b> to my party.", "why": "After <i>want</i> use object + to-infinitive, never a <i>that</i> clause."},
+    {"wrong": "She told me to not be late.", "right": "She told me <b>not to be</b> late.", "why": "The negative is <i>not to</i> + infinitive; <i>to not</i> sounds wrong in exam English."},
+    {"wrong": "Her dad let her to go out on Friday.", "right": "Her dad let her <b>go</b> out on Friday.", "why": "<i>Let</i> takes the bare infinitive, with no <i>to</i>."},
+    {"wrong": "The teacher made us to rewrite the paragraph.", "right": "The teacher made us <b>rewrite</b> the paragraph.", "why": "<i>Make</i> + object + bare infinitive in the active."},
+    {"wrong": "We were made rewrite the whole paragraph.", "right": "We were made <b>to rewrite</b> the whole paragraph.", "why": "In the passive, <i>made</i> needs <i>to</i> back again."},
+    {"wrong": "Liam told to me to wait outside.", "right": "Liam told <b>me to wait</b> outside.", "why": "<i>Tell</i> takes the person directly, with no <i>to</i> before the object."}
+  ],
+  "dialogue": {
+    "title": "A favour before the trip",
+    "context": "Sofia and Mateo are organising a school trip, and Miss Vega is checking the plan.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Mateo, I'd like <b>you to design</b> the poster for the trip."},
+      {"speaker": "Mateo", "text": "Sure. Who <b>asked you to organise</b> everything, by the way?"},
+      {"speaker": "Sofia", "text": "Miss Vega. She <b>wants us to finish</b> the plan by Friday."},
+      {"speaker": "Miss Vega", "text": "That's right. I <b>expect everyone to bring</b> a signed form, so please <b>remind them to hand</b> it in."},
+      {"speaker": "Mateo", "text": "What if somebody forgets? Can we <b>let them join</b> the trip anyway?"},
+      {"speaker": "Miss Vega", "text": "No. I <b>won't allow anyone to travel</b> without one, and I'd rather <b>you didn't make</b> exceptions."},
+      {"speaker": "Sofia", "text": "Understood. Liam <b>persuaded his mum to sign</b> hers last night, so he's fine."},
+      {"speaker": "Mateo", "text": "I'll <b>encourage the others to send</b> theirs today. I'll <b>tell them not to leave</b> it until Friday."},
+      {"speaker": "Miss Vega", "text": "Good. And <b>warn them not to bring</b> too much luggage — the bus is small."},
+      {"speaker": "Sofia", "text": "Don't worry. We'll <b>make them pack</b> light!"}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "My parents want me ___ a gap year.", "options": ["take", "to take", "taking"], "answer": 1, "why": "want + object + to-infinitive"},
+        {"sentence": "The teacher made us ___ the essay again.", "options": ["to rewrite", "rewrite", "rewriting"], "answer": 1, "why": "make + object + bare infinitive in the active"},
+        {"sentence": "Liam's coach warned him ___ late for training.", "options": ["not to be", "to not be", "don't be"], "answer": 0, "why": "negative: not to + infinitive"},
+        {"sentence": "Sofia would like ___ to the party.", "options": ["that Nadia comes", "Nadia come", "Nadia to come"], "answer": 2, "why": "would like + object + to-infinitive, not a that-clause"},
+        {"sentence": "We weren't allowed ___ phones in the exam hall.", "options": ["to use", "use", "using"], "answer": 0, "why": "be allowed + to-infinitive"},
+        {"sentence": "Miss Vega let the class ___ their own seats.", "options": ["to choose", "choosing", "choose"], "answer": 2, "why": "let + object + bare infinitive"},
+        {"sentence": "He persuaded his sister ___ him with the project.", "options": ["helping", "to help", "help"], "answer": 1, "why": "persuade + object + to-infinitive"},
+        {"sentence": "The staff expect students ___ on time.", "options": ["to arrive", "arriving", "arrive"], "answer": 0, "why": "expect + object + to-infinitive"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "Mateo's dad asked him ___ (turn) the music down.", "answers": ["to turn"]},
+        {"sentence": "The ending of the film made me ___ (cry).", "answers": ["cry"]},
+        {"sentence": "I'd like you ___ (not/tell) anyone about the surprise.", "answers": ["not to tell"]},
+        {"sentence": "Nadia reminded us ___ (bring) our swimming kit.", "answers": ["to bring"]},
+        {"sentence": "Our teacher encouraged us ___ (read) more in English.", "answers": ["to read"]},
+        {"sentence": "The security guard didn't let anyone ___ (enter) the stadium.", "answers": ["enter"]},
+        {"sentence": "We were told ___ (wait) outside until our names were called.", "answers": ["to wait"]},
+        {"sentence": "Sofia's mum wants her ___ (study) harder before the exam.", "answers": ["to study"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Mateo's mum said to him, 'Please tidy your room.'", "key": "ASKED", "second_start": "Mateo's mum", "second_end": "his room.", "answers": ["asked him to tidy"]},
+        {"first": "I wish you would stay calm during the interview.", "key": "WANT", "second_start": "I", "second_end": "stay calm during the interview.", "answers": ["want you to"]},
+        {"first": "The teacher made us stay behind after the lesson.", "key": "MADE", "second_start": "We", "second_end": "stay behind after the lesson.", "answers": ["were made to"]},
+        {"first": "'Don't touch the exhibits,' the guide told the children.", "key": "NOT", "second_start": "The guide told the children", "second_end": "touch the exhibits.", "answers": ["not to"]},
+        {"first": "My parents allowed me to go to the concert.", "key": "LET", "second_start": "My parents", "second_end": "to the concert.", "answers": ["let me go"]},
+        {"first": "'You should apply,' Miss Vega said to Sofia.", "key": "ENCOURAGED", "second_start": "Miss Vega", "second_end": "to apply.", "answers": ["encouraged Sofia"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Put the person straight after the verb, then <i>to</i> + infinitive: <i>I want you to come</i>, never <i>want that you come</i>.",
+    "Ask, tell, remind, warn, persuade, encourage and allow all follow the same object + to-infinitive pattern.",
+    "The negative is <i>not to</i> + infinitive: <i>He told me not to be late</i>.",
+    "After <i>make</i> and <i>let</i> the infinitive has no <i>to</i> in the active; in the passive, <i>be made</i> gets <i>to</i> back.",
+    "Passives such as <i>be asked to</i>, <i>be told to</i> and <i>be allowed to</i> are common in notices and emails."
+  ]
+}

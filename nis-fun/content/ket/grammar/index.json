@@ -2,7 +2,7 @@
   "level": "ket",
   "cefr": "A2",
   "exam": "A2 Key for Schools",
-  "count": 24,
+  "count": 26,
   "areas": [
     {
       "area": "Tenses & time",
@@ -83,6 +83,12 @@
       "area": "Sentence building",
       "topics": [
         {
+          "id": "two-objects",
+          "title": "Give me the ball: verbs with two objects",
+          "tagline": "Give, send, show, buy: say who gets the thing, in two different ways.",
+          "cefr": "A2"
+        },
+        {
           "id": "questions",
           "title": "Questions and short answers",
           "tagline": "Asking about people, places, times and reasons — the right word order every time.",
@@ -129,6 +135,12 @@
     {
       "area": "Comparison & description",
       "topics": [
+        {
+          "id": "too-much-many-enough",
+          "title": "too much, too many and (not) enough",
+          "tagline": "Too much noise, too many people, not enough time: say when something is a problem.",
+          "cefr": "A2"
+        },
         {
           "id": "comparatives-superlatives",
           "title": "Comparatives and superlatives",

@@ -2,7 +2,7 @@
   "level": "pet",
   "cefr": "B1",
   "exam": "B1 Preliminary for Schools",
-  "count": 24,
+  "count": 27,
   "areas": [
     {
       "area": "Tenses & time",
@@ -48,6 +48,12 @@
     {
       "area": "Modals",
       "topics": [
+        {
+          "id": "should-have-b1",
+          "title": "should have / shouldn't have: looking back",
+          "tagline": "Use should have + past participle to say what was the right (or wrong) thing to do in the past.",
+          "cefr": "B1"
+        },
         {
           "id": "modals-obligation-b1",
           "title": "Obligation and advice: must, have to, should, ought to",
@@ -129,6 +135,12 @@
       "area": "Sentence building",
       "topics": [
         {
+          "id": "ing-as-subject",
+          "title": "-ing as a subject: Swimming is fun",
+          "tagline": "An -ing phrase can start a sentence and act like a noun, and it takes a singular verb.",
+          "cefr": "B1"
+        },
+        {
           "id": "relative-clauses-b1",
           "title": "Relative clauses",
           "tagline": "Add extra information about people, things, places and time — all in one longer, smarter sentence.",
@@ -180,6 +192,12 @@
     {
       "area": "Words",
       "topics": [
+        {
+          "id": "phrasal-verbs-b1",
+          "title": "Phrasal verbs: turn it on, look after it",
+          "tagline": "Some phrasal verbs split around the object (turn it on), others never do (look after it).",
+          "cefr": "B1"
+        },
         {
           "id": "word-formation-b1",
           "title": "Word formation: prefixes, suffixes and families",

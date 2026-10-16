@@ -1,0 +1,181 @@
+{
+  "id": "paired-conjunctions",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Paired conjunctions: both … and, not only … but also",
+  "tagline": "Two-part linkers balance two ideas — keep them parallel, and invert after a fronted 'Not only'.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze: the second half of the pair is a classic gap",
+    "Reading & Use of English Part 4 — key word transformations",
+    "Writing Part 1 — essay: balancing two arguments in one sentence",
+    "Speaking Part 3 — collaborative task: weighing up options"
+  ],
+  "why": "Pairs such as <i>both … and</i>, <i>either … or</i>, <i>neither … nor</i>, <i>not only … but also</i> and <i>whether … or</i> let a C1 writer set two ideas side by side in one tidy sentence. They are a favourite in open cloze, where you supply the missing half, and in transformations, where <i>Not only</i> forces inversion. Examiners also reward the discipline behind them: the two halves must be the same kind of phrase, and the verb must agree with the right subject.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "The five pairs",
+      "center": "Paired conjunctions",
+      "branches": [
+        {"label": "both … and", "items": ["adds two things", "both Sofia and Liam"], "tone": "a"},
+        {"label": "either … or", "items": ["one of two", "either today or tomorrow"], "tone": "b"},
+        {"label": "neither … nor", "items": ["rejects both", "neither fast nor cheap"], "tone": "c"},
+        {"label": "not only … but (also)", "items": ["adds a surprise", "not only late but also rude"], "tone": "a"},
+        {"label": "whether … or", "items": ["two possibilities", "whether you stay or go"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "Not only: inversion",
+      "before": {
+        "text": "Nadia not only won the debate, but she also broke the school record.",
+        "hl": ["not only won"]
+      },
+      "after": {
+        "text": "Not only did Nadia win the debate, but she also broke the school record.",
+        "hl": ["Not only did Nadia win", "but she also"]
+      },
+      "steps": [
+        "Move <b>Not only</b> to the front of the sentence.",
+        "Invert the auxiliary and the subject: <b>did Nadia win</b> (add <i>do/does/did</i> if the verb has no auxiliary).",
+        "Keep the second clause normal: <b>but she also broke</b> — no inversion after <i>but</i>."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Which subject does the verb agree with?",
+      "columns": ["Pair", "Rule", "Example"],
+      "rows": [
+        {"label": "either … or", "cells": ["nearer subject", "decides the verb", "Either Liam or his parents <b>are</b> coming."]},
+        {"label": "neither … nor", "cells": ["nearer subject", "decides the verb", "Neither the players nor the coach <b>was</b> ready."]},
+        {"label": "not only … but also", "cells": ["nearer subject", "decides the verb", "Not only the pupils but also the teacher <b>was</b> late."]},
+        {"label": "both … and", "cells": ["always plural", "two subjects together", "Both Sofia and Nadia <b>have</b> applied."]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "first part", "tone": "kw", "ex": "not only"},
+      {"chip": "item A", "tone": "a", "ex": "talented"},
+      {"chip": "second part", "tone": "kw", "ex": "but also"},
+      {"chip": "item B (same form as A)", "tone": "b", "ex": "dedicated"}
+    ],
+    "table": {
+      "head": ["Pair", "Meaning", "Example"],
+      "rows": [
+        ["both … and", "A and B together", "The trip was both exhausting and unforgettable."],
+        ["either … or", "A or B, not both", "You can either hand it in today or email it tomorrow."],
+        ["neither … nor", "not A and not B", "Mateo has neither a laptop nor a tablet at home."],
+        ["not only … but (also)", "A and, more surprisingly, B", "She is not only a gifted musician but also a fine coach."],
+        ["Not only + auxiliary + subject …", "emphatic, in front position", "Not only did the hotel lose our booking, but it also refused a refund."],
+        ["whether … or (not)", "two possibilities, both lead to the same result", "Whether it rains or the sun shines, the match goes ahead."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "both … and, either … or, neither … nor with nouns, verbs and adjectives",
+      "examples": [
+        {"text": "The new library is <b>both</b> spacious <b>and</b> remarkably quiet.", "note": "both + adjective and adjective"},
+        {"text": "Students may <b>either</b> submit a written report <b>or</b> give a short presentation.", "note": "either + noun phrase or noun phrase: a choice"},
+        {"text": "Liam <b>neither</b> apologised <b>nor</b> offered an explanation.", "note": "neither + verb nor verb: the verb after neither takes no negative"}
+      ]
+    },
+    {
+      "point": "Not only … but also, and inversion after a fronted Not only",
+      "examples": [
+        {"text": "Sofia is <b>not only</b> the captain <b>but also</b> the top scorer.", "note": "no inversion when Not only follows the verb"},
+        {"text": "<b>Not only did</b> Mateo forget his notes, <b>but</b> he <b>also</b> left his phone on the bus.", "note": "inversion after initial Not only"},
+        {"text": "<b>Not only is</b> the museum free, <b>but</b> it <b>is also</b> open until ten.", "note": "inversion with be: no do-support"}
+      ]
+    },
+    {
+      "point": "whether … or and agreement with the nearer subject",
+      "examples": [
+        {"text": "<b>Whether</b> you agree <b>or</b> not, the decision stands.", "note": "or not = two possibilities, same outcome"},
+        {"text": "<b>Neither</b> the coach <b>nor</b> the players <b>were</b> expecting such a result.", "note": "plural players, the nearer subject, takes were"}
+      ]
+    },
+    {
+      "point": "Parallel structure: the same kind of phrase on both sides",
+      "examples": [
+        {"text": "The course taught us <b>both</b> how to research <b>and</b> how to present our findings.", "note": "how to … and how to …: matching clauses"},
+        {"text": "She is determined <b>either</b> to win <b>or</b> to learn something from losing.", "note": "to-infinitive on both sides"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Not only Mateo forgot his notes, but he also lost his phone.", "right": "<b>Not only did Mateo forget</b> his notes, but he also lost his phone.", "why": "A fronted <i>Not only</i> needs inversion with an auxiliary, as after any negative adverbial."},
+    {"wrong": "Not only did she wins the prize, but she also gave a speech.", "right": "Not only <b>did she win</b> the prize, but she also gave a speech.", "why": "After the auxiliary <i>did</i> the main verb returns to its base form."},
+    {"wrong": "He didn't neither call nor write.", "right": "He <b>neither called nor wrote</b>.", "why": "<i>Neither … nor</i> is already negative: do not add <i>not</i>."},
+    {"wrong": "You can either to apply online or by post.", "right": "You can <b>either apply</b> online <b>or apply</b> by post.", "why": "Both halves must match: verb and verb, not verb and noun phrase."},
+    {"wrong": "Neither the manager nor the staff was told.", "right": "Neither the manager nor the staff <b>were</b> told.", "why": "The verb agrees with the nearer subject, <i>the staff</i>, which is plural here."},
+    {"wrong": "The film was both boring and it lasted too long.", "right": "The film was both <b>boring and too long</b>.", "why": "Parallel structure: adjective and adjective, not an adjective and a clause."}
+  ],
+  "dialogue": {
+    "title": "Choosing the final-year project",
+    "context": "Sofia, Liam and Nadia are choosing a topic for their joint project, and Miss Vega drops by with advice.",
+    "lines": [
+      {"speaker": "Sofia", "text": "We have two options: the bridge-building challenge or the wildlife survey. <b>Either</b> we pick one now <b>or</b> we ask Miss Vega."},
+      {"speaker": "Liam", "text": "The survey is <b>not only</b> more original <b>but also</b> far easier to finish on time."},
+      {"speaker": "Nadia", "text": "<b>Not only does</b> it need less equipment, <b>but</b> it <b>also</b> lets us work outdoors."},
+      {"speaker": "Sofia", "text": "I'm <b>neither</b> excited about the bridge <b>nor</b> convinced it's realistic."},
+      {"speaker": "Miss Vega", "text": "Interesting. <b>Both</b> the survey <b>and</b> the bridge would work, but you need to choose."},
+      {"speaker": "Liam", "text": "<b>Whether</b> we choose the survey <b>or</b> the bridge, the deadline stays the same."},
+      {"speaker": "Miss Vega", "text": "Exactly. <b>Neither</b> the equipment <b>nor</b> the budget <b>is</b> a problem, so go for the project you believe in."},
+      {"speaker": "Nadia", "text": "Then it's the survey. <b>Not only did</b> Liam persuade me, <b>but</b> he <b>also</b> found a free app for the data."},
+      {"speaker": "Sofia", "text": "Agreed. We should <b>both</b> collect the data <b>and</b> analyse it together."},
+      {"speaker": "Miss Vega", "text": "Perfect — <b>either</b> send me the plan on Friday <b>or</b> bring it to class on Monday."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Not only ___ the exam, but she also won a prize.", "options": ["she passed", "did she pass", "she did pass"], "answer": 1, "why": "fronted Not only: auxiliary before the subject"},
+        {"sentence": "Neither the teacher nor the students ___ aware of the change.", "options": ["was", "is", "were"], "answer": 2, "why": "agreement with the nearer subject: the students"},
+        {"sentence": "She is both talented ___ hard-working.", "options": ["and", "as well", "but"], "answer": 0, "why": "both … and"},
+        {"sentence": "Either Liam ___ Sofia will present first.", "options": ["nor", "or", "and"], "answer": 1, "why": "either … or"},
+        {"sentence": "I can't decide whether to accept the offer ___ keep looking.", "options": ["or", "nor", "and"], "answer": 0, "why": "whether … or"},
+        {"sentence": "He neither called ___ left a message.", "options": ["or", "nor", "but"], "answer": 1, "why": "neither … nor"},
+        {"sentence": "Not only the players but also the coach ___ delighted.", "options": ["were", "are", "was"], "answer": 2, "why": "the nearer subject, the coach, is singular"},
+        {"sentence": "The report was ___ clear but also persuasive.", "options": ["not only", "neither", "either"], "answer": 0, "why": "not only … but also"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the missing word or words. Where a verb is in brackets, use the correct form.",
+      "items": [
+        {"sentence": "Not only ___ (Mateo/forget) his homework, but he also lost his bag.", "answers": ["did Mateo forget"]},
+        {"sentence": "Neither the coach ___ the players had expected such a result.", "answers": ["nor"]},
+        {"sentence": "Both Sofia ___ Nadia applied for the exchange programme.", "answers": ["and"]},
+        {"sentence": "Either the manager or the assistants ___ (be) responsible for the error.", "answers": ["are"]},
+        {"sentence": "___ you agree or not, the decision is final.", "answers": ["Whether"]},
+        {"sentence": "She is not only a gifted musician but ___ a talented painter.", "answers": ["also"]},
+        {"sentence": "He wants to either study abroad ___ start work immediately.", "answers": ["or"]},
+        {"sentence": "Not only ___ (be/the museum) free, but it was also open late.", "answers": ["was the museum"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "Sofia plays the violin and she also composes her own music.", "key": "ONLY", "second_start": "Not", "second_end": "the violin but she also composes her own music.", "answers": ["only does Sofia play"]},
+        {"first": "Liam didn't know the answer, and Mateo didn't either.", "key": "NOR", "second_start": "Neither Liam", "second_end": "knew the answer.", "answers": ["nor Mateo"]},
+        {"first": "We can meet on Friday or on Saturday; I don't mind which.", "key": "EITHER", "second_start": "We can meet", "second_end": "on Saturday; I don't mind.", "answers": ["either on Friday or"]},
+        {"first": "It does not matter if it rains or not; the match will go ahead.", "key": "WHETHER", "second_start": "The match will go ahead", "second_end": "or not.", "answers": ["whether it rains"]},
+        {"first": "The film was long and it was also confusing.", "key": "BOTH", "second_start": "The film was", "second_end": "confusing.", "answers": ["both long and"]},
+        {"first": "Mateo did not phone Sofia, and he did not text her either.", "key": "NEITHER", "second_start": "Mateo", "second_end": "her.", "answers": ["neither phoned Sofia nor texted"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Use <i>both … and</i>, <i>either … or</i>, <i>neither … nor</i>, <i>not only … but also</i> and <i>whether … or</i> to balance two ideas in one sentence.",
+    "Keep the structure parallel: the same type of phrase must follow each half of the pair.",
+    "With <i>either … or</i>, <i>neither … nor</i> and <i>not only … but also</i>, the verb agrees with the nearer subject.",
+    "<i>Neither … nor</i> is already negative; never add <i>not</i> to the verb.",
+    "A fronted <i>Not only</i> triggers inversion in the first clause only: <i>Not only did she win, but she also …</i>."
+  ]
+}

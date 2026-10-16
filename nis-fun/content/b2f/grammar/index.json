@@ -2,7 +2,7 @@
   "level": "b2f",
   "cefr": "B2",
   "exam": "B2 First for Schools",
-  "count": 24,
+  "count": 25,
   "areas": [
     {
       "area": "Tenses & time",
@@ -116,6 +116,12 @@
     {
       "area": "Sentence building",
       "topics": [
+        {
+          "id": "verb-object-infinitive",
+          "title": "Verb + object + to: I want you to come",
+          "tagline": "After want, ask, tell and friends, put the person first and then 'to' + verb — never 'that'.",
+          "cefr": "B2"
+        },
         {
           "id": "relative-clauses",
           "title": "Relative clauses",
