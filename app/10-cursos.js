@@ -71,9 +71,9 @@ function useOfEnglishBody(){ return `
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">What each Cambridge exam is, how many parts it has, how long it lasts, how it is scored on the Cambridge Scale${(typeof schoolIsSample==='function' && schoolIsSample()) ? '' : ', and which NIS grade is aiming for which'}.</div>
-    <a class="btn" href="cambridge-info.html?v=a01893ec" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="cambridge-info.html?v=3c31bbfb" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=a01893ec" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=3c31bbfb" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* 🎶 Rhymes & chants — rimas tradicionales de patio (dominio publico), las
    primeras 100 palabras y frases de uso diario, para los profesores de
    primaria. Datos en nis-fun/songs/tradicionales.json, etiquetados con la

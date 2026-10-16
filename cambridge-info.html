@@ -437,7 +437,7 @@ function vistaRecursos(){
     ${niv.map(([id,n,prep,info])=>`<tr><td><b>${n}</b></td><td><a href="${prep}" target="_blank" rel="noopener">${prep.replace('https://www.','')}</a></td><td><a href="${info}" target="_blank" rel="noopener">${info.replace('https://www.','')}</a></td></tr>`).join('')}
     </table></div>
     <h3>What each thing is and what we use it for</h3>
-    <div class="scroll"><table><tr><th>Resource</th><th>What it is used for at NIS</th></tr>
+    <div class="scroll"><table><tr><th>Resource</th><th>What it is used for${SAMPLE ? "" : " at NIS"}</th></tr>
     ${lista.map(([a,b])=>`<tr><td><b>${a}</b></td><td>${b}</td></tr>`).join('')}
     </table></div>
     <p class="muted">The results of the real exam are <b>shields</b>: from 1 to 5 per paper (Listening, Reading &amp; Writing, Speaking), 15 maximum, and every child receives a certificate. The shields shown by the portal are an estimate made by the school from the practice tests, not a Cambridge result.</p>
