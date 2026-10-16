@@ -621,7 +621,7 @@ function _navRender(k){
   // sentido. 'myclasses' y 'tools' son las dos claves nuevas de la barra.
   const fn={english:studentHub,french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,cambridge:studentCambridgePortal,library:studentLibrary,news:studentNews,mun:studentMun,classes:studentClasses,
-    myclasses:studentMyClasses,tools:studentTools,
+    myclasses:studentMyClasses,tools:studentTools,grammarlab:()=>studentGrammarLab(),
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
     phrasal:studentPhrasal,collocations:studentCollocations,idioms:studentIdioms,wordform:studentWordform,dict:studentDict,
     final:studentFinal,account:studentAccount,home:studentHub}[k];

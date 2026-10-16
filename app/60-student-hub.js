@@ -49,6 +49,8 @@ async function renderStudent(initial){
     ...(nodeVisible('french') ? [{key:'french',label:'🇫🇷 French'}] : []),
     {key:'cambridge',label:'🎓 Cambridge'},
     {key:'tools',label:'🧰 Practice tools'},
+    // Grammar Lab (16-oct-2026): a un clic, sin pasar por Cambridge → curso.
+    ...(_grammarLabLevels().length ? [{key:'grammarlab',label:'🧪 Grammar Lab'}] : []),
     // 'General' salio de la barra: sus dos unicas tarjetas (Library y MUN) ya
     // estaban identicas en Home, asi que era una pestaña que no llevaba a
     // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
@@ -103,10 +105,39 @@ function studentTools(){
     if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
     return _hubCard(em,a.title,a.desc,`window._nav('${a.nav}')`);
   }).join('');
+  const lab = _grammarLabLevels().length
+    ? _hubCard('🧪','Grammar Lab','Every grammar point of your level in diagrams, with a dialogue, audio and practice.',"window._nav('grammarlab')") : '';
   $('#main').innerHTML = `<h1>🧰 Practice tools</h1>
     <p class="muted" style="margin-top:-6px">Train on your own: sounds, grammar and vocabulary games.</p>
-    <div class="grid cols-3">${cards}</div>`;
+    <div class="grid cols-3">${lab}${cards}</div>`;
 }
+
+/* 🧪 Grammar Lab (16-oct-2026): el Lab de los cursos de secundaria
+   (nis-fun/engine, ?grammar=hub) dentro del portal, con un boton por nivel
+   del grado. Mismos niveles y candados que la tarjeta de Nordic Ascent
+   (SEC_COURSES + schoolContentOK('sec.'+lv)); primaria no lo ve. */
+function _grammarLabLevels(){
+  const g = Number(state.profile && state.profile.grade_id);
+  return secCoursesFor('g'+g).filter(lv => typeof schoolContentOK!=='function' || schoolContentOK('sec.'+lv));
+}
+function studentGrammarLab(lv){
+  _setNav('grammarlab');
+  const niveles = _grammarLabLevels();
+  if(!niveles.length){ studentTools(); return; }
+  let guardado = null; try{ guardado = localStorage.getItem('nis_gl_level'); }catch(_){}
+  if(!niveles.includes(lv)) lv = niveles.includes(guardado) ? guardado : niveles[niveles.length-1];
+  try{ localStorage.setItem('nis_gl_level', lv); }catch(_){}
+  const url = `nis-fun/engine/?level=${lv}&grammar=hub`;
+  const botones = niveles.map(n => `<button class="btn sm${n===lv?'':' ghost'}" type="button"
+      onclick="studentGrammarLab('${n}')" aria-pressed="${n===lv}">${SEC_COURSE_NAMES[n]||n}</button>`).join('');
+  $('#main').innerHTML = `<h1>🧪 Grammar Lab</h1>
+    <p class="muted" style="margin-top:-6px">Choose your level. Every topic has diagrams, examples, a dialogue with audio and four rounds of practice.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">${botones}
+      <a class="btn sm ghost" href="${_withBack(url,'grammarlab')}" target="_blank" rel="noopener" style="margin-left:auto;text-decoration:none">Open in full screen ↗</a>
+    </div>
+    <iframe src="${url}" title="Grammar Lab · ${esc(SEC_COURSE_NAMES[lv]||lv)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
+}
+window.studentGrammarLab = studentGrammarLab;
 
 /* ---------- Student account / password ----------
    Uses the authenticated user's own Supabase session. No password is stored
