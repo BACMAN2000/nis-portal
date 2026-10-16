@@ -266,7 +266,7 @@ function alPracticar(){ setTab('practice'); arriba(); }
 function selectorModo(){
   return '<div class="modos">' +
     ['afijos','familias'].map(function(m){
-      var n = (m === 'afijos' ? afijosDe(LEVEL) : familiasDe(LEVEL)).length;
+      var n = recorta(m === 'afijos' ? afijosDe(LEVEL) : familiasDe(LEVEL)).length;
       return '<button class="modo" aria-pressed="' + (m === MODO) + '" onclick="setModo(\'' + m + '\')">' +
         (m === 'afijos' ? 'Prefixes and suffixes' : 'Word families') + ' <b>' + n + '</b></button>';
     }).join('') + '</div>';
@@ -974,9 +974,38 @@ window.addEventListener('resize', function(){
   }, 180);
 });
 
+/* ---------- colegio de muestra (15-oct-2026) ----------
+   Embebida en el portal de un colegio «sample» (school_content.scope de
+   tool.<app>: {levels:[…], blocks:n}), la app enseña solo esos niveles y sus
+   primeros n bloques. Se lee del portal que la embebe (mismo origen); abierta
+   suelta, o en cualquier otro colegio, va entera. */
+function alcanceMuestra(){
+  try {
+    var S = window.parent && window.parent !== window && window.parent.NIS_SCHOOL;
+    var m = /([a-z-]+-app)\//.exec(location.pathname);
+    var k = m && { 'phrasal-app':'tool.phrasal', 'collocations-app':'tool.collocations',
+                   'idioms-app':'tool.idioms', 'word-formation-app':'tool.wordform' }[m[1]];
+    return (S && S.scope && k && S.scope[k]) || null;
+  } catch(e){ return null; }
+}
+function nivelesMuestra(sc){
+  if(!sc || !Array.isArray(sc.levels)) return;
+  var ns = DATA.niveles.filter(function(L){ return sc.levels.indexOf(L) >= 0; });
+  if(ns.length) DATA.niveles = ns;
+}
+/* Aquí el material de un nivel sale de lista() (afijos o familias,
+   acumulativos), así que el recorte se hace ahí. */
+var MUESTRA = null;
+var listaEntera = lista;
+function recorta(l){
+  return (MUESTRA && MUESTRA.blocks > 0) ? [].concat.apply([], armaBloques(l).slice(0, MUESTRA.blocks)) : l;
+}
+lista = function(L){ return recorta(listaEntera(L)); };
+
 leeProgreso(); leeRecs();
 fetch(window.WORDFORM_DATA || 'data.json?v=1').then(function(r){ return r.json(); }).then(function(d){
   DATA = d;
+  MUESTRA = alcanceMuestra(); nivelesMuestra(MUESTRA);
   if(DATA.niveles.indexOf(LEVEL) < 0) LEVEL = DATA.niveles[0];
   recarga(); pintaNiveles(); render();
 }).catch(function(){

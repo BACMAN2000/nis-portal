@@ -43,6 +43,8 @@ async function renderStudent(initial){
     {key:'account',label:'👤 My account'},
   ] : [
     {key:'home',label:'🏠 Home'},
+    // Colegio de muestra: sus dos puertas de examen, a la vista.
+    ...(typeof schoolIsSample==='function' && schoolIsSample() ? [{key:'practice',label:'🎯 Practice tests'},{key:'mocks',label:'🎓 Mocks'}] : []),
     {key:'myclasses',label:'🏫 My classes'},
     ...(nodeVisible('french') ? [{key:'french',label:'🇫🇷 French'}] : []),
     {key:'cambridge',label:'🎓 Cambridge'},
@@ -280,11 +282,30 @@ function _pintaPeriodico(id){
     .catch(() => {});
 }
 
+/* Portada del colegio de muestra (sample.cohasset.pe, 15-oct-2026): solo las
+   piezas que lleva la muestra. Las pistas de clases, Cambridge, biblioteca y
+   MUN de la portada normal no miran las apps del colegio, y aquí están apagadas. */
+function _sampleHub(p){
+  const hay = (ks)=>ks.some(k=>schoolContentOK(k));
+  const cards = [];
+  if(hay(['practice.reading','practice.listening','practice.writing']))
+    cards.push(_hubCard('🎯','Practice Tests','Practice 1 of each level — A2 Key, B1 Preliminary, B2 First, C1 Advanced — in the digital Cambridge format, marked at once.',"window._nav('practice')"));
+  if(hay(['mock.reading','mock.listening','mock.writing']))
+    cards.push(_hubCard('🎓','Mocks','MOCK 1 of each level: a full timed paper per skill. Writing is marked by the AI examiner with the Cambridge criteria.',"window._nav('mocks')"));
+  if(hay(['tool.phrasal','tool.collocations','tool.idioms','tool.wordform']))
+    cards.push(_hubCard('🧰','Practice tools','Phrasal verbs, collocations, idioms and word formation: the first block of A2 and B1 to study, practise and play.',"window._nav('tools')"));
+  IELTS_PIECES.filter(x=>schoolContentOK(x.key)).forEach(x=>cards.push(_hubCard(x.emoji,x.title,x.desc,`window._ssoCohasset('${x.href}')`)));
+  cards.push(_hubCard('📊','My progress','Your results in practice tests and mocks.',"window._nav('results')"));
+  $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
+    <p class="muted" style="margin-top:-6px">This is a <b>sample</b> of Cohasset School: a selection of exams and tools, each working from start to finish.</p>
+    <div class="grid cols-3" style="margin-top:16px">${cards.join('')}</div>`;
+}
 function studentHub(){
   if(mockModeActive()) return mockModeHub();   // dia de mock: solo la tarjeta del mock
   if(typeof isStaffGrade==='function' && isStaffGrade(state.profile && state.profile.grade_id)) return teacherRoomHub();   // aula de profesores
   _setNav('home');
   const p=state.profile;
+  if(typeof schoolIsSample==='function' && schoolIsSample()) return _sampleHub(p);
   // Fase 2 WP-B: dos tarjetas grandes de pista (My classes / Cambridge) en
   // vez de la parrilla de "Subjects" — direccion pidio separar Clases de la
   // preparacion Cambridge y que cada programa tenga UNA sola casa.
@@ -416,7 +437,7 @@ const ENGLISH_AREAS = [
   // y sus niveles); Mocks y Practice Tests son los atajos a los simulacros que
   // el alumno ya conoce por su nombre, y por eso no se retiran.
   {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge', block:'exam'},
-  {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks', block:'exam', when:()=>!_isStudent()},
+  {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks', block:'exam', when:()=>!_isStudent() || schoolIsSample()},
   {emoji:'🎯', title:'Practice Tests',desc:'Practice tests 1, 2 and 3 in Cambridge format, always available.', nav:'practice', node:'english.practice', block:'exam'},
   // Preparación IELTS: piezas de cohasset.pe que el superadmin coloca en el
   // colegio (content_items ielts.*). Abren en pestaña nueva con cuenta de cohasset.pe.

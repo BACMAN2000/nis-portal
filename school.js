@@ -158,12 +158,25 @@
   window.schoolSections = function () { var S = window.NIS_SCHOOL || {}; return Array.isArray(S.sections) && S.sections.length ? S.sections : ['A', 'B']; };
   window.schoolAppKey = function (navKey) { return APP_OF_NAV[navKey] || null; };
   /* Piezas de contenido (tabla content_items / school_content): true = el
-     colegio la tiene. Sin datos o pieza desconocida, se ve. */
+     colegio la tiene. Sin datos o pieza desconocida, se ve; en un colegio
+     strict (settings.strict_content) la pieza sin fila queda apagada. */
   window.schoolContentOK = function (key) {
     var S = window.NIS_SCHOOL;
     if (!S || !S.content || !key) return true;
-    if (!Object.prototype.hasOwnProperty.call(S.content, key)) return true;
+    if (!Object.prototype.hasOwnProperty.call(S.content, key)) return !S.strict;
     return S.content[key] === true;
+  };
+  /* Recorte DENTRO de una pieza (school_content.scope, colegio «sample»):
+     {tests:[…]} en practice/mock, {levels:[…], blocks:n} en las herramientas
+     de léxico. null = la pieza entera. */
+  window.schoolScope = function (key) {
+    var S = window.NIS_SCHOOL;
+    return (S && S.scope && S.scope[key]) || null;
+  };
+  /* Colegio de muestra: strict y con recortes. Le abre al alumno la vista Mocks. */
+  window.schoolIsSample = function () {
+    var S = window.NIS_SCHOOL;
+    return !!(S && S.strict && S.scope && Object.keys(S.scope).length);
   };
   /* true = se muestra. Sin datos del colegio (o app desconocida) todo se ve. */
   window.schoolAppOK = function (navKey) {

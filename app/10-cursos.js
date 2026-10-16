@@ -565,24 +565,24 @@ function dictPanel(){
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=adda0b52&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=8339d476&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=468b9881&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=0e27fccf&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=382d20c4&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=c1e0cecf&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=3b7babd5&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=7b517be6&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 

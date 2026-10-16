@@ -892,12 +892,42 @@ if(window.NIS_WORK) NIS_WORK.attach({
   }
 });
 
+/* ---------- colegio de muestra (15-oct-2026) ----------
+   Embebida en el portal de un colegio «sample» (school_content.scope de
+   tool.<app>: {levels:[…], blocks:n}), la app enseña solo esos niveles y sus
+   primeros n bloques. Se lee del portal que la embebe (mismo origen); abierta
+   suelta, o en cualquier otro colegio, va entera. */
+function alcanceMuestra(){
+  try {
+    var S = window.parent && window.parent !== window && window.parent.NIS_SCHOOL;
+    var m = /([a-z-]+-app)\//.exec(location.pathname);
+    var k = m && { 'phrasal-app':'tool.phrasal', 'collocations-app':'tool.collocations',
+                   'idioms-app':'tool.idioms', 'word-formation-app':'tool.wordform' }[m[1]];
+    return (S && S.scope && k && S.scope[k]) || null;
+  } catch(e){ return null; }
+}
+function nivelesMuestra(sc){
+  if(!sc || !Array.isArray(sc.levels)) return;
+  var ns = DATA.niveles.filter(function(L){ return sc.levels.indexOf(L) >= 0; });
+  if(ns.length) DATA.niveles = ns;
+}
+function muestra(){
+  var sc = alcanceMuestra(); if(!sc) return;
+  nivelesMuestra(sc);
+  if(sc.blocks > 0){
+    var todo = DATA[APP.list] || {}, out = {};
+    DATA.niveles.forEach(function(L){ out[L] = [].concat.apply([], armaBloques(todo[L] || []).slice(0, sc.blocks)); });
+    DATA[APP.list] = out;
+  }
+}
+
 /* La página declara APP.data ('data.json?v=…') junto al archivo: el sellador de
    ?v= (tools/sella_versiones.py) resuelve cada ruta desde la carpeta de quien la
    pide, y desde ../lexapp.js no existe ningún data.json, así que un número aquí
    no se sellaría nunca. datav queda por si alguna página aún lo usa. */
 fetch(APP.data || 'data.json?v=' + (APP.datav || 1)).then(function(r){ return r.json(); }).then(function(d){
   DATA = d;
+  muestra();
   LEVEL = DATA.niveles.indexOf('A1') >= 0 ? 'A1' : DATA.niveles[0];
   BLOQUES = armaBloques(items(LEVEL));
   indexaEjercicios();
