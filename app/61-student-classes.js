@@ -678,7 +678,7 @@ function studentMocks(){
   if(_isStudent() && !schoolIsSample()){ studentHub(); return; }
   _setNav('mocks');
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
-    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'MOCK 1' : 'MOCK 1 and MOCK 2'} in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.</p>
+    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'MOCK 1 and MOCK 2 of each level' : 'MOCK 1 and MOCK 2'} in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. ${schoolIsSample() ? 'In this sample your results stay in this browser, in My Progress.' : 'Your result is saved only in My Progress.'}</p>
     <div class="grid cols-2" style="margin-top:12px">
       ${schoolContentOK('mock.reading') ? _skillCard('📖','Reading & Use of English','KET/PET/FCE/CAE-style texts and tasks with a timer.',_withBack(QUIZ_URL+'reading-quiz.html?branch=mocks','mocks')) : ''}
       ${schoolContentOK('mock.listening') ? _skillCard('🎧','Listening','Real audio in Cambridge format, with a timer.',_withBack(QUIZ_URL+'listening-quiz.html?branch=mocks','mocks')) : ''}
@@ -694,9 +694,9 @@ function studentPractice(){
   // la que ponia el candado: se comprueba el mismo nodo (english.practice).
   if(_isStudent() && !nodeVisible(CAMBRIDGE_PRACTICE_NODE)){ _lockedView('', '🎯 Practice Tests'); return; }
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
-    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'Practice 1 of each level (A2 · B1 · B2 · C1)' : 'Practice tests 1, 2 and 3'} in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.</p>
+    <p class="muted" style="margin-top:-6px">${schoolIsSample() ? 'Practice 1 and 2 of each level (A2 · B1 · B2 · C1)' : 'Practice tests 1, 2 and 3'} in authentic Cambridge format — always available. You go straight in with your session${schoolIsSample() ? '. In this sample your results stay in this browser, in My Progress.' : ' and your result is saved only in My Progress.'}</p>
     <div class="grid cols-3" style="margin-top:12px">
-      ${schoolContentOK('practice.reading') ? _skillCard('📖','Reading & Use of English',(schoolIsSample() ? 'Practice 1' : 'Practice 1 · 2 · 3')+' with automatic marking and CEFR feedback.',_withBack(QUIZ_URL+'reading-quiz.html?branch=practice','practice')) : ''}
+      ${schoolContentOK('practice.reading') ? _skillCard('📖','Reading & Use of English',(schoolIsSample() ? 'Practice 1 · 2' : 'Practice 1 · 2 · 3')+' with automatic marking and CEFR feedback.',_withBack(QUIZ_URL+'reading-quiz.html?branch=practice','practice')) : ''}
       ${schoolContentOK('practice.listening') ? _skillCard('🎧','Listening','Practice with real audio and automatic marking.',_withBack(QUIZ_URL+'listening-quiz.html?branch=practice','practice')) : ''}
       ${schoolContentOK('practice.writing') ? _skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',_withBack(QUIZ_URL+'writing-quiz.html?branch=practice','practice')) : ''}
     </div>`;
@@ -947,6 +947,12 @@ function _pintaSerie(cajaId, route){
 }
 
 /* ---------- My Progress: historial completo del alumno (mocks, practice y actividades) ---------- */
+function _sampleResults(uid){
+  try{
+    const d = JSON.parse(localStorage.getItem('cohSampleResults:'+uid) || '{}') || {};
+    return { exam: Array.isArray(d.exam) ? d.exam : [], act: Array.isArray(d.act) ? d.act : [] };
+  }catch(e){ return { exam:[], act:[] }; }
+}
 async function studentResults(){
   // Fase 2 WP-B: My Progress es ahora de primer nivel (peer de Home), sin
   // «atrás» — igual que Cambridge, Mocks o Practice Tests.
@@ -955,8 +961,11 @@ async function studentResults(){
   const back = '';
   if(!p.id) return _previewNeedsStudent('📊 My Progress', back);
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Loading…</p>`;
-  const { data:attsRaw } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
-  const atts = await mockVisibleAttempts(attsRaw||[], p.id);   // nada del Official Mock 2 hasta que se libere o se le envíe su informe
+  // Colegio de muestra: nada en la base; los intentos viven en este navegador
+  // (cohSampleResults:<uid>, los escriben nis-bridge.js y lexapp.js).
+  const muestra = schoolIsSample() ? _sampleResults(p.id) : null;
+  const { data:attsRaw } = muestra ? {data:muestra.exam} : await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
+  const atts = muestra ? attsRaw : await mockVisibleAttempts(attsRaw||[], p.id);   // nada del Official Mock 2 hasta que se libere o se le envíe su informe
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
     const scored=a.filter(x=>x.percent!=null);              // Writing is not auto-scored
@@ -968,7 +977,7 @@ async function studentResults(){
       list.map(a=>{
         const lbl=`${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)}`;
         const score = a.percent!=null ? `${a.score}/${a.total} (${a.percent}%)`
-          : (a.skill==='Writing' ? '<span class="muted">Pending grading</span>' : '—');
+          : (a.skill==='Writing' ? (muestra ? '<span class="muted">AI examiner feedback</span>' : '<span class="muted">Pending grading</span>') : '—');
         const msg = (a.breakdown&&a.breakdown.teacherMessage)
           ? `<tr><td colspan="3" style="background:#f7faff;font-size:.9rem">📣 <b>Teacher:</b> ${esc(a.breakdown.teacherMessage)}</td></tr>` : '';
         return `<tr><td>${lbl}</td><td>${score}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>${msg}`;
@@ -976,7 +985,7 @@ async function studentResults(){
     }</tbody></table>` : `<p class="muted">No attempts here yet.</p>`;
   const all=atts||[];
   const mocks=all.filter(isMockAttempt), practice=all.filter(a=>!isMockAttempt(a));
-  const { data:acts } = await sb.from('activity_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
+  const { data:acts } = muestra ? {data:muestra.act} : await sb.from('activity_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const fmtT=(s)=>{ s=s||0; return Math.floor(s/60)+'m '+String(s%60).padStart(2,'0')+'s'; };
   // Sus respuestas, ítem a ítem (activities-panel.js pinta el detalle; el
   // mismo que ve el profesor en Seguimiento › Actividades).

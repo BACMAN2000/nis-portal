@@ -289,15 +289,15 @@ function _sampleHub(p){
   const hay = (ks)=>ks.some(k=>schoolContentOK(k));
   const cards = [];
   if(hay(['practice.reading','practice.listening','practice.writing']))
-    cards.push(_hubCard('🎯','Practice Tests','Practice 1 of each level — A2 Key, B1 Preliminary, B2 First, C1 Advanced — in the digital Cambridge format, marked at once.',"window._nav('practice')"));
+    cards.push(_hubCard('🎯','Practice Tests','Practice 1 and 2 of each level — A2 Key, B1 Preliminary, B2 First, C1 Advanced — in the digital Cambridge format, marked at once.',"window._nav('practice')"));
   if(hay(['mock.reading','mock.listening','mock.writing']))
-    cards.push(_hubCard('🎓','Mocks','MOCK 1 of each level: a full timed paper per skill. Writing is marked by the AI examiner with the Cambridge criteria.',"window._nav('mocks')"));
+    cards.push(_hubCard('🎓','Mocks','MOCK 1 and MOCK 2 of each level: a full timed paper per skill. Writing is marked by the AI examiner with the Cambridge criteria.',"window._nav('mocks')"));
   if(hay(['tool.phrasal','tool.collocations','tool.idioms','tool.wordform']))
-    cards.push(_hubCard('🧰','Practice tools','Phrasal verbs, collocations, idioms and word formation: the first block of A2 and B1 to study, practise and play.',"window._nav('tools')"));
+    cards.push(_hubCard('🧰','Practice tools','Phrasal verbs, collocations, idioms and word formation: two blocks of every level to study, practise and play.',"window._nav('tools')"));
   IELTS_PIECES.filter(x=>schoolContentOK(x.key)).forEach(x=>cards.push(_hubCard(x.emoji,x.title,x.desc,`window._ssoCohasset('${x.href}')`)));
   cards.push(_hubCard('📊','My progress','Your results in practice tests and mocks.',"window._nav('results')"));
   $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
-    <p class="muted" style="margin-top:-6px">This is a <b>sample</b> of Cohasset School: a selection of exams and tools, each working from start to finish.</p>
+    <p class="muted" style="margin-top:-6px">This is a <b>sample</b> of Cohasset Schools: a selection of exams and tools, each working from start to finish. Your results stay in this browser.</p>
     <div class="grid cols-3" style="margin-top:16px">${cards.join('')}</div>`;
 }
 function studentHub(){

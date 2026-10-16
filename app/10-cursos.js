@@ -572,17 +572,17 @@ function wordformPanel(){
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=0e27fccf&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=e039d5a6&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=c1e0cecf&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=fec7f38b&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=7b517be6&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=26dfbcfd&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 

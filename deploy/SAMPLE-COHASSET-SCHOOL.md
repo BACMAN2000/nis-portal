@@ -5,11 +5,18 @@ con una cuenta de este colegio ve **solo** esta selección, cada pieza de punta 
 
 | Pieza | Qué enseña |
 |---|---|
-| 🎯 Practice Tests | Práctica 1 de A2 · B1 · B2 · C1 en Reading, Listening y Writing |
-| 🎓 Mocks | MOCK 1 de cada nivel en Reading, Listening y Writing (Writing corregido por el examinador de IA) |
-| 🧰 Practice tools | Phrasal verbs, Collocations, Idioms y Word formation: el primer bloque de A2 y B1 |
+| 🎯 Practice Tests | Prácticas 1 y 2 de A2 · B1 · B2 · C1 en Reading, Listening y Writing |
+| 🎓 Mocks | MOCK 1 y MOCK 2 de cada nivel en Reading, Listening y Writing (Writing corregido por el examinador de IA) |
+| 🧰 Practice tools | Phrasal verbs, Collocations, Idioms y Word formation: los dos primeros bloques de cada nivel |
 | ✍️ IELTS Writing Studio | En cohasset.pe, con la sesión del colegio (SSO) |
-| 📊 My progress | Sus resultados |
+| 📊 My progress | Sus resultados, guardados **solo en el navegador** (16-oct-2026) |
+
+**Sin resultados en la base.** `settings.local_results = true`: los intentos de las
+cuentas sample no se guardan en Supabase (trigger `trg_local_results` en `exam_attempts`
+y `activity_attempts`, migración `2026-10-16_01`), ni van al archivo de textos (webhook)
+ni por correo. El portal y los motores los guardan en `localStorage`
+(`cohSampleResults:<uid>`) y My Progress los lee de ahí. Con `sample.cohasset.pe` los
+mocks llevan la marca Cohasset Schools (`mocks-cambridge/config.js`).
 
 ## Crear más cuentas sample
 
