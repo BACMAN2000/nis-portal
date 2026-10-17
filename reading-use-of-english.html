@@ -311,6 +311,9 @@ const LEVELS = {
 };
 const SET = 6;               // preguntas por bloque: la Part 4 del examen tiene 6
 let level = 'b2', part = 4, cur = null, view = 'menu';
+// Opened from a level card (?level=b1|b2|c1): the page stays on that exam only.
+const LOCKED = ((new URLSearchParams(location.search).get('level') || '').match(/^(b1|b2|c1)$/) || [])[1] || null;
+if(LOCKED) level = LOCKED;
 /* STORE['b2:passive'] = {a:{i:'…'}, f:{i:true}, q:i, checked, score} */
 const STORE = {};
 const keyOf = (lv, id) => lv + ':' + id;
@@ -549,6 +552,7 @@ function findItem(lv, id){
 }
 function route(){
   const m = location.hash.match(/^#(b1|b2|c1)(?:\/([\w-]+))?(?:\/(exam|review))?$/);
+  if(m && LOCKED && m[1] !== LOCKED){ history.replaceState(null, '', '#' + LOCKED); route(); return; }
   if(m) level = m[1];
   const id = m && m[2];
   if(id && /^part-[1-8]$/.test(id)) part = +id.slice(5);
@@ -576,7 +580,7 @@ window.startExam = () => cur && setHash('#' + cur.level + '/' + cur.id + '/exam'
 /* ---- 1 · Menú ------------------------------------------------------------ */
 function topicsFor(lv){ return RUOE_P4.filter(t => t[lv] && t[lv].length); }
 function renderLevels(){
-  $('levels').innerHTML = Object.keys(LEVELS).map(k => {
+  $('levels').innerHTML = Object.keys(LEVELS).filter(k => !LOCKED || k === LOCKED).map(k => {
     const L = LEVELS[k];
     return `<button type="button" class="lvl ${k} ${k===level?'on':''}" onclick="setLevel('${k}')">
       <b>${L.name}</b><span>${L.sub} · ${L.parts || `Part 4 answers: ${L.min}–${L.max} words`}</span></button>`;
@@ -632,7 +636,7 @@ function renderParts(){
     $('partBody').innerHTML = intro + `<div class="sec-title">3 · Choose a text (${D.ex.length})</div><div class="topics">${exCards}</div>`;
   }
 }
-window.setLevel = lv => { level = lv; if(!PARTS_OF[lv].includes(part) || !partOK(lv, part)) part = lv === 'b1' ? 1 : 4; history.replaceState(null, '', '#' + lv + '/part-' + part); renderLevels(); renderParts(); };
+window.setLevel = lv => { if(LOCKED && lv !== LOCKED) return; level = lv; if(!PARTS_OF[lv].includes(part) || !partOK(lv, part)) part = lv === 'b1' ? 1 : 4; history.replaceState(null, '', '#' + lv + '/part-' + part); renderLevels(); renderParts(); };
 window.setPart = n => { part = n; history.replaceState(null, '', '#' + level + '/part-' + n); renderParts(); };
 window.openTopic = id => setHash('#' + level + '/' + id);
 
