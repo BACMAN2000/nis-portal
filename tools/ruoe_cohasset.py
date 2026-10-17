@@ -46,6 +46,8 @@ def build_html():
     # vuelta al hub Cambridge (en NIS la pone nis-nav.js)
     rep('    <h1>📘 Reading and Use of English</h1>',
         '    <a href="cambridge-portal.html" style="display:inline-block;margin-bottom:8px;font-weight:700;text-decoration:none;color:inherit;opacity:.85">← Cambridge</a>\n    <h1>📘 Reading and Use of English</h1>')
+    # puerta por examen Cambridge (solo cohasset.pe): ?level=b1|b2|c1 → pet/fce/cae de la matrícula
+    s = re.sub(r'(<meta charset[^>]*>)', lambda m: m.group(1) + '\n<script src="js/coh-cambridge-gate.js?v=%s" data-exam-param="level" data-map="b1:pet,b2:fce,c1:cae"></script>' % md5(rd(os.path.join(COH, 'js/coh-cambridge-gate.js'))), s, count=1, flags=re.I)
     # ?v= de los datos con la convención del repo de cohasset
     for f in DATA:
         s = re.sub(r'%s\?v=[0-9a-f]+' % re.escape(f), '%s?v=%s' % (f, md5(rd(os.path.join(NIS, f)))), s)
