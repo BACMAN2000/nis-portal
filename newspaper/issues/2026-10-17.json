@@ -1,0 +1,1000 @@
+{
+  "date": "2026-10-17",
+  "issue": 11,
+  "breaking": [
+    "New Zealand: volunteers have found 1,200 nests of the rare 'jungle penguin'.",
+    "Peru gets back 342 old objects, including a big painting and a book written by hand.",
+    "Tennis: Davidovich Fokina beats top seed Zverev and plays in the Shanghai final.",
+    "UK: a study finds that honeybees push wild insects away from flowers."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-17-jungle-penguins",
+      "section": "Environment",
+      "country": "New Zealand",
+      "flag": "🇳🇿",
+      "level": "A2",
+      "topic": "Animals and nature",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Meet the 'jungle penguin' with yellow eyebrows",
+      "standfirst": "In New Zealand, volunteers are learning the secrets of a shy penguin that lives in the forest.",
+      "body": [
+        "In the south of New Zealand there is a big national park called Fiordland. It has deep, cold water, high mountains and a thick rainforest. A very special penguin lives there: the tawaki, or Fiordland crested penguin. It is about half a metre tall and it has bright yellow 'eyebrows'.",
+        "Most penguins live together in big groups on beaches or on ice. But the tawaki is different. It makes its nest alone, in a hole under the trees of the forest. That is why one scientist calls it a 'jungle penguin'.",
+        "A team of volunteers called the Tawaki Project started to study these birds in 2014. This September, they found 93 nests on two islands. In 12 years they have found 1,200 nests. The scientists say there are about three times more tawaki than people thought before. But they want to learn more, because the number of these penguins is going down."
+      ],
+      "glossary": [
+        {
+          "w": "rainforest",
+          "d": "a thick forest in a place where it rains a lot"
+        },
+        {
+          "w": "eyebrows",
+          "d": "the lines of hair above your eyes"
+        },
+        {
+          "w": "nest",
+          "d": "the place where a bird lays its eggs and keeps its babies"
+        },
+        {
+          "w": "volunteers",
+          "d": "people who do a job because they want to, not for money"
+        },
+        {
+          "w": "islands",
+          "d": "pieces of land with water all around them"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "Fiordland is in the north of New Zealand.",
+          "answer": "F"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The tawaki has yellow 'eyebrows'.",
+          "answer": "T"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Tawaki make their nests in big groups on the beach.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The Tawaki Project started in 2014.",
+          "answer": "T"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The volunteers get money from the government.",
+          "answer": "NS"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "Scientists now think there are fewer tawaki than people believed before.",
+          "answer": "F"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You watched a TV programme about an animal. Write an email to your English friend (25 words or more). Tell your friend: what animal you saw, where it lives, and why you liked it."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/world/2026/oct/17/secrets-of-new-zealand-fiordland-crested-penguin-tawaki"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/jungle-penguins.jpg",
+        "alt": "A penguin with yellow feathers above its eyes standing on rocks",
+        "caption": "A Fiordland crested penguin, or tawaki, in New Zealand (earlier photo).",
+        "credit": "Francesco Veronesi from Italy",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Fiordland_Crested_Penguin_-_Stewart_Island_-_New_Zealand_(39070132111).jpg"
+      }
+    },
+    {
+      "id": "2026-10-17-earhart-island",
+      "section": "World",
+      "country": "Kiribati",
+      "flag": "🇰🇮",
+      "level": "A2",
+      "topic": "History and mysteries",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Looking for a lost plane on a faraway island",
+      "standfirst": "Researchers have travelled to a small Pacific island to try to solve the mystery of Amelia Earhart.",
+      "body": [
+        "Amelia Earhart was a famous American pilot. In 1937 she tried to fly around the world with her navigator, Fred Noonan. But their plane disappeared over the Pacific Ocean, and nobody found them. It is still one of the big mysteries of history.",
+        "Now a team of researchers from the United States has travelled to Nikumaroro, a small island in the Pacific. It is part of the country of Kiribati. Their ship sailed for five days to get there. In 2020, a satellite photo showed a strange object in the water near the island. Some people think it is part of Earhart's plane. Others think it is only an old tree.",
+        "The team wants to look at the object carefully. But it is not easy. The weather can be bad, and there are giant coconut crabs on the island. They come out at night, so the researchers sleep on their ship."
+      ],
+      "glossary": [
+        {
+          "w": "pilot",
+          "d": "a person who flies a plane"
+        },
+        {
+          "w": "navigator",
+          "d": "the person who decides which way a plane or ship should go"
+        },
+        {
+          "w": "disappeared",
+          "d": "went away and nobody could see or find it"
+        },
+        {
+          "w": "mysteries",
+          "d": "things that nobody can explain or understand"
+        },
+        {
+          "w": "satellite",
+          "d": "a machine in space that goes around the Earth and takes pictures"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "When did Amelia Earhart's plane disappear?",
+          "options": [
+            "in 1927",
+            "in 1937",
+            "in 2020"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Where is Nikumaroro?",
+          "options": [
+            "near the coast of the United States",
+            "in the Atlantic Ocean",
+            "in the Pacific Ocean"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "How long did the ship take to get to the island?",
+          "options": [
+            "five days",
+            "two weeks",
+            "one day"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What do some people think the strange object is?",
+          "options": [
+            "part of a boat",
+            "a big rock",
+            "part of Earhart's plane"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why do the researchers sleep on their ship?",
+          "options": [
+            "The island is too hot.",
+            "Giant crabs come out on the island at night.",
+            "There are no trees on the island."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You are going on a trip to an island. Write a note to your friend (25 words or more). Say: where you are going, how you will travel there, and what you want to see."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c6pvgryp8yv0o"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/earhart-island.jpg",
+        "alt": "A small ring-shaped island with a lagoon in the middle, seen from space",
+        "caption": "Nikumaroro Island in the Pacific, photographed from space by a NASA astronaut (earlier photo).",
+        "credit": "NASA",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Nikumaroro_Island.jpg"
+      }
+    },
+    {
+      "id": "2026-10-17-peru-treasures-home",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Culture and heritage",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Welcome home: 342 treasures return to Peru",
+      "standfirst": "A painting, a hand-written book and hundreds of other objects have come back from six countries.",
+      "body": [
+        "Peru has received 342 objects that are part of its cultural heritage. For years, these pieces of art and history were in other countries. Now they are back home. On Wednesday 7 October, at Torre Tagle Palace in Lima, the Foreign Affairs Minister, Carlos Espa, handed them over to the Culture Minister, Alberto Beingolea.",
+        "The objects came back from six countries: Germany, Argentina, Belgium, Brazil, the United States and the United Kingdom. Peru's embassies worked together with police forces and other organisations in those countries to find them. Some people abroad also decided to give pieces back on their own. It was the largest return of cultural objects to Peru so far this year. Minister Espa thanked everyone who helped and said that protecting Peru's heritage is a priority for his ministry.",
+        "Among the treasures there is a large painting called 'The Transit of St. Joseph', which is very important for its history and its art. There is also a special book written by hand, 'Ancient Peruvian Art', with beautiful watercolour pictures.",
+        "The Culture Minister explained that the work is not finished. His team also watches social media, because people often offer these objects for sale online. Soon, everyone will be able to see the returned pieces at a special exhibition in the Culture Ministry."
+      ],
+      "glossary": [
+        {
+          "w": "heritage",
+          "d": "the art, buildings and traditions that a country has from its past"
+        },
+        {
+          "w": "handed",
+          "d": "gave something to someone with your hand or officially"
+        },
+        {
+          "w": "embassies",
+          "d": "offices of a country's government in another country"
+        },
+        {
+          "w": "watercolour",
+          "d": "a kind of paint that you mix with water"
+        },
+        {
+          "w": "exhibition",
+          "d": "a show of art or objects that people can visit and look at"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "Peru has ___ 342 objects from other countries.",
+          "options": [
+            "received",
+            "taken",
+            "sent",
+            "lost"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "The objects were ___ over to the Culture Minister at Torre Tagle Palace.",
+          "options": [
+            "given",
+            "handed",
+            "passed",
+            "put"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "Some people abroad decided to give pieces back ___ their own.",
+          "options": [
+            "by",
+            "with",
+            "on",
+            "in"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "It was the ___ return of cultural objects to Peru so far this year.",
+          "options": [
+            "longest",
+            "highest",
+            "widest",
+            "largest"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "People often ___ these objects for sale online.",
+          "options": [
+            "buy",
+            "offer",
+            "keep",
+            "show"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "Everyone will be able to see the pieces at a special ___.",
+          "options": [
+            "concert",
+            "festival",
+            "meeting",
+            "exhibition"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Sam writes: 'I read that Peru got back lots of old paintings and objects from other countries. Have you ever been to a museum in Peru? What did you see there? Which museum should I visit when I come to Lima?' Write your email to Sam in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-peru-foreign-affairs-ministry-hands-over-342-items-to-culture-ministry-1095111.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/peru-treasures-home.jpg",
+        "alt": "An old building in Lima with wooden balconies",
+        "caption": "Torre Tagle Palace in Lima, where the 342 objects were handed over (earlier photo).",
+        "credit": "Miguel Francisco Rueda Ñañez",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Palacio_de_Torre_Tagle_Lima,_Peru.jpg"
+      }
+    },
+    {
+      "id": "2026-10-17-shanghai-tennis",
+      "section": "Sport",
+      "country": "China",
+      "flag": "🇨🇳",
+      "level": "B1",
+      "topic": "Sport",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Never give up: a surprise winner in Shanghai",
+      "standfirst": "Spain's Alejandro Davidovich Fokina came back from a set down to beat the top seed, Alexander Zverev.",
+      "body": [
+        "Spanish tennis player Alejandro Davidovich Fokina has reached the final of the Shanghai Masters in China after a surprising win. On Saturday he beat Alexander Zverev from Germany, who was the top seed – the player the organisers expected to do best in the tournament. The score was 5-7, 6-4, 6-3.",
+        "Zverev won the first set, and for a while it looked like an easy day for him. But Davidovich Fokina did not give up. He won the second set after an amazing backhand shot that he hit while he was running, and the crowd stood up to cheer. In the third set he started strongly, went 2-0 up and never lost control of the match. The game lasted just over two hours.",
+        "It was only his second win against Zverev in eight matches. After the game, he said he felt stronger physically in the third set, and that he tried to enjoy playing instead of thinking about the result. Zverev, who is 29, said he was tired and had a small injury, and that he needed a break.",
+        "Davidovich Fokina has now won nine matches in a row in China. Last month he won a tournament in the city of Chengdu. In the final on Sunday he will play Daniil Medvedev or another Spanish player, Rafael Jodar."
+      ],
+      "glossary": [
+        {
+          "w": "final",
+          "d": "the last game in a competition, which decides the winner"
+        },
+        {
+          "w": "seed",
+          "d": "a player who the organisers think is one of the best in a competition"
+        },
+        {
+          "w": "set",
+          "d": "one part of a tennis match"
+        },
+        {
+          "w": "crowd",
+          "d": "a large group of people in one place"
+        },
+        {
+          "w": "injury",
+          "d": "damage to your body, for example after an accident"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Who did Davidovich Fokina beat on Saturday?",
+          "options": [
+            "Daniil Medvedev",
+            "Rafael Jodar",
+            "Alexander Zverev",
+            "a player from China"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What happened in the first set?",
+          "options": [
+            "Zverev won it.",
+            "Davidovich Fokina won it easily.",
+            "The match stopped because of rain.",
+            "The crowd left early."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What made the crowd stand up?",
+          "options": [
+            "an argument between the players",
+            "an amazing backhand shot",
+            "Zverev's injury",
+            "the end of the match"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What did Davidovich Fokina say about the third set?",
+          "options": [
+            "He was very tired.",
+            "He felt stronger physically.",
+            "He thought about the result all the time.",
+            "He had a problem with his leg."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "How did Zverev feel after the match?",
+          "options": [
+            "happy and full of energy",
+            "angry with the crowd",
+            "ready to play again the next day",
+            "tired and in need of a break"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Who will Davidovich Fokina play in the final?",
+          "options": [
+            "Zverev again",
+            "a player from Germany",
+            "Medvedev or Jodar",
+            "the winner of the Chengdu tournament"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for teenagers: 'Never give up! Tell us about a time when you, or someone you know, did not give up and finally succeeded. What happened? How did it feel?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Al Jazeera (AFP/Reuters)",
+          "url": "https://www.aljazeera.com/sports/2026/10/17/davidovich-fokina-stuns-top-seed-zverev-to-reach-shanghai-masters-final"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/shanghai-tennis.jpg",
+        "alt": "A large round tennis stadium with a roof",
+        "caption": "Qizhong Forest Sports City Arena, home of the Shanghai Masters (photo from 2008).",
+        "credit": "Curt Smith from Bellevue, WA, USA",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Qizhong_Stadium.jpg"
+      }
+    },
+    {
+      "id": "2026-10-17-science-books-auction",
+      "section": "Culture",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B2",
+      "topic": "History of science",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "The books that moved the Earth go on sale",
+      "standfirst": "First editions by Copernicus, Galileo and Newton are on show in New York before an auction that could raise US$7 million.",
+      "body": [
+        "A. Some of the most important books in the history of science are on display in New York this month – and anyone with a few million dollars to spare could soon take them home. Hundreds of rare volumes are being shown at the auction house Sotheby's before they are sold on Tuesday, 20 October.",
+        "B. The highlights are works by three men who transformed our picture of the universe between 1543 and 1687: Nicolaus Copernicus, Galileo Galilei and Isaac Newton. Copernicus argued that the Earth moves around the Sun, Galileo used his telescope to support that view, and Newton explained the laws of gravity that keep the planets in their orbits. Together, their ideas challenged what the Roman Catholic Church taught at the time.",
+        "C. According to Sotheby's, many of the books have spent decades in private collections and are only now coming back onto the market. The Copernicus volume has the highest estimate: it could sell for up to US$1 million. Altogether, the auction house expects the sale to raise as much as US$7 million.",
+        "D. Surprisingly, visitors are allowed to handle the books. Gloves are not necessary, as long as people wash their hands carefully first. Richard Austin, who leads Sotheby's books and manuscripts department worldwide, says looking at the pages online is one thing, but holding a book that changed our understanding of the universe is 'a very different experience'.",
+        "E. Not everyone is happy when such treasures disappear into private homes, where researchers and the public may never see them again. However, Nick Wilding, a historian of science at Georgia State University, believes that rare books usually find their way to public institutions in the end – partly because universities and libraries tend to outlive individual collectors."
+      ],
+      "glossary": [
+        {
+          "w": "auction",
+          "d": "a sale where things are sold to the person who offers the most money"
+        },
+        {
+          "w": "volumes",
+          "d": "books, especially old or important ones"
+        },
+        {
+          "w": "estimate",
+          "d": "a guess about the value or size of something"
+        },
+        {
+          "w": "manuscripts",
+          "d": "books or documents written by hand"
+        },
+        {
+          "w": "outlive",
+          "d": "to live or exist longer than someone or something else"
+        }
+      ],
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph mentions a rule for people who want to touch the books?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph gives the total amount of money the sale could bring in?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph describes a worry about where the books might end up?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains what the three scientists showed?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph tells us when the books will be sold?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about museums and private collections. Now your teacher has asked you to write an essay. 'Should important historical objects, such as rare books, belong to the public rather than to private collectors?' Notes – write about: 1. access for students and researchers; 2. who pays to look after the objects; 3. ……… (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The New York Times",
+          "url": "https://www.nytimes.com/2026/10/17/science/sothebys-science-books-auction.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/science-books-auction.jpg",
+        "alt": "The title page of an old printed book in Latin",
+        "caption": "The first page of Copernicus's famous book from 1543. A copy is in the New York sale.",
+        "credit": "Johann Petreius",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:De_revolutionibus_orbium_coelestium_(Nuremberg_Johann_Petreius_1543)_title_page.jpg"
+      }
+    },
+    {
+      "id": "2026-10-17-honeybees-push",
+      "section": "Science",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "B2",
+      "topic": "Insects and ecology",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Too many bees? Honeybees push wild insects off flowers",
+      "standfirst": "A two-year study in England found that honeybees often win the fight for pollen and nectar – sometimes by force.",
+      "body": [
+        "Bees are often seen as heroes of the natural world, and campaigns to 'save the bees' have inspired thousands of people in the UK to take up beekeeping as a hobby. The number of registered beekeepers more than doubled between 2010 and 2025, from 19,000 to 47,000. But a new study suggests that all these extra honeybees may be causing problems for other insects. Experts were already concerned that large numbers of hives could spread diseases to wild bees and leave less food for them, especially in places with few flowers.",
+        "Researchers from Anglia Ruskin University spent two years watching pollinators feed on bramble and ivy flowers near honeybee hives in Cambridgeshire. They recorded 300 encounters between honeybees, bumblebees, solitary bees, hoverflies and other insects, noting each time which one 'won' access to the flower, which one 'lost', or whether they shared it.",
+        "Honeybees won most of the contests, and where there were more honeybees, there were fewer wild pollinators. Scientists already knew that honeybees could compete indirectly, simply by taking pollen and nectar before others arrived. What the study revealed was direct aggression: in about a fifth of the contests that honeybees won, they landed on rivals, pushed them off flowers or chased them away. Bumblebees sometimes knocked other insects off too, but the lead author, Victoria Buckle, believes this was usually an accident caused by their clumsy flying. She thinks the honeybees' behaviour may be linked to the way their colonies are organised, since some honeybees act as guards that defend the hive.",
+        "Only one species stood up to the honeybees: the ivy bee, which was first recorded in the UK in 2001. The study also found that contests became more frequent on hotter days, probably because flowers produce less nectar in the heat. With summers expected to get warmer, the researchers think this kind of competition may become more common."
+      ],
+      "glossary": [
+        {
+          "w": "pollinators",
+          "d": "insects or animals that carry pollen from one flower to another"
+        },
+        {
+          "w": "hives",
+          "d": "boxes or places where bees live together and make honey"
+        },
+        {
+          "w": "encounters",
+          "d": "meetings, especially ones that are unexpected or difficult"
+        },
+        {
+          "w": "rivals",
+          "d": "people or animals that compete with each other for the same thing"
+        },
+        {
+          "w": "clumsy",
+          "d": "moving in a way that is not careful or controlled, so you hit things"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer suggest in the first paragraph?",
+          "options": [
+            "Beekeeping has become less popular in the UK.",
+            "Good intentions may have had an unexpected result.",
+            "Wild insects are more popular than honeybees.",
+            "Most beekeepers are professional scientists."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What did the researchers note in each encounter?",
+          "options": [
+            "which insect got access to the flower",
+            "how long each insect stayed on the flower",
+            "how much nectar each insect collected",
+            "the temperature of the flower"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What was new about the study's findings?",
+          "options": [
+            "Honeybees take pollen before other insects arrive.",
+            "Honeybees attack or chase other insects directly.",
+            "Bumblebees are the most aggressive pollinators.",
+            "Ivy flowers produce no nectar at all."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why does Victoria Buckle think bumblebees knocked other insects off flowers?",
+          "options": [
+            "They wanted to protect their nests.",
+            "They were looking for honeybees.",
+            "They do not fly very carefully.",
+            "They were too hungry to wait."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does 'this' refer to in 'this was usually an accident'?",
+          "options": [
+            "the study",
+            "honeybees chasing their rivals",
+            "the lead author's opinion",
+            "bumblebees knocking other insects off"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Why might competition between insects increase in the future?",
+          "options": [
+            "More ivy bees are arriving in the UK.",
+            "There will be more hives in cities.",
+            "Hotter summers may reduce the amount of nectar.",
+            "Honeybees are getting bigger."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement on an English-language website for young people: 'Helping nature where you live. What could young people in your area do to help insects and other wildlife? Which idea would make the biggest difference?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/17/honeybees-are-barging-aside-wild-pollinators-in-hunt-for-pollen-and-nectar-study-finds"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/honeybees-push.jpg",
+        "alt": "A honeybee collecting pollen from a white blackberry flower",
+        "caption": "A honeybee on a blackberry (bramble) flower, one of the plants in the study (earlier photo).",
+        "credit": "Aiwok",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Apis_mellifera_1.JPG"
+      }
+    },
+    {
+      "id": "2026-10-17-ai-fake-species",
+      "section": "Technology",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "C1",
+      "topic": "Artificial intelligence and science",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "The insect that never was: AI fakes put citizen science on guard",
+      "standfirst": "A convincing photo of an unknown mantis turned out to be machine-made – one sign of a wider flood of 'AI slop' in science.",
+      "body": [
+        "For a few seconds, Kris Anderson thought he had found something extraordinary. The photograph showed a dead-leaf mantis, an insect whose flat, brown, crinkled body imitates the leaves on a forest floor – but this one's camouflage was so perfect that it seemed to be wearing a real leaf. Anderson, who keeps thousands of preserved specimens at his home in Las Vegas, had never seen anything like it. Then the truth dawned on him: the creature had never existed. It was a fake, produced by artificial intelligence.",
+        "Anderson is not a professional scientist. After his day job as director of a counselling centre, he spends two and a half hours every evening checking the 500 or 600 mantis photographs that members of the public upload to iNaturalist, a website where anyone can record wildlife sightings to help map the planet's biodiversity. Most images are unremarkable, but occasionally one is genuinely valuable – the first record of a species on the Caribbean island of Aruba, for example.",
+        "His experience on 17 June, reported this week by The New York Times, is one small example of a much wider problem. The same algorithms that make some research tasks easier are flooding science with low-quality, machine-made material, often called 'AI slop'. Academic journals are receiving papers padded with references to articles that do not exist, and some reviewers who are supposed to catch such errors are quietly handing the job to AI themselves.",
+        "Ironically, some of the projects hit hardest are those designed to open science up to everyone, and they are now having to build defences. The online archive arXiv, which publishes research quickly with less checking than traditional journals, has begun limiting submissions. eBird, Cornell University's database of bird sightings, introduced a warning system in August to flag artificial or heavily edited images, and iNaturalist is considering similar measures. Last spring OpenStreetMap, a map of the world built by volunteers, even added a special 'read me' file aimed at the automated programs that edit its shared code. Whether volunteers like Anderson can keep up remains an open question."
+      ],
+      "glossary": [
+        {
+          "w": "camouflage",
+          "d": "colours or shapes that help an animal hide by looking like its surroundings"
+        },
+        {
+          "w": "specimens",
+          "d": "examples of animals or plants kept so that people can study them"
+        },
+        {
+          "w": "biodiversity",
+          "d": "the variety of plants and animals that live in a place"
+        },
+        {
+          "w": "algorithms",
+          "d": "sets of instructions that a computer follows to solve a problem"
+        },
+        {
+          "w": "submissions",
+          "d": "pieces of work that people send to be checked or published"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer begin with Anderson's reaction to the photograph?",
+          "options": [
+            "to show how easily even an expert can be deceived",
+            "to explain how mantises use camouflage",
+            "to criticise Anderson for his mistake",
+            "to describe a newly discovered species"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does the writer imply about Anderson in the second paragraph?",
+          "options": [
+            "He is paid by iNaturalist to check photographs.",
+            "He is a committed amateur who gives up a lot of his free time.",
+            "He finds most of the images exciting.",
+            "He has personally discovered many new species."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What is the writer's attitude towards reviewers who use AI to check papers?",
+          "options": [
+            "admiring",
+            "indifferent",
+            "critical",
+            "amused"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does the word 'Ironically' in the final paragraph suggest?",
+          "options": [
+            "Traditional journals have no problems with AI.",
+            "AI was first developed by citizen scientists.",
+            "The problem is less serious than it seems.",
+            "Projects meant to be open to all are among those most harmed."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What has eBird done in response to the problem?",
+          "options": [
+            "stopped accepting photographs completely",
+            "introduced a system that warns about suspicious images",
+            "limited the number of submissions it accepts",
+            "asked its volunteers to use AI to check sightings"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "How does the article end?",
+          "options": [
+            "with a confident solution",
+            "with a criticism of iNaturalist",
+            "with uncertainty about the future",
+            "with a call for new laws"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has watched a discussion about how AI-generated content is affecting the way people find and trust information. You have made the notes below. Areas affected: science and research; news; education. Some opinions expressed: 'You can't trust any picture any more.' 'AI helps experts do more in less time.' 'Volunteers can't check everything.' Write an essay discussing two of the areas in your notes. You should explain which area is more seriously affected, giving reasons in support of your answer. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The New York Times",
+          "url": "https://www.nytimes.com/2026/10/16/science/citizen-science-ai-slop.html"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/ai-fake-species.jpg",
+        "alt": "A brown mantis that looks like a dry leaf",
+        "caption": "A real dead-leaf mantis. Its body looks like a dry leaf (earlier photo).",
+        "credit": "Dsdugan",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:20-01-395-mantis.jpg"
+      }
+    },
+    {
+      "id": "2026-10-17-peru-inflation",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "C1",
+      "topic": "Money and the economy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "From hyperinflation to the region's lowest: how Peru tamed rising prices",
+      "standfirst": "At the IMF and World Bank meetings in Bangkok, the head of Peru's central bank explained the reforms behind a remarkable record.",
+      "body": [
+        "When officials meet to share stories about economic reforms that worked, Peru now has one worth telling. This week in Bangkok, at the annual meetings of the International Monetary Fund (IMF) and the World Bank, the governor of Peru's Central Reserve Bank (BCR), Julio Velarde, joined officials from Portugal, Papua New Guinea and Rwanda on a panel about success stories, chaired by the IMF's deputy managing director, Nigel Clarke. His central claim was striking: so far this century, Peru has had the lowest inflation in Latin America.",
+        "That achievement looks all the more remarkable given where the country started. In the late 1980s, Peru suffered hyperinflation, when prices rose so quickly that money lost its value almost overnight. Velarde explained that today's system was built in response to that crisis. A key pillar is the bank's independence, written into law in 1992, which forbids it from lending to the government or to state development banks, and from setting several exchange rates at once. Peru was also the first country in Latin America to let its currency float freely, which made it easier to absorb sudden shocks, and in 2001 the bank adopted an explicit inflation target.",
+        "Another legacy of hyperinflation was 'dollarisation': because Peruvians had lost faith in their own currency, many prices and loans were in US dollars. Reversing this, Velarde said, required more than keeping inflation as low as in the United States. Prices also had to be quoted in soles, and banks were required to hold extra reserves when they lent in dollars. As a result, the share of loans in dollars fell from 81% in 2000 to 23% today.",
+        "The framework has since been tested by periods of great uncertainty, such as the 2008 global financial crisis and the COVID-19 pandemic. According to Velarde, having the right tools and the flexibility to use them made the difference. He even pointed out that Peru's core inflation this century has been lower than that of the United States – a claim that would have sounded unbelievable in the late 1980s."
+      ],
+      "glossary": [
+        {
+          "w": "hyperinflation",
+          "d": "a situation in which prices rise extremely fast and money quickly loses its value"
+        },
+        {
+          "w": "pillar",
+          "d": "one of the most important ideas or parts that something is based on"
+        },
+        {
+          "w": "currency",
+          "d": "the type of money used in a country, such as the sol or the dollar"
+        },
+        {
+          "w": "reserves",
+          "d": "money that banks must keep and not lend, in case it is needed"
+        },
+        {
+          "w": "framework",
+          "d": "a set of rules and ideas used to organise or decide something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the main purpose of the first paragraph?",
+          "options": [
+            "to introduce the event and Velarde's main claim",
+            "to compare Peru's economy with Portugal's and Rwanda's",
+            "to criticise the IMF and the World Bank",
+            "to explain what inflation is"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why does the writer describe the achievement as 'all the more remarkable'?",
+          "options": [
+            "because Peru is a small country",
+            "because Peru had extremely high inflation in the past",
+            "because the IMF did not expect it",
+            "because the central bank was created very recently"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Which of these is NOT mentioned as part of the 1992 law?",
+          "options": [
+            "The bank cannot lend to the government.",
+            "The bank cannot set several exchange rates.",
+            "The bank must keep inflation below 1%.",
+            "The bank is independent."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'this' refer to in 'Reversing this'?",
+          "options": [
+            "hyperinflation",
+            "the inflation target",
+            "the panel in Bangkok",
+            "dollarisation"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What was the result of the measures described in the third paragraph?",
+          "options": [
+            "Peruvians stopped using banks.",
+            "Far fewer loans were made in US dollars.",
+            "Prices in soles rose sharply.",
+            "The US dollar became stronger in Peru."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's tone in the final sentence?",
+          "options": [
+            "doubtful",
+            "angry",
+            "impressed",
+            "humorous"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (report)",
+        "task": "Your class is preparing a report on how rising prices affect young people in your country. Write a report describing how prices have changed for things young people often buy, explaining the effects on students and their families, and recommending practical ways young people could manage their money better. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "Andina (Peru)",
+          "url": "https://andina.pe/ingles/noticia-bcr-governor-peru-has-recorded-the-regions-lowest-inflation-so-far-this-century-1096258.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-17/peru-inflation.jpg",
+        "alt": "An old colonial-style building in Trujillo used by the Central Reserve Bank of Peru",
+        "caption": "An office of Peru's Central Reserve Bank in Trujillo (earlier photo).",
+        "credit": "Bernard Gagnon",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Central_Reserve_Bank_of_Peru,_Trujillo.jpg"
+      }
+    }
+  ]
+}
