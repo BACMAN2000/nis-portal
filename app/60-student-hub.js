@@ -50,8 +50,9 @@ async function renderStudent(initial){
     ...(nodeVisible('french') ? [{key:'french',label:'🇫🇷 French'}] : []),
     {key:'cambridge',label:'🎓 Cambridge'},
     {key:'tools',label:'🧰 Practice tools'},
-    // Grammar Lab (16-oct-2026): a un clic, sin pasar por Cambridge → curso.
-    ...(_grammarLabLevels().length ? [{key:'grammarlab',label:'🧪 Grammar Lab'}] : []),
+    // Grammar Lab (18-oct-2026) salio de la barra y de Practice tools: es la
+    // gramatica de los cursos Cambridge y vive como puerta en la pagina
+    // Cambridge (_camDoorsHTML). Classes queda para las clases del grado.
     // 'General' salio de la barra: sus dos unicas tarjetas (Library y MUN) ya
     // estaban identicas en Home, asi que era una pestaña que no llevaba a
     // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
@@ -112,11 +113,9 @@ function studentTools(){
     if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
     return _hubCard(em,a.title,a.desc,`window._nav('${a.nav}')`);
   }).join('');
-  const lab = _grammarLabLevels().length
-    ? _hubCard('🧪','Grammar Lab','Every grammar point of your level in diagrams, with a dialogue, audio and practice.',"window._nav('grammarlab')") : '';
   $('#main').innerHTML = `<h1>🧰 Practice tools</h1>
     <p class="muted" style="margin-top:-6px">Train on your own: sounds, grammar and vocabulary games.</p>
-    <div class="grid cols-3">${lab}${cards}</div>`;
+    <div class="grid cols-3">${cards}</div>`;
 }
 
 /* 🧪 Grammar Lab (16-oct-2026): el Lab de los cursos de secundaria
@@ -128,7 +127,7 @@ function _grammarLabLevels(){
   return secCoursesFor('g'+g).filter(lv => typeof schoolContentOK!=='function' || schoolContentOK('sec.'+lv));
 }
 function studentGrammarLab(lv){
-  _setNav('grammarlab');
+  _setNav(_isStudent() ? 'cambridge' : 'grammarlab');
   const niveles = _grammarLabLevels();
   if(!niveles.length){ studentTools(); return; }
   let guardado = null; try{ guardado = localStorage.getItem('nis_gl_level'); }catch(_){}
@@ -137,7 +136,8 @@ function studentGrammarLab(lv){
   const url = `nis-fun/engine/?level=${lv}&grammar=hub`;
   const botones = niveles.map(n => `<button class="btn sm${n===lv?'':' ghost'}" type="button"
       onclick="studentGrammarLab('${n}')" aria-pressed="${n===lv}">${SEC_COURSE_NAMES[n]||n}</button>`).join('');
-  $('#main').innerHTML = `<h1>🧪 Grammar Lab</h1>
+  const back = _isStudent() ? _backBtn("window._nav('cambridge')",'Cambridge') : '';
+  $('#main').innerHTML = `${back}<h1>🧪 Grammar Lab</h1>
     <p class="muted" style="margin-top:-6px">Choose your level. Every topic has diagrams, examples, a dialogue with audio and four rounds of practice.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">${botones}
       <a class="btn sm ghost" href="${_withBack(url,'grammarlab')}" target="_blank" rel="noopener" style="margin-left:auto;text-decoration:none">Open in full screen ↗</a>
@@ -913,8 +913,12 @@ function _camDoorsHTML(route){
   // una tarjeta de mocks bloqueada — el dia del mock su portada ES el mock
   // (mock mode, app/62-mock-mode.js).
   const mocksDoor = _isStudent() ? '' : _hubCard('🎓','Mocks','MOCK 1 and MOCK 2 in official Cambridge format.',"window._nav('mocks')");
+  // Grammar Lab: la gramatica de los cursos Cambridge de secundaria, aqui y en
+  // ningun otro sitio (ni barra lateral ni Practice tools).
+  const labDoor = (!info.primary && _grammarLabLevels().length)
+    ? _hubCard('🧪','Grammar Lab','Every grammar point of your level in diagrams, with a dialogue, audio and practice.',"window._nav('grammarlab')") : '';
   return `<h2 style="margin:4px 0 8px">Your route: ${esc(info.label)}</h2>
-    <div class="grid cols-3" style="margin-bottom:18px">${courseDoor}${testsDoor}${mocksDoor}</div>`;
+    <div class="grid cols-3" style="margin-bottom:18px">${courseDoor}${testsDoor}${labDoor}${mocksDoor}</div>`;
 }
 async function studentCambridgePortal(){
   // Cambridge es ahora una pestaña de primer nivel (peer de Home): sin
