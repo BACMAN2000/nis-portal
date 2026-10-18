@@ -1,0 +1,1027 @@
+{
+  "date": "2026-10-18",
+  "issue": 12,
+  "breaking": [
+    "France: a rare pink diamond is in a museum again, almost 100 years after thieves hid it in an apple.",
+    "Peru wants more films and TV series made in its mountains, deserts and cities.",
+    "Cycling: Australia's Leigh Hoffman wins silver at the world championships in Shanghai.",
+    "Japan is ready to send a spacecraft to one of the moons of Mars."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-18-pink-diamond",
+      "section": "World",
+      "country": "France",
+      "flag": "🇫🇷",
+      "level": "A2",
+      "topic": "History and museums",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "The pink diamond that was hidden in an apple",
+      "standfirst": "A very old and very rare diamond is in a French museum again. The last time people saw it, it was stolen!",
+      "body": [
+        "A very special diamond is in a museum in France again. It is pink, it is shaped like a pear and its name is the 'Grand Condé'. People can see it at the Château de Chantilly, a big old castle about 50 kilometres north of Paris, until 3 January.",
+        "The last time the public saw the diamond was almost 100 years ago. In October 1926, thieves came into the castle at night and took it. They hid the diamond inside an apple! A few weeks later, a hungry woman who worked at their hotel took a bite of the apple – and found the diamond.",
+        "Pink diamonds are very rare and they cost a lot of money. This one is very old, too: someone first wrote about it in 1740. Now scientists have studied the diamond carefully, so it is easy to know that it is the real one."
+      ],
+      "glossary": [
+        {
+          "w": "diamond",
+          "d": "a very hard, clear stone that is used in expensive jewellery"
+        },
+        {
+          "w": "castle",
+          "d": "a big, strong building where kings, queens or rich families lived in the past"
+        },
+        {
+          "w": "thieves",
+          "d": "people who take things that are not theirs"
+        },
+        {
+          "w": "hid",
+          "d": "put something in a place where nobody could see it (past of 'hide')"
+        },
+        {
+          "w": "rare",
+          "d": "not common; there are not many of them"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where can people see the diamond now?",
+          "options": [
+            "in a castle museum north of Paris",
+            "in a hotel in Paris",
+            "in a shop in Chantilly"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What colour is the Grand Condé?",
+          "options": [
+            "white",
+            "pink",
+            "green"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "When did the thieves take the diamond?",
+          "options": [
+            "in 1740",
+            "in 2017",
+            "in 1926"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Where did the thieves hide the diamond?",
+          "options": [
+            "in a bag",
+            "in an apple",
+            "in a book"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Who found the diamond?",
+          "options": [
+            "a woman who worked at the hotel",
+            "a police officer",
+            "a scientist at the museum"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Until when can people see the diamond?",
+          "options": [
+            "until next summer",
+            "until 1 October",
+            "until 3 January"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You visited a museum last weekend. Write an email to your English friend (25 words or more). Tell your friend: which museum you visited, what you saw there, and what you liked most."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c61m4zkx47vlo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/pink-diamond.jpg",
+        "alt": "A large old French castle with towers next to water",
+        "caption": "The Château de Chantilly near Paris, where the pink diamond is on show (earlier photo).",
+        "credit": "Jebulon",
+        "license": "CC0",
+        "link": "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_Chantilly_1.jpg"
+      }
+    },
+    {
+      "id": "2026-10-18-peru-tourism",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Travel and tourism",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Good tourism for Peru: jobs for people, care for nature",
+      "standfirst": "Peru's tourism minister says visitors are welcome, but the country must also look after its special places.",
+      "body": [
+        "Last Thursday, people from many different groups met to talk about tourism in Peru. UNESCO, a part of the United Nations, helped to organise the meeting. Some young students who want to work in tourism and in hotels were there too.",
+        "Rogers Valencia, Peru's Minister of Foreign Trade and Tourism, spoke at the meeting. He said that Peru wants 'sustainable' tourism. This is tourism that gives jobs to people, looks after nature and old places, and helps visitors to learn about the local culture.",
+        "Peru has many beautiful places, and its food, music and traditions are famous around the world. In March 2026, the government made a plan for tourism until 2030. The plan wants less waste and more opportunities for everyone."
+      ],
+      "glossary": [
+        {
+          "w": "tourism",
+          "d": "the business of helping people to travel and visit places on holiday"
+        },
+        {
+          "w": "minister",
+          "d": "an important person in the government who is in charge of one area"
+        },
+        {
+          "w": "jobs",
+          "d": "work that people do to get money"
+        },
+        {
+          "w": "culture",
+          "d": "the music, food, art and traditions of a group of people"
+        },
+        {
+          "w": "waste",
+          "d": "things that people throw away because they do not want them"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "The meeting was about tourism in Peru.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "UNESCO did not help with the meeting.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Rogers Valencia is the Minister of Health.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The minister wants tourism that looks after nature.",
+          "answer": "T"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The meeting lasted three days.",
+          "answer": "NS"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "The government's tourism plan goes until 2050.",
+          "answer": "F"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend is coming to Peru on holiday. Write an email to your friend (25 words or more). Tell your friend: which place in Peru to visit, why it is special, and what food to try."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-promotes-sustainable-tourism-that-creates-jobs-and-protects-its-destinations-1096138.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/peru-tourism.jpg",
+        "alt": "Old stone houses of Machu Picchu on a green mountain",
+        "caption": "Machu Picchu, one of Peru's most famous places for visitors (photo from 2015).",
+        "credit": "Diego Delso",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_Per%C3%BA,_2015-07-30,_DD_47.JPG"
+      }
+    },
+    {
+      "id": "2026-10-18-track-sprint",
+      "section": "Sport",
+      "country": "Australia",
+      "flag": "🇦🇺",
+      "level": "B1",
+      "topic": "Sport and competition",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "So close! An Australian cyclist takes silver against a champion",
+      "standfirst": "Leigh Hoffman rode faster than ever at the world championships in Shanghai, but one rider was still too strong for him.",
+      "body": [
+        "Australian cyclist Leigh Hoffman has won a silver medal in the men's individual sprint at the Track Cycling World Championships in Shanghai, China. A year ago he won bronze in the same race, so he is getting closer and closer to the top.",
+        "In a sprint, two riders race against each other around an oval track with steep sides, called a velodrome. Hoffman was the fastest rider in qualifying on Saturday: he rode a 'flying' 200 metres in just 9.285 seconds. Then, in the semi-final, he beat Kaiya Ota from Japan, a rider who had beaten him in the past.",
+        "But in the final he met Harrie Lavreysen from the Netherlands. In the first race, Hoffman looked strong, but he moved off the best line for a moment and Lavreysen went past him near the finish. In the second race, the Dutch rider went to the front and stayed there until the end.",
+        "It was Lavreysen's 23rd world title and his eighth sprint gold in a row. Nobody has beaten him in this race at a World Championships since 2018. Hoffman said that coming so close was 'bitter sweet'. It was his second silver medal in Shanghai, after the team sprint. Australia won only two medals at these championships, compared with five last year."
+      ],
+      "glossary": [
+        {
+          "w": "medal",
+          "d": "a small round piece of metal that you get for winning or coming second or third"
+        },
+        {
+          "w": "sprint",
+          "d": "a short race in which you go as fast as you can"
+        },
+        {
+          "w": "track",
+          "d": "a path or ground that is made for racing"
+        },
+        {
+          "w": "qualifying",
+          "d": "the first part of a competition that decides who can go on to the next part"
+        },
+        {
+          "w": "title",
+          "d": "the position of being the winner of a competition"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What did Hoffman win at last year's championships?",
+          "options": [
+            "a gold medal",
+            "a silver medal",
+            "a bronze medal",
+            "no medal"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What happened on Saturday?",
+          "options": [
+            "Hoffman was the fastest rider in qualifying.",
+            "Hoffman lost to Kaiya Ota.",
+            "Hoffman won the team sprint.",
+            "Lavreysen fell off his bike."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why did Hoffman lose the first race of the final?",
+          "options": [
+            "He started too late.",
+            "His bike had a problem.",
+            "He felt ill.",
+            "He moved off the best line for a moment."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "How many world titles has Lavreysen won now?",
+          "options": [
+            "eight",
+            "23",
+            "five",
+            "two"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "How does Hoffman feel about his result?",
+          "options": [
+            "only angry",
+            "completely happy",
+            "both pleased and disappointed",
+            "not interested"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What does the writer say about Australia's results?",
+          "options": [
+            "Australia won fewer medals than last year.",
+            "Australia won more medals than the Netherlands.",
+            "Australia won five medals.",
+            "Australia did not win any silver medals."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for teenagers: 'Second place! Tell us about a time when you, or someone you know, came very close to winning something. What happened? How did you feel, and what did you learn?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-18/leigh-hoffman-silver-medal-sprint-world-championships/107280954"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/track-sprint.jpg",
+        "alt": "An empty indoor cycling track with steep curved sides",
+        "caption": "A velodrome: sprint races take place on tracks like this one in France (earlier photo).",
+        "credit": "Rundvald",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Velodrome-de-Bretagne-piste-Henri-Caresmel-Loudeac-03-byRundvald.jpg"
+      }
+    },
+    {
+      "id": "2026-10-18-peru-film",
+      "section": "Culture",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Film and television",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Lights, camera, Peru! New rules to bring film-makers to the country",
+      "standfirst": "The government wants more films and series to show Peru's landscapes – and more visitors to come and see them for real.",
+      "body": [
+        "Peru has deserts, high mountains, beaches, rainforest and ancient cities. Now the government wants film-makers from Peru and from other countries to use these places in their films, series and other productions.",
+        "The Ministry of Foreign Trade and Tourism, known as Mincetur, has published a draft of new rules. Under these rules, PromPeru, the organisation that promotes Peru around the world, will work as the country's official film commission. This means it will help film-makers to find good locations, give them useful information and technical help, and make it easier for public and private organisations to work together.",
+        "Why is this important? When people watch a film or a series, they often want to visit the places they see on the screen. This is called film tourism. The government hopes that more productions will show Peru to people around the world and bring visitors to new destinations, not only to the famous ones.",
+        "The rules are not final yet, and the government wants to hear different ideas first. Mincetur is asking organisations and ordinary people to read the draft and send their comments. They have 20 days to do this. All the documents are on the ministry's website, and people can also send their ideas by email."
+      ],
+      "glossary": [
+        {
+          "w": "draft",
+          "d": "a first version of a text that is not finished yet and can still change"
+        },
+        {
+          "w": "promotes",
+          "d": "tells people about something so that more people use it, buy it or visit it"
+        },
+        {
+          "w": "locations",
+          "d": "places where a film or a TV programme is made"
+        },
+        {
+          "w": "destinations",
+          "d": "places that people travel to"
+        },
+        {
+          "w": "ordinary",
+          "d": "normal; not special or important"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "The government wants film-makers to ___ Peru's landscapes in their productions.",
+          "options": [
+            "use",
+            "spend",
+            "make",
+            "lose"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "Mincetur has published a ___ of new rules.",
+          "options": [
+            "film",
+            "draft",
+            "letter",
+            "ticket"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "PromPeru will help film-makers to ___ good locations.",
+          "options": [
+            "miss",
+            "close",
+            "leave",
+            "find"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "People often want to visit the places they ___ on the screen.",
+          "options": [
+            "hear",
+            "say",
+            "see",
+            "tell"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "The government hopes that more productions will ___ visitors to new destinations.",
+          "options": [
+            "carry",
+            "bring",
+            "stop",
+            "keep"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "People have 20 days to send their ___ about the draft.",
+          "options": [
+            "comments",
+            "films",
+            "tickets",
+            "photos"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Alex writes: 'I read that film companies might come to Peru to make films. Which place in Peru would be great for a film? What kind of film would you make there? Would you like to work in films one day?' Write your email to Alex in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-mincetur-opens-consultation-to-attract-international-film-productions-1096288.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/peru-film.jpg",
+        "alt": "A wide desert next to the blue sea in Peru",
+        "caption": "The desert of Paracas, one of many Peruvian landscapes that could appear in films (earlier photo).",
+        "credit": "World Wide Gifts from Las Vegas, United States",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Desert_of_Paracas,_Peru_-_Paracas_National_Reserve.jpg"
+      }
+    },
+    {
+      "id": "2026-10-18-roman-fort",
+      "section": "Culture",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "B2",
+      "topic": "History and archaeology",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "Legend or history? A Roman fort in Wales gives an old story new life",
+      "standfirst": "For centuries, a Welsh tale said that a Roman emperor camped near a remote hill. Now archaeologists have found a fort – and some very old coins.",
+      "instructions": "For each question, choose the paragraph (A–E). Paragraphs may be chosen more than once.",
+      "body": [
+        "A. For nearly 1,700 years, a Welsh legend has claimed that a Roman emperor once camped in a remote corner of west Wales. Magnus Maximus, who ruled Britain in the fourth century and fought against the Picts and Scots, appears in the Mabinogion, a famous collection of medieval tales. In one of them, The Dream of Macsen Wledig, he sets up camp at Frenni Fawr, a 395-metre hill at the eastern end of the Preseli Hills in Pembrokeshire. Until recently, however, there was no archaeological evidence of the Romans there.",
+        "B. That changed thanks to Dr Mark Merrony, a Roman specialist at the University of Oxford. In 2024, satellite images revealed a clear outline in an overgrown field about 3.5 kilometres south-west of the top of the hill. Soon after visiting the site, he spotted a piece of Roman tile – the first of many.",
+        "C. With money from Oxford University and from crowdfunding, the team has just finished one of several planned excavations. Before the dig, Merrony's brother Nick had joked that he should find a couple of coins to prove the theory. To everyone's surprise, Nick then did exactly that, discovering two coins from the late fourth century, the period when Magnus Maximus ruled.",
+        "D. The fort measures 180 by 150 metres and has the typical Roman 'playing-card' shape, with rounded corners. It sits on a slope with a wide view over the surrounding land and probably held about 500 soldiers. The objects found so far include an unusual iron stylus, a tool for writing, as well as pieces of pottery, large numbers of Roman tiles and hard clay floors.",
+        "E. Archaeologists are excited because the finds suggest that the old tale may be rooted in real events. The fort also challenges the belief that the local Celtic tribe lived on peaceful terms with the Roman invaders. Two years earlier, Merrony had already identified a Roman road in the area, questioning the idea that the Romans did not travel far into Wales."
+      ],
+      "glossary": [
+        {
+          "w": "emperor",
+          "d": "a man who rules an empire, a group of countries under one leader"
+        },
+        {
+          "w": "evidence",
+          "d": "facts or objects that show something is true"
+        },
+        {
+          "w": "crowdfunding",
+          "d": "getting money for a project by asking many people to give a small amount, usually online"
+        },
+        {
+          "w": "excavations",
+          "d": "careful digs in the ground to find old objects and buildings"
+        },
+        {
+          "w": "invaders",
+          "d": "soldiers who enter another country by force to take control of it"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes the shape and size of the fort?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph mentions a joke made by a member of the archaeologist's family?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph explains how pictures taken from space helped the discovery?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph mentions a medieval story about the emperor?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph says the discovery changes ideas about relations between local people and the Romans?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q6",
+          "type": "match",
+          "q": "Which paragraph explains where the money for the dig came from?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement on an English-language website for young people: 'A place with a story. Is there a place in your town or region with an interesting legend or a mysterious history? Tell us about it, and say whether you think the story could be true.' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/uk-news/2026/oct/12/mythical-roman-fort-frenni-fawr-wales-emperor"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/roman-fort.jpg",
+        "alt": "A green hill in the Welsh countryside",
+        "caption": "Frenni Fawr hill in Pembrokeshire, the place named in the old Welsh tale (earlier photo).",
+        "credit": "Rude Health",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Frenni_Fawr_-_geograph.org.uk_-_3310239.jpg"
+      }
+    },
+    {
+      "id": "2026-10-18-belugas",
+      "section": "Environment",
+      "country": "Canada",
+      "flag": "🇨🇦",
+      "level": "B2",
+      "topic": "Animals and animal welfare",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "A new home, an uncertain future: the belugas of a closed sea park",
+      "standfirst": "Thirty whales left a Canadian park this summer in the largest move of its kind. Not all of them have survived, and the case raises hard questions.",
+      "body": [
+        "For decades, Marineland, a sea park near Niagara Falls in Canada, was one of the country's best-known attractions. This summer, 30 beluga whales and four dolphins were moved to aquariums in the United States and Spain, in what has been described as the largest transfer of captive whales ever.",
+        "Marineland, which opened in 1961, shut in 2024 after years of concerns about animal welfare and financial problems. When the Canadian government refused to let the park sell its whales to China, also citing animal welfare, the park warned that the animals might have to be put to sleep. Several aquariums then organised a rescue, and the whales were flown to Chicago, Atlanta, San Diego, San Antonio and Valencia.",
+        "The last to leave was Tofino, a beluga weighing more than 1,500 kilograms, who went to SeaWorld San Antonio. He was also the last captive whale in Canada, which banned keeping and breeding whales and dolphins in captivity seven years ago.",
+        "However, the story has not had an entirely happy ending. Five of the belugas and one dolphin have since died. Chicago's Shedd Aquarium has had the most deaths; tests on some of the whales found long-term illnesses, as well as objects such as feathers and rocks in their stomachs, which the aquarium believes were swallowed before the move. Experts say it is too early to judge the transfer, pointing out that the animals came from an ageing park where about 20 whales died between 2019 and September 2025.",
+        "The case raises a wider question. There are around 3,600 whales, dolphins and porpoises in captivity worldwide, and countries such as France and Mexico are moving to ban or restrict the practice. Yet animals raised in tanks usually lack the skills to survive in the wild, so there are few alternatives. One welfare group, World Animal Protection Canada, argues that any animal too weak to cope with the stress of travel should not have been moved."
+      ],
+      "glossary": [
+        {
+          "w": "captive",
+          "d": "kept in a place such as a zoo or aquarium and not free"
+        },
+        {
+          "w": "welfare",
+          "d": "the health, safety and happiness of a person or an animal"
+        },
+        {
+          "w": "transfer",
+          "d": "the act of moving someone or something from one place to another"
+        },
+        {
+          "w": "ageing",
+          "d": "becoming old; no longer new or in good condition"
+        },
+        {
+          "w": "alternatives",
+          "d": "other possible choices or ways of doing something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the main purpose of the first paragraph?",
+          "options": [
+            "to explain why belugas are popular with visitors",
+            "to introduce the closure of the park and the move of its animals",
+            "to compare aquariums in the US and Spain",
+            "to criticise the Canadian government"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why did the Canadian government refuse to allow the sale to China?",
+          "options": [
+            "The price was too low.",
+            "China did not want the whales.",
+            "The park had already closed.",
+            "It was worried about the animals' welfare."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the writer tell us about Tofino?",
+          "options": [
+            "He was the last captive whale in Canada.",
+            "He died soon after the move.",
+            "He was sent to Valencia.",
+            "He was born at SeaWorld."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does the Shedd Aquarium believe about the objects found in the whales' stomachs?",
+          "options": [
+            "They came from the water in Chicago.",
+            "They were part of the whales' normal food.",
+            "They were swallowed before the whales arrived in Chicago.",
+            "They caused all of the deaths."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why do experts say it is too early to judge the transfer?",
+          "options": [
+            "The animals came from an old park that had its own history of deaths.",
+            "Most of the whales have not arrived yet.",
+            "Nobody has examined the animals.",
+            "The aquariums have refused to share information."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What problem does the final paragraph describe?",
+          "options": [
+            "Whales in the wild are disappearing quickly.",
+            "Animals raised in captivity usually cannot simply be released into the wild.",
+            "Aquariums have no space for new animals.",
+            "France and Mexico want to build more aquariums."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about zoos and aquariums. Now your teacher has asked you to write an essay. 'Should large animals such as whales and dolphins still be kept in aquariums?' Notes – write about: 1. education and research; 2. the animals' health and happiness; 3. ……… (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c623dnn3xvpko"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/belugas.jpg",
+        "alt": "Two white beluga whales swimming underwater",
+        "caption": "Two belugas in a sea sanctuary in Iceland, one possible kind of home for whales that lived in parks (earlier photo).",
+        "credit": "Ekki3",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:36_Die_Belugawale.jpg"
+      }
+    },
+    {
+      "id": "2026-10-18-phobos",
+      "section": "Science",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "level": "C1",
+      "topic": "Space exploration",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Fear, terror and a long trip home: Japan sets its sights on a moon of Mars",
+      "standfirst": "A five-year mission aims to bring back the first samples from Phobos – and perhaps solve a puzzle that has lasted for decades.",
+      "body": [
+        "Mars has been visited, orbited and driven across by dozens of spacecraft since the 1960s, yet its two small moons remain surprisingly mysterious. This week Japan hopes to begin changing that. The Japan Aerospace Exploration Agency (JAXA) is due to launch its Martian Moons eXploration mission, known as MMX, on Tuesday aboard an H3 rocket – the first attempt by any country to bring back material from Phobos, the larger of the pair.",
+        "Both Phobos and its smaller companion, Deimos, are irregular, potato-shaped bodies covered in craters, and their names, borrowed from Greek mythology, mean fear and terror. Phobos is only about 27 kilometres across at its widest point and races around Mars three times a day at a distance of roughly 6,000 kilometres. Russia has tried several times to land there, most recently with a probe launched in 2011, but every attempt has failed.",
+        "The central puzzle is where the moons came from. One theory holds that they are the remains of debris thrown out when a large object crashed into Mars; another suggests that they are asteroids which arrived from elsewhere and were captured. The mission's principal investigator, Kiyoshi Kuramoto, is confident that analysing soil from Phobos will settle the question. Because Phobos orbits closer to the planet than Deimos does, it may also hold traces of Mars itself – about 0.1% of the collected material, JAXA estimates.",
+        "The journey will be long. Although Mars is 55 million kilometres from Earth at its closest, the spacecraft will actually travel 500 to 600 million kilometres, reaching the Martian neighbourhood around August 2027. It will then spend three years flying near and around Phobos, gathering data and samples, before returning in 2031. Of its three modules – for propulsion, exploration and return – only the last will come home.",
+        "Although Japan is leading the project, it is genuinely international. Among the 13 instruments on board are a small rover, Idefix, built jointly by France and Germany, and a NASA sampling device, while the European Space Agency is providing a deep-space communication device. Project manager Yasuhiro Kawakatsu also sees a practical purpose: as the US, China and others plan to send astronauts to Mars, a moon could one day serve as a base. Calling the moons 'the most important unclimbed mountains in the solar system', he points out that they have never been fully investigated."
+      ],
+      "glossary": [
+        {
+          "w": "companion",
+          "d": "a person or thing that goes with or stays near another"
+        },
+        {
+          "w": "debris",
+          "d": "broken pieces left after something has been destroyed"
+        },
+        {
+          "w": "captured",
+          "d": "caught and held; here, pulled into orbit by a planet's gravity"
+        },
+        {
+          "w": "modules",
+          "d": "separate parts of a spacecraft that can work on their own or be joined together"
+        },
+        {
+          "w": "propulsion",
+          "d": "the force or system that pushes a vehicle forward"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the writer's main point in the first paragraph?",
+          "options": [
+            "Mars's moons have received far less attention than the planet itself.",
+            "Japan has sent more missions to Mars than any other country.",
+            "The H3 rocket is the most powerful rocket ever built.",
+            "Phobos is larger than most moons in the solar system."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why does the writer mention the Russian attempts to land on Phobos?",
+          "options": [
+            "to criticise Russia's space programme",
+            "to show how difficult it is to reach Phobos",
+            "to explain why Japan chose the H3 rocket",
+            "to suggest that the MMX mission will also fail"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "According to the text, why might Phobos contain material from Mars?",
+          "options": [
+            "It was once part of Deimos.",
+            "It is the larger of the two moons.",
+            "Earlier probes left material there.",
+            "It orbits closer to the planet."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'the last' refer to in the fourth paragraph?",
+          "options": [
+            "the last year of the mission",
+            "the last Russian probe",
+            "the return module",
+            "the last sample collected"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does Kiyoshi Kuramoto believe?",
+          "options": [
+            "Analysing soil from Phobos should reveal how the moons formed.",
+            "Deimos is more important to study than Phobos.",
+            "The moons are certainly captured asteroids.",
+            "The mission will take less than five years."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Kawakatsu's comparison with 'unclimbed mountains' suggests that the moons are",
+          "options": [
+            "too dangerous for astronauts to visit.",
+            "physically very tall.",
+            "important goals that nobody has yet fully explored.",
+            "too difficult to study with modern instruments."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has watched a documentary about space exploration. You have made the notes below. Reasons for exploring space: scientific knowledge; international cooperation; preparing for human travel to other planets. Some opinions expressed: 'The money should be spent on problems here on Earth.' 'Space science answers questions about our own origins.' 'Working together in space helps countries trust each other.' Write an essay discussing two of the reasons in your notes. You should explain which reason is more important, giving reasons in support of your answer. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian (Associated Press)",
+          "url": "https://www.theguardian.com/science/2026/oct/18/japan-mission-mars-moon-phobos-samples"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/phobos.jpg",
+        "alt": "A grey, lumpy moon covered in craters",
+        "caption": "Phobos, the larger moon of Mars, photographed by a NASA spacecraft in 2008.",
+        "credit": "NASA / JPL-Caltech / University of Arizona",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Phobos_colour_2008.jpg"
+      }
+    },
+    {
+      "id": "2026-10-18-language-sounds",
+      "section": "Science",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "C1",
+      "topic": "Language learning and the brain",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Don't try to understand – just listen: what the best language learners hear",
+      "standfirst": "A study of Japanese learners of English suggests that a good ear may matter more than endless grammar practice.",
+      "body": [
+        "Ask most people how to learn a foreign language and they will mention vocabulary lists, grammar rules and plenty of practice. A new study suggests that this advice may be missing something important: the most successful learners seem to be those who, at first, do not try to make sense of what they hear at all, but simply process it as sound.",
+        "Researchers at University College London (UCL) and Tohoku University in Japan worked with 67 Japanese learners of English. First, they measured each person's auditory precision – their ability to notice tiny differences in pitch, length and tone in sounds that were not speech. Then, using functional MRI scans, they observed the learners' brain activity as they tried to tell apart English vowel sounds that do not exist in Japanese.",
+        "The differences were striking. Learners with high auditory precision picked up the pronunciation of the new language faster and more accurately. Their brains also relied less on the left sensorimotor network, a system involved in processing language; instead, the activity looked much like the brain's response to ordinary, non-speech sounds. Learners with lower precision, by contrast, leaned more heavily on that network and filtered the unfamiliar sounds through the patterns of their mother tongue.",
+        "In other words, the strongest learners suffered less interference from their first language, which made it easier for them to hear new sounds accurately. That may explain why some people master even very difficult pronunciation with apparent ease, while others struggle for years.",
+        "The lead author, Professor Kazuya Saito-van Poeteren of the UCL Institute of Education, rejects the popular idea that the British are naturally bad at languages. In his view, the real problem is that many learners receive too little meaningful exposure, and are taught in ways that do not train the listening skills needed to make the most of it. Teaching, he argues, should go beyond simply demanding 'more practice' and instead help learners develop their ear. Responding to the findings, Professor Padraic Monaghan of Lancaster University said the study confirms how vital listening is to learning, while noting that people differ in their sensitivity to sounds, at least in the early stages."
+      ],
+      "glossary": [
+        {
+          "w": "pronunciation",
+          "d": "the way in which the sounds of a word or language are spoken"
+        },
+        {
+          "w": "striking",
+          "d": "very noticeable or surprising"
+        },
+        {
+          "w": "mother tongue",
+          "d": "the first language that a person learns as a child"
+        },
+        {
+          "w": "interference",
+          "d": "something that gets in the way of a process and makes it harder"
+        },
+        {
+          "w": "exposure",
+          "d": "the experience of hearing, seeing or being in contact with something"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "In the first paragraph, the writer suggests that common advice about learning languages",
+          "options": [
+            "may overlook the role of listening to sounds.",
+            "is completely wrong.",
+            "works only for young children.",
+            "is too difficult for most people to follow."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What did the researchers measure before the brain scans?",
+          "options": [
+            "the learners' knowledge of English grammar",
+            "how many English words the learners knew",
+            "how well the learners noticed small differences in non-speech sounds",
+            "how long the learners had studied English"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What did the learners with high auditory precision have in common?",
+          "options": [
+            "They depended more on the patterns of their first language.",
+            "Their brains processed the new sounds rather like non-speech sounds.",
+            "They had all lived in Britain.",
+            "They found English vowels impossible to tell apart."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'that network' refer to in the third paragraph?",
+          "options": [
+            "the research team at UCL",
+            "the English vowel system",
+            "the group of Japanese learners",
+            "the left sensorimotor network"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is Professor Saito-van Poeteren's attitude to the idea that British people are bad at languages?",
+          "options": [
+            "He accepts it as a biological fact.",
+            "He disagrees and points to exposure and teaching methods instead.",
+            "He believes it is true only of older learners.",
+            "He thinks more grammar practice would solve the problem."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What does Professor Monaghan add to the discussion?",
+          "options": [
+            "He says the study proves that practice is useless.",
+            "He questions whether listening really matters.",
+            "He points out that learners differ in sensitivity to sounds, at least at first.",
+            "He recommends learning vocabulary before sounds."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (proposal)",
+        "task": "The head of English at your school wants to improve the way pupils learn languages and has asked students for proposals. Write a proposal describing how languages are currently taught at your school, explaining which methods help or do not help pupils to understand and speak well, and recommending changes that would give pupils more useful listening practice. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/14/focus-on-sounds-to-help-learn-a-language-study-suggests"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-18/language-sounds.jpg",
+        "alt": "A large white MRI scanner in a hospital room",
+        "caption": "An MRI scanner: the researchers used scans like these to watch learners' brains (earlier photo).",
+        "credit": "Jan Ainali",
+        "license": "CC BY 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:MRI-Philips.JPG"
+      }
+    }
+  ]
+}
