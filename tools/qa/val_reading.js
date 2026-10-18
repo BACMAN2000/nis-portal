@@ -2,7 +2,7 @@
 const fs=require('fs'),vm=require('vm');
 const src=fs.readFileSync(require('path').resolve(__dirname,'..','..','mocks-cambridge','reading-quiz.app-data.js'),'utf8');
 const noop=()=>null; const el={style:{},classList:{add:noop,remove:noop,toggle:noop},dataset:{}}; Object.assign(el,{addEventListener:noop,setAttribute:noop,appendChild:noop,querySelector:()=>el,querySelectorAll:()=>[],getElementById:()=>el,createElement:()=>el,body:el,documentElement:el});
-const ctx={document:el,localStorage:{getItem:()=>null,setItem:noop},navigator:{},location:{search:'',hash:''},console:{log:noop,warn:noop,error:noop},setTimeout:noop,setInterval:noop,requestAnimationFrame:noop,matchMedia:()=>({matches:false,addEventListener:noop}),Image:function(){return el},scrollTo:noop}; ctx.window=ctx; vm.createContext(ctx);
+const ctx={document:el,localStorage:{getItem:()=>null,setItem:noop},navigator:{},location:{search:'',hash:''},console:{log:noop,warn:noop,error:noop},setTimeout:noop,setInterval:noop,requestAnimationFrame:noop,matchMedia:()=>({matches:false,addEventListener:noop}),Image:function(){return el},scrollTo:noop}; ctx.window=ctx; ctx.addEventListener=ctx.addEventListener||noop; ctx.removeEventListener=ctx.removeEventListener||noop; vm.createContext(ctx);
 try{ vm.runInContext(src+'\n;this.__X={EXAMS,PRACTICE2,PRACTICE3,MOCK01,MOCK02,MOCK03,PRACTICE_MORE,MOCKS_MORE};',ctx);}catch(e){ if(!ctx.__X){console.log('PARSE ERROR',e.message);process.exit(1);} }
 const X=ctx.__X;
 const tests=[];

@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),cp=require('child_process');
 const MOCKS=require('path').resolve(__dirname,'..','..','mocks-cambridge'); process.chdir(MOCKS); const src=fs.readFileSync('listening-quiz.app-data.js','utf8');
 const noop=()=>null; const el={style:{},classList:{add:noop,remove:noop,toggle:noop},dataset:{}}; Object.assign(el,{addEventListener:noop,setAttribute:noop,appendChild:noop,querySelector:()=>el,querySelectorAll:()=>[],getElementById:()=>el,createElement:()=>el,body:el,documentElement:el});
-const ctx={document:el,localStorage:{getItem:()=>null,setItem:noop},navigator:{},location:{search:'',hash:''},console:{log:noop,warn:noop,error:noop},setTimeout:noop,setInterval:noop,speechSynthesis:{cancel:noop,getVoices:()=>[],speak:noop,addEventListener:noop},SpeechSynthesisUtterance:function(){},Audio:function(){return el},requestAnimationFrame:noop,matchMedia:()=>({matches:false,addEventListener:noop})}; ctx.window=ctx; vm.createContext(ctx);
+const ctx={document:el,localStorage:{getItem:()=>null,setItem:noop},navigator:{},location:{search:'',hash:''},console:{log:noop,warn:noop,error:noop},setTimeout:noop,setInterval:noop,speechSynthesis:{cancel:noop,getVoices:()=>[],speak:noop,addEventListener:noop},SpeechSynthesisUtterance:function(){},Audio:function(){return el},requestAnimationFrame:noop,matchMedia:()=>({matches:false,addEventListener:noop})}; ctx.window=ctx; ctx.addEventListener=ctx.addEventListener||noop; ctx.removeEventListener=ctx.removeEventListener||noop; vm.createContext(ctx);
 try{vm.runInContext(src+'\n;this.__X={LM:LISTEN_MORE,QUIZ:QUIZ,QUIZ2:QUIZ2,QUIZ3:QUIZ3,QUIZ4:QUIZ4,QUIZ5:QUIZ5,QUIZ6:QUIZ6};',ctx);}catch(e){}
 const X=ctx.__X;
 const tests=[];
