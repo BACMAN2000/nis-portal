@@ -8,9 +8,9 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2?v=a8d93b82" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="nis-fonts.css?v=72345e4f">
+<link rel="stylesheet" href="nis-fonts.css?v=ccf4437d">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=b3bffd5c">
+<link rel="stylesheet" href="nis-tokens.css?v=49a1c5b9">
 <style>
 /* Gotham when the portal serves it (or when it is installed locally),
    Montserrat as the web fallback — same lockup as the rest of the portal. */
@@ -223,7 +223,7 @@ footer a{color:var(--blue-d);font-weight:700}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
-<script src="nis-nav.js?v=c6e39903"></script>
+<script src="nis-nav.js?v=051dbf39"></script>
 <script src="activity-save.js?v=1c38a81d"></script>
 </head>
 <body>
@@ -231,7 +231,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
   <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
   <span class="sp"></span>
   <a class="navbtn" id="navGrammar" href="grammar.html?grade=g9">📘 All grammar</a>
-  <a class="navbtn primary" href="./">🏫 Portal</a>
+  <a class="navbtn primary" href="./" data-nis-back>◀ Back</a>
 </nav>
 
 <header class="hd">
@@ -247,7 +247,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <footer id="foot"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
-<script src="config.js?v=720edc7d"></script>
+<script src="config.js?v=5f4ba11f"></script>
 <script src="grammar-lab-data.js?v=2325774d"></script>
 <script>
 /* ===================================================================
@@ -658,8 +658,8 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
-<script src="nis-presence.js?v=684f7b00" defer></script>
-<script src="nis-i18n.js?v=90aa61ff" defer></script>
-<script src="nis-tema.js?v=0ae7c164" defer></script>
+<script src="nis-presence.js?v=e3d0b9ce" defer></script>
+<script src="nis-i18n.js?v=5153fbcb" defer></script>
+<script src="nis-tema.js?v=cbbd6ad5" defer></script>
 </body>
 </html>

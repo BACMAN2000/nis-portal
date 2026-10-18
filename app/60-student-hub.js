@@ -952,7 +952,12 @@ async function studentCambridgePortal(){
       <div class="cam-tiles">${b.levels.filter(l=>schoolContentOK(bk+'.'+l.key)).map(tile).join('')}</div>
     </div></div>`;
   };
-  const practice = nodeVisible(CAMBRIDGE_PRACTICE_NODE) ? `
+  /* El alumno de secundaria ya tiene la puerta «Practice tests» arriba
+     (_camDoorsHTML): el banner llevaba al mismo quizzes.html con otro nombre
+     («Cambridge mock exams») y lo hacía dudar. Solo lo ve primaria y el staff. */
+  const _camInfo = _camGradeInfo();
+  const _secDoors = _isStudent() && _camInfo && !_camInfo.primary;
+  const practice = nodeVisible(CAMBRIDGE_PRACTICE_NODE) && !_secDoors ? `
     <a class="cam-practice" href="${_withBack(QUIZ_URL+'quizzes.html',route)}">
       <div class="cam-pwrap">
         ${_camIco('practice', 84)}
@@ -995,7 +1000,7 @@ async function studentCambridgePortal(){
     ${ruoe}
     ${ielts}
     ${panel('yle')}${panel('main')}
-    <p class="muted center" style="font-size:.8rem;margin-top:22px">ℹ️ Each Main Suite level opens its <b>exam guide and practice tests</b>. For timed Reading, Listening and Writing mocks, use <b>Practice Test</b>.</p>`;
+    <p class="muted center" style="font-size:.8rem;margin-top:22px">ℹ️ Each Main Suite level opens its <b>exam guide and practice tests</b>. For timed Reading, Listening, Writing and Speaking practice, use <b>Practice tests</b>.</p>`;
   // Se abre la rama que le toca: primaria entra por YLE, secundaria por Main Suite.
   const p = state.profile, prim = p && p.grade_id != null && Number(p.grade_id) <= 5;
   const first = prim ? 'yle' : 'main', other = prim ? 'main' : 'yle';

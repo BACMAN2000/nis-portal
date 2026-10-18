@@ -933,7 +933,7 @@ function _secSerieCardHTML(route, compact){
   const key = 'g'+g, cursos = secCoursesFor(key).filter(lv=>schoolContentOK('sec.'+lv));
   if(!cursos.length) return '';
   const botones = cursos.map(lv => { const c = SEC_CURSOS[lv]; return `<a href="${_withBack('nis-fun/engine/?level='+lv, route)}"
-      target="_blank" rel="noopener" class="btn${compact?' sm':''}"
+      class="btn${compact?' sm':''}"
       style="background:${c.color};color:#fff;text-decoration:none">${c.em} ${esc(c.curso)}</a>`; }).join('');
   const skills = (key==='g9' && nodeVisible('english.classes.g9') && nodeVisible('english.classes.g9.cambridge'))
     ? `<a href="javascript:void(0)" class="btn${compact?' sm':''} ghost" onclick="window._nav('classes_g9_cambridge')">🎯 B2 First by skill</a>` : '';

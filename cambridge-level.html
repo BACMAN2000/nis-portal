@@ -8,9 +8,9 @@
 <link rel="icon" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2?v=a8d93b82" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="nis-fonts.css?v=72345e4f">
+<link rel="stylesheet" href="nis-fonts.css?v=ccf4437d">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=b3bffd5c">
+<link rel="stylesheet" href="nis-tokens.css?v=49a1c5b9">
 <style>
   :root{--blue:#4987c6;--blue-d:#2f5f93;--blue-dd:#244c77;--line:#e3e5f3}
   *{box-sizing:border-box}
@@ -108,7 +108,7 @@
   <h1 id="examName" style="margin:0 0 0 14px;font-size:1.1rem;font-weight:800">Cambridge</h1>
   <span class="lvl" id="examLvl">—</span>
   <span style="flex:1"></span>
-  <a class="back" id="backBtn" href="./">← Portal</a>
+  <a class="back" id="backBtn" href="./" data-nis-back>◀ Back</a>
 </header>
 <main>
   <div id="loadErr" class="card hidden" style="border-color:#FCA5A5;background:#FEF2F2"></div>
@@ -440,10 +440,10 @@ function submitWr(ti,ei){
 
 loadData(()=>{ renderExam(); renderPracList(); });
 </script>
-<script src="nis-nav.js?v=c6e39903"></script>
-<script src="config.js?v=720edc7d"></script>
+<script src="nis-nav.js?v=051dbf39"></script>
+<script src="config.js?v=5f4ba11f"></script>
 <script src="activity-save.js?v=1c38a81d"></script>
-<script src="yle-media.js?v=8e201b2b"></script>
+<script src="yle-media.js?v=7605dda3"></script>
 <script>
 /* El motor emite `cohasset:attempt` en cada respuesta. En NIS no hay quien
    lo escuche, asi que se recoge aqui y se lleva a la cuenta del alumno por
@@ -467,8 +467,8 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
   }
 }));
 </script>
-<script src="nis-presence.js?v=684f7b00" defer></script>
-<script src="nis-i18n.js?v=90aa61ff" defer></script>
-<script src="nis-tema.js?v=0ae7c164" defer></script>
+<script src="nis-presence.js?v=e3d0b9ce" defer></script>
+<script src="nis-i18n.js?v=5153fbcb" defer></script>
+<script src="nis-tema.js?v=cbbd6ad5" defer></script>
 </body>
 </html>

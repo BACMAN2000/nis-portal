@@ -113,7 +113,7 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 <body>
 <header class="mast">
   <div class="wrap">
-    <div class="top"><a href="../" id="home">← Portal</a><span class="topr"><a href="#progress" id="progLink" hidden>📈 My progress</a><label class="archive">Edition <select id="arch" aria-label="Choose edition"></select></label></span></div>
+    <div class="top"><a href="../" id="home" data-nis-back data-nis-back-default="../">◀ Back</a><span class="topr"><a href="#progress" id="progLink" hidden>📈 My progress</a><label class="archive">Edition <select id="arch" aria-label="Choose edition"></select></label></span></div>
     <h1 id="mast">The Nordic Times</h1>
     <div class="sub"><span id="dateTxt"></span><span id="issueTxt"></span><span>News for learners · A2 to C1</span><span id="sync" hidden></span></div>
   </div>
@@ -128,10 +128,10 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 <main id="progView" class="wrap" hidden></main>
 <p class="foot">Original articles written for our students from facts reported by news organisations around the world. Sources are listed under each story.</p>
 
-<script src="../school.js?v=229ec31d"></script>
-<script src="../config.js?v=720edc7d"></script>
-<script src="progress.js?v=50f24818"></script>
-<script src="marks.js?v=d782d633"></script>
+<script src="../school.js?v=808f732a"></script>
+<script src="../config.js?v=5f4ba11f"></script>
+<script src="progress.js?v=8b60fe20"></script>
+<script src="marks.js?v=4eb209fd"></script>
 <script>window.NEWS_BACKEND = 'nis';</script>
 <script>
 (function(){
@@ -470,5 +470,6 @@ function drawArticle(a){
 }
 })();
 </script>
+<script src="../nis-nav.js?v=051dbf39"></script>
 </body>
 </html>
