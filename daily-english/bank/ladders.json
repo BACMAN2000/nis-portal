@@ -1,0 +1,2814 @@
+[
+ {
+  "id": "bad",
+  "steps": [
+   {
+    "w": "bad",
+    "n": 1
+   },
+   {
+    "w": "poor",
+    "n": 2
+   },
+   {
+    "w": "terrible",
+    "n": 3
+   },
+   {
+    "w": "awful",
+    "n": 4
+   },
+   {
+    "w": "appalling",
+    "n": 5
+   }
+  ],
+  "ex": "The food was awful, but the service was appalling.",
+  "note_es": "De más suave a más fuerte."
+ },
+ {
+  "id": "good",
+  "steps": [
+   {
+    "w": "good",
+    "n": 1
+   },
+   {
+    "w": "nice",
+    "n": 2
+   },
+   {
+    "w": "great",
+    "n": 3
+   },
+   {
+    "w": "fantastic",
+    "n": 4
+   },
+   {
+    "w": "superb",
+    "n": 5
+   }
+  ],
+  "ex": "The view was great, and the dinner was absolutely superb.",
+  "note_es": "De bueno a excelente."
+ },
+ {
+  "id": "big",
+  "steps": [
+   {
+    "w": "big",
+    "n": 1
+   },
+   {
+    "w": "large",
+    "n": 2
+   },
+   {
+    "w": "huge",
+    "n": 3
+   },
+   {
+    "w": "enormous",
+    "n": 4
+   },
+   {
+    "w": "gigantic",
+    "n": 5
+   }
+  ],
+  "ex": "The dog is large, but the horse next door is gigantic.",
+  "note_es": "De menor a mayor tamaño."
+ },
+ {
+  "id": "small",
+  "steps": [
+   {
+    "w": "small",
+    "n": 1
+   },
+   {
+    "w": "little",
+    "n": 2
+   },
+   {
+    "w": "tiny",
+    "n": 3
+   },
+   {
+    "w": "minute",
+    "n": 4
+   }
+  ],
+  "ex": "My sister's flat is small, but mine is tiny.",
+  "note_es": "De menor a mayor pequeñez."
+ },
+ {
+  "id": "cold",
+  "steps": [
+   {
+    "w": "cool",
+    "n": 1
+   },
+   {
+    "w": "chilly",
+    "n": 2
+   },
+   {
+    "w": "cold",
+    "n": 3
+   },
+   {
+    "w": "freezing",
+    "n": 4
+   },
+   {
+    "w": "frozen",
+    "n": 5
+   }
+  ],
+  "ex": "It was chilly in the morning and freezing by the evening.",
+  "note_es": "De menos a más frío."
+ },
+ {
+  "id": "hot",
+  "steps": [
+   {
+    "w": "warm",
+    "n": 1
+   },
+   {
+    "w": "hot",
+    "n": 2
+   },
+   {
+    "w": "boiling",
+    "n": 3
+   },
+   {
+    "w": "scorching",
+    "n": 4
+   }
+  ],
+  "ex": "It was warm at nine and scorching by noon.",
+  "note_es": "De menos a más calor."
+ },
+ {
+  "id": "tired",
+  "steps": [
+   {
+    "w": "sleepy",
+    "n": 1
+   },
+   {
+    "w": "tired",
+    "n": 2
+   },
+   {
+    "w": "exhausted",
+    "n": 4
+   },
+   {
+    "w": "shattered",
+    "n": 5
+   }
+  ],
+  "ex": "I felt tired at lunch and exhausted by the evening.",
+  "note_es": "De poco a mucho cansancio."
+ },
+ {
+  "id": "happy",
+  "steps": [
+   {
+    "w": "pleased",
+    "n": 1
+   },
+   {
+    "w": "happy",
+    "n": 2
+   },
+   {
+    "w": "delighted",
+    "n": 3
+   },
+   {
+    "w": "thrilled",
+    "n": 4
+   },
+   {
+    "w": "ecstatic",
+    "n": 5
+   }
+  ],
+  "ex": "She was pleased with her marks and ecstatic about the trip.",
+  "note_es": "De contento a eufórico."
+ },
+ {
+  "id": "sad",
+  "steps": [
+   {
+    "w": "unhappy",
+    "n": 1
+   },
+   {
+    "w": "sad",
+    "n": 2
+   },
+   {
+    "w": "miserable",
+    "n": 3
+   },
+   {
+    "w": "heartbroken",
+    "n": 4
+   },
+   {
+    "w": "devastated",
+    "n": 5
+   }
+  ],
+  "ex": "He felt sad about the match and heartbroken about his lost dog.",
+  "note_es": "De triste a destrozado."
+ },
+ {
+  "id": "angry",
+  "steps": [
+   {
+    "w": "annoyed",
+    "n": 1
+   },
+   {
+    "w": "cross",
+    "n": 2
+   },
+   {
+    "w": "angry",
+    "n": 3
+   },
+   {
+    "w": "furious",
+    "n": 4
+   },
+   {
+    "w": "livid",
+    "n": 5
+   }
+  ],
+  "ex": "Dad was annoyed about the noise but furious about the broken window.",
+  "note_es": "De molesto a muy enfadado."
+ },
+ {
+  "id": "afraid",
+  "steps": [
+   {
+    "w": "nervous",
+    "n": 1
+   },
+   {
+    "w": "worried",
+    "n": 2
+   },
+   {
+    "w": "afraid",
+    "n": 3
+   },
+   {
+    "w": "scared",
+    "n": 4
+   },
+   {
+    "w": "terrified",
+    "n": 5
+   }
+  ],
+  "ex": "I felt nervous before the test and terrified on the stage.",
+  "note_es": "De nervioso a aterrado."
+ },
+ {
+  "id": "surprised",
+  "steps": [
+   {
+    "w": "surprised",
+    "n": 1
+   },
+   {
+    "w": "amazed",
+    "n": 3
+   },
+   {
+    "w": "astonished",
+    "n": 4
+   },
+   {
+    "w": "stunned",
+    "n": 5
+   }
+  ],
+  "ex": "We were amazed by the show and stunned by the ending.",
+  "note_es": "De sorprendido a atónito."
+ },
+ {
+  "id": "interesting",
+  "steps": [
+   {
+    "w": "interesting",
+    "n": 1
+   },
+   {
+    "w": "fascinating",
+    "n": 3
+   },
+   {
+    "w": "gripping",
+    "n": 4
+   },
+   {
+    "w": "riveting",
+    "n": 5
+   }
+  ],
+  "ex": "The documentary was interesting, but the book was absolutely riveting.",
+  "note_es": "De interesante a cautivador."
+ },
+ {
+  "id": "boring",
+  "steps": [
+   {
+    "w": "dull",
+    "n": 1
+   },
+   {
+    "w": "boring",
+    "n": 2
+   },
+   {
+    "w": "tedious",
+    "n": 3
+   },
+   {
+    "w": "monotonous",
+    "n": 4
+   }
+  ],
+  "ex": "The talk was dull and the second part was tedious.",
+  "note_es": "De aburrido a muy tedioso."
+ },
+ {
+  "id": "funny",
+  "steps": [
+   {
+    "w": "amusing",
+    "n": 1
+   },
+   {
+    "w": "funny",
+    "n": 2
+   },
+   {
+    "w": "hilarious",
+    "n": 4
+   },
+   {
+    "w": "hysterical",
+    "n": 5
+   }
+  ],
+  "ex": "The film was funny and the ending was hilarious.",
+  "note_es": "De gracioso a muy divertido."
+ },
+ {
+  "id": "tasty",
+  "steps": [
+   {
+    "w": "tasty",
+    "n": 1
+   },
+   {
+    "w": "delicious",
+    "n": 3
+   },
+   {
+    "w": "mouth-watering",
+    "n": 4
+   },
+   {
+    "w": "divine",
+    "n": 5
+   }
+  ],
+  "ex": "The soup was tasty, but the dessert was divine.",
+  "note_es": "De sabroso a exquisito."
+ },
+ {
+  "id": "hungry",
+  "steps": [
+   {
+    "w": "peckish",
+    "n": 1
+   },
+   {
+    "w": "hungry",
+    "n": 2
+   },
+   {
+    "w": "starving",
+    "n": 4
+   },
+   {
+    "w": "ravenous",
+    "n": 5
+   }
+  ],
+  "ex": "I was peckish at four and ravenous by seven.",
+  "note_es": "De poca a mucha hambre."
+ },
+ {
+  "id": "thirsty",
+  "steps": [
+   {
+    "w": "thirsty",
+    "n": 1
+   },
+   {
+    "w": "parched",
+    "n": 3
+   },
+   {
+    "w": "dying of thirst",
+    "n": 5
+   }
+  ],
+  "ex": "After the match I was thirsty, and after the hike I was parched.",
+  "note_es": "De sed leve a sed extrema."
+ },
+ {
+  "id": "clean",
+  "steps": [
+   {
+    "w": "tidy",
+    "n": 1
+   },
+   {
+    "w": "clean",
+    "n": 2
+   },
+   {
+    "w": "spotless",
+    "n": 4
+   },
+   {
+    "w": "immaculate",
+    "n": 5
+   }
+  ],
+  "ex": "Her room is tidy, but the kitchen is spotless.",
+  "note_es": "De ordenado a impecable."
+ },
+ {
+  "id": "dirty",
+  "steps": [
+   {
+    "w": "messy",
+    "n": 1
+   },
+   {
+    "w": "dirty",
+    "n": 2
+   },
+   {
+    "w": "filthy",
+    "n": 4
+   },
+   {
+    "w": "grimy",
+    "n": 5
+   }
+  ],
+  "ex": "The floor was dirty and the boots were filthy.",
+  "note_es": "De sucio a muy sucio."
+ },
+ {
+  "id": "old",
+  "steps": [
+   {
+    "w": "old",
+    "n": 1
+   },
+   {
+    "w": "ancient",
+    "n": 3
+   },
+   {
+    "w": "prehistoric",
+    "n": 5
+   }
+  ],
+  "ex": "The church is old, but the ruins are ancient.",
+  "note_es": "De antiguo a muy antiguo."
+ },
+ {
+  "id": "new",
+  "steps": [
+   {
+    "w": "recent",
+    "n": 1
+   },
+   {
+    "w": "new",
+    "n": 2
+   },
+   {
+    "w": "brand-new",
+    "n": 4
+   },
+   {
+    "w": "state-of-the-art",
+    "n": 5
+   }
+  ],
+  "ex": "Her phone is new, and her laptop is state-of-the-art.",
+  "note_es": "De reciente a de última generación."
+ },
+ {
+  "id": "fast",
+  "steps": [
+   {
+    "w": "quick",
+    "n": 1
+   },
+   {
+    "w": "fast",
+    "n": 2
+   },
+   {
+    "w": "rapid",
+    "n": 3
+   },
+   {
+    "w": "lightning-fast",
+    "n": 5
+   }
+  ],
+  "ex": "The bus is fast, but the new train is lightning-fast.",
+  "note_es": "De rápido a rapidísimo."
+ },
+ {
+  "id": "slow",
+  "steps": [
+   {
+    "w": "steady",
+    "n": 1
+   },
+   {
+    "w": "slow",
+    "n": 2
+   },
+   {
+    "w": "sluggish",
+    "n": 4
+   },
+   {
+    "w": "glacial",
+    "n": 5
+   }
+  ],
+  "ex": "Progress was slow at first and positively glacial by winter.",
+  "note_es": "De lento a lentísimo."
+ },
+ {
+  "id": "easy",
+  "steps": [
+   {
+    "w": "easy",
+    "n": 1
+   },
+   {
+    "w": "simple",
+    "n": 2
+   },
+   {
+    "w": "effortless",
+    "n": 4
+   }
+  ],
+  "ex": "The first test was easy, the second effortless.",
+  "note_es": "De fácil a facilísimo."
+ },
+ {
+  "id": "difficult",
+  "steps": [
+   {
+    "w": "tricky",
+    "n": 1
+   },
+   {
+    "w": "difficult",
+    "n": 2
+   },
+   {
+    "w": "challenging",
+    "n": 3
+   },
+   {
+    "w": "demanding",
+    "n": 4
+   },
+   {
+    "w": "gruelling",
+    "n": 5
+   }
+  ],
+  "ex": "The climb was demanding, and the last stretch was gruelling.",
+  "note_es": "De difícil a agotador."
+ },
+ {
+  "id": "important",
+  "steps": [
+   {
+    "w": "useful",
+    "n": 1
+   },
+   {
+    "w": "important",
+    "n": 2
+   },
+   {
+    "w": "vital",
+    "n": 4
+   },
+   {
+    "w": "essential",
+    "n": 5
+   }
+  ],
+  "ex": "Sleep is important, but water is essential.",
+  "note_es": "De importante a imprescindible."
+ },
+ {
+  "id": "beautiful",
+  "steps": [
+   {
+    "w": "pretty",
+    "n": 1
+   },
+   {
+    "w": "lovely",
+    "n": 2
+   },
+   {
+    "w": "beautiful",
+    "n": 3
+   },
+   {
+    "w": "gorgeous",
+    "n": 4
+   },
+   {
+    "w": "stunning",
+    "n": 5
+   }
+  ],
+  "ex": "The beach is lovely and the sunset is stunning.",
+  "note_es": "De bonito a impresionante."
+ },
+ {
+  "id": "ugly",
+  "steps": [
+   {
+    "w": "plain",
+    "n": 1
+   },
+   {
+    "w": "unattractive",
+    "n": 2
+   },
+   {
+    "w": "ugly",
+    "n": 3
+   },
+   {
+    "w": "hideous",
+    "n": 5
+   }
+  ],
+  "ex": "The building is ugly, and the statue is hideous.",
+  "note_es": "De poco atractivo a horrible."
+ },
+ {
+  "id": "clever",
+  "steps": [
+   {
+    "w": "bright",
+    "n": 1
+   },
+   {
+    "w": "clever",
+    "n": 2
+   },
+   {
+    "w": "intelligent",
+    "n": 3
+   },
+   {
+    "w": "brilliant",
+    "n": 4
+   },
+   {
+    "w": "genius",
+    "n": 5
+   }
+  ],
+  "ex": "She is clever, but her brother is brilliant.",
+  "note_es": "De listo a genial."
+ },
+ {
+  "id": "stupid",
+  "steps": [
+   {
+    "w": "silly",
+    "n": 1
+   },
+   {
+    "w": "foolish",
+    "n": 2
+   },
+   {
+    "w": "stupid",
+    "n": 3
+   },
+   {
+    "w": "idiotic",
+    "n": 5
+   }
+  ],
+  "ex": "It was silly to leave early and foolish to go alone.",
+  "note_es": "De tonto a muy necio."
+ },
+ {
+  "id": "rich",
+  "steps": [
+   {
+    "w": "comfortable",
+    "n": 1
+   },
+   {
+    "w": "wealthy",
+    "n": 3
+   },
+   {
+    "w": "rich",
+    "n": 4
+   },
+   {
+    "w": "loaded",
+    "n": 5
+   }
+  ],
+  "ex": "They are comfortable, but their neighbours are wealthy.",
+  "note_es": "De acomodado a muy rico."
+ },
+ {
+  "id": "poor",
+  "steps": [
+   {
+    "w": "short of money",
+    "n": 1
+   },
+   {
+    "w": "poor",
+    "n": 3
+   },
+   {
+    "w": "penniless",
+    "n": 4
+   },
+   {
+    "w": "destitute",
+    "n": 5
+   }
+  ],
+  "ex": "He was poor as a student and penniless after the trip.",
+  "note_es": "De poco dinero a miseria."
+ },
+ {
+  "id": "expensive",
+  "steps": [
+   {
+    "w": "pricey",
+    "n": 1
+   },
+   {
+    "w": "expensive",
+    "n": 2
+   },
+   {
+    "w": "costly",
+    "n": 3
+   },
+   {
+    "w": "extortionate",
+    "n": 5
+   }
+  ],
+  "ex": "The hotel was pricey, but the taxi was extortionate.",
+  "note_es": "De caro a carísimo."
+ },
+ {
+  "id": "cheap",
+  "steps": [
+   {
+    "w": "reasonable",
+    "n": 1
+   },
+   {
+    "w": "cheap",
+    "n": 2
+   },
+   {
+    "w": "dirt cheap",
+    "n": 5
+   }
+  ],
+  "ex": "The ticket was cheap, but the souvenir was dirt cheap.",
+  "note_es": "De barato a baratísimo."
+ },
+ {
+  "id": "loud",
+  "steps": [
+   {
+    "w": "noisy",
+    "n": 1
+   },
+   {
+    "w": "loud",
+    "n": 2
+   },
+   {
+    "w": "deafening",
+    "n": 4
+   },
+   {
+    "w": "ear-splitting",
+    "n": 5
+   }
+  ],
+  "ex": "The room was noisy and the music was deafening.",
+  "note_es": "De ruidoso a ensordecedor."
+ },
+ {
+  "id": "quiet",
+  "steps": [
+   {
+    "w": "calm",
+    "n": 1
+   },
+   {
+    "w": "quiet",
+    "n": 2
+   },
+   {
+    "w": "silent",
+    "n": 4
+   },
+   {
+    "w": "soundless",
+    "n": 5
+   }
+  ],
+  "ex": "The library was quiet, and the night was silent.",
+  "note_es": "De tranquilo a silencioso."
+ },
+ {
+  "id": "dark",
+  "steps": [
+   {
+    "w": "dim",
+    "n": 1
+   },
+   {
+    "w": "dark",
+    "n": 2
+   },
+   {
+    "w": "pitch-black",
+    "n": 5
+   }
+  ],
+  "ex": "The room was dim, but the tunnel was pitch-black.",
+  "note_es": "De poca luz a oscuridad total."
+ },
+ {
+  "id": "bright",
+  "steps": [
+   {
+    "w": "light",
+    "n": 1
+   },
+   {
+    "w": "bright",
+    "n": 2
+   },
+   {
+    "w": "dazzling",
+    "n": 4
+   },
+   {
+    "w": "blinding",
+    "n": 5
+   }
+  ],
+  "ex": "The room was bright, but the sun was dazzling.",
+  "note_es": "De luminoso a deslumbrante."
+ },
+ {
+  "id": "wet",
+  "steps": [
+   {
+    "w": "damp",
+    "n": 1
+   },
+   {
+    "w": "wet",
+    "n": 2
+   },
+   {
+    "w": "soaked",
+    "n": 4
+   },
+   {
+    "w": "drenched",
+    "n": 5
+   }
+  ],
+  "ex": "My coat was damp, and my shoes were drenched.",
+  "note_es": "De húmedo a empapado."
+ },
+ {
+  "id": "dry",
+  "steps": [
+   {
+    "w": "dry",
+    "n": 1
+   },
+   {
+    "w": "arid",
+    "n": 3
+   },
+   {
+    "w": "parched",
+    "n": 4
+   }
+  ],
+  "ex": "The soil was dry in May and arid by August.",
+  "note_es": "De seco a muy seco."
+ },
+ {
+  "id": "rain",
+  "steps": [
+   {
+    "w": "drizzle",
+    "n": 1
+   },
+   {
+    "w": "shower",
+    "n": 2
+   },
+   {
+    "w": "downpour",
+    "n": 4
+   },
+   {
+    "w": "deluge",
+    "n": 5
+   }
+  ],
+  "ex": "We had a drizzle at noon and a downpour at night.",
+  "note_es": "De llovizna a diluvio."
+ },
+ {
+  "id": "wind",
+  "steps": [
+   {
+    "w": "breeze",
+    "n": 1
+   },
+   {
+    "w": "wind",
+    "n": 2
+   },
+   {
+    "w": "gale",
+    "n": 4
+   },
+   {
+    "w": "hurricane",
+    "n": 5
+   }
+  ],
+  "ex": "There was a breeze in the morning and a gale at night.",
+  "note_es": "De brisa a huracán."
+ },
+ {
+  "id": "storm",
+  "steps": [
+   {
+    "w": "squall",
+    "n": 2
+   },
+   {
+    "w": "storm",
+    "n": 3
+   },
+   {
+    "w": "tempest",
+    "n": 4
+   }
+  ],
+  "ex": "A squall passed at noon, but the storm that followed became a real tempest.",
+  "note_es": "De fuerte a violento."
+ },
+ {
+  "id": "fear",
+  "steps": [
+   {
+    "w": "concern",
+    "n": 1
+   },
+   {
+    "w": "worry",
+    "n": 2
+   },
+   {
+    "w": "fear",
+    "n": 3
+   },
+   {
+    "w": "dread",
+    "n": 4
+   },
+   {
+    "w": "terror",
+    "n": 5
+   }
+  ],
+  "ex": "He felt concern before the test and dread on the way.",
+  "note_es": "De preocupación a terror."
+ },
+ {
+  "id": "love",
+  "steps": [
+   {
+    "w": "like",
+    "n": 1
+   },
+   {
+    "w": "enjoy",
+    "n": 2
+   },
+   {
+    "w": "love",
+    "n": 3
+   },
+   {
+    "w": "adore",
+    "n": 4
+   },
+   {
+    "w": "worship",
+    "n": 5
+   }
+  ],
+  "ex": "I like my school, I love my friends, and I adore my dog.",
+  "note_es": "De agradar a adorar."
+ },
+ {
+  "id": "hate",
+  "steps": [
+   {
+    "w": "dislike",
+    "n": 1
+   },
+   {
+    "w": "hate",
+    "n": 3
+   },
+   {
+    "w": "loathe",
+    "n": 4
+   },
+   {
+    "w": "detest",
+    "n": 5
+   }
+  ],
+  "ex": "I dislike mushrooms, but I loathe cold coffee.",
+  "note_es": "De desagrado a odio."
+ },
+ {
+  "id": "walk",
+  "steps": [
+   {
+    "w": "stroll",
+    "n": 1
+   },
+   {
+    "w": "walk",
+    "n": 2
+   },
+   {
+    "w": "march",
+    "n": 4
+   },
+   {
+    "w": "stomp",
+    "n": 5
+   }
+  ],
+  "ex": "They strolled along the beach, then marched back to the car.",
+  "note_es": "De caminar tranquilo a marchar."
+ },
+ {
+  "id": "run",
+  "steps": [
+   {
+    "w": "jog",
+    "n": 1
+   },
+   {
+    "w": "run",
+    "n": 2
+   },
+   {
+    "w": "sprint",
+    "n": 4
+   },
+   {
+    "w": "dash",
+    "n": 5
+   }
+  ],
+  "ex": "I jog in the morning and sprint to the bus.",
+  "note_es": "De trotar a correr a toda velocidad."
+ },
+ {
+  "id": "look",
+  "steps": [
+   {
+    "w": "glance",
+    "n": 1
+   },
+   {
+    "w": "look",
+    "n": 2
+   },
+   {
+    "w": "stare",
+    "n": 3
+   },
+   {
+    "w": "gaze",
+    "n": 4
+   },
+   {
+    "w": "glare",
+    "n": 5
+   }
+  ],
+  "ex": "She glanced at the clock, then stared at the door.",
+  "note_es": "De mirar rápido a mirar fijamente."
+ },
+ {
+  "id": "say",
+  "steps": [
+   {
+    "w": "mention",
+    "n": 1
+   },
+   {
+    "w": "say",
+    "n": 2
+   },
+   {
+    "w": "declare",
+    "n": 4
+   },
+   {
+    "w": "proclaim",
+    "n": 5
+   }
+  ],
+  "ex": "He mentioned the news, then declared his plan.",
+  "note_es": "De mencionar a proclamar."
+ },
+ {
+  "id": "talk",
+  "steps": [
+   {
+    "w": "chat",
+    "n": 1
+   },
+   {
+    "w": "speak",
+    "n": 2
+   },
+   {
+    "w": "discuss",
+    "n": 3
+   },
+   {
+    "w": "debate",
+    "n": 4
+   },
+   {
+    "w": "argue",
+    "n": 5
+   }
+  ],
+  "ex": "We chatted at lunch and debated in class.",
+  "note_es": "De charlar a discutir."
+ },
+ {
+  "id": "shout",
+  "steps": [
+   {
+    "w": "call",
+    "n": 1
+   },
+   {
+    "w": "shout",
+    "n": 3
+   },
+   {
+    "w": "yell",
+    "n": 4
+   },
+   {
+    "w": "scream",
+    "n": 5
+   }
+  ],
+  "ex": "She called from the garden and screamed from the roof.",
+  "note_es": "De llamar a gritar muy fuerte."
+ },
+ {
+  "id": "laugh",
+  "steps": [
+   {
+    "w": "smile",
+    "n": 1
+   },
+   {
+    "w": "giggle",
+    "n": 2
+   },
+   {
+    "w": "laugh",
+    "n": 3
+   },
+   {
+    "w": "roar",
+    "n": 4
+   },
+   {
+    "w": "howl",
+    "n": 5
+   }
+  ],
+  "ex": "The children giggled, and the grown-ups roared with laughter.",
+  "note_es": "De sonreír a carcajearse."
+ },
+ {
+  "id": "cry",
+  "steps": [
+   {
+    "w": "sniff",
+    "n": 1
+   },
+   {
+    "w": "weep",
+    "n": 3
+   },
+   {
+    "w": "sob",
+    "n": 4
+   },
+   {
+    "w": "wail",
+    "n": 5
+   }
+  ],
+  "ex": "She sniffed during the film and sobbed at the end.",
+  "note_es": "De sollozo leve a llanto fuerte."
+ },
+ {
+  "id": "eat",
+  "steps": [
+   {
+    "w": "nibble",
+    "n": 1
+   },
+   {
+    "w": "eat",
+    "n": 2
+   },
+   {
+    "w": "devour",
+    "n": 4
+   },
+   {
+    "w": "gobble",
+    "n": 5
+   }
+  ],
+  "ex": "He nibbled a biscuit, then devoured the whole pizza.",
+  "note_es": "De picar a devorar."
+ },
+ {
+  "id": "drink",
+  "steps": [
+   {
+    "w": "sip",
+    "n": 1
+   },
+   {
+    "w": "drink",
+    "n": 2
+   },
+   {
+    "w": "gulp",
+    "n": 4
+   },
+   {
+    "w": "guzzle",
+    "n": 5
+   }
+  ],
+  "ex": "She sipped her tea; he gulped his juice.",
+  "note_es": "De sorber a tragar."
+ },
+ {
+  "id": "break",
+  "steps": [
+   {
+    "w": "crack",
+    "n": 1
+   },
+   {
+    "w": "break",
+    "n": 2
+   },
+   {
+    "w": "smash",
+    "n": 4
+   },
+   {
+    "w": "shatter",
+    "n": 5
+   }
+  ],
+  "ex": "The glass cracked, then shattered on the floor.",
+  "note_es": "De rajar a hacer añicos."
+ },
+ {
+  "id": "hit",
+  "steps": [
+   {
+    "w": "tap",
+    "n": 1
+   },
+   {
+    "w": "hit",
+    "n": 3
+   },
+   {
+    "w": "punch",
+    "n": 4
+   },
+   {
+    "w": "slam",
+    "n": 5
+   }
+  ],
+  "ex": "She tapped the door and then slammed it.",
+  "note_es": "De golpe suave a golpe fuerte."
+ },
+ {
+  "id": "pull",
+  "steps": [
+   {
+    "w": "tug",
+    "n": 1
+   },
+   {
+    "w": "pull",
+    "n": 2
+   },
+   {
+    "w": "drag",
+    "n": 4
+   },
+   {
+    "w": "haul",
+    "n": 5
+   }
+  ],
+  "ex": "He tugged the rope, then dragged the box.",
+  "note_es": "De tirar suave a arrastrar."
+ },
+ {
+  "id": "throw",
+  "steps": [
+   {
+    "w": "toss",
+    "n": 1
+   },
+   {
+    "w": "throw",
+    "n": 2
+   },
+   {
+    "w": "hurl",
+    "n": 4
+   },
+   {
+    "w": "fling",
+    "n": 5
+   }
+  ],
+  "ex": "She tossed the ball, then hurled it over the wall.",
+  "note_es": "De lanzar suave a arrojar con fuerza."
+ },
+ {
+  "id": "cut",
+  "steps": [
+   {
+    "w": "trim",
+    "n": 1
+   },
+   {
+    "w": "cut",
+    "n": 2
+   },
+   {
+    "w": "chop",
+    "n": 3
+   },
+   {
+    "w": "slice",
+    "n": 4
+   },
+   {
+    "w": "shred",
+    "n": 5
+   }
+  ],
+  "ex": "He trimmed the hedge, then chopped the logs.",
+  "note_es": "De recortar a triturar."
+ },
+ {
+  "id": "want",
+  "steps": [
+   {
+    "w": "wish",
+    "n": 1
+   },
+   {
+    "w": "want",
+    "n": 2
+   },
+   {
+    "w": "need",
+    "n": 3
+   },
+   {
+    "w": "crave",
+    "n": 4
+   },
+   {
+    "w": "long for",
+    "n": 5
+   }
+  ],
+  "ex": "I want a snack, but I crave chocolate.",
+  "note_es": "De querer a anhelar."
+ },
+ {
+  "id": "think",
+  "steps": [
+   {
+    "w": "consider",
+    "n": 1
+   },
+   {
+    "w": "think",
+    "n": 2
+   },
+   {
+    "w": "ponder",
+    "n": 3
+   },
+   {
+    "w": "reflect",
+    "n": 4
+   },
+   {
+    "w": "brood",
+    "n": 5
+   }
+  ],
+  "ex": "She considered the offer and reflected on it overnight.",
+  "note_es": "De considerar a rumiar."
+ },
+ {
+  "id": "know",
+  "steps": [
+   {
+    "w": "know",
+    "n": 1
+   },
+   {
+    "w": "understand",
+    "n": 2
+   },
+   {
+    "w": "grasp",
+    "n": 3
+   },
+   {
+    "w": "master",
+    "n": 5
+   }
+  ],
+  "ex": "I understand the rule, but I haven't mastered it.",
+  "note_es": "De saber a dominar."
+ },
+ {
+  "id": "begin",
+  "steps": [
+   {
+    "w": "start",
+    "n": 1
+   },
+   {
+    "w": "begin",
+    "n": 2
+   },
+   {
+    "w": "launch",
+    "n": 4
+   },
+   {
+    "w": "initiate",
+    "n": 5
+   }
+  ],
+  "ex": "They started the project and launched the product.",
+  "note_es": "De empezar a iniciar."
+ },
+ {
+  "id": "finish",
+  "steps": [
+   {
+    "w": "stop",
+    "n": 1
+   },
+   {
+    "w": "finish",
+    "n": 2
+   },
+   {
+    "w": "complete",
+    "n": 3
+   },
+   {
+    "w": "conclude",
+    "n": 4
+   }
+  ],
+  "ex": "He finished the report and concluded the meeting.",
+  "note_es": "De terminar a concluir."
+ },
+ {
+  "id": "change",
+  "steps": [
+   {
+    "w": "adjust",
+    "n": 1
+   },
+   {
+    "w": "change",
+    "n": 2
+   },
+   {
+    "w": "transform",
+    "n": 4
+   },
+   {
+    "w": "revolutionise",
+    "n": 5
+   }
+  ],
+  "ex": "We adjusted the plan, then transformed the whole system.",
+  "note_es": "De ajustar a revolucionar."
+ },
+ {
+  "id": "grow",
+  "steps": [
+   {
+    "w": "increase",
+    "n": 1
+   },
+   {
+    "w": "grow",
+    "n": 2
+   },
+   {
+    "w": "expand",
+    "n": 3
+   },
+   {
+    "w": "soar",
+    "n": 5
+   }
+  ],
+  "ex": "Sales increased in May and soared in June.",
+  "note_es": "De aumentar a dispararse."
+ },
+ {
+  "id": "fall",
+  "steps": [
+   {
+    "w": "drop",
+    "n": 1
+   },
+   {
+    "w": "fall",
+    "n": 2
+   },
+   {
+    "w": "plunge",
+    "n": 4
+   },
+   {
+    "w": "plummet",
+    "n": 5
+   }
+  ],
+  "ex": "Prices dropped in June and plummeted in July.",
+  "note_es": "De bajar a desplomarse."
+ },
+ {
+  "id": "help",
+  "steps": [
+   {
+    "w": "assist",
+    "n": 1
+   },
+   {
+    "w": "help",
+    "n": 2
+   },
+   {
+    "w": "support",
+    "n": 3
+   },
+   {
+    "w": "rescue",
+    "n": 5
+   }
+  ],
+  "ex": "He assisted the nurse, then rescued the boy.",
+  "note_es": "De ayudar a rescatar."
+ },
+ {
+  "id": "hurt",
+  "steps": [
+   {
+    "w": "sting",
+    "n": 1
+   },
+   {
+    "w": "ache",
+    "n": 2
+   },
+   {
+    "w": "hurt",
+    "n": 3
+   },
+   {
+    "w": "throb",
+    "n": 4
+   }
+  ],
+  "ex": "My arm aches, and my head throbs.",
+  "note_es": "De dolor leve a dolor fuerte."
+ },
+ {
+  "id": "pain",
+  "steps": [
+   {
+    "w": "discomfort",
+    "n": 1
+   },
+   {
+    "w": "pain",
+    "n": 3
+   },
+   {
+    "w": "agony",
+    "n": 5
+   }
+  ],
+  "ex": "The knee caused discomfort, but the tooth caused agony.",
+  "note_es": "De molestia a agonía."
+ },
+ {
+  "id": "smell",
+  "steps": [
+   {
+    "w": "scent",
+    "n": 1
+   },
+   {
+    "w": "smell",
+    "n": 2
+   },
+   {
+    "w": "odour",
+    "n": 3
+   },
+   {
+    "w": "stench",
+    "n": 5
+   }
+  ],
+  "ex": "The kitchen had a lovely scent, but the bin had a stench.",
+  "note_es": "De aroma a hedor."
+ },
+ {
+  "id": "taste",
+  "steps": [
+   {
+    "w": "bland",
+    "n": 1
+   },
+   {
+    "w": "mild",
+    "n": 2
+   },
+   {
+    "w": "sharp",
+    "n": 3
+   },
+   {
+    "w": "sour",
+    "n": 4
+   },
+   {
+    "w": "bitter",
+    "n": 5
+   }
+  ],
+  "ex": "The sauce is mild, but the lemon is sour.",
+  "note_es": "De suave a muy amargo."
+ },
+ {
+  "id": "success",
+  "steps": [
+   {
+    "w": "progress",
+    "n": 1
+   },
+   {
+    "w": "success",
+    "n": 3
+   },
+   {
+    "w": "triumph",
+    "n": 5
+   }
+  ],
+  "ex": "The team made progress, then celebrated a triumph.",
+  "note_es": "De avance a triunfo."
+ },
+ {
+  "id": "mistake",
+  "steps": [
+   {
+    "w": "slip",
+    "n": 1
+   },
+   {
+    "w": "error",
+    "n": 2
+   },
+   {
+    "w": "mistake",
+    "n": 3
+   },
+   {
+    "w": "blunder",
+    "n": 4
+   },
+   {
+    "w": "disaster",
+    "n": 5
+   }
+  ],
+  "ex": "It was a slip, but forgetting the tickets was a blunder.",
+  "note_es": "De desliz a desastre."
+ },
+ {
+  "id": "problem",
+  "steps": [
+   {
+    "w": "issue",
+    "n": 1
+   },
+   {
+    "w": "problem",
+    "n": 2
+   },
+   {
+    "w": "difficulty",
+    "n": 3
+   },
+   {
+    "w": "crisis",
+    "n": 5
+   }
+  ],
+  "ex": "It began as an issue and became a crisis.",
+  "note_es": "De inconveniente a crisis."
+ },
+ {
+  "id": "danger",
+  "steps": [
+   {
+    "w": "risk",
+    "n": 1
+   },
+   {
+    "w": "threat",
+    "n": 3
+   },
+   {
+    "w": "hazard",
+    "n": 4
+   },
+   {
+    "w": "peril",
+    "n": 5
+   }
+  ],
+  "ex": "Ice is a risk, but a broken bridge is a hazard.",
+  "note_es": "De riesgo a peligro grave."
+ },
+ {
+  "id": "path",
+  "steps": [
+   {
+    "w": "path",
+    "n": 1
+   },
+   {
+    "w": "track",
+    "n": 2
+   },
+   {
+    "w": "trail",
+    "n": 3
+   },
+   {
+    "w": "highway",
+    "n": 5
+   }
+  ],
+  "ex": "We took a path, then a track, and then a trail.",
+  "note_es": "De camino pequeño a gran vía."
+ },
+ {
+  "id": "road",
+  "steps": [
+   {
+    "w": "lane",
+    "n": 1
+   },
+   {
+    "w": "street",
+    "n": 2
+   },
+   {
+    "w": "road",
+    "n": 3
+   },
+   {
+    "w": "avenue",
+    "n": 4
+   },
+   {
+    "w": "motorway",
+    "n": 5
+   }
+  ],
+  "ex": "Our lane meets a street, then a road, then a motorway.",
+  "note_es": "De callejón a autopista."
+ },
+ {
+  "id": "house",
+  "steps": [
+   {
+    "w": "hut",
+    "n": 1
+   },
+   {
+    "w": "cottage",
+    "n": 2
+   },
+   {
+    "w": "house",
+    "n": 3
+   },
+   {
+    "w": "mansion",
+    "n": 5
+   }
+  ],
+  "ex": "They stayed in a cottage and dreamed of a mansion.",
+  "note_es": "De cabaña a mansión."
+ },
+ {
+  "id": "town",
+  "steps": [
+   {
+    "w": "village",
+    "n": 1
+   },
+   {
+    "w": "town",
+    "n": 3
+   },
+   {
+    "w": "city",
+    "n": 4
+   },
+   {
+    "w": "metropolis",
+    "n": 5
+   }
+  ],
+  "ex": "My village is small, but the city is a metropolis.",
+  "note_es": "De pueblo a metrópoli."
+ },
+ {
+  "id": "crowd",
+  "steps": [
+   {
+    "w": "group",
+    "n": 1
+   },
+   {
+    "w": "crowd",
+    "n": 3
+   },
+   {
+    "w": "mob",
+    "n": 4
+   },
+   {
+    "w": "multitude",
+    "n": 5
+   }
+  ],
+  "ex": "A group arrived, then a crowd, then a huge multitude.",
+  "note_es": "De grupo a multitud."
+ },
+ {
+  "id": "meal",
+  "steps": [
+   {
+    "w": "snack",
+    "n": 1
+   },
+   {
+    "w": "meal",
+    "n": 3
+   },
+   {
+    "w": "feast",
+    "n": 5
+   }
+  ],
+  "ex": "We had a snack on the way and a feast on arrival.",
+  "note_es": "De piscolabis a banquete."
+ },
+ {
+  "id": "news",
+  "steps": [
+   {
+    "w": "rumour",
+    "n": 1
+   },
+   {
+    "w": "gossip",
+    "n": 2
+   },
+   {
+    "w": "news",
+    "n": 3
+   },
+   {
+    "w": "headline",
+    "n": 5
+   }
+  ],
+  "ex": "A rumour became gossip, then news, then a headline.",
+  "note_es": "De rumor a titular."
+ },
+ {
+  "id": "speed",
+  "steps": [
+   {
+    "w": "crawl",
+    "n": 1
+   },
+   {
+    "w": "creep",
+    "n": 2
+   },
+   {
+    "w": "stroll",
+    "n": 3
+   },
+   {
+    "w": "stride",
+    "n": 4
+   },
+   {
+    "w": "sprint",
+    "n": 5
+   }
+  ],
+  "ex": "The snail crept, the man strolled, and the cheetah sprinted.",
+  "note_es": "De muy lento a velocidad máxima."
+ },
+ {
+  "id": "tall",
+  "steps": [
+   {
+    "w": "short",
+    "n": 1
+   },
+   {
+    "w": "average",
+    "n": 2
+   },
+   {
+    "w": "tall",
+    "n": 3
+   },
+   {
+    "w": "towering",
+    "n": 5
+   }
+  ],
+  "ex": "He was tall, but his brother was towering.",
+  "note_es": "De bajo a altísimo."
+ },
+ {
+  "id": "thin",
+  "steps": [
+   {
+    "w": "slim",
+    "n": 1
+   },
+   {
+    "w": "thin",
+    "n": 2
+   },
+   {
+    "w": "skinny",
+    "n": 3
+   },
+   {
+    "w": "gaunt",
+    "n": 4
+   }
+  ],
+  "ex": "She is slim, but the cat is skinny.",
+  "note_es": "De delgado a muy delgado."
+ },
+ {
+  "id": "fat",
+  "steps": [
+   {
+    "w": "plump",
+    "n": 1
+   },
+   {
+    "w": "heavy",
+    "n": 2
+   },
+   {
+    "w": "fat",
+    "n": 3
+   },
+   {
+    "w": "obese",
+    "n": 5
+   }
+  ],
+  "ex": "The cat looked plump, but the dog looked heavy.",
+  "note_es": "De regordete a obeso."
+ },
+ {
+  "id": "strong",
+  "steps": [
+   {
+    "w": "firm",
+    "n": 1
+   },
+   {
+    "w": "strong",
+    "n": 2
+   },
+   {
+    "w": "powerful",
+    "n": 4
+   },
+   {
+    "w": "mighty",
+    "n": 5
+   }
+  ],
+  "ex": "The rope is strong, but the engine is powerful.",
+  "note_es": "De fuerte a poderoso."
+ },
+ {
+  "id": "weak",
+  "steps": [
+   {
+    "w": "fragile",
+    "n": 1
+   },
+   {
+    "w": "weak",
+    "n": 2
+   },
+   {
+    "w": "feeble",
+    "n": 3
+   },
+   {
+    "w": "frail",
+    "n": 4
+   }
+  ],
+  "ex": "The chair was fragile, and the old man felt frail.",
+  "note_es": "De frágil a muy débil."
+ },
+ {
+  "id": "hard",
+  "steps": [
+   {
+    "w": "firm",
+    "n": 1
+   },
+   {
+    "w": "hard",
+    "n": 2
+   },
+   {
+    "w": "solid",
+    "n": 3
+   },
+   {
+    "w": "rock-hard",
+    "n": 5
+   }
+  ],
+  "ex": "The pillow was firm, the mattress hard, and the bread rock-hard.",
+  "note_es": "De firme a duro como roca."
+ },
+ {
+  "id": "soft",
+  "steps": [
+   {
+    "w": "soft",
+    "n": 1
+   },
+   {
+    "w": "gentle",
+    "n": 2
+   },
+   {
+    "w": "silky",
+    "n": 3
+   },
+   {
+    "w": "velvety",
+    "n": 4
+   }
+  ],
+  "ex": "The cloth was soft, and the kitten's fur was silky.",
+  "note_es": "De suave a aterciopelado."
+ },
+ {
+  "id": "sharp",
+  "steps": [
+   {
+    "w": "pointed",
+    "n": 1
+   },
+   {
+    "w": "sharp",
+    "n": 2
+   },
+   {
+    "w": "razor-sharp",
+    "n": 5
+   }
+  ],
+  "ex": "The pencil is pointed, but the knife is razor-sharp.",
+  "note_es": "De afilado a muy afilado."
+ },
+ {
+  "id": "full",
+  "steps": [
+   {
+    "w": "half-full",
+    "n": 1
+   },
+   {
+    "w": "full",
+    "n": 3
+   },
+   {
+    "w": "packed",
+    "n": 4
+   },
+   {
+    "w": "overflowing",
+    "n": 5
+   }
+  ],
+  "ex": "The bus was full, and the stadium was packed.",
+  "note_es": "De lleno a repleto."
+ },
+ {
+  "id": "empty",
+  "steps": [
+   {
+    "w": "vacant",
+    "n": 1
+   },
+   {
+    "w": "empty",
+    "n": 2
+   },
+   {
+    "w": "deserted",
+    "n": 4
+   },
+   {
+    "w": "desolate",
+    "n": 5
+   }
+  ],
+  "ex": "The seat was vacant and the street was deserted.",
+  "note_es": "De vacío a desierto."
+ },
+ {
+  "id": "many",
+  "steps": [
+   {
+    "w": "several",
+    "n": 1
+   },
+   {
+    "w": "many",
+    "n": 2
+   },
+   {
+    "w": "numerous",
+    "n": 3
+   },
+   {
+    "w": "countless",
+    "n": 5
+   }
+  ],
+  "ex": "There were several books, but countless stars.",
+  "note_es": "De varios a incontables."
+ },
+ {
+  "id": "few",
+  "steps": [
+   {
+    "w": "a few",
+    "n": 1
+   },
+   {
+    "w": "few",
+    "n": 2
+   },
+   {
+    "w": "scarce",
+    "n": 3
+   },
+   {
+    "w": "rare",
+    "n": 4
+   }
+  ],
+  "ex": "A few seats were left, but tickets were scarce.",
+  "note_es": "De pocos a escasos."
+ },
+ {
+  "id": "certain",
+  "steps": [
+   {
+    "w": "possible",
+    "n": 1
+   },
+   {
+    "w": "likely",
+    "n": 2
+   },
+   {
+    "w": "probable",
+    "n": 3
+   },
+   {
+    "w": "certain",
+    "n": 5
+   }
+  ],
+  "ex": "It is possible, likely, and finally certain.",
+  "note_es": "De posible a seguro."
+ },
+ {
+  "id": "sure",
+  "steps": [
+   {
+    "w": "unsure",
+    "n": 1
+   },
+   {
+    "w": "fairly sure",
+    "n": 2
+   },
+   {
+    "w": "sure",
+    "n": 3
+   },
+   {
+    "w": "convinced",
+    "n": 4
+   },
+   {
+    "w": "positive",
+    "n": 5
+   }
+  ],
+  "ex": "I'm sure about the date and positive about the venue.",
+  "note_es": "De dudoso a totalmente seguro."
+ },
+ {
+  "id": "true",
+  "steps": [
+   {
+    "w": "plausible",
+    "n": 1
+   },
+   {
+    "w": "accurate",
+    "n": 2
+   },
+   {
+    "w": "true",
+    "n": 3
+   },
+   {
+    "w": "undeniable",
+    "n": 5
+   }
+  ],
+  "ex": "The report is accurate, and the fact is undeniable.",
+  "note_es": "De plausible a innegable."
+ },
+ {
+  "id": "wrong",
+  "steps": [
+   {
+    "w": "off",
+    "n": 1
+   },
+   {
+    "w": "wrong",
+    "n": 2
+   },
+   {
+    "w": "incorrect",
+    "n": 3
+   },
+   {
+    "w": "false",
+    "n": 4
+   }
+  ],
+  "ex": "The date was off, the total was incorrect and the claim was false.",
+  "note_es": "De desacertado a falso."
+ },
+ {
+  "id": "polite",
+  "steps": [
+   {
+    "w": "civil",
+    "n": 1
+   },
+   {
+    "w": "polite",
+    "n": 2
+   },
+   {
+    "w": "courteous",
+    "n": 3
+   },
+   {
+    "w": "gracious",
+    "n": 4
+   }
+  ],
+  "ex": "He was civil, but she was truly gracious.",
+  "note_es": "De cortés a muy amable."
+ },
+ {
+  "id": "rude",
+  "steps": [
+   {
+    "w": "blunt",
+    "n": 1
+   },
+   {
+    "w": "impolite",
+    "n": 2
+   },
+   {
+    "w": "rude",
+    "n": 3
+   },
+   {
+    "w": "insolent",
+    "n": 4
+   },
+   {
+    "w": "offensive",
+    "n": 5
+   }
+  ],
+  "ex": "The reply was blunt, then rude, then offensive.",
+  "note_es": "De brusco a ofensivo."
+ },
+ {
+  "id": "kind",
+  "steps": [
+   {
+    "w": "friendly",
+    "n": 1
+   },
+   {
+    "w": "kind",
+    "n": 2
+   },
+   {
+    "w": "generous",
+    "n": 3
+   },
+   {
+    "w": "selfless",
+    "n": 5
+   }
+  ],
+  "ex": "She is kind, and her father is selfless.",
+  "note_es": "De amable a abnegado."
+ },
+ {
+  "id": "brave",
+  "steps": [
+   {
+    "w": "bold",
+    "n": 1
+   },
+   {
+    "w": "brave",
+    "n": 2
+   },
+   {
+    "w": "courageous",
+    "n": 3
+   },
+   {
+    "w": "fearless",
+    "n": 5
+   }
+  ],
+  "ex": "He was brave, but the firefighter was fearless.",
+  "note_es": "De valiente a intrépido."
+ },
+ {
+  "id": "shy",
+  "steps": [
+   {
+    "w": "reserved",
+    "n": 1
+   },
+   {
+    "w": "shy",
+    "n": 2
+   },
+   {
+    "w": "timid",
+    "n": 3
+   },
+   {
+    "w": "withdrawn",
+    "n": 4
+   }
+  ],
+  "ex": "She is shy, but her cousin is timid.",
+  "note_es": "De reservado a retraído."
+ },
+ {
+  "id": "proud",
+  "steps": [
+   {
+    "w": "satisfied",
+    "n": 1
+   },
+   {
+    "w": "pleased",
+    "n": 2
+   },
+   {
+    "w": "proud",
+    "n": 3
+   },
+   {
+    "w": "triumphant",
+    "n": 5
+   }
+  ],
+  "ex": "Mum felt proud, and the team felt triumphant.",
+  "note_es": "De satisfecho a triunfante."
+ },
+ {
+  "id": "busy",
+  "steps": [
+   {
+    "w": "occupied",
+    "n": 1
+   },
+   {
+    "w": "busy",
+    "n": 2
+   },
+   {
+    "w": "swamped",
+    "n": 4
+   },
+   {
+    "w": "snowed under",
+    "n": 5
+   }
+  ],
+  "ex": "I'm busy today, but swamped this week.",
+  "note_es": "De ocupado a desbordado."
+ },
+ {
+  "id": "free",
+  "steps": [
+   {
+    "w": "available",
+    "n": 1
+   },
+   {
+    "w": "free",
+    "n": 2
+   },
+   {
+    "w": "at a loose end",
+    "n": 3
+   }
+  ],
+  "ex": "She was available at five and completely free, even at a loose end, by seven.",
+  "note_es": "De disponible a desocupado."
+ },
+ {
+  "id": "lucky",
+  "steps": [
+   {
+    "w": "lucky",
+    "n": 1
+   },
+   {
+    "w": "fortunate",
+    "n": 2
+   },
+   {
+    "w": "blessed",
+    "n": 4
+   }
+  ],
+  "ex": "We were lucky to find a seat and blessed to see it.",
+  "note_es": "De afortunado a bendecido."
+ },
+ {
+  "id": "weird",
+  "steps": [
+   {
+    "w": "odd",
+    "n": 1
+   },
+   {
+    "w": "strange",
+    "n": 2
+   },
+   {
+    "w": "weird",
+    "n": 3
+   },
+   {
+    "w": "bizarre",
+    "n": 4
+   },
+   {
+    "w": "surreal",
+    "n": 5
+   }
+  ],
+  "ex": "The sound was odd, but the dream was surreal.",
+  "note_es": "De raro a surrealista."
+ },
+ {
+  "id": "enough",
+  "steps": [
+   {
+    "w": "adequate",
+    "n": 1
+   },
+   {
+    "w": "sufficient",
+    "n": 2
+   },
+   {
+    "w": "plentiful",
+    "n": 4
+   },
+   {
+    "w": "abundant",
+    "n": 5
+   }
+  ],
+  "ex": "The food was sufficient, but the water was abundant.",
+  "note_es": "De suficiente a abundante."
+ },
+ {
+  "id": "famous",
+  "steps": [
+   {
+    "w": "known",
+    "n": 1
+   },
+   {
+    "w": "popular",
+    "n": 2
+   },
+   {
+    "w": "famous",
+    "n": 3
+   },
+   {
+    "w": "legendary",
+    "n": 5
+   }
+  ],
+  "ex": "He is famous in town, but his goal is legendary.",
+  "note_es": "De conocido a legendario."
+ },
+ {
+  "id": "normal",
+  "steps": [
+   {
+    "w": "usual",
+    "n": 1
+   },
+   {
+    "w": "normal",
+    "n": 2
+   },
+   {
+    "w": "ordinary",
+    "n": 3
+   },
+   {
+    "w": "typical",
+    "n": 4
+   }
+  ],
+  "ex": "It was an ordinary day in the village.",
+  "note_es": "De usual a típico."
+ },
+ {
+  "id": "rare",
+  "steps": [
+   {
+    "w": "unusual",
+    "n": 1
+   },
+   {
+    "w": "uncommon",
+    "n": 2
+   },
+   {
+    "w": "rare",
+    "n": 3
+   },
+   {
+    "w": "exceptional",
+    "n": 4
+   },
+   {
+    "w": "unique",
+    "n": 5
+   }
+  ],
+  "ex": "It's rare to see snow here, and unique to see it in July.",
+  "note_es": "De inusual a único."
+ },
+ {
+  "id": "dangerous",
+  "steps": [
+   {
+    "w": "risky",
+    "n": 1
+   },
+   {
+    "w": "unsafe",
+    "n": 2
+   },
+   {
+    "w": "dangerous",
+    "n": 3
+   },
+   {
+    "w": "deadly",
+    "n": 5
+   }
+  ],
+  "ex": "The path is risky, but the cliff is deadly.",
+  "note_es": "De arriesgado a mortal."
+ },
+ {
+  "id": "pleasant",
+  "steps": [
+   {
+    "w": "pleasant",
+    "n": 1
+   },
+   {
+    "w": "enjoyable",
+    "n": 2
+   },
+   {
+    "w": "delightful",
+    "n": 4
+   },
+   {
+    "w": "wonderful",
+    "n": 5
+   }
+  ],
+  "ex": "The evening was enjoyable, and the final song was wonderful.",
+  "note_es": "De agradable a maravilloso."
+ },
+ {
+  "id": "worried",
+  "steps": [
+   {
+    "w": "uneasy",
+    "n": 1
+   },
+   {
+    "w": "anxious",
+    "n": 3
+   },
+   {
+    "w": "frantic",
+    "n": 5
+   }
+  ],
+  "ex": "She felt uneasy at first, then anxious, and finally frantic.",
+  "note_es": "De inquieto a desesperado."
+ }
+]

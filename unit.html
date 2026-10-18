@@ -10,13 +10,13 @@
 <link rel="preload" href="fonts/GothamBook.woff2?v=a8d93b82" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=72345e4f">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=b3bffd5c">
+<link rel="stylesheet" href="nis-tokens.css?v=49a1c5b9">
 <style>
 :root{
   --blue:#4987c6;
   --blue-d:#2f5f93;
   --blue-dd:#244c77;
-  --white:#fff;
+  --white:var(--card);
   --grey:#636465;
   --line:#e2e8f0;
   --lila:#d1d2ea;
@@ -195,7 +195,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 .week-jump:hover,.week-jump:focus-visible{border-color:var(--blue);background:var(--bg);outline:none}
 .week-jump .num{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:50%;background:var(--blue);color:var(--card);font-weight:800}
 .week-jump b{display:block;color:var(--blue-dd);font-size:.9rem}.week-jump small{display:block;color:var(--grey);margin-top:2px}
-.unit-nav{position:sticky;bottom:12px;z-index:40;display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:12px;max-width:520px;margin:22px auto 0;padding:9px 12px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:999px;box-shadow:0 12px 34px rgba(36,76,119,.22);backdrop-filter:blur(12px)}
+.unit-nav{position:sticky;bottom:12px;z-index:40;display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:12px;max-width:520px;margin:22px auto 0;padding:9px 12px;background:color-mix(in srgb,var(--card) 94%,transparent);border:1px solid var(--line);border-radius:999px;box-shadow:0 12px 34px rgba(36,76,119,.22);backdrop-filter:blur(12px)}
 .unit-nav button{width:44px;height:44px;border:0;border-radius:50%;background:var(--blue);color:var(--card);font:800 1.35rem/1 inherit;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .unit-nav button:hover{background:var(--blue-d);transform:scale(1.04)}
 .unit-nav button:disabled{opacity:.28;cursor:default;transform:none}
@@ -213,6 +213,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
+<link rel="stylesheet" href="units-cards.css?v=b41915e0">
 </head>
 <body>
 <header>
@@ -299,13 +300,57 @@ function bandaDelArco(){
   const tit = typeof a.titulo === 'string' ? a.titulo : (a.titulo.en || a.titulo.es);
   const sub = typeof a.subtitulo === 'string' ? a.subtitulo : (a.subtitulo.en || a.subtitulo.es);
   return `<a href="project.html?arc=${encodeURIComponent(k)}&back=${encodeURIComponent(location.pathname+location.search)}"
-    style="display:block;text-decoration:none;background:#F5F3FF;border:1px solid #DDD6FE;
+    style="display:block;text-decoration:none;background:var(--purple-light,#F5F3FF);border:1px solid color-mix(in srgb,var(--purple) 30%,var(--line));
            border-radius:12px;padding:13px 16px;margin:-6px 0 18px">
     <span style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);font-weight:700">
       Part of the term project</span>
     <div style="font-weight:700;color:var(--blue-dd);margin-top:3px">${esc(tit)} &#8594;</div>
     <div style="font-size:.85rem;color:var(--muted)">${esc(sub)} · ${a.semanas} weeks · P${a.periodos.join(' + P')}</div>
   </a>`;
+}
+
+/* Cabecera de unidad (units-cards.css): estado de las semanas, banda MCER y
+   personaje de la biblia. Misma logica que _unitPlanCard en app/80-unidades.js
+   (index.html no carga este archivo, por eso hay dos copias). */
+const UH_MESES={january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};
+function uhRango(txt){
+  const m=String(txt||'').split(/\s*[–—-]\s*/);
+  const pr=t=>{const x=/(\d{1,2})\s*([A-Za-z]+)?/.exec(t||'');return x?{d:+x[1],m:x[2]?UH_MESES[x[2].toLowerCase()]:undefined}:null};
+  const a=pr(m[0]), b=pr(m[1]||m[0]); if(!a||!b) return null;
+  const ma=a.m!==undefined?a.m:b.m, mb=b.m!==undefined?b.m:a.m; if(ma===undefined||mb===undefined) return null;
+  const y=new Date().getFullYear();
+  return {ini:new Date(y,ma,a.d), fin:new Date(y,mb,b.d,23,59)};
+}
+function uhSemanas(u){
+  const seq=u.sequence||[], hoy=Date.now(), segs=[], dia=864e5;
+  const rangos=seq.map(w=>uhRango(w.dates)), fechas=seq.length>0&&rangos.every(Boolean);
+  let actual=null, hechas=0;
+  seq.forEach((w,i)=>{
+    let c='';
+    if(fechas){
+      if(rangos[i].fin.getTime()+2*dia<hoy){ c='done'; hechas++; }
+      else if(actual===null && hoy>=rangos[i].ini.getTime()-2*dia){ c='now'; actual=w;}
+    }
+    segs.push({c,t:(u.stepWord||'Week')+' '+w.n+' · '+w.title});
+    (u.breaks||[]).filter(k=>k.after===w.n).forEach(k=>segs.push({c:'break',t:k.title}));
+  });
+  return {segs, actual, hechas, total:seq.length, fechas};
+}
+const UH_EXAMEN={starters:['prea1','Pre A1'],movers:['a1','A1'],flyers:['a2','A2'],b2first:['b2','B2']};
+const UH_ELENCO={starters:['freya','pip','nico','astrid','tomas'],movers:['valentina','luna','erik','sofia','mateo'],flyers:['maya','kili','ingrid','diego','oliver']};
+const UH_REPARTO={2:'starters',3:'movers',4:'movers',5:'flyers'};  /* = FUN_REPARTO de app/10-cursos.js */
+function uhBanda(u,plan){
+  const e=u.exam&&UH_EXAMEN[u.exam.target];
+  if(e) return {band:e[0],cefr:(u.exam.target==='b2first'&&plan&&plan.cefr)?String(plan.cefr).split(' (')[0]:e[1]};
+  if(plan&&plan.cefr) return {band:/B2/.test(plan.cefr)?'b2':'',cefr:String(plan.cefr).split(' (')[0]};
+  return {band:'',cefr:''};
+}
+function uhPersonaje(u,grade){
+  const gn=parseInt(String(grade).replace(/\D/g,''),10);
+  const lvl=(u.exam&&UH_ELENCO[u.exam.target]?u.exam.target:'')||UH_REPARTO[gn]||'';
+  const el=UH_ELENCO[lvl]; if(!el||gn>5) return null;
+  const slug=el[(((u.n-4)%el.length)+el.length)%el.length];
+  return {lvl,slug,nombre:slug[0].toUpperCase()+slug.slice(1),src:'nis-fun/assets/characters/'+lvl+'/'+slug+'/pose-03.png'};
 }
 
 function pinta(){
@@ -338,6 +383,9 @@ function pinta(){
   </div>`;
 
   const weekWord=U.stepWord||'Week';
+  const _sem=uhSemanas(U), _pj=uhPersonaje(U,GRADE);
+  let _bd=uhBanda(U,PLAN);
+  if(!_bd.band&&!_bd.cefr&&_pj&&UH_EXAMEN[_pj.lvl]) _bd={band:UH_EXAMEN[_pj.lvl][0],cefr:UH_EXAMEN[_pj.lvl][1]};
   /* Una pausa del calendario (mock, vacaciones) se pinta antes de la semana
      que la sigue: el alumno ve por que la numeracion no casa con el mes. */
   const pausaAntes=n=>(U.breaks||[]).filter(b=>b.after===n-1).map(b=>
@@ -372,16 +420,24 @@ function pinta(){
       </button>`).join('')}</div></div>`};
 
   const overview={label:'Unit overview · What you will produce',html:`
-  <div class="hero" id="hero" style="${U.cover?(U.cover.image
-      ? `background-image:linear-gradient(90deg,rgba(12,24,45,.84),rgba(12,24,45,.28)),url('${U.cover.image}');background-size:cover;background-position:center`
-      : `background:linear-gradient(135deg,${U.cover.from},${U.cover.to})`):''}">
-    ${U.cover?`<span class="motivo">${U.cover.icon}</span>`:''}
-    <p class="eyebrow">${esc(PLAN.label)} · English · Unit ${esc(String(U.label||U.n))}</p>
-    <h1>${esc(U.title)}</h1>
-    <div class="bigq">Big question — ${esc(U.bigq)}</div>
-    <p class="meta">${U.weeks} weeks · ${esc(U.situation)}</p>
-    ${U.exam?`<div class="exam-band"><b>&#127891; Cambridge · ${esc(EXAM_NAME[U.exam.target]||U.exam.target)}</b>`+
-      `<span>one extra hour a week, one paper part at a time</span></div>`:''}
+  <div class="hero unit-hero${_pj?'':' no-char'}" id="hero"${_bd.band?` data-band="${_bd.band}"`:''}
+       style="--from:${esc((U.cover&&U.cover.from)||'#244c77')};--to:${esc((U.cover&&U.cover.to)||'#4987c6')}">
+    ${U.cover&&U.cover.image?`<img class="bg" src="${esc(U.cover.image)}" alt="" decoding="async">`:''}
+    <div class="copy">
+      <div class="eyebrow"><span>${esc(PLAN.label)} &middot; English &middot; Unit ${esc(String(U.label||U.n))}</span>${_bd.cefr?`<span class="cefr">${esc(_bd.cefr)}</span>`:''}<span>${U.weeks} ${weekWord.toLowerCase()}s</span></div>
+      <h1>${esc(U.title)}</h1>
+      <p class="bigq">${esc(U.bigq)}</p>
+      ${_sem.segs.length?`<div class="track"><div class="weeks" style="--w:${_sem.segs.length}">${_sem.segs.map(x=>`<i${x.c?` class="${x.c}"`:''} title="${esc(x.t)}"></i>`).join('')}</div>
+        <div class="weeks-label"><span>${_sem.actual?`<b>${weekWord} ${_sem.actual.n}</b> of ${_sem.total} &middot; ${esc(_sem.actual.title)}`:(_sem.fechas&&_sem.hechas>=_sem.total?`<b>Done</b> &middot; ${_sem.total} of ${_sem.total}`:`<b>${_sem.total}</b> ${weekWord.toLowerCase()}s`)}</span></div></div>`:''}
+      ${haySeq?`<div class="actions">${_sem.actual
+        ?`<button type="button" class="go" data-week-jump="${_sem.actual.n}">Continue ${weekWord.toLowerCase()} ${_sem.actual.n} &#8594;</button>`
+        :`<button type="button" class="go" data-week-jump="${U.sequence[0].n}">Start ${weekWord.toLowerCase()} ${U.sequence[0].n} &#8594;</button>`}</div>`:''}
+      <p class="meta">${esc(U.situation)}</p>
+      ${U.exam?`<div class="exam-band"><b>&#127891; Cambridge · ${esc(EXAM_NAME[U.exam.target]||U.exam.target)}</b>`+
+        `<span>one extra hour a week, one paper part at a time</span></div>`:''}
+    </div>
+    ${_pj?`<img class="hero-char" src="${esc(_pj.src)}" alt="${esc(_pj.nombre)}" loading="lazy" decoding="async">`:''}
+    ${_pj&&_sem.actual?`<div class="speech">${weekWord} ${_sem.actual.n}: ${esc(_sem.actual.title)}</div>`:''}
   </div>
   ${bandaDelArco()}
   ${esProfe?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin:-6px 0 18px">
@@ -469,8 +525,9 @@ function pinta(){
      dejando el resto de la pagina sin cablear. */
   if(_portada){
     const h = $('#hero');
-    h.classList.add('foto');
-    h.style.backgroundImage = 'url("' + _portada + '")';
+    const bg = h.querySelector('img.bg');
+    if(bg){ bg.src = _portada; }
+    else { h.classList.add('foto'); h.style.backgroundImage = 'url("' + _portada + '")'; }
   }
   const rubEl = $('#rub');
   if(rubEl) rubEl.addEventListener('click', clicRubrica);

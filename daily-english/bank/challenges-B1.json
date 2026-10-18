@@ -1,0 +1,4747 @@
+[
+ {
+  "day": 1,
+  "id": "chB1-001",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ to the gym three times a week.",
+  "options": [
+   "go",
+   "going",
+   "gone",
+   "goes"
+  ]
+ },
+ {
+  "day": 2,
+  "id": "chB1-002",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I need to ___ some money from the cash machine before the trip.",
+  "options": [
+   "take off",
+   "take out",
+   "take on",
+   "take up"
+  ]
+ },
+ {
+  "day": 3,
+  "id": "chB1-003",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "If it rains tomorrow, we ___ the match.",
+  "options": [
+   "will cancel",
+   "would cancel",
+   "cancelled",
+   "would have cancelled"
+  ]
+ },
+ {
+  "day": 4,
+  "id": "chB1-004",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I have lived in this town ___ 2018.",
+  "options": [
+   "for",
+   "since",
+   "from",
+   "during"
+  ]
+ },
+ {
+  "day": 5,
+  "id": "chB1-005",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The film was so ___ that I fell asleep halfway through.",
+  "options": [
+   "bored",
+   "boring",
+   "bore",
+   "boringly"
+  ]
+ },
+ {
+  "day": 6,
+  "id": "chB1-006",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You ___ wear a uniform at our school. It's the rule.",
+  "options": [
+   "must",
+   "mustn't",
+   "needn't",
+   "might"
+  ]
+ },
+ {
+  "day": 7,
+  "id": "chB1-007",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Tom works in a bakery. He starts at five in the morning because the bread must be ready by seven. He loves the smell of fresh bread, but he dislikes getting up so early. On Sundays, he sleeps until noon and then has lunch with his grandmother.\n\nWhy does Tom start work so early?",
+  "options": [
+   "He loves the smell of bread.",
+   "The bread must be ready by seven.",
+   "He dislikes sleeping late.",
+   "His grandmother asks him to."
+  ]
+ },
+ {
+  "day": 8,
+  "id": "chB1-008",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He asked me where I ___ the night before.",
+  "options": [
+   "have been",
+   "was being",
+   "am",
+   "had been"
+  ]
+ },
+ {
+  "day": 9,
+  "id": "chB1-009",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It was raining heavily, so we decided to ___ the picnic until next weekend.",
+  "options": [
+   "put off",
+   "put on",
+   "put out",
+   "put up"
+  ]
+ },
+ {
+  "day": 10,
+  "id": "chB1-010",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I'm really looking forward ___ you at the party.",
+  "options": [
+   "to see",
+   "for seeing",
+   "to seeing",
+   "at see"
+  ]
+ },
+ {
+  "day": 11,
+  "id": "chB1-011",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The bridge ___ in 1890 by a famous engineer.",
+  "options": [
+   "built",
+   "has built",
+   "was built",
+   "is building"
+  ]
+ },
+ {
+  "day": 12,
+  "id": "chB1-012",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Could you ___ me a favour and carry this box?",
+  "options": [
+   "do",
+   "make",
+   "give",
+   "take"
+  ]
+ },
+ {
+  "day": 13,
+  "id": "chB1-013",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Would you like some more soup?\" \"No, thanks. I've had ___.\"",
+  "options": [
+   "enough",
+   "too",
+   "very",
+   "so"
+  ]
+ },
+ {
+  "day": 14,
+  "id": "chB1-014",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My sister is taller ___ me.",
+  "options": [
+   "that",
+   "than",
+   "as",
+   "from"
+  ]
+ },
+ {
+  "day": 15,
+  "id": "chB1-015",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "NOTICE: The swimming pool will be closed on Monday for cleaning. It will reopen on Tuesday at 7 a.m. Members who have booked a lesson for Monday will receive an email about a new time. Please do not come to the pool on Monday.\n\nWhat should members with a lesson on Monday do?",
+  "options": [
+   "Wait for an email with a new time.",
+   "Come on Tuesday at 7 a.m.",
+   "Telephone the pool on Monday.",
+   "Clean the pool before they swim."
+  ]
+ },
+ {
+  "day": 16,
+  "id": "chB1-016",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ of the hotel was friendly and helped us with our luggage.",
+  "options": [
+   "staff",
+   "crowd",
+   "audience",
+   "group"
+  ]
+ },
+ {
+  "day": 17,
+  "id": "chB1-017",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "By the time we arrived, the film ___.",
+  "options": [
+   "already starts",
+   "has already started",
+   "had already started",
+   "was already start"
+  ]
+ },
+ {
+  "day": 18,
+  "id": "chB1-018",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There aren't ___ eggs in the fridge, so I can't make an omelette.",
+  "options": [
+   "some",
+   "much",
+   "a",
+   "any"
+  ]
+ },
+ {
+  "day": 19,
+  "id": "chB1-019",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He's very ___ at drawing; his pictures are amazing.",
+  "options": [
+   "well",
+   "nice",
+   "good",
+   "keen"
+  ]
+ },
+ {
+  "day": 20,
+  "id": "chB1-020",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She told me ___ late for the meeting.",
+  "options": [
+   "not to be",
+   "don't be",
+   "to not being",
+   "not be"
+  ]
+ },
+ {
+  "day": 21,
+  "id": "chB1-021",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If I ___ you, I would talk to the teacher.",
+  "options": [
+   "am",
+   "were",
+   "will be",
+   "would be"
+  ]
+ },
+ {
+  "day": 22,
+  "id": "chB1-022",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Please ___ your shoes before you come into the house.",
+  "options": [
+   "get off",
+   "give off",
+   "put off",
+   "take off"
+  ]
+ },
+ {
+  "day": 23,
+  "id": "chB1-023",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm tired.\" \"___ I.\"",
+  "options": [
+   "So do",
+   "So am",
+   "Neither am",
+   "Neither do"
+  ]
+ },
+ {
+  "day": 24,
+  "id": "chB1-024",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Dear Sam, thanks for your invitation. I'd love to come to your party on Saturday, but I have a football match in the afternoon. It finishes at six, so I can be at your house by seven. Is that too late? Please let me know. Best wishes, Paul\n\nWhy might Paul arrive late?",
+  "options": [
+   "He is not hungry.",
+   "He is playing football.",
+   "He doesn't like parties.",
+   "He has to study."
+  ]
+ },
+ {
+  "day": 25,
+  "id": "chB1-025",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "This is the girl ___ won the school competition.",
+  "options": [
+   "who",
+   "which",
+   "whose",
+   "where"
+  ]
+ },
+ {
+  "day": 26,
+  "id": "chB1-026",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'm afraid the tickets are ___; there are none left.",
+  "options": [
+   "run out",
+   "sold out",
+   "used up",
+   "given away"
+  ]
+ },
+ {
+  "day": 27,
+  "id": "chB1-027",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "We didn't go out because it was raining ___.",
+  "options": [
+   "heavy",
+   "heavily",
+   "heaviest",
+   "heaviness"
+  ]
+ },
+ {
+  "day": 28,
+  "id": "chB1-028",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ TV when the phone rang.",
+  "options": [
+   "had watched",
+   "has watched",
+   "was watching",
+   "watches"
+  ]
+ },
+ {
+  "day": 29,
+  "id": "chB1-029",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It took me ages to ___ the answer to this puzzle.",
+  "options": [
+   "work on",
+   "work out",
+   "work off",
+   "work up"
+  ]
+ },
+ {
+  "day": 30,
+  "id": "chB1-030",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You should ___ more fruit and vegetables.",
+  "options": [
+   "to eat",
+   "eat",
+   "eating",
+   "eats"
+  ]
+ },
+ {
+  "day": 31,
+  "id": "chB1-031",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My parents let me ___ out until eleven on Saturdays.",
+  "options": [
+   "stay",
+   "to stay",
+   "staying",
+   "stayed"
+  ]
+ },
+ {
+  "day": 32,
+  "id": "chB1-032",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Our flight was ___ for two hours because of fog.",
+  "options": [
+   "forgotten",
+   "borrowed",
+   "delayed",
+   "prevented"
+  ]
+ },
+ {
+  "day": 33,
+  "id": "chB1-033",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How about going to the beach?\" \"That's a ___ idea!\"",
+  "options": [
+   "greatly",
+   "greater",
+   "great",
+   "greatness"
+  ]
+ },
+ {
+  "day": 34,
+  "id": "chB1-034",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The town museum opens at 10 a.m. and closes at 5 p.m. from Tuesday to Sunday. Entry is free for children under twelve. Adults pay six pounds. Guided tours are at 11 a.m. and 3 p.m. and cost two pounds extra. The museum is closed on Mondays.\n\nHow much does an adult pay for a guided tour?",
+  "options": [
+   "Six pounds",
+   "Eight pounds",
+   "Two pounds",
+   "Free"
+  ]
+ },
+ {
+  "day": 35,
+  "id": "chB1-035",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Everyone in my class ___ the answer.",
+  "options": [
+   "know",
+   "are knowing",
+   "have known",
+   "knows"
+  ]
+ },
+ {
+  "day": 36,
+  "id": "chB1-036",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "She's got a ___ voice. Everyone loves to listen to her sing.",
+  "options": [
+   "handsome",
+   "tasty",
+   "beautiful",
+   "crowded"
+  ]
+ },
+ {
+  "day": 37,
+  "id": "chB1-037",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I haven't seen him ___ last summer.",
+  "options": [
+   "for",
+   "since",
+   "ago",
+   "during"
+  ]
+ },
+ {
+  "day": 38,
+  "id": "chB1-038",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "You ___ be tired after such a long journey.",
+  "options": [
+   "needn't",
+   "can't",
+   "must",
+   "mustn't"
+  ]
+ },
+ {
+  "day": 39,
+  "id": "chB1-039",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We had a lovely ___ of the sea from our hotel window.",
+  "options": [
+   "sight",
+   "look",
+   "view",
+   "scene"
+  ]
+ },
+ {
+  "day": 40,
+  "id": "chB1-040",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The teacher said that the exam ___ next week.",
+  "options": [
+   "will be",
+   "is being",
+   "was be",
+   "would be"
+  ]
+ },
+ {
+  "day": 41,
+  "id": "chB1-041",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He enjoys ___ video games with his friends.",
+  "options": [
+   "to play",
+   "playing",
+   "play",
+   "played"
+  ]
+ },
+ {
+  "day": 42,
+  "id": "chB1-042",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The shop assistant gave me the ___ and I paid by card.",
+  "options": [
+   "recipe",
+   "reception",
+   "reply",
+   "receipt"
+  ]
+ },
+ {
+  "day": 43,
+  "id": "chB1-043",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The more you practise, ___ you will become.",
+  "options": [
+   "the best",
+   "better",
+   "best",
+   "the better"
+  ]
+ },
+ {
+  "day": 44,
+  "id": "chB1-044",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Hi Mum, I'm at Jake's house. We're doing our science project and it's taking longer than we thought. Jake's dad says he can drive me home at eight. I've had a sandwich, so don't worry about dinner. See you later! Anna\n\nWhat does Anna say about dinner?",
+  "options": [
+   "She will cook with Jake.",
+   "She wants Mum to make it.",
+   "She has already eaten.",
+   "She will eat at eight."
+  ]
+ },
+ {
+  "day": 45,
+  "id": "chB1-045",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "By next year, I ___ in this school for five years.",
+  "options": [
+   "will study",
+   "have studied",
+   "am studying",
+   "will have studied"
+  ]
+ },
+ {
+  "day": 46,
+  "id": "chB1-046",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He couldn't ___ the loud music any longer and left the room.",
+  "options": [
+   "put up",
+   "put away",
+   "put up with",
+   "put down"
+  ]
+ },
+ {
+  "day": 47,
+  "id": "chB1-047",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ dinner when the lights went out.",
+  "options": [
+   "were having",
+   "would have",
+   "have had",
+   "are having"
+  ]
+ },
+ {
+  "day": 48,
+  "id": "chB1-048",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Please ___ the form in capital letters and sign at the bottom.",
+  "options": [
+   "fill in",
+   "fill up",
+   "fill with",
+   "fill on"
+  ]
+ },
+ {
+  "day": 49,
+  "id": "chB1-049",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She is ___ than her brother at maths.",
+  "options": [
+   "best",
+   "better",
+   "more good",
+   "the best"
+  ]
+ },
+ {
+  "day": 50,
+  "id": "chB1-050",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'd rather ___ at home tonight than go out.",
+  "options": [
+   "to stay",
+   "staying",
+   "stay",
+   "stayed"
+  ]
+ },
+ {
+  "day": 51,
+  "id": "chB1-051",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "My grandmother always gives me good ___ when I have a problem.",
+  "options": [
+   "advices",
+   "advice",
+   "advise",
+   "advertising"
+  ]
+ },
+ {
+  "day": 52,
+  "id": "chB1-052",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The room was completely empty. There was ___ in it.",
+  "options": [
+   "anything",
+   "something",
+   "everything",
+   "nothing"
+  ]
+ },
+ {
+  "day": 53,
+  "id": "chB1-053",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The film starts at eight, so we ___ leave before seven.",
+  "options": [
+   "should",
+   "shouldn't",
+   "needn't",
+   "can't"
+  ]
+ },
+ {
+  "day": 54,
+  "id": "chB1-054",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Welcome to Bluebird Café! We serve breakfast from 7 a.m. to 11 a.m. and lunch from 12 to 3 p.m. We close at 5 p.m. every day except Friday, when we stay open until 9 p.m. for live music. Please tell us if you have any food allergies.\n\nWhen is live music played at the café?",
+  "options": [
+   "On Friday evenings",
+   "At breakfast time",
+   "Every day at lunch",
+   "On Sunday afternoons"
+  ]
+ },
+ {
+  "day": 55,
+  "id": "chB1-055",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It's so noisy here that I can hardly ___ myself think.",
+  "options": [
+   "listen",
+   "sound",
+   "speak",
+   "hear"
+  ]
+ },
+ {
+  "day": 56,
+  "id": "chB1-056",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He is the person ___ car was stolen last week.",
+  "options": [
+   "who",
+   "which",
+   "whose",
+   "whom"
+  ]
+ },
+ {
+  "day": 57,
+  "id": "chB1-057",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I wish I ___ more free time.",
+  "options": [
+   "would have",
+   "have",
+   "had",
+   "will have"
+  ]
+ },
+ {
+  "day": 58,
+  "id": "chB1-058",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The company wants to ___ a new product next month.",
+  "options": [
+   "lunch",
+   "launch",
+   "lend",
+   "lift"
+  ]
+ },
+ {
+  "day": 59,
+  "id": "chB1-059",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Maria isn't here. She ___ to the library.",
+  "options": [
+   "have gone",
+   "had gone",
+   "go",
+   "has gone"
+  ]
+ },
+ {
+  "day": 60,
+  "id": "chB1-060",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There's ___ milk left. We need to buy some.",
+  "options": [
+   "a few",
+   "many",
+   "hardly any",
+   "a lot"
+  ]
+ },
+ {
+  "day": 61,
+  "id": "chB1-061",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "She was ___ with joy when she heard the good news.",
+  "options": [
+   "delighted",
+   "disappointed",
+   "worried",
+   "annoyed"
+  ]
+ },
+ {
+  "day": 62,
+  "id": "chB1-062",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You ___ bring your lunch tomorrow. We're going to eat in the canteen.",
+  "options": [
+   "don't have to",
+   "mustn't",
+   "can't",
+   "shouldn't"
+  ]
+ },
+ {
+  "day": 63,
+  "id": "chB1-063",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He asked me if I ___ him a pen.",
+  "options": [
+   "can lend",
+   "could lend",
+   "will lend",
+   "lend"
+  ]
+ },
+ {
+  "day": 64,
+  "id": "chB1-064",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Last summer, Elena joined a volunteer project on the coast. Every morning, she and fifteen other young people cleaned the beach and collected rubbish. In the afternoons, they learned about sea animals. Elena says it was hard work, but she made new friends and she wants to go back next year.\n\nWhat did Elena do in the afternoons?",
+  "options": [
+   "She cleaned the beach.",
+   "She swam with friends.",
+   "She learned about sea animals.",
+   "She sold souvenirs."
+  ]
+ },
+ {
+  "day": 65,
+  "id": "chB1-065",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I need to ___ my English before the exam, so I'll practise every day.",
+  "options": [
+   "improvise",
+   "impress",
+   "improve",
+   "import"
+  ]
+ },
+ {
+  "day": 66,
+  "id": "chB1-066",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The test was easier ___ I expected.",
+  "options": [
+   "as",
+   "than",
+   "that",
+   "then"
+  ]
+ },
+ {
+  "day": 67,
+  "id": "chB1-067",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She has been studying English ___ three years.",
+  "options": [
+   "since",
+   "during",
+   "ago",
+   "for"
+  ]
+ },
+ {
+  "day": 68,
+  "id": "chB1-068",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The waiter brought us the ___ so we could choose our meal.",
+  "options": [
+   "map",
+   "menu",
+   "bill",
+   "tip"
+  ]
+ },
+ {
+  "day": 69,
+  "id": "chB1-069",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Let's meet outside the cinema ___ six o'clock.",
+  "options": [
+   "in",
+   "on",
+   "to",
+   "at"
+  ]
+ },
+ {
+  "day": 70,
+  "id": "chB1-070",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "\"Did you enjoy the trip?\" \"Yes, it was ___ best holiday of my life.\"",
+  "options": [
+   "a",
+   "an",
+   "the",
+   "—"
+  ]
+ },
+ {
+  "day": 71,
+  "id": "chB1-071",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "My phone has run ___ of battery.",
+  "options": [
+   "out",
+   "off",
+   "away",
+   "up"
+  ]
+ },
+ {
+  "day": 72,
+  "id": "chB1-072",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You look tired. You ___ go to bed early tonight.",
+  "options": [
+   "may not",
+   "should",
+   "used to",
+   "have"
+  ]
+ },
+ {
+  "day": 73,
+  "id": "chB1-073",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If she ___ harder, she would pass the exam.",
+  "options": [
+   "will study",
+   "studies",
+   "studied",
+   "had study"
+  ]
+ },
+ {
+  "day": 74,
+  "id": "chB1-074",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He didn't want to ___ his friend's feelings, so he told a kind lie.",
+  "options": [
+   "break",
+   "tear",
+   "injure",
+   "hurt"
+  ]
+ },
+ {
+  "day": 75,
+  "id": "chB1-075",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's the weather ___ today?\" \"It's sunny and warm.\"",
+  "options": [
+   "likes",
+   "liking",
+   "alike",
+   "like"
+  ]
+ },
+ {
+  "day": 76,
+  "id": "chB1-076",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The children were told ___ so much noise.",
+  "options": [
+   "don't make",
+   "to not made",
+   "not to make",
+   "not making"
+  ]
+ },
+ {
+  "day": 77,
+  "id": "chB1-077",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We stayed in a small ___ near the sea for the weekend.",
+  "options": [
+   "cathedral",
+   "palace",
+   "skyscraper",
+   "cottage"
+  ]
+ },
+ {
+  "day": 78,
+  "id": "chB1-078",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Hi everyone! Our school trip to the science museum is on Thursday. Please bring a packed lunch and a bottle of water. The bus leaves at 8.30 a.m. from the main gate, so don't be late! We will return at four. Wear comfortable shoes. Mr Hill\n\nWhat should students bring?",
+  "options": [
+   "Money for food",
+   "A camera",
+   "Lunch and water",
+   "Their school books"
+  ]
+ },
+ {
+  "day": 79,
+  "id": "chB1-079",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I didn't see anyone at the park. It was ___ empty.",
+  "options": [
+   "enough",
+   "completely",
+   "so much",
+   "very much"
+  ]
+ },
+ {
+  "day": 80,
+  "id": "chB1-080",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She spoke so quietly that I ___ hear her.",
+  "options": [
+   "could hardly",
+   "can hardly",
+   "hardly could not",
+   "would hardly"
+  ]
+ },
+ {
+  "day": 81,
+  "id": "chB1-081",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'm sorry I'm late. I got ___ in a traffic jam.",
+  "options": [
+   "caught on",
+   "trapped up",
+   "stuck",
+   "fixed"
+  ]
+ },
+ {
+  "day": 82,
+  "id": "chB1-082",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Look! Somebody ___ the window!",
+  "options": [
+   "had broken",
+   "breaks",
+   "was breaking",
+   "has broken"
+  ]
+ },
+ {
+  "day": 83,
+  "id": "chB1-083",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'll call you ___ I arrive,\" said Dad.",
+  "options": [
+   "when",
+   "while",
+   "during",
+   "since"
+  ]
+ },
+ {
+  "day": 84,
+  "id": "chB1-084",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The patient is feeling ___ today than yesterday.",
+  "options": [
+   "well",
+   "better",
+   "best",
+   "good"
+  ]
+ },
+ {
+  "day": 85,
+  "id": "chB1-085",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The students have to hand ___ their projects by Friday.",
+  "options": [
+   "out",
+   "in",
+   "off",
+   "down"
+  ]
+ },
+ {
+  "day": 86,
+  "id": "chB1-086",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He is not ___ enough to lift that heavy box.",
+  "options": [
+   "stronger",
+   "strongly",
+   "strong",
+   "strength"
+  ]
+ },
+ {
+  "day": 87,
+  "id": "chB1-087",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Have you ever ___ sushi?",
+  "options": [
+   "ate",
+   "eating",
+   "eaten",
+   "eat"
+  ]
+ },
+ {
+  "day": 88,
+  "id": "chB1-088",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The police ___ the thief near the station.",
+  "options": [
+   "robbed",
+   "escaped",
+   "stole",
+   "arrested"
+  ]
+ },
+ {
+  "day": 89,
+  "id": "chB1-089",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Would you mind opening the window?\" \"___.\"",
+  "options": [
+   "Not at all",
+   "Yes, I would",
+   "No, I do",
+   "Never mind"
+  ]
+ },
+ {
+  "day": 90,
+  "id": "chB1-090",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There were ___ people at the concert that we couldn't find a seat.",
+  "options": [
+   "so much",
+   "too much",
+   "such",
+   "so many"
+  ]
+ },
+ {
+  "day": 91,
+  "id": "chB1-091",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "After the argument, they didn't speak ___ each other for a week.",
+  "options": [
+   "at",
+   "on",
+   "for",
+   "to"
+  ]
+ },
+ {
+  "day": 92,
+  "id": "chB1-092",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "It's the first time I ___ a horse.",
+  "options": [
+   "have ridden",
+   "rode",
+   "ride",
+   "am riding"
+  ]
+ },
+ {
+  "day": 93,
+  "id": "chB1-093",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My uncle ___ in a bank for twenty years before he became a teacher.",
+  "options": [
+   "has worked",
+   "worked",
+   "was working since",
+   "works"
+  ]
+ },
+ {
+  "day": 94,
+  "id": "chB1-094",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Do you remember ___ you put your keys?",
+  "options": [
+   "where",
+   "there",
+   "what",
+   "which"
+  ]
+ },
+ {
+  "day": 95,
+  "id": "chB1-095",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She apologised ___ being late.",
+  "options": [
+   "about",
+   "for",
+   "of",
+   "with"
+  ]
+ },
+ {
+  "day": 96,
+  "id": "chB1-096",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They are going to ___ married next June.",
+  "options": [
+   "become",
+   "make",
+   "do",
+   "get"
+  ]
+ },
+ {
+  "day": 97,
+  "id": "chB1-097",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The film got very good ___ from the newspapers.",
+  "options": [
+   "views",
+   "reviews",
+   "looks",
+   "notes"
+  ]
+ },
+ {
+  "day": 98,
+  "id": "chB1-098",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I was so tired ___ I fell asleep on the sofa.",
+  "options": [
+   "that",
+   "than",
+   "as",
+   "to"
+  ]
+ },
+ {
+  "day": 99,
+  "id": "chB1-099",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Look at those clouds! It ___ rain.",
+  "options": [
+   "rains",
+   "is going to",
+   "is",
+   "would"
+  ]
+ },
+ {
+  "day": 100,
+  "id": "chB1-100",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Karen's first job was in a shoe shop. She sold shoes to customers and also looked after the shop window. She enjoyed the work, but the pay was low, so after a year she started training to be a nurse. She now works at a children's hospital and loves it.\n\nWhy did Karen change jobs?",
+  "options": [
+   "She disliked her customers.",
+   "She wanted to live abroad.",
+   "The shop closed.",
+   "The pay in the shoe shop was low."
+  ]
+ },
+ {
+  "day": 101,
+  "id": "chB1-101",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He's afraid of ___, so he never goes on a plane.",
+  "options": [
+   "flights",
+   "fly",
+   "flying",
+   "flown"
+  ]
+ },
+ {
+  "day": 102,
+  "id": "chB1-102",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm going to Paris next week.\" \"___ lucky you are!\"",
+  "options": [
+   "What",
+   "Such",
+   "So",
+   "How"
+  ]
+ },
+ {
+  "day": 103,
+  "id": "chB1-103",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I have never been ___ Italy.",
+  "options": [
+   "to",
+   "in to",
+   "on",
+   "at"
+  ]
+ },
+ {
+  "day": 104,
+  "id": "chB1-104",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Could you ___ me how to get to the station?",
+  "options": [
+   "tell",
+   "say",
+   "speak",
+   "talk"
+  ]
+ },
+ {
+  "day": 105,
+  "id": "chB1-105",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She is the ___ student in our class. Everyone asks her for help.",
+  "options": [
+   "more helpful",
+   "helpfulest",
+   "much helpful",
+   "most helpful"
+  ]
+ },
+ {
+  "day": 106,
+  "id": "chB1-106",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My brother used to ___ football, but now he plays tennis.",
+  "options": [
+   "play",
+   "playing",
+   "played",
+   "plays"
+  ]
+ },
+ {
+  "day": 107,
+  "id": "chB1-107",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Be careful! The floor is ___ and you could fall.",
+  "options": [
+   "sharp",
+   "rough",
+   "slippery",
+   "sticky"
+  ]
+ },
+ {
+  "day": 108,
+  "id": "chB1-108",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You can borrow my bike as long as you ___ it back by six.",
+  "options": [
+   "will bring",
+   "brought",
+   "bring",
+   "would bring"
+  ]
+ },
+ {
+  "day": 109,
+  "id": "chB1-109",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The shop was closed, so we ___ buy any bread.",
+  "options": [
+   "can't",
+   "couldn't",
+   "wouldn't",
+   "mustn't"
+  ]
+ },
+ {
+  "day": 110,
+  "id": "chB1-110",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Please turn ___ the music. I'm trying to study.",
+  "options": [
+   "down",
+   "in",
+   "away",
+   "up"
+  ]
+ },
+ {
+  "day": 111,
+  "id": "chB1-111",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He ran fast ___ catch the bus.",
+  "options": [
+   "to",
+   "for",
+   "at",
+   "by"
+  ]
+ },
+ {
+  "day": 112,
+  "id": "chB1-112",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "A: \"I don't like coffee.\" B: \"___ do I.\"",
+  "options": [
+   "So",
+   "Neither",
+   "Either",
+   "Too"
+  ]
+ },
+ {
+  "day": 113,
+  "id": "chB1-113",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "SUMMER CAMP\nJoin us for a week of sport, art and music! Ages 10-14. Monday to Friday, 9 a.m. to 3 p.m. Price: £120 per child, including lunch. Book before 1 June and get 10% off. Places are limited, so reserve now.\n\nHow can you get a cheaper price?",
+  "options": [
+   "Bring your own lunch",
+   "Book before 1 June",
+   "Come for only three days",
+   "Visit on Saturday"
+  ]
+ },
+ {
+  "day": 114,
+  "id": "chB1-114",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He was very ___ to help us with the move, so we thanked him a lot.",
+  "options": [
+   "kind",
+   "generosity",
+   "helpfully",
+   "pleasure"
+  ]
+ },
+ {
+  "day": 115,
+  "id": "chB1-115",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "It's ___ cold today that I'm wearing two jumpers.",
+  "options": [
+   "such",
+   "too",
+   "very much",
+   "so"
+  ]
+ },
+ {
+  "day": 116,
+  "id": "chB1-116",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She asked whether I ___ coffee or tea.",
+  "options": [
+   "prefer",
+   "am preferring",
+   "will prefer",
+   "preferred"
+  ]
+ },
+ {
+  "day": 117,
+  "id": "chB1-117",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We need to ___ a taxi because the buses have stopped.",
+  "options": [
+   "call",
+   "talk",
+   "say",
+   "tell"
+  ]
+ },
+ {
+  "day": 118,
+  "id": "chB1-118",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "My teacher has promised ___ us extra homework this week.",
+  "options": [
+   "not to give",
+   "don't give",
+   "not giving",
+   "to not given"
+  ]
+ },
+ {
+  "day": 119,
+  "id": "chB1-119",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'll come to your house as soon as I ___ my homework.",
+  "options": [
+   "will finish",
+   "finished",
+   "finish",
+   "am finishing"
+  ]
+ },
+ {
+  "day": 120,
+  "id": "chB1-120",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Our neighbour is a ___ man; he always says hello and smiles.",
+  "options": [
+   "friendly",
+   "friendship",
+   "friended",
+   "friendless"
+  ]
+ },
+ {
+  "day": 121,
+  "id": "chB1-121",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "There isn't ___ bread at home.",
+  "options": [
+   "some",
+   "a",
+   "many",
+   "any"
+  ]
+ },
+ {
+  "day": 122,
+  "id": "chB1-122",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "When I was young, we ___ to the seaside every summer.",
+  "options": [
+   "have gone",
+   "go",
+   "would be going",
+   "went"
+  ]
+ },
+ {
+  "day": 123,
+  "id": "chB1-123",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The thief ran away, but the police ___ him in the end.",
+  "options": [
+   "caught",
+   "hit",
+   "picked",
+   "took"
+  ]
+ },
+ {
+  "day": 124,
+  "id": "chB1-124",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Mr Lopez is a doctor, ___ he works at the city hospital.",
+  "options": [
+   "so that",
+   "and",
+   "in case",
+   "unless"
+  ]
+ },
+ {
+  "day": 125,
+  "id": "chB1-125",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "It's the best film I ___ this year.",
+  "options": [
+   "was seeing",
+   "had seen",
+   "have seen",
+   "see"
+  ]
+ },
+ {
+  "day": 126,
+  "id": "chB1-126",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'd like to ___ an appointment with the dentist for next Monday.",
+  "options": [
+   "make",
+   "do",
+   "have on",
+   "take"
+  ]
+ },
+ {
+  "day": 127,
+  "id": "chB1-127",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The concert was cancelled ___ the bad weather.",
+  "options": [
+   "because of",
+   "because",
+   "although",
+   "so"
+  ]
+ },
+ {
+  "day": 128,
+  "id": "chB1-128",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Mia loves painting, but she never showed her pictures to anyone. Last month, her art teacher saw one and asked if she could put it in the school exhibition. Mia was nervous, but she agreed. Many people liked her painting and one visitor even wanted to buy it.\n\nHow did Mia feel when her teacher asked about the exhibition?",
+  "options": [
+   "Angry",
+   "Nervous",
+   "Bored",
+   "Sleepy"
+  ]
+ },
+ {
+  "day": 129,
+  "id": "chB1-129",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He's the man ___ I met at the party.",
+  "options": [
+   "whose",
+   "which",
+   "where",
+   "who"
+  ]
+ },
+ {
+  "day": 130,
+  "id": "chB1-130",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'm going to ___ a shower and then have breakfast.",
+  "options": [
+   "do",
+   "make",
+   "take",
+   "put"
+  ]
+ },
+ {
+  "day": 131,
+  "id": "chB1-131",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is there anything on TV tonight?\" \"No, there ___ nothing interesting.\"",
+  "options": [
+   "are",
+   "isn't",
+   "is",
+   "aren't"
+  ]
+ },
+ {
+  "day": 132,
+  "id": "chB1-132",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ for the bus for twenty minutes when it finally arrived.",
+  "options": [
+   "had been waiting",
+   "have waited",
+   "were wait",
+   "waited since"
+  ]
+ },
+ {
+  "day": 133,
+  "id": "chB1-133",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "She was born ___ a small village near the sea.",
+  "options": [
+   "at",
+   "in",
+   "on",
+   "to"
+  ]
+ },
+ {
+  "day": 134,
+  "id": "chB1-134",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "If you ___ any questions, please ask.",
+  "options": [
+   "will have",
+   "have",
+   "had had",
+   "are having"
+  ]
+ },
+ {
+  "day": 135,
+  "id": "chB1-135",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Both my parents ___ from Peru.",
+  "options": [
+   "are",
+   "was",
+   "be",
+   "is"
+  ]
+ },
+ {
+  "day": 136,
+  "id": "chB1-136",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It's very ___ to walk alone in the park at night, so don't do it.",
+  "options": [
+   "danger",
+   "dangerous",
+   "dangerously",
+   "endangered"
+  ]
+ },
+ {
+  "day": 137,
+  "id": "chB1-137",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I forgot ___ the door, so the cat got out.",
+  "options": [
+   "closing",
+   "close",
+   "to closing",
+   "to close"
+  ]
+ },
+ {
+  "day": 138,
+  "id": "chB1-138",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He ran so quickly ___ nobody could catch him.",
+  "options": [
+   "than",
+   "as",
+   "that",
+   "which"
+  ]
+ },
+ {
+  "day": 139,
+  "id": "chB1-139",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The match ___ because of the rain.",
+  "options": [
+   "was cancelled",
+   "cancelled",
+   "has cancelling",
+   "is cancel"
+  ]
+ },
+ {
+  "day": 140,
+  "id": "chB1-140",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I always ___ my teeth before I go to bed.",
+  "options": [
+   "brush",
+   "wipe",
+   "clean up",
+   "comb"
+  ]
+ },
+ {
+  "day": 141,
+  "id": "chB1-141",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can I try this jacket on?\" \"Of course. The changing rooms are ___ the shop.\"",
+  "options": [
+   "at back of",
+   "behind from",
+   "on back of",
+   "at the back of"
+  ]
+ },
+ {
+  "day": 142,
+  "id": "chB1-142",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If you ___ the bus, you will be late for school.",
+  "options": [
+   "will miss",
+   "missed",
+   "miss",
+   "are missing"
+  ]
+ },
+ {
+  "day": 143,
+  "id": "chB1-143",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The film was based ___ a true story.",
+  "options": [
+   "on",
+   "in",
+   "at",
+   "with"
+  ]
+ },
+ {
+  "day": 144,
+  "id": "chB1-144",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "From: Lucy To: Dan\nHi Dan, I can't come to the cinema tonight. My little sister is ill, so I have to stay home with her. Can we go tomorrow instead? The film is on until Sunday. I hope you're not too disappointed. Lucy\n\nWhy can't Lucy go to the cinema?",
+  "options": [
+   "She has a cold.",
+   "She is going to work.",
+   "She doesn't like the film.",
+   "She must look after her sister."
+  ]
+ },
+ {
+  "day": 145,
+  "id": "chB1-145",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I think I ___ a cold. I keep sneezing.",
+  "options": [
+   "get",
+   "have got to",
+   "am getting",
+   "am got"
+  ]
+ },
+ {
+  "day": 146,
+  "id": "chB1-146",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She has ___ finished her homework, so she can play now.",
+  "options": [
+   "already",
+   "yet",
+   "still",
+   "ever"
+  ]
+ },
+ {
+  "day": 147,
+  "id": "chB1-147",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We had to ___ the train at Paris and take another one to Rome.",
+  "options": [
+   "change",
+   "turn",
+   "move",
+   "replace"
+  ]
+ },
+ {
+  "day": 148,
+  "id": "chB1-148",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I haven't finished my homework ___.",
+  "options": [
+   "already",
+   "yet",
+   "still",
+   "ever"
+  ]
+ },
+ {
+  "day": 149,
+  "id": "chB1-149",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "How ___ homework do you have tonight?",
+  "options": [
+   "many",
+   "few",
+   "lot",
+   "much"
+  ]
+ },
+ {
+  "day": 150,
+  "id": "chB1-150",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ of the mountain is covered in snow all year.",
+  "options": [
+   "up",
+   "head",
+   "upper side",
+   "top"
+  ]
+ },
+ {
+  "day": 151,
+  "id": "chB1-151",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Whose bag is this?\" \"It's ___.\"",
+  "options": [
+   "hers",
+   "her",
+   "she",
+   "herself"
+  ]
+ },
+ {
+  "day": 152,
+  "id": "chB1-152",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "By the time I get home, my brother ___ dinner.",
+  "options": [
+   "will have cooked",
+   "cooks",
+   "has cooked",
+   "cooked"
+  ]
+ },
+ {
+  "day": 153,
+  "id": "chB1-153",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'm not very good at ___ jokes; I always forget the ending.",
+  "options": [
+   "saying",
+   "telling",
+   "speaking",
+   "doing"
+  ]
+ },
+ {
+  "day": 154,
+  "id": "chB1-154",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The weather was awful, but we ___ had a good time.",
+  "options": [
+   "yet",
+   "never",
+   "already",
+   "still"
+  ]
+ },
+ {
+  "day": 155,
+  "id": "chB1-155",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The students ___ to bring a pen to the exam.",
+  "options": [
+   "ask",
+   "have ask",
+   "were asking",
+   "are asked"
+  ]
+ },
+ {
+  "day": 156,
+  "id": "chB1-156",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "My grandfather ___ me how to play chess when I was seven.",
+  "options": [
+   "learned",
+   "studied",
+   "taught",
+   "lectured"
+  ]
+ },
+ {
+  "day": 157,
+  "id": "chB1-157",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Marco is a taxi driver in a busy city. He starts work at six in the evening and finishes at four in the morning. He says the best part of his job is meeting people from different countries. The worst part is sleeping during the day, when the streets are noisy.\n\nWhat is the worst part of Marco's job?",
+  "options": [
+   "Meeting tourists",
+   "Starting at six",
+   "Driving at night",
+   "Sleeping in the day"
+  ]
+ },
+ {
+  "day": 158,
+  "id": "chB1-158",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I've lost my umbrella. I must have left it ___ the café.",
+  "options": [
+   "to",
+   "in",
+   "for",
+   "with"
+  ]
+ },
+ {
+  "day": 159,
+  "id": "chB1-159",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "\"Is that your phone?\" \"No, it ___ to my brother.\"",
+  "options": [
+   "belong",
+   "is belonging",
+   "belonged to",
+   "belongs"
+  ]
+ },
+ {
+  "day": 160,
+  "id": "chB1-160",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It's important to ___ a good example for younger children.",
+  "options": [
+   "put",
+   "do",
+   "set",
+   "take"
+  ]
+ },
+ {
+  "day": 161,
+  "id": "chB1-161",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He ___ be at home because his car isn't outside.",
+  "options": [
+   "must",
+   "needn't",
+   "can't",
+   "mustn't"
+  ]
+ },
+ {
+  "day": 162,
+  "id": "chB1-162",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'm not tall enough ___ the top shelf.",
+  "options": [
+   "to reach",
+   "reaching",
+   "for reach",
+   "that I reach"
+  ]
+ },
+ {
+  "day": 163,
+  "id": "chB1-163",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The meeting was ___ for ten o'clock, but it began at ten past.",
+  "options": [
+   "scheduled",
+   "schedule",
+   "scheduling",
+   "schedules"
+  ]
+ },
+ {
+  "day": 164,
+  "id": "chB1-164",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Don't forget to switch ___ the lights when you leave.",
+  "options": [
+   "away",
+   "up",
+   "off",
+   "down"
+  ]
+ },
+ {
+  "day": 165,
+  "id": "chB1-165",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My cousin, ___ lives in Canada, is visiting us next month.",
+  "options": [
+   "whose",
+   "which",
+   "who",
+   "whom"
+  ]
+ },
+ {
+  "day": 166,
+  "id": "chB1-166",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The hotel offers a free ___ from the airport.",
+  "options": [
+   "shut",
+   "shuttle",
+   "shade",
+   "shine"
+  ]
+ },
+ {
+  "day": 167,
+  "id": "chB1-167",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I've been looking for a job ___ I left school.",
+  "options": [
+   "for",
+   "from",
+   "since",
+   "until"
+  ]
+ },
+ {
+  "day": 168,
+  "id": "chB1-168",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If we had a garden, we ___ a dog.",
+  "options": [
+   "would get",
+   "will get",
+   "got",
+   "had got"
+  ]
+ },
+ {
+  "day": 169,
+  "id": "chB1-169",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He has a very ___ job; he works twelve hours a day.",
+  "options": [
+   "demanding",
+   "demand",
+   "demanded",
+   "demands"
+  ]
+ },
+ {
+  "day": 170,
+  "id": "chB1-170",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Do you mind if I open the window?\" \"No, ___ ahead.\"",
+  "options": [
+   "come",
+   "go",
+   "put",
+   "take"
+  ]
+ },
+ {
+  "day": 171,
+  "id": "chB1-171",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I wasn't sure what ___.",
+  "options": [
+   "to do",
+   "doing",
+   "did",
+   "do"
+  ]
+ },
+ {
+  "day": 172,
+  "id": "chB1-172",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The children were ___ because the film was about to start.",
+  "options": [
+   "excited",
+   "exciting",
+   "excite",
+   "excitement"
+  ]
+ },
+ {
+  "day": 173,
+  "id": "chB1-173",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Dear Customer, your order of two books and a pen has been sent today. You should receive it in three to five working days. If it hasn't arrived after seven days, please contact our customer service team by email. Thank you for shopping with us.\n\nWhat should you do if the order is late after seven days?",
+  "options": [
+   "Order again",
+   "Visit the shop",
+   "Write to customer service",
+   "Wait another week"
+  ]
+ },
+ {
+  "day": 174,
+  "id": "chB1-174",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The soup smells ___.",
+  "options": [
+   "delicious",
+   "deliciously",
+   "deliciousness",
+   "more deliciously"
+  ]
+ },
+ {
+  "day": 175,
+  "id": "chB1-175",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'm tired. I ___ since six o'clock this morning.",
+  "options": [
+   "am working",
+   "worked",
+   "work",
+   "have been working"
+  ]
+ },
+ {
+  "day": 176,
+  "id": "chB1-176",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Mum asked me to ___ the washing-up while she made a phone call.",
+  "options": [
+   "make",
+   "take",
+   "have",
+   "do"
+  ]
+ },
+ {
+  "day": 177,
+  "id": "chB1-177",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She's ___ interested in history that she reads about it every night.",
+  "options": [
+   "such",
+   "so",
+   "too",
+   "enough"
+  ]
+ },
+ {
+  "day": 178,
+  "id": "chB1-178",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The new shopping centre ___ at the moment.",
+  "options": [
+   "is building",
+   "is being built",
+   "builds",
+   "was building"
+  ]
+ },
+ {
+  "day": 179,
+  "id": "chB1-179",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'd love to ___ a trip around the world one day.",
+  "options": [
+   "take",
+   "do",
+   "have on",
+   "get"
+  ]
+ },
+ {
+  "day": 180,
+  "id": "chB1-180",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You've got a lot of homework. You'd ___ start now.",
+  "options": [
+   "best",
+   "rather",
+   "good",
+   "better"
+  ]
+ },
+ {
+  "day": 181,
+  "id": "chB1-181",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There is a lot of traffic, so I ___ be late.",
+  "options": [
+   "mustn't",
+   "don't",
+   "might",
+   "can't"
+  ]
+ },
+ {
+  "day": 182,
+  "id": "chB1-182",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The film has just ___ at our local cinema.",
+  "options": [
+   "come up",
+   "come in",
+   "come off",
+   "come out"
+  ]
+ },
+ {
+  "day": 183,
+  "id": "chB1-183",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The singer is very famous, ___ I've never heard her songs.",
+  "options": [
+   "because",
+   "that",
+   "so",
+   "but"
+  ]
+ },
+ {
+  "day": 184,
+  "id": "chB1-184",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He asked me how long I ___ English.",
+  "options": [
+   "had been studying",
+   "have studied",
+   "am studying",
+   "studied since"
+  ]
+ },
+ {
+  "day": 185,
+  "id": "chB1-185",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They ___ in this house since they got married.",
+  "options": [
+   "live",
+   "have lived",
+   "lived",
+   "are living"
+  ]
+ },
+ {
+  "day": 186,
+  "id": "chB1-186",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I don't have a car, so I usually go to work ___ bus.",
+  "options": [
+   "with",
+   "on the",
+   "by",
+   "in"
+  ]
+ },
+ {
+  "day": 187,
+  "id": "chB1-187",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "If I ___ rich, I would buy a big house by the sea.",
+  "options": [
+   "will be",
+   "am",
+   "have been",
+   "were"
+  ]
+ },
+ {
+  "day": 188,
+  "id": "chB1-188",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "You mustn't ___ in the library. It's a quiet place.",
+  "options": [
+   "talk loudly",
+   "to talk",
+   "talking loudly",
+   "talked loudly"
+  ]
+ },
+ {
+  "day": 189,
+  "id": "chB1-189",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Please ___ me a message when you arrive.",
+  "options": [
+   "send",
+   "put",
+   "bring",
+   "carry"
+  ]
+ },
+ {
+  "day": 190,
+  "id": "chB1-190",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "My name is Ahmed and I'm a student in London. I share a flat with two other students. We take turns to cook dinner, so I only cook on Mondays and Thursdays. I love living here because I can try food from different countries, but I miss my mum's cooking.\n\nHow often does Ahmed cook?",
+  "options": [
+   "Every day",
+   "Three times a week",
+   "Once a week",
+   "Twice a week"
+  ]
+ },
+ {
+  "day": 191,
+  "id": "chB1-191",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The food was ___ good that we ordered more.",
+  "options": [
+   "such",
+   "too",
+   "enough",
+   "so"
+  ]
+ },
+ {
+  "day": 192,
+  "id": "chB1-192",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I can't remember ___ I left my glasses.",
+  "options": [
+   "there",
+   "where",
+   "what",
+   "which"
+  ]
+ },
+ {
+  "day": 193,
+  "id": "chB1-193",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "She's a very ___ person; she never says anything unkind.",
+  "options": [
+   "politely",
+   "politeness",
+   "polite",
+   "politics"
+  ]
+ },
+ {
+  "day": 194,
+  "id": "chB1-194",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "We arrived ___ the airport two hours before the flight.",
+  "options": [
+   "to",
+   "at",
+   "into",
+   "on"
+  ]
+ },
+ {
+  "day": 195,
+  "id": "chB1-195",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "\"Where were you at 8 o'clock last night?\" \"I ___ dinner with my grandparents.\"",
+  "options": [
+   "had been",
+   "have",
+   "was having",
+   "am having"
+  ]
+ },
+ {
+  "day": 196,
+  "id": "chB1-196",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I need to buy a present for my sister's ___ next week.",
+  "options": [
+   "anniversary day",
+   "birthday",
+   "age",
+   "celebrate"
+  ]
+ },
+ {
+  "day": 197,
+  "id": "chB1-197",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You should ___ the instructions before you start.",
+  "options": [
+   "reading",
+   "read",
+   "to read",
+   "reads"
+  ]
+ },
+ {
+  "day": 198,
+  "id": "chB1-198",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Everybody ___ happy to see the holidays arrive.",
+  "options": [
+   "be",
+   "are",
+   "have",
+   "is"
+  ]
+ },
+ {
+  "day": 199,
+  "id": "chB1-199",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The company is going to ___ fifty new workers this year.",
+  "options": [
+   "enjoy",
+   "employee",
+   "employ",
+   "enclose"
+  ]
+ },
+ {
+  "day": 200,
+  "id": "chB1-200",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She hasn't called me ___ last week.",
+  "options": [
+   "for",
+   "ago",
+   "from",
+   "since"
+  ]
+ },
+ {
+  "day": 201,
+  "id": "chB1-201",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'd like to ___ a table for four, please.",
+  "options": [
+   "borrow",
+   "book",
+   "bring",
+   "buy"
+  ]
+ },
+ {
+  "day": 202,
+  "id": "chB1-202",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He studies very hard, ___ he gets good marks.",
+  "options": [
+   "because",
+   "so",
+   "although",
+   "unless"
+  ]
+ },
+ {
+  "day": 203,
+  "id": "chB1-203",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The bank is ___ the post office and the supermarket.",
+  "options": [
+   "between",
+   "through",
+   "among",
+   "against"
+  ]
+ },
+ {
+  "day": 204,
+  "id": "chB1-204",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My phone was stolen, so I ___ a new one.",
+  "options": [
+   "have to buy",
+   "had to buy",
+   "must bought",
+   "had buy"
+  ]
+ },
+ {
+  "day": 205,
+  "id": "chB1-205",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The children are making a lot of ___ in the garden.",
+  "options": [
+   "silence",
+   "noise",
+   "voice",
+   "music"
+  ]
+ },
+ {
+  "day": 206,
+  "id": "chB1-206",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I wish I ___ speak French.",
+  "options": [
+   "can",
+   "will",
+   "could",
+   "should"
+  ]
+ },
+ {
+  "day": 207,
+  "id": "chB1-207",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He was ___ tired to keep his eyes open.",
+  "options": [
+   "enough",
+   "too",
+   "so much",
+   "very"
+  ]
+ },
+ {
+  "day": 208,
+  "id": "chB1-208",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "They are going to ___ a new road across the valley.",
+  "options": [
+   "bring",
+   "build",
+   "burn",
+   "borrow"
+  ]
+ },
+ {
+  "day": 209,
+  "id": "chB1-209",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The teacher asked us ___ quiet.",
+  "options": [
+   "being",
+   "be",
+   "to be",
+   "that we are"
+  ]
+ },
+ {
+  "day": 210,
+  "id": "chB1-210",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The cake smells good, but I ___ it yet.",
+  "options": [
+   "haven't tried",
+   "am not trying",
+   "don't try",
+   "hadn't tried"
+  ]
+ },
+ {
+  "day": 211,
+  "id": "chB1-211",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I woke up scared because I had a horrible ___ about falling from a roof.",
+  "options": [
+   "night",
+   "sleep",
+   "nightmare",
+   "dreamer"
+  ]
+ },
+ {
+  "day": 212,
+  "id": "chB1-212",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Please be quiet. The baby ___.",
+  "options": [
+   "has sleep",
+   "sleeps",
+   "slept",
+   "is sleeping"
+  ]
+ },
+ {
+  "day": 213,
+  "id": "chB1-213",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I think it ___ rain tomorrow.",
+  "options": [
+   "going",
+   "will",
+   "is",
+   "would be"
+  ]
+ },
+ {
+  "day": 214,
+  "id": "chB1-214",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The cinema is only a five-minute ___ from my house.",
+  "options": [
+   "way",
+   "walk",
+   "road",
+   "foot"
+  ]
+ },
+ {
+  "day": 215,
+  "id": "chB1-215",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Hello! I'd like to sell my bicycle. It's blue and almost new. I bought it last year for £250, but I'm asking for £150 because I'm moving abroad. It has a basket and a bell. If you're interested, send me a message before the end of the month.\n\nWhy is the writer selling the bicycle?",
+  "options": [
+   "It is too old.",
+   "It is broken.",
+   "The writer doesn't like blue.",
+   "The writer is moving abroad."
+  ]
+ },
+ {
+  "day": 216,
+  "id": "chB1-216",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "We'll have a picnic ___ it rains.",
+  "options": [
+   "if not",
+   "until",
+   "unless",
+   "while"
+  ]
+ },
+ {
+  "day": 217,
+  "id": "chB1-217",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She hasn't been to the dentist ___ two years.",
+  "options": [
+   "since",
+   "ago",
+   "during",
+   "for"
+  ]
+ },
+ {
+  "day": 218,
+  "id": "chB1-218",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Don't forget to ___ your seatbelt before the car moves.",
+  "options": [
+   "fasten",
+   "fold",
+   "feed",
+   "fill"
+  ]
+ },
+ {
+  "day": 219,
+  "id": "chB1-219",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Would you like ___ tea or coffee?",
+  "options": [
+   "neither",
+   "both",
+   "either",
+   "some of"
+  ]
+ },
+ {
+  "day": 220,
+  "id": "chB1-220",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "\"I'm hungry.\" \"So ___ I. Let's get a snack.\"",
+  "options": [
+   "do",
+   "have",
+   "will",
+   "am"
+  ]
+ },
+ {
+  "day": 221,
+  "id": "chB1-221",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'm sorry, I didn't ___ to wake you up.",
+  "options": [
+   "hope",
+   "think",
+   "pretend",
+   "mean"
+  ]
+ },
+ {
+  "day": 222,
+  "id": "chB1-222",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "It was a ___ day, so we stayed at home.",
+  "options": [
+   "rainy",
+   "rain",
+   "rainfall",
+   "rains"
+  ]
+ },
+ {
+  "day": 223,
+  "id": "chB1-223",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The window ___ by the children last night.",
+  "options": [
+   "is broken",
+   "was broken",
+   "broke",
+   "has been breaking"
+  ]
+ },
+ {
+  "day": 224,
+  "id": "chB1-224",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He is very ___; he never forgets a face or a name.",
+  "options": [
+   "obedient",
+   "obvious",
+   "observant",
+   "oblivious"
+  ]
+ },
+ {
+  "day": 225,
+  "id": "chB1-225",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "There's a letter ___ you on the table.",
+  "options": [
+   "of",
+   "at",
+   "for",
+   "by"
+  ]
+ },
+ {
+  "day": 226,
+  "id": "chB1-226",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "You don't need ___ an umbrella; the sun is shining.",
+  "options": [
+   "to take",
+   "taking",
+   "take",
+   "took"
+  ]
+ },
+ {
+  "day": 227,
+  "id": "chB1-227",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'll ___ you up at seven and we can drive to the airport.",
+  "options": [
+   "take",
+   "bring",
+   "catch",
+   "pick"
+  ]
+ },
+ {
+  "day": 228,
+  "id": "chB1-228",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He lives in a ___ house near the river.",
+  "options": [
+   "small old wooden",
+   "wooden small old",
+   "old wooden small",
+   "small wooden old"
+  ]
+ },
+ {
+  "day": 229,
+  "id": "chB1-229",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If she doesn't hurry, she ___ the train.",
+  "options": [
+   "would miss",
+   "is missing",
+   "will miss",
+   "missed"
+  ]
+ },
+ {
+  "day": 230,
+  "id": "chB1-230",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A: \"Would you like to ___ a message?\" B: \"Yes, please tell her I called.\"",
+  "options": [
+   "let",
+   "put",
+   "leave",
+   "give up"
+  ]
+ },
+ {
+  "day": 231,
+  "id": "chB1-231",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She asked me ___ I had finished my homework.",
+  "options": [
+   "that",
+   "what",
+   "which",
+   "if"
+  ]
+ },
+ {
+  "day": 232,
+  "id": "chB1-232",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He ___ a lot of weight by going to the gym every day.",
+  "options": [
+   "lost",
+   "missed",
+   "dropped off",
+   "forgot"
+  ]
+ },
+ {
+  "day": 233,
+  "id": "chB1-233",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The film ___ by a young director from Spain.",
+  "options": [
+   "made",
+   "is making",
+   "has make",
+   "was made"
+  ]
+ },
+ {
+  "day": 234,
+  "id": "chB1-234",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I can't find my wallet. Have you ___ it?",
+  "options": [
+   "saw",
+   "see",
+   "seeing",
+   "seen"
+  ]
+ },
+ {
+  "day": 235,
+  "id": "chB1-235",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ of the apartment is very high; I can't afford it.",
+  "options": [
+   "rent",
+   "rant",
+   "rest",
+   "rink"
+  ]
+ },
+ {
+  "day": 236,
+  "id": "chB1-236",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The Greenfield Library has a new reading club for teenagers. It meets every Wednesday at 4.30 p.m. Members choose a book each month and then talk about it with a librarian. There is no cost to join, and you can borrow up to six books at a time.\n\nWhat does the reading club do each month?",
+  "options": [
+   "Visit a bookshop",
+   "Write a short story",
+   "Watch a film",
+   "Choose a book to discuss"
+  ]
+ },
+ {
+  "day": 237,
+  "id": "chB1-237",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is your brother older than you?\" \"No, he's three years ___.\"",
+  "options": [
+   "oldest",
+   "young",
+   "younger than",
+   "younger"
+  ]
+ },
+ {
+  "day": 238,
+  "id": "chB1-238",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The teacher made us ___ the exercise again.",
+  "options": [
+   "to do",
+   "do",
+   "doing",
+   "did"
+  ]
+ },
+ {
+  "day": 239,
+  "id": "chB1-239",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It was ___ of you to remember my birthday. Thank you!",
+  "options": [
+   "kindly",
+   "kind",
+   "kindness",
+   "a kind"
+  ]
+ },
+ {
+  "day": 240,
+  "id": "chB1-240",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "We can't go to the beach ___ it stops raining.",
+  "options": [
+   "while",
+   "because",
+   "since",
+   "until"
+  ]
+ },
+ {
+  "day": 241,
+  "id": "chB1-241",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He is the only person ___ understands my problem.",
+  "options": [
+   "whose",
+   "who",
+   "where",
+   "whom he"
+  ]
+ },
+ {
+  "day": 242,
+  "id": "chB1-242",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He lost his job last month and is now ___.",
+  "options": [
+   "undone",
+   "unlike",
+   "unsure",
+   "unemployed"
+  ]
+ },
+ {
+  "day": 243,
+  "id": "chB1-243",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "My sister is ___ student at the university.",
+  "options": [
+   "an",
+   "a",
+   "the one",
+   "some"
+  ]
+ },
+ {
+  "day": 244,
+  "id": "chB1-244",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If I had known about the party, I ___ come.",
+  "options": [
+   "will have",
+   "would",
+   "would have",
+   "had"
+  ]
+ },
+ {
+  "day": 245,
+  "id": "chB1-245",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'd like to ___ a complaint about the noise in the next room.",
+  "options": [
+   "do",
+   "make",
+   "give",
+   "say"
+  ]
+ },
+ {
+  "day": 246,
+  "id": "chB1-246",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You ___ forget to take your passport.",
+  "options": [
+   "needn't",
+   "mustn't",
+   "don't have to",
+   "couldn't"
+  ]
+ },
+ {
+  "day": 247,
+  "id": "chB1-247",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The film was ___ longer than I expected.",
+  "options": [
+   "much",
+   "many",
+   "very",
+   "more"
+  ]
+ },
+ {
+  "day": 248,
+  "id": "chB1-248",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The shop ___ at six o'clock, so hurry up!",
+  "options": [
+   "closes down",
+   "shuts off",
+   "finishes up",
+   "closes"
+  ]
+ },
+ {
+  "day": 249,
+  "id": "chB1-249",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Have you finished your essay?\" \"Not ___.\"",
+  "options": [
+   "already",
+   "yet",
+   "still",
+   "ever"
+  ]
+ },
+ {
+  "day": 250,
+  "id": "chB1-250",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Mr Brown, ___ daughter is in my class, is a doctor.",
+  "options": [
+   "who",
+   "which",
+   "whom",
+   "whose"
+  ]
+ },
+ {
+  "day": 251,
+  "id": "chB1-251",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "My brother is very keen ___ football; he plays every day.",
+  "options": [
+   "on",
+   "in",
+   "at",
+   "for"
+  ]
+ },
+ {
+  "day": 252,
+  "id": "chB1-252",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "There were ___ people on the bus that I had to stand.",
+  "options": [
+   "so much",
+   "so many",
+   "too much",
+   "such many"
+  ]
+ },
+ {
+  "day": 253,
+  "id": "chB1-253",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They told us ___ the museum was closed.",
+  "options": [
+   "what",
+   "that",
+   "where",
+   "for"
+  ]
+ },
+ {
+  "day": 254,
+  "id": "chB1-254",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The two teams ___ 2-2, so there was no winner.",
+  "options": [
+   "lost",
+   "beat",
+   "won",
+   "drew"
+  ]
+ },
+ {
+  "day": 255,
+  "id": "chB1-255",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Do you know ___ the nearest bank is?",
+  "options": [
+   "there",
+   "what",
+   "where",
+   "how"
+  ]
+ },
+ {
+  "day": 256,
+  "id": "chB1-256",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My mother ___ English for ten years, so she speaks it well.",
+  "options": [
+   "studied",
+   "studies",
+   "has studied",
+   "is studying"
+  ]
+ },
+ {
+  "day": 257,
+  "id": "chB1-257",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It's hard to ___ with so many people talking at once.",
+  "options": [
+   "connect",
+   "concentrate",
+   "consider",
+   "continue"
+  ]
+ },
+ {
+  "day": 258,
+  "id": "chB1-258",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I have a lot ___ homework to do tonight.",
+  "options": [
+   "from",
+   "with",
+   "for",
+   "of"
+  ]
+ },
+ {
+  "day": 259,
+  "id": "chB1-259",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He ___ his keys, so he couldn't get into the house.",
+  "options": [
+   "has lost",
+   "had lost",
+   "was losing",
+   "loses"
+  ]
+ },
+ {
+  "day": 260,
+  "id": "chB1-260",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "She was so ___ of her son when he won the prize.",
+  "options": [
+   "pride",
+   "pleased at",
+   "happy for",
+   "proud"
+  ]
+ },
+ {
+  "day": 261,
+  "id": "chB1-261",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Dear all, the school canteen will have a new menu from next Monday. There will be more vegetarian meals and a salad bar. Prices will stay the same. Students who bring packed lunches may still eat in the canteen. Please tell us what you think by writing in the box near the door.\n\nWhat will stay the same?",
+  "options": [
+   "The menu",
+   "The prices",
+   "The opening time",
+   "The canteen staff"
+  ]
+ },
+ {
+  "day": 262,
+  "id": "chB1-262",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The woman ___ car was stolen called the police.",
+  "options": [
+   "who",
+   "whose",
+   "whom",
+   "which"
+  ]
+ },
+ {
+  "day": 263,
+  "id": "chB1-263",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "You can't have ___ a good time at a boring party.",
+  "options": [
+   "so",
+   "too",
+   "such",
+   "enough"
+  ]
+ },
+ {
+  "day": 264,
+  "id": "chB1-264",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "She always makes me ___ with her funny stories.",
+  "options": [
+   "to laugh",
+   "laugh",
+   "laughing",
+   "laughed"
+  ]
+ },
+ {
+  "day": 265,
+  "id": "chB1-265",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "It's the ___ time I've seen such a big spider.",
+  "options": [
+   "one",
+   "firstly",
+   "first",
+   "before"
+  ]
+ },
+ {
+  "day": 266,
+  "id": "chB1-266",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He told me he ___ come to the party because he was ill.",
+  "options": [
+   "can't",
+   "won't",
+   "hasn't",
+   "couldn't"
+  ]
+ },
+ {
+  "day": 267,
+  "id": "chB1-267",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The thief ran away before the police could ___ him.",
+  "options": [
+   "catch",
+   "reach on",
+   "get up",
+   "hold up"
+  ]
+ },
+ {
+  "day": 268,
+  "id": "chB1-268",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Which one is yours?\" \"The red ___.\"",
+  "options": [
+   "ones",
+   "one",
+   "its",
+   "that"
+  ]
+ },
+ {
+  "day": 269,
+  "id": "chB1-269",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She hasn't called me, ___ she?",
+  "options": [
+   "hasn't",
+   "has",
+   "did",
+   "is"
+  ]
+ },
+ {
+  "day": 270,
+  "id": "chB1-270",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The sign says: \"No ___. Cars will be towed away.\"",
+  "options": [
+   "park",
+   "parked",
+   "parker",
+   "parking"
+  ]
+ },
+ {
+  "day": 271,
+  "id": "chB1-271",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You'd better take an umbrella ___ it rains.",
+  "options": [
+   "in case",
+   "if not",
+   "unless",
+   "although"
+  ]
+ },
+ {
+  "day": 272,
+  "id": "chB1-272",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I've never ___ such a beautiful sunset.",
+  "options": [
+   "seen",
+   "saw",
+   "see",
+   "sees"
+  ]
+ },
+ {
+  "day": 273,
+  "id": "chB1-273",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The film was a great ___ at the box office.",
+  "options": [
+   "succeed",
+   "successful",
+   "successfully",
+   "success"
+  ]
+ },
+ {
+  "day": 274,
+  "id": "chB1-274",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Could you tell me ___ the nearest chemist is?",
+  "options": [
+   "where is",
+   "where does",
+   "which is",
+   "where"
+  ]
+ },
+ {
+  "day": 275,
+  "id": "chB1-275",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He was walking down the street ___ he saw an old friend.",
+  "options": [
+   "during",
+   "while",
+   "when",
+   "until"
+  ]
+ },
+ {
+  "day": 276,
+  "id": "chB1-276",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We need to ___ a decision before Friday.",
+  "options": [
+   "do",
+   "take on",
+   "have to",
+   "make"
+  ]
+ },
+ {
+  "day": 277,
+  "id": "chB1-277",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Pablo started learning the guitar when he was twelve. At first, his fingers hurt and the songs sounded terrible. But he practised for twenty minutes every day, and after six months he could play three songs. Now he plays in a small band with his cousins at family parties.\n\nWhat helped Pablo improve?",
+  "options": [
+   "Joining a band",
+   "Practising every day",
+   "Buying a new guitar",
+   "Taking lessons abroad"
+  ]
+ },
+ {
+  "day": 278,
+  "id": "chB1-278",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ to the cinema yesterday, but the film was full.",
+  "options": [
+   "go",
+   "went",
+   "have gone",
+   "were going to"
+  ]
+ },
+ {
+  "day": 279,
+  "id": "chB1-279",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Please ___ your hand if you know the answer.",
+  "options": [
+   "raise",
+   "arise",
+   "arrive",
+   "rise"
+  ]
+ },
+ {
+  "day": 280,
+  "id": "chB1-280",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How long ___ you been waiting?\" \"About half an hour.\"",
+  "options": [
+   "have",
+   "are",
+   "do",
+   "did"
+  ]
+ },
+ {
+  "day": 281,
+  "id": "chB1-281",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There ___ a lot of people at the beach last Sunday.",
+  "options": [
+   "was",
+   "are",
+   "have been",
+   "were"
+  ]
+ },
+ {
+  "day": 282,
+  "id": "chB1-282",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Hi Jo, I'm writing to invite you to a barbecue at my house on Saturday at 2 p.m. We'll have burgers, salad and cake. Please bring a swimsuit because we have a small pool. If it rains, we'll move the party indoors and watch a film. Let me know if you can come. Ben\n\nWhat will happen if it rains?",
+  "options": [
+   "The party will be cancelled.",
+   "They will watch a film indoors.",
+   "They will go to a restaurant.",
+   "They will swim in the pool."
+  ]
+ },
+ {
+  "day": 283,
+  "id": "chB1-283",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The meeting has been ___ until next Thursday because the manager is ill.",
+  "options": [
+   "postponed",
+   "prevented",
+   "prepared",
+   "presented"
+  ]
+ },
+ {
+  "day": 284,
+  "id": "chB1-284",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He hasn't got ___ money, so he can't buy a new bike.",
+  "options": [
+   "too",
+   "many",
+   "enough",
+   "few"
+  ]
+ },
+ {
+  "day": 285,
+  "id": "chB1-285",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My dad used to ___ me to school every day.",
+  "options": [
+   "taking",
+   "took",
+   "taken",
+   "take"
+  ]
+ },
+ {
+  "day": 286,
+  "id": "chB1-286",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The bag was so ___ that I couldn't carry it upstairs.",
+  "options": [
+   "heaviness",
+   "heavily",
+   "heavy",
+   "heave"
+  ]
+ },
+ {
+  "day": 287,
+  "id": "chB1-287",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Hurry up! The film ___ in ten minutes.\"",
+  "options": [
+   "started",
+   "will have started",
+   "is started",
+   "starts"
+  ]
+ },
+ {
+  "day": 288,
+  "id": "chB1-288",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She enjoys ___ stories to her little brother at bedtime.",
+  "options": [
+   "to read",
+   "read",
+   "reads",
+   "reading"
+  ]
+ },
+ {
+  "day": 289,
+  "id": "chB1-289",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "ANNOUNCEMENT. Flight BA214 to Madrid is delayed by two hours because of fog. The new departure time is 4.30 p.m. Passengers can collect a free meal voucher from the information desk. Please stay near the gate and listen for further announcements.\n\nWhat can passengers get from the information desk?",
+  "options": [
+   "A new ticket",
+   "A meal voucher",
+   "A hotel room",
+   "Their luggage"
+  ]
+ },
+ {
+  "day": 290,
+  "id": "chB1-290",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I think I'll ___ the job offer, as the salary is too low.",
+  "options": [
+   "turn up",
+   "turn on",
+   "turn down",
+   "turn into"
+  ]
+ },
+ {
+  "day": 291,
+  "id": "chB1-291",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "If you want to catch the train, you ___ leave now.",
+  "options": [
+   "would better",
+   "should better",
+   "had better",
+   "have better"
+  ]
+ },
+ {
+  "day": 292,
+  "id": "chB1-292",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The man ___ sits next to me in class is from Chile.",
+  "options": [
+   "whose",
+   "whom",
+   "where",
+   "who"
+  ]
+ },
+ {
+  "day": 293,
+  "id": "chB1-293",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The concert was fantastic; the singer had an amazing ___.",
+  "options": [
+   "speech",
+   "noise",
+   "tune",
+   "voice"
+  ]
+ },
+ {
+  "day": 294,
+  "id": "chB1-294",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What a lovely garden!\" \"Thanks. It ___ every week.\"",
+  "options": [
+   "cuts",
+   "is cutting",
+   "is cut",
+   "has cut"
+  ]
+ },
+ {
+  "day": 295,
+  "id": "chB1-295",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He doesn't like his job, and ___ does his sister.",
+  "options": [
+   "so",
+   "too",
+   "neither",
+   "either"
+  ]
+ },
+ {
+  "day": 296,
+  "id": "chB1-296",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The Millers moved to a small village last year. At first, they found it too quiet. There was no cinema, and the nearest shop was two kilometres away. But now they love the fresh air and friendly neighbours, and the children have a big garden to play in.\n\nHow do the Millers feel about the village now?",
+  "options": [
+   "They are happy there.",
+   "They think it is too noisy.",
+   "They want to move back.",
+   "They miss the cinema."
+  ]
+ },
+ {
+  "day": 297,
+  "id": "chB1-297",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The teacher ___ the students for talking during the test.",
+  "options": [
+   "prevented",
+   "prayed",
+   "punished",
+   "promised"
+  ]
+ },
+ {
+  "day": 298,
+  "id": "chB1-298",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The new library is ___ than the old one.",
+  "options": [
+   "much bigger",
+   "very bigger",
+   "more big",
+   "most big"
+  ]
+ },
+ {
+  "day": 299,
+  "id": "chB1-299",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I ___ my homework by the time Mum comes home.",
+  "options": [
+   "finish",
+   "have finished",
+   "am finishing",
+   "will have finished"
+  ]
+ },
+ {
+  "day": 300,
+  "id": "chB1-300",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It took us three hours to ___ the mountain.",
+  "options": [
+   "rise",
+   "jump",
+   "climb",
+   "raise"
+  ]
+ },
+ {
+  "day": 301,
+  "id": "chB1-301",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You can't go in. The shop ___ at the moment.",
+  "options": [
+   "has been closing",
+   "closes",
+   "was closed",
+   "is closed"
+  ]
+ },
+ {
+  "day": 302,
+  "id": "chB1-302",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She said that she ___ him the day before.",
+  "options": [
+   "has seen",
+   "would see",
+   "sees",
+   "had seen"
+  ]
+ },
+ {
+  "day": 303,
+  "id": "chB1-303",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I'm sorry, I can't ___ your name. Could you repeat it?",
+  "options": [
+   "take",
+   "hold",
+   "catch",
+   "grab"
+  ]
+ },
+ {
+  "day": 304,
+  "id": "chB1-304",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Dear Mr Evans, I am writing to apply for the job of assistant in your bookshop. I am sixteen and I love reading. I have worked in my uncle's café on Saturdays for a year, so I know how to serve customers. I am available every weekend. Yours sincerely, Clara Ruiz\n\nWhy does Clara think she can do the job?",
+  "options": [
+   "She owns a bookshop.",
+   "She studies business.",
+   "She is eighteen.",
+   "She has worked with customers."
+  ]
+ },
+ {
+  "day": 305,
+  "id": "chB1-305",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The bus stop is just ___ the bank, so you cannot miss it.",
+  "options": [
+   "next",
+   "in front",
+   "opposite",
+   "front of"
+  ]
+ },
+ {
+  "day": 306,
+  "id": "chB1-306",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'd go to the party if I ___ so tired.",
+  "options": [
+   "weren't",
+   "am not",
+   "won't be",
+   "hadn't been"
+  ]
+ },
+ {
+  "day": 307,
+  "id": "chB1-307",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "It's very ___ outside; you need a coat and a scarf.",
+  "options": [
+   "frozen",
+   "freeze",
+   "freezing",
+   "freezer"
+  ]
+ },
+ {
+  "day": 308,
+  "id": "chB1-308",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He is looking forward ___ his friends again.",
+  "options": [
+   "to see",
+   "for seeing",
+   "to seeing",
+   "at see"
+  ]
+ },
+ {
+  "day": 309,
+  "id": "chB1-309",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "\"I can't swim.\" \"___ can I.\"",
+  "options": [
+   "Neither",
+   "Either",
+   "Also",
+   "Too"
+  ]
+ },
+ {
+  "day": 310,
+  "id": "chB1-310",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He's an excellent ___; he can fix anything in the house.",
+  "options": [
+   "handwriting",
+   "handyman",
+   "handshake",
+   "handbag"
+  ]
+ },
+ {
+  "day": 311,
+  "id": "chB1-311",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The Blue Whale is the largest animal on Earth. It can grow to thirty metres long and weigh as much as two hundred tonnes. Although it is so big, it eats only tiny sea animals called krill. A blue whale can eat up to four tonnes of krill a day.\n\nWhat does the blue whale eat?",
+  "options": [
+   "Fish",
+   "Seaweed",
+   "Other whales",
+   "Krill"
+  ]
+ },
+ {
+  "day": 312,
+  "id": "chB1-312",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I've been to Peru twice, but I ___ to Chile.",
+  "options": [
+   "didn't go",
+   "wasn't",
+   "haven't been",
+   "am not"
+  ]
+ },
+ {
+  "day": 313,
+  "id": "chB1-313",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "She took a deep breath and tried to ___ down before her speech.",
+  "options": [
+   "slow",
+   "stand",
+   "calm",
+   "cut"
+  ]
+ },
+ {
+  "day": 314,
+  "id": "chB1-314",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Can you help me? I can't ___ how this machine works.",
+  "options": [
+   "work out",
+   "work in",
+   "work up",
+   "work with"
+  ]
+ },
+ {
+  "day": 315,
+  "id": "chB1-315",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "It's ___ interesting book that I read it in one night.",
+  "options": [
+   "so an",
+   "such",
+   "such an",
+   "too an"
+  ]
+ },
+ {
+  "day": 316,
+  "id": "chB1-316",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The waiter forgot to ___ our order, so we waited for an hour.",
+  "options": [
+   "take",
+   "put",
+   "keep",
+   "catch"
+  ]
+ },
+ {
+  "day": 317,
+  "id": "chB1-317",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The party was ___ fun. I laughed all night.",
+  "options": [
+   "greatly",
+   "greatness",
+   "great",
+   "greater of"
+  ]
+ },
+ {
+  "day": 318,
+  "id": "chB1-318",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He must ___ at work because his car is outside.",
+  "options": [
+   "being",
+   "been",
+   "be",
+   "is"
+  ]
+ },
+ {
+  "day": 319,
+  "id": "chB1-319",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He has a good ___ of humour and makes everyone laugh.",
+  "options": [
+   "taste",
+   "feeling",
+   "mind",
+   "sense"
+  ]
+ },
+ {
+  "day": 320,
+  "id": "chB1-320",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The dog ran ___ the street and disappeared.",
+  "options": [
+   "across",
+   "between",
+   "among",
+   "beside"
+  ]
+ },
+ {
+  "day": 321,
+  "id": "chB1-321",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I have no idea ___ he lives.",
+  "options": [
+   "where does",
+   "where is",
+   "where",
+   "where do"
+  ]
+ },
+ {
+  "day": 322,
+  "id": "chB1-322",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ our dinner when the phone rang, so we didn't answer.",
+  "options": [
+   "would eat",
+   "eat",
+   "had eaten",
+   "were eating"
+  ]
+ },
+ {
+  "day": 323,
+  "id": "chB1-323",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The hotel has a swimming pool and a gym, but the rooms are rather ___.",
+  "options": [
+   "smallness",
+   "small",
+   "smally",
+   "smalling"
+  ]
+ },
+ {
+  "day": 324,
+  "id": "chB1-324",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Could I have a ___ of paper, please?",
+  "options": [
+   "pair",
+   "group",
+   "piece",
+   "couple"
+  ]
+ },
+ {
+  "day": 325,
+  "id": "chB1-325",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ in London for two years before she moved to Paris.",
+  "options": [
+   "has lived",
+   "lives",
+   "had lived",
+   "was lived"
+  ]
+ },
+ {
+  "day": 326,
+  "id": "chB1-326",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Dear Ana, thank you for your email. I'm sorry that I can't come to your wedding in July. I will be on a work trip in Japan. I hope you have a wonderful day! I will send you a present from Tokyo. With love, Sofia\n\nWhy can't Sofia go to the wedding?",
+  "options": [
+   "She will be working in Japan.",
+   "She is ill.",
+   "She doesn't like weddings.",
+   "She has no present."
+  ]
+ },
+ {
+  "day": 327,
+  "id": "chB1-327",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He's too shy to ___ new friends easily.",
+  "options": [
+   "do",
+   "get on",
+   "make",
+   "take"
+  ]
+ },
+ {
+  "day": 328,
+  "id": "chB1-328",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I would have called you if I ___ your number.",
+  "options": [
+   "have",
+   "would have",
+   "did have",
+   "had had"
+  ]
+ },
+ {
+  "day": 329,
+  "id": "chB1-329",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She must be exhausted. She ___ since five this morning.",
+  "options": [
+   "works",
+   "is working",
+   "has been working",
+   "worked"
+  ]
+ },
+ {
+  "day": 330,
+  "id": "chB1-330",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Don't worry about the mistakes. We all ___ errors sometimes.",
+  "options": [
+   "make",
+   "do",
+   "give",
+   "carry"
+  ]
+ },
+ {
+  "day": 331,
+  "id": "chB1-331",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You shouldn't ___ so much time on your phone.",
+  "options": [
+   "use",
+   "take",
+   "spend",
+   "gain"
+  ]
+ },
+ {
+  "day": 332,
+  "id": "chB1-332",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The man whose car was stolen ___ to the police station.",
+  "options": [
+   "went",
+   "going",
+   "go",
+   "has go"
+  ]
+ },
+ {
+  "day": 333,
+  "id": "chB1-333",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The hotel was very ___. It cost only twenty pounds a night.",
+  "options": [
+   "cheaply",
+   "cheap",
+   "cheapness",
+   "expensive"
+  ]
+ },
+ {
+  "day": 334,
+  "id": "chB1-334",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Tourists love the old market in the town centre. It opens every Saturday morning and sells fruit, flowers and handmade bags. Many sellers are farmers from nearby villages. Some visitors say the best thing is the live music at eleven o'clock, played by local students.\n\nWho plays music at the market?",
+  "options": [
+   "Local students",
+   "Farmers",
+   "Tourists",
+   "Shop owners"
+  ]
+ },
+ {
+  "day": 335,
+  "id": "chB1-335",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The party was ___ boring that I went home early.",
+  "options": [
+   "such",
+   "very",
+   "so",
+   "too much"
+  ]
+ },
+ {
+  "day": 336,
+  "id": "chB1-336",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'm thinking of ___ a new phone next month.",
+  "options": [
+   "to buy",
+   "buy",
+   "bought",
+   "buying"
+  ]
+ },
+ {
+  "day": 337,
+  "id": "chB1-337",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "There is a ___ in the road; be careful not to fall.",
+  "options": [
+   "hole",
+   "hall",
+   "hill",
+   "hull"
+  ]
+ },
+ {
+  "day": 338,
+  "id": "chB1-338",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "She ___ the guitar since she was five.",
+  "options": [
+   "plays",
+   "played",
+   "has played",
+   "is playing"
+  ]
+ },
+ {
+  "day": 339,
+  "id": "chB1-339",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If you had studied harder, you ___ the exam.",
+  "options": [
+   "would pass",
+   "would have passed",
+   "will pass",
+   "passed"
+  ]
+ },
+ {
+  "day": 340,
+  "id": "chB1-340",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The film is about a group of friends who ___ in a haunted house.",
+  "options": [
+   "miss out",
+   "run out",
+   "give in",
+   "get lost"
+  ]
+ },
+ {
+  "day": 341,
+  "id": "chB1-341",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Would you like to join us?\" \"Yes, I'd ___ to.\"",
+  "options": [
+   "love",
+   "enjoy",
+   "want",
+   "hope"
+  ]
+ },
+ {
+  "day": 342,
+  "id": "chB1-342",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He has ___ his homework, so he can go out now.",
+  "options": [
+   "finished",
+   "finish",
+   "finishing",
+   "finishes"
+  ]
+ },
+ {
+  "day": 343,
+  "id": "chB1-343",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The weather forecast says it will be ___ tomorrow, so take a coat.",
+  "options": [
+   "wind",
+   "windless",
+   "winds",
+   "windy"
+  ]
+ },
+ {
+  "day": 344,
+  "id": "chB1-344",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "You don't look well. ___ you feeling OK?",
+  "options": [
+   "Are",
+   "Do",
+   "Have",
+   "Will"
+  ]
+ },
+ {
+  "day": 345,
+  "id": "chB1-345",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The students were asked ___ their phones during the exam.",
+  "options": [
+   "don't use",
+   "not to use",
+   "to not used",
+   "not using"
+  ]
+ },
+ {
+  "day": 346,
+  "id": "chB1-346",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "He wasn't able to ___ the heavy box by himself.",
+  "options": [
+   "rise",
+   "arise",
+   "lift",
+   "ruin"
+  ]
+ },
+ {
+  "day": 347,
+  "id": "chB1-347",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Rosa wanted to buy a new laptop, but it was too expensive. She decided to save money for six months. She stopped buying snacks and walked to school instead of taking the bus. At last she had enough money, and she bought the laptop in a sale for less than the normal price.\n\nHow did Rosa save money?",
+  "options": [
+   "She walked to school.",
+   "She sold her old laptop.",
+   "She worked in a shop.",
+   "She asked her parents."
+  ]
+ },
+ {
+  "day": 348,
+  "id": "chB1-348",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "I'm not sure which dress to choose. They're both ___ nice.",
+  "options": [
+   "real",
+   "really",
+   "realise",
+   "reality"
+  ]
+ },
+ {
+  "day": 349,
+  "id": "chB1-349",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She was ___ nervous that she forgot her speech.",
+  "options": [
+   "such",
+   "so",
+   "too",
+   "enough"
+  ]
+ },
+ {
+  "day": 350,
+  "id": "chB1-350",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The company has decided to ___ a new office in Lima.",
+  "options": [
+   "open",
+   "pull",
+   "show",
+   "lift"
+  ]
+ },
+ {
+  "day": 351,
+  "id": "chB1-351",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "There aren't many people here, ___?",
+  "options": [
+   "aren't there",
+   "do there",
+   "are there",
+   "is there"
+  ]
+ },
+ {
+  "day": 352,
+  "id": "chB1-352",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He asked us ___ we wanted to go to the museum.",
+  "options": [
+   "what",
+   "that",
+   "whether",
+   "which"
+  ]
+ },
+ {
+  "day": 353,
+  "id": "chB1-353",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "I really need a ___ from all this work. Let's go to the beach.",
+  "options": [
+   "stop",
+   "break",
+   "quit",
+   "finish"
+  ]
+ },
+ {
+  "day": 354,
+  "id": "chB1-354",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "Could you ___ me a lift to the airport, please?",
+  "options": [
+   "bring",
+   "put",
+   "give",
+   "make"
+  ]
+ },
+ {
+  "day": 355,
+  "id": "chB1-355",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There isn't ___ butter in the fridge.",
+  "options": [
+   "any",
+   "some",
+   "few",
+   "a"
+  ]
+ },
+ {
+  "day": 356,
+  "id": "chB1-356",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The bus ___ every ten minutes, so you won't wait long.",
+  "options": [
+   "runs",
+   "drives",
+   "walks",
+   "cycles"
+  ]
+ },
+ {
+  "day": 357,
+  "id": "chB1-357",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Lakeside Hotel offers rooms with a view of the lake. Breakfast is included and is served between 7 and 10 a.m. Check-in is from 2 p.m. and check-out is by 11 a.m. If you arrive earlier, you can leave your luggage at reception. Pets are not allowed.\n\nWhat can guests do if they arrive early?",
+  "options": [
+   "Check in immediately",
+   "Leave their bags at reception",
+   "Have a free dinner",
+   "Bring their pets"
+  ]
+ },
+ {
+  "day": 358,
+  "id": "chB1-358",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "The more he practised, ___ he became.",
+  "options": [
+   "better",
+   "the better",
+   "best",
+   "the best"
+  ]
+ },
+ {
+  "day": 359,
+  "id": "chB1-359",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I ___ my wallet at home, so I can't pay for the lunch.",
+  "options": [
+   "left",
+   "have been leaving",
+   "leave",
+   "am leaving"
+  ]
+ },
+ {
+  "day": 360,
+  "id": "chB1-360",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The two cousins look very ___; people think they are twins.",
+  "options": [
+   "like",
+   "alike",
+   "similar to",
+   "same"
+  ]
+ },
+ {
+  "day": 361,
+  "id": "chB1-361",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "We've run out of sugar. Could you buy some ___ you go to the shop?",
+  "options": [
+   "during",
+   "when",
+   "until",
+   "although"
+  ]
+ },
+ {
+  "day": 362,
+  "id": "chB1-362",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She said she ___ come to the party if she finished work on time.",
+  "options": [
+   "would",
+   "will",
+   "can",
+   "shall"
+  ]
+ },
+ {
+  "day": 363,
+  "id": "chB1-363",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The children were so ___ that they fell asleep on the way home.",
+  "options": [
+   "exhausting",
+   "exhaust",
+   "exhaustion",
+   "exhausted"
+  ]
+ },
+ {
+  "day": 364,
+  "id": "chB1-364",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "He isn't here yet. I wonder ___ he is.",
+  "options": [
+   "where is",
+   "where",
+   "what is",
+   "that"
+  ]
+ },
+ {
+  "day": 365,
+  "id": "chB1-365",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My teacher always says, \"Don't give ___ when things get hard.\"",
+  "options": [
+   "on",
+   "in to",
+   "off",
+   "up"
+  ]
+ }
+]

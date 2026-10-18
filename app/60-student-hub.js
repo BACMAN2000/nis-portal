@@ -354,6 +354,7 @@ function studentHub(){
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''}${p.cefr_level?' · Level '+esc(p.cefr_level):''} — What would you like to do today?</p>
     ${schoolContentOK('news.daily') ? '<div id="news-band"></div>' : ''}
     ${_bandaMiUnidad()}
+    ${schoolContentOK('daily.english') ? '<div id="daily-english"></div>' : ''}
     <div class="grid cols-2 track-grid" style="margin-top:16px">
       ${_trackCard('🏫','My classes',gLabel+': units'+(_hasReaders?', activities, readers':', activities')+' and unit exams',classesGo,['🎯 Units','🎲 Activities'].concat(_hasReaders?['📚 Readers']:[]))}
       ${_trackCard('🎓','Cambridge',camDesc,"window._nav('cambridge')",['📘 Course','🎯 Practice tests'])}
@@ -371,6 +372,8 @@ function studentHub(){
   // clic desde la portada: Paolo pidio que se encontrara sin buscarla.
   _pintaSerie('serie-card', 'home');
   _pintaPeriodico('news-band');
+  // Daily English (daily-english/): frase, reto, escalera y cultura del día.
+  if(window.dailyEnglish) dailyEnglish.mount('daily-english');
 }
 
 /* Helpers de unidades y arcos de proyecto (unitsNode, unitPlansFor,

@@ -1,0 +1,17 @@
+{
+ "version": 1,
+ "anchor": "2026-10-18",
+ "live": {
+  "phrases-K": true,
+  "phrases-A2": true,
+  "phrases-B1": true,
+  "phrases-B2C1": true,
+  "challenges-K": true,
+  "challenges-A2": true,
+  "challenges-B1": true,
+  "challenges-B2": true,
+  "challenges-C1": true,
+  "ladders": true,
+  "culture": true
+ }
+}

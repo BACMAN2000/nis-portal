@@ -1,0 +1,4747 @@
+[
+ {
+  "day": 1,
+  "id": "chK-001",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a yellow fruit that monkeys like.",
+  "options": [
+   "carrot",
+   "banana",
+   "potato",
+   "lemon pie"
+  ]
+ },
+ {
+  "day": 2,
+  "id": "chK-002",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You wear ___ on your feet.",
+  "options": [
+   "gloves",
+   "hats",
+   "scarves",
+   "shoes"
+  ]
+ },
+ {
+  "day": 3,
+  "id": "chK-003",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ says \"moo\".",
+  "options": [
+   "cow",
+   "cat",
+   "duck",
+   "sheep"
+  ]
+ },
+ {
+  "day": 4,
+  "id": "chK-004",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "This ___ my pencil.",
+  "options": [
+   "are",
+   "am",
+   "be",
+   "is"
+  ]
+ },
+ {
+  "day": 5,
+  "id": "chK-005",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I ___ eight years old.",
+  "options": [
+   "is",
+   "am",
+   "are",
+   "be"
+  ]
+ },
+ {
+  "day": 6,
+  "id": "chK-006",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's your name?\" \"___ Ben.\"",
+  "options": [
+   "I have",
+   "He is",
+   "My name's",
+   "I am the"
+  ]
+ },
+ {
+  "day": 7,
+  "id": "chK-007",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We use a ___ to cut paper.",
+  "options": [
+   "pair of scissors",
+   "ruler",
+   "rubber",
+   "glue"
+  ]
+ },
+ {
+  "day": 8,
+  "id": "chK-008",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There ___ three cats on the sofa.",
+  "options": [
+   "is",
+   "are",
+   "am",
+   "be"
+  ]
+ },
+ {
+  "day": 9,
+  "id": "chK-009",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The opposite of \"big\" is ___.",
+  "options": [
+   "small",
+   "tall",
+   "fat",
+   "long"
+  ]
+ },
+ {
+  "day": 10,
+  "id": "chK-010",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can I have some water?\" \"Yes, ___.\"",
+  "options": [
+   "you are welcome",
+   "good morning",
+   "here you are",
+   "I am sorry"
+  ]
+ },
+ {
+  "day": 11,
+  "id": "chK-011",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ a red bag.",
+  "options": [
+   "have got",
+   "are got",
+   "is got",
+   "has got"
+  ]
+ },
+ {
+  "day": 12,
+  "id": "chK-012",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Number 7 is ___.",
+  "options": [
+   "six",
+   "eleven",
+   "seven",
+   "seventeen"
+  ]
+ },
+ {
+  "day": 13,
+  "id": "chK-013",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Tom has a dog. The dog is brown and white. Its name is Max. Max likes playing with a ball in the park. Every day, Tom and Max walk to the park after school. Max sleeps in a small bed in Tom's room. What colour is Max?",
+  "options": [
+   "Black",
+   "Yellow",
+   "Brown and white",
+   "Green and blue"
+  ]
+ },
+ {
+  "day": 14,
+  "id": "chK-014",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ football on Saturdays.",
+  "options": [
+   "plays",
+   "play",
+   "playing",
+   "played now"
+  ]
+ },
+ {
+  "day": 15,
+  "id": "chK-015",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ lives in the sea and has no legs.",
+  "options": [
+   "dog",
+   "fish",
+   "horse",
+   "rabbit"
+  ]
+ },
+ {
+  "day": 16,
+  "id": "chK-016",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How old are you?\" \"I'm ___.\"",
+  "options": [
+   "Nine years",
+   "have nine",
+   "am nine years",
+   "nine"
+  ]
+ },
+ {
+  "day": 17,
+  "id": "chK-017",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You sleep in a ___.",
+  "options": [
+   "chair",
+   "table",
+   "bed",
+   "bath"
+  ]
+ },
+ {
+  "day": 18,
+  "id": "chK-018",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He ___ like carrots.",
+  "options": [
+   "don't",
+   "isn't",
+   "doesn't",
+   "not"
+  ]
+ },
+ {
+  "day": 19,
+  "id": "chK-019",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The sun is out and it's very hot. It's a ___ day.",
+  "options": [
+   "rainy",
+   "snowy",
+   "windy",
+   "sunny"
+  ]
+ },
+ {
+  "day": 20,
+  "id": "chK-020",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Where's my bag?\" \"It's ___ the chair.\"",
+  "options": [
+   "under",
+   "between",
+   "about",
+   "at"
+  ]
+ },
+ {
+  "day": 21,
+  "id": "chK-021",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Look! The boys ___ football.",
+  "options": [
+   "are playing",
+   "plays",
+   "is play",
+   "play now"
+  ]
+ },
+ {
+  "day": 22,
+  "id": "chK-022",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A person who teaches children at school is a ___.",
+  "options": [
+   "doctor",
+   "farmer",
+   "driver",
+   "teacher"
+  ]
+ },
+ {
+  "day": 23,
+  "id": "chK-023",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "February comes after ___.",
+  "options": [
+   "March",
+   "April",
+   "January",
+   "December"
+  ]
+ },
+ {
+  "day": 24,
+  "id": "chK-024",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My brother ___ eight o'clock to school.",
+  "options": [
+   "go at",
+   "going at",
+   "goed at",
+   "goes at"
+  ]
+ },
+ {
+  "day": 25,
+  "id": "chK-025",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What time is it?\" \"It's ___.\"",
+  "options": [
+   "two and half",
+   "half past two",
+   "in two",
+   "at two half"
+  ]
+ },
+ {
+  "day": 26,
+  "id": "chK-026",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We cut food with a ___.",
+  "options": [
+   "spoon",
+   "cup",
+   "knife",
+   "plate"
+  ]
+ },
+ {
+  "day": 27,
+  "id": "chK-027",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Anna lives in a small house near the sea. She gets up at seven and has milk and bread for breakfast. At eight she walks to school with her friend Lily. After school, they play on the beach and look for shells. At six, Anna has dinner with her family. When does Anna get up?",
+  "options": [
+   "At seven",
+   "At eight",
+   "At six",
+   "At nine"
+  ]
+ },
+ {
+  "day": 28,
+  "id": "chK-028",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There ___ some milk in the fridge.",
+  "options": [
+   "is",
+   "are",
+   "am",
+   "be"
+  ]
+ },
+ {
+  "day": 29,
+  "id": "chK-029",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the part of your body you use to see.",
+  "options": [
+   "ear",
+   "eye",
+   "nose",
+   "mouth"
+  ]
+ },
+ {
+  "day": 30,
+  "id": "chK-030",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Would you like some tea?\" \"___, please.\"",
+  "options": [
+   "Yes",
+   "Please yes",
+   "No, I don't",
+   "I'd like to"
+  ]
+ },
+ {
+  "day": 31,
+  "id": "chK-031",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I ___ my homework before dinner.",
+  "options": [
+   "do",
+   "does",
+   "doing",
+   "did to"
+  ]
+ },
+ {
+  "day": 32,
+  "id": "chK-032",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A baby cow is a ___.",
+  "options": [
+   "chick",
+   "puppy",
+   "calf",
+   "kitten"
+  ]
+ },
+ {
+  "day": 33,
+  "id": "chK-033",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They ___ at home yesterday.",
+  "options": [
+   "was",
+   "were",
+   "are",
+   "is"
+  ]
+ },
+ {
+  "day": 34,
+  "id": "chK-034",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is that your coat?\" \"No, it ___.\"",
+  "options": [
+   "aren't",
+   "doesn't",
+   "isn't",
+   "don't"
+  ]
+ },
+ {
+  "day": 35,
+  "id": "chK-035",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The day after Tuesday is ___.",
+  "options": [
+   "Monday",
+   "Thursday",
+   "Friday",
+   "Wednesday"
+  ]
+ },
+ {
+  "day": 36,
+  "id": "chK-036",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She is ___ than her sister.",
+  "options": [
+   "taller",
+   "more tall",
+   "tallest",
+   "the taller"
+  ]
+ },
+ {
+  "day": 37,
+  "id": "chK-037",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You put a letter in an ___ before you send it.",
+  "options": [
+   "egg",
+   "envelope",
+   "elephant",
+   "engine"
+  ]
+ },
+ {
+  "day": 38,
+  "id": "chK-038",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's the weather like?\" \"It's ___.\"",
+  "options": [
+   "rain",
+   "rains",
+   "a rain",
+   "raining"
+  ]
+ },
+ {
+  "day": 39,
+  "id": "chK-039",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ go to school on Sunday.",
+  "options": [
+   "doesn't",
+   "aren't",
+   "don't",
+   "isn't"
+  ]
+ },
+ {
+  "day": 40,
+  "id": "chK-040",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "It is Sam's birthday today. He is ten. His mum makes a big chocolate cake. His friends come at four o'clock and bring presents. They play games in the garden and eat pizza. At six, everybody sings Happy Birthday. Sam is very happy. What does Sam's mum make?",
+  "options": [
+   "A chocolate cake",
+   "A pizza",
+   "A present",
+   "A game"
+  ]
+ },
+ {
+  "day": 41,
+  "id": "chK-041",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a place where you can borrow books.",
+  "options": [
+   "bakery",
+   "garage",
+   "library",
+   "bank"
+  ]
+ },
+ {
+  "day": 42,
+  "id": "chK-042",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My cat ___ on the sofa now.",
+  "options": [
+   "is sleeping",
+   "sleeps now",
+   "sleep",
+   "slept now"
+  ]
+ },
+ {
+  "day": 43,
+  "id": "chK-043",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The colour of grass is ___.",
+  "options": [
+   "green",
+   "purple",
+   "pink",
+   "orange"
+  ]
+ },
+ {
+  "day": 44,
+  "id": "chK-044",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Thank you for the present!\" \"___.\"",
+  "options": [
+   "Please",
+   "You're welcome",
+   "Excuse me",
+   "Good luck"
+  ]
+ },
+ {
+  "day": 45,
+  "id": "chK-045",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "How ___ apples are there in the bag?",
+  "options": [
+   "many",
+   "much",
+   "lot",
+   "any"
+  ]
+ },
+ {
+  "day": 46,
+  "id": "chK-046",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We drink tea from a ___.",
+  "options": [
+   "cup",
+   "fork",
+   "plate",
+   "pan"
+  ]
+ },
+ {
+  "day": 47,
+  "id": "chK-047",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ to the cinema last Friday.",
+  "options": [
+   "goes",
+   "going",
+   "go",
+   "went"
+  ]
+ },
+ {
+  "day": 48,
+  "id": "chK-048",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a small bird with a red chest.",
+  "options": [
+   "robin",
+   "shark",
+   "bear",
+   "horse"
+  ]
+ },
+ {
+  "day": 49,
+  "id": "chK-049",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can you swim?\" \"___.\"",
+  "options": [
+   "Yes, I do",
+   "Yes, I am",
+   "Yes, I swim can",
+   "Yes, I can"
+  ]
+ },
+ {
+  "day": 50,
+  "id": "chK-050",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There ___ no sugar in my tea.",
+  "options": [
+   "is",
+   "are",
+   "have",
+   "do"
+  ]
+ },
+ {
+  "day": 51,
+  "id": "chK-051",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The place where a farmer keeps cows is a ___.",
+  "options": [
+   "school",
+   "farm",
+   "hospital",
+   "cinema"
+  ]
+ },
+ {
+  "day": 52,
+  "id": "chK-052",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Please give ___ the book.",
+  "options": [
+   "I",
+   "my",
+   "me",
+   "mine"
+  ]
+ },
+ {
+  "day": 53,
+  "id": "chK-053",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You use a ___ to clean your teeth.",
+  "options": [
+   "hairbrush",
+   "toothbrush",
+   "spoon",
+   "comb"
+  ]
+ },
+ {
+  "day": 54,
+  "id": "chK-054",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Do you like bananas?\" \"No, I ___.\"",
+  "options": [
+   "isn't",
+   "doesn't",
+   "don't",
+   "can't"
+  ]
+ },
+ {
+  "day": 55,
+  "id": "chK-055",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My sister ___ a bike to school every day.",
+  "options": [
+   "rides",
+   "ride",
+   "riding",
+   "rided"
+  ]
+ },
+ {
+  "day": 56,
+  "id": "chK-056",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Last Saturday, the Brown family went to the zoo. They saw elephants, monkeys and a very big snake. Lucy gave a banana to a monkey, and the monkey took her hat! Everybody laughed. At the end, they had ice cream near the lions. What did the monkey take?",
+  "options": [
+   "A banana",
+   "An ice cream",
+   "Lucy's hat",
+   "A snake"
+  ]
+ },
+ {
+  "day": 57,
+  "id": "chK-057",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a big vehicle that takes many children to school.",
+  "options": [
+   "boat",
+   "bus",
+   "plane",
+   "bicycle"
+  ]
+ },
+ {
+  "day": 58,
+  "id": "chK-058",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I haven't got ___ brothers.",
+  "options": [
+   "some",
+   "any",
+   "a",
+   "an"
+  ]
+ },
+ {
+  "day": 59,
+  "id": "chK-059",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Whose bag is this?\" \"It's ___.\"",
+  "options": [
+   "mine",
+   "my",
+   "I",
+   "me"
+  ]
+ },
+ {
+  "day": 60,
+  "id": "chK-060",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "When it is cold, I wear a ___.",
+  "options": [
+   "T-shirt",
+   "coat",
+   "sandal",
+   "swimsuit"
+  ]
+ },
+ {
+  "day": 61,
+  "id": "chK-061",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He ___ his teeth twice a day.",
+  "options": [
+   "brush",
+   "brushing",
+   "brushs",
+   "brushes"
+  ]
+ },
+ {
+  "day": 62,
+  "id": "chK-062",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ lays eggs and says \"cluck\".",
+  "options": [
+   "hen",
+   "dog",
+   "cat",
+   "frog"
+  ]
+ },
+ {
+  "day": 63,
+  "id": "chK-063",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Let's play a game!\" \"___!\"",
+  "options": [
+   "Thank you",
+   "Sorry",
+   "Good idea",
+   "Goodbye"
+  ]
+ },
+ {
+  "day": 64,
+  "id": "chK-064",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Tom is ___ boy in my class.",
+  "options": [
+   "the tallest",
+   "taller",
+   "more tall",
+   "tall"
+  ]
+ },
+ {
+  "day": 65,
+  "id": "chK-065",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You can see lots of fish in the ___.",
+  "options": [
+   "desert",
+   "sea",
+   "road",
+   "kitchen"
+  ]
+ },
+ {
+  "day": 66,
+  "id": "chK-066",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Mum ___ in the kitchen at the moment.",
+  "options": [
+   "cooks",
+   "cook",
+   "is cooking",
+   "cooked"
+  ]
+ },
+ {
+  "day": 67,
+  "id": "chK-067",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How much is the ice cream?\" \"It's two ___.\"",
+  "options": [
+   "pound",
+   "poundes",
+   "pounds",
+   "poundings"
+  ]
+ },
+ {
+  "day": 68,
+  "id": "chK-068",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You read a ___ to find a new story.",
+  "options": [
+   "book",
+   "ball",
+   "bed",
+   "bike"
+  ]
+ },
+ {
+  "day": 69,
+  "id": "chK-069",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Look at ___ dog! It's very big.",
+  "options": [
+   "those",
+   "these",
+   "that",
+   "them"
+  ]
+ },
+ {
+  "day": 70,
+  "id": "chK-070",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the season when leaves fall from trees.",
+  "options": [
+   "spring",
+   "summer",
+   "winter",
+   "autumn"
+  ]
+ },
+ {
+  "day": 71,
+  "id": "chK-071",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can I come in, please?\" \"___.\"",
+  "options": [
+   "Yes, I go",
+   "Yes, you can to",
+   "Yes, coming in",
+   "Yes, come in"
+  ]
+ },
+ {
+  "day": 72,
+  "id": "chK-072",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ breakfast at 7:30 every day.",
+  "options": [
+   "have",
+   "has",
+   "having",
+   "had to"
+  ]
+ },
+ {
+  "day": 73,
+  "id": "chK-073",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who flies a plane.",
+  "options": [
+   "waiter",
+   "pilot",
+   "nurse",
+   "baker"
+  ]
+ },
+ {
+  "day": 74,
+  "id": "chK-074",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "On Monday, the weather was very bad. It rained all day, so the children stayed inside. They painted pictures and played a board game. On Tuesday, the sun came out. They went to the playground and played on the swings. They were very happy. Why did the children stay inside on Monday?",
+  "options": [
+   "They were ill",
+   "It was too hot",
+   "It rained",
+   "They had a test"
+  ]
+ },
+ {
+  "day": 75,
+  "id": "chK-075",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ to the park tomorrow.",
+  "options": [
+   "go yesterday",
+   "went",
+   "going",
+   "are going"
+  ]
+ },
+ {
+  "day": 76,
+  "id": "chK-076",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Dogs love to chew a ___.",
+  "options": [
+   "bone",
+   "stone",
+   "flower",
+   "coin"
+  ]
+ },
+ {
+  "day": 77,
+  "id": "chK-077",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Sorry, I'm late!\" \"___.\"",
+  "options": [
+   "You're welcome",
+   "Yes, please",
+   "Good night",
+   "That's OK"
+  ]
+ },
+ {
+  "day": 78,
+  "id": "chK-078",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Yesterday I ___ a lovely film.",
+  "options": [
+   "watch",
+   "watches",
+   "am watching",
+   "watched"
+  ]
+ },
+ {
+  "day": 79,
+  "id": "chK-079",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A person who looks after sick people in a hospital is a ___.",
+  "options": [
+   "farmer",
+   "nurse",
+   "pilot",
+   "singer"
+  ]
+ },
+ {
+  "day": 80,
+  "id": "chK-080",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's the matter?\" \"I've got a ___.\"",
+  "options": [
+   "tooth ache the",
+   "ache tooth",
+   "tooth hurts",
+   "toothache"
+  ]
+ },
+ {
+  "day": 81,
+  "id": "chK-081",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My father is ___ than my uncle.",
+  "options": [
+   "older",
+   "oldest",
+   "more old",
+   "the old"
+  ]
+ },
+ {
+  "day": 82,
+  "id": "chK-082",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Water becomes ___ when it is very, very cold.",
+  "options": [
+   "ice",
+   "steam",
+   "sand",
+   "fire"
+  ]
+ },
+ {
+  "day": 83,
+  "id": "chK-083",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There ___ a lot of children in the playground.",
+  "options": [
+   "is",
+   "was",
+   "be",
+   "are"
+  ]
+ },
+ {
+  "day": 84,
+  "id": "chK-084",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Would you like to come to my party?\" \"___, I'd love to.\"",
+  "options": [
+   "Thank",
+   "Sorry",
+   "Yes",
+   "Please"
+  ]
+ },
+ {
+  "day": 85,
+  "id": "chK-085",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You need a ___ to open a door.",
+  "options": [
+   "cup",
+   "cloud",
+   "key",
+   "candle"
+  ]
+ },
+ {
+  "day": 86,
+  "id": "chK-086",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ her homework when the phone rang.",
+  "options": [
+   "was doing",
+   "does",
+   "did doing",
+   "is doing"
+  ]
+ },
+ {
+  "day": 87,
+  "id": "chK-087",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "My grandmother's husband is my ___.",
+  "options": [
+   "grandfather",
+   "uncle",
+   "cousin",
+   "brother"
+  ]
+ },
+ {
+  "day": 88,
+  "id": "chK-088",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Jack wants to be a firefighter. Every morning he puts on his red helmet and plays with his toy fire engine. Last week, his dad took him to a real fire station. A firefighter let him sit in the engine and press the siren. Jack was very excited. What does Jack want to be?",
+  "options": [
+   "A pilot",
+   "A teacher",
+   "A firefighter",
+   "A doctor"
+  ]
+ },
+ {
+  "day": 89,
+  "id": "chK-089",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I can't find ___ glasses.",
+  "options": [
+   "my",
+   "me",
+   "mine",
+   "I"
+  ]
+ },
+ {
+  "day": 90,
+  "id": "chK-090",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Which bag is yours?\" \"The ___ one.\"",
+  "options": [
+   "bluely",
+   "in blue",
+   "blue",
+   "blues"
+  ]
+ },
+ {
+  "day": 91,
+  "id": "chK-091",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the largest animal on land.",
+  "options": [
+   "dolphin",
+   "rabbit",
+   "giraffe",
+   "elephant"
+  ]
+ },
+ {
+  "day": 92,
+  "id": "chK-092",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ our cousins last summer.",
+  "options": [
+   "visit",
+   "visited",
+   "visiting",
+   "visits"
+  ]
+ },
+ {
+  "day": 93,
+  "id": "chK-093",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If you are not afraid, you are ___.",
+  "options": [
+   "brave",
+   "angry",
+   "tired",
+   "late"
+  ]
+ },
+ {
+  "day": 94,
+  "id": "chK-094",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is there a bank near here?\" \"Yes, it's ___ the post office.\"",
+  "options": [
+   "next to",
+   "in front",
+   "between of",
+   "on"
+  ]
+ },
+ {
+  "day": 95,
+  "id": "chK-095",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He doesn't ___ to school by bus.",
+  "options": [
+   "goes",
+   "going",
+   "go",
+   "went"
+  ]
+ },
+ {
+  "day": 96,
+  "id": "chK-096",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We use an ___ when it rains.",
+  "options": [
+   "umbrella",
+   "ice cream",
+   "elbow",
+   "egg"
+  ]
+ },
+ {
+  "day": 97,
+  "id": "chK-097",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My brother ___ than me.",
+  "options": [
+   "runs fast",
+   "runs faster",
+   "run faster",
+   "more fast runs"
+  ]
+ },
+ {
+  "day": 98,
+  "id": "chK-098",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can I borrow your pen?\" \"Sure, ___.\"",
+  "options": [
+   "you're welcome",
+   "I'm sorry",
+   "here you are",
+   "how are you"
+  ]
+ },
+ {
+  "day": 99,
+  "id": "chK-099",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a room where you cook food.",
+  "options": [
+   "kitchen",
+   "bedroom",
+   "garage",
+   "garden"
+  ]
+ },
+ {
+  "day": 100,
+  "id": "chK-100",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If it rains, we ___ at home.",
+  "options": [
+   "stayed",
+   "stays",
+   "will stay",
+   "staying"
+  ]
+ },
+ {
+  "day": 101,
+  "id": "chK-101",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The opposite of \"empty\" is ___.",
+  "options": [
+   "short",
+   "thin",
+   "slow",
+   "full"
+  ]
+ },
+ {
+  "day": 102,
+  "id": "chK-102",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The school library is on the first floor. It opens at nine o'clock and closes at four. Students can borrow three books for two weeks. There is a special corner with comics and a big cushion. On Fridays, the librarian reads a story. When does the library close?",
+  "options": [
+   "At four",
+   "At nine",
+   "At two",
+   "At five"
+  ]
+ },
+ {
+  "day": 103,
+  "id": "chK-103",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "How ___ is this T-shirt? It's five pounds.",
+  "options": [
+   "many",
+   "much",
+   "old",
+   "long"
+  ]
+ },
+ {
+  "day": 104,
+  "id": "chK-104",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Do you want tea or coffee?\" \"___, please.\"",
+  "options": [
+   "Yes",
+   "No",
+   "Tea",
+   "Thanks you"
+  ]
+ },
+ {
+  "day": 105,
+  "id": "chK-105",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who makes bread and cakes.",
+  "options": [
+   "plumber",
+   "baker",
+   "pilot",
+   "painter"
+  ]
+ },
+ {
+  "day": 106,
+  "id": "chK-106",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My parents ___ in a big city.",
+  "options": [
+   "lives",
+   "live",
+   "living",
+   "lived to"
+  ]
+ },
+ {
+  "day": 107,
+  "id": "chK-107",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "When you are very, very happy, you may ___.",
+  "options": [
+   "frown",
+   "sleep",
+   "laugh",
+   "shout angrily"
+  ]
+ },
+ {
+  "day": 108,
+  "id": "chK-108",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm sorry, I broke your cup.\" \"___.\"",
+  "options": [
+   "You're welcome",
+   "Happy birthday",
+   "Don't worry",
+   "Good luck"
+  ]
+ },
+ {
+  "day": 109,
+  "id": "chK-109",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Look at those clouds. It ___ rain.",
+  "options": [
+   "is going to",
+   "goes",
+   "going",
+   "did"
+  ]
+ },
+ {
+  "day": 110,
+  "id": "chK-110",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ shines in the sky at night.",
+  "options": [
+   "rainbow",
+   "snow",
+   "moon",
+   "wind"
+  ]
+ },
+ {
+  "day": 111,
+  "id": "chK-111",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She was tired, ___ she went to bed early.",
+  "options": [
+   "but",
+   "or",
+   "so",
+   "because"
+  ]
+ },
+ {
+  "day": 112,
+  "id": "chK-112",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Where did you go on holiday?\" \"We ___ to the mountains.\"",
+  "options": [
+   "go",
+   "going",
+   "gone",
+   "went"
+  ]
+ },
+ {
+  "day": 113,
+  "id": "chK-113",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A very big boat that carries many people over the sea is a ___.",
+  "options": [
+   "bike",
+   "ship",
+   "taxi",
+   "train"
+  ]
+ },
+ {
+  "day": 114,
+  "id": "chK-114",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They ___ TV at nine o'clock last night.",
+  "options": [
+   "are watching",
+   "were watching",
+   "watch",
+   "will watching"
+  ]
+ },
+ {
+  "day": 115,
+  "id": "chK-115",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Mia loves painting. On Sundays she goes to the park with her paints and a small chair. She paints trees, ducks and children on the swings. Today she painted a big rainbow over the lake. A man stopped and said, \"That's beautiful!\" Mia smiled and said \"Thank you!\" What did Mia paint today?",
+  "options": [
+   "A rainbow",
+   "A duck",
+   "A swing",
+   "A chair"
+  ]
+ },
+ {
+  "day": 116,
+  "id": "chK-116",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a hot, dry place with lots of sand.",
+  "options": [
+   "desert",
+   "forest",
+   "lake",
+   "island"
+  ]
+ },
+ {
+  "day": 117,
+  "id": "chK-117",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I would like ___ water, please.",
+  "options": [
+   "any",
+   "some",
+   "a",
+   "an"
+  ]
+ },
+ {
+  "day": 118,
+  "id": "chK-118",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What does your father do?\" \"He's a ___.\"",
+  "options": [
+   "doctors",
+   "doctoring",
+   "doctor",
+   "doctor is"
+  ]
+ },
+ {
+  "day": 119,
+  "id": "chK-119",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ of a building is its top covering.",
+  "options": [
+   "wall",
+   "roof",
+   "floor",
+   "door"
+  ]
+ },
+ {
+  "day": 120,
+  "id": "chK-120",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My bike is ___ than yours. It's new.",
+  "options": [
+   "gooder",
+   "more good",
+   "best",
+   "better"
+  ]
+ },
+ {
+  "day": 121,
+  "id": "chK-121",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a small animal with a long tail that squeaks and lives in houses.",
+  "options": [
+   "whale",
+   "mouse",
+   "goat",
+   "cow"
+  ]
+ },
+ {
+  "day": 122,
+  "id": "chK-122",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How often do you go swimming?\" \"___ a week.\"",
+  "options": [
+   "Two",
+   "Twice",
+   "Second",
+   "Twenty"
+  ]
+ },
+ {
+  "day": 123,
+  "id": "chK-123",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Tom ___ his bike when he fell down.",
+  "options": [
+   "riding",
+   "rides",
+   "ride",
+   "was riding"
+  ]
+ },
+ {
+  "day": 124,
+  "id": "chK-124",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the meal you eat in the evening.",
+  "options": [
+   "breakfast",
+   "snack",
+   "dinner",
+   "lunch"
+  ]
+ },
+ {
+  "day": 125,
+  "id": "chK-125",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She hasn't ___ her homework yet.",
+  "options": [
+   "finish",
+   "finishes",
+   "finished",
+   "finishing"
+  ]
+ },
+ {
+  "day": 126,
+  "id": "chK-126",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "My name is Carlos and I live on a farm. We have five cows, two horses and many chickens. Every morning I give the chickens food and collect the eggs. After school, I help my father in the field. I love the farm because I can play outside all day. What does Carlos do every morning?",
+  "options": [
+   "He rides a horse",
+   "He milks the cows",
+   "He goes to the shop",
+   "He feeds the chickens"
+  ]
+ },
+ {
+  "day": 127,
+  "id": "chK-127",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Excuse me, how do I get to the station?\" \"___ straight on.\"",
+  "options": [
+   "Going",
+   "Goes",
+   "Gone",
+   "Go"
+  ]
+ },
+ {
+  "day": 128,
+  "id": "chK-128",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Your ___ is the part of your body between your head and your shoulders.",
+  "options": [
+   "neck",
+   "knee",
+   "elbow",
+   "back"
+  ]
+ },
+ {
+  "day": 129,
+  "id": "chK-129",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She is the girl ___ won the race.",
+  "options": [
+   "which",
+   "who",
+   "where",
+   "what"
+  ]
+ },
+ {
+  "day": 130,
+  "id": "chK-130",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We say \"Happy ___!\" on the first day of the year.",
+  "options": [
+   "Easter",
+   "birthday",
+   "New Year",
+   "Halloween"
+  ]
+ },
+ {
+  "day": 131,
+  "id": "chK-131",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Shall we go to the beach?\" \"Yes, ___.\"",
+  "options": [
+   "we do",
+   "go",
+   "let's",
+   "we're"
+  ]
+ },
+ {
+  "day": 132,
+  "id": "chK-132",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "This is the ___ film I've ever seen!",
+  "options": [
+   "funniest",
+   "funnier",
+   "most funny",
+   "funny"
+  ]
+ },
+ {
+  "day": 133,
+  "id": "chK-133",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Your ___ is the day you were born.",
+  "options": [
+   "birthday",
+   "holiday",
+   "weekend",
+   "season"
+  ]
+ },
+ {
+  "day": 134,
+  "id": "chK-134",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "What ___ you do last night?",
+  "options": [
+   "do",
+   "does",
+   "are",
+   "did"
+  ]
+ },
+ {
+  "day": 135,
+  "id": "chK-135",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Whose turn is it?\" \"It's ___.\"",
+  "options": [
+   "Toms",
+   "of Tom",
+   "Tom is",
+   "Tom's"
+  ]
+ },
+ {
+  "day": 136,
+  "id": "chK-136",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The place where you can buy medicine is a ___.",
+  "options": [
+   "chemist's",
+   "bakery",
+   "library",
+   "petrol station"
+  ]
+ },
+ {
+  "day": 137,
+  "id": "chK-137",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If I ___ rich, I would buy a big boat.",
+  "options": [
+   "am",
+   "were",
+   "will be",
+   "was being"
+  ]
+ },
+ {
+  "day": 138,
+  "id": "chK-138",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a long, thin animal without legs.",
+  "options": [
+   "spider",
+   "snake",
+   "duck",
+   "monkey"
+  ]
+ },
+ {
+  "day": 139,
+  "id": "chK-139",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Would you mind opening the window?\" \"___.\"",
+  "options": [
+   "Not at all",
+   "Yes, I do",
+   "I'm sorry, thanks",
+   "Of nothing"
+  ]
+ },
+ {
+  "day": 140,
+  "id": "chK-140",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He asked me ___ I was from.",
+  "options": [
+   "what",
+   "where",
+   "who",
+   "how many"
+  ]
+ },
+ {
+  "day": 141,
+  "id": "chK-141",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Last night, there was a storm. The wind was very strong and blew some chairs across the garden. Kate heard the thunder and hid under her blanket. In the morning, the sun came out and everything was quiet. The garden was full of leaves. Kate and her dad cleaned up together. What did Kate do during the storm?",
+  "options": [
+   "She ran outside",
+   "She played with chairs",
+   "She hid under her blanket",
+   "She went to school"
+  ]
+ },
+ {
+  "day": 142,
+  "id": "chK-142",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The words \"big\" and \"huge\" mean almost the ___.",
+  "options": [
+   "end",
+   "top",
+   "first",
+   "same"
+  ]
+ },
+ {
+  "day": 143,
+  "id": "chK-143",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Ben is good ___ drawing.",
+  "options": [
+   "at",
+   "in",
+   "on",
+   "for"
+  ]
+ },
+ {
+  "day": 144,
+  "id": "chK-144",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I can't find my keys.\" \"Have you looked ___ your bag?\"",
+  "options": [
+   "in",
+   "to",
+   "on top",
+   "between"
+  ]
+ },
+ {
+  "day": 145,
+  "id": "chK-145",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If something costs a lot of money, it is ___.",
+  "options": [
+   "cheap",
+   "free",
+   "expensive",
+   "early"
+  ]
+ },
+ {
+  "day": 146,
+  "id": "chK-146",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They ___ to music when I came in.",
+  "options": [
+   "are listening",
+   "were listening",
+   "listened",
+   "listens"
+  ]
+ },
+ {
+  "day": 147,
+  "id": "chK-147",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You can wash your hands with water and ___.",
+  "options": [
+   "salt",
+   "sugar",
+   "paper",
+   "soap"
+  ]
+ },
+ {
+  "day": 148,
+  "id": "chK-148",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I ___ never been to Cusco.",
+  "options": [
+   "has",
+   "am",
+   "have",
+   "did"
+  ]
+ },
+ {
+  "day": 149,
+  "id": "chK-149",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How was the film?\" \"It was ___ boring that I fell asleep.\"",
+  "options": [
+   "such",
+   "too",
+   "very much",
+   "so"
+  ]
+ },
+ {
+  "day": 150,
+  "id": "chK-150",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who drives a taxi.",
+  "options": [
+   "chef",
+   "dentist",
+   "driver",
+   "singer"
+  ]
+ },
+ {
+  "day": 151,
+  "id": "chK-151",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Emma ___ the piano for three years.",
+  "options": [
+   "plays",
+   "played",
+   "is playing",
+   "has played"
+  ]
+ },
+ {
+  "day": 152,
+  "id": "chK-152",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "At the weekend, Pedro's family went camping near a river. They put up a tent and made a fire. In the evening, they cooked sausages and told funny stories. At night, Pedro heard strange sounds, but it was only an owl. The next morning, they swam in the river. Where did Pedro's family go?",
+  "options": [
+   "To the beach",
+   "Camping near a river",
+   "To a hotel",
+   "To the mountains"
+  ]
+ },
+ {
+  "day": 153,
+  "id": "chK-153",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the person who writes a book.",
+  "options": [
+   "editor",
+   "author",
+   "reader",
+   "printer"
+  ]
+ },
+ {
+  "day": 154,
+  "id": "chK-154",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'd rather ___ at home today.",
+  "options": [
+   "to stay",
+   "staying",
+   "stay",
+   "stayed"
+  ]
+ },
+ {
+  "day": 155,
+  "id": "chK-155",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Do you mind if I sit here?\" \"No, ___.\"",
+  "options": [
+   "go ahead",
+   "I do",
+   "it does",
+   "I'm mind"
+  ]
+ },
+ {
+  "day": 156,
+  "id": "chK-156",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A road with many cars and houses along it is a ___.",
+  "options": [
+   "beach",
+   "island",
+   "street",
+   "field"
+  ]
+ },
+ {
+  "day": 157,
+  "id": "chK-157",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The picture was painted ___ my sister.",
+  "options": [
+   "by",
+   "from",
+   "with",
+   "of"
+  ]
+ },
+ {
+  "day": 158,
+  "id": "chK-158",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "When a baby wants milk, it ___.",
+  "options": [
+   "cries",
+   "sings",
+   "dances",
+   "reads"
+  ]
+ },
+ {
+  "day": 159,
+  "id": "chK-159",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is your brother taller than you?\" \"No, he's ___.\"",
+  "options": [
+   "shortest",
+   "shorter",
+   "more short",
+   "short than"
+  ]
+ },
+ {
+  "day": 160,
+  "id": "chK-160",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "You ___ run in the corridor. It's dangerous.",
+  "options": [
+   "mustn't",
+   "don't must",
+   "haven't",
+   "aren't"
+  ]
+ },
+ {
+  "day": 161,
+  "id": "chK-161",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The place where aeroplanes land is an ___.",
+  "options": [
+   "airport",
+   "aquarium",
+   "alley",
+   "apartment"
+  ]
+ },
+ {
+  "day": 162,
+  "id": "chK-162",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We were late ___ the bus broke down.",
+  "options": [
+   "so",
+   "but",
+   "because",
+   "or"
+  ]
+ },
+ {
+  "day": 163,
+  "id": "chK-163",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "There is a new girl in our class. Her name is Sofia and she comes from Italy. She speaks three languages and loves ice skating. At break, she shared her sandwiches with everyone. Now, we all want to learn some Italian. What does Sofia like?",
+  "options": [
+   "Cooking",
+   "Ice skating",
+   "Football",
+   "Singing"
+  ]
+ },
+ {
+  "day": 164,
+  "id": "chK-164",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm hungry!\" \"Me ___. Let's have lunch.\"",
+  "options": [
+   "too",
+   "neither",
+   "so",
+   "also"
+  ]
+ },
+ {
+  "day": 165,
+  "id": "chK-165",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The place where plants are grown in a house is a ___.",
+  "options": [
+   "bathroom",
+   "cellar",
+   "attic",
+   "greenhouse"
+  ]
+ },
+ {
+  "day": 166,
+  "id": "chK-166",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If you heat ice, it ___.",
+  "options": [
+   "melt",
+   "melted",
+   "will to melt",
+   "melts"
+  ]
+ },
+ {
+  "day": 167,
+  "id": "chK-167",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The person who rides a horse in a race is a ___.",
+  "options": [
+   "jockey",
+   "sailor",
+   "chef",
+   "farmer"
+  ]
+ },
+ {
+  "day": 168,
+  "id": "chK-168",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She asked me ___ I liked pizza.",
+  "options": [
+   "what",
+   "who",
+   "that",
+   "if"
+  ]
+ },
+ {
+  "day": 169,
+  "id": "chK-169",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Which season do you like best?\" \"I like ___ best.\"",
+  "options": [
+   "a summer",
+   "summer",
+   "the summers",
+   "at summer"
+  ]
+ },
+ {
+  "day": 170,
+  "id": "chK-170",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The opposite of \"always\" is ___.",
+  "options": [
+   "never",
+   "often",
+   "usually",
+   "sometimes"
+  ]
+ },
+ {
+  "day": 171,
+  "id": "chK-171",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There isn't ___ bread left.",
+  "options": [
+   "some",
+   "a",
+   "any",
+   "many"
+  ]
+ },
+ {
+  "day": 172,
+  "id": "chK-172",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a small, sweet, red fruit with tiny seeds on its skin.",
+  "options": [
+   "strawberry",
+   "potato",
+   "onion",
+   "melon"
+  ]
+ },
+ {
+  "day": 173,
+  "id": "chK-173",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How long does it take to get to school?\" \"About ___.\"",
+  "options": [
+   "ten minute",
+   "tenth minutes",
+   "for ten minute",
+   "ten minutes"
+  ]
+ },
+ {
+  "day": 174,
+  "id": "chK-174",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He told me that he ___ tired.",
+  "options": [
+   "were",
+   "being",
+   "be",
+   "was"
+  ]
+ },
+ {
+  "day": 175,
+  "id": "chK-175",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Last summer, Ana went to her grandparents' farm. She woke up early every day to help with the animals. She fed the hens and brushed the horses. In the evenings, she read books under a big tree. When she went home, she was sad to leave, but she promised to come back. What did Ana do in the evenings?",
+  "options": [
+   "She read books",
+   "She fed the hens",
+   "She brushed horses",
+   "She swam"
+  ]
+ },
+ {
+  "day": 176,
+  "id": "chK-176",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who looks after your teeth.",
+  "options": [
+   "barber",
+   "gardener",
+   "dentist",
+   "farmer"
+  ]
+ },
+ {
+  "day": 177,
+  "id": "chK-177",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Neither Tom ___ Jack could swim.",
+  "options": [
+   "nor",
+   "or",
+   "and",
+   "but"
+  ]
+ },
+ {
+  "day": 178,
+  "id": "chK-178",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I've lost my phone!\" \"___ look in your bag?\"",
+  "options": [
+   "Have you",
+   "Are you",
+   "Did you",
+   "Do you to"
+  ]
+ },
+ {
+  "day": 179,
+  "id": "chK-179",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ of a mountain is its highest part.",
+  "options": [
+   "bottom",
+   "top",
+   "side",
+   "foot"
+  ]
+ },
+ {
+  "day": 180,
+  "id": "chK-180",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She is looking forward ___ the holiday.",
+  "options": [
+   "to",
+   "for",
+   "at",
+   "about"
+  ]
+ },
+ {
+  "day": 181,
+  "id": "chK-181",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If you are not at home, you are ___.",
+  "options": [
+   "out",
+   "in",
+   "up",
+   "down"
+  ]
+ },
+ {
+  "day": 182,
+  "id": "chK-182",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can I try this on?\" \"Yes, the changing rooms are ___.\"",
+  "options": [
+   "in there for",
+   "over there",
+   "on there for",
+   "at there"
+  ]
+ },
+ {
+  "day": 183,
+  "id": "chK-183",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He gave ___ a present.",
+  "options": [
+   "her",
+   "she",
+   "hers",
+   "herself"
+  ]
+ },
+ {
+  "day": 184,
+  "id": "chK-184",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a cold, white thing that falls from the sky in winter.",
+  "options": [
+   "raindrop",
+   "snowflake",
+   "sunbeam",
+   "breeze"
+  ]
+ },
+ {
+  "day": 185,
+  "id": "chK-185",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They have lived here ___ 2019.",
+  "options": [
+   "for",
+   "since",
+   "during",
+   "from"
+  ]
+ },
+ {
+  "day": 186,
+  "id": "chK-186",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'd like a coffee.\" \"___ with milk?\"",
+  "options": [
+   "Do you like",
+   "Are you want",
+   "Would you like it",
+   "Have you"
+  ]
+ },
+ {
+  "day": 187,
+  "id": "chK-187",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The opposite of \"borrow\" is ___.",
+  "options": [
+   "buy",
+   "steal",
+   "take",
+   "lend"
+  ]
+ },
+ {
+  "day": 188,
+  "id": "chK-188",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Our team won the match, ___ everyone was happy.",
+  "options": [
+   "because",
+   "but",
+   "so",
+   "though"
+  ]
+ },
+ {
+  "day": 189,
+  "id": "chK-189",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The Green Park Club opens at eight in the morning. There is a swimming pool, a football pitch and a small cafe. Children under ten must come with an adult. The swimming lessons are on Saturdays at ten o'clock. The cafe sells fruit, sandwiches and ice cream. When are the swimming lessons?",
+  "options": [
+   "On Sundays at eight",
+   "On Saturdays at ten",
+   "Every day at ten",
+   "On Fridays at eight"
+  ]
+ },
+ {
+  "day": 190,
+  "id": "chK-190",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who works with animals that are ill.",
+  "options": [
+   "waiter",
+   "artist",
+   "vet",
+   "clown"
+  ]
+ },
+ {
+  "day": 191,
+  "id": "chK-191",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ English since she was five.",
+  "options": [
+   "learns",
+   "learned",
+   "has been learning",
+   "is learn"
+  ]
+ },
+ {
+  "day": 192,
+  "id": "chK-192",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Could you tell me the time, please?\" \"___ quarter past five.\"",
+  "options": [
+   "They're",
+   "It's",
+   "Is",
+   "Has"
+  ]
+ },
+ {
+  "day": 193,
+  "id": "chK-193",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The word \"tiny\" means very ___.",
+  "options": [
+   "big",
+   "loud",
+   "small",
+   "fast"
+  ]
+ },
+ {
+  "day": 194,
+  "id": "chK-194",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The children ___ the cake before we arrived.",
+  "options": [
+   "have eaten",
+   "had eaten",
+   "ate to",
+   "were eaten"
+  ]
+ },
+ {
+  "day": 195,
+  "id": "chK-195",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who flies in space.",
+  "options": [
+   "astronaut",
+   "jockey",
+   "sailor",
+   "farmer"
+  ]
+ },
+ {
+  "day": 196,
+  "id": "chK-196",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm sure he'll win.\" \"I hope ___.\"",
+  "options": [
+   "so",
+   "it",
+   "yes",
+   "that"
+  ]
+ },
+ {
+  "day": 197,
+  "id": "chK-197",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "How about ___ to the cinema?",
+  "options": [
+   "go",
+   "to go",
+   "went",
+   "going"
+  ]
+ },
+ {
+  "day": 198,
+  "id": "chK-198",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a sweet food made with cocoa.",
+  "options": [
+   "chocolate",
+   "cheese",
+   "bread",
+   "soup"
+  ]
+ },
+ {
+  "day": 199,
+  "id": "chK-199",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If I had a map, I ___ lost.",
+  "options": [
+   "won't be",
+   "am not",
+   "wasn't be",
+   "wouldn't be"
+  ]
+ },
+ {
+  "day": 200,
+  "id": "chK-200",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is this seat free?\" \"Yes, ___.\"",
+  "options": [
+   "I am",
+   "there is it",
+   "it is",
+   "you are"
+  ]
+ },
+ {
+  "day": 201,
+  "id": "chK-201",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A very large area of trees is a ___.",
+  "options": [
+   "puddle",
+   "garage",
+   "forest",
+   "market"
+  ]
+ },
+ {
+  "day": 202,
+  "id": "chK-202",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He is the man ___ lives next door.",
+  "options": [
+   "which",
+   "where",
+   "whose",
+   "who"
+  ]
+ },
+ {
+  "day": 203,
+  "id": "chK-203",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Last Saturday, Luis lost his dog in the park. He looked behind every tree and under every bench. After an hour, he heard a bark. The dog was playing with some children near the lake! Luis was so happy that he gave the children some biscuits. Where was the dog?",
+  "options": [
+   "Behind a tree",
+   "Near the lake",
+   "Under a bench",
+   "In a car"
+  ]
+ },
+ {
+  "day": 204,
+  "id": "chK-204",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If you are very afraid, you are ___.",
+  "options": [
+   "terrified",
+   "bored",
+   "proud",
+   "calm"
+  ]
+ },
+ {
+  "day": 205,
+  "id": "chK-205",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I wish I ___ a dog.",
+  "options": [
+   "have",
+   "would have",
+   "had",
+   "am having"
+  ]
+ },
+ {
+  "day": 206,
+  "id": "chK-206",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How do you spell your surname?\" \"___.\"",
+  "options": [
+   "It is Smith spells",
+   "Spell it Smith",
+   "It's S-M-I-T-H",
+   "Smith is spelling"
+  ]
+ },
+ {
+  "day": 207,
+  "id": "chK-207",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If you can't see well, you need ___.",
+  "options": [
+   "gloves",
+   "boots",
+   "a belt",
+   "glasses"
+  ]
+ },
+ {
+  "day": 208,
+  "id": "chK-208",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She is interested ___ painting.",
+  "options": [
+   "on",
+   "in",
+   "at",
+   "with"
+  ]
+ },
+ {
+  "day": 209,
+  "id": "chK-209",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The opposite of \"dangerous\" is ___.",
+  "options": [
+   "rough",
+   "slow",
+   "noisy",
+   "safe"
+  ]
+ },
+ {
+  "day": 210,
+  "id": "chK-210",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's the date today?\" \"It's the ___ of May.\"",
+  "options": [
+   "five",
+   "fiveth",
+   "fifth",
+   "fifteen"
+  ]
+ },
+ {
+  "day": 211,
+  "id": "chK-211",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The film started before we ___ at the cinema.",
+  "options": [
+   "arrive",
+   "arrived",
+   "arrives",
+   "arriving"
+  ]
+ },
+ {
+  "day": 212,
+  "id": "chK-212",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Sunflowers always turn towards the ___.",
+  "options": [
+   "moon",
+   "sun",
+   "wind",
+   "rain"
+  ]
+ },
+ {
+  "day": 213,
+  "id": "chK-213",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He doesn't speak French and ___ do I.",
+  "options": [
+   "neither",
+   "so",
+   "too",
+   "also"
+  ]
+ },
+ {
+  "day": 214,
+  "id": "chK-214",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Excuse me, is this your umbrella?\" \"Oh, yes. ___ much!\"",
+  "options": [
+   "Please",
+   "Welcome",
+   "Thanks",
+   "Sorry"
+  ]
+ },
+ {
+  "day": 215,
+  "id": "chK-215",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a room where you wash.",
+  "options": [
+   "garage",
+   "attic",
+   "dining room",
+   "bathroom"
+  ]
+ },
+ {
+  "day": 216,
+  "id": "chK-216",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I haven't seen him ___ last Monday.",
+  "options": [
+   "for",
+   "from",
+   "during",
+   "since"
+  ]
+ },
+ {
+  "day": 217,
+  "id": "chK-217",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You can use a ___ to look at the stars.",
+  "options": [
+   "telescope",
+   "calculator",
+   "microwave",
+   "stapler"
+  ]
+ },
+ {
+  "day": 218,
+  "id": "chK-218",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She said she ___ come to the party.",
+  "options": [
+   "will",
+   "would",
+   "is",
+   "does"
+  ]
+ },
+ {
+  "day": 219,
+  "id": "chK-219",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Are you coming with us?\" \"I'm not ___ yet.\"",
+  "options": [
+   "sure to",
+   "sure",
+   "sureness",
+   "surely to"
+  ]
+ },
+ {
+  "day": 220,
+  "id": "chK-220",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the money you pay to travel on a bus.",
+  "options": [
+   "tip",
+   "bill",
+   "gift",
+   "fare"
+  ]
+ },
+ {
+  "day": 221,
+  "id": "chK-221",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "By the time we arrived, the shop ___.",
+  "options": [
+   "has closed",
+   "had closed",
+   "closes",
+   "closing"
+  ]
+ },
+ {
+  "day": 222,
+  "id": "chK-222",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Dear Grandma, thank you for the lovely scarf you sent me. It is very warm and I wear it every day to school. Last week, it snowed and we made a snowman. I put your scarf on him, but then I took it back because I was cold! See you at Christmas. Love, Tim. Why did Tim take the scarf back?",
+  "options": [
+   "He was cold",
+   "It was dirty",
+   "It was too big",
+   "His mum asked him"
+  ]
+ },
+ {
+  "day": 223,
+  "id": "chK-223",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a wild animal with stripes that looks like a big cat.",
+  "options": [
+   "zebra",
+   "tiger",
+   "donkey",
+   "camel"
+  ]
+ },
+ {
+  "day": 224,
+  "id": "chK-224",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I'll call you as soon as I ___ home.",
+  "options": [
+   "will get",
+   "got",
+   "getting",
+   "get"
+  ]
+ },
+ {
+  "day": 225,
+  "id": "chK-225",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'd like to book a table for four.\" \"For ___ time?\"",
+  "options": [
+   "what",
+   "which",
+   "who",
+   "how"
+  ]
+ },
+ {
+  "day": 226,
+  "id": "chK-226",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If a test is very easy, it is a ___.",
+  "options": [
+   "piece of cake",
+   "cup of tea",
+   "bowl of soup",
+   "slice of pie"
+  ]
+ },
+ {
+  "day": 227,
+  "id": "chK-227",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She is ___ she looks.",
+  "options": [
+   "as old than",
+   "more old that",
+   "olders than",
+   "older than"
+  ]
+ },
+ {
+  "day": 228,
+  "id": "chK-228",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Rain falls from ___.",
+  "options": [
+   "trees",
+   "stones",
+   "stars",
+   "clouds"
+  ]
+ },
+ {
+  "day": 229,
+  "id": "chK-229",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm going to the shop.\" \"Could you buy ___ bread, please?\"",
+  "options": [
+   "some",
+   "any",
+   "a",
+   "an"
+  ]
+ },
+ {
+  "day": 230,
+  "id": "chK-230",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We enjoy ___ in the sea.",
+  "options": [
+   "swim",
+   "to swim",
+   "swimming",
+   "swam"
+  ]
+ },
+ {
+  "day": 231,
+  "id": "chK-231",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the person you pay in a shop.",
+  "options": [
+   "neighbour",
+   "passenger",
+   "guide",
+   "cashier"
+  ]
+ },
+ {
+  "day": 232,
+  "id": "chK-232",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My uncle, ___ lives in Spain, is a chef.",
+  "options": [
+   "whose",
+   "which",
+   "where",
+   "who"
+  ]
+ },
+ {
+  "day": 233,
+  "id": "chK-233",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I can't hear you!\" \"Can you turn ___ the music, please?\"",
+  "options": [
+   "up",
+   "down",
+   "off to",
+   "on at"
+  ]
+ },
+ {
+  "day": 234,
+  "id": "chK-234",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who plays music on the street.",
+  "options": [
+   "golfer",
+   "plumber",
+   "busker",
+   "surgeon"
+  ]
+ },
+ {
+  "day": 235,
+  "id": "chK-235",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They ___ for an hour when it started to rain.",
+  "options": [
+   "have walked",
+   "walked",
+   "had been walking",
+   "are walking"
+  ]
+ },
+ {
+  "day": 236,
+  "id": "chK-236",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Gloria's favourite place is the old market in her town. On Saturdays, she buys fresh fruit and flowers there. A woman called Rosa sells the best oranges. Gloria always says hello to Rosa, and Rosa gives her a free orange for the way home. What does Rosa sell?",
+  "options": [
+   "Flowers",
+   "Shoes",
+   "Bread",
+   "Oranges"
+  ]
+ },
+ {
+  "day": 237,
+  "id": "chK-237",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "When you say \"No\" politely, you may say \"No, ___ you.\"",
+  "options": [
+   "thanks to",
+   "please",
+   "sorry",
+   "thank"
+  ]
+ },
+ {
+  "day": 238,
+  "id": "chK-238",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The window ___ by a ball yesterday.",
+  "options": [
+   "broke",
+   "was broken",
+   "is broken",
+   "has break"
+  ]
+ },
+ {
+  "day": 239,
+  "id": "chK-239",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's your favourite subject?\" \"I love ___.\"",
+  "options": [
+   "an art",
+   "art",
+   "the arts at",
+   "arting"
+  ]
+ },
+ {
+  "day": 240,
+  "id": "chK-240",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who looks after plants and flowers.",
+  "options": [
+   "goalkeeper",
+   "reporter",
+   "clerk",
+   "gardener"
+  ]
+ },
+ {
+  "day": 241,
+  "id": "chK-241",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Can you tell me where ___?",
+  "options": [
+   "is the station",
+   "the station is",
+   "the station are",
+   "does the station is"
+  ]
+ },
+ {
+  "day": 242,
+  "id": "chK-242",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ of a book is the title and picture on the front.",
+  "options": [
+   "page",
+   "word",
+   "cover",
+   "line"
+  ]
+ },
+ {
+  "day": 243,
+  "id": "chK-243",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Do you know Tom?\" \"Yes, I've known him ___ ages.\"",
+  "options": [
+   "since",
+   "during",
+   "for",
+   "from"
+  ]
+ },
+ {
+  "day": 244,
+  "id": "chK-244",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "If you study hard, you ___ the exam.",
+  "options": [
+   "passed",
+   "will pass",
+   "would passes",
+   "pass will"
+  ]
+ },
+ {
+  "day": 245,
+  "id": "chK-245",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You wear a ___ to protect your head on a bike.",
+  "options": [
+   "scarf",
+   "helmet",
+   "belt",
+   "sock"
+  ]
+ },
+ {
+  "day": 246,
+  "id": "chK-246",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She doesn't have ___ money.",
+  "options": [
+   "many",
+   "a few",
+   "several",
+   "much"
+  ]
+ },
+ {
+  "day": 247,
+  "id": "chK-247",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"You look tired.\" \"I didn't sleep ___ last night.\"",
+  "options": [
+   "good",
+   "bad",
+   "well",
+   "goodly"
+  ]
+ },
+ {
+  "day": 248,
+  "id": "chK-248",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the line where the sea and the sky seem to meet.",
+  "options": [
+   "border",
+   "cliff",
+   "horizon",
+   "valley"
+  ]
+ },
+ {
+  "day": 249,
+  "id": "chK-249",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He ran so fast ___ nobody could catch him.",
+  "options": [
+   "than",
+   "that",
+   "as",
+   "because"
+  ]
+ },
+ {
+  "day": 250,
+  "id": "chK-250",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The new swimming pool opens on the first of June. It has a big pool for adults and a small pool for children. There is also a slide and a cafe. Tickets cost three pounds for adults and one pound for children. Children under five can go in for free. How much is a ticket for a child of eight?",
+  "options": [
+   "One pound",
+   "Three pounds",
+   "Free",
+   "Five pounds"
+  ]
+ },
+ {
+  "day": 251,
+  "id": "chK-251",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a kind of insect with colourful wings.",
+  "options": [
+   "bat",
+   "frog",
+   "snail",
+   "butterfly"
+  ]
+ },
+ {
+  "day": 252,
+  "id": "chK-252",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Let's ___ a taxi to the airport.",
+  "options": [
+   "taking",
+   "take",
+   "to take",
+   "took"
+  ]
+ },
+ {
+  "day": 253,
+  "id": "chK-253",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is there anything else?\" \"No, that's ___.\"",
+  "options": [
+   "none",
+   "every",
+   "nothing",
+   "all"
+  ]
+ },
+ {
+  "day": 254,
+  "id": "chK-254",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Something that is not true is ___.",
+  "options": [
+   "real",
+   "exact",
+   "clear",
+   "false"
+  ]
+ },
+ {
+  "day": 255,
+  "id": "chK-255",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The book, ___ I read last week, was great.",
+  "options": [
+   "who",
+   "whose",
+   "which",
+   "where"
+  ]
+ },
+ {
+  "day": 256,
+  "id": "chK-256",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can I speak to Mr Lee, please?\" \"I'm afraid he's ___.\"",
+  "options": [
+   "out",
+   "outer",
+   "on out",
+   "at out"
+  ]
+ },
+ {
+  "day": 257,
+  "id": "chK-257",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the money you leave for a waiter as a thank-you.",
+  "options": [
+   "tip",
+   "fine",
+   "price",
+   "rent"
+  ]
+ },
+ {
+  "day": 258,
+  "id": "chK-258",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "You ___ better take an umbrella.",
+  "options": [
+   "have",
+   "would",
+   "had",
+   "did"
+  ]
+ },
+ {
+  "day": 259,
+  "id": "chK-259",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "To \"sprint\" means to run ___.",
+  "options": [
+   "slowly",
+   "backwards",
+   "very fast",
+   "carefully"
+  ]
+ },
+ {
+  "day": 260,
+  "id": "chK-260",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm going on holiday tomorrow.\" \"Have a ___ time!\"",
+  "options": [
+   "greatly",
+   "great",
+   "greater",
+   "greatest"
+  ]
+ },
+ {
+  "day": 261,
+  "id": "chK-261",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There were ___ people at the concert that we couldn't move.",
+  "options": [
+   "so many",
+   "so much",
+   "too much",
+   "a lot"
+  ]
+ },
+ {
+  "day": 262,
+  "id": "chK-262",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Max keeps a diary. Every night, he writes three things: what he ate, what he learnt, and what made him laugh. Yesterday, he ate rice and fish, he learnt a new word, \"marvellous\", and he laughed when his cat sat in the sink. His sister says it's a silly habit, but Max likes it. What made Max laugh yesterday?",
+  "options": [
+   "His cat in the sink",
+   "A new word",
+   "His sister",
+   "His dinner"
+  ]
+ },
+ {
+  "day": 263,
+  "id": "chK-263",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A very strong wind that spins is called a ___.",
+  "options": [
+   "drizzle",
+   "frost",
+   "fog",
+   "tornado"
+  ]
+ },
+ {
+  "day": 264,
+  "id": "chK-264",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I used to ___ in a small village.",
+  "options": [
+   "living",
+   "live",
+   "lived",
+   "lives"
+  ]
+ },
+ {
+  "day": 265,
+  "id": "chK-265",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Would you like another slice?\" \"No, I'm ___, thanks.\"",
+  "options": [
+   "fill",
+   "fullness",
+   "filling",
+   "full"
+  ]
+ },
+ {
+  "day": 266,
+  "id": "chK-266",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a long seat for two or more people in a park.",
+  "options": [
+   "stool",
+   "ladder",
+   "bucket",
+   "bench"
+  ]
+ },
+ {
+  "day": 267,
+  "id": "chK-267",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He hurt ___ while playing football.",
+  "options": [
+   "herself",
+   "himself",
+   "itself",
+   "him"
+  ]
+ },
+ {
+  "day": 268,
+  "id": "chK-268",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm sorry, I can't come.\" \"That's ___. Maybe next time.\"",
+  "options": [
+   "a pity",
+   "pitifully",
+   "pity of",
+   "the pitiable"
+  ]
+ },
+ {
+  "day": 269,
+  "id": "chK-269",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You can find lots of books in a ___.",
+  "options": [
+   "stadium",
+   "library",
+   "garage",
+   "greengrocer's"
+  ]
+ },
+ {
+  "day": 270,
+  "id": "chK-270",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Tom, along with his brothers, ___ going to the match.",
+  "options": [
+   "are",
+   "am",
+   "were",
+   "is"
+  ]
+ },
+ {
+  "day": 271,
+  "id": "chK-271",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "When something is very old, we say it is ___.",
+  "options": [
+   "brand-new",
+   "modern",
+   "ancient",
+   "fresh"
+  ]
+ },
+ {
+  "day": 272,
+  "id": "chK-272",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Which is your coat?\" \"The one ___ the hook.\"",
+  "options": [
+   "at",
+   "by to",
+   "in",
+   "on"
+  ]
+ },
+ {
+  "day": 273,
+  "id": "chK-273",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She hasn't decided ___ she will go.",
+  "options": [
+   "which",
+   "what",
+   "whether",
+   "who"
+  ]
+ },
+ {
+  "day": 274,
+  "id": "chK-274",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "At the end of the school year, our class is going to put on a play. It is about a boy who finds a magic stone. I am the narrator, so I will read the story from the side of the stage. My best friend is the magic stone, and he has to stand still for ten minutes. It's not easy for him! Who is the narrator?",
+  "options": [
+   "The best friend",
+   "The boy",
+   "The teacher",
+   "The writer of the text"
+  ]
+ },
+ {
+  "day": 275,
+  "id": "chK-275",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If you are good at something, you are ___ at it.",
+  "options": [
+   "skilful",
+   "careless",
+   "silent",
+   "lazy"
+  ]
+ },
+ {
+  "day": 276,
+  "id": "chK-276",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They have already ___ their dinner.",
+  "options": [
+   "ate",
+   "eating",
+   "eats",
+   "eaten"
+  ]
+ },
+ {
+  "day": 277,
+  "id": "chK-277",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Whose idea was it?\" \"It was ___.\"",
+  "options": [
+   "her",
+   "she",
+   "hers",
+   "herself"
+  ]
+ },
+ {
+  "day": 278,
+  "id": "chK-278",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a thing that shows the time on your wrist.",
+  "options": [
+   "ruler",
+   "watch",
+   "fork",
+   "brush"
+  ]
+ },
+ {
+  "day": 279,
+  "id": "chK-279",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "By next year, I ___ ten.",
+  "options": [
+   "am",
+   "will be",
+   "was",
+   "being"
+  ]
+ },
+ {
+  "day": 280,
+  "id": "chK-280",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is Lima in Peru?\" \"___, it is.\"",
+  "options": [
+   "No",
+   "Not",
+   "So",
+   "Yes"
+  ]
+ },
+ {
+  "day": 281,
+  "id": "chK-281",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a baby dog.",
+  "options": [
+   "kitten",
+   "puppy",
+   "chick",
+   "lamb"
+  ]
+ },
+ {
+  "day": 282,
+  "id": "chK-282",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We have ___ fingers on two hands.",
+  "options": [
+   "four",
+   "ten",
+   "six",
+   "twenty"
+  ]
+ },
+ {
+  "day": 283,
+  "id": "chK-283",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Is that ___ umbrella?",
+  "options": [
+   "your",
+   "you",
+   "yours",
+   "you're"
+  ]
+ },
+ {
+  "day": 284,
+  "id": "chK-284",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Good night!\" \"___, sleep well.\"",
+  "options": [
+   "Good morning",
+   "Good afternoon",
+   "Hello",
+   "Good night"
+  ]
+ },
+ {
+  "day": 285,
+  "id": "chK-285",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Red and yellow make ___.",
+  "options": [
+   "orange",
+   "green",
+   "purple",
+   "brown"
+  ]
+ },
+ {
+  "day": 286,
+  "id": "chK-286",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I ___ got a new bike for my birthday.",
+  "options": [
+   "am",
+   "do",
+   "have",
+   "can"
+  ]
+ },
+ {
+  "day": 287,
+  "id": "chK-287",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "An ___ is a fruit that is red or green and grows on trees.",
+  "options": [
+   "onion",
+   "carrot",
+   "apple",
+   "lettuce"
+  ]
+ },
+ {
+  "day": 288,
+  "id": "chK-288",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Where do you live?\" \"I live ___ Lima.\"",
+  "options": [
+   "at",
+   "in",
+   "on",
+   "to"
+  ]
+ },
+ {
+  "day": 289,
+  "id": "chK-289",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The girls ___ dancing in the garden.",
+  "options": [
+   "is",
+   "am",
+   "be",
+   "are"
+  ]
+ },
+ {
+  "day": 290,
+  "id": "chK-290",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the part of the face above your mouth.",
+  "options": [
+   "ear",
+   "nose",
+   "chin",
+   "knee"
+  ]
+ },
+ {
+  "day": 291,
+  "id": "chK-291",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Today is Mia's first day at her new school. She puts on her blue uniform and takes her pink bag. Her mum drives her to school. At the gate, a girl smiles and says, \"Hello! I'm Ana.\" Mia smiles too. They sit next to each other in class. Who says hello to Mia?",
+  "options": [
+   "Her mum",
+   "Ana",
+   "The teacher",
+   "Her sister"
+  ]
+ },
+ {
+  "day": 292,
+  "id": "chK-292",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She ___ her bag on the table yesterday.",
+  "options": [
+   "puts",
+   "putting",
+   "is put",
+   "put"
+  ]
+ },
+ {
+  "day": 293,
+  "id": "chK-293",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ lives in a nest and sings.",
+  "options": [
+   "bird",
+   "fish",
+   "cow",
+   "snake"
+  ]
+ },
+ {
+  "day": 294,
+  "id": "chK-294",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Whose pencil case is this?\" \"It's ___.\"",
+  "options": [
+   "Annas",
+   "Anna",
+   "of Anna",
+   "Anna's"
+  ]
+ },
+ {
+  "day": 295,
+  "id": "chK-295",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My grandma ___ in the kitchen right now.",
+  "options": [
+   "cook",
+   "cooks",
+   "cooked",
+   "is cooking"
+  ]
+ },
+ {
+  "day": 296,
+  "id": "chK-296",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The day before Sunday is ___.",
+  "options": [
+   "Monday",
+   "Friday",
+   "Saturday",
+   "Thursday"
+  ]
+ },
+ {
+  "day": 297,
+  "id": "chK-297",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can I have a glass of water, please?\" \"___.\"",
+  "options": [
+   "Of course",
+   "You are welcome",
+   "I am sorry not",
+   "Goodbye"
+  ]
+ },
+ {
+  "day": 298,
+  "id": "chK-298",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ to the zoo next Sunday.",
+  "options": [
+   "goes",
+   "are going",
+   "went",
+   "going to"
+  ]
+ },
+ {
+  "day": 299,
+  "id": "chK-299",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "You use a ___ to write on paper.",
+  "options": [
+   "plate",
+   "pen",
+   "spoon",
+   "brush"
+  ]
+ },
+ {
+  "day": 300,
+  "id": "chK-300",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My mum and dad ___ at work.",
+  "options": [
+   "are",
+   "is",
+   "am",
+   "be"
+  ]
+ },
+ {
+  "day": 301,
+  "id": "chK-301",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's your favourite food?\" \"I like ___.\"",
+  "options": [
+   "pastas to",
+   "pasta",
+   "the pastas",
+   "a pasta eating"
+  ]
+ },
+ {
+  "day": 302,
+  "id": "chK-302",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ has two wheels and you ride it.",
+  "options": [
+   "bus",
+   "car",
+   "boat",
+   "bicycle"
+  ]
+ },
+ {
+  "day": 303,
+  "id": "chK-303",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Nico has a little brother called Leo. Leo is three and loves cars. Every evening, Nico and Leo build a road with cushions and push their toy cars along it. Yesterday, the cat sat on the road and wouldn't move. Leo laughed and said, \"The cat is a big traffic jam!\" What do Nico and Leo build?",
+  "options": [
+   "A house",
+   "A boat",
+   "A tower",
+   "A road with cushions"
+  ]
+ },
+ {
+  "day": 304,
+  "id": "chK-304",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She likes ___ ice cream.",
+  "options": [
+   "eating",
+   "eat",
+   "to eats",
+   "ate"
+  ]
+ },
+ {
+  "day": 305,
+  "id": "chK-305",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ comes out in the morning and gives us light.",
+  "options": [
+   "moon",
+   "star",
+   "cloud",
+   "sun"
+  ]
+ },
+ {
+  "day": 306,
+  "id": "chK-306",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is she your sister?\" \"No, ___ my cousin.\"",
+  "options": [
+   "she's",
+   "she",
+   "is",
+   "her"
+  ]
+ },
+ {
+  "day": 307,
+  "id": "chK-307",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There ___ a pencil on the desk.",
+  "options": [
+   "are",
+   "were",
+   "is",
+   "am"
+  ]
+ },
+ {
+  "day": 308,
+  "id": "chK-308",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the place where we buy tickets for a train.",
+  "options": [
+   "station",
+   "stage",
+   "stable",
+   "stove"
+  ]
+ },
+ {
+  "day": 309,
+  "id": "chK-309",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I didn't ___ the film. It was boring.",
+  "options": [
+   "liked",
+   "like",
+   "likes",
+   "liking"
+  ]
+ },
+ {
+  "day": 310,
+  "id": "chK-310",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Do you have a pet?\" \"Yes, I have a ___.\"",
+  "options": [
+   "the goldfish eat",
+   "goldfish are",
+   "goldfish",
+   "goldfishes the"
+  ]
+ },
+ {
+  "day": 311,
+  "id": "chK-311",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Number 12 is ___.",
+  "options": [
+   "twenty",
+   "twelve",
+   "twelfth",
+   "two"
+  ]
+ },
+ {
+  "day": 312,
+  "id": "chK-312",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Tom ___ eat meat because he is a vegetarian.",
+  "options": [
+   "don't",
+   "isn't",
+   "hasn't",
+   "doesn't"
+  ]
+ },
+ {
+  "day": 313,
+  "id": "chK-313",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "We use ___ to clean the floor.",
+  "options": [
+   "a pillow",
+   "a mop",
+   "a lamp",
+   "a clock"
+  ]
+ },
+ {
+  "day": 314,
+  "id": "chK-314",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Where is the bus stop?\" \"It's ___ the corner.\"",
+  "options": [
+   "between",
+   "in",
+   "under",
+   "on"
+  ]
+ },
+ {
+  "day": 315,
+  "id": "chK-315",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "The children ___ in the garden when the rain started.",
+  "options": [
+   "are playing",
+   "played to",
+   "were playing",
+   "plays"
+  ]
+ },
+ {
+  "day": 316,
+  "id": "chK-316",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ keeps you dry when it rains.",
+  "options": [
+   "raincoat",
+   "T-shirt",
+   "swimsuit",
+   "sandals"
+  ]
+ },
+ {
+  "day": 317,
+  "id": "chK-317",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Carlos wakes up at six o'clock. First, he washes his face and brushes his teeth. Then he has some cereal with milk. At seven, he takes the bus to school. He studies maths, English and art. He goes home at three and plays football with his friends. What does Carlos do after he washes his face and brushes his teeth?",
+  "options": [
+   "He takes the bus",
+   "He plays football",
+   "He has cereal",
+   "He studies art"
+  ]
+ },
+ {
+  "day": 318,
+  "id": "chK-318",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "You ___ be quiet in the library.",
+  "options": [
+   "can",
+   "mustn't be",
+   "must",
+   "don't"
+  ]
+ },
+ {
+  "day": 319,
+  "id": "chK-319",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Brothers and sisters are ___.",
+  "options": [
+   "neighbours",
+   "friends",
+   "cousins",
+   "siblings"
+  ]
+ },
+ {
+  "day": 320,
+  "id": "chK-320",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I'm thirsty.\" \"Would you like ___ juice?\"",
+  "options": [
+   "an",
+   "any one",
+   "some",
+   "few"
+  ]
+ },
+ {
+  "day": 321,
+  "id": "chK-321",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He ___ sing very well when he was little.",
+  "options": [
+   "can",
+   "will",
+   "must",
+   "could"
+  ]
+ },
+ {
+  "day": 322,
+  "id": "chK-322",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a place with lots of animals that you can visit.",
+  "options": [
+   "bank",
+   "post office",
+   "cinema",
+   "zoo"
+  ]
+ },
+ {
+  "day": 323,
+  "id": "chK-323",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "There are ___ apples on the table.",
+  "options": [
+   "a",
+   "some",
+   "an",
+   "much"
+  ]
+ },
+ {
+  "day": 324,
+  "id": "chK-324",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What would you like for dessert?\" \"I'd like ___.\"",
+  "options": [
+   "the ice creams a",
+   "an ice creams",
+   "ice cream",
+   "ice creams a"
+  ]
+ },
+ {
+  "day": 325,
+  "id": "chK-325",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The opposite of \"up\" is ___.",
+  "options": [
+   "over",
+   "down",
+   "in",
+   "out"
+  ]
+ },
+ {
+  "day": 326,
+  "id": "chK-326",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Why ___ you running?",
+  "options": [
+   "do",
+   "is",
+   "did",
+   "are"
+  ]
+ },
+ {
+  "day": 327,
+  "id": "chK-327",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who cooks in a restaurant.",
+  "options": [
+   "dentist",
+   "pilot",
+   "chef",
+   "baker's"
+  ]
+ },
+ {
+  "day": 328,
+  "id": "chK-328",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"I like your dress!\" \"Oh, ___.\"",
+  "options": [
+   "you're welcome",
+   "I'm sorry",
+   "thank you",
+   "see you"
+  ]
+ },
+ {
+  "day": 329,
+  "id": "chK-329",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Lola is learning to ride a bike. Her dad holds the back of the seat and runs next to her. At first, she is scared and shouts, \"Don't let go!\" But after ten minutes, she is riding alone and her dad is far behind. Lola doesn't know it, and she is very proud. How does Lola feel at the end?",
+  "options": [
+   "Scared",
+   "Angry",
+   "Bored",
+   "Proud"
+  ]
+ },
+ {
+  "day": 330,
+  "id": "chK-330",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My dad ___ a newspaper every morning.",
+  "options": [
+   "read",
+   "reads",
+   "reading",
+   "readed"
+  ]
+ },
+ {
+  "day": 331,
+  "id": "chK-331",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If you can't speak, you are ___.",
+  "options": [
+   "noisy",
+   "loud",
+   "silent",
+   "friendly"
+  ]
+ },
+ {
+  "day": 332,
+  "id": "chK-332",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Is it far?\" \"No, it's ___.\"",
+  "options": [
+   "nearly",
+   "nearer to",
+   "next",
+   "near"
+  ]
+ },
+ {
+  "day": 333,
+  "id": "chK-333",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "We ___ pizza for lunch yesterday.",
+  "options": [
+   "have",
+   "has",
+   "had",
+   "having"
+  ]
+ },
+ {
+  "day": 334,
+  "id": "chK-334",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a piece of furniture where you sit and eat dinner.",
+  "options": [
+   "table",
+   "wardrobe",
+   "mirror",
+   "carpet"
+  ]
+ },
+ {
+  "day": 335,
+  "id": "chK-335",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I am afraid ___ spiders.",
+  "options": [
+   "at",
+   "of",
+   "for",
+   "in"
+  ]
+ },
+ {
+  "day": 336,
+  "id": "chK-336",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Hello, is that Sam?\" \"Yes, ___.\"",
+  "options": [
+   "talking",
+   "calling",
+   "saying",
+   "speaking"
+  ]
+ },
+ {
+  "day": 337,
+  "id": "chK-337",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "People use a ___ to see their face.",
+  "options": [
+   "mirror",
+   "window",
+   "carpet",
+   "curtain"
+  ]
+ },
+ {
+  "day": 338,
+  "id": "chK-338",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Which of these is the ___ mountain in the world?",
+  "options": [
+   "higher",
+   "most high",
+   "highest",
+   "high"
+  ]
+ },
+ {
+  "day": 339,
+  "id": "chK-339",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a sweet yellow food made by bees.",
+  "options": [
+   "jam",
+   "butter",
+   "milk",
+   "honey"
+  ]
+ },
+ {
+  "day": 340,
+  "id": "chK-340",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Let's meet at five.\" \"___, see you then.\"",
+  "options": [
+   "Please",
+   "No, thanks",
+   "Yes, I do",
+   "OK"
+  ]
+ },
+ {
+  "day": 341,
+  "id": "chK-341",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "She must ___ home because it is late.",
+  "options": [
+   "goes",
+   "go",
+   "to go",
+   "going"
+  ]
+ },
+ {
+  "day": 342,
+  "id": "chK-342",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the place where a plane takes off.",
+  "options": [
+   "platform",
+   "runway",
+   "path",
+   "pier"
+  ]
+ },
+ {
+  "day": 343,
+  "id": "chK-343",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "My shoes are ___ than yours.",
+  "options": [
+   "dirtier",
+   "dirtiest",
+   "more dirty",
+   "dirty than"
+  ]
+ },
+ {
+  "day": 344,
+  "id": "chK-344",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"How many sisters do you have?\" \"I've got ___.\"",
+  "options": [
+   "two sister",
+   "second",
+   "two",
+   "twice"
+  ]
+ },
+ {
+  "day": 345,
+  "id": "chK-345",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "If you do not like something, you ___ it.",
+  "options": [
+   "dislike",
+   "enjoy",
+   "admire",
+   "prefer"
+  ]
+ },
+ {
+  "day": 346,
+  "id": "chK-346",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "The Smith family have a big garden. In the middle there is an apple tree, and under it there's a wooden table. In summer, they eat dinner there. Last week, a bird made a nest in the tree. The children watch it every day, and they are very quiet so they don't frighten the bird. Where is the table?",
+  "options": [
+   "In the kitchen",
+   "Under the apple tree",
+   "Next to the nest",
+   "On the roof"
+  ]
+ },
+ {
+  "day": 347,
+  "id": "chK-347",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "I ___ a bath when the phone rang.",
+  "options": [
+   "had to",
+   "was having",
+   "am having",
+   "have"
+  ]
+ },
+ {
+  "day": 348,
+  "id": "chK-348",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the season with the longest days.",
+  "options": [
+   "summer",
+   "winter",
+   "autumn",
+   "spring"
+  ]
+ },
+ {
+  "day": 349,
+  "id": "chK-349",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What do you do on Sundays?\" \"I usually ___ my grandma.\"",
+  "options": [
+   "visit",
+   "visits",
+   "visiting",
+   "visited"
+  ]
+ },
+ {
+  "day": 350,
+  "id": "chK-350",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "He gave me a present, ___ was very kind.",
+  "options": [
+   "who",
+   "what",
+   "which",
+   "where"
+  ]
+ },
+ {
+  "day": 351,
+  "id": "chK-351",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "When you give someone a present, you ___ it to them.",
+  "options": [
+   "take",
+   "keep",
+   "give",
+   "lose"
+  ]
+ },
+ {
+  "day": 352,
+  "id": "chK-352",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "It's cold, so I ___ my coat.",
+  "options": [
+   "am wearing",
+   "wear it yesterday",
+   "wears",
+   "worn"
+  ]
+ },
+ {
+  "day": 353,
+  "id": "chK-353",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Do you want to play?\" \"I'd love ___.\"",
+  "options": [
+   "for",
+   "that",
+   "it",
+   "to"
+  ]
+ },
+ {
+  "day": 354,
+  "id": "chK-354",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a small boat with a sail.",
+  "options": [
+   "bus",
+   "lorry",
+   "sailing boat",
+   "sledge"
+  ]
+ },
+ {
+  "day": 355,
+  "id": "chK-355",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Did you ___ the film last night?",
+  "options": [
+   "saw",
+   "seen",
+   "seeing",
+   "see"
+  ]
+ },
+ {
+  "day": 356,
+  "id": "chK-356",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ is the first meal of the day.",
+  "options": [
+   "breakfast",
+   "dinner",
+   "supper",
+   "brunch"
+  ]
+ },
+ {
+  "day": 357,
+  "id": "chK-357",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"What's the matter?\" \"I've ___ my pencil.\"",
+  "options": [
+   "lost",
+   "lose",
+   "loosed",
+   "loses"
+  ]
+ },
+ {
+  "day": 358,
+  "id": "chK-358",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "They aren't ___ home today.",
+  "options": [
+   "in the",
+   "at",
+   "on",
+   "to"
+  ]
+ },
+ {
+  "day": 359,
+  "id": "chK-359",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "Chickens lay ___.",
+  "options": [
+   "nuts",
+   "stones",
+   "socks",
+   "eggs"
+  ]
+ },
+ {
+  "day": 360,
+  "id": "chK-360",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "A ___ is a person who builds houses.",
+  "options": [
+   "waiter",
+   "tailor",
+   "builder",
+   "singer"
+  ]
+ },
+ {
+  "day": 361,
+  "id": "chK-361",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "Dolphins ___ in the sea.",
+  "options": [
+   "lives",
+   "living",
+   "lived to",
+   "live"
+  ]
+ },
+ {
+  "day": 362,
+  "id": "chK-362",
+  "type": "mcq",
+  "skill": "use-of-english",
+  "stem": "\"Can you help me carry this box?\" \"___.\"",
+  "options": [
+   "Sorry, thanks",
+   "You're welcome",
+   "Good morning",
+   "Sure"
+  ]
+ },
+ {
+  "day": 363,
+  "id": "chK-363",
+  "type": "mcq",
+  "skill": "vocabulary",
+  "stem": "The ___ has twelve months.",
+  "options": [
+   "week",
+   "year",
+   "day",
+   "hour"
+  ]
+ },
+ {
+  "day": 364,
+  "id": "chK-364",
+  "type": "mcq",
+  "skill": "grammar",
+  "stem": "It's the ___ day of the week.",
+  "options": [
+   "one",
+   "first",
+   "once",
+   "oneth"
+  ]
+ },
+ {
+  "day": 365,
+  "id": "chK-365",
+  "type": "mcq",
+  "skill": "reading",
+  "stem": "Every Friday, Grandpa Pablo picks up his grandchildren from school. They walk home along the river and feed the ducks with old bread. Grandpa tells them stories about his life as a sailor. The children love the story about the whale that followed his boat for three days. Who does Grandpa Pablo tell stories to?",
+  "options": [
+   "The ducks",
+   "The sailors",
+   "His neighbours",
+   "His grandchildren"
+  ]
+ }
+]

@@ -520,26 +520,110 @@ window.unitCalificar = async function(id, nota, comentario){
    unidad (unit.html). Los datos salen de unit-plans.js, que es copia
    del planner de Toddle: si una unidad no está ahí, no se ofrece.
 ---------------------------------------------------------------- */
+/* Vista de la tarjeta (units-cards.css). Estado de semanas, banda MCER y
+   personaje salen de datos que ya existen: fechas de la secuencia en
+   unit-plans.js, exam.target y el reparto de la biblia por nivel
+   (FUN_REPARTO). unit.html trae su propia copia de estos ayudantes. */
+const _UNIT_MESES={january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};
+function _unitRango(txt){
+  const m=String(txt||'').split(/\s*[–—-]\s*/);
+  const pr=s=>{const x=/(\d{1,2})\s*([A-Za-z]+)?/.exec(s||'');return x?{d:+x[1],m:x[2]?_UNIT_MESES[x[2].toLowerCase()]:undefined}:null};
+  const a=pr(m[0]), b=pr(m[1]||m[0]); if(!a||!b) return null;
+  const ma=a.m!==undefined?a.m:b.m, mb=b.m!==undefined?b.m:a.m; if(ma===undefined||mb===undefined) return null;
+  const y=new Date().getFullYear();
+  return {ini:new Date(y,ma,a.d), fin:new Date(y,mb,b.d,23,59)};
+}
+function _unitSemanas(u){
+  const seq=u.sequence||[], hoy=Date.now(), segs=[], dia=864e5;
+  const rangos=seq.map(w=>_unitRango(w.dates)), fechas=seq.length>0&&rangos.every(Boolean);
+  let actual=null, hechas=0;
+  seq.forEach((w,i)=>{
+    let c='';
+    if(fechas){
+      if(rangos[i].fin.getTime()+2*dia<hoy){ c='done'; hechas++; }
+      else if(actual===null && hoy>=rangos[i].ini.getTime()-2*dia){ c='now'; actual=w.n; }
+    }
+    segs.push({c,t:(u.stepWord||'Week')+' '+w.n+' · '+w.title});
+    (u.breaks||[]).filter(k=>k.after===w.n).forEach(k=>segs.push({c:'break',t:k.title}));
+  });
+  if(!seq.length) for(let i=0;i<u.weeks;i++) segs.push({c:'',t:''});
+  return {segs, actual, hechas, total:seq.length||u.weeks, fechas};
+}
+const _UNIT_EXAMEN={starters:['prea1','Pre A1','Starters'],movers:['a1','A1','Movers'],flyers:['a2','A2','Flyers'],b2first:['b2','B2','B2 First']};
+const _UNIT_ELENCO={starters:['freya','pip','nico','astrid','tomas'],movers:['valentina','luna','erik','sofia','mateo'],flyers:['maya','kili','ingrid','diego','oliver']};
+function _unitBanda(u,plan){
+  const e=u.exam&&_UNIT_EXAMEN[u.exam.target];
+  if(e) return {band:e[0],cefr:(u.exam.target==='b2first'&&plan&&plan.cefr)?String(plan.cefr).split(' (')[0]:e[1],examen:e[2]};
+  if(plan&&plan.cefr) return {band:/B2/.test(plan.cefr)?'b2':'',cefr:String(plan.cefr).split(' (')[0],examen:''};
+  return {band:'',cefr:'',examen:''};
+}
+/* Primaria: el personaje es del nivel Cambridge de la unidad y rota por n
+   (U4 la protagonista del nivel, U5 y U6 el siguiente del elenco). Solo los
+   15 de la biblia; nunca se inventa uno. */
+function _unitPersonaje(u,grade){
+  const gn=parseInt(String(grade).replace(/\D/g,''),10);
+  const lvl=(u.exam&&_UNIT_ELENCO[u.exam.target]?u.exam.target:'')||(typeof FUN_REPARTO!=='undefined'?FUN_REPARTO[gn]:'');
+  const el=_UNIT_ELENCO[lvl]; if(!el||gn>5) return null;
+  const slug=el[(((u.n-4)%el.length)+el.length)%el.length];
+  return {lvl,slug,nombre:slug[0].toUpperCase()+slug.slice(1),src:'nis-fun/assets/characters/'+lvl+'/'+slug+'/pose-01.png'};
+}
+function _unitReveal(root){
+  const cards=[...(root||document).querySelectorAll('.unit-card.reveal:not(.in)')];
+  cards.forEach((c,i)=>c.style.setProperty('--i',i));
+  if(!('IntersectionObserver' in window)){ cards.forEach(c=>c.classList.add('in')); return; }
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{threshold:.12});
+  cards.forEach(c=>io.observe(c));
+  /* Red de seguridad: si el observador no dispara, la tarjeta no se queda invisible. */
+  setTimeout(()=>cards.forEach(c=>c.classList.add('in')),1800);
+}
+
 function _unitPlanCard(u,route,grade,open){
   const href=_withBack('unit.html?grade='+grade+'&unit='+u.n,route);
-  const image=u.cover&&u.cover.image;
+  const cv=u.cover||{};
+  const plan=(window.UNIT_PLANS||{})[grade]||{};
   const gradeLabel=(GRADE_META[grade]&&GRADE_META[grade][1])||grade;
-  const visual=image
-    ? `<div style="position:relative">
-         <img src="${esc(image)}" alt="${esc(gradeLabel+' · Unit '+u.n+' · '+u.title)}" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
-         <span class="badge" style="position:absolute;left:12px;bottom:12px;background:rgba(12,24,45,.82);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(5px)">${esc(gradeLabel)} · Unit ${esc(String(u.label||u.n))}</span>
-       </div>`
-    : `<div style="font-size:3.4rem;line-height:1;padding:30px 18px 8px">${(u.cover&&u.cover.icon)||'📘'}</div>`;
-  const body=`${visual}<div style="padding:18px">
-        <h2 style="margin:0 0 6px;color:var(--blue-d)">Unit ${esc(String(u.label||u.n))} · ${esc(u.title)}</h2>${u.pilot?`<div class="badge" style="background:#ede9fe;color:#5b21b6;margin-bottom:6px">🧪 2027 pilot · not visible to students</div>`:''}
-        <div class="muted" style="font-size:.85rem">${esc(u.deliverables.map(d=>d.title).join(' · '))} — ${u.weeks} weeks.</div>
-        ${open?'':'<div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Your teacher will unlock this unit</div>'}
-      </div>`;
-  if(!open) return `<div class="card" style="display:block;padding:0;margin-bottom:0;overflow:hidden;opacity:.72">${body}</div>`;
-  return `<a class="card" href="${href}" style="text-decoration:none;color:inherit;display:block;padding:0;margin-bottom:0;overflow:hidden;transition:.15s"
-      onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-      ${body}
-    </a>`;
+  const unitLabel=String(u.label||u.n), unitNum=String(u.n);
+  const sem=_unitSemanas(u), pj=_unitPersonaje(u,grade);
+  let bd=_unitBanda(u,plan);
+  if(!bd.band&&!bd.cefr&&pj&&_UNIT_EXAMEN[pj.lvl]){ const e=_UNIT_EXAMEN[pj.lvl]; bd={band:e[0],cefr:e[1],examen:e[2]}; }
+  const prods=(u.deliverables||[]);
+  const stepW=(u.stepWord||'Week');
+  const cover=`<div class="unit-cover">${cv.image
+      ? `<img class="bg" src="${esc(cv.image)}" alt="${esc(gradeLabel+' · Unit '+unitLabel+' · '+u.title)}" loading="lazy" decoding="async">`
+      : (pj?'':`<span class="icon" aria-hidden="true">${cv.icon||'📘'}</span>`)}
+      <span class="grade">${esc(gradeLabel)}</span>
+      <span class="num"><small>Unit</small>${esc(unitNum)}</span>
+    </div>`;
+  const chips=[
+    u.pilot?'<li class="pilot">🧪 2027 pilot · not visible to students</li>':'',
+    bd.cefr?`<li class="cefr">${esc(bd.cefr)}</li>`:'',
+    bd.examen?`<li class="exam">${esc(bd.examen)}</li>`:'',
+    `<li>${esc(String(u.weeks))} ${esc(stepW.toLowerCase())}s</li>`
+  ].join('');
+  const done=sem.fechas&&sem.hechas>=sem.total;
+  const estadoTxt=sem.fechas
+    ? (sem.actual?stepW+' '+sem.actual+' of '+sem.total:(done?'Done · '+sem.total+' of '+sem.total:'Starts soon'))
+    : '';
+  const estado=sem.fechas&&(sem.actual||done)?`<b>${esc(estadoTxt.split(' of ')[0].replace(' · ',' · '))}</b>${esc(estadoTxt.slice(estadoTxt.split(' of ')[0].length))}`:esc(estadoTxt);
+  const bar=sem.segs.length?`<div class="weeks" style="--w:${sem.segs.length}" role="img" aria-label="${esc(estadoTxt)}">${
+      sem.segs.map(s=>`<i${s.c?` class="${s.c}"`:''}${s.t?` title="${esc(s.t)}"`:''}></i>`).join('')}</div>`:'';
+  const cta=!open
+    ? '<span class="lock-note">🔒 Your teacher will unlock this unit</span>'
+    : `<a class="unit-cta" href="${href}">${done?'Review':(sem.actual?'Continue':'Open')} <span class="arr" aria-hidden="true">→</span></a>`;
+  const p0=prods[0];
+  return `<article class="unit-card reveal${open?'':' locked'}${done&&open?' is-done':''}"${bd.band?` data-band="${bd.band}"`:''}
+      style="--from:${esc(cv.from||'#244c77')};--to:${esc(cv.to||'#4987c6')}">
+      ${cover}
+      ${pj?`<img class="unit-char" src="${esc(pj.src)}" alt="" aria-hidden="true" loading="lazy" decoding="async" data-cast="${esc(pj.nombre)}">`:''}
+      <div class="unit-body">
+        <h3>${esc(u.title)}</h3>
+        ${u.bigq?`<p class="bigq">${esc(u.bigq)}</p>`:''}
+        <ul class="unit-chips">${chips}</ul>
+        ${bar}
+        <div class="weeks-label"><span>${estado}</span><span>${prods.length} ${prods.length===1?'product':'products'}</span></div>
+      </div>
+      <div class="unit-foot"><span class="prods">${p0&&open?`${p0.icon||''} ${esc(p0.title)}`:''}</span>${cta}</div>
+    </article>`;
 }
 function studentGradeUnits(key){
   _setNav(_isStudent() ? 'myclasses' : 'classes');
@@ -562,9 +646,10 @@ function studentGradeUnits(key){
   if(!units.length){ _lockedView(back,'🎯 Units'); return; }
   $('#main').innerHTML = `${back}<h1>🎯 Units</h1>
     <p class="muted" style="margin-top:-6px">${esc(plan.label)}${plan.cefr?' · '+esc(plan.cefr):''} — each unit ends in something you make, not in a test.</p>
-    <div class="grid cols-2" style="margin-top:12px">
+    <div class="unit-grid">
       ${units.map(u=>_unitPlanCard(u,route,key,nodeVisible(_academicUnitNode(key,u.n)))).join('')}
     </div>`;
+  _unitReveal($('#main'));
 }
 
 /* ---------------------------------------------------------------

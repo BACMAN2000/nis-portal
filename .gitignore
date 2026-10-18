@@ -119,3 +119,7 @@ static-report.json
 browser-report.json
 browser-local-*.txt
 live-report.json
+
+# Claves de los retos de Daily English: solo en Supabase, nunca en el repo público
+tools/daily/keys.private/
+daily-english/_demo.html
