@@ -23,7 +23,8 @@ def pagina_cohasset(html):
         ("'The Nordic Times'", "'The Cohasset Times'"),
         ('<title>The Nordic Times</title>', '<title>The Cohasset Times</title>'),
         ('<h1 id="mast">The Nordic Times</h1>', '<h1 id="mast">The Cohasset Times</h1>'),
-        ('<a href="../" id="home">← Portal</a>', '<a href="/portal" id="home">← Mi portal</a>'),
+        ('<script src="../nis-nav.js?v=', None),           # el «◀ Back» compartido es de NIS; cohasset.pe no lo tiene
+        ('<a href="../" id="home" data-nis-back data-nis-back-default="../">◀ Back</a>', '<a href="/portal" id="home">← Mi portal</a>'),
     ]
     for viejo, nuevo in cambios:
         if viejo not in html:
