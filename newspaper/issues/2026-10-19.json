@@ -1,0 +1,1014 @@
+{
+  "date": "2026-10-19",
+  "issue": 13,
+  "breaking": [
+    "Look up! The Orionid meteor shower is at its best on the night of 21 to 22 October.",
+    "Lima: the Lord of Miracles visits the Government Palace for the first time in 40 years.",
+    "Peru's economy grew 3.23% in August, and construction went up by more than 10%.",
+    "Indonesia's new capital in the jungle was planned for 1.2 million people, but only about 10,000 live there."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-19-orionids",
+      "section": "Science",
+      "country": "World",
+      "flag": "🌍",
+      "level": "A2",
+      "topic": "Space and the night sky",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Shooting stars from a famous comet",
+      "standfirst": "This week, tiny pieces of Halley's Comet will make lines of light in the night sky.",
+      "body": [
+        "Look up this week! The Orionid meteor shower comes every October, and this year it is at its best on the night of 21 to 22 October.",
+        "People often call meteors 'shooting stars', but they are not stars. They are very small pieces of dust from Halley's Comet, a famous comet. When the Earth travels through this dust, the pieces fall into the air around our planet very fast – about 66 kilometres every second. They get very hot and make short lines of light in the sky.",
+        "On a dark night, you can see between 10 and 20 meteors in one hour. But this year the Moon is big and bright, so it is harder to see some of them. The best time is early in the morning, after the Moon goes down and before the sun comes up.",
+        "You don't need a telescope. Find a safe place with a big view of the sky, and just watch!"
+      ],
+      "glossary": [
+        {
+          "w": "meteor",
+          "d": "a small piece of rock or dust from space that burns and makes a line of light in the sky"
+        },
+        {
+          "w": "shower",
+          "d": "here: a time when you can see many meteors in the sky"
+        },
+        {
+          "w": "comet",
+          "d": "a ball of ice and dust that travels around the sun"
+        },
+        {
+          "w": "dust",
+          "d": "very, very small dry pieces of something"
+        },
+        {
+          "w": "telescope",
+          "d": "a long tube with glass in it that makes things far away look bigger"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "When is the best night to see the Orionids this year?",
+          "options": [
+            "21 to 22 October",
+            "19 to 20 October",
+            "24 to 25 October"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What are meteors?",
+          "options": [
+            "very small stars",
+            "very small pieces of dust",
+            "small pieces of the Moon"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "How fast do the pieces fall into the air?",
+          "options": [
+            "about 6 kilometres every second",
+            "about 20 kilometres every second",
+            "about 66 kilometres every second"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why is it harder to see some meteors this year?",
+          "options": [
+            "The Moon is big and bright.",
+            "There are a lot of clouds.",
+            "The comet is very far away."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What do you need to watch the meteors?",
+          "options": [
+            "a telescope",
+            "a special phone app",
+            "only your eyes and a big view of the sky"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You want to watch the meteor shower this week. Write an email to your English friend (25 words or more). Ask your friend to watch it with you. Tell your friend: when you want to meet, where you can watch it, and what to bring."
+      },
+      "sources": [
+        {
+          "name": "Forbes",
+          "url": "https://www.forbes.com/sites/jamiecartereurope/2026/10/19/see-shooting-stars-from-halleys-comet-the-night-sky-this-week/"
+        },
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/19/orionid-meteor-shower-halley-comet-starwatch"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/orionids.jpg",
+        "alt": "Many thin lines of light from meteors in a dark night sky full of stars",
+        "caption": "Orionid meteors photographed over one night in an earlier year.",
+        "credit": "Jim Vajda",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Orionid_Meteor_Shower_Composite_(50521737888).jpg"
+      }
+    },
+    {
+      "id": "2026-10-19-lord-of-miracles",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Traditions and festivals",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "The Lord of Miracles visits the Government Palace",
+      "standfirst": "For the first time in 40 years, Peru's most famous religious image came into the palace in Lima.",
+      "body": [
+        "The Lord of Miracles is a famous painting of Jesus Christ in Lima. People also call it the 'Brown Christ'. Every October, many Peruvians walk with the image through the streets of the city. It is one of the most important religious traditions in Peru.",
+        "On Sunday, the image visited the Government Palace in Lima. It was a special day, because it was the first time in 40 years. The last visit was in 1986.",
+        "The President of Peru and the ministers were there to welcome it. In the courtyard of the palace, there was a big carpet made of flowers, with pictures about Peru.",
+        "Members of the Lord of Miracles brotherhood carried the image on their shoulders. Soldiers from the president's guard were there too. For many Peruvians, the Lord of Miracles is a symbol of faith and hope."
+      ],
+      "glossary": [
+        {
+          "w": "tradition",
+          "d": "something that people have done in the same way for a very long time"
+        },
+        {
+          "w": "courtyard",
+          "d": "an open space with walls or buildings around it"
+        },
+        {
+          "w": "carpet",
+          "d": "a big piece of material that covers a floor"
+        },
+        {
+          "w": "shoulders",
+          "d": "the parts of your body between your neck and your arms"
+        },
+        {
+          "w": "faith",
+          "d": "a strong belief, often in God or a religion"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "The image visited the Government Palace on Sunday.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The image also visited the palace last year.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "The carpet in the courtyard was made of flowers.",
+          "answer": "T"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The image arrived at the palace in a car.",
+          "answer": "F"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The visit to the palace lasted three hours.",
+          "answer": "NS"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "People also call the image the 'Brown Christ'.",
+          "answer": "T"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend wants to know about a festival or tradition in your town. Write an email to your friend (25 words or more). Tell your friend: what the festival is, when it happens, and what people do."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-president-fujimori-welcomes-lord-of-miracles-at-government-palace-1096422.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/lord-of-miracles.jpg",
+        "alt": "A large crowd in a street in Lima during the Lord of Miracles procession",
+        "caption": "The Lord of Miracles procession in the streets of Lima (photo from 2004).",
+        "credit": "12C HSMN",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Procesion_del_Se%C3%B1or_de_los_Milagros2004.jpg"
+      }
+    },
+    {
+      "id": "2026-10-19-flying-car",
+      "section": "Technology",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B1",
+      "topic": "Transport and inventions",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Up, over and down again: a car that flies like a rocket",
+      "standfirst": "Elon Musk says Tesla's new sports car is the world's first flying car – but you can't fly it on the road.",
+      "body": [
+        "Elon Musk, the billionaire who runs the car company Tesla and the space company SpaceX, has shown a new sports car which, he says, is the world's first flying car. The Tesla Roadster 2 was presented last Thursday at a SpaceX centre in Texas, where the company develops and tests its rockets.",
+        "The car uses technology from SpaceX. It has small rocket engines called thrusters, which push it into the air. In a video of the event, the car drives up a curved ramp, holds on upside down and then uses its thrusters to flip over, fly and land again. Later, it jumps over a line of other Tesla cars. Nobody was driving it from the inside: the car was controlled from a distance.",
+        "Musk also said that the Roadster 2 could go from 0 to 60 miles per hour (about 97 kilometres per hour) in less than one second, which would be a record. 'Flying cars are real,' he said.",
+        "Not everyone will be able to fly one, though. Musk said he was not sure that the car was legal everywhere, and the company says that flying it is not allowed on public roads. A one-seat 'rocket' version with a full flight system will only be available by invitation.",
+        "The car will not be cheap. It is expected to cost more than $200,000, and production should start in 2028. Back in 2014 Musk did not believe in flying cars. He announced the Roadster 2 three years later, in 2017."
+      ],
+      "glossary": [
+        {
+          "w": "billionaire",
+          "d": "a person who has more than one thousand million dollars"
+        },
+        {
+          "w": "thrusters",
+          "d": "small engines that push something, like a rocket, in one direction"
+        },
+        {
+          "w": "ramp",
+          "d": "a road or surface that goes up from a lower place to a higher place"
+        },
+        {
+          "w": "flip",
+          "d": "to turn over quickly in the air"
+        },
+        {
+          "w": "legal",
+          "d": "allowed by the law"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where did the demonstration take place?",
+          "options": [
+            "at a Tesla shop in California",
+            "at a SpaceX centre in Texas",
+            "at a car show in Europe",
+            "on a public road in Texas"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Who was controlling the car during the show?",
+          "options": [
+            "Elon Musk, from inside the car",
+            "a racing driver sitting in the car",
+            "someone who was not inside the car",
+            "nobody – the car was switched off"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What did the car do in the demonstration?",
+          "options": [
+            "It jumped over a line of other cars.",
+            "It flew from one city to another.",
+            "It raced against a real rocket.",
+            "It drove across a lake."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What did Musk think about flying cars in 2014?",
+          "options": [
+            "He wanted to build one very quickly.",
+            "He did not believe in them.",
+            "He had already built one.",
+            "He thought they would be cheap."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does the company say about flying the car?",
+          "options": [
+            "You can only do it at night.",
+            "Any driver can learn it in a day.",
+            "It is not allowed on public roads.",
+            "You need a pilot's licence."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "When should Tesla start making the Roadster 2?",
+          "options": [
+            "in 2014",
+            "in 2017",
+            "in 2026",
+            "in 2028"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine for teenagers: 'Transport of the future! Would you like to travel in a flying car? How do you think people will travel to school or work in 30 years? Write and tell us!' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/oct/16/elon-musk-reveals-worlds-first-flying-car-spacex"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/flying-car.jpg",
+        "alt": "A large rocket test site with buildings and roads in flat green land, seen from the air",
+        "caption": "A SpaceX rocket development site in Texas, seen from the air (earlier photo).",
+        "credit": "SpaceX",
+        "license": "CC0",
+        "link": "https://commons.wikimedia.org/wiki/File:Central_Site_at_Rocket_Development_Facility.jpg"
+      }
+    },
+    {
+      "id": "2026-10-19-peru-economy",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Work, money and the economy",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "More houses, more trade: Peru's economy keeps growing",
+      "standfirst": "Official figures show that most parts of the Peruvian economy grew in August – but fishing had a bad month.",
+      "body": [
+        "Good news for Peru: the country's economy is growing. In August 2026, Peru produced 3.23% more goods and services than in August 2025. The figures were published last Thursday by the National Institute of Statistics and Informatics (INEI), the government office that collects official numbers about the country.",
+        "When economists say that an economy 'grows', they mean that people and companies are producing and selling more – for example, more houses, more food and more services. INEI said that most sectors of the economy grew in August.",
+        "The star of the month was construction, which rose by 10.34%. Trade, which includes buying and selling things in shops and markets, went up by 6.89%, and electricity, gas and water grew by 6.61%. Factories produced 4.18% more, while agriculture and livestock farming increased by 3.37%. Hotels and restaurants also grew, but only a little: 1.20%.",
+        "However, not every sector had a good month. Fishing fell by 17.33%, and mining and hydrocarbons, such as oil and gas, dropped by 5.53%. These two sectors went down while almost all the others went up.",
+        "Over a longer period, the picture is also positive. Between January and August 2026, the economy grew by 3.14% compared with the same months of 2025. And over the last twelve months, from September 2025 to August 2026, it grew by 3.31%."
+      ],
+      "glossary": [
+        {
+          "w": "economy",
+          "d": "all the money, work, goods and services of a country"
+        },
+        {
+          "w": "sector",
+          "d": "one part of a country's economy, for example fishing or building"
+        },
+        {
+          "w": "construction",
+          "d": "the work of building houses, roads and other buildings"
+        },
+        {
+          "w": "trade",
+          "d": "the activity of buying and selling things"
+        },
+        {
+          "w": "livestock",
+          "d": "farm animals such as cows, sheep and chickens"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "In August 2026, Peru produced more goods and services ___ in August 2025.",
+          "options": [
+            "than",
+            "that",
+            "as",
+            "then"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "INEI is the government office that ___ official numbers about the country.",
+          "options": [
+            "does",
+            "collects",
+            "earns",
+            "spends"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "Construction was the sector that grew the ___ in August.",
+          "options": [
+            "more",
+            "much",
+            "most",
+            "many"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "Trade includes buying and ___ things in shops and markets.",
+          "options": [
+            "taking",
+            "giving",
+            "making",
+            "selling"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Fishing ___ by 17.33% in August.",
+          "options": [
+            "fell",
+            "rose",
+            "grew",
+            "won"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "The economy grew by 3.14% ___ January and August 2026.",
+          "options": [
+            "since",
+            "between",
+            "during",
+            "until"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Sam writes: 'I read that a lot of new houses and buildings are being built in Peru. Is there a lot of construction in your town? What new building or place would you like to have there? Why?' Write your email to Sam in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-inei-perus-economy-up-323-in-august-2026-driven-by-most-sectors-1096025.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/peru-economy.jpg",
+        "alt": "A tall new building under construction in a city street",
+        "caption": "A new building going up in Surquillo, Lima, in July 2026: construction grew fast in August.",
+        "credit": "El Surquillano",
+        "license": "CC0",
+        "link": "https://commons.wikimedia.org/wiki/File:Obras_construcci%C3%B3n_Torre_Germania_-_20260710_123336.jpg"
+      }
+    },
+    {
+      "id": "2026-10-19-clear-air-turbulence",
+      "section": "Science",
+      "country": "World",
+      "flag": "🌍",
+      "level": "B2",
+      "topic": "Travel, weather and climate",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "headline": "Out of a clear blue sky: the invisible bumps that worry pilots",
+      "standfirst": "A warming planet is making one of the hardest kinds of turbulence to predict more common. Here is what scientists and airlines are doing about it.",
+      "instructions": "For each question, choose the paragraph (A–E). Paragraphs may be chosen more than once.",
+      "body": [
+        "A. Most people think of turbulence as something caused by storms. Thunderstorms are full of rising and falling air, but pilots can usually see them on radar and fly around them. There is, however, another kind of turbulence that is much harder to avoid. Clear-air turbulence appears at cruising height, often at the edges of jet streams – the fast rivers of air that flow around the Earth – and no radar can detect it in advance.",
+        "B. Scientists believe the problem is getting worse. A University of Reading study of atmospheric data from 1979 to 2020 found that severe clear-air turbulence had increased by 55%, while moderate and light turbulence had risen by 37% and 17%. Even if global warming is limited to 1.5C, a further 27% rise is expected; with 2.75C of warming, the figure could reach 56%.",
+        "C. According to Todd Lane, a professor at the University of Melbourne, for every degree of warming the atmosphere can hold 7% more water vapour, which is the fuel of thunderstorms. Rising temperatures can also change the difference in temperature between the equator and the poles, increasing wind shear – sudden changes in wind speed or direction – in the jet streams.",
+        "D. The risks are real. Turbulence is the leading cause of injuries to passengers and crew in non-fatal accidents, says the International Air Transport Association (IATA). In 2024, a flight from London to Singapore hit severe turbulence over Myanmar and 79 people were seriously hurt. The ten most turbulent routes in the world all cross either the Andes or the Himalayas.",
+        "E. The industry is fighting back. Since 2018, IATA has collected turbulence data from sensors on more than 3,700 aircraft belonging to about 30 airlines, and AI tools now turn it into almost instant warnings. Some manufacturers are testing Lidar, which uses lasers to study the air ahead of a plane. Anyone can also check a forecast on Turbli, a website built by engineer Ignacio Gallego-Marcos."
+      ],
+      "glossary": [
+        {
+          "w": "turbulence",
+          "d": "sudden, strong movements of air that make a plane shake"
+        },
+        {
+          "w": "jet streams",
+          "d": "very fast currents of air high above the Earth"
+        },
+        {
+          "w": "detect",
+          "d": "to notice or discover something that is difficult to see"
+        },
+        {
+          "w": "wind shear",
+          "d": "a sudden change in the speed or direction of the wind over a short distance"
+        },
+        {
+          "w": "sensors",
+          "d": "small devices that notice and measure things such as movement, heat or light"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph mentions mountain ranges?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph explains how a warmer atmosphere can make storms stronger?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph gives figures about how turbulence has changed in the past?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph describes a tool that members of the public can use?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph explains why pilots cannot see one type of turbulence coming?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "match",
+          "q": "Which paragraph refers to a real flight that was affected by turbulence?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about travel and the environment. Now your teacher has asked you to write an essay. 'Should people travel by plane less often?' Notes – write about: 1. the environment; 2. visiting family and friends; 3. ……… (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/world/ng-interactive/2026/oct/18/invisible-clear-air-turbulence-airline-safety-climate-crisis"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/clear-air-turbulence.jpg",
+        "alt": "A long line of white clouds over the sea, seen from space",
+        "caption": "A jet stream over Canada, seen from the Space Shuttle: clear-air turbulence often forms at the edges of these fast winds (photo from 1991).",
+        "credit": "NASA",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:STS039-601-049_Jet_Stream_(cropped).jpg"
+      }
+    },
+    {
+      "id": "2026-10-19-nusantara",
+      "section": "World",
+      "country": "Indonesia",
+      "flag": "🇮🇩",
+      "level": "B2",
+      "topic": "Cities and the future",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "A capital in the jungle, waiting for its people",
+      "standfirst": "Indonesia has built a brand-new capital city in the rainforest of Borneo. So why does it feel so empty?",
+      "body": [
+        "Deep in the rainforest of Borneo, Indonesia has built something extraordinary: a brand-new capital city. Nusantara, in the province of East Kalimantan, has a presidential palace, modern offices, tall apartment blocks and wide roads. What it does not have, at least for now, is many people. Planners hoped it would hold 1.2 million residents by 2029, yet only around 10,000 have moved there so far.",
+        "To understand why the city was built, you have to look at Jakarta, more than 1,200 kilometres away. Last year the current capital, home to almost 42 million people, overtook Tokyo to become the world's most populous city. It suffers from heavy traffic and poor air, but its biggest problem is that it is sinking: about 40% of Jakarta lies below sea level, and parts of the north still flood regularly in the rainy season.",
+        "The idea of moving the capital is decades old, but it was former president Joko Widodo who decided in 2019 to build a new one in the jungle. Construction began in 2022, with the long-term aim of housing 1.9 million people by 2045, the 100th anniversary of Indonesia's independence.",
+        "Since then, however, priorities have changed. Under the current president, Prabowo Subianto, the city's yearly budget has been cut sharply, from 43 trillion rupiah in 2024 to 6.3 trillion in 2026, while money has moved to other projects, such as a national school meals programme. A regulation aims to make Nusantara the 'political capital' by 2028, but this year Indonesia's Constitutional Court ruled that Jakarta will remain the official capital until a further decree is signed.",
+        "Meanwhile, the few people who live in the new towers – about 1,800 public servants and security staff – are getting used to the calm. One young government worker admitted that the city is quiet, but said that this is better for her mental health, and that residents fill their free time with book clubs, journals and conversation."
+      ],
+      "glossary": [
+        {
+          "w": "populous",
+          "d": "having a very large number of people living there"
+        },
+        {
+          "w": "overtook",
+          "d": "became bigger or better than something else (past of 'overtake')"
+        },
+        {
+          "w": "budget",
+          "d": "the amount of money that a government or person plans to spend"
+        },
+        {
+          "w": "decree",
+          "d": "an official order given by a leader or government"
+        },
+        {
+          "w": "priorities",
+          "d": "the things that are considered the most important to do first"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the main point of the first paragraph?",
+          "options": [
+            "Nusantara is now the largest city in Indonesia.",
+            "The new city has the buildings of a capital but very few residents.",
+            "Nusantara was built too quickly and badly.",
+            "More tourists are visiting the rainforest of Borneo."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to the article, what is Jakarta's most serious problem?",
+          "options": [
+            "its heavy traffic",
+            "its poor air",
+            "the fact that it is sinking",
+            "its distance from Borneo"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why is the year 2045 important for Nusantara?",
+          "options": [
+            "It is the year of the next election.",
+            "It is when Jakarta will stop being the capital.",
+            "It is when all construction must stop.",
+            "It is the 100th anniversary of independence, chosen as a target date."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What has happened to the city's yearly budget?",
+          "options": [
+            "It has been reduced a great deal.",
+            "It has grown every year since 2024.",
+            "It has stayed the same.",
+            "It is now paid for by other countries."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What did the Constitutional Court decide?",
+          "options": [
+            "Nusantara has been the official capital since 2024.",
+            "The capital must move to Nusantara by 2028.",
+            "Work on Nusantara must stop.",
+            "Jakarta stays the official capital until another decree is signed."
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement on an English-language website for young people: 'My city in 20 years. How do you think your town or city will change in the next 20 years? What would you like to stay the same, and what would you like to change?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-19/indonesias-new-capital-nusantara-not-living-up-to-promise/107255734"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/nusantara.png",
+        "alt": "A large modern palace building shaped like a bird with spread wings",
+        "caption": "The Garuda Palace in Nusantara, Indonesia's new capital (earlier image).",
+        "credit": "Dianrana",
+        "license": "CC0",
+        "link": "https://commons.wikimedia.org/wiki/File:Istana_Garuda_IKN.png"
+      }
+    },
+    {
+      "id": "2026-10-19-ibd-warning-signs",
+      "section": "Health",
+      "country": "Netherlands · United States · Austria",
+      "flag": "🇳🇱",
+      "level": "C1",
+      "topic": "Medicine and research",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Ten years' notice: the blood signals that could reveal a gut disease early",
+      "standfirst": "Antibody patterns appear long before inflammatory bowel disease is diagnosed, a new study suggests – raising hopes of earlier treatment and, one day, prevention.",
+      "body": [
+        "For most patients with inflammatory bowel disease (IBD), treatment begins only after the symptoms do – and by then, the gut has often already been damaged. A new study suggests that this need not always be the case: the immune system appears to send out warning signals as much as a decade before the condition is diagnosed.",
+        "IBD, which affects at least 3.8 million people worldwide, causes long-term inflammation of the digestive tract, leading to pain and fatigue. Its two main forms are Crohn's disease and ulcerative colitis. Its exact cause remains unknown, although genetics, the microbes that live in the gut and a misfiring immune system are all thought to play a part. Many patients do not respond to existing drugs, and a significant number eventually need surgery.",
+        "The research team, led by Dr Arno Bourgonje of the University Medical Centre Groningen in the Netherlands and the Icahn School of Medicine at Mount Sinai in New York, and working with colleagues in Vienna, analysed 2,000 blood samples taken from 500 members of the US military. Of these people, 200 later developed Crohn's disease, 200 developed ulcerative colitis and 100 developed neither. The samples were screened for antibodies against hundreds of thousands of protein fragments from bacteria, viruses, food and the body's own tissues.",
+        "Distinct patterns emerged. People who went on to develop Crohn's disease more often carried antibodies against the Epstein-Barr virus, which causes glandular fever, and the difference was already visible ten years before diagnosis. The signal was strongest in those who later developed the most severe, complicated form. In ulcerative colitis, by contrast, the pattern included antibodies against one of the body's own proteins.",
+        "The researchers are careful not to overstate their results. Bourgonje stressed that this is \"not yet a test\" that can tell someone they will become ill. The findings show a link rather than proof that infections cause IBD, and they need to be confirmed in other groups of people. An independent expert, Professor James Lindsay of Barts Health, called the techniques a research tool that is not ready for use in clinics.",
+        "Even so, the hope is that IBD may one day follow the path of type 1 diabetes, where a blood test can identify people whose immune system has started to attack the body before any symptoms appear, allowing treatment that delays the disease. The study was published in the journal Gut."
+      ],
+      "glossary": [
+        {
+          "w": "inflammation",
+          "d": "a condition in which part of the body becomes red, swollen, hot and often painful as a reaction to injury or illness"
+        },
+        {
+          "w": "antibodies",
+          "d": "proteins made by the immune system to fight bacteria, viruses and other things it sees as dangerous"
+        },
+        {
+          "w": "fatigue",
+          "d": "a feeling of being extremely tired"
+        },
+        {
+          "w": "screened",
+          "d": "tested or examined in order to find a particular thing"
+        },
+        {
+          "w": "overstate",
+          "d": "to say that something is more important or certain than it really is"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the writer's purpose in the first paragraph?",
+          "options": [
+            "to describe a limitation of current treatment and introduce a possible change",
+            "to warn readers about a newly discovered disease",
+            "to criticise doctors for treating patients too late",
+            "to explain in detail how the gut works"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "In the second paragraph, what does 'Its' in 'Its exact cause remains unknown' refer to?",
+          "options": [
+            "the digestive tract",
+            "IBD",
+            "the immune system",
+            "Crohn's disease only"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What made the blood samples especially useful for this study?",
+          "options": [
+            "They were all taken after the people had been diagnosed.",
+            "They came only from patients in Vienna.",
+            "They were available from people some of whom later developed IBD.",
+            "They were taken from children and teenagers."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What was found in people who later developed Crohn's disease?",
+          "options": [
+            "antibodies against one of their own proteins",
+            "no antibodies at all",
+            "fewer antibodies than in healthy people",
+            "more antibodies against a common virus"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "How would you describe the attitude presented in the fifth paragraph?",
+          "options": [
+            "excited that a reliable test is ready",
+            "cautious, pointing out the limits of the findings",
+            "dismissive of the study's value",
+            "confused about what the results mean"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Why does the writer mention type 1 diabetes?",
+          "options": [
+            "to show that it has the same cause as IBD",
+            "to suggest that IBD patients often have diabetes",
+            "to give an example of what early detection could achieve",
+            "to explain why the study was published in Gut"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a talk on the future of medicine. You have made the notes below. Ways of improving people's health: early tests for diseases; better treatment for people who are already ill; healthier lifestyles. Some opinions expressed: 'Finding a disease early is worth more than any medicine.' 'Too many tests could make healthy people worried.' Write an essay discussing two of the ways in your notes. Explain which way you think should be the priority for governments, giving reasons in support of your answer. Write your essay in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/18/research-predict-inflammatory-bowel-disease-decade-before-diagnosis"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/ibd-warning-signs.jpg",
+        "alt": "A scientist in a laboratory holding a small tube with a blood sample",
+        "caption": "A scientist checks a blood sample: the new study looked at 2,000 samples (earlier photo, not from the study).",
+        "credit": "National Eye Institute",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Checking_Blood_Sample_(9955279835).jpg"
+      }
+    },
+    {
+      "id": "2026-10-19-ai-economy",
+      "section": "Economy",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "C1",
+      "topic": "Technology, business and the economy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "A market leaning on a few giants: how the AI boom tilted Wall Street",
+      "standfirst": "A handful of artificial intelligence companies now account for a remarkable share of the US stock market's growth. Experts say that concentration brings risks of its own.",
+      "body": [
+        "Few industries have grown as quickly as artificial intelligence. Shares in the companies that design AI chips, build data centres and develop AI tools have soared; one Australian investment manager, Steve Johnson, called some of them among the fastest-growing businesses ever seen. Yet an analysis by the Australian broadcaster suggests that the boom is making the US stock market lopsided.",
+        "Take the S&P 500, the index of the 500 largest companies listed in the United States. Technology firms now account for about 44% of its total value, and the chip maker Nvidia has become the most valuable company in the world. Since April, roughly 230 of the 500 companies have seen their share prices fall. Yet their losses were more than cancelled out by the gains of just three giants: Meta, Microsoft and Apple.",
+        "Add three chip makers – Nvidia, Micron and AMD – and these six companies explain 57% of the index's total gains since April. Without them, the S&P 500 would have risen by only 4.35% in six months, less than half its actual growth of 10%. According to Angel Zhong, an economist at RMIT University, the top ten stocks made up about 27% of the index at the height of the dot-com bubble in 2000; recently, the figure has been about 39%.",
+        "Unlike in 2000, when enormous valuations were driven largely by hype, some of today's AI firms, notably the chip makers, are already highly profitable. But Zhong points out that the leading AI labs earn only a fraction of what is being spent on their behalf, and that a boom originally paid for out of profits increasingly depends on outside money, including a great deal of debt.",
+        "A further concern is what has been called circular financing. Nvidia invests so heavily in its own biggest customers that it has been compared to a bank. For example, it agreed to invest in OpenAI's infrastructure; OpenAI then signed a huge contract to use Oracle's data centres; and Oracle, in turn, buys Nvidia chips to fill them. The firms, Zhong says, are \"each other's investors, suppliers and customers\", which makes it harder to judge how much demand for AI is genuine.",
+        "None of this means that a crash is inevitable. But it ties these companies' fortunes together, and when so much of a market's growth rests on so few shoulders, a stumble by one could be felt by all."
+      ],
+      "glossary": [
+        {
+          "w": "lopsided",
+          "d": "with one side much bigger or heavier than the other; not balanced"
+        },
+        {
+          "w": "index",
+          "d": "a number that shows the combined value of a group of company shares, used to measure a stock market"
+        },
+        {
+          "w": "hype",
+          "d": "a lot of excited talk and advertising that makes something seem better or more important than it is"
+        },
+        {
+          "w": "debt",
+          "d": "money that has been borrowed and must be paid back"
+        },
+        {
+          "w": "inevitable",
+          "d": "certain to happen and impossible to avoid"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the writer's main purpose in the article?",
+          "options": [
+            "to advise readers to buy shares in AI companies",
+            "to explain how the AI boom has made the market unbalanced",
+            "to criticise Australian investment managers",
+            "to describe how AI chips are designed"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What point does the writer make about the roughly 230 companies in the second paragraph?",
+          "options": [
+            "Their losses were outweighed by the gains of only three companies.",
+            "Most of them were chip makers.",
+            "Together they grew more than Nvidia.",
+            "They have been removed from the S&P 500."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why does the writer refer to the year 2000?",
+          "options": [
+            "to predict that a crash will happen this year",
+            "to explain how Nvidia started its business",
+            "to praise the companies of the dot-com era",
+            "to compare today's market concentration with that of an earlier boom"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "According to Angel Zhong, how has the way the AI boom is paid for changed?",
+          "options": [
+            "It is now paid for mainly by governments.",
+            "It has become more dependent on profits.",
+            "It relies increasingly on outside money and borrowing.",
+            "It no longer needs any new money."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does 'circular financing' refer to in the fifth paragraph?",
+          "options": [
+            "companies that invest in, sell to and buy from one another",
+            "banks that lend money to the same customers again and again",
+            "governments that buy shares in technology firms",
+            "investors who sell their shares and quickly buy them back"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's attitude in the final paragraph?",
+          "options": [
+            "alarmed, believing that a crash is certain",
+            "cautious, pointing to a risk without predicting disaster",
+            "confident that nothing can go wrong",
+            "uninterested in what might happen next"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has watched a documentary about the power of large technology companies. You have made the notes below. Areas where big technology companies have a strong influence: the economy; jobs; young people's daily lives. Some opinions expressed: 'These companies create the jobs of the future.' 'When a few companies grow too big, everyone else depends on them.' Write an essay discussing two of the areas in your notes. Explain in which area the influence of these companies is more important, giving reasons in support of your answer. Write your essay in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-19/ai-stock-market-concentration-data/107261078"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-19/ai-economy.jpg",
+        "alt": "A large old building with tall columns and American flags in New York",
+        "caption": "The New York Stock Exchange, where many of the biggest US companies' shares are traded (photo from 2023).",
+        "credit": "Jakub Hałun",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:New_York_Stock_Exchange_building,_20231002_171816.jpg"
+      }
+    }
+  ]
+}
