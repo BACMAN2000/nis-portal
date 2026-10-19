@@ -216,8 +216,12 @@ window.corrAlumno = async function(i){
 
   if(e._resp === undefined){
     const { data: sub } = await sb.from('unit_submissions')
-      .select('payload').eq('id', e.id).maybeSingle();
+      .select('payload,file_path').eq('id', e.id).maybeSingle();
     e._resp = (sub && sub.payload && sub.payload.answers) || {};
+    /* Worksheet handed in as a photo, file or link: it has no typed answers. */
+    e._ruta = (sub && sub.file_path) || '';
+    e._enlace = (sub && sub.payload && sub.payload.link) || '';
+    e._nombre = (sub && sub.payload && sub.payload.name) || 'file';
     e._handed = !!(sub && sub.payload && (sub.payload.handed_at || sub.payload.draft===false));
   }
   const resp = e._resp;
@@ -268,10 +272,15 @@ window.corrAlumno = async function(i){
       @media (max-width:1100px){ #cGrid{grid-template-columns:minmax(0,1fr)} }</style>
     <div id="cGrid">
       <div style="max-height:64vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:4px 10px">
+        ${(e._ruta || e._enlace) ? `<div style="margin:8px 0 12px">
+            <p class="muted" style="margin:0 0 6px;font-size:.84rem">Handed in: ${esc(e._nombre)}</p>
+            ${e._enlace ? `<a href="${esc(e._enlace)}" target="_blank" rel="noopener">🔗 Open link</a>` : ''}
+            <div id="cFoto">${e._ruta ? '<span class="muted">Loading…</span>' : ''}</div>
+          </div>` : ''}
         ${claves.length ? `<table class="tbl" style="margin:0"><tbody>${claves.map(k=>`<tr>
             <td style="vertical-align:top;min-width:160px;max-width:380px;font-size:.84rem">${etiquetas[k] ? esc(etiquetas[k]) : '<span class="muted">'+esc(k)+'</span>'}</td>
             <td style="white-space:pre-wrap;font-size:.88rem;line-height:1.5;font-weight:600">${esc(valor(resp[k]))}</td></tr>`).join('')}</tbody></table>`
-          : '<p class="muted">Did not answer anything.</p>'}
+          : ((e._ruta || e._enlace) ? '' : '<p class="muted">Did not answer anything.</p>')}
       </div>
       <div>
         <h4 style="margin:0 0 8px">📏 Evaluation</h4>
@@ -306,6 +315,18 @@ window.corrAlumno = async function(i){
       </div>
     </div>
     </div>`;
+
+  if(e._ruta){
+    const caja = $('#cFoto');
+    const { data: firmado } = await sb.storage.from('unit-products').createSignedUrl(e._ruta, 3600);
+    if(!caja) return;
+    if(!firmado){ caja.innerHTML = '<span class="muted">Could not open the file.</span>'; return; }
+    const ext = (e._ruta.split('.').pop()||'').toLowerCase();
+    caja.innerHTML = ['jpg','jpeg','png','webp','gif'].indexOf(ext) >= 0
+      ? `<a href="${esc(firmado.signedUrl)}" target="_blank" rel="noopener">
+           <img src="${esc(firmado.signedUrl)}" alt="Worksheet photo" style="max-width:100%;border-radius:8px"></a>`
+      : `<a href="${esc(firmado.signedUrl)}" target="_blank" rel="noopener">📎 Open file</a>`;
+  }
 };
 
 /* Un nivel por criterio. Se guarda al pulsarlo (con la nota que resulta),
