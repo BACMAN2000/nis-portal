@@ -1,7 +1,7 @@
 /* Service worker de la app Cohasset School. Solo controla /school-app/:
    red primero y, sin conexión, la copia guardada del lanzador (Android exige
    que la URL de inicio responda offline). El portal no pasa por aquí. */
-var CACHE = 'coh-school-app-v1';
+var CACHE = 'coh-school-app-v2';
 var SHELL = ['/school-app/', '/school-app/icons/icon-192.png', '/school-app/icons/icon-512.png'];
 
 self.addEventListener('install', function (e) {

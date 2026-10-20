@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cohasset School</title>
+<title>Cohasset School — NIS app</title>
 <meta name="theme-color" content="#081847">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -12,20 +12,16 @@
 <link rel="apple-touch-icon" href="/school-app/icons/icon-180.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/school-app/icons/icon-32.png">
 <link rel="manifest" href="/school-app/manifest.webmanifest">
-<!-- Lanzador de la app Cohasset School (Android TWA, iOS y PWA). Recuerda el
-     colegio elegido y abre el portal: NIS en / y cualquier otro con
-     ?school=<slug>; app=1 le dice a school.js que no es una vista previa. -->
+<!-- App Cohasset School, de uso interno en NIS. Dentro de la app (APK de
+     Android o icono de iPhone) esta página salta directo al portal; abierta en
+     el navegador es la página de instalación. -->
 <script>
 (function () {
-  var KEY = 'coh-school-app';
   var p = new URLSearchParams(location.search);
-  window.cohSchoolGo = function (slug) {
-    location.replace(slug === 'nis' ? '/?app=1' : '/?school=' + encodeURIComponent(slug) + '&app=1');
-  };
-  if (p.get('change') !== null) { try { localStorage.removeItem(KEY); } catch (e) {} return; }
-  var saved = null;
-  try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
-  if (saved && saved.slug && navigator.onLine !== false) { document.documentElement.className = 'going'; window.cohSchoolGo(saved.slug); }
+  var enApp = p.get('source') === 'twa' || navigator.standalone === true ||
+              (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+  if (enApp && navigator.onLine !== false) { document.documentElement.className = 'going'; location.replace('/?app=1'); }
+  else if (enApp) document.documentElement.className = 'off';
 })();
 </script>
 <style>
@@ -34,30 +30,23 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 html.going main{visibility:hidden}
-main{max-width:440px;margin:0 auto;padding:max(32px,env(safe-area-inset-top)) 20px max(32px,env(safe-area-inset-bottom));min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:22px}
+main{max-width:460px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 16px max(28px,env(safe-area-inset-bottom));min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:20px}
 .brand{text-align:center}
 .brand img{width:96px;height:96px;border-radius:22px}
 h1{font-size:24px;margin:10px 0 2px}
+h2{font-size:18px;margin:0 0 8px}
 .sub{color:var(--muted);margin:0}
-.school{display:flex;align-items:center;gap:14px;width:100%;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:inherit;font:inherit;text-align:left;cursor:pointer}
-.school:hover,.school:focus-visible{border-color:var(--accent);outline:none}
-.school img{height:34px;width:auto;max-width:150px;background:#fff;border-radius:6px;padding:4px}
-.school b{display:block}
-.school small{color:var(--muted)}
-.or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px}
-.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
-form{display:flex;flex-direction:column;gap:10px}
-label{font-weight:600;font-size:15px}
-.row{display:flex;gap:8px}
-input{flex:1;min-width:0;padding:13px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--bg);color:inherit}
-input:focus{outline:2px solid var(--accent);outline-offset:1px}
-button.go{padding:13px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:600 16px/1 inherit;cursor:pointer}
-button.go:disabled{opacity:.6}
-.msg{min-height:1.4em;font-size:14px;color:#c62828;margin:0}
-.hint{font-size:13px;color:var(--muted);margin:0}
-.offline{display:none;text-align:center}
+.card{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:16px}
+ol{margin:0;padding-left:22px}
+li{margin:4px 0}
+.btn{display:block;text-align:center;padding:14px 18px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:600 16px/1.2 inherit;text-decoration:none;cursor:pointer}
+.btn.alt{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.hint{font-size:13px;color:var(--muted);margin:8px 0 0}
+.ios,.android,.offline{display:none}
+html.is-ios .ios,html.is-android .android,html.is-other .ios,html.is-other .android{display:block}
 html.off .offline{display:block}
-html.off .pick{display:none}
+html.off .install{display:none}
+.share{display:inline-block;vertical-align:-3px;width:18px;height:18px}
 </style>
 </head>
 <body>
@@ -65,63 +54,42 @@ html.off .pick{display:none}
   <div class="brand">
     <img src="/school-app/icons/icon-192.png" alt="">
     <h1>Cohasset School</h1>
-    <p class="sub">Choose your school to sign in.</p>
+    <p class="sub">The NIS Portal app · Nordic International School</p>
   </div>
 
-  <div class="offline">
-    <p><b>You're offline.</b><br>Connect to the internet to open your school portal.</p>
-    <button class="go" type="button" onclick="location.reload()">Try again</button>
+  <div class="offline card">
+    <p><b>You're offline.</b><br>Connect to the internet to open the NIS Portal.</p>
+    <button class="btn" type="button" onclick="location.reload()">Try again</button>
   </div>
 
-  <div class="pick">
-    <button class="school" type="button" data-slug="nis" data-name="Nordic International School of Lima">
-      <img src="/assets/logo-h.svg" alt="">
-      <span><b>Nordic International School</b><small>Lima · nis.cohasset.pe</small></span>
-    </button>
+  <div class="install android card">
+    <h2>Android</h2>
+    <a class="btn" href="/school-app/cohasset-school.apk" download>Download the app (APK, 2 MB)</a>
+    <ol class="hint">
+      <li>Open the downloaded file.</li>
+      <li>If Android asks, allow installing apps from this source (Chrome or Files).</li>
+      <li>Tap <b>Install</b>, then open <b>Cohasset School</b>.</li>
+    </ol>
   </div>
 
-  <div class="or pick">or</div>
+  <div class="install ios card">
+    <h2>iPhone and iPad</h2>
+    <ol>
+      <li>Open this page in <b>Safari</b>.</li>
+      <li>Tap <b>Share</b> <svg class="share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>.</li>
+      <li>Choose <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+      <li>Open <b>Cohasset School</b> from your home screen.</li>
+    </ol>
+  </div>
 
-  <form class="pick" id="codeForm" novalidate>
-    <label for="code">Another school</label>
-    <div class="row">
-      <input id="code" name="code" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="School code" required>
-      <button class="go" type="submit">Continue</button>
-    </div>
-    <p class="msg" id="msg" role="alert"></p>
-    <p class="hint">Your school gives you its code (for example, the first part of its address: <i>code</i>.cohasset.pe).</p>
-  </form>
+  <a class="install btn alt" href="/">Open the NIS Portal in the browser</a>
 </main>
 <script>
 (function () {
-  var KEY = 'coh-school-app';
-  var SB = 'https://kjrppibltkbflvxmiyib.supabase.co', K = 'sb_publishable_HINNpxCDLvwXIlecuhKGcw_LDGamS-Z';
-  function pick(slug, name) {
-    try { localStorage.setItem(KEY, JSON.stringify({ slug: slug, name: name })); } catch (e) {}
-    window.cohSchoolGo(slug);
-  }
-  function offline() { document.documentElement.classList.toggle('off', navigator.onLine === false); }
-  offline(); addEventListener('online', function () { location.reload(); }); addEventListener('offline', offline);
-
-  document.querySelector('.school').addEventListener('click', function () { pick(this.dataset.slug, this.dataset.name); });
-
-  var form = document.getElementById('codeForm'), msg = document.getElementById('msg');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var code = form.code.value.trim().toLowerCase().replace(/\.cohasset\.pe.*$/, '').replace(/^https?:\/\//, '');
-    if (!/^[a-z0-9-]{2,40}$/.test(code)) { msg.textContent = 'Enter the code your school gave you.'; return; }
-    if (code === 'nis') { pick('nis', 'Nordic International School of Lima'); return; }
-    var btn = form.querySelector('button'); btn.disabled = true; msg.textContent = '';
-    fetch(SB + '/rest/v1/rpc/school_public', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', apikey: K, Authorization: 'Bearer ' + K },
-      body: JSON.stringify({ p_host: code })
-    }).then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
-      if (s && s.slug === code) pick(s.slug, s.name);
-      else { msg.textContent = 'We couldn’t find a school with that code.'; btn.disabled = false; }
-    }).catch(function () { msg.textContent = 'No connection. Try again.'; btn.disabled = false; });
-  });
-
+  var ua = navigator.userAgent, h = document.documentElement;
+  var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  h.classList.add(ios ? 'is-ios' : /Android/i.test(ua) ? 'is-android' : 'is-other');
+  addEventListener('online', function () { if (h.classList.contains('off')) location.reload(); });
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/school-app/sw.js', { scope: '/school-app/' }).catch(function () {});
 })();
 </script>
