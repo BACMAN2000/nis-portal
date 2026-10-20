@@ -47,6 +47,15 @@ html.is-ios .ios,html.is-android .android,html.is-other .ios,html.is-other .andr
 html.off .offline{display:block}
 html.off .install{display:none}
 .share{display:inline-block;vertical-align:-3px;width:18px;height:18px}
+[hidden]{display:none!important}
+.btn+.btn{margin-top:10px}
+html.has-pointer main{padding-bottom:96px}
+.btn.secondary{background:transparent;color:var(--accent);border:1px solid var(--line);font-weight:500;font-size:15px}
+.notice,.done{margin:12px 0 0;padding:12px;border-radius:12px;background:rgba(37,99,235,.1);font-size:15px}
+.pointer{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--accent);color:#fff;padding:10px 16px;border-radius:14px;font-size:15px;box-shadow:0 8px 24px rgba(0,0,0,.25);white-space:nowrap;animation:bob 1.4s ease-in-out infinite}
+.pointer::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-bottom:0;border-top-color:var(--accent)}
+@keyframes bob{50%{transform:translate(-50%,-6px)}}
+@media (prefers-reduced-motion:reduce){.pointer{animation:none}}
 </style>
 </head>
 <body>
@@ -64,8 +73,11 @@ html.off .install{display:none}
 
   <div class="install android card">
     <h2>Android</h2>
-    <a class="btn" href="/school-app/cohasset-school.apk" download>Download the app (APK, 2 MB)</a>
-    <ol class="hint">
+    <button class="btn" id="installBtn" type="button" hidden>Install the app</button>
+    <p class="done" id="installed" hidden>✅ Installed. Open <b>Cohasset School</b> from your home screen.</p>
+    <a class="btn" id="apkBtn" href="/school-app/cohasset-school.apk" download="cohasset-school.apk">Download the app (APK, 2 MB)</a>
+    <p class="notice" id="apkNotice" hidden>⬇️ Downloading… When it finishes, tap <b>Open</b> in the bar at the bottom of the screen (or in your notifications), then tap <b>Install</b>.</p>
+    <ol class="hint" id="apkSteps">
       <li>Open the downloaded file.</li>
       <li>If Android asks, allow installing apps from this source (Chrome or Files).</li>
       <li>Tap <b>Install</b>, then open <b>Cohasset School</b>.</li>
@@ -90,6 +102,34 @@ html.off .install{display:none}
   var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   h.classList.add(ios ? 'is-ios' : /Android/i.test(ua) ? 'is-android' : 'is-other');
   addEventListener('online', function () { if (h.classList.contains('off')) location.reload(); });
+
+  /* Android + Chrome: el diálogo nativo «¿Instalar app?». Si Chrome lo ofrece,
+     es el botón principal y el APK queda como alternativa. */
+  var inst = document.getElementById('installBtn'), apk = document.getElementById('apkBtn'), aviso = null;
+  addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); aviso = e;
+    inst.hidden = false; apk.classList.add('secondary'); apk.textContent = 'Or download the APK (2 MB)';
+  });
+  inst.addEventListener('click', function () {
+    if (!aviso) return;
+    aviso.prompt();
+    aviso.userChoice.then(function (r) { if (r.outcome === 'accepted') { inst.hidden = true; } aviso = null; });
+  });
+  addEventListener('appinstalled', function () {
+    inst.hidden = true; document.getElementById('installed').hidden = false;
+  });
+  apk.addEventListener('click', function () {
+    document.getElementById('apkNotice').hidden = false;
+    document.getElementById('apkSteps').hidden = true;
+  });
+
+  /* iPhone en Safari: Apple no deja abrir el diálogo desde la página; una
+     flecha señala el botón Compartir de la barra inferior. */
+  if (ios && !h.classList.contains('off') && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua) && !/iPad/.test(ua)) {
+    var b = document.createElement('div'); b.className = 'pointer';
+    b.innerHTML = 'Tap <b>Share</b> below, then <b>Add to Home Screen</b>';
+    document.body.appendChild(b); h.classList.add('has-pointer');
+  }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/school-app/sw.js', { scope: '/school-app/' }).catch(function () {});
 })();
 </script>
