@@ -61,6 +61,10 @@
     q = new URLSearchParams(location.search).get('school');
     if (q !== null) { if (q) sessionStorage.setItem('nis-school', q); else sessionStorage.removeItem('nis-school'); }
     override = sessionStorage.getItem('nis-school');
+    // app=1 lo pone el lanzador de la app Cohasset School (/school-app/): el
+    // colegio va por ?school= pero no es una vista previa.
+    if (new URLSearchParams(location.search).get('app') === '1') sessionStorage.setItem('nis-app', '1');
+    var enApp = sessionStorage.getItem('nis-app') === '1';
   } catch (e) {}
   var local = /^(localhost|127\.0\.0\.1|\[::1\]|bacman2000\.github\.io)$/.test(host);
   var guess = override || (!local && /\.cohasset\.pe$/.test(host) ? host.split('.')[0] : 'nis');
@@ -97,7 +101,7 @@
     // Grados del colegio (settings.grades): la lista GRADES del portal se
     // recorta en sitio, que es como la usan todas las pantallas.
     if (typeof window._schoolApplyGrades === 'function' && Array.isArray(S.grades) && S.grades.length) window._schoolApplyGrades(S.grades);
-    if (override) aviso(S);
+    if (override && !enApp) aviso(S);
   }
 
   /* Banda fija cuando se está mirando otro colegio con ?school=. */

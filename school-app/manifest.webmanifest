@@ -1,0 +1,22 @@
+{
+ "id": "/school-app/",
+ "name": "Cohasset School",
+ "short_name": "Cohasset School",
+ "description": "Your school's English portal: classes, readers, Cambridge practice tests and mocks.",
+ "start_url": "/school-app/?source=pwa",
+ "scope": "/",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#ffffff",
+ "theme_color": "#081847",
+ "lang": "en",
+ "icons": [
+  { "src": "/school-app/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+  { "src": "/school-app/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+  { "src": "/school-app/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+ ],
+ "shortcuts": [
+  { "name": "Change school", "short_name": "Change school", "url": "/school-app/?change=1",
+    "icons": [{ "src": "/school-app/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+ ]
+}
