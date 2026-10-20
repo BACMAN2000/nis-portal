@@ -1,0 +1,993 @@
+{
+  "date": "2026-10-20",
+  "issue": 14,
+  "breaking": [
+    "Peru: Cusco and the Sacred Valley have very hot days, with temperatures up to 30°C.",
+    "Australia: millions of moths look like rain on weather radars.",
+    "Sport: Angel Reese scores 30 points and the Atlanta Dream win their first WNBA Finals game.",
+    "USA: a bridge for wild animals in Colorado cuts car crashes with animals by 91%."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-20-cusco-heat",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Weather and climate",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Hot days and blue skies in Cusco",
+      "standfirst": "The famous city in the Andes is much warmer than usual this October.",
+      "body": [
+        "Cusco is a famous city high in the Andes mountains of Peru. October is usually a cool month there, with some clouds and some rain. But this year is different. In Cusco, the temperature has gone above 28°C, and in Urubamba, a town in the Sacred Valley of the Incas, it has gone above 30°C.",
+        "Peru's weather service, Senamhi, says that temperatures in almost all of the Cusco region are 3 to 4 degrees higher than normal. Elizabeth Díaz, a specialist from Senamhi, explained that the days are very clear. There are no clouds and there is no rain, so the sun feels very strong.",
+        "Last weekend, a little rain fell for a short time, and it helped to stop some forest fires. But Senamhi thinks there will be more hot, dry days because of El Niño. If you visit Cusco, take a hat, sun cream and lots of water!"
+      ],
+      "glossary": [
+        {
+          "w": "temperature",
+          "d": "how hot or cold something is, for example 30°C"
+        },
+        {
+          "w": "specialist",
+          "d": "a person who knows a lot about one subject"
+        },
+        {
+          "w": "clear",
+          "d": "with no clouds in the sky"
+        },
+        {
+          "w": "forest fire",
+          "d": "a big fire that burns trees and plants in a forest"
+        },
+        {
+          "w": "sun cream",
+          "d": "a cream you put on your skin to protect it from the sun"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "October is usually a hot month in Cusco.",
+          "answer": "F"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "Urubamba is in the Sacred Valley of the Incas.",
+          "answer": "T"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "In the Cusco region, temperatures are 3 to 4 degrees higher than normal.",
+          "answer": "T"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "Elizabeth Díaz lives in Urubamba.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "It has not rained at all in Cusco this month.",
+          "answer": "F"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "Many tourists have left Cusco because of the heat.",
+          "answer": "NS"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend is going to visit Cusco next week. Write an email to your friend (25 words or more). Say: what the weather is like now, what your friend should bring, and one place you can visit together."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-heatwave-in-cusco-imperial-city-records-temperatures-of-up-to-30%C2%B0c-in-october-1096522.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/cusco-heat.jpg",
+        "alt": "Green fields and mountains in the Sacred Valley of the Incas, near Cusco",
+        "caption": "The Sacred Valley of the Incas, near Cusco (earlier photo).",
+        "credit": "Rod Waddington from Kergunyah, Australia",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Sacred_Valley_of_the_Incas,_Peru_(7195471302).jpg"
+      }
+    },
+    {
+      "id": "2026-10-20-wnba-finals",
+      "section": "Sport",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "A2",
+      "topic": "Sport and teamwork",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "A big night for Angel Reese",
+      "standfirst": "The Atlanta Dream win a game in the WNBA Finals for the very first time.",
+      "body": [
+        "The WNBA is the top women's basketball league in the United States. This month, two teams are playing in the Finals: the Atlanta Dream and the Golden State Valkyries. The first team to win four games is the champion.",
+        "The Valkyries won the first game. But on Monday night in San Francisco, the Dream played much better and won 79-65. Their star, Angel Reese, scored 30 points and had 16 rebounds. It was the first Finals win in the team's history. Before this, the Dream played in the Finals three times and never won a game.",
+        "After the game, Reese talked about the crowd in San Francisco. It was very loud, and she said it was hard to play there. 'We came and fought,' she said.",
+        "Now the score in the series is 1-1. The next game is on Wednesday in Atlanta, in a big arena for more than 17,000 fans."
+      ],
+      "glossary": [
+        {
+          "w": "league",
+          "d": "a group of teams that play against each other during a season"
+        },
+        {
+          "w": "champion",
+          "d": "the person or team that wins a competition"
+        },
+        {
+          "w": "scored",
+          "d": "got points in a game"
+        },
+        {
+          "w": "crowd",
+          "d": "a large group of people in one place"
+        },
+        {
+          "w": "arena",
+          "d": "a big building where people watch sport or concerts"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "How many games must a team win to be the champion?",
+          "options": [
+            "three",
+            "four",
+            "seven"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What was the score on Monday night?",
+          "options": [
+            "79-65 to the Dream",
+            "79-65 to the Valkyries",
+            "65-65"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "How many points did Angel Reese score?",
+          "options": [
+            "16",
+            "18",
+            "30"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What did Reese say about the crowd in San Francisco?",
+          "options": [
+            "It was hard to play in front of it.",
+            "It was very quiet.",
+            "It was smaller than usual."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Where is the next game?",
+          "options": [
+            "in San Francisco",
+            "in a small sports hall",
+            "in Atlanta"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You watched a sports game last weekend. Write a message to your English friend (25 words or more). Say: which teams played, who won, and who was the best player."
+      },
+      "sources": [
+        {
+          "name": "Al Jazeera (The Associated Press)",
+          "url": "https://www.aljazeera.com/sports/2026/10/20/angel-reese-scores-30-as-dream-stun-valkyries-to-go-level-in-wnba-finals"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/wnba-finals.jpg",
+        "alt": "The outside of the Chase Center, a large sports arena in San Francisco",
+        "caption": "The Chase Center in San Francisco, where Monday's game was played (earlier photo).",
+        "credit": "Dale Cruse from San Francisco, CA, USA",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Chase_Center_San_Francisco.jpg"
+      }
+    },
+    {
+      "id": "2026-10-20-bogong-moths",
+      "section": "Science",
+      "country": "Australia",
+      "flag": "🇦🇺",
+      "level": "B1",
+      "topic": "Animals, weather and technology",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Rain on the radar? No, it's moths!",
+      "standfirst": "Every night, weather radars in south-eastern Australia show rain that isn't really there. Experts know why.",
+      "body": [
+        "For about a month, weather radars in south-eastern Australia have shown the same strange picture every night: light rain across large areas. The problem is that the sky has been clear on most nights, and it certainly has not rained for a month.",
+        "The radars are working perfectly. What they are seeing is millions of bogong moths. Every spring, these insects fly south to the Australian Alps, where they spend the summer. They rest and hide during the day and start flying just after sunset, which is exactly when the 'rain' appears on the screens.",
+        "A radar sends out short pulses of radio waves and waits for them to bounce back. Raindrops, hail and snow send the signal back, but so can smoke, birds, planes and large groups of insects. Australia's Bureau of Meteorology says that a big swarm can look like very light rain, especially around sunrise and sunset.",
+        "Weather experts are not usually fooled, but some phone apps that warn people about rain may be sending false alarms, because they use radar information that nobody has checked.",
+        "It has happened before. During the 2000 Olympics in Sydney, forecasters predicted a dry night for the closing ceremony, but when the event began, the radar suddenly showed rain moving towards the stadium."
+      ],
+      "glossary": [
+        {
+          "w": "radar",
+          "d": "a machine that uses radio waves to find things that are far away, such as rain or planes"
+        },
+        {
+          "w": "insects",
+          "d": "very small animals with six legs, such as flies, bees and moths"
+        },
+        {
+          "w": "swarm",
+          "d": "a very large group of insects flying together"
+        },
+        {
+          "w": "false alarms",
+          "d": "warnings about something that is not really happening"
+        },
+        {
+          "w": "forecasters",
+          "d": "people whose job is to say what the weather will be like"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is strange about the radar pictures?",
+          "options": [
+            "They show snow in summer.",
+            "They only appear in the morning.",
+            "They show rain on nights when it is not raining.",
+            "They show the moths in different colours."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why do the moths appear on the radar after sunset?",
+          "options": [
+            "They begin to fly at that time.",
+            "They follow the lights of the cities.",
+            "They are attracted by radio waves.",
+            "They fly higher when it gets cold."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the writer say about radar signals?",
+          "options": [
+            "Only water can send them back.",
+            "Insects stop the radio waves completely.",
+            "Smoke makes radars stop working.",
+            "Many different things in the air can send them back."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Who might get wrong information because of the moths?",
+          "options": [
+            "experts at the Bureau of Meteorology",
+            "people who use some weather apps",
+            "pilots flying to the Alps",
+            "scientists who study moths"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What happened during the 2000 Olympics?",
+          "options": [
+            "The closing ceremony was cancelled because of rain.",
+            "Moths flew into the stadium during a race.",
+            "The radar showed rain when a dry night was expected.",
+            "Forecasters used moths to predict the weather."
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language magazine: 'Amazing animal journeys! Tell us about an animal that travels a long way, or an animal you once saw in a surprising place. What happened? How did you feel?' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-20/nsw-bogong-moths-weather-radars-bom-sydney-canberra/107286624"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/bogong-moths.jpg",
+        "alt": "A brown bogong moth resting on a surface",
+        "caption": "A bogong moth. Millions of them fly south across Australia every spring.",
+        "credit": "Entomology, CSIRO",
+        "license": "CC BY 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_2_Agrotis_infusa_the_Bogong_Moth.jpg"
+      }
+    },
+    {
+      "id": "2026-10-20-expoamazonica",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Food, culture and business",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Chocolate, papayas and palm oil: the Amazon's big fair is coming",
+      "standfirst": "From 22 to 25 October, the city of Pucallpa will show visitors what the Peruvian Amazon produces.",
+      "body": [
+        "The most important fair in the Peruvian Amazon, ExpoAmazónica Ucayali 2026, opens this week in Pucallpa, the capital of the Ucayali region. It will take place from 22 to 25 October at the Yarinacocha Fairgrounds. The organisers, a group of Amazon regions that work together, hope the fair will create new opportunities for local producers and small businesses.",
+        "Ucayali is Peru's main producer of oil palm. At the fair, farmers and companies will show products made from palm oil and, as something new, a line of soaps, creams and shampoos. The region is also known for its cacao, so visitors will be able to see fine chocolates and other cacao products. They can also taste papayas, because Ucayali is one of the country's leading papaya producers, and many other tropical fruits.",
+        "The fair is not only about selling. There will be traditional handicrafts, music and dances from Ucayali, and local and national chefs will cook Amazonian dishes in front of visitors. Producers will also meet buyers from North America, Europe and Asia.",
+        "Two special events will take place at the same time: the 2nd Indigenous Expo and the 7th Congress of Amazonian Entrepreneurs, which will discuss new ideas, the protection of nature and sustainable development."
+      ],
+      "glossary": [
+        {
+          "w": "fair",
+          "d": "a large event where people show and sell their products"
+        },
+        {
+          "w": "producer",
+          "d": "a person, company or place that grows or makes something to sell"
+        },
+        {
+          "w": "handicrafts",
+          "d": "beautiful objects that people make with their hands"
+        },
+        {
+          "w": "entrepreneurs",
+          "d": "people who start their own businesses"
+        },
+        {
+          "w": "sustainable",
+          "d": "able to continue for a long time without hurting nature"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "The fair will ___ place from 22 to 25 October.",
+          "options": [
+            "take",
+            "make",
+            "have",
+            "do"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "Ucayali is Peru's main ___ of oil palm.",
+          "options": [
+            "buyer",
+            "producer",
+            "customer",
+            "visitor"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "Visitors will be able to ___ papayas and other tropical fruits.",
+          "options": [
+            "wear",
+            "build",
+            "borrow",
+            "taste"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "Chefs will cook Amazonian dishes ___ front of visitors.",
+          "options": [
+            "on",
+            "at",
+            "in",
+            "by"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Local producers will ___ buyers from North America, Europe and Asia.",
+          "options": [
+            "miss",
+            "meet",
+            "forget",
+            "leave"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "The Congress will discuss new ideas and ___ development.",
+          "options": [
+            "dangerous",
+            "quick",
+            "expensive",
+            "sustainable"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend Sam has written to you: 'I'm visiting Peru next month and I'd love to try food from the Amazon. What should I eat? Where can I try it? Is there anything else I should do there?' Write your email to Sam in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-planning-to-visit-the-expoamazonica-ucayali-2026-fair-discover-the-local-attractions-1096506.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/expoamazonica.jpg",
+        "alt": "A view of a street in Puerto Callao, in the Yarinacocha district near Pucallpa",
+        "caption": "Puerto Callao in Yarinacocha, the district where the fair takes place (earlier photo).",
+        "credit": "DSan",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Vista_desde_mirador_de_Puerto_Callao-Yarinacocha.jpg"
+      }
+    },
+    {
+      "id": "2026-10-20-wildlife-bridge",
+      "section": "Environment",
+      "country": "United States",
+      "flag": "🇺🇸",
+      "level": "B2",
+      "topic": "Wildlife, roads and safety",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "instructions": "For each question, choose the paragraph (A–E). The paragraphs may be chosen more than once.",
+      "headline": "A bridge for elk: how a grassy overpass made a busy road safer",
+      "standfirst": "Ten months after it opened, a wildlife crossing over a Colorado motorway has cut crashes between vehicles and animals by 91 per cent.",
+      "body": [
+        "A. Every day, thousands of drivers travel along Interstate 25, the main road between Colorado's two largest cities, Denver and Colorado Springs. For wild animals, however, those six lanes of traffic used to be a deadly barrier. Before a new crossing system was built, there was on average one crash a day between a vehicle and an animal on this stretch of road.",
+        "B. The centrepiece of the system is a wide bridge, covered in grass, that carries animals over the motorway. It is 200 feet wide and 209 feet long, with gentle slopes at each end, and it connects 39,000 acres of habitat on both sides of the road. Miles of fencing, eight feet tall, guide the animals towards it, and the system also includes five large underpasses.",
+        "C. According to a newly released report, collisions have fallen by 91 per cent since the overpass was completed ten months ago. Officials have recorded elk, bears, mule deer, coyotes, rabbits and frogs using the corridor, as well as the Preble's meadow jumping mouse, a threatened species. One wildlife biologist said that a photograph of a mother elk leading her calf safely under the motorway was one of his most moving moments.",
+        "D. Officials explain that tunnels and underpasses often do not work well for large animals such as bull elk, because they limit movement and leave little room for their antlers. Elk and pronghorn prefer big, open structures where they can see for miles in every direction. Since the bridge opened, pronghorn have been filmed crossing to the west side of the road for the first time in decades.",
+        "E. The project received $22 million from the federal government and $8 million from the state, but it was completed for just $15 million. Nearly 20 wildlife crossings are now under way across the United States, and research suggests that such structures often pay for themselves by preventing costly accidents. Colorado hopes to build more of them."
+      ],
+      "glossary": [
+        {
+          "w": "habitat",
+          "d": "the natural place where an animal or plant usually lives"
+        },
+        {
+          "w": "underpasses",
+          "d": "roads or paths that go under another road"
+        },
+        {
+          "w": "collisions",
+          "d": "accidents in which a moving vehicle hits something"
+        },
+        {
+          "w": "species",
+          "d": "a group of animals or plants of the same kind"
+        },
+        {
+          "w": "antlers",
+          "d": "the large horns, shaped like branches, on the head of a male deer or elk"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph gives the measurements of the bridge?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph explains why some animals avoid narrow passages?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph describes how dangerous the road was in the past?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph says the project cost less than the money it was given?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph mentions an animal whose survival is at risk?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "match",
+          "q": "Which paragraph mentions animals reaching an area again after many years?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about how people and wild animals share space. Now your teacher has asked you to write an essay. 'Should governments spend more money protecting wild animals from roads and cities?' Notes — write about: 1. road safety, 2. the cost, 3. your own idea. Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/us-news/2026/oct/19/colorado-wildlife-overpass-vehicle-animal-collisions-results"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/wildlife-bridge.jpg",
+        "alt": "A wide bridge covered in grass over a motorway in Colorado",
+        "caption": "The I-25 Greenland Wildlife Overpass in Colorado, the crossing in this story.",
+        "credit": "Jeffrey Beall",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:I-25_Greenland_Wildlife_Overpass-1.JPG"
+      }
+    },
+    {
+      "id": "2026-10-20-cloud-outage",
+      "section": "Technology",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "B2",
+      "topic": "The internet and everyday life",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "When the cloud goes dark: a power problem in London disrupts services across Europe",
+      "standfirst": "A fault at one Google data centre left bank customers, courts and companies struggling to get online.",
+      "body": [
+        "On Tuesday morning, many people in Britain and other parts of Europe picked up their phones to check their bank accounts or use online services, only to discover that nothing worked. The cause was not a cyberattack but something far more ordinary: what Google described as a 'power event' at one of its data centres in London.",
+        "Google Cloud is one of the world's largest cloud computing providers. Instead of running their own computers, thousands of organisations rent storage and computing power in Google's enormous data centres, which are divided into areas called zones. For most users, this system is invisible: they simply open an app and expect it to work. According to Google's website, the outage hit a zone known as europe-west2-b, starting shortly after 6am UK time, and services in parts of Europe could experience errors and network problems.",
+        "The effects spread quickly, and the timing could hardly have been worse, since the problems began early on a working day. Customers of the digital bank Revolut and the British bank Halifax reported difficulties with their apps, although Revolut stressed that its customers' money and data were safe. The UK's courts service said that a video platform used for some remote hearings had been affected, and British media reported problems at other large companies, including Royal Mail and the delivery firm DPD.",
+        "Google said its engineers were investigating the problem. Nevertheless, the incident is a reminder of a weakness in modern technology. Because so many organisations depend on a small number of cloud providers, a fault in a single building can have consequences far beyond it. For this reason, experts often advise companies to spread their systems across several locations, so that if one fails, another can take over."
+      ],
+      "glossary": [
+        {
+          "w": "data centres",
+          "d": "large buildings full of computers that store information and run websites and apps"
+        },
+        {
+          "w": "providers",
+          "d": "companies that sell a service to other people or businesses"
+        },
+        {
+          "w": "zones",
+          "d": "separate areas that are part of something bigger"
+        },
+        {
+          "w": "outage",
+          "d": "a period when a service, such as electricity or the internet, stops working"
+        },
+        {
+          "w": "remote",
+          "d": "done from another place, for example by video, instead of in person"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "According to Google, what caused the disruption?",
+          "options": [
+            "a cyberattack on European banks",
+            "a problem with electrical power at a data centre",
+            "a mistake by Revolut's engineers",
+            "a storm over London"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "In the second paragraph, the writer mainly explains",
+          "options": [
+            "why organisations use cloud providers instead of their own computers.",
+            "how much Google charges its customers.",
+            "why Google chose London for a data centre.",
+            "how engineers repair a zone."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What did Revolut want its customers to know?",
+          "options": [
+            "that the app would work again within an hour",
+            "that they should use another bank for the day",
+            "that they would receive compensation",
+            "that their money and personal information were not at risk"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "In the final paragraph, what does 'it' in 'far beyond it' refer to?",
+          "options": [
+            "a fault",
+            "a cloud provider",
+            "a single building",
+            "modern technology"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the writer's main point in the final paragraph?",
+          "options": [
+            "Cloud computing is too dangerous to use.",
+            "Relying on a few providers makes many services vulnerable.",
+            "Google's engineers were too slow to react.",
+            "Banks should stop offering apps."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement in an English-language magazine for teenagers: 'A day without the internet! Imagine that every app and website stopped working for a whole day. How would your day change? Would anything be better?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-20/google-cloud-failure-europe-banks/107290238"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/cloud-outage.jpg",
+        "alt": "Long rows of computer servers inside a data centre",
+        "caption": "Rows of servers in a data centre. This is not the Google centre in London.",
+        "credit": "BalticServers.com",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:BalticServers_data_center.jpg"
+      }
+    },
+    {
+      "id": "2026-10-20-ai-port-books",
+      "section": "Culture",
+      "country": "United Kingdom",
+      "flag": "🇬🇧",
+      "level": "C1",
+      "topic": "History, trade and artificial intelligence",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Reading the past at machine speed: what AI found in England's old port books",
+      "standfirst": "Historians have taught a computer to read centuries-old handwriting, and the results challenge a familiar story about how Britain became a global power.",
+      "body": [
+        "For generations, the port books kept at the National Archives in Kew, west London, have presented historians with a frustrating paradox. Bound in leather and written on parchment, they record in remarkable detail the goods that passed through England's harbours, yet their sheer volume, combined with the difficult handwriting of their early-modern authors, made them almost impossible to study as a whole.",
+        "A team at the University of Southampton has now found a way round the problem. By training an artificial intelligence tool to recognise historical handwriting, the researchers processed roughly 100,000 pages, a task that would have taken years if done by hand. The records stretch from the Elizabethan era in the 16th century to the eve of the Industrial Revolution in the 18th, and the software extracted details of which goods were traded, by whom, with whom, and when and where. The project's lead researcher, Professor Craig Lambert, described compiling the data as a 'massive task', but said that the technology had speeded it up enormously.",
+        "Some of the findings are delightfully unexpected. Alongside staples such as coal and ale, ships carried children's toys from China, sheep guts and Venice treacle, a herbal remedy once believed to cure almost any illness. The data has also brought vanished places back into view. Ravenspurn, in East Yorkshire, was once a thriving trading port; severe coastal erosion later caused it to sink completely into the North Sea.",
+        "The most significant conclusion, however, concerns Europe. Popular accounts of Britain's rise tend to emphasise distant colonies and ocean routes. Yet the researchers found that even as the empire was expanding, European markets remained dominant: in 1696–97 they accounted for around 80 per cent of the recorded value of England's overseas trade. Europe, in other words, was a more crucial partner than many had assumed.",
+        "The project, which brings together specialists in maritime history, global history and computer science, has mapped the development of England's trade routes over two centuries in unprecedented detail, and an interactive map now allows anyone to explore the data. It is a striking example of AI serving not as a replacement for historians, but as a tool that lets them ask questions on a scale that was previously unimaginable."
+      ],
+      "glossary": [
+        {
+          "w": "parchment",
+          "d": "thin material made from animal skin, used in the past for writing on"
+        },
+        {
+          "w": "paradox",
+          "d": "a situation that seems strange because it contains two opposite facts"
+        },
+        {
+          "w": "staples",
+          "d": "the most important and common products that people buy and sell"
+        },
+        {
+          "w": "erosion",
+          "d": "the slow process by which the sea, wind or rain wears away land"
+        },
+        {
+          "w": "unprecedented",
+          "d": "never done or seen before"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "In the first paragraph, the port books are described as a 'paradox' because",
+          "options": [
+            "they are full of detail but were too vast and hard to read to study fully.",
+            "they contain information that contradicts other records.",
+            "they were written by people who could not read.",
+            "they were hidden from historians for centuries."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does the second paragraph suggest about the role of the AI?",
+          "options": [
+            "It discovered goods that traders had deliberately hidden.",
+            "It removed the need for a research team.",
+            "It made an enormous reading task far quicker.",
+            "It translated the books from another language."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "The writer uses the word 'delightfully' in the third paragraph to show that some findings are",
+          "options": [
+            "worrying.",
+            "surprising in an amusing way.",
+            "difficult to believe.",
+            "commercially valuable."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What happened to Ravenspurn?",
+          "options": [
+            "It was destroyed by fire in the 18th century.",
+            "It became the main port for Venice treacle.",
+            "It was abandoned when trade moved to London.",
+            "It disappeared into the sea as the coast wore away."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "The main purpose of the fourth paragraph is to",
+          "options": [
+            "prove that the colonies brought no profit.",
+            "question a common view of where England's trade was focused.",
+            "show that European trade fell after 1697.",
+            "explain why the empire stopped expanding."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "In the final paragraph, the writer's attitude towards AI in historical research is",
+          "options": [
+            "enthusiastic, provided it supports rather than replaces historians.",
+            "suspicious, because computers make too many mistakes.",
+            "neutral, since the results have not been checked.",
+            "critical of how much the project cost."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has watched a discussion about how technology is changing the study of the past. The speakers talked about three areas: digitising old documents, using AI to analyse historical records, and making archives freely available online. Write an essay discussing two of these areas. You should explain which one would be more valuable for society, giving reasons in support of your answer. Write your essay in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cr93z9zq5l9jo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/ai-port-books.jpg",
+        "alt": "The modern building of the National Archives at Kew, next to a pond",
+        "caption": "The National Archives at Kew, where the port books are kept (earlier photo).",
+        "credit": "Christine Matthews",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:National_Archives,_Kew_-_geograph.org.uk_-_6088034.jpg"
+      }
+    },
+    {
+      "id": "2026-10-20-panama-canal",
+      "section": "Economy",
+      "country": "Panama",
+      "flag": "🇵🇦",
+      "level": "C1",
+      "topic": "Water, climate and the economy",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Running dry in one of the wettest countries on Earth: Panama's canal and the price of drought",
+      "standfirst": "A failed rainy season and a powerful El Niño are threatening the waterway at the heart of Panama's economy, and forcing hard choices about its future.",
+      "body": [
+        "In Azuero, a farming region within Panama's so-called Dry Arc, the rainy season that normally runs from May to December has brought little relief this year. Streams and watering holes have not refilled, pastures have failed to grow back, and the cattle farmer Robert Delgado has seen his milk production fall by half. Fearing what the dry season will bring, he has begun selling off his animals.",
+        "Delgado's predicament is one small part of a national crisis. In August, the government declared a state of emergency that will remain in force until June 2027. The environment minister, Juan Navarro, argues that climate change has made El Niño both more frequent and more severe; the phenomenon once arrived every 10 or 20 years, yet the last episode, in 2023, cost the canal almost a billion dollars in revenue. The current one, he warns, may prove the worst on record.",
+        "The stakes could hardly be higher. The 80-kilometre canal, which links the Atlantic and Pacific oceans, carries about 5 per cent of the world's maritime trade and accounts for up to 7.7 per cent of Panama's GDP. Crucially, the lakes that feed its locks, Gatún and Alajuela, also supply drinking water to around two million people, nearly half the population. In September, low water levels twice forced officials to limit the number of ships crossing each day.",
+        "The government's long-term answer is a reservoir on the Indio River, costing about $1.5 billion and intended to supply Lake Gatún for the next five decades. Yet it would flood the land of some 550 families in 38 rural communities, who have responded with protests, legal action and blockades. The canal authority promises compensation and a choice of relocation options, but for residents such as Florentino Chirú, who has lived on his land for 63 years, the loss is not merely material.",
+        "Ironically, the crisis has also exposed problems that extra storage alone cannot fix. In a country with abundant rain, an estimated 240,000 Panamanians lack regular access to drinking water, and in some areas around half of all water is lost through old, leaking pipes. Bigger reservoirs, it seems, are only part of the solution."
+      ],
+      "glossary": [
+        {
+          "w": "predicament",
+          "d": "a difficult or unpleasant situation that is hard to escape from"
+        },
+        {
+          "w": "revenue",
+          "d": "the money that a business or government receives"
+        },
+        {
+          "w": "locks",
+          "d": "sections of a canal with gates, where the water level is changed so that ships can move up or down"
+        },
+        {
+          "w": "reservoir",
+          "d": "a large lake, often made by people, used to store water"
+        },
+        {
+          "w": "relocation",
+          "d": "moving people or businesses to a new place to live or work"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why does the writer begin with the story of Robert Delgado?",
+          "options": [
+            "to show how the national crisis affects one person's life",
+            "to criticise farmers for selling their cattle",
+            "to explain how milk is produced in Panama",
+            "to suggest that the Dry Arc should be abandoned"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to Juan Navarro, what has changed about El Niño?",
+          "options": [
+            "It now affects only the canal.",
+            "It happens more often and has stronger effects.",
+            "It arrives exactly every ten years.",
+            "It ended in 2023."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "The word 'Crucially' in the third paragraph introduces a point which",
+          "options": [
+            "contradicts the previous sentence.",
+            "matters less than the canal's trade.",
+            "shows that the crisis affects people's daily lives, not only the economy.",
+            "explains how the locks were built."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does the writer imply about the Indio River reservoir?",
+          "options": [
+            "It has been cancelled after the protests.",
+            "It will be paid for by local farmers.",
+            "It will be finished before the dry season.",
+            "It may solve one problem while creating another for local people."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "The phrase 'not merely material' in the fourth paragraph suggests that, for Chirú,",
+          "options": [
+            "the compensation offered is too generous.",
+            "leaving would also mean losing his history and way of life.",
+            "his house has little value.",
+            "he is not interested in farming."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's main point in the final paragraph?",
+          "options": [
+            "Better management of existing water is also needed.",
+            "Panama receives too little rain to survive.",
+            "Leaking pipes caused the drought.",
+            "The canal should close during dry seasons."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has had a discussion about how countries should respond to water shortages. The speakers talked about three options: building new reservoirs, repairing and modernising water networks, and changing the way farms use water. Write an essay discussing two of these options. You should explain which one is more important, giving reasons in support of your answer. Write your essay in 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/global-development/2026/oct/20/panama-canal-environment-water-drought-el-nino-farming"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-20/panama-canal.jpg",
+        "alt": "An aerial view of ships and the Gatún Locks on the Panama Canal",
+        "caption": "Ships at the Gatún Locks on the Panama Canal in 2014.",
+        "credit": "Mariordo (Mario Roberto Durán Ortiz)",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Gatun_Locks_03_2014_Panama_Canal_7820.JPG"
+      }
+    }
+  ]
+}
