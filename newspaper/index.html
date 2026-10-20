@@ -109,6 +109,7 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 #progView { padding: 18px 16px 40px; }
 .foot { text-align: center; font-size: 13px; color: var(--soft); padding: 0 16px 40px; }
 </style>
+<link rel="stylesheet" href="funny-pages.css?v=2c3529dc">
 </head>
 <body>
 <header class="mast">
@@ -123,6 +124,7 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 <main class="wrap" id="front">
   <div class="filters" id="filters"></div>
   <div class="grid" id="grid"></div>
+  <section id="funnyPages" class="funny-pages" aria-label="The Funny Pages" hidden></section>
 </main>
 <main id="artView" hidden></main>
 <main id="progView" class="wrap" hidden></main>
@@ -132,6 +134,7 @@ textarea { width: 100%; min-height: 160px; border: 1px solid var(--line); border
 <script src="../config.js?v=720edc7d"></script>
 <script src="progress.js?v=50f24818"></script>
 <script src="marks.js?v=d782d633"></script>
+<script src="funny-pages.js?v=b9a53fc7"></script>
 <script>window.NEWS_BACKEND = 'nis';</script>
 <script>
 (function(){
@@ -326,6 +329,7 @@ function ph(a){ return a.image ? '<img class="ph" src="' + esc(a.image.src) + '"
 function credit(im){ return 'Photo: ' + esc(im.credit) + ' · <a href="' + esc(im.link) + '" target="_blank" rel="noopener">' + esc(im.license) + ', Wikimedia Commons</a>'; }
 function done(a){ var s = store('score:' + a.id); return s ? ' · ✓ ' + s.ok + '/' + s.n : ''; }
 function drawGrid(){
+  FunnyPages.render($('funnyPages'), issue.cartoons, fLevel);
   var arts = issue.articles.filter(function(a){ return (fLevel === 'All' || a.level === fLevel) && (fSec === 'All' || a.section === fSec); });
   if(!arts.length){ $('grid').innerHTML = '<p class="empty">No stories for this filter today.</p>'; return; }
   $('grid').innerHTML = arts.map(function(a, i){

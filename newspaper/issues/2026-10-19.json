@@ -1010,5 +1010,90 @@
         "link": "https://commons.wikimedia.org/wiki/File:New_York_Stock_Exchange_building,_20231002_171816.jpg"
       }
     }
+  ],
+  "cartoons": [
+    {
+      "id": "2026-10-19-byte-bea-cake",
+      "series": "Byte & Bea",
+      "title": "A piece of cake",
+      "levels": [
+        "A2",
+        "B1"
+      ],
+      "image": {
+        "src": "img/2026-10-19/byte-bea-a2-b1.png",
+        "alt": "Three panels: Bea does homework, Byte brings a cake, and Bea explains an English expression."
+      },
+      "transcript": [
+        {
+          "speaker": "Bea",
+          "text": "This homework is a piece of cake!"
+        },
+        {
+          "speaker": "Byte",
+          "text": "Great! Where is my slice?"
+        },
+        {
+          "speaker": "Bea",
+          "text": "It means it is easy, Byte!"
+        }
+      ],
+      "explanation": "Bea means that her homework is very easy. Byte understands her words literally and brings a real cake. The two meanings make the joke.",
+      "glossary": [
+        {
+          "w": "a piece of cake",
+          "def": "Something that is very easy to do."
+        },
+        {
+          "w": "slice",
+          "def": "A thin, flat piece cut from food, such as a cake."
+        }
+      ],
+      "prompt": "A2: What is a piece of cake for you? Write one sentence. B1: Tell a friend about something you first thought was difficult but found easy (40–60 words)."
+    },
+    {
+      "id": "2026-10-19-byte-bea-focus",
+      "series": "Byte & Bea",
+      "title": "Perfectly focused",
+      "levels": [
+        "B2",
+        "C1"
+      ],
+      "image": {
+        "src": "img/2026-10-19/byte-bea-b2-c1.png",
+        "alt": "Three panels: Byte introduces a focus app, Bea notices its frequent notifications, and Byte proudly explains them."
+      },
+      "transcript": [
+        {
+          "speaker": "Byte",
+          "text": "I designed an app to eliminate distractions."
+        },
+        {
+          "speaker": "Bea",
+          "text": "Why does it send a notification every minute?"
+        },
+        {
+          "speaker": "Byte",
+          "text": "To remind you how focused you are."
+        }
+      ],
+      "explanation": "Byte presents the notifications as proof that his app helps people concentrate. Yet each notification interrupts them. His proud explanation exposes a contradiction between the advertised benefit and the actual experience: the supposed solution reproduces the problem.",
+      "glossary": [
+        {
+          "w": "eliminate",
+          "def": "Remove something completely."
+        },
+        {
+          "w": "distraction",
+          "def": "Something that takes your attention away from what you are doing."
+        },
+        {
+          "w": "self-defeating",
+          "def": "Causing the opposite of the result that was intended."
+        }
+      ],
+      "prompt": "B2: Why is the app self-defeating? Suggest a better design in 40–60 words. C1: How does Byte’s confident reply satirise the assumption that more feedback always improves performance? Explain how the final panel undermines the first panel’s promise (70–100 words).",
+      "discussion": "Byte confuses evidence of activity with evidence of success. His earnest tone makes the irony sharper: he cannot recognise that his reassuring updates destroy the concentration he promises. Bea’s question invites readers to notice that contradiction without stating it directly. A different reading might focus on how digital products use reassuring language to make constant engagement appear beneficial."
+    }
   ]
 }

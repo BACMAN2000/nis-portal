@@ -1,0 +1,26 @@
+/* The Funny Pages: separate from the eight graded news stories. */
+.funny-pages { margin: 0 0 40px; padding-top: 18px; border-top: 4px double var(--ink); }
+.funny-heading, .funny-title { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.funny-heading h2 { font-size: clamp(32px, 6vw, 52px); }
+.funny-heading p { margin: 8px 0 0; font-family: 'Literata', Georgia, serif; }
+.funny-heading > span, .funny-series { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.funny-comic { margin-top: 24px; padding: 22px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+.funny-comic + .funny-comic { margin-top: 28px; }
+.funny-series { margin: 0 0 5px; color: var(--navy); }
+.funny-title h3 { font-size: clamp(23px, 4vw, 30px); }
+.funny-level { background: var(--ink); color: var(--paper); border-radius: 20px; padding: 4px 13px; font-weight: 700; }
+.funny-comic figure { margin: 18px 0 12px; }
+.funny-comic figure a { display: block; }
+.funny-comic img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.funny-comic figcaption { margin-top: 7px; font-size: 13px; color: var(--soft); }
+.funny-comic summary { cursor: pointer; font-weight: 700; padding: 8px 0; }
+.funny-comic summary:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.funny-transcript ol { padding-left: 24px; }
+.funny-transcript li { margin: 6px 0; }
+.funny-help { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.funny-help h4 { margin: 8px 0; font-family: 'Literata', Georgia, serif; }
+.funny-help p { margin: 6px 0 12px; }
+.funny-help dl { margin: 12px 0; }
+.funny-help dt { font-weight: 700; }
+.funny-help dd { margin: 0 0 9px; }
+@media (max-width: 600px) { .funny-comic { padding: 14px; } .funny-help { grid-template-columns: 1fr; gap: 8px; } }

@@ -40,6 +40,8 @@ def main():
     check = '--check' in sys.argv
     distintos = []
     objetivo = {COH / 'index.html': pagina_cohasset((NIS / 'index.html').read_text(encoding='utf-8')).encode('utf-8')}
+    for name in ('funny-pages.js', 'funny-pages.css'):
+        objetivo[COH / name] = (NIS / name).read_bytes()
     objetivo[COH / 'marks.js'] = (NIS / 'marks.js').read_bytes()     # tachaduras del Writing
     objetivo[COH / 'results.js'] = (NIS / 'results.js').read_bytes() # resultados para el staff (results.html)
     objetivo[COH / 'progress.js'] = (NIS / 'progress.js').read_bytes() # progreso: «My progress» y alumnos del staff
