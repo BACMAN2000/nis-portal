@@ -1,0 +1,1033 @@
+{
+  "date": "2026-10-21",
+  "issue": 15,
+  "breaking": [
+    "St Helena: scientists study the DNA of Jonathan, a 194-year-old giant tortoise.",
+    "South Korea: crowds watch a big shark in a canal in Busan.",
+    "Peru: a new study will count how many visitors Machu Picchu can welcome.",
+    "UK: an expert thinks a medieval abbot was buried in a Roman coffin."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-21-jonathan-tortoise",
+      "section": "Science",
+      "country": "St Helena",
+      "flag": "🇸🇭",
+      "level": "A2",
+      "topic": "Animals and science",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Jonathan, the 194-year-old tortoise",
+      "standfirst": "Scientists have studied the DNA of the oldest land animal in the world.",
+      "body": [
+        "Jonathan is a giant tortoise. He lives on Saint Helena, a small island in the South Atlantic Ocean. Scientists believe he is 194 years old, so he is the oldest land animal in the world. He came to the island in 1882.",
+        "Now scientists have studied Jonathan's DNA. DNA is the code inside every living thing. It tells the body how to grow and work. The team found special patterns on some of his genes. These genes help the tiny parts inside his cells that make energy. The patterns look like the ones in much younger tortoises.",
+        "Scientists do not know yet if this is the reason for his long life, so they want to do more tests. Jonathan lives in the garden of Plantation House, the home of the island's governor. In 2009 he was blind and not well, but a vet fed him by hand, and soon he was stronger."
+      ],
+      "glossary": [
+        {
+          "w": "DNA",
+          "d": "the code inside a living thing that tells its body how to grow"
+        },
+        {
+          "w": "genes",
+          "d": "small parts of DNA that carry information about the body"
+        },
+        {
+          "w": "cells",
+          "d": "the very small parts that make up every living thing"
+        },
+        {
+          "w": "governor",
+          "d": "the person who leads an island or a region for a country"
+        },
+        {
+          "w": "blind",
+          "d": "not able to see"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "Jonathan lives on an island in the South Atlantic Ocean.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "Scientists think Jonathan is 94 years old.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Scientists looked at Jonathan's DNA.",
+          "answer": "T"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "In 2009 Jonathan was healthy and strong.",
+          "answer": "F"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "Jonathan eats mostly grass.",
+          "answer": "NS"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "Jonathan lives in the garden of a house on the island.",
+          "answer": "T"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend loves animals. Write an email to your friend (25 words or more). Say: which animal you like most, where you can see it, and why it is special."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/07/jonathan-the-giant-tortoise-194-offers-up-insight-into-secrets-of-longevity"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/jonathan-tortoise.jpg",
+        "alt": "A very old giant tortoise walking on grass",
+        "caption": "Jonathan at Plantation House on Saint Helena (earlier photo).",
+        "credit": "Luke McKernan",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Jonathan_(27242406408).jpg"
+      }
+    },
+    {
+      "id": "2026-10-21-busan-shark",
+      "section": "World",
+      "country": "South Korea",
+      "flag": "🇰🇷",
+      "level": "A2",
+      "topic": "Animals and nature",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "A shark in the city: crowds watch Bukangi",
+      "standfirst": "A big shark has swum into a canal in Busan, and people want to help her go home.",
+      "body": [
+        "In Busan, a big city in the south-east of South Korea, there is a shark in a canal. A canal is a narrow channel of water made by people. The shark is female and about three metres long. People call her Bukangi. Someone first saw her in the canal last month.",
+        "Experts want to help Bukangi return to the open sea. They have tried three times to guide her with nets. Many people go to the canal every day to watch. There are very big crowds, and they hope the shark will be safe.",
+        "Why is she there? Experts think the water in the canal was unusually warm and full of fish. Perhaps the shark came to find food. Now she needs to find the way back to the sea."
+      ],
+      "glossary": [
+        {
+          "w": "canal",
+          "d": "a narrow channel of water made by people"
+        },
+        {
+          "w": "nets",
+          "d": "tools made of rope that people use to catch or guide fish"
+        },
+        {
+          "w": "crowds",
+          "d": "large groups of people"
+        },
+        {
+          "w": "guide",
+          "d": "to show someone or something where to go"
+        },
+        {
+          "w": "warm",
+          "d": "a little hot, not cold"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Where is the shark?",
+          "options": [
+            "In the sea near Seoul",
+            "In a canal in Busan",
+            "In a river in Japan"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "How long is the shark?",
+          "options": [
+            "About three metres",
+            "About ten metres",
+            "About one metre"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "When did someone first see the shark?",
+          "options": [
+            "Yesterday",
+            "Last week",
+            "Last month"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What do experts use to help the shark?",
+          "options": [
+            "Nets",
+            "Boats with food",
+            "Music"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Why may the shark be in the canal?",
+          "options": [
+            "The water was cold and clean",
+            "There were many boats",
+            "The water was warm and had a lot of fish"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "How many times have experts tried to guide her to the sea?",
+          "options": [
+            "Twice",
+            "Three times",
+            "Five times"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 7",
+        "task": "Write a short story (35 words or more) about a day when a big animal came to your town. Say: what the animal was, where it went, and how people helped."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/videos/ckq6n56e5qrqo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/busan-shark.jpg",
+        "alt": "A large shark swimming in blue water",
+        "caption": "A shark in the sea. This is an archive photo, not Bukangi.",
+        "credit": "Hermanus Backpackers",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Great_white_shark_south_africa.jpg"
+      }
+    },
+    {
+      "id": "2026-10-21-machu-picchu-study",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Tourism and heritage",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "How many visitors is too many? A new study for Machu Picchu",
+      "standfirst": "Peru will measure how many tourists the famous Inca site can welcome without being damaged.",
+      "body": [
+        "Machu Picchu is one of the most famous places in Peru. Every year, thousands of visitors travel to the old Inca city in the mountains of Cusco. Now the government wants to know how many people the site can receive in a safe way.",
+        "Rogers Valencia, the Minister of Foreign Trade and Tourism, announced that experts will carry out an updated study called \"Carrying Capacity and Limit of Acceptable Change\". In simple words, it should help the authorities decide how many visitors the sanctuary can welcome without harming it.",
+        "The minister explained that the research will give a scientific base for decisions about visitor flow, the protection of the heritage and the quality of tourist services. He spoke at a meeting of the Machu Picchu Management Unit, a group that brings together several ministries and local authorities. It is led by the governor of the Cusco region, Werner Salcedo.",
+        "At the meeting, the group also looked at the situation of the Hiram Bingham Highway, the main road between the town of Machu Picchu and the citadel. The Minister of Culture and the Minister of the Environment also took part. The ministers said they will keep working together to protect the sanctuary for the future."
+      ],
+      "glossary": [
+        {
+          "w": "sanctuary",
+          "d": "a protected place for nature or history"
+        },
+        {
+          "w": "heritage",
+          "d": "buildings, places and traditions from the past that a country wants to keep"
+        },
+        {
+          "w": "visitor flow",
+          "d": "the number of visitors who arrive at a place over time"
+        },
+        {
+          "w": "citadel",
+          "d": "a strong old city built on high ground"
+        },
+        {
+          "w": "authorities",
+          "d": "the people or groups with official power in a place"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the main purpose of the new study?",
+          "options": [
+            "To close Machu Picchu to tourists",
+            "To find a new route to the citadel",
+            "To give scientific information for managing visitors and protecting the site",
+            "To choose a new director for the sanctuary"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Who announced the study?",
+          "options": [
+            "The Minister of Foreign Trade and Tourism",
+            "The Minister of Culture",
+            "The governor of Cusco",
+            "The mayor of Machu Picchu"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What is the Machu Picchu Management Unit?",
+          "options": [
+            "A tour company",
+            "A group of scientists",
+            "A museum in Cusco",
+            "A group of ministries and local authorities"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Which road did the group talk about?",
+          "options": [
+            "The Inca Trail",
+            "The Hiram Bingham Highway",
+            "The Pan-American Highway",
+            "The road to Urubamba"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "Who leads the Management Unit?",
+          "options": [
+            "The Minister of Culture",
+            "The mayor of Machu Picchu",
+            "The governor of the Cusco region",
+            "The Vice Minister of Tourism"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What did the ministers say about the sanctuary?",
+          "options": [
+            "They will continue to work together to protect it",
+            "They will limit the visitors to one hundred a day",
+            "They will build new hotels near it",
+            "They will move the old road"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this announcement in an English-language magazine: 'Famous places: how can we protect them? Write an article about a place in your country that many tourists visit. Say why it is special and what visitors can do to look after it.' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-will-conduct-a-new-study-to-determine-machu-picchus-capacity-to-receive-visitors-1096624.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/machu-picchu-study.jpg",
+        "alt": "The ruins of Machu Picchu among green mountains and clouds",
+        "caption": "Machu Picchu in the mountains of Cusco (earlier photo).",
+        "credit": "Scott Umstattd scott_umstattd",
+        "license": "CC0",
+        "link": "https://commons.wikimedia.org/wiki/File:Machu_Picchu_Through_Clouds_(Unsplash).jpg"
+      }
+    },
+    {
+      "id": "2026-10-21-westminster-sarcophagus",
+      "section": "Culture",
+      "country": "UK",
+      "flag": "🇬🇧",
+      "level": "B1",
+      "topic": "Archaeology and history",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Who was in the Roman coffin? A mystery at Westminster Abbey",
+      "standfirst": "An archaeologist thinks he knows who lay inside a stone coffin found in London almost 200 years ago.",
+      "body": [
+        "A Roman stone coffin has been a mystery at Westminster Abbey in London for a long time. The coffin, called a sarcophagus, was found in 1820 and officially dug up in 1869 from the grass next to the abbey's main hall. Inside there was a skeleton, but nobody knew who the man was, and people thought the skeleton had been lost.",
+        "The sarcophagus is from the fourth century and has a Latin name on it: Valerius Amandinus. But archaeologist Warwick Rodwell says the coffin was not first buried at the abbey. Later, a large cross was carved on its lid. In 2018, experts took the coffin to a laboratory, opened the lid and found the skeleton inside.",
+        "Tests showed that the bones belonged to a man between 35 and 49 years old, about 5 feet 9 inches tall. Radiocarbon dating gave a date from the late tenth or early eleventh century. Rodwell now believes the man was an abbot, the leader of a group of monks. \"Nobody of lower rank would have been buried in anything like that,\" he said.",
+        "He thinks the best candidate is Ælfwig, who died around 1020 and led the abbey for about 27 years. Another possibility is Wulfnoth, who died around 1049. Rodwell says that archaeology is often more complicated than it first seems."
+      ],
+      "glossary": [
+        {
+          "w": "sarcophagus",
+          "d": "a stone coffin, often with carvings"
+        },
+        {
+          "w": "skeleton",
+          "d": "all the bones of a body"
+        },
+        {
+          "w": "laboratory",
+          "d": "a room where scientists do tests"
+        },
+        {
+          "w": "abbot",
+          "d": "the leader of a group of monks in an abbey"
+        },
+        {
+          "w": "candidate",
+          "d": "a person who could be the right answer"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "The sarcophagus was officially dug up in ___.",
+          "options": [
+            "1820",
+            "1869",
+            "2018",
+            "1049"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "The Roman coffin comes from the ___ century.",
+          "options": [
+            "tenth",
+            "fourth",
+            "eleventh",
+            "nineteenth"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "In 2018, experts opened the lid and found a ___ inside.",
+          "options": [
+            "skeleton",
+            "treasure",
+            "book",
+            "crown"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "Radiocarbon dating showed that the bones were much ___ than the Roman coffin.",
+          "options": [
+            "older",
+            "younger",
+            "heavier",
+            "cleaner"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "Rodwell thinks the man was an ___, the leader of a group of monks.",
+          "options": [
+            "emperor",
+            "architect",
+            "archer",
+            "abbot"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "Rodwell believes the most likely person is Ælfwig, who ___ the abbey for about 27 years.",
+          "options": [
+            "led",
+            "built",
+            "visited",
+            "closed"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English friend has written to you: 'I read about a Roman coffin that was found in London. Have you ever visited a museum or an old place with a mystery? What was it like?' Write an email to your friend in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/uk-news/2026/oct/21/mystery-roman-sarcophagus-westminster-abbey-solved-at-last-expert-says"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/westminster-sarcophagus.jpg",
+        "alt": "The long stone hall of Westminster Abbey in London",
+        "caption": "The nave of Westminster Abbey in London (earlier photo).",
+        "credit": "Robert Lamb",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:View_of_the_nave_of_Westminster_Abbey_-_geograph.org.uk_-_6879752.jpg"
+      }
+    },
+    {
+      "id": "2026-10-21-el-nino-rain",
+      "section": "Environment",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B2",
+      "topic": "Climate and weather",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "\"It is certain that it will rain\": Peru prepares for a stormy summer",
+      "standfirst": "Forecasters warn that El Niño could bring up to 300 millimetres of rain in a single day to the north coast in 2027.",
+      "body": [
+        "Peruvians living on the northern coast may see extreme rainfall next summer. According to a spokesperson for the national weather service, Senamhi, totals of up to 300 millimetres could fall in a single day in the first months of 2027. To picture this, remember that one millimetre of rain equals one litre of water on every square metre of ground.",
+        "The warning follows the latest bulletin from ENFEN, the multisectoral commission that studies El Niño. It describes the 2026–2027 Coastal El Niño as an \"extraordinary\" event that will continue until January, before turning \"strong\" and lasting into the autumn. Sea-surface temperatures are expected to stay high, and new Kelvin waves, which carry warm water, may help to prolong the phenomenon. In other words, the ocean is likely to remain warm for months, which is one of the main conditions for heavy rain on the Peruvian coast.",
+        "Yet the Senamhi meteorologist, Nelson Quispe, was careful not to promise too much. The intensity of the rain, he explained, depends not only on the ocean but also on how the atmosphere responds, so nobody can yet say exactly how far the rainfall will exceed normal levels. Projections will have to be updated as conditions change. \"It is certain that it will rain,\" he said, but the amount remains uncertain.",
+        "The first significant downpours are expected in November, in specific areas and with dry spells in between. After that, precipitation should increase progressively, becoming more frequent and more intense as the summer of 2027 arrives. There are already signs of change: in September, some places in Tumbes received up to 70 millimetres, far more than is typical for that month. Meanwhile, parts of the southern highlands and other regions could face a shortage of rain, which might affect farming and the refilling of reservoirs."
+      ],
+      "glossary": [
+        {
+          "w": "rainfall",
+          "d": "the amount of rain that falls in a place"
+        },
+        {
+          "w": "spokesperson",
+          "d": "a person who speaks officially for an organisation"
+        },
+        {
+          "w": "prolong",
+          "d": "to make something last longer"
+        },
+        {
+          "w": "downpour",
+          "d": "a sudden, very heavy fall of rain"
+        },
+        {
+          "w": "reservoir",
+          "d": "a large artificial lake where water is stored"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What does the writer say about the 300 millimetres of rain?",
+          "options": [
+            "It has already fallen in Tumbes",
+            "It is the average for summer",
+            "It is the lowest forecast for 2027",
+            "It could fall in one day on the north coast"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "According to the ENFEN bulletin, the El Niño event will",
+          "options": [
+            "end in January",
+            "become weaker in the autumn",
+            "only affect the southern highlands",
+            "be \"extraordinary\" until January and then \"strong\""
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why does Nelson Quispe avoid making a firm prediction?",
+          "options": [
+            "Rain also depends on how the atmosphere reacts",
+            "Sea temperatures are falling",
+            "The ocean is too cold to measure",
+            "The bulletin has not been published"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What is expected in November?",
+          "options": [
+            "A long dry season",
+            "Rain across the whole country",
+            "Heavy rain in some places, with dry periods between",
+            "The end of El Niño"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What problem might the southern highlands face?",
+          "options": [
+            "Floods in the cities",
+            "Too much water in the rivers",
+            "Colder winters",
+            "Too little rain for farming and reservoirs"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the main message of the article?",
+          "options": [
+            "Rain will certainly come, but its size is still uncertain",
+            "El Niño is over",
+            "Scientists cannot measure rainfall",
+            "Farmers should leave the coast"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about extreme weather. Now your teacher has asked you to write an essay: 'Governments should spend more money on preparing for natural disasters than on repairing the damage afterwards.' Write your essay in 140–190 words. Give reasons for your opinion."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-el-nino-rainfall-to-intensify-starting-in-november-potentially-reaching-300-mm-per-day-1096644.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/el-nino-rain.jpg",
+        "alt": "The sun setting over a beach on the north coast of Peru",
+        "caption": "Punta Sal, on the north coast of Peru, an area where more rain is expected (earlier photo).",
+        "credit": "AlanEspinoza",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Atardecer_en_Punta_Sal.JPG"
+      }
+    },
+    {
+      "id": "2026-10-21-peru-exports",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B2",
+      "topic": "Trade and economy",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "instructions": "For each question, choose the paragraph (A–F). Each paragraph can be chosen once.",
+      "headline": "Peru's exports are racing ahead of its neighbours",
+      "standfirst": "A UN regional report expects Peru to post the fastest export growth in Latin America and the Caribbean this year.",
+      "body": [
+        "A. Peru is on course to record the highest export growth in Latin America and the Caribbean in 2026. The Economic Commission for Latin America and the Caribbean, known by its Spanish initials CEPAL, forecasts an annual increase of 30 per cent, helped by the high prices of metals such as copper and gold.",
+        "B. The gap with other countries is wide. Mexico is expected to grow by 26 per cent, while the regional average is 20 per cent. Argentina follows with 19 per cent, Ecuador and Brazil with 16, Colombia with 15 and Chile with 13.",
+        "C. In figures, Peru's exports were worth about 76.4 billion dollars in 2024 and nearly 94 billion in 2025. This year they could reach 122.4 billion. Services are growing more slowly, rising from 7.6 billion dollars to 8.5 billion.",
+        "D. Peru is also forecast to enjoy the biggest improvement in its terms of trade, a measure that compares the prices a country receives for what it sells with the prices it pays for what it buys. The growth is put at 25 per cent, against 11 per cent for Chile and Colombia and just 1 per cent for Mexico.",
+        "E. The report places these results in a changing world. Supply chains are being reorganised, demand for critical minerals is rising and major powers are using trade and technology as tools of strategic competition. At the same time, the region gains from the value of resources linked to the energy transition, food security and clean energy.",
+        "F. Even so, CEPAL warns that the challenge is not simply to sell more raw materials. The goal, it argues, is to use these resources to build activities with higher added value, including modern services that can be exported."
+      ],
+      "glossary": [
+        {
+          "w": "forecast",
+          "d": "to say what you think will happen in the future"
+        },
+        {
+          "w": "terms of trade",
+          "d": "the relation between the prices of a country's exports and imports"
+        },
+        {
+          "w": "supply chain",
+          "d": "the network of companies and steps that make and deliver a product"
+        },
+        {
+          "w": "added value",
+          "d": "the extra worth created when raw materials are turned into finished goods or services"
+        },
+        {
+          "w": "raw materials",
+          "d": "natural substances such as metals that are used to make things"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph gives the value of exports over three years?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph says that selling more raw materials is not enough?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "answer": 5
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph names the main reason for Peru's strong growth?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph explains a measure of how export and import prices compare?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph lists the growth forecasts for several other countries?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "match",
+          "q": "Which paragraph describes global trends that affect trade?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "answer": 4
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (report)",
+        "task": "Your school is planning a project about the economy of your country. Write a report (140–190 words) for your teacher about what your country sells to other countries. Describe the main products, say whether you think the country depends too much on a few of them, and suggest one way to add more value to what it exports."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-to-record-the-highest-export-growth-rate-in-latin-america-and-the-caribbean-region-1096638.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/peru-exports.jpg",
+        "alt": "A satellite view of two huge open pits at the Cerro Verde copper mine",
+        "caption": "The Cerro Verde copper mine in Peru, seen from space (earlier image).",
+        "credit": "NASA Operational Land Imager (OLI) on Landsat 8",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Cerro_Verde_mine_Peru.jpg"
+      }
+    },
+    {
+      "id": "2026-10-21-nobel-alga",
+      "section": "Science",
+      "country": "World",
+      "flag": "🌍",
+      "level": "C1",
+      "topic": "Medicine and neuroscience",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "From pond to brain: the tiny alga behind a Nobel prize",
+      "standfirst": "A one-celled organism that swims towards light has given scientists a tool to study the mind.",
+      "body": [
+        "Some of the most powerful ideas in medicine begin in unlikely places. This month's Nobel prize for physiology or medicine, awarded to three scientists, rests partly on research into Chlamydomonas, a one-celled alga that most of us would never notice.",
+        "The organism swims towards light, and it does so with the help of a light-sensing protein called channelrhodopsin, which is strikingly similar to the rhodopsin found in the human eye. When the protein detects light, electrically charged particles called ions rush into the cell from outside. That triggers an electrical signal, astonishingly fast, which tells the alga to move its hair-like motor.",
+        "The researchers' insight was to borrow this natural switch. They transferred the alga's gene for channelrhodopsin into living animal brain cells, so that flashes of light could turn individual neurons on or off. The approach, often called optogenetics, has allowed scientists to pinpoint the exact circuits in the brain that control behaviour, feelings, memories, movement, sleeping and waking. It has even revealed how a mouse gathers its young in a nest or grooms them.",
+        "Why does this matter? The brain is hard to study because simply watching it shows what happens, not what causes what. Being able to switch a chosen group of neurons on or off with a flash of light lets researchers test cause and effect directly: if lighting up a circuit changes a behaviour, that circuit must play a part in it. The method turns a passive observation into a genuine experiment.",
+        "The applications reach well beyond the laboratory curiosity. The technique is being used to investigate depression, anxiety and Parkinson's disease, and it is being tested as a way of partially restoring vision in people with diseases of the retina.",
+        "The story offers a quiet lesson about how science works. Nobody could have predicted, when researchers first studied how a pond alga finds light, that the work would one day shed light on the human brain. Curiosity-driven research, which can look like an esoteric luxury, sometimes turns out to be the most valuable investment of all."
+      ],
+      "glossary": [
+        {
+          "w": "alga",
+          "d": "a simple plant-like organism that lives in water"
+        },
+        {
+          "w": "neuron",
+          "d": "a cell in the brain that sends electrical signals"
+        },
+        {
+          "w": "circuit",
+          "d": "a connected path along which signals travel"
+        },
+        {
+          "w": "retina",
+          "d": "the layer at the back of the eye that senses light"
+        },
+        {
+          "w": "esoteric",
+          "d": "understood by or interesting to only a small group of people"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the writer's main purpose in the first paragraph?",
+          "options": [
+            "To criticise the Nobel committee",
+            "To suggest that important medical ideas can start from unexpected sources",
+            "To describe the three prize winners",
+            "To explain how algae are classified"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "What does \"it\" refer to in \"it does so with the help of\" (paragraph 2)?",
+          "options": [
+            "The Nobel prize",
+            "The human eye",
+            "The organism that swims towards light",
+            "The electrical signal"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What was the researchers' key idea?",
+          "options": [
+            "To copy the alga's swimming movement",
+            "To grow brain cells in water",
+            "To feed algae to mice",
+            "To use the alga's light-sensitive protein to control brain cells"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "The phrase \"reach well beyond the laboratory curiosity\" (paragraph 5) suggests that the technique",
+          "options": [
+            "has practical uses in health research and treatment",
+            "is too expensive for hospitals",
+            "has failed to produce results",
+            "is limited to studies on mice"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the writer's attitude to research that seems esoteric?",
+          "options": [
+            "Doubtful about its cost",
+            "Neutral about its value",
+            "Convinced that it can be extremely valuable",
+            "Worried that it takes too long"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Which statement best summarises the article?",
+          "options": [
+            "Algae will soon replace medicines for brain diseases",
+            "A study of a simple organism has led to a powerful way of exploring the brain",
+            "Nobel prizes are usually awarded for animal research",
+            "Mice behave differently when exposed to light"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "In your class you have discussed how scientific discoveries are made. Write an essay (220–260 words) discussing two of these approaches and saying which is more likely to lead to important advances: research with a clear practical goal; research driven by curiosity; large international teams. Give reasons for your opinion."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/21/chlamydomonas-one-celled-alga-nobel-prize"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/nobel-alga.jpg",
+        "alt": "A close-up microscope image of a green alga cell",
+        "caption": "A microscope image of the alga Chlamydomonas (earlier image).",
+        "credit": "Dartmouth Electron Microscope Facility, Dartmouth College",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Chlamydomonas_TEM_17.jpg"
+      }
+    },
+    {
+      "id": "2026-10-21-bad-apple-study",
+      "section": "Science",
+      "country": "World",
+      "flag": "🌍",
+      "level": "C1",
+      "topic": "Psychology and society",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "One bad apple? How other people's rule-breaking can spread",
+      "standfirst": "An experiment suggests that seeing others go further than the rules allow can make us bend them too.",
+      "body": [
+        "Leaders caught in scandal often describe the culprit as a \"bad apple\", an isolated individual whose behaviour says nothing about the barrel. New research, however, lends support to the older version of the proverb: one bad apple can indeed spoil the rest. Molleman points out that many people, especially in individualist cultures such as the Netherlands and the UK, imagine themselves making autonomous decisions, when in fact they are very much influenced by what others do.",
+        "Dr Lucas Molleman, of the University of Amsterdam, and his colleagues wanted to understand how people decide whether to break rules when others are watching. They recruited 750 participants in the United States for an online task. Each had to pick the square, among 100, that glowed most brightly as an animated shooting star passed, and the correct choice earned a reward. But squares further to the right paid more, so cheating was profitable. Participants then saw whether another player had followed the rules, how far they had strayed and what their political leanings were, and could change their answer. The process was repeated six times.",
+        "Even at the start, 23 per cent of choices went for the most lucrative square. Seeing rule-followers modestly reduced cheating, and small, convenient violations nudged it up slightly. The decisive effect came when people witnessed flagrant breaches: they then raised their own rule-breaking sharply, sometimes exceeding what they had seen. The effect was stronger when the other player shared the participant's political outlook. Computer simulations suggested that a minority of escalating individuals could push a whole group out of control.",
+        "Yet the picture is not entirely bleak. About a third of participants obeyed the rules throughout, even though that cost them money. And Prof Stephen Reicher, of the University of St Andrews, who was not involved, urged caution. The task was abstract and carried no penalty, so the real-world relevance remains unproven. More importantly, he argued, the results do not support a simple theory of contagion: whether we are influenced depends on who the others are. We do not riot just because others do, he said, and many people who witness rioting help to clean up afterwards."
+      ],
+      "glossary": [
+        {
+          "w": "culprit",
+          "d": "the person who is responsible for something bad"
+        },
+        {
+          "w": "flagrant",
+          "d": "shockingly obvious and without shame"
+        },
+        {
+          "w": "lucrative",
+          "d": "producing a lot of money or reward"
+        },
+        {
+          "w": "nudge",
+          "d": "to push gently towards a change"
+        },
+        {
+          "w": "contagion",
+          "d": "the spreading of something from one person to another"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What point does the writer make in the first paragraph?",
+          "options": [
+            "The proverb about bad apples has never been true",
+            "Politicians are more likely to break rules than other people",
+            "Leaders usually blame the barrel, not the apple",
+            "Research supports a view that leaders often reject"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why did squares further to the right matter in the experiment?",
+          "options": [
+            "They were harder to find",
+            "They showed what other players had done",
+            "They were chosen by the researchers",
+            "They gave larger rewards but broke the rules"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What had the biggest effect on participants' behaviour?",
+          "options": [
+            "Seeing small, convenient violations",
+            "Seeing others obey the rules",
+            "Seeing others clearly go far beyond the rules",
+            "Seeing a reward disappear"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does \"it\" refer to in \"that cost them money\" (paragraph 4)?",
+          "options": [
+            "Following the rules throughout",
+            "Taking part in the experiment",
+            "Reading the proverb",
+            "Changing their answer"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is Reicher's attitude to the study?",
+          "options": [
+            "Dismissive of all its results",
+            "Cautious about applying it to real life",
+            "Enthusiastic about the simulations",
+            "Surprised by the number of participants"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is Reicher's main argument about contagion?",
+          "options": [
+            "People copy whoever is nearest to them",
+            "Rioting always spreads quickly",
+            "Our response to others depends on who they are",
+            "Rule-breaking cannot be studied online"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (essay)",
+        "task": "Your school magazine is running a series on behaviour in groups. Write an essay (220–260 words) for the magazine discussing how the actions of other people influence what we do. Consider the effect of both positive and negative examples, and say how schools could encourage good behaviour."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/21/bad-apples-rule-breaking-study"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-21/bad-apple-study.jpg",
+        "alt": "Many barrels of apples on a river bank",
+        "caption": "Barrels of apples, an old photo that illustrates the idea of the bad apple in the barrel.",
+        "credit": "W.C. Persons",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Apple_Time_on_the_Levee_at_St._Louis._(Barrels_of_Calhoun_County_apples_being_unloaded_on_the_levee).jpg"
+      }
+    }
+  ]
+}
