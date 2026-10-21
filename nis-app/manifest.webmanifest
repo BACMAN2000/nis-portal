@@ -1,0 +1,33 @@
+{
+ "id": "/nis-app/",
+ "name": "NIS Portal — Nordic International School",
+ "short_name": "NIS Portal",
+ "description": "Nordic International School of Lima: English classes, readers, Cambridge practice tests and mocks.",
+ "start_url": "/nis-app/?source=pwa",
+ "scope": "/",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#4987c6",
+ "theme_color": "#4987c6",
+ "lang": "en",
+ "icons": [
+  {
+   "src": "/nis-app/icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/nis-app/icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/nis-app/icons/icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

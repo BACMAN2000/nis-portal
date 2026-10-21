@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NIS Portal — Nordic International School</title>
+<meta name="theme-color" content="#4987c6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NIS Portal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/nis-app/icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/nis-app/icons/icon-32.png">
+<link rel="manifest" href="/nis-app/manifest.webmanifest">
+<!-- App NIS Portal (Nordic International School), de uso interno. Dentro de la app (APK de
+     Android o icono de iPhone) esta página salta directo al portal; abierta en
+     el navegador es la página de instalación. -->
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var enApp = p.get('source') === 'twa' || navigator.standalone === true ||
+              (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+  if (enApp && navigator.onLine !== false) { document.documentElement.className = 'going'; location.replace('/?app=1'); }
+  else if (enApp) document.documentElement.className = 'off';
+})();
+</script>
+<style>
+@font-face{font-family:'Gotham';src:url('/fonts/GothamBook.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Gotham';src:url('/fonts/GothamMedium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Gotham';src:url('/fonts/GothamBold.woff2') format('woff2');font-weight:700;font-display:swap}
+/* Paleta del brandbook Nordic: azul #4987c6, azul claro #d1d2ea, gris #636465 */
+:root{--blue:#4987c6;--blue-dk:#244c77;--lilac:#d1d2ea;--ink:#2b2c2e;--muted:#636465;--line:#d1d2ea;--card:#ffffff;--accent:#4987c6;--bg:#4987c6}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;color:var(--ink);font:400 16px/1.5 'Gotham',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{background:linear-gradient(170deg,#4987c6 0%,#5b9bd0 55%,#7fbfe0 100%) fixed;background-color:var(--bg)}
+html.going main{visibility:hidden}
+main{max-width:460px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 16px max(28px,env(safe-area-inset-bottom));min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.brand{text-align:center;color:#fff}
+.brand .mark{width:92px;height:92px;border-radius:22px;box-shadow:0 10px 30px rgba(15,40,80,.3);border:2px solid rgba(255,255,255,.7)}
+.brand .word{display:block;width:230px;max-width:70%;margin:18px auto 6px}
+h1{font-size:15px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin:0;color:#eaf2fb}
+h2{font-size:18px;font-weight:700;margin:0 0 8px;color:var(--blue-dk)}
+.card{border-radius:18px;background:var(--card);padding:18px;box-shadow:0 12px 32px rgba(15,40,80,.18)}
+ol{margin:0;padding-left:22px}
+li{margin:4px 0}
+.btn{display:block;text-align:center;padding:14px 18px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:700 16px/1.2 'Gotham',system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.btn.alt{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.55);font-weight:500}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0}
+.ios,.android,.offline{display:none}
+html.is-ios .ios,html.is-android .android,html.is-other .ios,html.is-other .android{display:block}
+html.off .offline{display:block}
+html.off .install{display:none}
+.share{display:inline-block;vertical-align:-3px;width:18px;height:18px;color:var(--blue)}
+[hidden]{display:none!important}
+.btn+.btn{margin-top:10px}
+html.has-pointer main{padding-bottom:96px}
+.btn.secondary{background:transparent;color:var(--blue-dk);border:1px solid var(--line);font-weight:500;font-size:15px}
+.notice,.done{margin:12px 0 0;padding:12px;border-radius:12px;background:#eef1fa;font-size:15px}
+.pointer{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#fff;color:var(--blue-dk);padding:10px 16px;border-radius:14px;font-size:15px;box-shadow:0 8px 24px rgba(0,0,0,.25);white-space:nowrap;animation:bob 1.4s ease-in-out infinite}
+.pointer::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-bottom:0;border-top-color:#fff}
+@keyframes bob{50%{transform:translate(-50%,-6px)}}
+@media (prefers-reduced-motion:reduce){.pointer{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <img class="mark" src="/nis-app/icons/icon-192.png" alt="">
+    <img class="word" src="/assets/logo-white-h.svg" alt="Nordic International School">
+    <h1>NIS Portal app</h1>
+  </div>
+
+  <div class="offline card">
+    <p><b>You're offline.</b><br>Connect to the internet to open the NIS Portal.</p>
+    <button class="btn" type="button" onclick="location.reload()">Try again</button>
+  </div>
+
+  <div class="install android card">
+    <h2>Android</h2>
+    <button class="btn" id="installBtn" type="button" hidden>Install the app</button>
+    <p class="done" id="installed" hidden>✅ Installed. Open <b>NIS Portal</b> from your home screen.</p>
+    <a class="btn" id="apkBtn" href="/nis-app/nis-portal.apk" download="nis-portal.apk">Download the app (APK, 2 MB)</a>
+    <p class="notice" id="apkNotice" hidden>⬇️ Downloading… When it finishes, tap <b>Open</b> in the bar at the bottom of the screen (or in your notifications), then tap <b>Install</b>.</p>
+    <ol class="hint" id="apkSteps">
+      <li>Open the downloaded file.</li>
+      <li>If Android asks, allow installing apps from this source (Chrome or Files).</li>
+      <li>Tap <b>Install</b>, then open <b>NIS Portal</b>.</li>
+    </ol>
+  </div>
+
+  <div class="install ios card">
+    <h2>iPhone and iPad</h2>
+    <ol>
+      <li>Open this page in <b>Safari</b>.</li>
+      <li>Tap <b>Share</b> <svg class="share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>.</li>
+      <li>Choose <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+      <li>Open <b>NIS Portal</b> from your home screen.</li>
+    </ol>
+  </div>
+
+  <a class="install btn alt" href="/">Open the NIS Portal in the browser</a>
+</main>
+<script>
+(function () {
+  var ua = navigator.userAgent, h = document.documentElement;
+  var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  h.classList.add(ios ? 'is-ios' : /Android/i.test(ua) ? 'is-android' : 'is-other');
+  addEventListener('online', function () { if (h.classList.contains('off')) location.reload(); });
+
+  /* Android + Chrome: el diálogo nativo «¿Instalar app?». Si Chrome lo ofrece,
+     es el botón principal y el APK queda como alternativa. */
+  var inst = document.getElementById('installBtn'), apk = document.getElementById('apkBtn'), aviso = null;
+  addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); aviso = e;
+    inst.hidden = false; apk.classList.add('secondary'); apk.textContent = 'Or download the APK (2 MB)';
+  });
+  inst.addEventListener('click', function () {
+    if (!aviso) return;
+    aviso.prompt();
+    aviso.userChoice.then(function (r) { if (r.outcome === 'accepted') { inst.hidden = true; } aviso = null; });
+  });
+  addEventListener('appinstalled', function () {
+    inst.hidden = true; document.getElementById('installed').hidden = false;
+  });
+  apk.addEventListener('click', function () {
+    document.getElementById('apkNotice').hidden = false;
+    document.getElementById('apkSteps').hidden = true;
+  });
+
+  /* iPhone en Safari: Apple no deja abrir el diálogo desde la página; una
+     flecha señala el botón Compartir de la barra inferior. */
+  if (ios && !h.classList.contains('off') && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua) && !/iPad/.test(ua)) {
+    var b = document.createElement('div'); b.className = 'pointer';
+    b.innerHTML = 'Tap <b>Share</b> below, then <b>Add to Home Screen</b>';
+    document.body.appendChild(b); h.classList.add('has-pointer');
+  }
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/nis-app/sw.js', { scope: '/nis-app/' }).catch(function () {});
+})();
+</script>
+</body>
+</html>

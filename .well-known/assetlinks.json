@@ -10,5 +10,17 @@
         "C0:36:9A:36:CA:48:CE:5D:8A:A3:DB:04:0C:B8:24:DF:26:9C:24:25:74:EA:3B:46:DF:21:24:37:AB:BF:CD:FC"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "pe.cohasset.nis",
+      "sha256_cert_fingerprints": [
+        "C0:36:9A:36:CA:48:CE:5D:8A:A3:DB:04:0C:B8:24:DF:26:9C:24:25:74:EA:3B:46:DF:21:24:37:AB:BF:CD:FC"
+      ]
+    }
   }
 ]
