@@ -1,0 +1,993 @@
+{
+  "date": "2026-10-22",
+  "issue": 16,
+  "breaking": [
+    "Space: October's full moon, the Hunter's Moon, will be full on Sunday night in Peru.",
+    "Peru: scientists find a new plant with almost black flowers near Manu National Park.",
+    "Indonesia: a baby whale shark helps scientists learn where these giant fish begin life.",
+    "Technology: websites around the world go offline to fix a big security problem."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-22-hunters-moon",
+      "section": "Science",
+      "country": "World",
+      "flag": "🌕",
+      "level": "A2",
+      "topic": "Space and the night sky",
+      "exam": "A2 Key · Reading Part 3 (multiple choice)",
+      "headline": "Look up! The Hunter's Moon is coming",
+      "standfirst": "October's full moon has a special name. You can see it this weekend.",
+      "body": [
+        "Every month there is a full moon, and many full moons have old names. The full moon in October is called the Hunter's Moon. A long time ago, after people finished collecting food from their fields in autumn, hunters used the bright light of the moon to find animals at night.",
+        "This year, the moon will be full at 11.11 p.m. on Sunday 25 October in Peru. But you don't need to wait for that minute. The moon will also look full the night before and the night after.",
+        "The best time to look is in the evening, when the moon comes up. At that time it is low in the sky, in the east.",
+        "There are 13 full moons in 2026, not 12, and the Hunter's Moon is number 11. The next two full moons, on 24 November and 23 December, are supermoons. They are the closest and brightest full moons of the year."
+      ],
+      "glossary": [
+        {
+          "w": "full moon",
+          "d": "the moon when you can see all of it as a bright circle"
+        },
+        {
+          "w": "hunters",
+          "d": "people who look for wild animals to catch or kill them"
+        },
+        {
+          "w": "bright",
+          "d": "with a lot of light"
+        },
+        {
+          "w": "east",
+          "d": "the direction where the sun comes up in the morning"
+        },
+        {
+          "w": "supermoon",
+          "d": "a full moon that is closer to the Earth, so it looks bigger and brighter"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "Why is it called the Hunter's Moon?",
+          "options": [
+            "Hunters went to sleep when it came up.",
+            "Hunters used its light to find animals at night.",
+            "Hunters had a party in October."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "When will the moon be full in Peru?",
+          "options": [
+            "On Sunday at 11.11 p.m.",
+            "On Monday morning",
+            "On Saturday at 11.11 p.m."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "When is the best time to look at the moon?",
+          "options": [
+            "At midnight",
+            "Early in the morning",
+            "In the evening, when it comes up"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "How many full moons are there in 2026?",
+          "options": [
+            "11",
+            "13",
+            "12"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is special about the full moons in November and December?",
+          "options": [
+            "They are supermoons.",
+            "They are both Hunter's Moons.",
+            "They are very small."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend wants to watch the Hunter's Moon with you. Write a message to your friend (25 words or more). Say: where you will watch the moon, what time you will meet, and what you will take with you."
+      },
+      "sources": [
+        {
+          "name": "Forbes",
+          "url": "https://www.forbes.com/sites/jamiecartereurope/2026/10/22/dont-miss-the-hunters-moon----heres-when-to-see-it/"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/hunters-moon.jpg",
+        "alt": "A bright full moon rising behind a mountain at dusk",
+        "caption": "A full moon rising behind Llullaillaco volcano in Chile (earlier photo).",
+        "credit": "ESO/G.Hüdepohl (atacamaphoto.com)",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:The_Moon_Behind_the_Mountain_(full-moon-hudepohl1).jpg"
+      }
+    },
+    {
+      "id": "2026-10-22-puya-ukumari",
+      "section": "Environment",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Plants and nature",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "A new plant with almost black flowers",
+      "standfirst": "Scientists have found a new plant in and near Manu National Park. Its name comes from the Andean bear.",
+      "body": [
+        "Scientists from the Peruvian group Conservación Amazónica have found a new kind of plant in Manu National Park and the area around it, in Cusco. The plant is a bromeliad, and its name is Puya ukumari.",
+        "The plant can grow up to two metres tall. Its petals are a very dark blue, so they look almost black. It lives in the mountains, between 2,300 and 3,300 metres high.",
+        "Why ukumari? This word means 'bear' in Quechua. The scientists studied the food of Andean bears, and this helped them to find more of the plants.",
+        "Scientists first saw the plant in 2022, and they found the first plant with flowers in August 2025. They think it is in danger because fires, farm animals and landslides are damaging the places where it grows."
+      ],
+      "glossary": [
+        {
+          "w": "bromeliad",
+          "d": "a kind of plant from the Americas, often with long, hard leaves"
+        },
+        {
+          "w": "petals",
+          "d": "the coloured parts of a flower"
+        },
+        {
+          "w": "bear",
+          "d": "a large, strong wild animal with thick fur"
+        },
+        {
+          "w": "in danger",
+          "d": "in a situation where something bad can happen to it"
+        },
+        {
+          "w": "landslides",
+          "d": "when a lot of earth and rocks fall down the side of a mountain"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "Scientists found Puya ukumari in Manu National Park and the area near it.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The plant is never taller than one metre.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "In Quechua, 'ukumari' means 'flower'.",
+          "answer": "F"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The plant has a very nice smell.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "Studying what bears eat helped the scientists.",
+          "answer": "T"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "There are thousands of these plants in Cusco.",
+          "answer": "NS"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "You visited a park or a natural place with your class. Write an email to your English friend (25 words or more). Say: where you went, what plants or animals you saw, and what you liked most."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/agencia/noticia-extraordinary-discovery-in-manu-scientists-found-out-a-new-plant-species-1096852.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/puya-ukumari.jpg",
+        "alt": "Green mountains and forest in the Kosñipata valley",
+        "caption": "The Kosñipata valley in Manu National Park, one of the places where Puya ukumari grows.",
+        "credit": "Erfil",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Kos%C3%B1ipata_valley_Manu.jpg"
+      }
+    },
+    {
+      "id": "2026-10-22-baby-whale-shark",
+      "section": "Environment",
+      "country": "Indonesia",
+      "flag": "🇮🇩",
+      "level": "B1",
+      "topic": "Ocean animals",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "A baby giant: what a tiny whale shark could teach scientists",
+      "standfirst": "Fishers in Indonesia found a whale shark only 1.5 metres long. It could help to solve a big mystery about the world's largest fish.",
+      "body": [
+        "On 6 September 2024, fishers in Saleh Bay, on the Indonesian island of Sumbawa, found something unusual in their net: a whale shark. Whale sharks are the largest fish in the world and can grow to more than 12 metres, but this one was only about 1.5 metres long. Scientists worked out that it was about four months old.",
+        "It was the first newborn whale shark ever recorded in Indonesia, and only about 33 have been found anywhere in the world. That is why the discovery is so exciting. Scientists know a lot about adult whale sharks, which can travel thousands of kilometres, but nobody has ever seen one being born in the wild.",
+        "Saleh Bay could be a kind of nursery. It is almost closed off from the open ocean, mangroves grow around much of it, and it has plenty of plankton and krill for the sharks to eat. A young shark is also safer there, because some predators can attack a small shark but not a huge adult. However, researchers still don't know if the baby was born in the bay or swam there later.",
+        "Local people's feelings about whale sharks are changing too. Fishers once saw them as rivals that took their fish, but today young people take tourists out on boats to see them. A conservation group, Konservasi Indonesia, is working to create a protected area for whale sharks in the north of the bay."
+      ],
+      "glossary": [
+        {
+          "w": "newborn",
+          "d": "born only a short time ago"
+        },
+        {
+          "w": "nursery",
+          "d": "a place where young animals or babies are looked after while they grow"
+        },
+        {
+          "w": "plankton",
+          "d": "very small plants and animals that float in the sea"
+        },
+        {
+          "w": "predators",
+          "d": "animals that kill and eat other animals"
+        },
+        {
+          "w": "rivals",
+          "d": "people or animals that try to get the same thing as you"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "How old was the young whale shark?",
+          "options": [
+            "About one year old",
+            "About four years old",
+            "About four months old",
+            "Only a few days old"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why is the discovery so important?",
+          "options": [
+            "It was the biggest whale shark ever found in Indonesia.",
+            "Very few newborn whale sharks have ever been found.",
+            "The fishers had never seen a whale shark before.",
+            "Scientists saw the shark being born."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why might Saleh Bay be a good place for young whale sharks?",
+          "options": [
+            "It has food and protection from predators.",
+            "Its water is deeper and colder than the open ocean.",
+            "Tourists give the sharks food.",
+            "There are no boats in the bay."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What do scientists still not know?",
+          "options": [
+            "How big adult whale sharks can grow",
+            "What whale sharks like to eat",
+            "How far adult whale sharks travel",
+            "Whether the young shark was born in the bay"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "How have local people's feelings about whale sharks changed?",
+          "options": [
+            "They were once afraid to swim near them, but now they swim with them.",
+            "They once saw them as rivals, but now they show them to tourists.",
+            "They once caught them for food, but now they protect them by law.",
+            "They once ignored them, but now they study them."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (article)",
+        "task": "You see this notice in an English-language school magazine: 'Articles wanted! An amazing animal. Which animal do you find amazing, and why? What can people do to protect it? The best articles will be published next month.' Write your article in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Forbes",
+          "url": "https://www.forbes.com/sites/melissacristinamarquez/2026/10/21/newborn-whale-shark-discovery-could-reveal-where-these-giants-begin-life/"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/baby-whale-shark.jpg",
+        "alt": "A whale shark with white spots swimming near the surface",
+        "caption": "A whale shark in Oslob, in the Philippines (earlier photo).",
+        "credit": "Eurasic",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Oslob_Whale_shark.jpg"
+      }
+    },
+    {
+      "id": "2026-10-22-caral-figurines",
+      "section": "Culture",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Archaeology and history",
+      "exam": "B1 Preliminary · Reading Part 5 (multiple-choice cloze)",
+      "headline": "Two clay figures from Caral, one of the oldest cities in the Americas",
+      "standfirst": "Archaeologists have found two small figures that are between 3,800 and 5,000 years old. They may show how the people of Caral saw the world.",
+      "body": [
+        "Archaeologists working at Caral, an ancient city about four hours north of Lima, have found two small figures made of clay. They were discovered in a building near the Main Residential Complex of the Sacred City of Caral, and experts think they were made between 3000 and 1800 BC.",
+        "One figure is a man and the other is a woman, so they may represent a couple. Marco Antonio Machacuay, an archaeologist at the Caral Archaeological Zone, told the news agency Andina that the figures could show how the people of Caral thought about nature and about themselves. Figures like these are not found in many places, which makes them especially interesting.",
+        "The early figures had no colour. People in Caral made white figures of men, women, animals and plants, with many details of everyday life. After 1800 BC, they started to add colours, especially to clothes and jewellery, and female figures became more common and more symbolic.",
+        "Because they are so old and delicate, the two figures were shown for only a short time in an exhibition about Caral at the Ministry of Culture in Lima. This month Caral also celebrates 32 years since research began there. On 23 and 24 October there will be a ceremony for Pachamama, coloured lights on the old buildings at night, and a cultural festival with traditional dancers."
+      ],
+      "glossary": [
+        {
+          "w": "archaeologists",
+          "d": "people who study the past by finding and looking at old objects and buildings"
+        },
+        {
+          "w": "clay",
+          "d": "soft earth that becomes hard when it is dried or heated, used to make pots and figures"
+        },
+        {
+          "w": "represent",
+          "d": "to show or be a picture of someone or something"
+        },
+        {
+          "w": "delicate",
+          "d": "easy to break or damage"
+        },
+        {
+          "w": "exhibition",
+          "d": "a show where people can go and look at objects or art"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "gap",
+          "q": "The two figures are made of ___.",
+          "options": [
+            "stone",
+            "clay",
+            "wood",
+            "metal"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "gap",
+          "q": "One is a man and one is a woman, so they may ___ a couple.",
+          "options": [
+            "represent",
+            "remember",
+            "replace",
+            "repeat"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "gap",
+          "q": "Figures like these are rare, so they are especially ___ for experts.",
+          "options": [
+            "common",
+            "cheap",
+            "interesting",
+            "modern"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "gap",
+          "q": "Before 1800 BC, the figures were white, ___ any colour.",
+          "options": [
+            "without",
+            "with",
+            "about",
+            "between"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "gap",
+          "q": "The figures are very old and ___, so they were shown for only a short time.",
+          "options": [
+            "heavy",
+            "strong",
+            "dirty",
+            "delicate"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q6",
+          "type": "gap",
+          "q": "The anniversary celebrations will ___ place on 23 and 24 October.",
+          "options": [
+            "make",
+            "take",
+            "have",
+            "do"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Your English teacher has written to you: 'Our class is planning a trip to an archaeological site in Peru. Which place would you like to visit, and why? What would you like to learn there? Please write back and tell me.' Write your email in about 100 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-peru-anthropomorphic-figurines-dating-from-3000-to-1800-bc-discovered-in-caral-1096222.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/caral-figurines.jpg",
+        "alt": "A small painted clay figure of a woman from Caral",
+        "caption": "A painted clay figure from Caral, made later than the two new figures (earlier photo).",
+        "credit": "Johnattan Rupire",
+        "license": "CC BY 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Figura_femenina_de_Caral._Realizada_en_arcilla_cruda_pintada.jpg"
+      }
+    },
+    {
+      "id": "2026-10-22-creativity-confidence",
+      "section": "Health",
+      "country": "Austria",
+      "flag": "🇦🇹",
+      "level": "B2",
+      "topic": "Psychology and creativity",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Not less creative, just less confident: what children and adults reveal about imagination",
+      "standfirst": "A new study suggests that adults produce more original work than young children – but feel far more anxious while they do it.",
+      "body": [
+        "Give a five-year-old a paintbrush and they will usually start painting straight away; give one to an adult and there is often a pause. It is widely assumed that this is because children are simply more creative. A new study, published in the journal Plos One, suggests that the real explanation is rather different.",
+        "Researchers from the University of Graz in Austria, working with UCLouvain in Belgium and Yale University in the United States, compared 92 children aged four to seven with 70 adults, most of them in their twenties. Everyone completed three tasks: thinking of as many creative uses for a tin as possible in three minutes, drawing anything they liked with no time limit, and drawing an imaginary animal in eight minutes.",
+        "Judges then rated the results for originality, usefulness and overall creativity. The adults' work scored higher, especially when the task had a clear goal and a time limit. Yet when participants described their feelings, the pattern was reversed: the children said they felt more confident and motivated, and less anxious, than the adults did.",
+        "According to Dr Mathias Benedek, the study's senior author, we often mistake children's total absorption in play for greater creative ability. Children enjoy the process and treat mistakes as part of it, he explained, while adults focus more on the result and, worried about being judged, often reject unusual ideas before they have even tried them.",
+        "The study has its limits. It compared only two age groups at a single moment, so it cannot show how creativity changes as people grow older, and young children tend to choose extreme answers on rating scales. Even so, the researchers believe the popular idea that creativity fades with age is mistaken. As Benedek put it, adults \"don't lose their creativity\" – they lose the confidence to use it."
+      ],
+      "glossary": [
+        {
+          "w": "assumed",
+          "d": "believed to be true without proof"
+        },
+        {
+          "w": "originality",
+          "d": "the quality of being new and different from what others have done"
+        },
+        {
+          "w": "reversed",
+          "d": "changed so that it became the opposite"
+        },
+        {
+          "w": "absorption",
+          "d": "the state of being so interested in something that you notice nothing else"
+        },
+        {
+          "w": "judged",
+          "d": "given an opinion about, often a critical one"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the writer's main point in the first paragraph?",
+          "options": [
+            "Children are clearly more creative than adults.",
+            "Adults should spend more time painting.",
+            "A common belief about creativity may be wrong.",
+            "Painting is the best way to measure creativity."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "In the first task, participants had to",
+          "options": [
+            "draw a picture of a tin.",
+            "think of different ways to use a tin.",
+            "invent an animal in three minutes.",
+            "paint without any time limit."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "The adults did especially well when",
+          "options": [
+            "the task had a clear goal and a time limit.",
+            "they could choose any topic.",
+            "they worked together in groups.",
+            "there was no time limit."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'the pattern was reversed' in paragraph 3 mean?",
+          "options": [
+            "The children's work was judged more original.",
+            "The judges changed their minds about the results.",
+            "The adults enjoyed the tasks more than the children.",
+            "Although the adults' work scored higher, the children felt better about doing the tasks."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "According to Benedek, why do adults often reject unusual ideas?",
+          "options": [
+            "They are afraid of what others will think.",
+            "They have less imagination than children.",
+            "They do not have enough time.",
+            "They find unusual ideas boring."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Which limitation of the study does the writer mention?",
+          "options": [
+            "The judges were not experts.",
+            "It compared two age groups at only one point in time.",
+            "The tasks were too easy for adults.",
+            "Only people from Austria took part."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about creativity. Now your teacher has asked you to write an essay. 'Schools should give students more time for creative activities.' Do you agree? Notes – write about: 1. confidence, 2. exams and marks, 3. ________ (your own idea). Write your essay in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/science/2026/oct/21/do-people-become-less-creative-as-they-get-older-research"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/creativity-confidence.jpg",
+        "alt": "A colourful child's drawing of a village by the water",
+        "caption": "A colourful drawing of a village by an 11-year-old artist.",
+        "credit": "Khamkhoune at 11 years old (contact Basile Morin)",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Lao_child_drawing_of_a_village.jpg"
+      }
+    },
+    {
+      "id": "2026-10-22-asian-games",
+      "section": "Sport",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "level": "B2",
+      "topic": "Organising big sporting events",
+      "exam": "B2 First · Reading Part 7 (multiple matching)",
+      "instructions": "For each question, choose the paragraph (A–E). Each paragraph can be chosen once.",
+      "headline": "A host's headache: how the Asian Games in Japan went wrong",
+      "standfirst": "Japan has a reputation for running major events smoothly, but this year's Asian Games in Nagoya will be remembered for a long list of mistakes.",
+      "body": [
+        "A. Japan has hosted the Olympics and attracts huge crowds to events such as Tokyo's annual video game show, so expectations were high for this year's Asian Games in Nagoya and the surrounding Aichi Prefecture. Instead, the event was hit by one problem after another, and some people online even called it the worst Games in history.",
+        "B. Trouble began before any competition had started. To keep costs down, the organisers had decided not to build a traditional athletes' village and put participants in hotels and container-style units instead. A senior Korean basketball official complained that tall players in the containers could not stretch out their legs in bed. When more sports were added, the number of people needing rooms rose by 2,000 to about 17,000, and an Italian cruise ship with 1,500 cabins was brought in to fill the gap.",
+        "C. During the Games, the mistakes kept coming. Some athletes were taken by bus to the wrong venues, the North Korean anthem was played for South Korea's men's hockey team, and the South Korean flag was not raised properly at the men's football medal ceremony. Officials later had to send South Korea a formal apology.",
+        "D. Much of the criticism has focused on the company that ran the venues, the Japanese branch of the French firm GL Events, which won a contract worth 63 billion yen. A Japanese newspaper claimed the firm had cut corners by hiring too few experienced staff. However, the deputy director general of the Games, Takaaki Omi, pointed out that the company had worked on the Paris Olympics.",
+        "E. Kozo Tomiyama, a professor at Osaka University who studies sporting events, believes the organisers simply could not cope with the unexpected. He warned that if other countries lose confidence in Japan's ability to run such events, it may become harder for Japan to attract international competitions in the future."
+      ],
+      "glossary": [
+        {
+          "w": "expectations",
+          "d": "beliefs about how good something will be"
+        },
+        {
+          "w": "venues",
+          "d": "the places where events such as competitions or concerts happen"
+        },
+        {
+          "w": "anthem",
+          "d": "the official song of a country"
+        },
+        {
+          "w": "cut corners",
+          "d": "to do something cheaply or quickly by not doing it properly"
+        },
+        {
+          "w": "cope with",
+          "d": "to deal successfully with a difficult situation"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "match",
+          "q": "Which paragraph describes an unusual solution to a shortage of rooms?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "match",
+          "q": "Which paragraph mentions mistakes involving national symbols?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "match",
+          "q": "Which paragraph explains why people expected the event to go well?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "match",
+          "q": "Which paragraph includes a defence of the company that managed the venues?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "match",
+          "q": "Which paragraph suggests a possible long-term effect on the country?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "answer": 4
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You have seen this announcement on an international sports website: 'Articles wanted! What makes a great sporting event? Think about an event you have watched or taken part in. What made it a success – or a failure – for the athletes and the fans?' Write your article in 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/cvze414811jlo"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/asian-games.jpg",
+        "alt": "The skyline of Nagoya city seen from far away",
+        "caption": "Nagoya, the main host city of this year's Asian Games (earlier photo).",
+        "credit": "Nryate",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Skylines_NagoyaCity_seen_from_Komakiyama_Castle.jpg"
+      }
+    },
+    {
+      "id": "2026-10-22-php-flaw",
+      "section": "Technology",
+      "country": "World",
+      "flag": "🌍",
+      "level": "C1",
+      "topic": "Cyber-security and AI",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Hidden in plain sight: how AI exposed a weakness at the heart of the web",
+      "standfirst": "Two flaws in PHP, the programming language behind a huge share of the world's websites, went unnoticed for over a decade – until artificial intelligence found them.",
+      "body": [
+        "Few people outside the technology industry have heard of PHP, yet most of us rely on it every day. Created in the early 1990s, it is an open-source language that runs on web servers and assembles the pages we see in our browsers. Wikipedia, countless online shops and WordPress, the system behind a vast number of websites, all depend on it; the cyber-security firm Wiz estimates that it powers 70% of the world's websites.",
+        "This week, researchers from Wiz and another firm, Calif, revealed two serious vulnerabilities, nicknamed \"php2shell\", built into the language itself and present in versions released over the past decade. Under the right conditions, attackers could exploit them to take control of a web server and steal sensitive data. Strikingly, the flaws were uncovered with the help of technology from OpenAI, which described the discovery as one of the most significant security problems in recent memory.",
+        "The response was swift. The PHP Foundation, the non-profit organisation that maintains the language, released patches on Wednesday and urged all users to update immediately. Security agencies in the United States, the UK, the EU, Singapore and Australia issued warnings, and the US National Security Agency told organisations that could not patch their systems straight away to take them offline. In Japan, Prime Minister Sanae Takaichi asked people to check whether their public websites ran on PHP. Wikimedia, the Finnish government and several Scottish councils were among those that temporarily took sites or services down.",
+        "Experts fear the danger is far from over. Now that technical details are being made public, further attempts to exploit the flaws are likely, and poorly maintained websites run by small organisations with limited security resources are especially exposed. One security executive also warned that AI could make such attacks faster and easier to carry out.",
+        "Therein lies an uncomfortable irony. The kind of technology that brought these long-buried weaknesses to light could equally help criminals to find and exploit similar ones. Whether AI ultimately makes the internet safer may depend less on the tools themselves than on who uses them first – and how quickly defenders respond."
+      ],
+      "glossary": [
+        {
+          "w": "vulnerabilities",
+          "d": "weak points in a computer system that attackers could use"
+        },
+        {
+          "w": "exploit",
+          "d": "to use a weakness in order to gain an unfair advantage or do harm"
+        },
+        {
+          "w": "patches",
+          "d": "small pieces of software that repair a problem in a program"
+        },
+        {
+          "w": "swift",
+          "d": "happening very quickly"
+        },
+        {
+          "w": "irony",
+          "d": "a situation that is strange or amusing because it is the opposite of what you would expect"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What is the writer's main purpose in the first paragraph?",
+          "options": [
+            "To criticise companies for using old technology",
+            "To show why a little-known technology matters to ordinary users",
+            "To explain how to build a website with PHP",
+            "To compare PHP with other programming languages"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "In paragraph 2, what does 'them' in 'exploit them' refer to?",
+          "options": [
+            "the researchers",
+            "the attackers",
+            "the vulnerabilities",
+            "the web servers"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the writer find 'striking' about the discovery?",
+          "options": [
+            "That the flaws were found with the help of AI",
+            "That two companies worked together",
+            "That the flaws had appeared only recently",
+            "That OpenAI had created PHP"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "The advice given by the US National Security Agency suggests that",
+          "options": [
+            "most websites did not need to change anything.",
+            "PHP should no longer be used by governments.",
+            "only American websites were at risk.",
+            "leaving an unpatched system online was considered more dangerous than going offline."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "According to paragraph 4, which websites face the greatest risk?",
+          "options": [
+            "Large sites run by government agencies",
+            "Sites belonging to small organisations that are not well maintained",
+            "Online shops that sell technology",
+            "Sites that have already installed the patches"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "How would you describe the writer's attitude in the final paragraph?",
+          "options": [
+            "Cautious, recognising that AI can help both attackers and defenders",
+            "Enthusiastic about the end of online crime",
+            "Dismissive of the risks described earlier",
+            "Angry with the companies that discovered the flaws"
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "Your class has attended a panel discussion on keeping the internet safe. You have made the notes below. Who should take most responsibility for online safety? • governments • technology companies • ordinary users. Write an essay discussing two of the groups in your notes. Explain which group should take more responsibility, giving reasons. You may use the opinions expressed in the discussion, but use your own words as far as possible. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c3qjnwye0ep5o"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/php-flaw.jpg",
+        "alt": "PHP code on a computer screen in a code editor",
+        "caption": "PHP code open in a code editor (earlier photo).",
+        "credit": "Yuri Samoilov",
+        "license": "CC BY 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:PHP_Code_(49919079151).jpg"
+      }
+    },
+    {
+      "id": "2026-10-22-cali-fund",
+      "section": "Economy",
+      "country": "Armenia · World",
+      "flag": "🇦🇲",
+      "level": "C1",
+      "topic": "Business, medicine and biodiversity",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Paying nature back? A billion-dollar fund that has collected almost nothing",
+      "standfirst": "A global fund designed to share the profits made from nature's genetic information has received only a few thousand dollars, and drug companies are under pressure.",
+      "body": [
+        "Many modern medicines owe something to nature. Researchers increasingly work with genetic information taken from organisms around the world, much of it now stored as digital sequence information (DSI) in public databases. The Cali Fund was set up so that some of the profits made from that information would flow back into conservation, particularly in low-income countries, with at least half of the money going to priorities chosen by Indigenous peoples and local communities. The target was ambitious: $1 billion a year.",
+        "More than 18 months after its official launch in February 2025, the reality looks very different. By Monday, when the Cop17 biodiversity summit opened in Yerevan, the capital of Armenia, the fund had received just $10,656 in commitments, of which $7,085 had actually been paid. All of it came from three small firms in the UK and Belgium; not one major pharmaceutical company had contributed.",
+        "The fund asks companies to give, voluntarily, 1% of their profits or 0.1% of their revenue. According to an analysis by Zero Carbon Analytics, had the 15 largest drug companies followed that guideline, they could have contributed $756 million based on last year's results – a modest sum next to the roughly $161 billion in profits they made in 2025. Critics accuse the industry of \"free-riding\" on nature, and one campaigner observed that more money had been spent on meetings about the fund than the fund itself contained.",
+        "The industry rejects that portrayal. Its international federation insists it is committed to biodiversity but argues that the fund overlaps with existing laws and demands a share of total revenue whether or not DSI was used to develop a given medicine. A spokesperson for the fund, meanwhile, called the result disappointing but not entirely surprising, noting that similar schemes have typically taken two to three years before contributions grew.",
+        "The underlying question is whether voluntary schemes can ever deliver. Some campaigners argue that companies should be compelled to pay; others hope that discussions at Cop17 will persuade businesses to come forward. With a $700 billion gap in global funding for nature conservation, a great deal rides on the answer."
+      ],
+      "glossary": [
+        {
+          "w": "conservation",
+          "d": "the protection of plants, animals and natural areas"
+        },
+        {
+          "w": "commitments",
+          "d": "promises to give money or to do something"
+        },
+        {
+          "w": "voluntarily",
+          "d": "because you choose to, not because you are forced to"
+        },
+        {
+          "w": "free-riding",
+          "d": "getting a benefit from something without paying your share of the cost"
+        },
+        {
+          "w": "compelled",
+          "d": "forced to do something, for example by law"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "According to the first paragraph, why was the Cali Fund created?",
+          "options": [
+            "To pay for new public genetic databases",
+            "To return part of the profits from nature's genetic information to conservation",
+            "To help pharmaceutical companies develop medicines faster",
+            "To replace existing laws on biodiversity"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "The phrase 'the reality looks very different' in paragraph 2 suggests that",
+          "options": [
+            "the fund has fallen far short of its aim.",
+            "the fund has changed its official target.",
+            "large companies have given more than expected.",
+            "the summit was moved to another city."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "Why does the writer compare $756 million with $161 billion?",
+          "options": [
+            "To argue that the industry is losing money",
+            "To show that the fund's target was unrealistic",
+            "To show how small the suggested contribution is compared with profits",
+            "To explain how Zero Carbon Analytics calculated its figures"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "The campaigner's remark about meetings is intended to",
+          "options": [
+            "praise the organisers for their careful planning.",
+            "suggest that the summit should be cancelled.",
+            "show that the fund needs more staff.",
+            "highlight, ironically, how little the fund has achieved."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the pharmaceutical industry's main objection to the fund?",
+          "options": [
+            "It would have to pay even for medicines developed without DSI.",
+            "The fund gives too much money to low-income countries.",
+            "It does not believe biodiversity is important.",
+            "The fund was launched too recently to be taken seriously."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "In the final paragraph, the writer",
+          "options": [
+            "argues strongly that companies must be forced to pay.",
+            "presents the question as open and important without taking a side.",
+            "suggests that the fund should be closed.",
+            "predicts that companies will soon contribute generously."
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (report)",
+        "task": "Your school's environment club is preparing a report for the head teacher on how local businesses could help to protect nature in your area. Write the report, describing what businesses currently do, explaining why voluntary help may or may not be enough, and recommending two practical actions. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/environment/2026/oct/22/cop17-cali-conservation-fund-pharmaceutical-freeriding-nature-aoe"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-22/cali-fund.jpg",
+        "alt": "The city of Yerevan with a large snowy mountain behind it",
+        "caption": "Yerevan, Armenia, where the Cop17 biodiversity summit is taking place (earlier photo).",
+        "credit": "Սէրուժ Ուրիշեան (Serouj Ourishian)",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Yerevan_skyline.jpg"
+      }
+    }
+  ]
+}
