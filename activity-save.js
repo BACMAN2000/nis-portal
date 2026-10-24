@@ -593,3 +593,23 @@ window.NIS_WORK = {
   }
 };
 })();
+
+
+/* ---- Pestañas «Dictionary» y «Notebook» (literature/lit-tools.js) en todas las apps ----
+   El alumno abre su cuaderno digital y el diccionario desde cualquier página con sesión.
+   No se cargan en exámenes, simulacros, quizzes ni el placement: ahí serían una ayuda. */
+(function () {
+  if (window.LitTools || window.__litToolsCarga || window.top !== window) return;
+  if (/(exam|mock|quiz|placement|test|ielts|toefl|cambridge-runner|attwn)/i.test(location.pathname)) return;
+  var conSesion = false;
+  try { conSesion = !!localStorage.getItem('cohasset_token') || Object.keys(localStorage).some(function (k) { return /^sb-.*-auth-token$/.test(k); }); } catch (e) {}
+  if (!conSesion) return;
+  window.__litToolsCarga = 1;
+  function carga() {
+    var s = document.createElement('script');
+    s.src = '/' + 'literature' + '/lit-tools' + '.js?v=5';
+    s.onload = function () { if (window.LitTools) window.LitTools.init({}); };
+    document.body.appendChild(s);
+  }
+  if (document.body) carga(); else document.addEventListener('DOMContentLoaded', carga);
+})();
