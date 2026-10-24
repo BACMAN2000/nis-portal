@@ -5,6 +5,8 @@ async function renderAdmin(tab='users'){
   // Los simulacros viven fuera del SPA (mocks-cambridge/): se sale a ellos,
   // igual que hace el panel del profesor.
   if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
+  // Cohasset Literature: libro de notas y corrección en su propia página (grados 6-11).
+  if(tab==='literature'){ window.location.assign(location.origin + '/literature/grading.html'); return; }
   /* Desde el 17-sep-2026 el menu ESPEJA las pistas del alumno (Home · My
      classes · Cambridge · Practice tools · My progress): primero quien
      existe, luego Clases, Cambridge y Herramientas de practica en el mismo
@@ -93,6 +95,7 @@ async function renderAdmin(tab='users'){
       ...(schoolContentOK('news.daily') ? [{key:'newsmark',label:'📰 Newspaper'}] : []),
       {key:'mock2',label:'📝 MOCK 2'},
       {key:'speaktest',label:'🗣️ Speaking test'},
+      {key:'literature',label:'📚 Literature'},
     ]},
     /* Seguimiento = solo se mira, no se toca nada. */
     {group:'Tracking', icon:'📈', items:[

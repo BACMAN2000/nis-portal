@@ -2,6 +2,7 @@
 
 async function renderTeacher(tab){
   if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
+  if(tab==='literature'){ window.location.assign(location.origin + '/literature/grading.html'); return; }
   const acc = state.teacherAccess || await loadTeacherAccess();
   const _tn = state.teacherNodes||{has:false,set:new Set()};
   const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
@@ -24,6 +25,7 @@ async function renderTeacher(tab){
     if(schoolContentOK('news.daily')) correccion.push({key:'newsmark',label:'📰 Newspaper'});
     correccion.push({key:'mock2',label:'📝 MOCK 2'});
     correccion.push({key:'speaktest',label:'🗣️ Speaking test'});
+    correccion.push({key:'literature',label:'📚 Literature'});
     seguimiento.push({key:'results',label:'📝 Results'});
     seguimiento.push({key:'activities',label:'🎲 Activities'});
     seguimiento.push({key:'final',label:'🎓 MOCK 1'});
