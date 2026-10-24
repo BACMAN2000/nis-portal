@@ -1,0 +1,1090 @@
+{
+  "date": "2026-10-24",
+  "issue": 18,
+  "breaking": [
+    "Peru: the machine Micaela arrives at Lima's first underground metro; all station excavations on Line 2 are finished.",
+    "Vanuatu: two strong earthquakes, 6.9 and 6.3, trigger a tsunami warning near the Pacific islands.",
+    "Japan: the MMX spacecraft sets off to bring back sand from Mars's moon Phobos.",
+    "India: 137 cancer drugs will be cheaper from next month after a patient's court case."
+  ],
+  "articles": [
+    {
+      "id": "2026-10-24-lima-metro-micaela",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "A2",
+      "topic": "Transport and cities",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Micaela digs under Lima: the first underground metro",
+      "standfirst": "A big machine is helping to build Peru's first underground train.",
+      "body": [
+        "Lima and Callao are building the first underground metro in Peru. This week, the President of Peru, Keiko Fujimori, visited the work in the district of Carmen de la Legua. She saw a big machine called Micaela arrive. The machine digs a tunnel under the city.",
+        "The workers have finished digging the places for all the stations on Line 2 and on a branch of Line 4. The President said that the metro will save people a lot of time. Today, many people spend three or four hours every day in minibuses and buses to go to work and come back home.",
+        "She said that this time should be for families. She also thanked the engineers and technicians from Peru and other countries who worked on the first part of the metro."
+      ],
+      "glossary": [
+        {
+          "w": "tunnel",
+          "d": "a long hole under the ground or through a mountain"
+        },
+        {
+          "w": "station",
+          "d": "a place where trains stop and people get on or off"
+        },
+        {
+          "w": "minibuses",
+          "d": "small buses"
+        },
+        {
+          "w": "technicians",
+          "d": "people who have special skills to work with machines"
+        },
+        {
+          "w": "underground",
+          "d": "below the ground"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "The metro in Lima and Callao is the first underground metro in Peru.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "The name of the big machine is Alicia.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "The workers have finished digging the places for all the stations on Line 2.",
+          "answer": "T"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "The metro will open next year.",
+          "answer": "NS"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "The President said that the metro will make journeys longer.",
+          "answer": "F"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "The President thanked engineers and technicians from Peru and other countries.",
+          "answer": "T"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend wants to know how you travel to school. Write an email to your friend (25 words or more). Say: how you go to school, how long it takes, and what you like or do not like about it."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/agencia/noticia-president-keiko-fujimori-perus-first-underground-train-will-improve-quality-of-life-1097004.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/lima-metro-micaela.png",
+        "alt": "Workers and machines build a metro tunnel in Lima",
+        "caption": "Construction of Line 2 of the Lima metro, earlier in the project.",
+        "credit": "Presidencia de la República del Perú",
+        "license": "CC BY 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Construcci%C3%B3n_de_l%C3%ADnea_2_metro_de_Lima.png"
+      }
+    },
+    {
+      "id": "2026-10-24-coastsnap-beaches",
+      "section": "Environment",
+      "country": "Australia",
+      "flag": "🇦🇺",
+      "level": "A2",
+      "topic": "Citizen science",
+      "exam": "A2 Key · Reading Part 2 (true / false / doesn't say)",
+      "headline": "Take a photo, help a beach",
+      "standfirst": "A phone and a small stand help scientists to watch the coast.",
+      "body": [
+        "A beach changes every day. Big waves take sand away, and calm weather brings sand back. Scientists want to see these changes, but it is hard work to watch every beach all the time.",
+        "Now people can help with a phone. The project is called CoastSnap. It started in Australia in 2017. At a CoastSnap place, there is a small stand for your phone and a sign. You put your phone on the stand, take a photo and send it to the scientists.",
+        "The stand makes sure that every photo is taken from nearly the same place. Then a computer program changes the photos into a view from above and finds the line of the sea on the sand. There are now more than 200 CoastSnap places in 21 countries."
+      ],
+      "glossary": [
+        {
+          "w": "waves",
+          "d": "moving lines of water on the sea"
+        },
+        {
+          "w": "sand",
+          "d": "the small yellow stones that cover a beach"
+        },
+        {
+          "w": "stand",
+          "d": "a small thing that holds something, for example a phone"
+        },
+        {
+          "w": "sign",
+          "d": "a board with words or pictures that gives information"
+        },
+        {
+          "w": "program",
+          "d": "a set of instructions that tells a computer what to do"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "tf",
+          "q": "CoastSnap started in Australia.",
+          "answer": "T"
+        },
+        {
+          "id": "q2",
+          "type": "tf",
+          "q": "You need a special camera to take a CoastSnap photo.",
+          "answer": "F"
+        },
+        {
+          "id": "q3",
+          "type": "tf",
+          "q": "Most people take their CoastSnap photos in the morning.",
+          "answer": "NS"
+        },
+        {
+          "id": "q4",
+          "type": "tf",
+          "q": "A computer program changes the photos into a view from above.",
+          "answer": "T"
+        },
+        {
+          "id": "q5",
+          "type": "tf",
+          "q": "There are CoastSnap places in twelve countries.",
+          "answer": "F"
+        },
+        {
+          "id": "q6",
+          "type": "tf",
+          "q": "There are now more than 200 CoastSnap places.",
+          "answer": "T"
+        }
+      ],
+      "writing": {
+        "exam": "A2 Key · Writing Part 6",
+        "task": "Your English friend wants to know about a beach near your home. Write an email to your friend (25 words or more). Say: which beach you know, what you can do there, and what you like about it."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/news/2026/oct/23/how-citizen-science-is-tracking-changes-in-shorelines-around-the-world"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/coastsnap-beaches.jpg",
+        "alt": "A wide sandy beach seen from above",
+        "caption": "A beach in Australia, where the CoastSnap project began in 2017.",
+        "credit": "Maksym Kozlenko",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Bondi_Beach_from_above.jpg"
+      }
+    },
+    {
+      "id": "2026-10-24-pope-visit-non-working-days",
+      "section": "Peru",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B1",
+      "topic": "Society and work",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Time off for a big visit: Peru plans special days for Pope Leo XIV",
+      "standfirst": "A new decree gives many workers extra non-working days in November, but the hours must be made up.",
+      "body": [
+        "Pope Leo XIV is going to visit Peru from 11 to 16 November, and the government wants to make it easier for people to take part. On 23 October it published a decree, signed by President Keiko Fujimori, that declares special non-working days for workers in both the public and the private sectors.",
+        "The days are different in each part of the country. In Lima and Callao, workers will be free from 1 p.m. on 11 and 12 November, and for the whole of 16 November. In Cajamarca, La Libertad, Lambayeque and Piura, the days are 13 and 14 November. In the private sector, Cusco and Ucayali will also have 15 November.",
+        "A non-working day is not the same as a public holiday. People do not have to work, but they must make up the hours later. In the public sector, the hours must be recovered within ten days, or at a time chosen by the head of each office. In the private sector, the company and its workers must agree how to do it. If they cannot agree, the employer decides.",
+        "The decree says that the visit has a special spiritual, historical and social importance for the country. It also says that services which are essential for the community must continue to work on those days."
+      ],
+      "glossary": [
+        {
+          "w": "decree",
+          "d": "an official order from a government"
+        },
+        {
+          "w": "sectors",
+          "d": "big parts of the economy, for example the public sector and the private sector"
+        },
+        {
+          "w": "public holiday",
+          "d": "a day when most people do not work and still get paid"
+        },
+        {
+          "w": "employer",
+          "d": "a person or company that gives work to people"
+        },
+        {
+          "w": "essential",
+          "d": "very important and necessary"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What has the government done?",
+          "options": [
+            "It has moved the Pope's visit to another month.",
+            "It has stopped all work in Peru for a week.",
+            "It has declared special non-working days for the visit.",
+            "It has given everyone a paid public holiday."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Which place has 15 November as a non-working day in the private sector?",
+          "options": [
+            "Cusco",
+            "Callao",
+            "Lambayeque",
+            "Lima"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What is the difference between a non-working day and a public holiday?",
+          "options": [
+            "Workers do not get any time off.",
+            "Workers must make up the hours later.",
+            "Only teachers are affected.",
+            "The days are always in the morning."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "How long do public workers have to recover the hours?",
+          "options": [
+            "One year",
+            "One month",
+            "They do not need to recover them.",
+            "Ten days, or a time chosen by the head of the office"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What happens in the private sector if the company and its workers do not agree?",
+          "options": [
+            "The workers decide.",
+            "The employer decides.",
+            "The days are cancelled.",
+            "A judge decides."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "Why were the days declared?",
+          "options": [
+            "To give workers a longer summer",
+            "To close all the schools for a month",
+            "To make it easier for people to go to events for the visit",
+            "To pay workers more money"
+          ],
+          "answer": 2
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 1 (email)",
+        "task": "Read this email from your English friend Sam. 'Next month there is a big event in my city and many people will have a day off. Is there a special event in your town? What do you usually do on days off?' Write an email to Sam (about 100 words). Answer both questions."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/agencia/noticia-government-declares-nonworking-days-for-pope-leo-xivs-visit-to-peru-1097063.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/pope-visit-non-working-days.jpg",
+        "alt": "The cathedral and the main square in Lima",
+        "caption": "The Plaza de Armas and the cathedral in Lima, in an earlier photo.",
+        "credit": "sergejf",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Lima,_Plaza_de_Armas_and_cathedral_(6091615471).jpg"
+      }
+    },
+    {
+      "id": "2026-10-24-vanuatu-earthquakes",
+      "section": "World",
+      "country": "Vanuatu",
+      "flag": "🇻🇺",
+      "level": "B1",
+      "topic": "Earthquakes and tsunami warnings",
+      "exam": "B1 Preliminary · Reading Part 3 (multiple choice)",
+      "headline": "Two strong earthquakes shake the sea near Vanuatu",
+      "standfirst": "A tsunami warning was issued for coasts near the centre of the quakes.",
+      "body": [
+        "Two strong earthquakes struck the sea near Vanuatu, a country of islands in the South Pacific, on Saturday afternoon. The first one had a magnitude of 6.9, according to the US Geological Survey (USGS). It happened about 200 kilometres west of the town of Sola, at a depth of 10 kilometres. A second earthquake, with a magnitude of 6.3, followed shortly after.",
+        "After the earthquakes, the Pacific Tsunami Warning Centre said that dangerous waves were possible on coasts within 300 kilometres of the centre of the quake. A tsunami is a series of very big sea waves that an earthquake under the ocean can cause. The warning centre's first forecast named Vanuatu as the area that could be affected.",
+        "At first, the warning centre gave the larger earthquake a magnitude of 7.2, but the USGS lowered the number to 6.9. Early measurements can change when scientists get more information, so the first number is not always the final one.",
+        "The centre asked people in threatened coastal areas to stay alert and to follow the instructions of national and local authorities. Australia's Bureau of Meteorology said that there was no threat to Australia. Vanuatu is in the Ring of Fire, an area around the Pacific Ocean where earthquakes are common."
+      ],
+      "glossary": [
+        {
+          "w": "magnitude",
+          "d": "a number that shows how strong an earthquake is"
+        },
+        {
+          "w": "tsunami",
+          "d": "a series of very big sea waves, often caused by an earthquake"
+        },
+        {
+          "w": "coasts",
+          "d": "the lands next to the sea"
+        },
+        {
+          "w": "authorities",
+          "d": "the people or groups that are in charge"
+        },
+        {
+          "w": "threat",
+          "d": "a danger that something bad may happen"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "When did the first earthquake happen?",
+          "options": [
+            "On Friday night",
+            "On Saturday afternoon",
+            "On Sunday morning",
+            "On Monday evening"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "How strong was the first earthquake, according to the USGS?",
+          "options": [
+            "7.2",
+            "6.3",
+            "6.9",
+            "5.9"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What is a tsunami?",
+          "options": [
+            "A very strong wind over the sea",
+            "A hole in the ground",
+            "A big storm with lightning",
+            "A series of very big sea waves"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "Why did the number 7.2 change?",
+          "options": [
+            "The USGS lowered the magnitude later.",
+            "A new earthquake started.",
+            "The warning was cancelled.",
+            "A different country measured it."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What did the warning centre ask people in threatened areas to do?",
+          "options": [
+            "Leave the country",
+            "Stay alert and follow instructions",
+            "Go to the beach to watch",
+            "Stay at home for a month"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What did Australia's Bureau of Meteorology say?",
+          "options": [
+            "There was no threat to Australia.",
+            "Australia must send help.",
+            "A tsunami was arriving.",
+            "All flights would stop."
+          ],
+          "answer": 0
+        }
+      ],
+      "writing": {
+        "exam": "B1 Preliminary · Writing Part 2 (story)",
+        "task": "Your English teacher has asked you to write a story. Your story must begin with this sentence: 'The warning sound started just after lunch.' Write your story (about 100 words)."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-24/two-large-earthquakes-strike-off-coast-of-vanuatu/107304900"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/vanuatu-earthquakes.jpg",
+        "alt": "A tropical beach and sea on an island in Vanuatu",
+        "caption": "Espiritu Santo, one of the islands of Vanuatu, in an earlier photo.",
+        "credit": "Graham Crumb",
+        "license": "CC BY-SA 3.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Santo-island-living-4.jpg"
+      }
+    },
+    {
+      "id": "2026-10-24-peru-mining-exports",
+      "section": "Economy",
+      "country": "Peru",
+      "flag": "🇵🇪",
+      "level": "B2",
+      "topic": "Exports and commodity prices",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "Higher prices, bigger shipments: Peru's mining exports leap by 55%",
+      "standfirst": "Copper and gold drive a record-style rise, but the good news depends partly on world markets.",
+      "body": [
+        "Peru's mining exports are growing at a remarkable pace. According to the National Society of Mining, Petroleum and Energy (SNMPE), they reached $57.492 billion between January and August 2026, which is 55% more than the $37.081 billion earned in the same months of 2025. Mining alone accounted for 74.3% of everything Peru sold abroad in that period. The result is a clear sign that the sector remains the engine of the country's foreign trade.",
+        "Two metals explain most of the increase. Copper exports totalled $26.513 billion, up 54.8% on last year, and made up 46.1% of the value of mining exports. Gold shipments reached $21.631 billion, a rise of 58%, or 37.6% of the total. In absolute terms, copper added $9.388 billion to the annual comparison, gold added $7.938 billion and lead $2.019 billion.",
+        "August shows how the rise works. Mining exports that month came to $7.858 billion, 52.1% more than in August 2025. The SNMPE said that copper's 56% growth was driven by a 38.1% increase in the price of the metal and a 13% increase in the volume exported. For gold, a 31% rise in price was combined with a 14.1% increase in volume. In other words, higher prices and larger shipments worked together, and neither factor alone explains the jump.",
+        "The figures show a double effect: Peru is selling more metal, and it is selling it at higher prices. That is encouraging for a country whose economy depends heavily on mining, but it also means that the result is partly out of Peru's hands, since international prices can fall as quickly as they rise. For that reason, economists often argue that countries exposed to a few raw materials should use periods of high income to develop other sectors of their economy."
+      ],
+      "glossary": [
+        {
+          "w": "remarkable",
+          "d": "unusual and surprising in a good way"
+        },
+        {
+          "w": "accounted for",
+          "d": "formed a part of something"
+        },
+        {
+          "w": "shipments",
+          "d": "goods that are sent together to another place"
+        },
+        {
+          "w": "volume",
+          "d": "the amount of something"
+        },
+        {
+          "w": "exposed",
+          "d": "not protected from something, so it can affect you"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What point is made in the first paragraph?",
+          "options": [
+            "Exports from all sectors grew by 55%.",
+            "Mining provides most of what Peru sells abroad, and its exports have grown strongly.",
+            "Mining exports fell in 2025.",
+            "The SNMPE is a ministry of the government."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Which statement about the second paragraph is true?",
+          "options": [
+            "Gold added more value than copper.",
+            "Lead was the second most important metal.",
+            "Copper added the largest amount to the rise in value.",
+            "Copper and gold each made up half of mining exports."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What does the August example show?",
+          "options": [
+            "Copper grew only because of higher prices.",
+            "Both prices and volumes contributed to the growth.",
+            "Gold exports fell in volume.",
+            "The volume of copper exports fell."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What does 'partly out of Peru's hands' mean?",
+          "options": [
+            "Peru cannot fully control the result.",
+            "Peru has lost its mines to other countries.",
+            "Prices are decided by Peru's government.",
+            "The mining companies do not pay taxes."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What is the writer's attitude to the figures in the last paragraph?",
+          "options": [
+            "Entirely optimistic about the future",
+            "Critical of the mining companies",
+            "Pleased, but aware of a risk",
+            "Surprised by the size of the rise"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's main purpose?",
+          "options": [
+            "To advise investors where to put their money",
+            "To criticise the SNMPE",
+            "To compare Peru with Chile",
+            "To report the growth and explain what lies behind it"
+          ],
+          "answer": 3
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 1 (essay)",
+        "task": "In your English class you have been talking about the economy. Now your teacher has asked you to write an essay: 'Countries should not depend on one product to earn money.' Write about TWO of the following and say which is more important: developing new industries / tourism / education and training. Write 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "Andina",
+          "url": "https://andina.pe/ingles/noticia-perus-mining-exports-grew-by-55-between-january-and-august-2026-1096991.aspx"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/peru-mining-exports.jpg",
+        "alt": "A satellite view of a very large copper mine in Peru",
+        "caption": "Peru's Toquepala copper mine seen from space, in an earlier NASA image.",
+        "credit": "NASA",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Toquepala_mine.jpg"
+      }
+    },
+    {
+      "id": "2026-10-24-india-cancer-drug-prices",
+      "section": "Health",
+      "country": "India",
+      "flag": "🇮🇳",
+      "level": "B2",
+      "topic": "Medicine prices",
+      "exam": "B2 First · Reading Part 5 (multiple choice)",
+      "headline": "A patient's petition, 137 cheaper drugs: India caps cancer-medicine mark-ups",
+      "standfirst": "A court case begun by a retired bank clerk has pushed the government to act.",
+      "body": [
+        "India has announced that 137 cancer drugs will become cheaper from next month, after a legal case started by an ordinary patient. Sarojam Radhakrishnan, a retired bank clerk in Kerala, was diagnosed with breast cancer in 2021. Her treatment cost more than 63,000 rupees a month (about £500), far more than her family could pay. In 2022 she asked the Kerala high court to make the government act. She did not live to see the result, but the case reached the supreme court.",
+        "The judges examined how much hospitals, distributors and pharmacies add to the price of medicines, and they described the situation in the strongest terms, calling the mark-ups 'extortion'. In one example, a drug sold to hospitals for 2,700 rupees was priced at 27,000 rupees. An official study found that the average trade mark-up on some cancer drugs was 170%, and in extreme cases more than 700%.",
+        "A cap of 30% on the trade margin already existed for 42 drugs. The government has now extended it to 137 more. It expects prices to fall by up to 70% and patients to save around 2,500 crore rupees (£199m) every year.",
+        "Not everyone is convinced that this is enough. Campaigners expect companies and hospitals to look for loopholes, for instance by raising charges for other services to replace the lost income. Jyotsna Singh, from a network that campaigns for access to medicines, called for a complete reform of the system and for transparency along the whole supply chain. The supreme court has also asked why the cap should apply only to cancer drugs and not to all medicines without a patent. The government has until 27 October to reply.",
+        "The problem is large. India records about 1.56 million new cancer cases a year, up from 1.39 million in 2020, and studies suggest that health spending pushes about 55 million Indians below the poverty line every year."
+      ],
+      "glossary": [
+        {
+          "w": "diagnosed",
+          "d": "told by a doctor that you have a particular illness"
+        },
+        {
+          "w": "mark-up",
+          "d": "the amount added to the cost of something to make the selling price"
+        },
+        {
+          "w": "cap",
+          "d": "a limit on how high something can go"
+        },
+        {
+          "w": "loopholes",
+          "d": "weak points in a rule that people can use to avoid it"
+        },
+        {
+          "w": "poverty line",
+          "d": "the lowest level of income that people need for basic needs"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What led to the new measure?",
+          "options": [
+            "A report written by hospital owners",
+            "A strike by pharmacists",
+            "A court case begun by a patient",
+            "A new law in Kerala"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why does the writer mention a drug sold at 2,700 rupees and priced at 27,000?",
+          "options": [
+            "To show how large the mark-ups could be",
+            "To prove that hospitals pay too much",
+            "To explain why the drug is rare",
+            "To show that prices will fall by 70%"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "What will the 30% cap do?",
+          "options": [
+            "Make cancer drugs free for the poor",
+            "Limit how much traders can add to the price",
+            "Apply to all medicines in India",
+            "Stop hospitals from buying new drugs"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What concern does Jyotsna Singh's comment express?",
+          "options": [
+            "The cap is too low to help anyone.",
+            "Patients will refuse cheaper drugs.",
+            "The court has taken too long.",
+            "Companies and hospitals may find ways to avoid the cap."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What has the supreme court asked the government?",
+          "options": [
+            "To stop the cap immediately",
+            "To pay the patients' bills",
+            "To explain why only cancer drugs are covered",
+            "To build new hospitals"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's main purpose?",
+          "options": [
+            "To criticise the judges",
+            "To report a government decision and show why it matters",
+            "To advise patients about treatment",
+            "To compare India with the UK"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "B2 First · Writing Part 2 (article)",
+        "task": "You see this announcement in an international magazine: 'Health for all: what should governments do?' Write an article giving your opinion on how governments can make medicine and healthcare more affordable, and say what ordinary people can do to help. Write 140–190 words."
+      },
+      "sources": [
+        {
+          "name": "The Guardian",
+          "url": "https://www.theguardian.com/global-development/2026/oct/23/india-cuts-cost-cancer-drugs"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/india-cancer-drug-prices.jpg",
+        "alt": "The front of the Supreme Court building in New Delhi",
+        "caption": "The Supreme Court of India in New Delhi, in an earlier photo.",
+        "credit": "Subhashish Panigrahi",
+        "license": "CC BY-SA 4.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Supreme_Court_of_India_01.jpg"
+      }
+    },
+    {
+      "id": "2026-10-24-japan-mmx-phobos",
+      "section": "Science",
+      "country": "Japan",
+      "flag": "🇯🇵",
+      "level": "C1",
+      "topic": "Space exploration",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "A potato-shaped moon and a very light touch: Japan sets out to bring back a piece of Phobos",
+      "standfirst": "The MMX spacecraft has left Earth on the first mission to collect samples from a moon of Mars.",
+      "body": [
+        "On Monday, Japan's space agency JAXA launched a rocket from the Tanegashima Space Centre carrying the Martian Moons eXploration spacecraft, known as MMX. It is the first mission designed to bring back material from a moon of Mars, and the opening stage of a five-year, international project.",
+        "The target is Phobos, a moon that no spacecraft has ever explored on its surface. MMX will spend about a year travelling to the Martian system, where it is due to arrive in 2027, and will then enter a quasi-satellite orbit, a path that keeps it close to Phobos. After a period of observation, it will attempt two soft landings. On the way, MMX will also take photographs of Mars and of Phobos, images that its team is eagerly waiting to see.",
+        "The great difficulty is the weak gravity of Phobos. Yaji Kentaro, from the MMX team, explained that engineers had feared a landing vehicle might simply tip over, so its legs have been given special features to keep it stable. The vehicle is to collect at least ten grams of sand from a depth of about two centimetres.",
+        "Why go to such lengths? Mars today is a cold desert with a thin atmosphere, yet scientists believe its environment was once similar to Earth's, and traces of water have been found there. The mission hopes to shed light on the origin of water and organic matter on Mars and on how the planet and its moons formed. JAXA also thinks that this 'potato-shaped' moon could contain material thrown off the surface of Mars long ago, possibly including evidence of ancient life. According to Yaji, the answer to where the water and organic matter needed for life came from may be hidden in the samples.",
+        "Once the samples have been collected, the spacecraft will observe Deimos, the second Martian moon, and then begin a year-long journey home. The capsule is expected to land in South Australia. The project is also regarded as a stepping stone towards possible human exploration of the Martian system in the future."
+      ],
+      "glossary": [
+        {
+          "w": "soft landings",
+          "d": "landings that are slow and gentle, so nothing is damaged"
+        },
+        {
+          "w": "gravity",
+          "d": "the force that pulls objects towards a planet or moon"
+        },
+        {
+          "w": "organic matter",
+          "d": "material that comes from living things or contains the chemicals of life"
+        },
+        {
+          "w": "capsule",
+          "d": "a small container that can travel through space"
+        },
+        {
+          "w": "stepping stone",
+          "d": "a step that helps you to reach a bigger goal"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "According to paragraph 1, what makes MMX unusual?",
+          "options": [
+            "It is the first Japanese mission to Mars.",
+            "It aims to bring back material from a moon of Mars.",
+            "It is the first mission with an international crew.",
+            "It was launched from a new space centre."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why does the writer mention the weak gravity of Phobos?",
+          "options": [
+            "To show why MMX will travel for a year",
+            "To explain why the vehicle will be very heavy",
+            "To show why the moon is easy to visit",
+            "To explain why landing there is a technical problem"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "The description of Mars in paragraph 4 serves to",
+          "options": [
+            "prove that life once existed there.",
+            "criticise the cost of the mission.",
+            "contrast the planet's present state with its probable past.",
+            "show that Mars is similar to Earth today."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What can be inferred about the sample capsule?",
+          "options": [
+            "It will arrive back on Earth in 2027.",
+            "It will be opened before it leaves Phobos.",
+            "It will be carried home by a rover.",
+            "It is expected to come down in South Australia."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "In the final paragraph, the phrase 'stepping stone' suggests that MMX",
+          "options": [
+            "may help to prepare later missions with people.",
+            "will make human missions unnecessary.",
+            "has already been used by astronauts.",
+            "is smaller than other missions."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's main purpose?",
+          "options": [
+            "To argue that Mars should not be explored",
+            "To describe a mission and explain why it matters",
+            "To criticise JAXA",
+            "To compare Japan with Australia"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 1 (essay)",
+        "task": "In your English class you have been discussing space exploration. Your teacher has asked you to write an essay on this statement: 'Money spent on space exploration would be better spent on problems on Earth.' Discuss two of the following and explain which is more important: scientific knowledge; technologies developed for space that are used on Earth; inspiring young people. You may add your own idea. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-20/japan-launches-mission-to-collect-mars-moon-samples/107283312"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/japan-mmx-phobos.jpg",
+        "alt": "An artist's picture of a spacecraft near a small moon",
+        "caption": "An artist's concept of the MMX spacecraft; this is not a photo from the mission.",
+        "credit": "NASA",
+        "license": "Public domain",
+        "link": "https://commons.wikimedia.org/wiki/File:Mmxspacecraft_0.jpg"
+      }
+    },
+    {
+      "id": "2026-10-24-rugby-league-pasifika",
+      "section": "Sport",
+      "country": "Australia",
+      "flag": "🇦🇺",
+      "level": "C1",
+      "topic": "Sport and identity",
+      "exam": "C1 Advanced · Reading Part 5 (multiple choice)",
+      "headline": "Shirts that mean more than a jersey: how Pasifika fans are reshaping the Rugby League World Cup",
+      "standfirst": "Samoa and Tonga once played in the shadow of bigger teams. Now they fill the stadiums.",
+      "body": [
+        "A Friday workday, a kick-off at 5.45 p.m., traffic jammed across western Sydney and a match that was bound to be one-sided: on paper, it was a poor moment to attract a crowd. Yet 13,000 people filled Western Sydney Stadium to watch Samoa beat France 78–4 in the men's Rugby League World Cup, Samoa's biggest win ever, and they sang a traditional song of thanks. Even after the final siren, Benaiah Ioelu scored one more try when a penalty kick hit the post and bounced back to him.",
+        "It was not an isolated case. Fiji's game against the Cook Islands in Newcastle drew just over 10,000 spectators and 1.7 million television viewers across Australia, more than several flagship news and current affairs programmes. The meeting of Samoa and Tonga on 1 November was the first match of the tournament to sell out, and former players have asked for it to be moved from a 30,000-seat stadium to the larger Stadium Australia.",
+        "Behind this lies demography. The number of Australians who identify with Pasifika communities almost tripled in a decade, from 165,000 in 2011 to 415,033 in 2021, with large communities in the outer suburbs of Sydney and Brisbane. Sierra Keung, a sports academic at Auckland University of Technology, was not surprised by the turnout: for these communities, she said, a team shirt is far more than a piece of clothing.",
+        "A rule change in 2017 also helped, because it allowed players with cultural ties to several nations to choose which one to represent. Jason Taumalolo's decision to play for Tonga was the best-known example. Of the starting line-up that beat Lebanon 36–0, none was born in Tonga, but all have family roots there. Lebanon's team follows a similar logic: its players were all born in Australia, and its coach, Michael Cheika, is Lebanese Australian.",
+        "Australia's Kangaroos have won twelve world titles, including six of the last seven, yet observers now suggest that their long dominance could be under threat. As heritage rather than birthplace increasingly decides who plays for whom, the tournament may belong above all to the diasporas that have given it a new energy."
+      ],
+      "glossary": [
+        {
+          "w": "one-sided",
+          "d": "with one team much stronger than the other"
+        },
+        {
+          "w": "flagship",
+          "d": "the most important or best-known of its kind"
+        },
+        {
+          "w": "diasporas",
+          "d": "groups of people who live outside the country their families come from"
+        },
+        {
+          "w": "heritage",
+          "d": "the history, culture and traditions that come from your family or community"
+        },
+        {
+          "w": "dominance",
+          "d": "a situation in which one person or team is much stronger than the others"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "mcq",
+          "q": "What point does the writer make about the Samoa v France match?",
+          "options": [
+            "The crowd was large despite unfavourable circumstances.",
+            "The match had to be moved because of traffic.",
+            "The result surprised many experts.",
+            "France refused to play the final minutes."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcq",
+          "q": "Why does the writer mention the television audience of 1.7 million?",
+          "options": [
+            "To criticise television news",
+            "To explain why Fiji won",
+            "To show that interest extends beyond those at the grounds",
+            "To compare it with Samoa's crowd"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q3",
+          "type": "mcq",
+          "q": "According to paragraph 3, the new interest in these teams can be explained by",
+          "options": [
+            "government investment in stadiums.",
+            "cheaper ticket prices.",
+            "the success of Australia's team.",
+            "a larger Pasifika population and a strong sense of cultural pride."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "q4",
+          "type": "mcq",
+          "q": "What effect did the 2017 rule change have?",
+          "options": [
+            "It made players represent their country of birth.",
+            "It let players with family ties choose which nation to play for.",
+            "It created a new tournament.",
+            "It banned players from changing nations."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "q5",
+          "type": "mcq",
+          "q": "What does the writer suggest about Lebanon's team?",
+          "options": [
+            "It is made up mostly of players born in Lebanon.",
+            "It lacks experienced coaches.",
+            "It relies on family connections in the same way as Tonga and Samoa.",
+            "It has won the tournament before."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "q6",
+          "type": "mcq",
+          "q": "What is the writer's main purpose?",
+          "options": [
+            "To criticise the organisers of the tournament",
+            "To explain why the tournament is being transformed and what it may mean for the sport",
+            "To argue that Australia should be excluded",
+            "To report the final result"
+          ],
+          "answer": 1
+        }
+      ],
+      "writing": {
+        "exam": "C1 Advanced · Writing Part 2 (article)",
+        "task": "You see this announcement in an English-language magazine for young people: 'Sport and identity: why do teams mean so much to communities?' Write an article about a team or sporting event that is important to the identity of your community, and explain what it gives to the people who follow it. Write 220–260 words."
+      },
+      "sources": [
+        {
+          "name": "ABC News (Australia)",
+          "url": "https://www.abc.net.au/news/2026-10-24/one-time-minnows-tonga-and-samoa-now-star-world-cup-attractions/107296364"
+        }
+      ],
+      "image": {
+        "src": "img/2026-10-24/rugby-league-pasifika.jpg",
+        "alt": "Players in a line perform a traditional Tongan dance before a match",
+        "caption": "Tonga's pre-match sipi tau before facing Samoa at the 2008 World Cup.",
+        "credit": "paddynapper",
+        "license": "CC BY-SA 2.0",
+        "link": "https://commons.wikimedia.org/wiki/File:Sipi_tau_2008_RLWC.jpg"
+      }
+    }
+  ],
+  "cartoons": [
+    {
+      "id": "2026-10-24-byte-bea-break-a-leg",
+      "series": "Byte & Bea",
+      "title": "Good luck, Bea",
+      "levels": [
+        "A2",
+        "B1"
+      ],
+      "image": {
+        "src": "img/2026-10-24/byte-bea-a2-b1.png",
+        "alt": "Three panels: Bea is nervous about her school play, Byte offers a bandage and says 'break a leg', and Bea explains that it means good luck."
+      },
+      "transcript": [
+        {
+          "speaker": "Bea",
+          "text": "The school play is tonight. I am so nervous!"
+        },
+        {
+          "speaker": "Byte",
+          "text": "Break a leg, Bea!"
+        },
+        {
+          "speaker": "Bea",
+          "text": "It means good luck, Byte!"
+        },
+        {
+          "speaker": "Byte",
+          "text": "Then I will keep the bandage. Just in case."
+        }
+      ],
+      "explanation": "'Break a leg' is a friendly way to say 'good luck', especially before a performance. Byte understands the words literally, so he arrives with a bandage. The joke is that he still keeps it at the end, just in case.",
+      "glossary": [
+        {
+          "w": "break a leg",
+          "def": "An expression that means 'good luck', often used before a show."
+        },
+        {
+          "w": "bandage",
+          "def": "A piece of cloth or plaster that you put on a cut or injury."
+        },
+        {
+          "w": "just in case",
+          "def": "Because something might happen."
+        }
+      ],
+      "prompt": "A2: What do you say to a friend before an exam? Write one sentence. B1: Write 40–60 words about a time when you felt nervous before something important."
+    },
+    {
+      "id": "2026-10-24-byte-bea-terms-conditions",
+      "series": "Byte & Bea",
+      "title": "I agree",
+      "levels": [
+        "B2",
+        "C1"
+      ],
+      "image": {
+        "src": "img/2026-10-24/byte-bea-b2-c1.png",
+        "alt": "Four panels: Byte claims to have read fourteen thousand words in two seconds, Bea asks what they say, Byte clicks 'I agree' confidently, and Bea discovers he has ordered 200 pineapples a month."
+      },
+      "transcript": [
+        {
+          "speaker": "Byte",
+          "text": "Fourteen thousand words of terms and conditions. I read them all in two seconds."
+        },
+        {
+          "speaker": "Bea",
+          "text": "Impressive. What do they say?"
+        },
+        {
+          "speaker": "Byte",
+          "text": "No idea. But I ticked 'I agree' with great confidence."
+        },
+        {
+          "speaker": "Bea",
+          "text": "What exactly did you agree to?"
+        },
+        {
+          "speaker": "Byte",
+          "text": "Apparently, 200 pineapples a month."
+        }
+      ],
+      "explanation": "Byte confuses reading with understanding: he has scanned every word but cannot say what any of them mean. The joke exaggerates something real, which is that many people click 'I agree' without reading the terms. The pineapples make the consequence absurd, and Byte's confidence makes it funnier.",
+      "glossary": [
+        {
+          "w": "terms and conditions",
+          "def": "The rules that you accept when you use a service or buy something online."
+        },
+        {
+          "w": "with great confidence",
+          "def": "In a very sure way, even if you are not sure of the facts."
+        },
+        {
+          "w": "apparently",
+          "def": "Used to say that something seems to be true, but you have only just found out."
+        }
+      ],
+      "prompt": "B2: Do you read the terms and conditions before you accept them online? Write 40–60 words explaining why or why not. C1: Explain why Byte's claim in the first panel is both true and meaningless, and what the strip suggests about 'informed consent' (70–100 words).",
+      "discussion": "A possible reading is that the strip is about the gap between access to information and real understanding. Byte can process every word, yet he has no judgement about which words matter. It also criticises how digital services are designed: terms are so long that agreeing becomes a ritual, not a choice, and the person who clicks may be as unaware of the result as Byte is."
+    }
+  ]
+}
