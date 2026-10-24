@@ -95,7 +95,7 @@
 /* Pestañas «Dictionary» y «Notebook» (Cohasset Literature, /literature/lit-tools.js): el
    diccionario y el cuaderno digital del alumno en todo el portal. Se carga aparte para no
    retrasar el portal; las notas se guardan en la cuenta. */
-(function(){var s=document.createElement('script');s.src='/literature/lit-tools.js?v=2';s.onload=function(){window.LitTools&&LitTools.init({})};document.body.appendChild(s)})();
+(function(){var s=document.createElement('script');s.src='/literature/'+'lit-tools.js?v=2';  /* la sirve nginx desde cohasset: no está en este repo */s.onload=function(){window.LitTools&&LitTools.init({})};document.body.appendChild(s)})();
 </script>
 </body>
 </html>
