@@ -607,7 +607,9 @@ window.NIS_WORK = {
   window.__litToolsCarga = 1;
   function carga() {
     var s = document.createElement('script');
-    s.src = '/' + 'literature' + '/lit-tools' + '.js?v=5';
+    // Versión por hora: un cambio en lit-tools llega a todas las apps en menos de una hora sin
+    // resellar las páginas que cargan este archivo.
+    s.src = '/' + 'literature' + '/lit-tools' + '.js?h=' + Math.floor(Date.now() / 3600000);
     s.onload = function () { if (window.LitTools) window.LitTools.init({}); };
     document.body.appendChild(s);
   }
